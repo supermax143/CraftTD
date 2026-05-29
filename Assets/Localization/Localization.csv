@@ -1,0 +1,9 @@
+key|ru|en
+initialization_title|Инициализация...|Initialization...
+main_menu_title|Главное меню|Main Menu
+main_menu_button_start|Начать игру|Start Game
+game_title|Игровая сцена|Game scene
+show_window_button|Показать окно|Show window
+init_localization|Загрузка локализации|Localization Load
+load_assets|Загрузка ассетов|Assets load
+login_state|Логин|Login
