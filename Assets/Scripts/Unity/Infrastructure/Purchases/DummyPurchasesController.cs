@@ -9,7 +9,7 @@ namespace Unity.Infrastructure.Purchases
     {
         public event Action<string> OnPurchaseComplete;
         
-        public Task Initialize()
+        public Task Init()
         {
             Debug.Log($"{this.GetType().Name} Initialized");
             return Task.CompletedTask;

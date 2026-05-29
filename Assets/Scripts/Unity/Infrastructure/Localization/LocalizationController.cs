@@ -10,7 +10,7 @@ namespace Unity.Infrastructure.Localization
 {
     
 #if DEBUG_MODE
-    internal class LocalizationController : ILocalization, IInitializable
+    internal class LocalizationController : ILocalization, IBootstrapStep, IInitializable
 #else
     internal class LocalizationController : ILocalization, IBootstrapStep
 #endif
@@ -38,19 +38,16 @@ namespace Unity.Infrastructure.Localization
 #if DEBUG_MODE
         public async void Initialize()
         {
-            var localizationText = await _resourceManager.Load<TextAsset>(LOCALIZATION_KEY, GetTag());
-            Initialize(localizationText?.text);
-            Debug.Log($"{this.GetType().Name} Initialized");
-            
+            await Init();
         }
-#else
-        public async Task Initialize()
+#endif
+        public async Task Init()
         {
             var localizationText = await _resourceManager.Load<TextAsset>(LOCALIZATION_KEY, GetTag());
             Initialize(localizationText?.text);
             Debug.Log($"{this.GetType().Name} Initialized");
         }
-#endif
+
 
         public void SetDefaultLanguageCode(string languageCode)
         {

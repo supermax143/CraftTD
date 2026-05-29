@@ -14,7 +14,7 @@ namespace Unity.Bootstrap
             StepIdent = stepIdent;
         }
         
-        public async Task Execute() => await _step.Initialize();
+        public async Task Execute() => await _step.Init();
         
     }
 }

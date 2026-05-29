@@ -7,7 +7,6 @@ namespace Unity.Infrastructure.Purchases
     public interface IPurchasesController : IBootstrapStep
     {
         event Action<string> OnPurchaseComplete;
-        Task Initialize();
         void BuyProduct(string purchaseItemId);
     }
 }

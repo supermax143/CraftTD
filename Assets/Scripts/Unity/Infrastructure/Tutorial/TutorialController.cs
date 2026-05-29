@@ -39,7 +39,7 @@ namespace Unity.Infrastructure.Tutorial
 
         private bool _initialized = false;
         
-        public async Task Initialize()
+        public async Task Init()
         {
             await TryStartChains();
             Debug.Log($"{this.GetType().Name} Initialized");

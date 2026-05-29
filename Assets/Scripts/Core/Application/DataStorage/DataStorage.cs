@@ -1,18 +1,20 @@
 using System;
 using System.Threading.Tasks;
 using Core.Application.DataStorage.StorageItems;
+using Core.Application.Interfaces;
 using UnityEngine;
 using Zenject;
 
 namespace Core.Application.DataStorage
 {
 
-    /// <summary>
-    /// Main data storage controller that manages game data persistence.
-    /// Uses typed storage variables with configurable storage providers for type-safe data access.
-    /// Maintains backward compatibility with existing PlayerPrefs-based data.
-    /// </summary>
-    internal class DataStorage : IDataStorage 
+
+    
+#if DEBUG_MODE
+    internal class DataStorage : IDataStorage, IInitializable
+#else
+    internal class DataStorage : IDataStorage, IBootstrapStep
+#endif
     {
        
         /// <summary>
@@ -34,8 +36,14 @@ namespace Core.Application.DataStorage
         public TutorialStorageData TutorialStorage => _tutorialStorageData;
         public PurchasesStorageData Purchases => _purchasesStorageData;
         
-       
-        public Task Initialize()
+#if DEBUG_MODE
+        public void Initialize()
+        {
+            Init();
+        }
+#endif
+        
+        public Task Init()
         {
             _tutorialStorageData = new TutorialStorageData(_localStorageProvider);
             _userStorageData = new UserStorageData(_globalStorageProvider);

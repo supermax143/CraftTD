@@ -1,0 +1,19 @@
+﻿using System;
+using Unity.Game;
+using UnityEngine;
+using Zenject;
+
+namespace Unity.Installers
+{
+    public class GameSceneInstaller : MonoInstaller
+    {
+        [SerializeField]
+        private GameController _gameController;
+        
+        
+        public override void InstallBindings()
+        {
+            Container.BindInstance(_gameController).AsSingle();
+        }
+    }
+}
