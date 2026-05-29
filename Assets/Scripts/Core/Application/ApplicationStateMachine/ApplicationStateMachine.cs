@@ -1,5 +1,6 @@
 ﻿using System;
 using Core.Application.ApplicationSession.States;
+using Core.Application.ApplicationStateMachine.States;
 using Core.Application.Interfaces.ApplicationSession;
 using Core.Domain.Services.ApplicationSession;
 using Zenject;
@@ -20,6 +21,7 @@ namespace Core.Application.ApplicationSession
       public void Initialize()
       {
 #if DEBUG_MODE
+         _currentState = _container.Resolve<DebugState>();
          return;
 #endif
          ChangeState<BootstrapState>();

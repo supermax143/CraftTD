@@ -50,12 +50,13 @@ namespace Unity.Bootstrap
      
       private void AddSteps()
       {
+#if !DEBUG_MODE
            _steps.Enqueue(new BootstrapStepWrapper(_localization, "init_localization"));
            _steps.Enqueue(new BootstrapStepWrapper(_dataStorage, "init_data_storage"));
            _steps.Enqueue(new BootstrapStepWrapper(_purchasesController, "init_purchases" ));
            _steps.Enqueue(new BootstrapStepWrapper(_tutorialController, "init_tutorial"));
+#endif
       }
-      
       
    }
 }

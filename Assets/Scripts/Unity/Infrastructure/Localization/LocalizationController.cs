@@ -8,7 +8,12 @@ using Zenject;
 
 namespace Unity.Infrastructure.Localization
 {
+    
+#if DEBUG_MODE
+    internal class LocalizationController : ILocalization, IInitializable
+#else
     internal class LocalizationController : ILocalization, IBootstrapStep
+#endif
     {
 
         [Inject] private IResourceManager _resourceManager;
@@ -29,14 +34,23 @@ namespace Unity.Infrastructure.Localization
 
         private List<string> _languageCodes;
         private Dictionary<string, Dictionary<string, string>> _allLanguages;
-
         
+#if DEBUG_MODE
+        public async void Initialize()
+        {
+            var localizationText = await _resourceManager.Load<TextAsset>(LOCALIZATION_KEY, GetTag());
+            Initialize(localizationText?.text);
+            Debug.Log($"{this.GetType().Name} Initialized");
+            
+        }
+#else
         public async Task Initialize()
         {
             var localizationText = await _resourceManager.Load<TextAsset>(LOCALIZATION_KEY, GetTag());
             Initialize(localizationText?.text);
             Debug.Log($"{this.GetType().Name} Initialized");
         }
+#endif
 
         public void SetDefaultLanguageCode(string languageCode)
         {
