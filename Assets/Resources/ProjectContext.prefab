@@ -234,6 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _windowsController: {fileID: 2986517045514984811}
   _tutorialController: {fileID: 7958714817276208944}
+  _gameSettings: {fileID: 11400000, guid: 0ac77448c818fa6468273506bebee18c, type: 2}
 --- !u!114 &3856448572725618157
 MonoBehaviour:
   m_ObjectHideFlags: 0

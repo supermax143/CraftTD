@@ -9,6 +9,7 @@ using Unity.Infrastructure.ResourceManager;
 using Unity.Infrastructure.Scenes;
 using Unity.Infrastructure.Tutorial;
 using Unity.Infrastructure.Windows;
+using Unity.Settings;
 using UnityEngine;
 using Zenject;
 
@@ -21,6 +22,8 @@ namespace Unity.Installers
       private WindowsController _windowsController;
       [SerializeField]
       private TutorialController _tutorialController;
+      [SerializeField]
+      private GameSettings _gameSettings;
       
      
 
@@ -35,8 +38,10 @@ namespace Unity.Installers
          Container.BindInterfacesAndSelfTo<GameBootrstarp>().AsSingle();
          Container.BindInterfacesAndSelfTo<ResourceManager>().AsSingle();
          Container.BindInterfacesAndSelfTo<GameEventsBus>().AsSingle();
+         Container.BindInterfacesAndSelfTo<GameSettings>().FromInstance(_gameSettings);
          Container.BindInterfacesAndSelfTo<DummyPurchasesController>().AsSingle();
          Container.BindInterfacesAndSelfTo<DummyAdvertisementAPI>().AsSingle();
+         
          //Data Storage
          Container.Bind<ILocalStorageProvider>().To<PlayerPrefsStorageProvider>().AsTransient();
          Container.Bind<IGlobalStorageProvider>().To<PlayerPrefsStorageProvider>().AsTransient();

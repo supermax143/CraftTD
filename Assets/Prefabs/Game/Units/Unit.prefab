@@ -52,7 +52,7 @@ MonoBehaviour:
     _speed: 0
     _cooldown: 0
     _type: 0
-  _faction: 0
+  _view: {fileID: 0}
 --- !u!1 &6735294149039191266
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,8 +66,9 @@ GameObject:
   - component: {fileID: 4556986093536803144}
   - component: {fileID: 4047706256685893288}
   - component: {fileID: 7558477447242038799}
+  - component: {fileID: 1449801927241130090}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +122,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4b74c0e49419f0e498e32e4e154a6a74, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -177,7 +178,7 @@ Rigidbody:
   m_GameObject: {fileID: 6735294149039191266}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 1
+  m_LinearDamping: 2
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -195,3 +196,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1449801927241130090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735294149039191266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8740a3b95beccf84f81d917a825340d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TintController
+  _tintColor: {r: 0.8156863, g: 0.1254902, b: 0.5647059, a: 1}
+  _targetRenderers:
+  - {fileID: 4556986093536803144}
+  _tintColorProperty: _BaseColor
