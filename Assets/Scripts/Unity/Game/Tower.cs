@@ -1,6 +1,8 @@
-﻿namespace Unity.Game
+﻿using UnityEngine;
+
+namespace Unity.Game
 {
-    public class Tower
+    public class Tower : MonoBehaviour
     {
         public float Health;
         
