@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using Unity.Utils.Time;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Unity.Game
 {
     public class Team : MonoBehaviour
     {
         [SerializeField] 
-        private Tower _tower;
+        private TowerController _tower;
         [SerializeField] 
         private Spawner _spawner;
         [SerializeField]
@@ -19,9 +20,7 @@ namespace Unity.Game
         private Faction _enemyFaction;
         
         
-        
-        
-        public Tower Tower => _tower;
+        public TowerController Tower => _tower;
         public Spawner Spawner => _spawner;
     
         private Timer _spawnTimer = new();
@@ -29,6 +28,7 @@ namespace Unity.Game
 
         private void Start()
         {
+            _tower.SetFaction(_faction);
             _spawnTimer.Complete += OnSpawnTimerComplete;
             _spawnTimer.Start(_spawnDelay);
         }

@@ -97,6 +97,8 @@ MonoBehaviour:
   _tower: {fileID: 6378261742482692532}
   _spawner: {fileID: 6917813634538986498}
   _spawnDelay: 1
+  _faction: 0
+  _enemyFaction: 1
 --- !u!1001 &1906911432196699413
 PrefabInstance:
   m_ObjectHideFlags: 0

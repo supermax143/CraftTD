@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8941456676005326211}
   - component: {fileID: 7961481385075508925}
   - component: {fileID: 2048370417281289137}
+  - component: {fileID: 1106594671575104161}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -112,6 +113,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1106594671575104161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580921448748460939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8740a3b95beccf84f81d917a825340d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TintController
+  _tintColor: {r: 1, g: 0, b: 1, a: 1}
+  _targetRenderers:
+  - {fileID: 7961481385075508925}
+  _tintColorProperty: _BaseColor
 --- !u!1 &6563548916185858267
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,6 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2299833601342917533}
   - component: {fileID: 4824083742309100705}
+  - component: {fileID: 3542076869629970396}
   m_Layer: 0
   m_Name: TowerBase
   m_TagString: Untagged
@@ -157,4 +175,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce5d94875994b16931a9dc41d524ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Tower
-  Health: 0
+  _view: {fileID: 3542076869629970396}
+--- !u!114 &3542076869629970396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6563548916185858267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c2cc53248f140aea16f665323a87757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.TowerView
+  _tintController: {fileID: 1106594671575104161}

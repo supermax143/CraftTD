@@ -2,8 +2,9 @@
 
 namespace Unity.Game
 {
-    public class UnitView : MonoBehaviour
+    public class TowerView : MonoBehaviour
     {
+        
         [SerializeField]
         private TintController _tintController;
         
@@ -11,6 +12,5 @@ namespace Unity.Game
         {
             _tintController.SetTintColor(color);
         }
-        
     }
 }

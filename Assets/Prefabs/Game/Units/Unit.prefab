@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3525600170920847951}
   - component: {fileID: 7130790434163748106}
+  - component: {fileID: 5483068426547807}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -52,7 +53,21 @@ MonoBehaviour:
     _speed: 0
     _cooldown: 0
     _type: 0
-  _view: {fileID: 0}
+  _view: {fileID: 5483068426547807}
+--- !u!114 &5483068426547807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971790945569815702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ab9f03df0c4ef6b5d27de6c8af423e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitView
+  _renderer: {fileID: 4556986093536803144}
+  _tintController: {fileID: 1449801927241130090}
 --- !u!1 &6735294149039191266
 GameObject:
   m_ObjectHideFlags: 0
