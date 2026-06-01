@@ -9,15 +9,12 @@ namespace Unity.Game
     /// </summary>
     public class MoveToTargetState : UnitState
     {
-        [SerializeField] private float _moveSpeed = 3f;
-        [SerializeField] private float _detectionRadius = 2f;
-        [SerializeField] private float _detectionInterval = .5f;
         
         private readonly Timer _detectionTimer = new();
 
         public override void Enter()
         {
-            _detectionTimer.Start(_detectionInterval);
+            _detectionTimer.Start(_unit.Attack.DetectionInterval);
         }
 
         public override void Update()
@@ -41,7 +38,7 @@ namespace Unity.Game
             if (_detectionTimer.IsComplete)
             {
                 CheckForNearTargets();
-                _detectionTimer.Start(_detectionInterval);
+                _detectionTimer.Start(_unit.Attack.DetectionInterval);
             }
             
             MoveToTarget(targetPosition);
@@ -50,7 +47,7 @@ namespace Unity.Game
         private void MoveToTarget(Vector3 targetPosition)
         {
             var direction = (targetPosition - _unit.transform.position).normalized;
-            var delta = direction * _moveSpeed * Time.deltaTime;
+            var delta = direction * _unit.MoveSpeed * Time.deltaTime;
             delta.y = 0;
             _unit.transform.position += delta;
             _unit.transform.LookAt(targetPosition);
@@ -58,7 +55,7 @@ namespace Unity.Game
         
         private void CheckForNearTargets()
         {
-            var colliders = Physics.OverlapSphere(_unit.transform.position, _detectionRadius)
+            var colliders = Physics.OverlapSphere(_unit.transform.position, _unit.Attack.DetectionRange)
                 .OrderByDescending(x => Vector3.Distance(x.transform.position, _unit.transform.position))
                 .ToArray();
             
@@ -78,7 +75,7 @@ namespace Unity.Game
             if (_unit == null) return;
             
             Gizmos.color = Color.blue;
-            DrawCircle(_unit.transform.position, _detectionRadius);
+            DrawCircle(_unit.transform.position, _unit.Attack.DetectionRange);
             
             if (_unit.Attack != null)
             {

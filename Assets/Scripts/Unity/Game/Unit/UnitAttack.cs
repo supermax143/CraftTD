@@ -23,12 +23,20 @@ namespace Unity.Game
         private float _cooldown;
         [SerializeField] 
         private AttackType _type;
-
+        [SerializeField] 
+        private float _detectionRange;
+        [SerializeField] 
+        private float _detectionInterval;
+        
+        
         public float Damage => _damage;
         public float Range => _range;
         public float Speed => _speed;
         public float Cooldown => _cooldown;
         public AttackType Type => _type;
-            
+
+        public float DetectionRange => _detectionRange;
+
+        public float DetectionInterval => _detectionInterval;
     }
 }

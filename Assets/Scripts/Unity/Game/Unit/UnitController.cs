@@ -18,6 +18,8 @@ namespace Unity.Game
         private UnitStateManager _stateManager;
         [SerializeField, HideInInspector]
         private HealthComponent _health;
+        [SerializeField]
+        private float _moveSpeed = 1;
         
         [Inject] private GameSettings _gameSettings;
         
@@ -26,6 +28,7 @@ namespace Unity.Game
         
         public UnitAttack Attack => _attack;
         public Faction OpponentFaction => _opponentFaction;
+        public float MoveSpeed => _moveSpeed;
 
         private void OnValidate()
         {

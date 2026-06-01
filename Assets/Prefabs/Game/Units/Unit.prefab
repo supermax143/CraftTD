@@ -135,6 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c30c34e0fdaa47809489d75999fb9778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget
+  _targetType: 0
+  _collider: {fileID: 1209257796767301313}
 --- !u!136 &1209257796767301313
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -214,6 +216,8 @@ MonoBehaviour:
     _speed: 0
     _cooldown: 0.7
     _type: 0
+    _detectionRange: 3
+    _detectionInterval: 0.3
   _view: {fileID: 5483068426547807}
   _attackTarget: {fileID: 6495165674543068032}
   _stateManager: {fileID: 7089783761961880826}
@@ -459,6 +463,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.MoveToTargetState
   _moveSpeed: 1
+  _detectionRadius: 2
+  _detectionInterval: 0.5
 --- !u!114 &8610456384078749445
 MonoBehaviour:
   m_ObjectHideFlags: 0
