@@ -52,6 +52,7 @@ public class TintController : MonoBehaviour
             return;
         }
         _tintColor = color;
+        Debug.Log($"SetTintColor:{color}");
         ApplyTint();
     }
     

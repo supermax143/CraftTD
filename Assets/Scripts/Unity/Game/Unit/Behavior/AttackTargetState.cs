@@ -29,6 +29,7 @@ namespace Unity.Game
                 return;
             }
 
+            _unit.transform.LookAt(_stateManager.CurrentTarget.transform);
             _attackTimer += Time.deltaTime;
             if (_attackTimer >= _unit.Attack.Cooldown)
             {
@@ -39,13 +40,12 @@ namespace Unity.Game
 
         private void Attack()
         {
-            if (_stateManager.CurrentTarget == null) return;
-            
-            var targetHealth = _stateManager.CurrentTarget.GetComponent<UnitController>();
-            if (targetHealth != null)
+            if (_stateManager.CurrentTarget == null)
             {
-                targetHealth.TakeDamage(_unit.Attack.Damage);
+                return;
             }
+            
+            _stateManager.CurrentTarget.Health.TakeDamage(_unit.Attack.Damage);
         }
     }
 }

@@ -90,6 +90,74 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4290492454159376608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7601698528332875747}
+  - component: {fileID: 6495165674543068032}
+  - component: {fileID: 1209257796767301313}
+  m_Layer: 0
+  m_Name: Collision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7601698528332875747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290492454159376608}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3525600170920847951}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6495165674543068032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290492454159376608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30c34e0fdaa47809489d75999fb9778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget
+--- !u!136 &1209257796767301313
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290492454159376608}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &5971790945569815702
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +170,7 @@ GameObject:
   - component: {fileID: 7130790434163748106}
   - component: {fileID: 5483068426547807}
   - component: {fileID: 5838668036529748326}
+  - component: {fileID: 4728101536793293616}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -123,6 +192,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3502686921280439868}
+  - {fileID: 5882764405320622298}
+  - {fileID: 7601698528332875747}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7130790434163748106
@@ -137,15 +208,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff16ea9f3fe4228b3abbb589d1a2d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitActor
-  _health: 0
   _attack:
-    _damage: 0
-    _range: 0
+    _damage: 4
+    _range: 1.5
     _speed: 0
-    _cooldown: 0
+    _cooldown: 0.7
     _type: 0
   _view: {fileID: 5483068426547807}
-  _attackTarget: {fileID: 6096823624733690759}
+  _attackTarget: {fileID: 6495165674543068032}
+  _stateManager: {fileID: 7089783761961880826}
+  _health: {fileID: 4728101536793293616}
 --- !u!114 &5483068426547807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitView
   _tintController: {fileID: 1449801927241130090}
+  _blinkEffect: {fileID: 8011989231495147525}
+  _healthComponent: {fileID: 4728101536793293616}
 --- !u!54 &5838668036529748326
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -186,6 +260,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &4728101536793293616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971790945569815702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53480c8241d4392aad598aa7d0f67d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.HealthComponent
+  _maxHealth: 20
 --- !u!1 &6735294149039191266
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,9 +284,8 @@ GameObject:
   - component: {fileID: 3502686921280439868}
   - component: {fileID: 9196362033072241145}
   - component: {fileID: 4556986093536803144}
-  - component: {fileID: 4047706256685893288}
   - component: {fileID: 1449801927241130090}
-  - component: {fileID: 6096823624733690759}
+  - component: {fileID: 8011989231495147525}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -280,29 +366,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4047706256685893288
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6735294149039191266}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1449801927241130090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,7 +382,7 @@ MonoBehaviour:
   _targetRenderers:
   - {fileID: 4556986093536803144}
   _tintColorProperty: _BaseColor
---- !u!114 &6096823624733690759
+--- !u!114 &8011989231495147525
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -328,6 +391,102 @@ MonoBehaviour:
   m_GameObject: {fileID: 6735294149039191266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c30c34e0fdaa47809489d75999fb9778, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dc163a289e74ecf85ad000a1bb69adb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget
+  m_EditorClassIdentifier: Assembly-CSharp::Utils.ColorEffects.BlinkEffect
+  _tintColor: {r: 0.6784314, g: 0.8470589, b: 0.9019608, a: 1}
+  _targetRenderers:
+  - {fileID: 4556986093536803144}
+  _tintColorProperty: _BaseColor
+  _blinkDuration: 1
+--- !u!1 &8562988452578140486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5882764405320622298}
+  - component: {fileID: 3186998384335241717}
+  - component: {fileID: 7629073085736083484}
+  - component: {fileID: 8610456384078749445}
+  - component: {fileID: 7089783761961880826}
+  m_Layer: 0
+  m_Name: States
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5882764405320622298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562988452578140486}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3525600170920847951}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3186998384335241717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562988452578140486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5223ed128ad7db04991c85122e51e9be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTargetState
+--- !u!114 &7629073085736083484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562988452578140486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435e642903bd9ec499fcaa86e9bda637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.MoveToTargetState
+  _moveSpeed: 1
+--- !u!114 &8610456384078749445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562988452578140486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0cd11df921c468409e30a301a3b6f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.MoveToTowerState
+  _moveSpeed: 2
+  _detectionRadius: 2
+  _detectionInterval: 0.5
+--- !u!114 &7089783761961880826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562988452578140486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c64ba14349eb90c429c16b9f5c7a4400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitStateManager
+  _states:
+  - {fileID: 3186998384335241717}
+  - {fileID: 7629073085736083484}
+  - {fileID: 8610456384078749445}

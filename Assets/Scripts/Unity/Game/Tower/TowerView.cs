@@ -8,9 +8,11 @@ namespace Unity.Game
         [SerializeField]
         private TintController _tintController;
         
+        
         public void SetColor(Color color)
         {
             _tintController.SetTintColor(color);
         }
+        
     }
 }

@@ -12,14 +12,22 @@ namespace Utils.ColorEffects
         private Coroutine _blinkCoroutine;
         
         private Timer _blinkTimer = new Timer();
-        
-        public void Show()
+
+
+        public void StopAnimation()
         {
             if (_blinkCoroutine != null)
             {
                 StopCoroutine(_blinkCoroutine);
             }
+        }
+        
+        public IEnumerator Show()
+        {
+            StopAnimation();
             _blinkCoroutine = StartCoroutine(Animate());
+            yield return _blinkCoroutine;
+            _blinkCoroutine = null;
         }
 
         private IEnumerator Animate()

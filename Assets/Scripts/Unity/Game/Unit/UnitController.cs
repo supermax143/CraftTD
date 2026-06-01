@@ -6,38 +6,39 @@ using Zenject;
 namespace Unity.Game
 {
     [RequireComponent(typeof(UnitView))]
-    [RequireComponent(typeof(UnitStateManager))]
     public class UnitController : MonoBehaviour
     {
-        [SerializeField] 
-        private float _health;
         [SerializeField] 
         private UnitAttack _attack;
         [SerializeField, HideInInspector] 
         private UnitView _view;
-        [SerializeField]
+        [SerializeField, HideInInspector]
         private AttackTarget _attackTarget;
+        [SerializeField, HideInInspector]
+        private UnitStateManager _stateManager;
+        [SerializeField, HideInInspector]
+        private HealthComponent _health;
         
         [Inject] private GameSettings _gameSettings;
         
         private Faction _faction;
         private Faction _opponentFaction;
-        private UnitStateManager _stateManager;
         
-        public float Health => _health;
         public UnitAttack Attack => _attack;
         public Faction OpponentFaction => _opponentFaction;
 
         private void OnValidate()
         {
-            _view = GetComponent<UnitView>();
+            _view = GetComponentInChildren<UnitView>();
+            _attackTarget = GetComponentInChildren<AttackTarget>();
+            _stateManager = GetComponentInChildren<UnitStateManager>();
+            _health = GetComponentInChildren<HealthComponent>();
         }
 
-        private void Awake()
+        private void Start()
         {
-            _stateManager = GetComponent<UnitStateManager>();
+            Initialize();
         }
-
 
         public void SetFaction(Faction faction, Faction enemyFaction)
         {
@@ -51,17 +52,20 @@ namespace Unity.Game
             }
             _view.SetColor(color);
             
-            _stateManager.Initialize(this);
-            _stateManager.ChangeState<MoveToTowerState>();
         }
 
-        public void TakeDamage(float damage)
+        public void Initialize()
         {
-            _health -= damage;
-            if (_health <= 0)
-            {
-                Destroy(gameObject);
-            }
+            _health.Initialize();
+            _health.OnDeath += OnDeath;
+            _stateManager.Initialize(this);
+            _stateManager.ChangeState<MoveToTowerState>();
+            _attackTarget.Initialize(_health);
+        }
+
+        private void OnDeath()
+        {
+            Destroy(gameObject);
         }
     }
 }

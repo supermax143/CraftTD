@@ -41,6 +41,7 @@ namespace Unity.Game
             foreach (var state in states)
             {
                 state.Initialize(this, _unit);
+                state.enabled = false;
             }
         }
 
