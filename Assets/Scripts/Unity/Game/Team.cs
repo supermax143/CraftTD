@@ -21,9 +21,9 @@ namespace Unity.Game
         
         
         public TowerController Tower => _tower;
-        public Spawner Spawner => _spawner;
     
         private Timer _spawnTimer = new();
+        
         private readonly List<UnitController> _units = new();
 
         private void Start()

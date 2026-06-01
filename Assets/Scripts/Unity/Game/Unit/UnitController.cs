@@ -14,14 +14,17 @@ namespace Unity.Game
         private UnitAttack _attack;
         [SerializeField, HideInInspector] 
         private UnitView _view;
+        [SerializeField]
+        private AttackTarget _attackTarget;
         
         [Inject] private GameSettings _gameSettings;
         
         private Faction _faction;
-        private Faction _enemyFaction;
+        private Faction _opponentFaction;
         
         public float Health => _health;
         public UnitAttack Attack => _attack;
+        public Faction OpponentFaction => _opponentFaction;
 
         private void OnValidate()
         {
@@ -32,7 +35,8 @@ namespace Unity.Game
         public void SetFaction(Faction faction, Faction enemyFaction)
         {
             _faction = faction;
-            _enemyFaction = enemyFaction;
+            _opponentFaction = enemyFaction;
+            _attackTarget.SetFaction(_faction);
             if (!_gameSettings.TryGetFactionColor(faction, out var color))
             {
                 Debug.Log($"{this.GetType().Name}: Can't find faction color {faction}");

@@ -11,7 +11,7 @@ namespace Unity.Game
         [SerializeField] private Transform _spawnTransform;
        
         [Inject] private DiContainer _container;
-        
+        [Inject] private GameController _gameController;
       
         public UnitController Spawn(Faction faction, Faction enemyFaction)
         {
@@ -21,6 +21,11 @@ namespace Unity.Game
             // var unit = Instantiate(_unitPrefab, _spawnTransform).GetComponent<UnitController>();
             unit.SetFaction(faction, enemyFaction);
             unit.transform.position = transform.position + spawnDelta;
+            if(_gameController.TryGetOpponentTower(unit.OpponentFaction, out var target))
+            {
+                unit.transform.LookAt(target.transform);
+            }
+            
             return  unit;
         }
 

@@ -468,6 +468,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45ad4eb59e8e4961a2374821b42673a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.GameController
+  _teams:
+  - {fileID: 2047521521}
+  - {fileID: 1780969245}
 --- !u!1 &326330608
 GameObject:
   m_ObjectHideFlags: 0
@@ -1233,7 +1236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
-  _monoInstallers: []
+  _monoInstallers:
+  - {fileID: 1584959699}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -1526,6 +1530,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1780969243}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1780969245 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6088260033787262164, guid: c3ee5c5542043344fb1cfc388b9031c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1780969243}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfff2407606745859e7684d6c83471ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Team
 --- !u!1 &1849812277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,6 +1592,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4817142974088229545}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2047521521 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6088260033787262164, guid: c3ee5c5542043344fb1cfc388b9031c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4817142974088229545}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfff2407606745859e7684d6c83471ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Team
 --- !u!1001 &4817142974088229545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1584,31 +1612,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 114386961}
     m_Modifications:
-    - target: {fileID: 404219651262414472, guid: c3ee5c5542043344fb1cfc388b9031c0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3657510707132534957, guid: c3ee5c5542043344fb1cfc388b9031c0,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3657510707132534957, guid: c3ee5c5542043344fb1cfc388b9031c0,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3657510707132534957, guid: c3ee5c5542043344fb1cfc388b9031c0,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3657510707132534957, guid: c3ee5c5542043344fb1cfc388b9031c0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6917813634538986498, guid: c3ee5c5542043344fb1cfc388b9031c0,
         type: 3}
       propertyPath: _spawnTransform

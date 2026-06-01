@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7961481385075508925}
   - component: {fileID: 2048370417281289137}
   - component: {fileID: 1106594671575104161}
+  - component: {fileID: 5754963150111620775}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -129,6 +130,18 @@ MonoBehaviour:
   _targetRenderers:
   - {fileID: 7961481385075508925}
   _tintColorProperty: _BaseColor
+--- !u!114 &5754963150111620775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580921448748460939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30c34e0fdaa47809489d75999fb9778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget
 --- !u!1 &6563548916185858267
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Tower
   _view: {fileID: 3542076869629970396}
+  _attackTarget: {fileID: 5754963150111620775}
 --- !u!114 &3542076869629970396
 MonoBehaviour:
   m_ObjectHideFlags: 0
