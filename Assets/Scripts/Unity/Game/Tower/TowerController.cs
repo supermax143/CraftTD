@@ -26,6 +26,11 @@ namespace Unity.Game
         public AttackTarget AttackTarget => _attackTarget;
 
 
+        private void Start()
+        {
+            Initialize();
+        }
+
         private void OnValidate()
         {
             _view = GetComponentInChildren<TowerView>();

@@ -71,10 +71,6 @@ namespace Unity.Game
                 var attackTarget = collider.GetComponent<AttackTarget>();
                 if (attackTarget != null && attackTarget.Faction == _unit.OpponentFaction)
                 {
-                    if (attackTarget.Type == TargetType.Tower)
-                    {
-                        Debug.Log("asdsad");
-                    }
                     _stateManager.CurrentTarget = attackTarget;
                     ChangeState<MoveToTargetState>();
                     return;
