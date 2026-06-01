@@ -50,7 +50,13 @@ namespace Unity.Game
             var delta = direction * _unit.MoveSpeed * Time.deltaTime;
             delta.y = 0;
             _unit.transform.position += delta;
-            _unit.transform.LookAt(targetPosition);
+            
+            var lookDirection = targetPosition - _unit.transform.position;
+            lookDirection.y = 0;
+            if (lookDirection != Vector3.zero)
+            {
+                _unit.transform.rotation = Quaternion.LookRotation(lookDirection);
+            }
         }
         
         private void CheckForNearTargets()
