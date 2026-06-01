@@ -473,7 +473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.MoveToTowerState
   _moveSpeed: 2
   _detectionRadius: 2
-  _detectionInterval: 0.5
+  _detectionInterval: 0.2
 --- !u!114 &7089783761961880826
 MonoBehaviour:
   m_ObjectHideFlags: 0

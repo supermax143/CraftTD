@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace Unity.Game
@@ -54,18 +55,26 @@ namespace Unity.Game
         private void MoveToTarget(Vector3 targetPosition)
         {
             var direction = (targetPosition - _unit.transform.position).normalized;
-            _unit.transform.position += direction * _moveSpeed * Time.deltaTime;
+            var delta = direction * _moveSpeed * Time.deltaTime;
+            delta.y = 0;
+            _unit.transform.position += delta;
             _unit.transform.LookAt(targetPosition);
         }
 
         private void CheckForTargets()
         {
-            var colliders = Physics.OverlapSphere(_unit.transform.position, _detectionRadius);//TODO: Use non-allocating method 'OverlapSphereNonAlloc'
+            var colliders = Physics.OverlapSphere(_unit.transform.position, _detectionRadius)
+                .OrderByDescending(x => Vector3.Distance(x.transform.position, _unit.transform.position))
+                .ToArray();
             foreach (var collider in colliders)
             {
                 var attackTarget = collider.GetComponent<AttackTarget>();
                 if (attackTarget != null && attackTarget.Faction == _unit.OpponentFaction)
                 {
+                    if (attackTarget.Type == TargetType.Tower)
+                    {
+                        Debug.Log("asdsad");
+                    }
                     _stateManager.CurrentTarget = attackTarget;
                     ChangeState<MoveToTargetState>();
                     return;
