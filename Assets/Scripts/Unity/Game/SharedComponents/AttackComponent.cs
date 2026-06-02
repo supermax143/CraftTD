@@ -13,10 +13,12 @@ namespace Unity.Game
         private Coroutine _attackCoroutine;
 
         private AttackTarget _target;
-        
-        public void Initialize(AttackData data)
+        private UnitController _unit;
+
+        public void Initialize(AttackData data, UnitController unit)
         {
             _data = data;
+            _unit = unit;
         }
         
         public void Activate(AttackTarget target)
@@ -36,7 +38,8 @@ namespace Unity.Game
                 Debug.LogError($"{this.GetType().Name} Target is null");
                 yield break;
             }
-            transform.LookAt(_target.transform);//TODO: перенести в MoveComponent
+
+            _unit.Move.RotateTo(_target.GetClosestPosition(_unit.transform.position));
             _target.Health.TakeDamage(_data.Damage);
             yield return new WaitForSeconds(_data.Cooldown);
             _attackCoroutine = StartCoroutine(Attack());

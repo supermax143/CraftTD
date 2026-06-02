@@ -96,7 +96,7 @@ namespace Unity.Game
             _attackTarget.Initialize(Health);
             _move.Initialize(_moveData.Clone());
             _targetSearch.Initialize(_searchData.Clone(), this);
-            _attackComponent.Initialize(_attackData.Clone());
+            _attackComponent.Initialize(_attackData.Clone(), this);
             _stateManager.Initialize(this);
             _stateManager.ChangeState<SearchTargetState>();
         }

@@ -9,8 +9,7 @@ namespace Unity.Game
         public enum AttackType
         {
             Melee,
-            RangedInstant,
-            RangedProjectile
+            Ranged
         }
         
         [SerializeField] 
