@@ -11,7 +11,8 @@ namespace Unity.Game
         
         public override void Enter()
         {
-            if (TryGetTarget(out var target) || TryGetTargetTower(out target))
+            var targetSearch = _unit.TargetSearch;
+            if (targetSearch.TryGetClosestTarget(out var target) || targetSearch.TryGetTargetTower(out target))
             {
                 _stateManager.CurrentTarget = target;
                 ChangeState<MoveToTargetState>();
@@ -21,7 +22,7 @@ namespace Unity.Game
             Debug.LogError($"{this.GetType().Name} Target not found");
         }
 
-        private bool TryGetTarget(out AttackTarget target)
+        /*private bool TryGetTarget(out AttackTarget target)
         {
             var colliders = Physics.OverlapSphere(_unit.transform.position, _unit.DetectionRange)
                 .OrderByDescending(x => Vector3.Distance(x.transform.position, _unit.transform.position))
@@ -36,13 +37,14 @@ namespace Unity.Game
         
         private bool TryGetTargetTower(out AttackTarget target)
             => _stateManager.GameController.TryGetOpponentTower(_unit.OpponentFaction, out target);
+            */
 
-        private void OnDrawGizmos()
+        /*private void OnDrawGizmos()
         {
             if (_unit == null) return;
             
             Gizmos.color = Color.blue;
-            DrawCircle(_unit.transform.position, _unit.DetectionRange);
+            DrawCircle(_unit.transform.position, _unit.TargetSearch.Data.DetectionRange);
             if (_unit.Attack.Data != null)
             {
                 Gizmos.color = Color.red;
@@ -65,7 +67,7 @@ namespace Unity.Game
                 
                 Gizmos.DrawLine(point1, point2);
             }
-        }
+        }*/
         
     }
 }

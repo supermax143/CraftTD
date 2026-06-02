@@ -6,6 +6,8 @@ namespace Unity.Game
     {
         private MoveData _data;
 
+        public MoveData Data => _data;
+
         public void Initialize(MoveData data)
         {
             _data = data;   

@@ -13,13 +13,8 @@ namespace Unity.Game
         {
             // _attackTimer = 0f;
             _unit.Attack.Activate(_stateManager.CurrentTarget);
-            _stateManager.CurrentTarget.OnDeath += TargetDeathHandler;
         }
 
-        private void TargetDeathHandler()
-        {
-            ChangeState<SearchTargetState>();
-        }
 
         public override void UpdateState()
         {
@@ -41,13 +36,13 @@ namespace Unity.Game
         public override void Exit()
         {
             _unit.Attack.Deactivate();
-            if (_stateManager.CurrentTarget != null)
+            /*if (_stateManager.CurrentTarget != null)
             {
                 _stateManager.CurrentTarget.OnDeath -= TargetDeathHandler;
-            }
+            }*/
         }
 
-        private void OnDrawGizmos()
+        /*private void OnDrawGizmos()
         {
             if (_unit == null || _unit.Attack.Data == null) return;
             
@@ -70,6 +65,6 @@ namespace Unity.Game
                 
                 Gizmos.DrawLine(point1, point2);
             }
-        }
+        }*/
     }
 }

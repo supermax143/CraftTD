@@ -14,7 +14,7 @@ namespace Unity.Game
 
         public override void Enter()
         {
-            _detectionTimer.Start(_unit.DetectionInterval);
+            _detectionTimer.Start(_unit.TargetSearch.Data.DetectionInterval);
         }
 
         public override void UpdateState()
@@ -31,10 +31,15 @@ namespace Unity.Game
                 return;
             }
 
-            if (_detectionTimer.IsComplete)
+            if (_detectionTimer.IsComplete && 
+                _unit.TargetSearch.TryGetClosestTarget(out var newTarget))
             {
-                CheckForNearTargets();
-                _detectionTimer.Start(_unit.DetectionInterval);
+                if (_stateManager.CurrentTarget != newTarget)
+                {
+                    _stateManager.CurrentTarget = newTarget;
+                }
+
+                _detectionTimer.Start(_unit.TargetSearch.Data.DetectionInterval);
             }
             
             MoveToTarget(_stateManager.CurrentTarget);
@@ -44,7 +49,7 @@ namespace Unity.Game
         {
             var targetPosition = target.GetClosestPosition(_unit.transform.position);
             var direction = (targetPosition - _unit.transform.position).normalized;
-            var delta = direction * _unit.MoveSpeed * Time.deltaTime;
+            var delta = direction * (_unit.Move.Data.Speed * Time.deltaTime);
             delta.y = 0;
             _unit.transform.position += delta;
             
@@ -56,7 +61,7 @@ namespace Unity.Game
             }
         }
         
-        private void CheckForNearTargets()
+        /*private void CheckForNearTargets()
         {
             var colliders = Physics.OverlapSphere(_unit.transform.position, _unit.DetectionRange)
                 .OrderByDescending(x => Vector3.Distance(x.transform.position, _unit.transform.position))
@@ -71,9 +76,9 @@ namespace Unity.Game
                     return;
                 }
             }
-        }
+        }*/
 
-        private void OnDrawGizmos()
+        /*private void OnDrawGizmos()
         {
             if (_unit == null) return;
             
@@ -102,7 +107,7 @@ namespace Unity.Game
                 
                 Gizmos.DrawLine(point1, point2);
             }
-        }
+        }*/
         
     }
 }

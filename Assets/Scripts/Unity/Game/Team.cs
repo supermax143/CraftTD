@@ -31,6 +31,7 @@ namespace Unity.Game
             _tower.SetFaction(_faction);
             _spawnTimer.Complete += OnSpawnTimerComplete;
             _spawnTimer.Start(_spawnDelay);
+            OnSpawnTimerComplete();
         }
 
         private void Update()

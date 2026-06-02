@@ -24,7 +24,7 @@ namespace Unity.Game
             {
                 unit.transform.LookAt(target.transform);
             }
-            
+            unit.Initialize();
             return  unit;
         }
 

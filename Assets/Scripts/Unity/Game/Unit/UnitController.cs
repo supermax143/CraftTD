@@ -30,20 +30,18 @@ namespace Unity.Game
         
         [SerializeField] 
         private AttackData _attackData;
-        [SerializeField] 
+        [FormerlySerializedAs("moveMoveData")] [SerializeField] 
         private MoveData _moveData;
         [SerializeField] 
         private TargetSearchData _searchData;
         
         
-        
-        
-        [SerializeField]
-        private float _moveSpeed = 1;
-        [SerializeField] 
-        private float _detectionRange;
-        [SerializeField] 
-        private float _detectionInterval;
+        // [SerializeField]
+        // private float _moveSpeed = 1;
+        // [SerializeField] 
+        // private float _detectionRange;
+        // [SerializeField] 
+        // private float _detectionInterval;
         
         [Inject] private GameSettings _gameSettings;
         
@@ -51,13 +49,13 @@ namespace Unity.Game
         private Faction _opponentFaction;
         
         public Faction OpponentFaction => _opponentFaction;
-        public float MoveSpeed => _moveSpeed;
-        public float DetectionRange => _detectionRange;
-        public float DetectionInterval => _detectionInterval;
+        // public float MoveSpeed => _moveSpeed;
+        // public float DetectionRange => _detectionRange;
+        // public float DetectionInterval => _detectionInterval;
         public AttackComponent Attack => _attackComponent;
         public HealthComponent Health => _health;
-        public MoveData Data => _moveData;
-        public TargetSearchData TargetSearchData => _searchData;
+        // public MoveData MoveData => _moveData;
+        // public TargetSearchData TargetSearchData => _searchData;
         public MoveComponent Move => _move;
         public TargetSearchComponent TargetSearch => _targetSearch;
 
@@ -73,10 +71,10 @@ namespace Unity.Game
             _targetSearch = GetComponentInChildren<TargetSearchComponent>();
         }
 
-        private void Start()
+        /*private void Start()
         {
             Initialize();
-        }
+        }*/
 
         public void SetFaction(Faction faction, Faction enemyFaction)
         {
@@ -94,10 +92,10 @@ namespace Unity.Game
 
         public void Initialize()
         {
-            Health.Initialize();
+            _health.Initialize();
             _attackTarget.Initialize(Health);
             _move.Initialize(_moveData.Clone());
-            _targetSearch.Initialize(_searchData.Clone());
+            _targetSearch.Initialize(_searchData.Clone(), this);
             _attackComponent.Initialize(_attackData.Clone());
             _stateManager.Initialize(this);
             _stateManager.ChangeState<SearchTargetState>();
