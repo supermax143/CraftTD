@@ -9,8 +9,9 @@ namespace Unity.Game
     [RequireComponent(typeof(UnitView))]
     public class UnitController : MonoBehaviour
     {
-        [FormerlySerializedAs("_attack")] [SerializeField] 
-        private AttackData attackData;
+        
+        
+        
         [SerializeField, HideInInspector] 
         private UnitView _view;
         [SerializeField, HideInInspector]
@@ -21,6 +22,21 @@ namespace Unity.Game
         private HealthComponent _health;
         [SerializeField, HideInInspector]
         private AttackComponent _attackComponent;
+        [SerializeField, HideInInspector]
+        private MoveComponent _move;
+        [SerializeField, HideInInspector]
+        private TargetSearchComponent _targetSearch;
+        
+        
+        [SerializeField] 
+        private AttackData _attackData;
+        [SerializeField] 
+        private MoveData _moveData;
+        [SerializeField] 
+        private TargetSearchData _searchData;
+        
+        
+        
         
         [SerializeField]
         private float _moveSpeed = 1;
@@ -38,10 +54,13 @@ namespace Unity.Game
         public float MoveSpeed => _moveSpeed;
         public float DetectionRange => _detectionRange;
         public float DetectionInterval => _detectionInterval;
-
         public AttackComponent Attack => _attackComponent;
-
         public HealthComponent Health => _health;
+        public MoveData Data => _moveData;
+        public TargetSearchData TargetSearchData => _searchData;
+        public MoveComponent Move => _move;
+        public TargetSearchComponent TargetSearch => _targetSearch;
+
 
         private void OnValidate()
         {
@@ -50,6 +69,8 @@ namespace Unity.Game
             _stateManager = GetComponentInChildren<UnitStateManager>();
             _health = GetComponentInChildren<HealthComponent>();
             _attackComponent = GetComponentInChildren<AttackComponent>();
+            _move = GetComponentInChildren<MoveComponent>();
+            _targetSearch = GetComponentInChildren<TargetSearchComponent>();
         }
 
         private void Start()
@@ -74,10 +95,12 @@ namespace Unity.Game
         public void Initialize()
         {
             Health.Initialize();
-            _stateManager.Initialize(this);
-            _stateManager.ChangeState<MoveToTowerState>();
             _attackTarget.Initialize(Health);
-            _attackComponent.Initialize(attackData.Clone());
+            _move.Initialize(_moveData.Clone());
+            _targetSearch.Initialize(_searchData.Clone());
+            _attackComponent.Initialize(_attackData.Clone());
+            _stateManager.Initialize(this);
+            _stateManager.ChangeState<SearchTargetState>();
         }
 
         public void Die()

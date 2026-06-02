@@ -18,7 +18,7 @@ namespace Unity.Game
 
         private void TargetDeathHandler()
         {
-            ChangeState<MoveToTowerState>();
+            ChangeState<SearchTargetState>();
         }
 
         public override void UpdateState()
@@ -26,7 +26,7 @@ namespace Unity.Game
             var curTarget = _stateManager.CurrentTarget;
             if (curTarget == null || curTarget.IsDead)
             {
-                ChangeState<MoveToTowerState>();
+                ChangeState<SearchTargetState>();
                 return;
             }
             

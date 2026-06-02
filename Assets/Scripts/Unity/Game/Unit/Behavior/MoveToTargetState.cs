@@ -21,7 +21,7 @@ namespace Unity.Game
         {
             if (_stateManager.CurrentTarget == null)
             {
-                ChangeState<MoveToTowerState>();
+                ChangeState<SearchTargetState>();
                 return;
             }
 

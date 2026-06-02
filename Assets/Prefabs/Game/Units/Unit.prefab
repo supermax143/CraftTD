@@ -171,9 +171,11 @@ GameObject:
   - component: {fileID: 3525600170920847951}
   - component: {fileID: 7130790434163748106}
   - component: {fileID: 5483068426547807}
-  - component: {fileID: 5838668036529748326}
   - component: {fileID: 4728101536793293616}
   - component: {fileID: 8255182563951653487}
+  - component: {fileID: 2650900694220129844}
+  - component: {fileID: 7813210451020228870}
+  - component: {fileID: 5838668036529748326}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -211,18 +213,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff16ea9f3fe4228b3abbb589d1a2d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitActor
-  attackData:
-    _damage: 4
-    _range: 1.5
-    _speed: 0
-    _cooldown: 0.7
-    _type: 0
-    _projectilePrefab: {fileID: 0}
   _view: {fileID: 5483068426547807}
   _attackTarget: {fileID: 6495165674543068032}
   _stateManager: {fileID: 7089783761961880826}
   _health: {fileID: 4728101536793293616}
   _attackComponent: {fileID: 8255182563951653487}
+  _move: {fileID: 0}
+  _targetSearch: {fileID: 0}
+  _attackData:
+    _damage: 8
+    _range: 1.5
+    _speed: 0.2
+    _cooldown: 0.5
+    _type: 0
+    _projectilePrefab: {fileID: 0}
+  _moveData:
+    _speed: 3
+    _rotationSpeed: 0.6
+  _searchData:
+    _detectionRange: 3
+    _detectionInterval: 0.3
   _moveSpeed: 3
   _detectionRange: 2
   _detectionInterval: 0.3
@@ -241,6 +251,55 @@ MonoBehaviour:
   _tintController: {fileID: 1449801927241130090}
   _blinkEffect: {fileID: 8011989231495147525}
   _healthComponent: {fileID: 4728101536793293616}
+--- !u!114 &4728101536793293616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971790945569815702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53480c8241d4392aad598aa7d0f67d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.HealthComponent
+  _maxHealth: 20
+--- !u!114 &8255182563951653487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971790945569815702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48dec60fcf94c7589c4af10a484edf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackComponent
+--- !u!114 &2650900694220129844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971790945569815702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 772997a197ca472d91c50742bba15994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.MoveComponent
+--- !u!114 &7813210451020228870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971790945569815702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81bfc31051894bf9a86ea6325601a443, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.TargetSearchComponent
 --- !u!54 &5838668036529748326
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -268,31 +327,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &4728101536793293616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5971790945569815702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53480c8241d4392aad598aa7d0f67d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.HealthComponent
-  _maxHealth: 20
---- !u!114 &8255182563951653487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5971790945569815702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e48dec60fcf94c7589c4af10a484edf0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackComponent
 --- !u!1 &6735294149039191266
 GameObject:
   m_ObjectHideFlags: 0
