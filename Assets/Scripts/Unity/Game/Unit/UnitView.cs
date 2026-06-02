@@ -13,7 +13,7 @@ namespace Unity.Game
         private BlinkEffect _blinkEffect;
         [SerializeField, HideInInspector]
         private HealthComponent _healthComponent;
-
+        
         private Coroutine _blinkCoroutine;
         private Color _color;
 
@@ -22,6 +22,7 @@ namespace Unity.Game
             _healthComponent = GetComponentInChildren<HealthComponent>();
             _tintController = GetComponentInChildren<TintController>();
             _blinkEffect = GetComponentInChildren<BlinkEffect>();
+            
         }
 
         private void Start()

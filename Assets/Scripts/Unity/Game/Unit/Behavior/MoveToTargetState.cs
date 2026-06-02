@@ -14,7 +14,7 @@ namespace Unity.Game
 
         public override void Enter()
         {
-            _detectionTimer.Start(_unit.Attack.DetectionInterval);
+            _detectionTimer.Start(_unit.DetectionInterval);
         }
 
         public override void Update()
@@ -25,11 +25,7 @@ namespace Unity.Game
                 return;
             }
 
-            var targetPosition = _stateManager.CurrentTarget.GetClosestPosition(_unit.transform.position);
-            var distance = Vector3.Distance(_unit.transform.position, targetPosition);
-            var attackRange = _unit.Attack.Range;
-
-            if (distance <= attackRange)
+            if (_unit.Attack.CheckRange(_stateManager.CurrentTarget))
             {
                 ChangeState<AttackTargetState>();
                 return;
@@ -38,14 +34,15 @@ namespace Unity.Game
             if (_detectionTimer.IsComplete)
             {
                 CheckForNearTargets();
-                _detectionTimer.Start(_unit.Attack.DetectionInterval);
+                _detectionTimer.Start(_unit.DetectionInterval);
             }
             
-            MoveToTarget(targetPosition);
+            MoveToTarget(_stateManager.CurrentTarget);
         }
 
-        private void MoveToTarget(Vector3 targetPosition)
+        private void MoveToTarget(AttackTarget target)
         {
+            var targetPosition = target.GetClosestPosition(_unit.transform.position);
             var direction = (targetPosition - _unit.transform.position).normalized;
             var delta = direction * _unit.MoveSpeed * Time.deltaTime;
             delta.y = 0;
@@ -61,7 +58,7 @@ namespace Unity.Game
         
         private void CheckForNearTargets()
         {
-            var colliders = Physics.OverlapSphere(_unit.transform.position, _unit.Attack.DetectionRange)
+            var colliders = Physics.OverlapSphere(_unit.transform.position, _unit.DetectionRange)
                 .OrderByDescending(x => Vector3.Distance(x.transform.position, _unit.transform.position))
                 .ToArray();
             
@@ -81,12 +78,12 @@ namespace Unity.Game
             if (_unit == null) return;
             
             Gizmos.color = Color.blue;
-            DrawCircle(_unit.transform.position, _unit.Attack.DetectionRange);
+            DrawCircle(_unit.transform.position, _unit.DetectionRange);
             
-            if (_unit.Attack != null)
+            if (_unit.Attack.Data != null)
             {
                 Gizmos.color = Color.red;
-                DrawCircle(_unit.transform.position, _unit.Attack.Range);
+                DrawCircle(_unit.transform.position, _unit.Attack.Data.Range);
             }
         }
 

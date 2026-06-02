@@ -34,7 +34,7 @@ namespace Unity.Game
             MoveToTarget(_targetTower.transform.position);
             
             _detectionTimer += Time.deltaTime;
-            if (_detectionTimer >= _unit.Attack.DetectionInterval)
+            if (_detectionTimer >= _unit.DetectionInterval)
             {
                 _detectionTimer = 0f;
                 CheckForTargets();
@@ -65,9 +65,10 @@ namespace Unity.Game
 
         private void CheckForTargets()
         {
-            var colliders = Physics.OverlapSphere(_unit.transform.position, _unit.Attack.DetectionRange)
+            var colliders = Physics.OverlapSphere(_unit.transform.position, _unit.DetectionRange)
                 .OrderByDescending(x => Vector3.Distance(x.transform.position, _unit.transform.position))
                 .ToArray();
+            
             foreach (var collider in colliders)
             {
                 var attackTarget = collider.GetComponent<AttackTarget>();
@@ -85,11 +86,11 @@ namespace Unity.Game
             if (_unit == null) return;
             
             Gizmos.color = Color.blue;
-            DrawCircle(_unit.transform.position, _unit.Attack.DetectionRange);
-            if (_unit.Attack != null)
+            DrawCircle(_unit.transform.position, _unit.DetectionRange);
+            if (_unit.Attack.Data != null)
             {
                 Gizmos.color = Color.red;
-                DrawCircle(_unit.transform.position, _unit.Attack.Range);
+                DrawCircle(_unit.transform.position, _unit.Attack.Data.Range);
             }
         }
 

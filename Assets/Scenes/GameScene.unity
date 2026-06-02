@@ -206,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 7318329}
   serializedVersion: 2
   m_LocalRotation: {x: 0.20110048, y: -0.013223747, z: 0.002715021, w: 0.97947764}
-  m_LocalPosition: {x: 1.5080354, y: 11.833876, z: -25.325808}
+  m_LocalPosition: {x: 0.9, y: 8.1, z: -16.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1429,11 +1429,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 585727622456226055, guid: c3ee5c5542043344fb1cfc388b9031c0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.46
-      objectReference: {fileID: 0}
     - target: {fileID: 3657510707132534957, guid: c3ee5c5542043344fb1cfc388b9031c0,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1477,7 +1472,7 @@ PrefabInstance:
     - target: {fileID: 6918054501536219524, guid: c3ee5c5542043344fb1cfc388b9031c0,
         type: 3}
       propertyPath: m_Name
-      value: Team (1)
+      value: TeamEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 7061525377109044230, guid: c3ee5c5542043344fb1cfc388b9031c0,
         type: 3}
@@ -1635,7 +1630,7 @@ PrefabInstance:
     - target: {fileID: 6918054501536219524, guid: c3ee5c5542043344fb1cfc388b9031c0,
         type: 3}
       propertyPath: m_Name
-      value: Team
+      value: TeamPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 7061525377109044230, guid: c3ee5c5542043344fb1cfc388b9031c0,
         type: 3}

@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 5483068426547807}
   - component: {fileID: 5838668036529748326}
   - component: {fileID: 4728101536793293616}
+  - component: {fileID: 8255182563951653487}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -210,18 +211,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff16ea9f3fe4228b3abbb589d1a2d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitActor
-  _attack:
+  attackData:
     _damage: 4
     _range: 1.5
     _speed: 0
     _cooldown: 0.7
     _type: 0
-    _detectionRange: 3
-    _detectionInterval: 0.3
+    _projectilePrefab: {fileID: 0}
   _view: {fileID: 5483068426547807}
   _attackTarget: {fileID: 6495165674543068032}
   _stateManager: {fileID: 7089783761961880826}
   _health: {fileID: 4728101536793293616}
+  _attackComponent: {fileID: 8255182563951653487}
+  _moveSpeed: 1
+  _detectionRange: 2
+  _detectionInterval: 0.3
 --- !u!114 &5483068426547807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +281,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.HealthComponent
   _maxHealth: 20
+--- !u!114 &8255182563951653487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971790945569815702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48dec60fcf94c7589c4af10a484edf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackComponent
 --- !u!1 &6735294149039191266
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,9 +478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435e642903bd9ec499fcaa86e9bda637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.MoveToTargetState
-  _moveSpeed: 1
-  _detectionRadius: 2
-  _detectionInterval: 0.5
 --- !u!114 &8610456384078749445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,9 +490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0cd11df921c468409e30a301a3b6f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.MoveToTowerState
-  _moveSpeed: 2
-  _detectionRadius: 2
-  _detectionInterval: 0.2
 --- !u!114 &7089783761961880826
 MonoBehaviour:
   m_ObjectHideFlags: 0

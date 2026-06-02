@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Unity.Game
 {
     [Serializable]
-    public class UnitAttack
+    public class AttackData
     {
         public enum AttackType
         {
@@ -23,11 +23,8 @@ namespace Unity.Game
         private float _cooldown;
         [SerializeField] 
         private AttackType _type;
-        [SerializeField] 
-        private float _detectionRange;
-        [SerializeField] 
-        private float _detectionInterval;
-        
+        [SerializeField]
+        private GameObject _projectilePrefab;
         
         public float Damage => _damage;
         public float Range => _range;
@@ -35,8 +32,19 @@ namespace Unity.Game
         public float Cooldown => _cooldown;
         public AttackType Type => _type;
 
-        public float DetectionRange => _detectionRange;
-
-        public float DetectionInterval => _detectionInterval;
+        
+        public AttackData Clone()
+        {
+            return new AttackData
+            {
+                _damage = _damage,
+                _range = _range,
+                _speed = _speed,
+                _cooldown = _cooldown,
+                _type = _type,
+                _projectilePrefab = _projectilePrefab
+            };
+        }
+        
     }
 }

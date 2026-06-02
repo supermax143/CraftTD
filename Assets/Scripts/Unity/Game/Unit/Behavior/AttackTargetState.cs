@@ -22,9 +22,9 @@ namespace Unity.Game
                 return;
             }
 
-            var targetPosition = _stateManager.CurrentTarget.GetClosestPosition(_unit.transform.position);
-            var distance = Vector3.Distance(_unit.transform.position, targetPosition);
-            if (distance > _unit.Attack.Range)
+            /*var targetPosition = _stateManager.CurrentTarget.GetClosestPosition(_unit.transform.position);
+            var distance = Vector3.Distance(_unit.transform.position, targetPosition);*/
+            if (!_unit.Attack.CheckRange(_stateManager.CurrentTarget))
             {
                 ChangeState<MoveToTargetState>();
                 return;
@@ -32,7 +32,7 @@ namespace Unity.Game
 
             _unit.transform.LookAt(_stateManager.CurrentTarget.transform);
             _attackTimer += Time.deltaTime;
-            if (_attackTimer >= _unit.Attack.Cooldown)
+            if (_attackTimer >= _unit.Attack.Data.Cooldown)
             {
                 _attackTimer = 0f;
                 Attack();
@@ -46,15 +46,15 @@ namespace Unity.Game
                 return;
             }
             
-            _stateManager.CurrentTarget.Health.TakeDamage(_unit.Attack.Damage);
+            _stateManager.CurrentTarget.Health.TakeDamage(_unit.Attack.Data.Damage);
         }
 
         private void OnDrawGizmos()
         {
-            if (_unit == null || _unit.Attack == null) return;
+            if (_unit == null || _unit.Attack.Data == null) return;
             
             Gizmos.color = Color.red;
-            DrawCircle(_unit.transform.position, _unit.Attack.Range);
+            DrawCircle(_unit.transform.position, _unit.Attack.Data.Range);
         }
 
         private void DrawCircle(Vector3 center, float radius)
