@@ -30,32 +30,14 @@ namespace Unity.Game
                 return;
             }
             
-            if (!_unit.Attack.CheckRange(_stateManager.CurrentTarget))
+            if (!_unit.Attack.CheckRange(curTarget))
             {
                 ChangeState<MoveToTargetState>();
             }
-
-            /*
-            _unit.transform.LookAt(_stateManager.CurrentTarget.transform);
-            _attackTimer += Time.deltaTime;
-            if (_attackTimer >= _unit.Attack.Data.Cooldown)
-            {
-                _attackTimer = 0f;
-                Attack();
-            }*/
+            
         }
 
-        /*
-        private void Attack()
-        {
-            if (_stateManager.CurrentTarget == null)
-            {
-                return;
-            }
-            
-            _stateManager.CurrentTarget.Health.TakeDamage(_unit.Attack.Data.Damage);
-        }*/
-
+        
         public override void Exit()
         {
             _unit.Attack.Deactivate();

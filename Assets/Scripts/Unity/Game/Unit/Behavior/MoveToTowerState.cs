@@ -11,11 +11,7 @@ namespace Unity.Game
         
         private float _detectionTimer;
         private AttackTarget _targetTower;
-
-        public override void Initialize(UnitStateManager stateManager, UnitController unit)
-        {
-            base.Initialize(stateManager, unit);
-        }
+        
 
         public override void Enter()
         {
