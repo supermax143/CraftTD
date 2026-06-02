@@ -10,10 +10,19 @@ namespace Unity.Game
         protected UnitStateManager _stateManager;
         protected UnitController _unit;
 
+        
+        
         public virtual void Initialize(UnitStateManager stateManager, UnitController unit)
         {
             _stateManager = stateManager;
             _unit = unit;
+            _unit.Health.OnDeath += OnUnitDeath;
+        }
+
+        private void OnUnitDeath()
+        {
+            _unit.Health.OnDeath -= OnUnitDeath;
+            ChangeState<DeathState>();
         }
 
         public virtual void Enter()
@@ -24,7 +33,7 @@ namespace Unity.Game
         {
         }
 
-        public virtual void Update()
+        public virtual void UpdateState()
         {
         }
 

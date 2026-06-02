@@ -223,7 +223,7 @@ MonoBehaviour:
   _stateManager: {fileID: 7089783761961880826}
   _health: {fileID: 4728101536793293616}
   _attackComponent: {fileID: 8255182563951653487}
-  _moveSpeed: 1
+  _moveSpeed: 3
   _detectionRange: 2
   _detectionInterval: 0.3
 --- !u!114 &5483068426547807
@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 3186998384335241717}
   - component: {fileID: 7629073085736083484}
   - component: {fileID: 8610456384078749445}
+  - component: {fileID: 7634437661775341548}
   - component: {fileID: 7089783761961880826}
   m_Layer: 0
   m_Name: States
@@ -490,6 +491,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0cd11df921c468409e30a301a3b6f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.MoveToTowerState
+--- !u!114 &7634437661775341548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562988452578140486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f01318f0894839b5ac43dd8ad026c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.DeathState
 --- !u!114 &7089783761961880826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,3 +519,4 @@ MonoBehaviour:
   - {fileID: 3186998384335241717}
   - {fileID: 7629073085736083484}
   - {fileID: 8610456384078749445}
+  - {fileID: 7634437661775341548}

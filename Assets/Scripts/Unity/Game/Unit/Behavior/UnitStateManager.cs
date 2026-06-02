@@ -85,7 +85,7 @@ namespace Unity.Game
 
         private void Update()
         {
-            _currentState?.Update();
+            _currentState?.UpdateState();
         }
     }
 }

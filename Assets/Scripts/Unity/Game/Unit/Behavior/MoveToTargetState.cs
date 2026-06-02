@@ -17,7 +17,7 @@ namespace Unity.Game
             _detectionTimer.Start(_unit.DetectionInterval);
         }
 
-        public override void Update()
+        public override void UpdateState()
         {
             if (_stateManager.CurrentTarget == null)
             {
@@ -65,7 +65,7 @@ namespace Unity.Game
             foreach (var collider in colliders)
             {
                 var attackTarget = collider.GetComponent<AttackTarget>();
-                if (attackTarget != null && attackTarget.Faction == _unit.OpponentFaction)
+                if (attackTarget != null && !attackTarget.IsDead && attackTarget.Faction == _unit.OpponentFaction)
                 {
                     _stateManager.CurrentTarget = attackTarget;
                     return;

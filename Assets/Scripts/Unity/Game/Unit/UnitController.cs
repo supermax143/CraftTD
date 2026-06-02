@@ -41,6 +41,8 @@ namespace Unity.Game
 
         public AttackComponent Attack => _attackComponent;
 
+        public HealthComponent Health => _health;
+
         private void OnValidate()
         {
             _view = GetComponentInChildren<UnitView>();
@@ -71,15 +73,14 @@ namespace Unity.Game
 
         public void Initialize()
         {
-            _health.Initialize();
-            _health.OnDeath += OnDeath;
+            Health.Initialize();
             _stateManager.Initialize(this);
             _stateManager.ChangeState<MoveToTowerState>();
-            _attackTarget.Initialize(_health);
+            _attackTarget.Initialize(Health);
             _attackComponent.Initialize(attackData.Clone());
         }
 
-        private void OnDeath()
+        public void Die()
         {
             Destroy(gameObject);
         }

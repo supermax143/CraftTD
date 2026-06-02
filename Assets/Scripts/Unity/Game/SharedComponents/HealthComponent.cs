@@ -15,6 +15,7 @@ namespace Unity.Game
         
         public float MaxHealth => _maxHealth;
         public float CurrentHealth => _currentHealth;
+        public bool IsDead => _currentHealth <= 0;
 
         public void Initialize()
         {

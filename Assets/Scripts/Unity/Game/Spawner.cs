@@ -18,7 +18,6 @@ namespace Unity.Game
             var spawnDelta = new Vector3(Random.Range(-_spawnRange, _spawnRange), 0, Random.Range(-_spawnRange, _spawnRange));
             
             var unit = _container.InstantiatePrefabForComponent<UnitController>(_unitPrefab, _spawnTransform);
-            // var unit = Instantiate(_unitPrefab, _spawnTransform).GetComponent<UnitController>();
             unit.SetFaction(faction, enemyFaction);
             unit.transform.position = transform.position + spawnDelta;
             if(_gameController.TryGetOpponentTower(unit.OpponentFaction, out var target))

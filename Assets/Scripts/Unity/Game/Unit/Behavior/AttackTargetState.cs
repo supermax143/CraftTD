@@ -7,38 +7,45 @@ namespace Unity.Game
     /// </summary>
     public class AttackTargetState : UnitState
     {
-        private float _attackTimer;
+        // private float _attackTimer;
 
         public override void Enter()
         {
-            _attackTimer = 0f;
+            // _attackTimer = 0f;
+            _unit.Attack.Activate(_stateManager.CurrentTarget);
+            _stateManager.CurrentTarget.OnDeath += TargetDeathHandler;
         }
 
-        public override void Update()
+        private void TargetDeathHandler()
         {
-            if (_stateManager.CurrentTarget == null)
+            ChangeState<MoveToTowerState>();
+        }
+
+        public override void UpdateState()
+        {
+            var curTarget = _stateManager.CurrentTarget;
+            if (curTarget == null || curTarget.IsDead)
             {
                 ChangeState<MoveToTowerState>();
                 return;
             }
-
-            /*var targetPosition = _stateManager.CurrentTarget.GetClosestPosition(_unit.transform.position);
-            var distance = Vector3.Distance(_unit.transform.position, targetPosition);*/
+            
             if (!_unit.Attack.CheckRange(_stateManager.CurrentTarget))
             {
                 ChangeState<MoveToTargetState>();
-                return;
             }
 
+            /*
             _unit.transform.LookAt(_stateManager.CurrentTarget.transform);
             _attackTimer += Time.deltaTime;
             if (_attackTimer >= _unit.Attack.Data.Cooldown)
             {
                 _attackTimer = 0f;
                 Attack();
-            }
+            }*/
         }
 
+        /*
         private void Attack()
         {
             if (_stateManager.CurrentTarget == null)
@@ -47,6 +54,15 @@ namespace Unity.Game
             }
             
             _stateManager.CurrentTarget.Health.TakeDamage(_unit.Attack.Data.Damage);
+        }*/
+
+        public override void Exit()
+        {
+            _unit.Attack.Deactivate();
+            if (_stateManager.CurrentTarget != null)
+            {
+                _stateManager.CurrentTarget.OnDeath -= TargetDeathHandler;
+            }
         }
 
         private void OnDrawGizmos()
