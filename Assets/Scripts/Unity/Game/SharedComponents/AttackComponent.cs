@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Unity.Game.Projectile;
 using Unity.Utils.Time;
 using UnityEngine;
 
@@ -6,6 +7,10 @@ namespace Unity.Game
 {
     public class AttackComponent : MonoBehaviour
     {
+        
+        [SerializeField]
+        private Weapon _weapon;
+        
         private AttackData _data;
 
         public AttackData Data => _data;
@@ -15,6 +20,11 @@ namespace Unity.Game
         private AttackTarget _target;
         private UnitController _unit;
 
+        private void OnValidate()
+        {
+            _weapon = GetComponentInChildren<Weapon>();
+        }
+        
         public void Initialize(AttackData data, UnitController unit)
         {
             _data = data;
@@ -40,7 +50,7 @@ namespace Unity.Game
             }
 
             _unit.Move.RotateTo(_target.GetClosestPosition(_unit.transform.position));
-            _target.Health.TakeDamage(_data.Damage);
+            _weapon.Attack(_target, _data.Damage);
             yield return new WaitForSeconds(_data.Cooldown);
             _attackCoroutine = StartCoroutine(Attack());
         }

@@ -6,7 +6,7 @@ namespace Unity.Game
 {
     public class Spawner : MonoBehaviour
     {
-        [SerializeField] private GameObject _unitPrefab;
+        [SerializeField] private GameObject[] _unitPrefabs;
         [SerializeField] private float _spawnRange;
         [SerializeField] private Transform _spawnTransform;
        
@@ -17,7 +17,8 @@ namespace Unity.Game
         {
             var spawnDelta = new Vector3(Random.Range(-_spawnRange, _spawnRange), 0, Random.Range(-_spawnRange, _spawnRange));
             
-            var unit = _container.InstantiatePrefabForComponent<UnitController>(_unitPrefab, _spawnTransform);
+            var prefab = _unitPrefabs[Random.Range(0, _unitPrefabs.Length)];
+            var unit = _container.InstantiatePrefabForComponent<UnitController>(prefab, _spawnTransform);
             unit.SetFaction(faction, enemyFaction);
             unit.transform.position = transform.position + spawnDelta;
             if(_gameController.TryGetOpponentTower(unit.OpponentFaction, out var target))

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4394032768328476454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4483433919073919484}
+  m_Layer: 0
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4483433919073919484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4394032768328476454}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.008, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7451858884799942399}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6122227231994503960
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,8 +42,9 @@ GameObject:
   - component: {fileID: 7451858884799942399}
   - component: {fileID: 8100109325801798197}
   - component: {fileID: 5435964512949236299}
+  - component: {fileID: 3113485673100170804}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +62,8 @@ Transform:
   m_LocalPosition: {x: 0.28, y: 0.136, z: 0.66}
   m_LocalScale: {x: -0.1, y: 0.4, z: 0.1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4483433919073919484}
   m_Father: {fileID: 3233795376139026877}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &8100109325801798197
@@ -90,6 +123,21 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3113485673100170804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122227231994503960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f27e18926747e19f30938b88926911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Projectile.RangedWeapon
+  _barrel: {fileID: 4483433919073919484}
+  _projectilePrefab: {fileID: 7521742283551018972, guid: dbee6ab3e62426f47b1ea579a565d057,
+    type: 3}
 --- !u!1001 &2052714476167399297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101,17 +149,17 @@ PrefabInstance:
     - target: {fileID: 3525600170920847951, guid: f86166669c4bc844e989c972e4fda41e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.44607228
       objectReference: {fileID: 0}
     - target: {fileID: 3525600170920847951, guid: f86166669c4bc844e989c972e4fda41e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.0000015043993
       objectReference: {fileID: 0}
     - target: {fileID: 3525600170920847951, guid: f86166669c4bc844e989c972e4fda41e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -19.403793
       objectReference: {fileID: 0}
     - target: {fileID: 3525600170920847951, guid: f86166669c4bc844e989c972e4fda41e,
         type: 3}
@@ -153,6 +201,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitRanged
       objectReference: {fileID: 0}
+    - target: {fileID: 7130790434163748106, guid: f86166669c4bc844e989c972e4fda41e,
+        type: 3}
+      propertyPath: _attackData._range
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130790434163748106, guid: f86166669c4bc844e989c972e4fda41e,
+        type: 3}
+      propertyPath: _attackData._damage
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7130790434163748106, guid: f86166669c4bc844e989c972e4fda41e,
+        type: 3}
+      propertyPath: _searchData._detectionRange
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255182563951653487, guid: f86166669c4bc844e989c972e4fda41e,
+        type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 3113485673100170804}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

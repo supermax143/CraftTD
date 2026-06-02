@@ -34,6 +34,10 @@ namespace Unity.Game.Projectile
             _timer.Start(time);
             while (!_timer.IsComplete)
             {
+                if (_target == null)
+                {
+                    Destroy(gameObject);
+                }
                 transform.position = Vector3.Lerp(startPosition, targetPosition, _timer.Progress);
                 yield return null;
             }
