@@ -1,4 +1,5 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Unity.Game.Attributes
@@ -12,6 +13,7 @@ namespace Unity.Game.Attributes
     [Serializable]
     public abstract class GameEntityAttribute<TValue> : GameEntityAttribute
     {
+        [HideLabel]
         [SerializeField]
         private TValue _value;
 

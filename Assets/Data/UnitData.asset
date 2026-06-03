@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: UnitData
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitAttributesData
   _health:
-    _value: 0
+    _value: 15
   _moveSpeed:
-    _value: 0
+    _value: 1
   _damage:
     _value: 0
   _attackRange:
@@ -25,4 +25,6 @@ MonoBehaviour:
   _attackCooldown:
     _value: 0
   _detectionRange:
+    _value: 0
+  _unitCost:
     _value: 0

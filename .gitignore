@@ -93,3 +93,8 @@ Thumbs.db
 # Unity Package Manager
 /[Pp]ackages/packages-lock.json
 /.idea
+
+//Odin
+/Assets/Plugins/Sirenix/
+/Assets/Plugins/Sirenix.meta
+/Assets/Plugins.meta

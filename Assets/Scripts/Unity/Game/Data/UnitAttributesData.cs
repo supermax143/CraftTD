@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using Unity.Game.Attributes;
 using Unity.Game.Attributes.Specific;
 using UnityEngine;
@@ -13,23 +14,21 @@ namespace Unity.Game
     public class UnitAttributesData : ScriptableObject, IGameEntityData
     {
         
-        [SerializeField]
+        [InlineProperty, SerializeField]
         private HealthAttribute _health;
-        
-        [SerializeField]
+        [InlineProperty, SerializeField]
         private MoveSpeedAttribute _moveSpeed;
-        
-        [SerializeField] 
+        [InlineProperty, SerializeField]
         private DamageAttribute _damage;
-        [SerializeField] 
+        [InlineProperty, SerializeField]
         private AttackRangeAttribute _attackRange;
-        [SerializeField]
+        [InlineProperty, SerializeField]
         private AttackSpeedAttribute _attackSpeed;
-        [SerializeField] 
+        [InlineProperty, SerializeField]
         private AttackCooldownAttribute _attackCooldown;
-        [SerializeField] 
+        [InlineProperty, SerializeField]
         private DetectionRangeAttribute _detectionRange;
-        [SerializeField]
+        [InlineProperty, SerializeField]
         private UnitCostAttribute _unitCost;
         
         public GameEntityAttribute[] GetAllAttributes()
