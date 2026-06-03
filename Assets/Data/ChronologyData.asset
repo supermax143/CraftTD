@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b407edb1f3e45f3847d70084b6c8c29, type: 3}
+  m_Name: ChronologyData
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.ChronologyData
+  _epochs:
+  - _epochName: "\u041F\u0435\u0440\u0432\u043E\u0431\u044B\u0442\u043D\u0430\u044F
+      \u044D\u043F\u043E\u0445\u0430"
+    _unitTier1:
+      _health:
+        _value: 10
+      _moveSpeed:
+        _value: 3
+      _damage:
+        _value: 4
+      _attackRange:
+        _value: 1
+      _attackSpeed:
+        _value: 1
+      _attackCooldown:
+        _value: 0.7
+      _detectionRange:
+        _value: 4
+      _unitCost:
+        _value: 3
+    _unitTier2:
+      _health:
+        _value: 8
+      _moveSpeed:
+        _value: 3
+      _damage:
+        _value: 4
+      _attackRange:
+        _value: 3
+      _attackSpeed:
+        _value: 1
+      _attackCooldown:
+        _value: 1
+      _detectionRange:
+        _value: 4
+      _unitCost:
+        _value: 5
+    _unitTier3:
+      _health:
+        _value: 12
+      _moveSpeed:
+        _value: 3
+      _damage:
+        _value: 8
+      _attackRange:
+        _value: 1
+      _attackSpeed:
+        _value: 1
+      _attackCooldown:
+        _value: 1
+      _detectionRange:
+        _value: 4
+      _unitCost:
+        _value: 10
+  - _epochName: "\u042D\u043F\u043E\u0445\u0430 \u0440\u044B\u0446\u0430\u0440\u0435\u0439"
+    _unitTier1:
+      _health:
+        _value: 0
+      _moveSpeed:
+        _value: 0
+      _damage:
+        _value: 0
+      _attackRange:
+        _value: 0
+      _attackSpeed:
+        _value: 0
+      _attackCooldown:
+        _value: 0
+      _detectionRange:
+        _value: 0
+      _unitCost:
+        _value: 0
+    _unitTier2:
+      _health:
+        _value: 0
+      _moveSpeed:
+        _value: 0
+      _damage:
+        _value: 0
+      _attackRange:
+        _value: 0
+      _attackSpeed:
+        _value: 0
+      _attackCooldown:
+        _value: 0
+      _detectionRange:
+        _value: 0
+      _unitCost:
+        _value: 0
+    _unitTier3:
+      _health:
+        _value: 0
+      _moveSpeed:
+        _value: 0
+      _damage:
+        _value: 0
+      _attackRange:
+        _value: 0
+      _attackSpeed:
+        _value: 0
+      _attackCooldown:
+        _value: 0
+      _detectionRange:
+        _value: 0
+      _unitCost:
+        _value: 0

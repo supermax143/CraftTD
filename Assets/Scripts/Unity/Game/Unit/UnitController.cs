@@ -1,4 +1,5 @@
 using System;
+using Unity.Game.Data.Attributes;
 using Unity.Settings;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -7,10 +8,8 @@ using Zenject;
 namespace Unity.Game
 {
     [RequireComponent(typeof(UnitView))]
-    public class UnitController : MonoBehaviour
+    public class UnitController : GameEntity
     {
-        
-        
         
         [SerializeField, HideInInspector] 
         private UnitView _view;
@@ -28,8 +27,7 @@ namespace Unity.Game
         private TargetSearchComponent _targetSearch;
         
         [SerializeField]
-        private UnitAttributesData _data;
-        
+        private UnitEntityData _data;
         [SerializeField] 
         private AttackData _attackData;
         [SerializeField] 
@@ -61,11 +59,7 @@ namespace Unity.Game
             _targetSearch = GetComponentInChildren<TargetSearchComponent>();
         }
 
-        /*private void Start()
-        {
-            Initialize();
-        }*/
-
+        
         public void SetFaction(Faction faction, Faction enemyFaction)
         {
             _faction = faction;
