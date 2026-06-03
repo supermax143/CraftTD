@@ -1,10 +1,12 @@
-﻿using Unity.Game.Attributes;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Unity.Game.Attributes;
 
 namespace Unity.Game
 {
     public abstract class GameEntityData
     {
-        public abstract GameEntityAttribute[] GetAllAttributes();
+        public abstract IEnumerable<GameEntityAttribute> GetAllAttributes();
 
         
         public bool TryGetAttribute<T>(out T attribute) where T : GameEntityAttribute

@@ -10,6 +10,7 @@
         DetectionRange,
         DetectionInterval,
         Health,
-        UnitCost
+        UnitCost,
+        UnitPrefab
     }
 }

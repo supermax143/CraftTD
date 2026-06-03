@@ -1,5 +1,6 @@
 using Core.Application.DataStorage;
 using Unity.Bootstrap;
+using Unity.Game;
 using Unity.Infrastructure.Advertisement.API;
 using Unity.Infrastructure.DataStorage;
 using Unity.Infrastructure.GameEvents;
@@ -24,7 +25,8 @@ namespace Unity.Installers
       private TutorialController _tutorialController;
       [SerializeField]
       private GameSettings _gameSettings;
-      
+      [SerializeField]
+      private ChronologyData _chronologyData;
      
 
 
@@ -32,6 +34,9 @@ namespace Unity.Installers
       {
          InitializeAddressables();
 
+         //Data
+         Container.Bind<ChronologyData>().FromInstance(_chronologyData);
+         
          Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle();
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
          Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController);

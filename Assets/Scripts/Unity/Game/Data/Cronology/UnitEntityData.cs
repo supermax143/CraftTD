@@ -21,8 +21,9 @@ namespace Unity.Game
         [InlineProperty, SerializeField] private AttackCooldownAttribute _attackCooldown;
         [InlineProperty, SerializeField] private DetectionRangeAttribute _detectionRange;
         [InlineProperty, SerializeField] private UnitCostAttribute _unitCost;
-
-        public override GameEntityAttribute[] GetAllAttributes()
+        [InlineProperty, SerializeField] private UnitPrefabAttribute _unitPrefab;
+        
+        public override IEnumerable<GameEntityAttribute> GetAllAttributes()
         {
             return new GameEntityAttribute[]
             {
@@ -33,7 +34,8 @@ namespace Unity.Game
                 _attackSpeed,
                 _attackCooldown,
                 _detectionRange,
-                _unitCost
+                _unitCost,
+                _unitPrefab
             };
         }
     }

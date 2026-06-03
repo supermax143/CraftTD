@@ -1,4 +1,6 @@
 ﻿using System;
+using Unity.Game.Data.Attributes;
+using UnityEngine;
 
 namespace Unity.Game.Attributes.Specific
 {
@@ -57,12 +59,19 @@ namespace Unity.Game.Attributes.Specific
         public HealthAttribute(int value = 0) 
             : base(value, GameEntityAttributeKind.Health) { }
     }
-
     
     [Serializable]
     public class UnitCostAttribute : IntEntityAttribute
     {
         public UnitCostAttribute(int value = 0) 
+            : base(value, GameEntityAttributeKind.UnitCost) { }
+    }
+    
+    
+    [Serializable]
+    public class UnitPrefabAttribute : GameObjectEntityAttribute
+    {
+        public UnitPrefabAttribute(GameObject value = null) 
             : base(value, GameEntityAttributeKind.UnitCost) { }
     }
     

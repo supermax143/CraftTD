@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using Unity.Game.Attributes.Specific;
+using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
 
@@ -12,12 +14,22 @@ namespace Unity.Game
        
         [Inject] private DiContainer _container;
         [Inject] private GameController _gameController;
+        [Inject] private ChronologyData _chronologyData;
       
         public UnitController Spawn(Faction faction, Faction enemyFaction)
         {
-            var spawnDelta = new Vector3(Random.Range(-_spawnRange, _spawnRange), 0, Random.Range(-_spawnRange, _spawnRange));
+            var epoch = _chronologyData.Epochs.First();
             
-            var prefab = _unitPrefabs[Random.Range(0, _unitPrefabs.Length)];
+            var spawnDelta = new Vector3(Random.Range(-_spawnRange, _spawnRange), 0, Random.Range(-_spawnRange, _spawnRange));
+
+            var unitData = epoch.GetRandomUnitTier();
+            
+            if (!unitData.TryGetAttribute<UnitPrefabAttribute>(out var unitPrefabAttribute))
+            {
+                throw new System.Exception("No unit prefab found");
+            }
+            
+            var prefab = unitPrefabAttribute.Value;//epoch.GetRandomUnitTier().TryGetAttribute();
             var unit = _container.InstantiatePrefabForComponent<UnitController>(prefab, _spawnTransform);
             unit.SetFaction(faction, enemyFaction);
             unit.transform.position = transform.position + spawnDelta;

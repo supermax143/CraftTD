@@ -21,7 +21,7 @@ MonoBehaviour:
       _moveSpeed:
         _value: 3
       _damage:
-        _value: 4
+        _value: 5
       _attackRange:
         _value: 1
       _attackSpeed:
@@ -32,6 +32,9 @@ MonoBehaviour:
         _value: 4
       _unitCost:
         _value: 3
+      _unitPrefab:
+        _value: {fileID: 5664583615172295447, guid: c91991e774fc6c048bf2e802abebfdd0,
+          type: 3}
     _unitTier2:
       _health:
         _value: 8
@@ -49,9 +52,12 @@ MonoBehaviour:
         _value: 4
       _unitCost:
         _value: 5
+      _unitPrefab:
+        _value: {fileID: 5664583615172295447, guid: b33838309d23b3b4cb4e8d91ed052447,
+          type: 3}
     _unitTier3:
       _health:
-        _value: 12
+        _value: 15
       _moveSpeed:
         _value: 3
       _damage:
@@ -66,6 +72,9 @@ MonoBehaviour:
         _value: 4
       _unitCost:
         _value: 10
+      _unitPrefab:
+        _value: {fileID: 5664583615172295447, guid: ed4106c5e449b974d997e6c72c4e5a62,
+          type: 3}
   - _epochName: "\u042D\u043F\u043E\u0445\u0430 \u0440\u044B\u0446\u0430\u0440\u0435\u0439"
     _unitTier1:
       _health:
@@ -84,6 +93,8 @@ MonoBehaviour:
         _value: 0
       _unitCost:
         _value: 0
+      _unitPrefab:
+        _value: {fileID: 0}
     _unitTier2:
       _health:
         _value: 0
@@ -101,6 +112,8 @@ MonoBehaviour:
         _value: 0
       _unitCost:
         _value: 0
+      _unitPrefab:
+        _value: {fileID: 0}
     _unitTier3:
       _health:
         _value: 0
@@ -118,3 +131,5 @@ MonoBehaviour:
         _value: 0
       _unitCost:
         _value: 0
+      _unitPrefab:
+        _value: {fileID: 0}

@@ -235,6 +235,7 @@ MonoBehaviour:
   _windowsController: {fileID: 2986517045514984811}
   _tutorialController: {fileID: 7958714817276208944}
   _gameSettings: {fileID: 11400000, guid: 0ac77448c818fa6468273506bebee18c, type: 2}
+  _chronologyData: {fileID: 11400000, guid: b7eb0d80905a641448e6bf815ebfe851, type: 2}
 --- !u!114 &3856448572725618157
 MonoBehaviour:
   m_ObjectHideFlags: 0

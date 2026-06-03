@@ -1,5 +1,5 @@
 using System;
-using Unity.Game.Data.Attributes;
+using Unity.Game.Attributes;
 using Unity.Settings;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -88,6 +88,11 @@ namespace Unity.Game
         public void Die()
         {
             Destroy(gameObject);
+        }
+
+        public override GameEntityAttribute[] GetAllAttributes()
+        {
+            throw new NotImplementedException();
         }
     }
 }
