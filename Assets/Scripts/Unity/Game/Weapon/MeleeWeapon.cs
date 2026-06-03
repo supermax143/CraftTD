@@ -4,7 +4,7 @@
     {
         public override void Attack(AttackTarget target, float damage)
         {
-            target.Health.TakeDamage(damage);
+            target.HealthComponent.TakeDamage(damage);
         }
     }
 }

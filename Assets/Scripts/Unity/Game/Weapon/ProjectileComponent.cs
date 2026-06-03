@@ -42,7 +42,7 @@ namespace Unity.Game.Projectile
                 yield return null;
             }
             transform.position = targetPosition;
-            _target.Health.TakeDamage(_damage);
+            _target.HealthComponent.TakeDamage(_damage);
             Destroy(gameObject);
         }
     }

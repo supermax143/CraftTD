@@ -29,8 +29,8 @@ namespace Unity.Game
         
         [SerializeField] 
         private AttackData _attackData;
-        [SerializeField] 
-        private MoveData _moveData;
+        //[SerializeField] 
+        // private MoveData _moveData;
         [SerializeField] 
         private TargetSearchData _searchData;
         
@@ -86,7 +86,8 @@ namespace Unity.Game
             //_health.Initialize();
             _health.SetData(_data);
             _attackTarget.Initialize(Health);
-            _move.Initialize(_moveData.Clone());
+            //_move.Initialize(_moveData.Clone());
+            _move.SetData(_data);
             _targetSearch.Initialize(_searchData.Clone(), this);
             _attackComponent.Initialize(_attackData.Clone(), this);
             _stateManager.Initialize(this);

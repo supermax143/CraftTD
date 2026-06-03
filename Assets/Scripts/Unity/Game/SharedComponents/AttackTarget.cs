@@ -12,17 +12,17 @@ namespace Unity.Game
         [SerializeField, HideInInspector]
         private Collider _collider;
         
-        private HealthComponent _health;
+        private HealthComponent _healthComponent;
         
         private Faction _faction;
 
         public Faction Faction => _faction;
 
-        public HealthComponent Health => _health;
+        public HealthComponent HealthComponent => _healthComponent;
 
         public TargetType Type => _targetType;
 
-        public bool IsDead => _health.IsDead;
+        public bool IsDead => _healthComponent.IsDead;
         
         private void OnValidate()
         {
@@ -41,8 +41,8 @@ namespace Unity.Game
 
         public void Initialize(HealthComponent health)
         {
-            _health = health;
-            _health.OnDeath += DeathHandler;
+            _healthComponent = health;
+            _healthComponent.OnDeath += DeathHandler;
         }
         
         public Vector3 GetClosestPosition(Vector3 position)
@@ -52,7 +52,7 @@ namespace Unity.Game
         
         private void OnDestroy()
         {
-            _health.OnDeath -= DeathHandler;
+            _healthComponent.OnDeath -= DeathHandler;
         }
     }
 }

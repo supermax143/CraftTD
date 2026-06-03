@@ -1,23 +1,18 @@
 ﻿using System;
+using Unity.Game.Attributes.Specific;
 using UnityEngine;
 
 namespace Unity.Game
 {
-    public class MoveComponent : MonoBehaviour
+    public class MoveComponent : GameEntity
     {
-        private MoveData _data;
-        private AttackTarget _target;
-
-        public MoveData Data => _data;
-
-        private bool _moving = false;
+        [SerializeField]
+        private MoveSpeedAttribute _moveSpeed = new MoveSpeedAttribute(4);
+        
         
         private Vector3 _targetPosition;
+        private bool _moving = false;
 
-        public void Initialize(MoveData data)
-        {
-            _data = data;   
-        }
 
         public void StartMove(AttackTarget target)
         {
@@ -43,16 +38,10 @@ namespace Unity.Game
         private void MoveToTarget(Vector3 targetPosition)
         {
             var direction = (targetPosition - transform.position).normalized;
-            var delta = direction * (Data.Speed * Time.deltaTime);
+            var delta = direction * (_moveSpeed.Value * Time.deltaTime);
             delta.y = 0;
             transform.position += delta;
             
-            /*var lookDirection = targetPosition - _unit.transform.position;
-            lookDirection.y = 0;
-            if (lookDirection != Vector3.zero)
-            {
-                _unit.transform.rotation = Quaternion.LookRotation(lookDirection);
-            }*/
         }
 
         public void RotateTo(Vector3 targetPosition)
