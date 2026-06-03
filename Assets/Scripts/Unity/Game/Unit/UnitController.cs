@@ -27,21 +27,16 @@ namespace Unity.Game
         [SerializeField, HideInInspector]
         private TargetSearchComponent _targetSearch;
         
+        [SerializeField]
+        private AttributesData _data;
         
         [SerializeField] 
         private AttackData _attackData;
-        [FormerlySerializedAs("moveMoveData")] [SerializeField] 
+        [SerializeField] 
         private MoveData _moveData;
         [SerializeField] 
         private TargetSearchData _searchData;
         
-        
-        // [SerializeField]
-        // private float _moveSpeed = 1;
-        // [SerializeField] 
-        // private float _detectionRange;
-        // [SerializeField] 
-        // private float _detectionInterval;
         
         [Inject] private GameSettings _gameSettings;
         
@@ -49,13 +44,8 @@ namespace Unity.Game
         private Faction _opponentFaction;
         
         public Faction OpponentFaction => _opponentFaction;
-        // public float MoveSpeed => _moveSpeed;
-        // public float DetectionRange => _detectionRange;
-        // public float DetectionInterval => _detectionInterval;
         public AttackComponent Attack => _attackComponent;
         public HealthComponent Health => _health;
-        // public MoveData MoveData => _moveData;
-        // public TargetSearchData TargetSearchData => _searchData;
         public MoveComponent Move => _move;
         public TargetSearchComponent TargetSearch => _targetSearch;
 

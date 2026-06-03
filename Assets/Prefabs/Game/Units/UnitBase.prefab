@@ -218,8 +218,13 @@ MonoBehaviour:
   _stateManager: {fileID: 7089783761961880826}
   _health: {fileID: 4728101536793293616}
   _attackComponent: {fileID: 8255182563951653487}
-  _move: {fileID: 0}
-  _targetSearch: {fileID: 0}
+  _move: {fileID: 2650900694220129844}
+  _targetSearch: {fileID: 7813210451020228870}
+  _data:
+    _health:
+      _value: 0
+    _name:
+      _value: asda
   _attackData:
     _damage: 8
     _range: 1.5
@@ -233,9 +238,6 @@ MonoBehaviour:
   _searchData:
     _detectionRange: 3
     _detectionInterval: 0.3
-  _moveSpeed: 3
-  _detectionRange: 2
-  _detectionInterval: 0.3
 --- !u!114 &5483068426547807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48dec60fcf94c7589c4af10a484edf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackComponent
+  _weapon: {fileID: 0}
 --- !u!114 &2650900694220129844
 MonoBehaviour:
   m_ObjectHideFlags: 0
