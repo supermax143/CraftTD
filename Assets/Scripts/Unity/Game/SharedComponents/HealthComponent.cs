@@ -1,25 +1,29 @@
 ﻿using System;
+using Unity.Game.Attributes;
+using Unity.Game.Attributes.Specific;
 using UnityEngine;
 
 namespace Unity.Game
 {
-    public class HealthComponent : MonoBehaviour
+    public class HealthComponent : GameEntity
     {
         public event Action OnDamage;
         public event Action OnDeath;
         
+        
         [SerializeField]
-        private float _maxHealth;
+        private HealthAttribute _health = new HealthAttribute(10);
         
         private float _currentHealth;
         
-        public float MaxHealth => _maxHealth;
+        public float MaxHealth => _health.Value;
         public float CurrentHealth => _currentHealth;
         public bool IsDead => _currentHealth <= 0;
 
-        public void Initialize()
+        public override void SetData(GameEntityData data)
         {
-            _currentHealth = _maxHealth;
+            base.SetData(data);
+            _currentHealth = MaxHealth;
         }
 
         public void TakeDamage(float damage)
@@ -31,8 +35,8 @@ namespace Unity.Game
                 OnDeath?.Invoke();
             }
             OnDamage?.Invoke();
-            Debug.Log($"Health: {_currentHealth} / {_maxHealth}");
+            Debug.Log($"Health: {_currentHealth} / {MaxHealth}");
         }
-        
+
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.Game.Attributes;
 using Unity.Settings;
 using UnityEngine;
@@ -26,8 +27,6 @@ namespace Unity.Game
         [SerializeField, HideInInspector]
         private TargetSearchComponent _targetSearch;
         
-        [SerializeField]
-        private UnitEntityData _data;
         [SerializeField] 
         private AttackData _attackData;
         [SerializeField] 
@@ -40,6 +39,7 @@ namespace Unity.Game
         
         private Faction _faction;
         private Faction _opponentFaction;
+        private GameEntityData _data;
         
         public Faction OpponentFaction => _opponentFaction;
         public AttackComponent Attack => _attackComponent;
@@ -47,6 +47,7 @@ namespace Unity.Game
         public MoveComponent Move => _move;
         public TargetSearchComponent TargetSearch => _targetSearch;
 
+        
 
         private void OnValidate()
         {
@@ -74,9 +75,16 @@ namespace Unity.Game
             
         }
 
-        public void Initialize()
+        public override void SetData(GameEntityData data)
         {
-            _health.Initialize();
+            _data = data;
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            //_health.Initialize();
+            _health.SetData(_data);
             _attackTarget.Initialize(Health);
             _move.Initialize(_moveData.Clone());
             _targetSearch.Initialize(_searchData.Clone(), this);
@@ -85,14 +93,15 @@ namespace Unity.Game
             _stateManager.ChangeState<SearchTargetState>();
         }
 
+        public override IEnumerable<GameEntityAttribute> GetAllAttributes()
+        {
+            return _data.GetAllAttributes();
+        }
+        
         public void Die()
         {
             Destroy(gameObject);
         }
 
-        public override GameEntityAttribute[] GetAllAttributes()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

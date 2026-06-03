@@ -37,7 +37,7 @@ namespace Unity.Game
             {
                 unit.transform.LookAt(target.transform);
             }
-            unit.Initialize();
+            unit.SetData(unitData);
             return  unit;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Game.Attributes;
 using UnityEngine;
 
@@ -7,11 +8,39 @@ namespace Unity.Game
 {
     public abstract class GameEntity : MonoBehaviour
     {
-        public abstract GameEntityAttribute[] GetAllAttributes();
+        private List<GameEntityAttribute> _attributes;
 
-
-        public void SetData(GameEntityData data)
+        public virtual IEnumerable<GameEntityAttribute> GetAllAttributes()
         {
+            if (_attributes == null)
+            {
+                _attributes = GetAllAttributesFromReflection().ToList();
+            }
+            return _attributes;
+        }
+
+        
+        private IEnumerable<GameEntityAttribute> GetAllAttributesFromReflection()
+        {
+            var fields = GetType().GetFields(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            foreach (var fieldInfo in fields)
+            {
+                var attribute = fieldInfo.GetValue(this) as GameEntityAttribute;
+                if (attribute != null)
+                {
+                    yield return attribute;
+                }
+            }
+        }
+        
+
+        public virtual void SetData(GameEntityData data)
+        {
+            if (data == null)
+            {
+                Debug.LogError($"{this.GetType().Name} SetData: data is null");
+                return;
+            }
             CopyAttributes(data.GetAllAttributes());
         }
 

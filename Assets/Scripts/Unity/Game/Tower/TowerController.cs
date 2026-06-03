@@ -51,7 +51,7 @@ namespace Unity.Game
         }
         public void Initialize()
         {
-            _health.Initialize();
+            _health.SetData(null);//TODO: добавить настройку для TOWER
             _health.OnDeath += OnDeath;
             _attackTarget.Initialize(_health);
         }

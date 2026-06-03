@@ -22,7 +22,6 @@ namespace Unity.Game
             _healthComponent = GetComponentInChildren<HealthComponent>();
             _tintController = GetComponentInChildren<TintController>();
             _blinkEffect = GetComponentInChildren<BlinkEffect>();
-            
         }
 
         private void Start()
