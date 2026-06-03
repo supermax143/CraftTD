@@ -2,42 +2,49 @@
 
 namespace Unity.Game.Attributes.Specific
 {
+    [Serializable]
     public class DamageAttribute  : FloatEntityAttribute
     {
         public DamageAttribute (float value = 0f) 
             : base(value, GameEntityAttributeKind.Damage) { }
     }
     
+    [Serializable]
     public class AttackRangeAttribute : FloatEntityAttribute
     {
         public AttackRangeAttribute(float value = 0f) 
             : base(value, GameEntityAttributeKind.AttackRange) { }
     }
     
+    [Serializable]
     public class MoveSpeedAttribute : FloatEntityAttribute
     {
         public MoveSpeedAttribute(float value = 0f) 
             : base(value, GameEntityAttributeKind.MoveSpeed) { }
     }
     
-    public class AttackTimeAttribute : FloatEntityAttribute
+    [Serializable]
+    public class AttackSpeedAttribute : FloatEntityAttribute
     {
-        public AttackTimeAttribute(float value = 0f) 
+        public AttackSpeedAttribute(float value = 0f) 
             : base(value, GameEntityAttributeKind.AttackTime) { }
     }
     
+    [Serializable]
     public class AttackCooldownAttribute : FloatEntityAttribute
     {
         public AttackCooldownAttribute(float value = 0f) 
             : base(value, GameEntityAttributeKind.AttackCooldown) { }
     }
     
+    [Serializable]
     public class DetectionRangeAttribute : FloatEntityAttribute
     {
         public DetectionRangeAttribute(float value = 0f) 
             : base(value, GameEntityAttributeKind.DetectionRange) { }
     }
     
+    [Serializable]
     public class DetectionIntervalAttribute : FloatEntityAttribute
     {
         public DetectionIntervalAttribute(float value = 0f) 
@@ -50,12 +57,13 @@ namespace Unity.Game.Attributes.Specific
         public HealthAttribute(int value = 0) 
             : base(value, GameEntityAttributeKind.Health) { }
     }
+
     
     [Serializable]
-    public class NameAttribute : StringEntityAttribute
+    public class UnitCostAttribute : IntEntityAttribute
     {
-        public NameAttribute(string value = "") 
-            : base(value, GameEntityAttributeKind.Name) { }
+        public UnitCostAttribute(int value = 0) 
+            : base(value, GameEntityAttributeKind.UnitCost) { }
     }
     
 }

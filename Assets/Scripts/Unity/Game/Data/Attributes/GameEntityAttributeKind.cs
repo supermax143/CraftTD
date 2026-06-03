@@ -10,6 +10,6 @@
         DetectionRange,
         DetectionInterval,
         Health,
-        Name
+        UnitCost
     }
 }

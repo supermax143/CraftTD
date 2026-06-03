@@ -28,7 +28,7 @@ namespace Unity.Game
         private TargetSearchComponent _targetSearch;
         
         [SerializeField]
-        private AttributesData _data;
+        private UnitAttributesData _data;
         
         [SerializeField] 
         private AttackData _attackData;
