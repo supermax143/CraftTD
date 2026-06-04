@@ -8,6 +8,8 @@ namespace Unity.Game
     {
         [SerializeField]
         private float _spawnDelay;
+        [SerializeField]
+        private int _count = 1;
         
         
         public override void StartSpawn(EpochData epoch)
@@ -20,7 +22,7 @@ namespace Unity.Game
         {
             yield return  new WaitForSeconds(_spawnDelay);
             var tier = _epoch.GetRandomUnitTier();
-            Spawn(tier, 2);
+            Spawn(tier, _count);
             StartCoroutine(WaitSpawnDelay());
         }
         

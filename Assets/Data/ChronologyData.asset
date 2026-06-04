@@ -27,7 +27,7 @@ MonoBehaviour:
       _moveSpeed:
         _value: 3.2
       _damage:
-        _value: 100
+        _value: 6
       _attackRange:
         _value: 1
       _attackSpeed:
@@ -47,7 +47,7 @@ MonoBehaviour:
       _moveSpeed:
         _value: 3
       _damage:
-        _value: 100
+        _value: 4
       _attackRange:
         _value: 3
       _attackSpeed:
@@ -67,7 +67,7 @@ MonoBehaviour:
       _moveSpeed:
         _value: 3
       _damage:
-        _value: 100
+        _value: 9
       _attackRange:
         _value: 1
       _attackSpeed:

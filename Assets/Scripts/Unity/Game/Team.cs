@@ -14,8 +14,6 @@ namespace Unity.Game
         private SpawnerBase _spawner;
         
         
-        [SerializeField]
-        private float _spawnDelay = 1f;
         [SerializeField] 
         private Faction _faction;
         [SerializeField] 
