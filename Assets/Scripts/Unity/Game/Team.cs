@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Unity.Utils.Time;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Unity.Game
 {
@@ -21,34 +20,20 @@ namespace Unity.Game
         
         
         public TowerController Tower => _tower;
-    
-        private Timer _spawnTimer = new();
-        
-        private readonly List<UnitController> _units = new();
+        private EpochData _epoch;
 
-        private void Start()
+        public void Initialize(EpochData epoch)
         {
+            _epoch = epoch;
             _tower.SetFaction(_faction);
-            _spawnTimer.Complete += OnSpawnTimerComplete;
-            _spawnTimer.Start(_spawnDelay);
-            OnSpawnTimerComplete();
+            _spawner.SetFaction(_faction, _enemyFaction);
+            _tower.SetData(_epoch.Tower);
         }
 
-        private void Update()
+        public void StartGame()
         {
-            _spawnTimer.Update();
+            _spawner.StartSpawn(_spawnDelay);
         }
-
-        private void OnSpawnTimerComplete()
-        {
-            Debug.Log("OnSpawnTimerComplete");
-            _units.Add(_spawner.Spawn(_faction, _enemyFaction));
-            _spawnTimer.Start(_spawnDelay);
-        }
-
-
-        
-        
         
     }
 }

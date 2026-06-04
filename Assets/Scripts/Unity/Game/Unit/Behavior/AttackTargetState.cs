@@ -33,6 +33,7 @@ namespace Unity.Game
         
         public override void Exit()
         {
+            base.Exit();
             _unit.Attack.Deactivate();
         }
 

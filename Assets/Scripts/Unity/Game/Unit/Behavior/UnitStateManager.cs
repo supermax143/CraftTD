@@ -9,6 +9,13 @@ namespace Unity.Game
     /// <summary>
     /// Менеджер состояний для управления поведением юнита
     /// </summary>
+      
+    [RequireComponent(typeof(WinState))]
+    [RequireComponent(typeof(LoseState))]
+    [RequireComponent(typeof(SearchTargetState))]
+    [RequireComponent(typeof(MoveToTargetState))]
+    [RequireComponent(typeof(AttackTargetState))]
+    [RequireComponent(typeof(DeathState))]
     public class UnitStateManager : MonoBehaviour
     {
         [SerializeField, HideInInspector]
@@ -43,22 +50,33 @@ namespace Unity.Game
                 state.Initialize(this, _unit);
                 state.enabled = false;
             }
+            _unit.HealthComponent.OnDeath += OnUnitDeath;
+            _gameController.OnTowerDestroyed += OnTowerDestroyed;
         }
 
+        private void OnUnitDeath()
+        {
+            
+            _unit.HealthComponent.OnDeath -= OnUnitDeath;
+            ChangeState<DeathState>();
+        }
+        
+        private void OnTowerDestroyed(Faction faction)
+        {
+            _gameController.OnTowerDestroyed -= OnTowerDestroyed;
+            if (faction == _unit.Faction)
+            {
+                ChangeState<LoseState>();
+            }
+            else
+            {
+                ChangeState<WinState>();
+            }
+            
+        }
+        
         public void ChangeState<T>() where T : UnitState
         {
-            //var newStateType = typeof(T);
-            
-            
-            /*if (!_states.ContainsKey(newStateType))
-            {
-                Debug.LogError($"State {newStateType.Name} not found!");
-                return;
-            }*/
-
-            // var newState = _states[newStateType];
-            
-            // var newState = _states.FirstOrDefault(st => st.GetType() == newStateType);
             if (!TryGetState<T>(out var newState))
             {
                 Debug.LogError($"State {typeof(T).Name} not found!");
@@ -86,6 +104,12 @@ namespace Unity.Game
         private void Update()
         {
             _currentState?.UpdateState();
+        }
+
+        private void OnDestroy()
+        {
+            _gameController.OnTowerDestroyed -= OnTowerDestroyed;
+            _unit.HealthComponent.OnDeath -= OnUnitDeath;
         }
     }
 }

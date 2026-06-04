@@ -11,6 +11,8 @@ namespace Unity.Game
         [SerializeField]
         private string _epochName;
         
+        [HideLabel]
+        [InlineProperty]
         [SerializeField]
         private TowerEntityData _tower;
         
@@ -26,8 +28,10 @@ namespace Unity.Game
         [InlineProperty]
         [SerializeField]
         private UnitEntityData _unitTier3;
-        
-        
+
+        public TowerEntityData Tower => _tower;
+
+
         public UnitEntityData GetRandomUnitTier()
         {
             var random = UnityEngine.Random.Range(0, 3);

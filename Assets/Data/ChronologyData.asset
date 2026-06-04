@@ -15,13 +15,19 @@ MonoBehaviour:
   _epochs:
   - _epochName: "\u041F\u0435\u0440\u0432\u043E\u0431\u044B\u0442\u043D\u0430\u044F
       \u044D\u043F\u043E\u0445\u0430"
+    _tower:
+      _health:
+        _value: 100
+      _towerPrefab:
+        _value: {fileID: 6563548916185858267, guid: 787862c76b6a5a549b8dcdcd77da43fc,
+          type: 3}
     _unitTier1:
       _health:
         _value: 10
       _moveSpeed:
-        _value: 3
+        _value: 3.2
       _damage:
-        _value: 5
+        _value: 100
       _attackRange:
         _value: 1
       _attackSpeed:
@@ -41,7 +47,7 @@ MonoBehaviour:
       _moveSpeed:
         _value: 3
       _damage:
-        _value: 4
+        _value: 100
       _attackRange:
         _value: 3
       _attackSpeed:
@@ -61,7 +67,7 @@ MonoBehaviour:
       _moveSpeed:
         _value: 3
       _damage:
-        _value: 8
+        _value: 100
       _attackRange:
         _value: 1
       _attackSpeed:
@@ -76,6 +82,11 @@ MonoBehaviour:
         _value: {fileID: 5664583615172295447, guid: ed4106c5e449b974d997e6c72c4e5a62,
           type: 3}
   - _epochName: "\u042D\u043F\u043E\u0445\u0430 \u0440\u044B\u0446\u0430\u0440\u0435\u0439"
+    _tower:
+      _health:
+        _value: 0
+      _towerPrefab:
+        _value: {fileID: 0}
     _unitTier1:
       _health:
         _value: 0

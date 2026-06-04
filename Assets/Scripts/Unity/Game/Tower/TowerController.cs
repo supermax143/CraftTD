@@ -8,8 +8,11 @@ using Zenject;
 namespace Unity.Game
 {
     [RequireComponent(typeof(TowerView))]
-    public class TowerController : MonoBehaviour
+    public class TowerController : GameEntity
     {
+
+        public event Action<TowerController> OnDestroyed;
+        
         [SerializeField, HideInInspector]
         private TowerView _view;
         [SerializeField, HideInInspector]
@@ -24,12 +27,7 @@ namespace Unity.Game
         public Faction Faction => _faction;
 
         public AttackTarget AttackTarget => _attackTarget;
-
-
-        private void Start()
-        {
-            Initialize();
-        }
+        
 
         private void OnValidate()
         {
@@ -42,22 +40,23 @@ namespace Unity.Game
         {
             _faction = faction;
             _attackTarget.SetFaction(_faction);
-            if (!_gameSettings.TryGetFactionColor(faction, out var color))
+            if (_gameSettings.TryGetFactionColor(faction, out var color))
             {
-                Debug.Log($"{this.GetType().Name}: Can't find faction color {faction}");
-                color = Color.purple;
+                _view.SetColor(color);
             }
-            _view.SetColor(color);
         }
-        public void Initialize()
+
+        public override void SetData(GameEntityData data)
         {
-            _health.SetData(null);//TODO: добавить настройку для TOWER
+            base.SetData(data);
+            _health.SetData(data);
             _health.OnDeath += OnDeath;
             _attackTarget.Initialize(_health);
         }
 
         private void OnDeath()
         {
+            OnDestroyed?.Invoke(this);
             Destroy(gameObject);
         }
     }

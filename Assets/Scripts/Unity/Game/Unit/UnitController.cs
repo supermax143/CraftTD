@@ -40,8 +40,8 @@ namespace Unity.Game
         public HealthComponent HealthComponent => _healthComponent;
         public MoveComponent MoveComponent => _moveComponent;
         public TargetSearchComponent TargetSearchComponent => _targetSearchComponent;
+        public Faction Faction => _faction;
 
-        
 
         private void OnValidate()
         {

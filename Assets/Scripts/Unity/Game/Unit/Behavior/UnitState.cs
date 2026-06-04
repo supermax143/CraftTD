@@ -16,13 +16,6 @@ namespace Unity.Game
         {
             _stateManager = stateManager;
             _unit = unit;
-            _unit.HealthComponent.OnDeath += OnUnitDeath;
-        }
-
-        private void OnUnitDeath()
-        {
-            _unit.HealthComponent.OnDeath -= OnUnitDeath;
-            ChangeState<DeathState>();
         }
 
         public virtual void Enter()
@@ -31,6 +24,7 @@ namespace Unity.Game
 
         public virtual void Exit()
         {
+            
         }
 
         public virtual void UpdateState()

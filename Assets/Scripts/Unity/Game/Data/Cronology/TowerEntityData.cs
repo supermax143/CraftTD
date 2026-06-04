@@ -12,14 +12,9 @@ namespace Unity.Game
     {
         
         [InlineProperty, SerializeField] 
-        public HealthAttribute _health;
+        private HealthAttribute _health;
         [InlineProperty, SerializeField] 
-        public TowerPrefabAttribute _towerPrefab;
-        
-        
-        public override IEnumerable<GameEntityAttribute> GetAllAttributes()
-        {
-            throw new System.NotImplementedException();
-        }
+        private TowerPrefabAttribute _towerPrefab;
+       
     }
 }
