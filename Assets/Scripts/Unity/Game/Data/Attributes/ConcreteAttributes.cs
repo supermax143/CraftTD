@@ -69,10 +69,18 @@ namespace Unity.Game.Attributes.Specific
     
     
     [Serializable]
+    public class TowerPrefabAttribute : GameObjectEntityAttribute
+    {
+        public TowerPrefabAttribute(GameObject value = null)
+            : base(value, GameEntityAttributeKind.TowerPrefab) { }
+    }
+
+    [Serializable]
     public class UnitPrefabAttribute : GameObjectEntityAttribute
     {
         public UnitPrefabAttribute(GameObject value = null) 
-            : base(value, GameEntityAttributeKind.UnitCost) { }
+            : base(value, GameEntityAttributeKind.UnitPrefab) { }
     }
+    
     
 }

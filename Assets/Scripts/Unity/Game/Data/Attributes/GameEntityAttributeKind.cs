@@ -11,6 +11,7 @@
         DetectionInterval,
         Health,
         UnitCost,
-        UnitPrefab
+        UnitPrefab,
+        TowerPrefab
     }
 }

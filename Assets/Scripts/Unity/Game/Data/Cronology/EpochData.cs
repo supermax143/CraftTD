@@ -11,6 +11,9 @@ namespace Unity.Game
         [SerializeField]
         private string _epochName;
         
+        [SerializeField]
+        private TowerEntityData _tower;
+        
         [HideLabel]
         [InlineProperty]
         [SerializeField]

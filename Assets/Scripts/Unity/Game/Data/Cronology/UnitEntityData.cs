@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using Unity.Game.Attributes;
 using Unity.Game.Attributes.Specific;
@@ -30,27 +31,8 @@ namespace Unity.Game
         private UnitCostAttribute _unitCost;
         [InlineProperty, SerializeField] 
         private UnitPrefabAttribute _unitPrefab;
-
-
-
-        private List<GameEntityAttribute> _attributesCache;
         
-        public override IEnumerable<GameEntityAttribute> GetAllAttributes()
-        {
-            _attributesCache ??= new List<GameEntityAttribute>
-            {
-                _health,
-                _moveSpeed,
-                _damage,
-                _attackRange,
-                _attackSpeed,
-                _attackCooldown,
-                _detectionRange,
-                _unitCost,
-                _unitPrefab
-            };
-
-            return _attributesCache;
-        }
+        
+        
     }
 }
