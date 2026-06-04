@@ -19,20 +19,14 @@ namespace Unity.Game
         [SerializeField, HideInInspector]
         private UnitStateManager _stateManager;
         [SerializeField, HideInInspector]
-        private HealthComponent _health;
+        private HealthComponent _healthComponent;
         [SerializeField, HideInInspector]
         private AttackComponent _attackComponent;
         [SerializeField, HideInInspector]
-        private MoveComponent _move;
+        private MoveComponent _moveComponent;
         [SerializeField, HideInInspector]
-        private TargetSearchComponent _targetSearch;
-        
-        [SerializeField] 
-        private AttackData _attackData;
-        //[SerializeField] 
-        // private MoveData _moveData;
-        [SerializeField] 
-        private TargetSearchData _searchData;
+        private TargetSearchComponent _targetSearchComponent;
+       
         
         
         [Inject] private GameSettings _gameSettings;
@@ -43,9 +37,9 @@ namespace Unity.Game
         
         public Faction OpponentFaction => _opponentFaction;
         public AttackComponent Attack => _attackComponent;
-        public HealthComponent Health => _health;
-        public MoveComponent Move => _move;
-        public TargetSearchComponent TargetSearch => _targetSearch;
+        public HealthComponent HealthComponent => _healthComponent;
+        public MoveComponent MoveComponent => _moveComponent;
+        public TargetSearchComponent TargetSearchComponent => _targetSearchComponent;
 
         
 
@@ -54,10 +48,10 @@ namespace Unity.Game
             _view = GetComponentInChildren<UnitView>();
             _attackTarget = GetComponentInChildren<AttackTarget>();
             _stateManager = GetComponentInChildren<UnitStateManager>();
-            _health = GetComponentInChildren<HealthComponent>();
+            _healthComponent = GetComponentInChildren<HealthComponent>();
             _attackComponent = GetComponentInChildren<AttackComponent>();
-            _move = GetComponentInChildren<MoveComponent>();
-            _targetSearch = GetComponentInChildren<TargetSearchComponent>();
+            _moveComponent = GetComponentInChildren<MoveComponent>();
+            _targetSearchComponent = GetComponentInChildren<TargetSearchComponent>();
         }
 
         
@@ -66,6 +60,7 @@ namespace Unity.Game
             _faction = faction;
             _opponentFaction = enemyFaction;
             _attackTarget.SetFaction(_faction);
+            _targetSearchComponent.SetFaction(_faction, _opponentFaction);
             if (!_gameSettings.TryGetFactionColor(faction, out var color))
             {
                 Debug.LogError(this.GetType().Name + ": Can't find faction color " + faction.ToString());
@@ -83,13 +78,12 @@ namespace Unity.Game
 
         private void Initialize()
         {
-            //_health.Initialize();
-            _health.SetData(_data);
-            _attackTarget.Initialize(Health);
-            //_move.Initialize(_moveData.Clone());
-            _move.SetData(_data);
-            _targetSearch.Initialize(_searchData.Clone(), this);
-            _attackComponent.Initialize(_attackData.Clone(), this);
+            _healthComponent.SetData(_data);
+            _attackTarget.Initialize(HealthComponent);
+            _moveComponent.SetData(_data);
+            _attackComponent.SetData(_data);
+            _targetSearchComponent.SetData(_data);
+            
             _stateManager.Initialize(this);
             _stateManager.ChangeState<SearchTargetState>();
         }

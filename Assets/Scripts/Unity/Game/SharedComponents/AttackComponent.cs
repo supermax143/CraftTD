@@ -1,36 +1,47 @@
 ﻿using System.Collections;
+using Unity.Game.Attributes.Specific;
 using Unity.Game.Projectile;
 using Unity.Utils.Time;
 using UnityEngine;
 
 namespace Unity.Game
 {
-    public class AttackComponent : MonoBehaviour
+    public class AttackComponent : GameEntity
     {
+        
+        [SerializeField, HideInInspector]
+        private MoveComponent _moveComponent;
         
         [SerializeField]
         private Weapon _weapon;
         
-        private AttackData _data;
+        
+        [SerializeField] 
+        private DamageAttribute _damage;
+        [SerializeField] 
+        private AttackRangeAttribute _attackRange;
+        [SerializeField] 
+        private AttackSpeedAttribute _attackSpeed;
+        [SerializeField] 
+        private AttackCooldownAttribute _attackCooldown;
+        
 
-        public AttackData Data => _data;
-
+        public float AttackRange => _attackRange.Value;
+        public float AttackSpeed => _attackSpeed.Value;
+        public float AttackCooldown => _attackCooldown.Value;
+        public float Damage => _damage.Value;
+        
         private Coroutine _attackCoroutine;
 
         private AttackTarget _target;
-        private UnitController _unit;
 
         private void OnValidate()
         {
             _weapon = GetComponentInChildren<Weapon>();
+            _moveComponent = GetComponentInChildren<MoveComponent>();
         }
         
-        public void Initialize(AttackData data, UnitController unit)
-        {
-            _data = data;
-            _unit = unit;
-        }
-        
+       
         public void Activate(AttackTarget target)
         {
             _target = target;
@@ -49,9 +60,9 @@ namespace Unity.Game
                 yield break;
             }
 
-            _unit.Move.RotateTo(_target.GetClosestPosition(_unit.transform.position));
-            _weapon.Attack(_target, _data.Damage);
-            yield return new WaitForSeconds(_data.Cooldown);
+            _moveComponent.RotateTo(_target.GetClosestPosition(transform.position));
+            _weapon.Attack(_target, Damage);
+            yield return new WaitForSeconds(AttackCooldown);
             _attackCoroutine = StartCoroutine(Attack());
         }
         
@@ -65,8 +76,9 @@ namespace Unity.Game
             var position = transform.position;
             var targetPosition = target.GetClosestPosition(position);
             var distance = Vector3.Distance(position, targetPosition);
-            return distance <= _data.Range;
+            return distance <= AttackRange;
         }
+
         
     }
 }

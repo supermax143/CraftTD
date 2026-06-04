@@ -14,8 +14,8 @@ namespace Unity.Game
 
         public override void Enter()
         {
-            _detectionTimer.Start(_unit.TargetSearch.Data.DetectionInterval);
-            _unit.Move.StartMove(_stateManager.CurrentTarget);
+            _detectionTimer.Start(TargetSearchComponent.DETECTION_INTERVAL);
+            _unit.MoveComponent.StartMove(_stateManager.CurrentTarget);
         }
 
         public override void UpdateState()
@@ -33,15 +33,15 @@ namespace Unity.Game
             }
 
             if (_detectionTimer.IsComplete && 
-                _unit.TargetSearch.TryGetClosestTarget(out var newTarget))
+                _unit.TargetSearchComponent.TryGetClosestTarget(out var newTarget))
             {
                 if (_stateManager.CurrentTarget != newTarget)
                 {
                     _stateManager.CurrentTarget = newTarget;
-                    _unit.Move.StartMove(_stateManager.CurrentTarget);
+                    _unit.MoveComponent.StartMove(_stateManager.CurrentTarget);
                 }
                 
-                _detectionTimer.Start(_unit.TargetSearch.Data.DetectionInterval);
+                _detectionTimer.Start(TargetSearchComponent.DETECTION_INTERVAL);
             }
             
             
@@ -50,24 +50,9 @@ namespace Unity.Game
 
         public override void Exit()
         {
-            _unit.Move.StopMove();
+            _unit.MoveComponent.StopMove();
         }
-
-        /*private void MoveToTarget(AttackTarget target)
-        {
-            var targetPosition = target.GetClosestPosition(_unit.transform.position);
-            var direction = (targetPosition - _unit.transform.position).normalized;
-            var delta = direction * (_unit.Move.Data.Speed * Time.deltaTime);
-            delta.y = 0;
-            _unit.transform.position += delta;
-            
-            var lookDirection = targetPosition - _unit.transform.position;
-            lookDirection.y = 0;
-            if (lookDirection != Vector3.zero)
-            {
-                _unit.transform.rotation = Quaternion.LookRotation(lookDirection);
-            }
-        }*/
+        
         
     }
 }

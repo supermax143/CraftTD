@@ -11,7 +11,7 @@ namespace Unity.Game
         
         public override void Enter()
         {
-            var targetSearch = _unit.TargetSearch;
+            var targetSearch = _unit.TargetSearchComponent;
             if (targetSearch.TryGetClosestTarget(out var target) || targetSearch.TryGetTargetTower(out target))
             {
                 _stateManager.CurrentTarget = target;

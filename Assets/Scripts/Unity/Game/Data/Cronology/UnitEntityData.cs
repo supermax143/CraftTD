@@ -12,20 +12,32 @@ namespace Unity.Game
     [Serializable]
     public class UnitEntityData : GameEntityData
     {
+        [InlineProperty, SerializeField] 
+        private HealthAttribute _health;
+        [InlineProperty, SerializeField] 
+        private MoveSpeedAttribute _moveSpeed;
+        [InlineProperty, SerializeField] 
+        private DamageAttribute _damage;
+        [InlineProperty, SerializeField] 
+        private AttackRangeAttribute _attackRange;
+        [InlineProperty, SerializeField] 
+        private AttackSpeedAttribute _attackSpeed;
+        [InlineProperty, SerializeField] 
+        private AttackCooldownAttribute _attackCooldown;
+        [InlineProperty, SerializeField] 
+        private DetectionRangeAttribute _detectionRange;
+        [InlineProperty, SerializeField] 
+        private UnitCostAttribute _unitCost;
+        [InlineProperty, SerializeField] 
+        private UnitPrefabAttribute _unitPrefab;
 
-        [InlineProperty, SerializeField] private HealthAttribute _health;
-        [InlineProperty, SerializeField] private MoveSpeedAttribute _moveSpeed;
-        [InlineProperty, SerializeField] private DamageAttribute _damage;
-        [InlineProperty, SerializeField] private AttackRangeAttribute _attackRange;
-        [InlineProperty, SerializeField] private AttackSpeedAttribute _attackSpeed;
-        [InlineProperty, SerializeField] private AttackCooldownAttribute _attackCooldown;
-        [InlineProperty, SerializeField] private DetectionRangeAttribute _detectionRange;
-        [InlineProperty, SerializeField] private UnitCostAttribute _unitCost;
-        [InlineProperty, SerializeField] private UnitPrefabAttribute _unitPrefab;
+
+
+        private List<GameEntityAttribute> _attributesCache;
         
         public override IEnumerable<GameEntityAttribute> GetAllAttributes()
         {
-            return new GameEntityAttribute[]
+            _attributesCache ??= new List<GameEntityAttribute>
             {
                 _health,
                 _moveSpeed,
@@ -37,6 +49,8 @@ namespace Unity.Game
                 _unitCost,
                 _unitPrefab
             };
+
+            return _attributesCache;
         }
     }
 }

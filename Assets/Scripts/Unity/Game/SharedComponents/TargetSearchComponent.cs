@@ -1,32 +1,53 @@
 ﻿using System.Linq;
+using Sirenix.OdinInspector;
+using Unity.Game.Attributes.Specific;
 using UnityEngine;
 using Zenject;
 
 namespace Unity.Game
 {
-    public class TargetSearchComponent : MonoBehaviour
+    public class TargetSearchComponent : GameEntity
     {
+        public const float DETECTION_INTERVAL = .3f;
+        
         
         [Inject] private GameController _gameController;
         
-        private TargetSearchData _data;
-        private UnitController _unit;
+        /*private TargetSearchData _data;
+        private UnitController _unit;*/
+
+        [SerializeField] 
+        private AttackRangeAttribute _attackRange;
+        [SerializeField] 
+        private DetectionRangeAttribute _detectionRange;
+
 
         public Transform SearchTransform => transform;
+        public float DetectionRange => _detectionRange.Value;
+        public float AttackRange => _attackRange.Value;
+        
+        
+        
+        // public TargetSearchData Data => _data;
+        private Faction _faction;
+        private Faction _opponentFaction;
 
-        public TargetSearchData Data => _data;
-
-        public void Initialize(TargetSearchData data, UnitController unit)
+        public void SetFaction(Faction faction, Faction opponentFaction)
+        {
+            _faction = faction;
+            _opponentFaction = opponentFaction;
+        }
+        
+        /*public void Initialize(TargetSearchData data, UnitController unit)
         {
             _data = data;   
             _unit = unit;
-        }
-        
+        }*/
         
         
         public bool TryGetClosestTarget(out AttackTarget target)
         {
-            var colliders = Physics.OverlapSphere(SearchTransform.position, _data.DetectionRange)
+            var colliders = Physics.OverlapSphere(SearchTransform.position, DetectionRange)
                 .OrderByDescending(x => Vector3.Distance(x.transform.position, SearchTransform.position))
                 .ToArray();
             
@@ -35,7 +56,7 @@ namespace Unity.Game
             foreach (var c in colliders)
             {
                 var t = c.GetComponent<AttackTarget>();
-                if (t != null && !t.IsDead && t.Faction == _unit.OpponentFaction)
+                if (t != null && !t.IsDead && t.Faction == _opponentFaction)
                 {
                     target = t;
                     break;
@@ -46,19 +67,14 @@ namespace Unity.Game
         }
         
         public bool TryGetTargetTower(out AttackTarget target)
-            => _gameController.TryGetOpponentTower(_unit.OpponentFaction, out target);
+            => _gameController.TryGetOpponentTower(_opponentFaction, out target);
 
         private void OnDrawGizmos()
         {
-            if (_unit == null) return;
-            
             Gizmos.color = Color.blue;
-            DrawCircle(_unit.transform.position, _unit.TargetSearch.Data.DetectionRange);
-            if (_unit.Attack.Data != null)
-            {
-                Gizmos.color = Color.red;
-                DrawCircle(_unit.transform.position, _unit.Attack.Data.Range);
-            }
+            DrawCircle(transform.position, DetectionRange);
+            Gizmos.color = Color.red;
+            DrawCircle(transform.position, AttackRange);
         }
 
         private void DrawCircle(Vector3 center, float radius)
