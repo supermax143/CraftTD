@@ -8,6 +8,7 @@ namespace Core.Application.DataStorage
         TutorialStorageData TutorialStorage { get; }
         PurchasesStorageData Purchases { get; }
         uint UserMoney { get; }
+        float FoodProductionPerSecond { get; }
         void AddMoney(uint Value);
         void SetMoney(uint Value);
     }

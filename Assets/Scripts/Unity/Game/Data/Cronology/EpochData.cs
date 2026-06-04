@@ -35,6 +35,7 @@ namespace Unity.Game
         private List<UnitWave> _waves;
         
         public TowerEntityData Tower => _tower;
+        public List<UnitWave> Waves => _waves;
 
 
         public UnitEntityData GetUnitDataByTier(UnitTier tier)
