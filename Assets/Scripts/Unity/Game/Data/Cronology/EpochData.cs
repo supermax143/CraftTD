@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -29,20 +30,39 @@ namespace Unity.Game
         [SerializeField]
         private UnitEntityData _unitTier3;
 
+        [ListDrawerSettings(ShowIndexLabels = true)]
+        [SerializeField]
+        private List<UnitWave> _waves;
+        
         public TowerEntityData Tower => _tower;
 
 
-        public UnitEntityData GetRandomUnitTier()
+        public UnitEntityData GetUnitDataByTier(UnitTier tier)
+        {
+            switch (tier)
+            {
+                case UnitTier.Tier1:
+                    return _unitTier1;
+                case UnitTier.Tier2:
+                    return _unitTier2;
+                case UnitTier.Tier3:
+                    return _unitTier3;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(tier), tier, null);
+            }
+        }
+        
+        public UnitTier GetRandomUnitTier()
         {
             var random = UnityEngine.Random.Range(0, 3);
             switch (random)
             {
                 case 0:
-                    return _unitTier1;
+                    return UnitTier.Tier1;
                 case 1:
-                    return _unitTier2;
+                    return UnitTier.Tier2;
                 case 2:
-                    return _unitTier3;
+                    return UnitTier.Tier3;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

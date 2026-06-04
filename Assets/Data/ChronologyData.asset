@@ -81,6 +81,47 @@ MonoBehaviour:
       _unitPrefab:
         _value: {fileID: 5664583615172295447, guid: ed4106c5e449b974d997e6c72c4e5a62,
           type: 3}
+    _waves:
+    - _squads:
+      - _delay: 3
+        _tier: 0
+        _count: 1
+      - _delay: 3
+        _tier: 0
+        _count: 2
+      - _delay: 3
+        _tier: 0
+        _count: 4
+    - _squads:
+      - _delay: 3
+        _tier: 1
+        _count: 2
+      - _delay: 3
+        _tier: 0
+        _count: 3
+      - _delay: 3
+        _tier: 2
+        _count: 2
+    - _squads:
+      - _delay: 3
+        _tier: 0
+        _count: 5
+      - _delay: 3
+        _tier: 2
+        _count: 1
+      - _delay: 3
+        _tier: 2
+        _count: 2
+    - _squads:
+      - _delay: 3
+        _tier: 0
+        _count: 3
+      - _delay: 3
+        _tier: 1
+        _count: 1
+      - _delay: 3
+        _tier: 0
+        _count: 5
   - _epochName: "\u042D\u043F\u043E\u0445\u0430 \u0440\u044B\u0446\u0430\u0440\u0435\u0439"
     _tower:
       _health:
@@ -144,3 +185,4 @@ MonoBehaviour:
         _value: 0
       _unitPrefab:
         _value: {fileID: 0}
+    _waves: []

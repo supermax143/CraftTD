@@ -1236,6 +1236,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.View.Helpers.LocalizedTMP
   _key: show_window_button
   _textField: {fileID: 1352965568}
+--- !u!1 &1507421259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3556083181436928593, guid: c3ee5c5542043344fb1cfc388b9031c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4817142974088229545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1507421261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507421259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f70b4202c83459291956a7fe6e7e2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.RandomSpawner
+  _spawnRange: 1
+  _spawnTransform: {fileID: 0}
+  _spawnDelay: 1
 --- !u!1 &1584959696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1572,10 +1593,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6917813634538986498, guid: c3ee5c5542043344fb1cfc388b9031c0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3556083181436928593, guid: c3ee5c5542043344fb1cfc388b9031c0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1920939220}
   m_SourcePrefab: {fileID: 100100000, guid: c3ee5c5542043344fb1cfc388b9031c0, type: 3}
 --- !u!4 &1780969244 stripped
 Transform:
@@ -1639,6 +1665,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1920939218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3556083181436928593, guid: c3ee5c5542043344fb1cfc388b9031c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1780969243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1920939220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920939218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f70b4202c83459291956a7fe6e7e2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.RandomSpawner
+  _spawnRange: 1
+  _spawnTransform: {fileID: 0}
+  _spawnDelay: 1
 --- !u!4 &2047521520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7061525377109044230, guid: c3ee5c5542043344fb1cfc388b9031c0,
@@ -1747,10 +1794,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6917813634538986498, guid: c3ee5c5542043344fb1cfc388b9031c0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3556083181436928593, guid: c3ee5c5542043344fb1cfc388b9031c0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1507421261}
   m_SourcePrefab: {fileID: 100100000, guid: c3ee5c5542043344fb1cfc388b9031c0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
