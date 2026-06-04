@@ -10,11 +10,13 @@ namespace Unity.Installers
     {
         [SerializeField]
         private GameController _gameController;
-        
+        [SerializeField]
+        private FoodProduction _foodProduction;
         
         public override void InstallBindings()
         {
             Container.BindInstance(_gameController).AsSingle();
+            Container.BindInstance(_foodProduction).AsSingle();
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Core.Application.DataStorage
         {
             _tutorialStorageData = new TutorialStorageData(_localStorageProvider);
             _userStorageData = new UserStorageData(_globalStorageProvider);
-            _foodProductionPerSecond = new FloatStorageVariable("FoodProduction", _localStorageProvider);
+            _foodProductionPerSecond = new FloatStorageVariable("FoodProduction", _localStorageProvider, .25f);
             
             
             Debug.Log($"{this.GetType().Name} Initialized");

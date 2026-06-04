@@ -40,8 +40,8 @@ namespace Unity.Game
             }
 
             _curProgress = 1;
-            OnFoodProduced?.Invoke();
             _curFoodCount++;
+            OnFoodProduced?.Invoke();
             StartCoroutine(Produce());
         }
         

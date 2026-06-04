@@ -20,6 +20,7 @@ namespace Unity.Presentation.Components
         {
             _foodProduction.OnFoodProductionStarted += FoodProductionStartedHandler;
             _foodProduction.OnFoodProduced += FoodProducedHandler;
+            _foodCountTF.text = _foodProduction.CurrentFoodCount.ToString();
         }
 
         private void FoodProducedHandler()

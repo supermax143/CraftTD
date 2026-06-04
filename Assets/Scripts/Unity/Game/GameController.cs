@@ -15,6 +15,7 @@ namespace Unity.Game
         private List<Team> _teams;
         
         [Inject] private ChronologyData _chronologyData;
+        [Inject] private FoodProduction _foodProduction;
         
         public void Start()
         {
@@ -29,6 +30,7 @@ namespace Unity.Game
             {
                 team.StartGame();
             }
+            _foodProduction.StartProduction();
         }
 
         private void TowerDestroyedHandler(TowerController tower)
