@@ -7,9 +7,6 @@ namespace Core.Application.ApplicationSession.States
 {
    internal class MainMenuState : SessionStateBase
    {
-
-      [Inject] IScenesLoader _scenesLoader;
-      
       protected override void OnStateEnter()
       {
          if (_scenesLoader.CurScene == SceneNames.MainMenuScene)

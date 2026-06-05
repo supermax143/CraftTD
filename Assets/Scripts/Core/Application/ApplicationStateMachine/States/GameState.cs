@@ -6,7 +6,6 @@ namespace Core.Application.ApplicationSession.States {
 	internal class GameState : SessionStateBase
 	{
 		
-		[Inject] IScenesLoader _scenesLoader;
 		
 		protected override void OnStateEnter()
 		{

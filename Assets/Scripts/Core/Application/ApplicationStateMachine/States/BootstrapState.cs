@@ -7,7 +7,6 @@ namespace Core.Application.ApplicationSession.States
 {
    internal class BootstrapState : SessionStateBase
    {
-      [Inject] private IScenesLoader _scenesLoader;
       [Inject] private IGameBootstrap _gameBootstrap;
       
       protected override async void OnStateEnter()

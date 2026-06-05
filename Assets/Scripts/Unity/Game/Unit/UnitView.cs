@@ -53,8 +53,10 @@ namespace Unity.Game
             _color = color;
             _tintController.SetTintColor(color);
         }
-        
-        
-        
+
+        private void OnDestroy()
+        {
+            _healthComponent.OnDamage -= OnDamage;
+        }
     }
 }

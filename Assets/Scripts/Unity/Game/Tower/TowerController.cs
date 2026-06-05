@@ -27,7 +27,11 @@ namespace Unity.Game
         public Faction Faction => _faction;
 
         public AttackTarget AttackTarget => _attackTarget;
-        
+
+        private void Start()
+        {
+            _health.OnDeath += OnDeath;
+        }
 
         private void OnValidate()
         {
@@ -50,7 +54,6 @@ namespace Unity.Game
         {
             base.SetData(data);
             _health.SetData(data);
-            _health.OnDeath += OnDeath;
             _attackTarget.Initialize(_health);
         }
 
@@ -58,6 +61,11 @@ namespace Unity.Game
         {
             OnDestroyed?.Invoke(this);
             Destroy(gameObject);
+        }
+        
+        private void OnDestroy()
+        {
+            _health.OnDeath -= OnDeath;
         }
     }
 }

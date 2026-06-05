@@ -1,4 +1,5 @@
-﻿using Core.Domain.Services.ApplicationSession;
+﻿using Core.Application.Interfaces;
+using Core.Domain.Services.ApplicationSession;
 using Zenject;
 
 namespace Core.Application.ApplicationSession.States
@@ -7,6 +8,7 @@ namespace Core.Application.ApplicationSession.States
    {
       
       [Inject] protected ApplicationStateMachine ApplicationStateMachine;
+      [Inject] protected IScenesLoader _scenesLoader;
 
       public void Enter()
       {

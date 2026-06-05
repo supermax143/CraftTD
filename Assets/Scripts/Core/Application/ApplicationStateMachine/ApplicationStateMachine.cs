@@ -21,7 +21,7 @@ namespace Core.Application.ApplicationSession
       public void Initialize()
       {
 #if DEBUG_MODE
-         _currentState = _container.Resolve<DebugState>();
+         ChangeState<DebugState>();
          return;
 #endif
          ChangeState<BootstrapState>();
