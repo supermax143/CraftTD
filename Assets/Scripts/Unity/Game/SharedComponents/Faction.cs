@@ -2,7 +2,7 @@
 {
     public enum Faction
     {
-        Friend,
+        Player,
         Enemy
     }
 }

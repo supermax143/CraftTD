@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Unity.Game
 {
-    public class RandomSpawner : SpawnerBase
+    public class RandomSpawner : Spawner
     {
         [SerializeField]
         private float _spawnDelay;
@@ -28,6 +28,7 @@ namespace Unity.Game
         
         protected override void TowerDestroyedHandler(Faction faction)
         {
+            base.TowerDestroyedHandler(faction);
             StopAllCoroutines();
         }
         

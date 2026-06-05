@@ -10,17 +10,17 @@ namespace Unity.Game
     public class FoodProduction : MonoBehaviour, IFoodProduction
     {
         public event Action OnFoodProductionStarted;
-        public event Action OnFoodProduced;
+        public event Action OnFoodChanged;
         
         [Inject] private IDataStorage _dataStorage;
 
-        private int _curFoodCount;
+        private int _foodCount;
         private float _foodProductionTime;
         private Timer timer = new Timer();
         private float _curProgress = 0;
         private bool _started = false;
         
-        public int CurrentFoodCount => _curFoodCount;
+        public int FoodCount => _foodCount;
         public float CurProgress => _curProgress;
 
         public bool Started => _started;
@@ -45,13 +45,20 @@ namespace Unity.Game
             }
 
             _curProgress = 1;
-            _curFoodCount++;
-            OnFoodProduced?.Invoke();
+            _foodCount++;
+            OnFoodChanged?.Invoke();
             StartCoroutine(Produce());
         }
-        
-        
-        
-        
+
+
+        public void WithdrawFood(int count)
+        {
+            if (count > _foodCount)
+            {
+                return;
+            }
+            _foodCount -= count;
+            OnFoodChanged?.Invoke();
+        }
     }
 }

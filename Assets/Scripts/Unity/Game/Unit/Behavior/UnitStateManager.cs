@@ -25,7 +25,7 @@ namespace Unity.Game
         private UnitState _currentState;
         private AttackTarget _currentTarget;
 
-        [Inject] private GameController _gameController;
+        [Inject] private IGameController _gameController;
         
         public AttackTarget CurrentTarget
         {
@@ -33,7 +33,7 @@ namespace Unity.Game
             set => _currentTarget = value;
         }
 
-        public GameController GameController => _gameController;
+        public IGameController GameController => _gameController;
 
         private void OnValidate()
         {

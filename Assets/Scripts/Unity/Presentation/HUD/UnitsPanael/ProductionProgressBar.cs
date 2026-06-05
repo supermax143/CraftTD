@@ -18,8 +18,8 @@ namespace Unity.Presentation.Components
         
         private void Start()
         {
-            _foodProduction.OnFoodProduced += FoodProducedHandler;
-            _foodCountTF.text = _foodProduction.CurrentFoodCount.ToString();
+            _foodProduction.OnFoodChanged += FoodProducedHandler;
+            _foodCountTF.text = _foodProduction.FoodCount.ToString();
             if (!_foodProduction.Started)
             {
                 _foodProduction.OnFoodProductionStarted += FoodProductionStartedHandler;
@@ -32,7 +32,7 @@ namespace Unity.Presentation.Components
 
         private void FoodProducedHandler()
         {
-            _foodCountTF.text = _foodProduction.CurrentFoodCount.ToString();
+            _foodCountTF.text = _foodProduction.FoodCount.ToString();
         }
 
         private void FoodProductionStartedHandler()

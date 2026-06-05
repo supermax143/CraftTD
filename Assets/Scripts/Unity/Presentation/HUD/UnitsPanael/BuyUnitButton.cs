@@ -23,7 +23,8 @@ namespace Unity.Presentation.HUD.UnitsPanael
         
         [Inject] private IFoodProduction _foodProduction;
         [Inject] private EpochManager _epochManager;
-       
+        [Inject] private IGameController _gameController;
+        
         private UnitEntityData _unitData;
         private int _foodCost;
         
@@ -36,7 +37,7 @@ namespace Unity.Presentation.HUD.UnitsPanael
         {
             _epochManager.TryGetUnitDataByTier(_unitTier, out _unitData);
             _foodCost = _unitData.Cost;
-            _foodProduction.OnFoodProduced += UpdateBuyAvailable;
+            _foodProduction.OnFoodChanged += UpdateBuyAvailable;
             UpdateView();
             UpdateBuyAvailable();
         }
@@ -49,12 +50,12 @@ namespace Unity.Presentation.HUD.UnitsPanael
 
         private void UpdateBuyAvailable()
         {
-            _button.interactable = _foodProduction.CurrentFoodCount >= _foodCost;
+            _button.interactable = _foodProduction.FoodCount >= _foodCost;
         }
 
         public void BuyUnit()
         {
-            
+            _gameController.BuyUnit(_unitTier);
         }
     }
     

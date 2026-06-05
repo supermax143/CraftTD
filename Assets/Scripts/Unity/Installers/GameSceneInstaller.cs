@@ -20,7 +20,7 @@ namespace Unity.Installers
         
         public override void InstallBindings()
         {
-            Container.BindInstance(_gameController).AsSingle();
+            Container.Bind<IGameController>().FromInstance(_gameController).AsSingle();
             Container.Bind<IFoodProduction>().FromInstance(_foodProduction).AsSingle();
         }
         

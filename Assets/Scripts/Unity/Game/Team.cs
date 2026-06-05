@@ -11,7 +11,7 @@ namespace Unity.Game
         [SerializeField, HideInInspector] 
         private TowerController _tower;
         [SerializeField, HideInInspector] 
-        private SpawnerBase _spawner;
+        private Spawner _spawner;
         
         
         [SerializeField] 
@@ -19,21 +19,25 @@ namespace Unity.Game
         [SerializeField] 
         private Faction _enemyFaction;
         
-        
-        [Inject] protected ChronologyData _chronologyData;
+        [Inject] protected EpochManager _epochManager;
         
         public TowerController Tower => _tower;
         private EpochData _epoch;
+        
+        public Spawner Spawner => _spawner;
+
+        public Faction Faction => _faction;
+
 
         private void OnValidate()
         {
-            _spawner = GetComponentInChildren<SpawnerBase>();
+            _spawner = GetComponentInChildren<Spawner>();
             _tower = GetComponentInChildren<TowerController>();
         }
 
-        public void Initialize(EpochData epoch)
+        public void Initialize()
         {
-            _epoch = epoch;
+            _epochManager.TryGetCurrentEpoch(out _epoch);
             _tower.SetFaction(_faction);
             _spawner.SetFaction(_faction, _enemyFaction);
             _tower.SetData(_epoch.Tower);
@@ -41,7 +45,7 @@ namespace Unity.Game
 
         public void StartGame()
         {
-            _spawner.StartSpawn(_chronologyData.Epochs[0]);
+            _spawner.StartSpawn(_epoch);
         }
         
     }

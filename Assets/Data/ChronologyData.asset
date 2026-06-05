@@ -37,7 +37,7 @@ MonoBehaviour:
       _detectionRange:
         _value: 4
       _unitCost:
-        _value: 3
+        _value: 1
       _unitPrefab:
         _value: {fileID: 5664583615172295447, guid: c91991e774fc6c048bf2e802abebfdd0,
           type: 3}
@@ -57,7 +57,7 @@ MonoBehaviour:
       _detectionRange:
         _value: 4
       _unitCost:
-        _value: 5
+        _value: 2
       _unitPrefab:
         _value: {fileID: 5664583615172295447, guid: b33838309d23b3b4cb4e8d91ed052447,
           type: 3}
@@ -77,7 +77,7 @@ MonoBehaviour:
       _detectionRange:
         _value: 4
       _unitCost:
-        _value: 10
+        _value: 3
       _unitPrefab:
         _value: {fileID: 5664583615172295447, guid: ed4106c5e449b974d997e6c72c4e5a62,
           type: 3}

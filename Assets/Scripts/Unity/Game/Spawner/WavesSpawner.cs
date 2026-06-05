@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Unity.Game
 {
-    public class WavesSpawner : SpawnerBase
+    public class WavesSpawner : Spawner
     {
         private int _waveIndex;
         
@@ -35,6 +35,7 @@ namespace Unity.Game
         
         protected override void TowerDestroyedHandler(Faction faction)
         {
+            base.TowerDestroyedHandler(faction);
             StopAllCoroutines();
         }
     }

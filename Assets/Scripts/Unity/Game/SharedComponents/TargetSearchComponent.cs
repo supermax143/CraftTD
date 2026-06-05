@@ -11,7 +11,7 @@ namespace Unity.Game
         public const float DETECTION_INTERVAL = .3f;
         
         
-        [Inject] private GameController _gameController;
+        [Inject] private IGameController _gameController;
         
         /*private TargetSearchData _data;
         private UnitController _unit;*/

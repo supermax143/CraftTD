@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Unity.Game
 {
-    public class GameController : MonoBehaviour
+    public class GameController : MonoBehaviour, IGameController
     {
         
         public event Action<Faction> OnTowerDestroyed;
@@ -15,16 +15,31 @@ namespace Unity.Game
         private List<Team> _teams;
         [SerializeField] 
         private FoodProduction _foodProduction;
+
         
-        [Inject] private ChronologyData _chronologyData;
+        [Inject] private EpochManager _epochManager;
+
+        private Spawner _spawner;
+        private bool _started = false;
         
-        public void Start()
+        private void Start()
         {
-            var epoch = _chronologyData.Epochs.First();
             foreach (var team in _teams)
             {
-                team.Initialize(epoch);
+                team.Initialize();
                 team.Tower.OnDestroyed += TowerDestroyedHandler;
+                if (team.Faction == Faction.Player)
+                {
+                    _spawner = team.Spawner;
+                }
+            }
+        }
+
+        public void StartGame()
+        {
+            if (_started)
+            {
+                return;
             }
             
             foreach (var team in _teams)
@@ -32,6 +47,7 @@ namespace Unity.Game
                 team.StartGame();
             }
             _foodProduction.StartProduction();
+            _started = true;
         }
 
         private void TowerDestroyedHandler(TowerController tower)
@@ -53,6 +69,16 @@ namespace Unity.Game
             return true;
         }
         
+        public void BuyUnit(UnitTier tier)
+        {
+            _epochManager.TryGetUnitDataByTier(tier, out var unitData);
+            if (_foodProduction.FoodCount < unitData.Cost)
+            {
+                return;
+            }
+            _foodProduction.WithdrawFood(unitData.Cost);
+            _spawner.Spawn(tier, 1);
+        }
         
     }
 }
