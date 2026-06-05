@@ -12,5 +12,10 @@ namespace Core.Application.ApplicationSession.States {
 		{
 			_scenesLoader.LoadGameScene();
 		}
+
+		public override void ExitGame()
+		{
+			ApplicationStateMachine.ChangeState<MainMenuState>();
+		}
 	}
 }

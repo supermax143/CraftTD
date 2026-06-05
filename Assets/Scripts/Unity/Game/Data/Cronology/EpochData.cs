@@ -37,6 +37,8 @@ namespace Unity.Game
         public TowerEntityData Tower => _tower;
         public List<UnitWave> Waves => _waves;
 
+        public string EpochName => _epochName;
+
 
         public UnitEntityData GetUnitDataByTier(UnitTier tier)
         {

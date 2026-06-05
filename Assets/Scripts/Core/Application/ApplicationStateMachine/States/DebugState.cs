@@ -14,5 +14,10 @@ namespace Core.Application.ApplicationStateMachine.States
         {
             ApplicationStateMachine.ChangeState<GameState>();
         }
+        
+        public override void ExitGame()
+        {
+            ApplicationStateMachine.ChangeState<MainMenuState>();
+        }
     }
 }

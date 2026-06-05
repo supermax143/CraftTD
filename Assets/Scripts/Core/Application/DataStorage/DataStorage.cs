@@ -17,11 +17,6 @@ namespace Core.Application.DataStorage
 #endif
     {
        
-        /// <summary>
-        /// Event triggered when data is updated.
-        /// </summary>
-        public event Action TriggerUpdate;
-        
         
         [Inject]
         private ILocalStorageProvider _localStorageProvider;
@@ -66,22 +61,28 @@ namespace Core.Application.DataStorage
             _tutorialStorageData.Reset();
             _userStorageData.Reset();
             _purchasesStorageData.Reset();
-            
-            TriggerUpdate?.Invoke();
         }
 
         public void AddMoney(uint Value)
         {
             _userStorageData.AddMoney(Value);
-            TriggerUpdate?.Invoke();
         }
         
         public void SetMoney(uint Value)
         {
             _userStorageData.SetMoney(Value);
-            TriggerUpdate?.Invoke();
         }
 
+        public void SetCurrentEpoch(int index)
+        {
+            _curEpochIndex.Value = index;
+        }
+
+        public void SetFoodProductionPerSecond(float value)
+        {
+            _foodProductionPerSecond.Value = value;
+        }
+        
         public uint UserMoney
         {
             get { return _userStorageData.Money; }

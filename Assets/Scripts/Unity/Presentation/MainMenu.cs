@@ -1,9 +1,11 @@
 using System.Linq;
+using Core.Application.DataStorage;
 using Core.Application.Interfaces;
 using Core.Application.Interfaces.ApplicationSession;
 using Core.Domain.Services;
 using Core.Domain.Services.ApplicationSession;
 using TMPro;
+using Unity.Game;
 using UnityEngine;
 using Zenject;
 
@@ -13,16 +15,35 @@ namespace Unity.Presentation
 	{
 		[Inject] private IApplicationSession _applicationSession;
 		[Inject] private ILocalization _localization;
+		[Inject] private EpochManager _epochManager;
+		[Inject] private IDataStorage _dataStorage;
 		
 		[SerializeField]
 		private TMP_Dropdown _languageSelector;
-
+		[SerializeField]
+		private TMP_Dropdown _epochSelector;
+		[SerializeField]
+		private TMP_InputField _foodProductionInput;
+		
 		private void Start()
 		{
-			UpdateLangugeSelector();
+			UpdateLanguageSelector();
+			UpdateEpochSelector();
+			UpdateFoodProductionInput();
 		}
 
-		private void UpdateLangugeSelector()
+		private void UpdateFoodProductionInput()
+		{
+			_foodProductionInput.text = _dataStorage.FoodProductionPerSecond.ToString();
+		}
+
+		private void UpdateEpochSelector()
+		{
+			_epochSelector.options = _epochManager.GetEpochs().
+				Select(epochData => new TMP_Dropdown.OptionData { text = epochData.EpochName } ).ToList();
+		}
+
+		private void UpdateLanguageSelector()
 		{
 			if (!_localization.TryGetLanguageCodes(out var codes))
 			{
@@ -44,6 +65,12 @@ namespace Unity.Presentation
 		public void StartGame()
 		{
 			_applicationSession.CurrentState.StartGame();
+		}
+		
+		public void Save()
+		{
+			_epochManager.SetEpoch(_epochSelector.value);
+			_dataStorage.SetFoodProductionPerSecond(float.Parse(_foodProductionInput.text));
 		}
 	}
 }

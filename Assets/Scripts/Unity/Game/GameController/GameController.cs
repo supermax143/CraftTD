@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Application.Interfaces.ApplicationSession;
 using UnityEngine;
 using Zenject;
 
@@ -16,12 +17,12 @@ namespace Unity.Game
         [SerializeField] 
         private FoodProduction _foodProduction;
 
-        
         [Inject] private EpochManager _epochManager;
-
+        [Inject] private IApplicationSession _applicationSession;
+        
         private Spawner _spawner;
         private bool _started = false;
-        
+
         private void Start()
         {
             foreach (var team in _teams)
@@ -52,6 +53,7 @@ namespace Unity.Game
 
         private void TowerDestroyedHandler(TowerController tower)
         {
+            _foodProduction.StopProduction();
             OnTowerDestroyed?.Invoke(tower.Faction);
         }
 
@@ -79,6 +81,10 @@ namespace Unity.Game
             _foodProduction.WithdrawFood(unitData.Cost);
             _spawner.Spawn(tier, 1);
         }
-        
+
+        public void ExitGame()
+        {
+            _applicationSession.CurrentState.ExitGame();
+        }
     }
 }

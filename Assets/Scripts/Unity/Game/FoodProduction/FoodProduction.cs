@@ -26,6 +26,7 @@ namespace Unity.Game
         public bool Started => _started;
 
 
+
         public void StartProduction()
         {
             _foodProductionTime = 1 / _dataStorage.FoodProductionPerSecond;
@@ -34,6 +35,12 @@ namespace Unity.Game
             _started = true;
         }
 
+        public void StopProduction()
+        {
+            StopAllCoroutines();
+            _started = false;
+        }
+        
         private IEnumerator Produce()
         {
             _curProgress = 0;
