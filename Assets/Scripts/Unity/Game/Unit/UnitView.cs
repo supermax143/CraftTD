@@ -41,12 +41,10 @@ namespace Unity.Game
 
         private IEnumerator DamageAnimation()
         {
-            Debug.Log("start");
             _tintController.SetTintColor(Color.red);
             //yield return _blinkEffect.Show();
             yield return new WaitForSeconds(0.2f);
             _tintController.SetTintColor(_color);
-            Debug.Log("finish");
             
         }
 

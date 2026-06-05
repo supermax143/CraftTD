@@ -37,6 +37,9 @@ namespace Unity.Installers
          //Data
          Container.Bind<ChronologyData>().FromInstance(_chronologyData);
          
+         //EpochManager
+         Container.Bind<EpochManager>().AsSingle();
+         
          Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle();
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
          Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController);

@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Unity.Game
 {
-    public class FoodProduction : MonoBehaviour
+    public class FoodProduction : MonoBehaviour, IFoodProduction
     {
         public event Action OnFoodProductionStarted;
         public event Action OnFoodProduced;
@@ -18,15 +18,20 @@ namespace Unity.Game
         private float _foodProductionTime;
         private Timer timer = new Timer();
         private float _curProgress = 0;
+        private bool _started = false;
         
         public int CurrentFoodCount => _curFoodCount;
         public float CurProgress => _curProgress;
+
+        public bool Started => _started;
+
 
         public void StartProduction()
         {
             _foodProductionTime = 1 / _dataStorage.FoodProductionPerSecond;
             OnFoodProductionStarted?.Invoke();
             StartCoroutine(Produce());
+            _started = true;
         }
 
         private IEnumerator Produce()

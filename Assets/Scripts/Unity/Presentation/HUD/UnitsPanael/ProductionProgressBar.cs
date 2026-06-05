@@ -14,13 +14,20 @@ namespace Unity.Presentation.Components
         [SerializeField]
         private Image _fillImage;
         
-        [Inject] private FoodProduction _foodProduction;
+        [Inject] private IFoodProduction _foodProduction;
         
         private void Start()
         {
-            _foodProduction.OnFoodProductionStarted += FoodProductionStartedHandler;
             _foodProduction.OnFoodProduced += FoodProducedHandler;
             _foodCountTF.text = _foodProduction.CurrentFoodCount.ToString();
+            if (!_foodProduction.Started)
+            {
+                _foodProduction.OnFoodProductionStarted += FoodProductionStartedHandler;
+            }
+            else
+            {
+                FoodProductionStartedHandler();
+            }
         }
 
         private void FoodProducedHandler()
@@ -30,6 +37,7 @@ namespace Unity.Presentation.Components
 
         private void FoodProductionStartedHandler()
         {
+            _foodProduction.OnFoodProductionStarted -= FoodProductionStartedHandler;
             StartCoroutine(UpdateProgress());
         }
         

@@ -32,12 +32,12 @@ namespace Core.Application.DataStorage
         private TutorialStorageData _tutorialStorageData;
         private PurchasesStorageData _purchasesStorageData;
         private FloatStorageVariable _foodProductionPerSecond;
-       
+        private IntStorageVariable _curEpochIndex;
 
         public TutorialStorageData TutorialStorage => _tutorialStorageData;
         public PurchasesStorageData Purchases => _purchasesStorageData;
         public float FoodProductionPerSecond => _foodProductionPerSecond.Value;
-        
+        public int CurrentEpochIndex => _curEpochIndex.Value;
         
 #if DEBUG_MODE
         public void Initialize()
@@ -51,7 +51,7 @@ namespace Core.Application.DataStorage
             _tutorialStorageData = new TutorialStorageData(_localStorageProvider);
             _userStorageData = new UserStorageData(_globalStorageProvider);
             _foodProductionPerSecond = new FloatStorageVariable("FoodProduction", _localStorageProvider, .25f);
-            
+            _curEpochIndex = new IntStorageVariable("CurrentEpoch", _localStorageProvider, 0);
             
             Debug.Log($"{this.GetType().Name} Initialized");
             return Task.CompletedTask;

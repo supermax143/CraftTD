@@ -13,9 +13,10 @@ namespace Unity.Game
         
         [SerializeField]
         private List<Team> _teams;
+        [SerializeField] 
+        private FoodProduction _foodProduction;
         
         [Inject] private ChronologyData _chronologyData;
-        [Inject] private FoodProduction _foodProduction;
         
         public void Start()
         {

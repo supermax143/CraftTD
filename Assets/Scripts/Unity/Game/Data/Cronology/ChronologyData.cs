@@ -12,5 +12,16 @@ namespace Unity.Game
         private List<EpochData> _epochs;
 
         public List<EpochData> Epochs => _epochs;
+
+        public bool TryGetEpoch(int index, out EpochData epoch)
+        {
+            epoch = default;
+            if (index >= 0 && index < _epochs.Count)
+            {
+                epoch = _epochs[index];
+                return  true;
+            }
+            return false;
+        }
     }
 }

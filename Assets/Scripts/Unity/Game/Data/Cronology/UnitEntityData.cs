@@ -32,7 +32,7 @@ namespace Unity.Game
         [InlineProperty, SerializeField] 
         private UnitPrefabAttribute _unitPrefab;
         
-        
+        public int Cost => _unitCost.Value;
         
     }
 }

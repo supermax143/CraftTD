@@ -9,6 +9,7 @@ namespace Core.Application.DataStorage
         PurchasesStorageData Purchases { get; }
         uint UserMoney { get; }
         float FoodProductionPerSecond { get; }
+        int CurrentEpochIndex { get; }
         void AddMoney(uint Value);
         void SetMoney(uint Value);
     }
