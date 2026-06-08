@@ -15,7 +15,7 @@ namespace Core.Application.DataStorage.StorageItems
         public uint Money;
         public uint FoodProductionLevel;
         public uint TowerUpgradeLevel;
-        public readonly List<UnitTier> _openedUnits = new();
+        public readonly List<UnitTier> OpenedUnits = new();
     }
 
     internal class EpochStorageData
@@ -23,13 +23,13 @@ namespace Core.Application.DataStorage.StorageItems
         private const string EPOCH_DATA_KEY = "EpochData";
         
         private EpochDataInfo _epochDataInfo = new EpochDataInfo();
-        private readonly StringStorageVariable _userDataVariable;
+        private readonly StringStorageVariable _epochDataVariable;
         
         private readonly IStorageProvider _storageProvider;
 
         public EpochStorageData(IStorageProvider storageProvider)
         {
-            _userDataVariable = new StringStorageVariable(EPOCH_DATA_KEY, storageProvider);
+            _epochDataVariable = new StringStorageVariable(EPOCH_DATA_KEY, storageProvider);
             
             var userDataInfo = LoadUserDataInfo();
             if (userDataInfo != null)
@@ -53,18 +53,50 @@ namespace Core.Application.DataStorage.StorageItems
         }
 
         
-
+        public uint FoodProductionLevel
+        {
+            get => _epochDataInfo.FoodProductionLevel;
+            set
+            {
+                _epochDataInfo.FoodProductionLevel = value;
+                Save();
+            }
+        }
+        
+        
+        public uint TowerUpgradeLevel
+        {
+            get => _epochDataInfo.TowerUpgradeLevel;
+            set
+            {
+                _epochDataInfo.TowerUpgradeLevel = value;
+                Save();
+            }
+        }
+        
+        
+        public IEnumerable<UnitTier> GetOpenedUnits()
+        {
+            return _epochDataInfo.OpenedUnits;
+        }
+        
+        public void OpenUnit(UnitTier tier)
+        {
+            if (_epochDataInfo.OpenedUnits.Contains(tier))
+            {
+                return;
+            }
+            _epochDataInfo.OpenedUnits.Add(tier);
+            Save();
+        }
+        
+        
         public void AddMoney(uint amount)
         {
             _epochDataInfo.Money += amount;
             Save();
         }
-
-        public void SetMoney(uint amount)
-        {
-            _epochDataInfo.Money = amount;
-            Save();
-        }
+        
 
         public void Reset()
         {
@@ -82,7 +114,7 @@ namespace Core.Application.DataStorage.StorageItems
 
         private void Save()
         {
-            _userDataVariable.Value = SerializeToJson();
+            _epochDataVariable.Value = SerializeToJson();
         }
         
         private string SerializeToJson()
@@ -92,7 +124,7 @@ namespace Core.Application.DataStorage.StorageItems
         
         private EpochDataInfo LoadUserDataInfo()
         {
-            var json = _userDataVariable.Value;
+            var json = _epochDataVariable.Value;
             if (string.IsNullOrEmpty(json))
                 return null;
                 

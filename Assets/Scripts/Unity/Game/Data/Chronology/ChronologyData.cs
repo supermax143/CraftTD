@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using Core.Application.Interfaces.Info;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Unity.Game
 {
     [CreateAssetMenu(menuName = "CraftTD/ChronologyData", order = 1)]
-    public class ChronologyData : ScriptableObject
+    public class ChronologyData : ScriptableObject, IChronologyInfo
     {
         [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "_epochName")]
         [SerializeField]
@@ -23,5 +24,17 @@ namespace Unity.Game
             }
             return false;
         }
+        
+        public bool TryGetEpochInfo(int index, out IEpochInfo epoch)
+        {
+            epoch = default;
+            if (TryGetEpoch(index, out var data))
+            {
+                epoch = data;
+                return true;
+            }
+            return false;
+        }
+
     }
 }

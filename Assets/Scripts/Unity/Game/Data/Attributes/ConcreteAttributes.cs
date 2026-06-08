@@ -61,12 +61,26 @@ namespace Unity.Game.Attributes.Specific
     }
     
     [Serializable]
-    public class UnitCostAttribute : IntEntityAttribute
+    public class UnitFoodCostAttribute : IntEntityAttribute
     {
-        public UnitCostAttribute(int value = 0) 
-            : base(value, GameEntityAttributeKind.UnitCost) { }
+        public UnitFoodCostAttribute(int value = 0) 
+            : base(value, GameEntityAttributeKind.UnitFoodCost) { }
     }
     
+    
+    [Serializable]
+    public class UnitUnlockCostAttribute : IntEntityAttribute
+    {
+        public UnitUnlockCostAttribute(int value = 0) 
+            : base(value, GameEntityAttributeKind.UnitUnlockCost) { }
+    }
+    
+    [Serializable]
+    public class RewardMoneyAttribute : IntEntityAttribute
+    {
+        public RewardMoneyAttribute(int value = 0) 
+            : base(value, GameEntityAttributeKind.RewardMoney) { }
+    }
     
     [Serializable]
     public class TowerPrefabAttribute : GameObjectEntityAttribute

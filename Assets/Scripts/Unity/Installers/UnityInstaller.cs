@@ -35,7 +35,7 @@ namespace Unity.Installers
          InitializeAddressables();
 
          //Data
-         Container.Bind<ChronologyData>().FromInstance(_chronologyData);
+         Container.BindInterfacesAndSelfTo<ChronologyData>().FromInstance(_chronologyData);
          
          //EpochManager
          Container.Bind<EpochManager>().AsSingle();

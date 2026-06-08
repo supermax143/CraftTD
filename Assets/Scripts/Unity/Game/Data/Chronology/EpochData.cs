@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.Application.Interfaces.Info;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace Unity.Game
 {
     
     [Serializable]
-    public class EpochData
+    public class EpochData : IEpochInfo
     {
         [SerializeField]
         private string _epochName;
@@ -38,8 +39,7 @@ namespace Unity.Game
         public List<UnitWave> Waves => _waves;
 
         public string EpochName => _epochName;
-
-
+        
         public UnitEntityData GetUnitDataByTier(UnitTier tier)
         {
             switch (tier)
@@ -70,6 +70,14 @@ namespace Unity.Game
                     throw new ArgumentOutOfRangeException();
             }
         }
+        
+        public IEnumerable<IUnitInfo> GetUnits()
+        {
+            yield return _unitTier1;
+            yield return _unitTier2;
+            yield return _unitTier3;
+        }
+
         
     }
 }

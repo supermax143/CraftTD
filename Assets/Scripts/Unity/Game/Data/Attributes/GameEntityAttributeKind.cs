@@ -10,8 +10,10 @@
         DetectionRange,
         DetectionInterval,
         Health,
-        UnitCost,
+        UnitFoodCost,
         UnitPrefab,
-        TowerPrefab
+        TowerPrefab,
+        RewardMoney,
+        UnitUnlockCost
     }
 }

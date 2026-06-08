@@ -7,6 +7,7 @@ namespace Core.Application.Interfaces.Windows
 	public interface IWindow
 	{
 		GameObject GameObject { get; }
+		void Initialize();
 		void Show();
 
 		void Hide();

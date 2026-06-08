@@ -22,6 +22,8 @@ MonoBehaviour:
         _value: {fileID: 6563548916185858267, guid: 787862c76b6a5a549b8dcdcd77da43fc,
           type: 3}
     _unitTier1:
+      _name: 
+      _tier: 0
       _health:
         _value: 10
       _moveSpeed:
@@ -38,10 +40,14 @@ MonoBehaviour:
         _value: 4
       _unitCost:
         _value: 1
+      _rewardMoney:
+        _value: 0
       _unitPrefab:
         _value: {fileID: 5664583615172295447, guid: c91991e774fc6c048bf2e802abebfdd0,
           type: 3}
     _unitTier2:
+      _name: 
+      _tier: 1
       _health:
         _value: 8
       _moveSpeed:
@@ -58,10 +64,14 @@ MonoBehaviour:
         _value: 4
       _unitCost:
         _value: 2
+      _rewardMoney:
+        _value: 0
       _unitPrefab:
         _value: {fileID: 5664583615172295447, guid: b33838309d23b3b4cb4e8d91ed052447,
           type: 3}
     _unitTier3:
+      _name: 
+      _tier: 2
       _health:
         _value: 15
       _moveSpeed:
@@ -78,6 +88,8 @@ MonoBehaviour:
         _value: 4
       _unitCost:
         _value: 3
+      _rewardMoney:
+        _value: 0
       _unitPrefab:
         _value: {fileID: 5664583615172295447, guid: ed4106c5e449b974d997e6c72c4e5a62,
           type: 3}
@@ -130,6 +142,8 @@ MonoBehaviour:
         _value: {fileID: 6563548916185858267, guid: 787862c76b6a5a549b8dcdcd77da43fc,
           type: 3}
     _unitTier1:
+      _name: 
+      _tier: 0
       _health:
         _value: 10
       _moveSpeed:
@@ -146,10 +160,14 @@ MonoBehaviour:
         _value: 4
       _unitCost:
         _value: 1
+      _rewardMoney:
+        _value: 0
       _unitPrefab:
         _value: {fileID: 5664583615172295447, guid: c91991e774fc6c048bf2e802abebfdd0,
           type: 3}
     _unitTier2:
+      _name: 
+      _tier: 1
       _health:
         _value: 8
       _moveSpeed:
@@ -166,10 +184,14 @@ MonoBehaviour:
         _value: 4
       _unitCost:
         _value: 2
+      _rewardMoney:
+        _value: 0
       _unitPrefab:
         _value: {fileID: 5664583615172295447, guid: b33838309d23b3b4cb4e8d91ed052447,
           type: 3}
     _unitTier3:
+      _name: 
+      _tier: 2
       _health:
         _value: 15
       _moveSpeed:
@@ -186,6 +208,8 @@ MonoBehaviour:
         _value: 4
       _unitCost:
         _value: 3
+      _rewardMoney:
+        _value: 0
       _unitPrefab:
         _value: {fileID: 5664583615172295447, guid: ed4106c5e449b974d997e6c72c4e5a62,
           type: 3}

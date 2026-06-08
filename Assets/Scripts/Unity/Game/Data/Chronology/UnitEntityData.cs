@@ -1,18 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using Core.Application.Interfaces.Info;
 using Sirenix.OdinInspector;
-using Unity.Game.Attributes;
 using Unity.Game.Attributes.Specific;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Unity.Game
 {
 
     [Serializable]
-    public class UnitEntityData : GameEntityData
+    public class UnitEntityData : GameEntityData, IUnitInfo
     {
+        [SerializeField] 
+        private string _name;
+        [SerializeField] 
+        private UnitTier _tier;
+
+        
         [InlineProperty, SerializeField] 
         private HealthAttribute _health;
         [InlineProperty, SerializeField] 
@@ -28,11 +31,17 @@ namespace Unity.Game
         [InlineProperty, SerializeField] 
         private DetectionRangeAttribute _detectionRange;
         [InlineProperty, SerializeField] 
-        private UnitCostAttribute _unitCost;
+        private UnitFoodCostAttribute unitFoodCost;
+        [InlineProperty, SerializeField] 
+        private UnitUnlockCostAttribute unitUnlockCost;
+        [InlineProperty, SerializeField] 
+        private RewardMoneyAttribute _rewardMoney;
         [InlineProperty, SerializeField] 
         private UnitPrefabAttribute _unitPrefab;
         
-        public int Cost => _unitCost.Value;
+        public string Name => _name;
+        public UnitTier Tier => _tier;
+        public int Cost => unitFoodCost.Value;
         
     }
 }

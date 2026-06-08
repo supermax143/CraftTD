@@ -7,35 +7,26 @@ namespace Unity.Presentation.Windows
 
 	public abstract class WindowBase : MonoBehaviour, IWindow
 	{
-		[SerializeField] private GameObject windowRoot;
 
 		public event Action<IWindow> OnShow;
 		public event Action<IWindow> OnHide;
 		
 		protected virtual void Awake()
 		{
-			if (windowRoot == null) windowRoot = gameObject;
-
 			Hide();
 		}
 
+		public virtual void Initialize() { }
+		
 		public virtual void Show()
 		{
-			if (windowRoot != null)
-				windowRoot.SetActive(true);
-			else
-				gameObject.SetActive(true);
-
+			gameObject.SetActive(true);
 			OnShow?.Invoke(this);
 		}
 
 		public virtual void Hide()
 		{
-			if (windowRoot != null)
-				windowRoot.SetActive(false);
-			else
-				gameObject.SetActive(false);
-
+			gameObject.SetActive(false);
 			OnHide?.Invoke(this);
 		}
 

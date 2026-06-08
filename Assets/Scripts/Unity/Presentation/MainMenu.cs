@@ -2,6 +2,7 @@ using System.Linq;
 using Core.Application.DataStorage;
 using Core.Application.Interfaces;
 using Core.Application.Interfaces.ApplicationSession;
+using Core.Application.Models;
 using Core.Domain.Services;
 using Core.Domain.Services.ApplicationSession;
 using TMPro;
@@ -17,6 +18,7 @@ namespace Unity.Presentation
 		[Inject] private ILocalization _localization;
 		[Inject] private EpochManager _epochManager;
 		[Inject] private IDataStorage _dataStorage;
+		[Inject] private IMainModel _model;
 		
 		[SerializeField]
 		private TMP_Dropdown _languageSelector;
@@ -24,12 +26,20 @@ namespace Unity.Presentation
 		private TMP_Dropdown _epochSelector;
 		[SerializeField]
 		private TMP_InputField _foodProductionInput;
+		[SerializeField]
+		private TMP_InputField _moneyInput;
 		
 		private void Start()
 		{
 			UpdateLanguageSelector();
 			UpdateEpochSelector();
 			UpdateFoodProductionInput();
+			UpdateMoneyInput();
+		}
+
+		private void UpdateMoneyInput()
+		{
+			_moneyInput.text = _model.Money.ToString();
 		}
 
 		private void UpdateFoodProductionInput()
@@ -56,7 +66,6 @@ namespace Unity.Presentation
 			_languageSelector.onValueChanged.AddListener(OnLangugeChanged);
 		}
 
-
 		private void OnLangugeChanged(int value)
 		{
 			 _localization.SetLanguage(_languageSelector.options[value].text);
@@ -71,6 +80,7 @@ namespace Unity.Presentation
 		{
 			_epochManager.SetEpoch(_epochSelector.value);
 			_dataStorage.SetFoodProductionPerSecond(float.Parse(_foodProductionInput.text));
+			_model.Money = uint.Parse(_moneyInput.text);
 		}
 	}
 }

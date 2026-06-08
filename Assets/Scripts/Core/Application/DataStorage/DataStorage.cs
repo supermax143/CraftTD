@@ -70,7 +70,7 @@ namespace Core.Application.DataStorage
         
         public void SetMoney(uint Value)
         {
-            _epochData.SetMoney(Value);
+            _epochData.Money = Value;
         }
 
         public void SetCurrentEpoch(int index)

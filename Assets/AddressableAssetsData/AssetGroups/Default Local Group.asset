@@ -30,6 +30,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f66e38e0ca9d203499b0f5e7f0c9a0b4
+    m_Address: Assets/Prefabs/GUI/Windows/UpgradeEpoch
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0d505db509e0e9b43876bf21e80fba51, type: 2}
   m_SchemaSet:
