@@ -23,11 +23,11 @@ namespace Core.Application.DataStorage
         [Inject]
         private IGlobalStorageProvider _globalStorageProvider;
         
-        private UserStorageData _userStorageData;
         private TutorialStorageData _tutorialStorageData;
         private PurchasesStorageData _purchasesStorageData;
         private FloatStorageVariable _foodProductionPerSecond;
         private IntStorageVariable _curEpochIndex;
+        private EpochStorageData _epochData;
 
         public TutorialStorageData TutorialStorage => _tutorialStorageData;
         public PurchasesStorageData Purchases => _purchasesStorageData;
@@ -44,7 +44,7 @@ namespace Core.Application.DataStorage
         public Task Init()
         {
             _tutorialStorageData = new TutorialStorageData(_localStorageProvider);
-            _userStorageData = new UserStorageData(_globalStorageProvider);
+            _epochData = new EpochStorageData(_globalStorageProvider);
             _foodProductionPerSecond = new FloatStorageVariable("FoodProduction", _localStorageProvider, .25f);
             _curEpochIndex = new IntStorageVariable("CurrentEpoch", _localStorageProvider, 0);
             
@@ -59,18 +59,18 @@ namespace Core.Application.DataStorage
             _globalStorageProvider.Reset();
             
             _tutorialStorageData.Reset();
-            _userStorageData.Reset();
+            _epochData.Reset();
             _purchasesStorageData.Reset();
         }
 
         public void AddMoney(uint Value)
         {
-            _userStorageData.AddMoney(Value);
+            _epochData.AddMoney(Value);
         }
         
         public void SetMoney(uint Value)
         {
-            _userStorageData.SetMoney(Value);
+            _epochData.SetMoney(Value);
         }
 
         public void SetCurrentEpoch(int index)
@@ -85,8 +85,10 @@ namespace Core.Application.DataStorage
         
         public uint UserMoney
         {
-            get { return _userStorageData.Money; }
+            get { return _epochData.Money; }
         }
+
+        public EpochStorageData EpochData => _epochData;
 
 
         public void AddPurchase(string id)

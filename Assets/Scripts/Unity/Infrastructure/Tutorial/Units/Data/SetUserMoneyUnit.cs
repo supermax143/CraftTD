@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Core.Application.DataStorage;
+using Core.Application.Models;
 using Unity.Infrastructure.Tutorial.Units.BaseUnits;
 using Unity.VisualScripting;
 using Zenject;
@@ -12,7 +13,7 @@ namespace Unity.Infrastructure.Tutorial.Units.Data
     {
         private const string MONEY = "money";
         
-        [Inject] private IDataStorage _dataStorage;
+        [Inject] private IMainModel _model;
         
         protected override IEnumerable<IUnitValuePort> DefineValuePortsInternal()
         {
@@ -22,7 +23,7 @@ namespace Unity.Infrastructure.Tutorial.Units.Data
         protected override void OnExecute(Flow flow)
         {
             var money = GetValue<uint>(flow, MONEY);
-            _dataStorage.SetMoney(money);
+            _model.Money = money;
         }
     }
 }

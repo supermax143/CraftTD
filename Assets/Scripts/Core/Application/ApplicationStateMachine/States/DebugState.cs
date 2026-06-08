@@ -1,6 +1,5 @@
 ﻿using Core.Application.ApplicationSession.States;
 using Shared.Constants;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace Core.Application.ApplicationStateMachine.States

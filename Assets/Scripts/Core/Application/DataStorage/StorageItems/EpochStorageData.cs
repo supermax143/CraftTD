@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Newtonsoft.Json;
+using Unity.Game;
 using UnityEngine;
 
 namespace Core.Application.DataStorage.StorageItems
@@ -8,32 +10,31 @@ namespace Core.Application.DataStorage.StorageItems
     /// Contains money and weapon levels.
     /// </summary>
     [System.Serializable]
-    public class UserDataInfo
+    internal class EpochDataInfo
     {
         public uint Money;
+        public uint FoodProductionLevel;
+        public uint TowerUpgradeLevel;
+        public readonly List<UnitTier> _openedUnits = new();
     }
 
-    /// <summary>
-    /// Manages user data persistence using JSON serialization.
-    /// Follows same pattern as TutorialStorageData.
-    /// </summary>
-    internal class UserStorageData
+    internal class EpochStorageData
     {
-        private const string USER_DATA_KEY = "UserData";
+        private const string EPOCH_DATA_KEY = "EpochData";
         
-        private UserDataInfo _userDataInfo = new UserDataInfo();
+        private EpochDataInfo _epochDataInfo = new EpochDataInfo();
         private readonly StringStorageVariable _userDataVariable;
         
         private readonly IStorageProvider _storageProvider;
 
-        public UserStorageData(IStorageProvider storageProvider)
+        public EpochStorageData(IStorageProvider storageProvider)
         {
-            _userDataVariable = new StringStorageVariable(USER_DATA_KEY, storageProvider);
+            _userDataVariable = new StringStorageVariable(EPOCH_DATA_KEY, storageProvider);
             
             var userDataInfo = LoadUserDataInfo();
             if (userDataInfo != null)
             {
-                _userDataInfo = userDataInfo;
+                _epochDataInfo = userDataInfo;
             }
             else
             {
@@ -43,10 +44,10 @@ namespace Core.Application.DataStorage.StorageItems
 
         public uint Money
         {
-            get => _userDataInfo.Money;
+            get => _epochDataInfo.Money;
             set
             {
-                _userDataInfo.Money = value;
+                _epochDataInfo.Money = value;
                 Save();
             }
         }
@@ -55,13 +56,13 @@ namespace Core.Application.DataStorage.StorageItems
 
         public void AddMoney(uint amount)
         {
-            _userDataInfo.Money += amount;
+            _epochDataInfo.Money += amount;
             Save();
         }
 
         public void SetMoney(uint amount)
         {
-            _userDataInfo.Money = amount;
+            _epochDataInfo.Money = amount;
             Save();
         }
 
@@ -73,7 +74,7 @@ namespace Core.Application.DataStorage.StorageItems
 
         private void InitializeDefaultData()
         {
-            _userDataInfo = new UserDataInfo
+            _epochDataInfo = new EpochDataInfo
             {
                 Money = 0,
             };
@@ -86,10 +87,10 @@ namespace Core.Application.DataStorage.StorageItems
         
         private string SerializeToJson()
         {
-            return JsonConvert.SerializeObject(_userDataInfo, Formatting.Indented);
+            return JsonConvert.SerializeObject(_epochDataInfo, Formatting.Indented);
         }
         
-        private UserDataInfo LoadUserDataInfo()
+        private EpochDataInfo LoadUserDataInfo()
         {
             var json = _userDataVariable.Value;
             if (string.IsNullOrEmpty(json))
@@ -97,7 +98,7 @@ namespace Core.Application.DataStorage.StorageItems
                 
             try
             {
-                return JsonConvert.DeserializeObject<UserDataInfo>(json);
+                return JsonConvert.DeserializeObject<EpochDataInfo>(json);
             }
             catch (System.Exception e)
             {

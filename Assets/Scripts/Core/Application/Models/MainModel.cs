@@ -1,14 +1,28 @@
-﻿using Core.Domain.Models;
+﻿using System.Runtime.InteropServices;
+using Zenject;
 
 namespace Core.Application.Models
 {
+    using DataStorage = DataStorage.DataStorage;
+
     internal class MainModel : IMainModelInternal
     {
-        public UserModel User { get; private set; }
         
-        public void SetUser(UserModel user)
+        [Inject] private DataStorage _dataStorage;
+        
+        
+        public uint Money
         {
-            User = user;
+            get => _dataStorage.EpochData.Money;
+            set => _dataStorage.EpochData.Money = value;
         }
+        
+        public void Initialize()
+        {
+            
+            
+        }
+        
+        
     }
 }

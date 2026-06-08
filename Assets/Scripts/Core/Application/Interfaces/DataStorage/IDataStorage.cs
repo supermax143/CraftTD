@@ -11,7 +11,7 @@ namespace Core.Application.DataStorage
         float FoodProductionPerSecond { get; }
         int CurrentEpochIndex { get; }
         void AddMoney(uint Value);
-        void SetMoney(uint Value);
+       
         void SetCurrentEpoch(int index);
         void SetFoodProductionPerSecond(float value);
     }
