@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2bb72e69684072b46494c09e1a11dc, type: 3}
   m_Name: BaseGameStats
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.GameStats
-  _baseFoodProductionSpeed: 0.2
-  _foodProductionPerLevel: 0.2
+  _baseFoodProductionSpeed: 0.18
+  _foodProductionPerLevel: 0.02
   _baseTowerHealth: 2
   _towerHealthPerLevel: 2

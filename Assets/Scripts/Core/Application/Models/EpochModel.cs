@@ -40,6 +40,10 @@ namespace Core.Application.Models
             return _units.Find(unit => unit.Tier == tier);
         }
 
+        public void UpgradeFoodProduction()
+        {
+        }
+        
         public void OpenUnit(UnitTier tier)
         {
             

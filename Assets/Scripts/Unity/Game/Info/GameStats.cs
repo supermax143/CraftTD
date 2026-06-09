@@ -8,8 +8,8 @@ namespace Unity.Game
     public class GameStats : ScriptableObject
     {
 
-        [SerializeField] private float _baseFoodProductionSpeed = .2f;
-        [SerializeField] private float _foodProductionPerLevel = .2f;
+        [SerializeField] private float _baseFoodProductionSpeed = .18f;
+        [SerializeField] private float _foodProductionPerLevel = .02f;
         [SerializeField] private float _baseTowerHealth = 2;
         [SerializeField] private float _towerHealthPerLevel = 2;
        
