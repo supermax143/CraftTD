@@ -1,11 +1,10 @@
-﻿using Core.Application.Interfaces.Info;
-using Unity.Game;
+﻿using Unity.Game;
 
 namespace Core.Application.Models
 {
     public class UnitModel
     {
-        private readonly IUnitInfo _info;
+        private readonly UnitEntityInfo _info;
         private bool _isUnitOpened;
 
         public bool IsUnitOpened => _isUnitOpened;
@@ -18,7 +17,7 @@ namespace Core.Application.Models
             _isUnitOpened = true;
         }
         
-        public UnitModel(IUnitInfo info, bool isUnitOpened)
+        public UnitModel(UnitEntityInfo info, bool isUnitOpened)
         {
             _info = info;
             _isUnitOpened = isUnitOpened;

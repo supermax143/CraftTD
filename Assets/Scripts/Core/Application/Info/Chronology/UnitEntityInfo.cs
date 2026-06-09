@@ -1,5 +1,4 @@
 ﻿using System;
-using Core.Application.Interfaces.Info;
 using Sirenix.OdinInspector;
 using Unity.Game.Attributes.Specific;
 using UnityEngine;
@@ -8,7 +7,7 @@ namespace Unity.Game
 {
 
     [Serializable]
-    public class UnitEntityInfo : GameEntityInfo, IUnitInfo
+    public class UnitEntityInfo : GameEntityInfo
     {
         [SerializeField] 
         private string _name;

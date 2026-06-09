@@ -8,11 +8,8 @@ namespace Core.Application.DataStorage
         TutorialStorageData TutorialStorage { get; }
         PurchasesStorageData Purchases { get; }
         uint UserMoney { get; }
-        float FoodProductionPerSecond { get; }
         int CurrentEpochIndex { get; }
         void AddMoney(uint Value);
-       
         void SetCurrentEpoch(int index);
-        void SetFoodProductionPerSecond(float value);
     }
 }

@@ -18,8 +18,16 @@ namespace Unity.Game
         public float BaseTowerHealth => _baseTowerHealth;
         public float TowerHealthPerLevel => _towerHealthPerLevel;
         
+        internal int GetFoodProductionSpeedCost(uint level) 
+            => (int)Math.Floor( 8f * Math.Pow(1.18, (float)level));
         
-        public static float FoodProductionSpeedCost(int level) => (float)Math.Floor( 8f * Math.Pow(1.18, (float)level));
-        
+        internal float GetFoodProductionSpeed(uint level)
+            => _baseFoodProductionSpeed + _foodProductionPerLevel * level;
+
+        internal int GetTowerUpgradeCost(uint towerUpgradeLevel) 
+            => (int)Math.Floor( 16f * Math.Pow(1.18, (float)towerUpgradeLevel));
+
+        public int GetTowerHealth(uint towerLevel) 
+            => (int)(_baseTowerHealth + _towerHealthPerLevel * towerLevel);
     }
 }

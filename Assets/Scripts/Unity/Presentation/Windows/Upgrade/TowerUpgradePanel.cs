@@ -7,12 +7,12 @@ using Zenject;
 
 namespace Unity.Presentation.Windows.Upgrade
 {
-    public class FoodUpgradePanel : MonoBehaviour
+    public class TowerUpgradePanel : MonoBehaviour
     {
         [SerializeField]
         private PriceButton _priceButton;
         [SerializeField]
-        private TextMeshProUGUI _speedTF;
+        private TextMeshProUGUI _healthTF;
         
         [Inject] private IMainModel _mainModel;
         [Inject] private GameStats _gameStats;
@@ -21,20 +21,20 @@ namespace Unity.Presentation.Windows.Upgrade
 
         private void Start()
         {
-            Epoch.OnFoodProductionLevelChanged += UpdateView;
+            Epoch.OnTowerLevelChanged += UpdateView;
             UpdateView();
         }
 
         private void UpdateView()
         {
-            var price = Epoch.FoodProductionUpgradeCost;//GameStats.FoodProductionSpeedCost(Epoch.FoodProductionLevel);
+            var price = Epoch.TowerUpgradeCost;
             _priceButton.SetPrice(price);
-            _speedTF.text = $"{Epoch.FoodProductionSpeed.ToString()} / c";
+            _healthTF.text = Epoch.TowerHealth.ToString();
         }
 
         public void UpgradeLevel()
         {
-            Epoch.UpgradeFoodProduction();
+            Epoch.UpgradeTowerLevel();
         }
         
         private void OnDestroy()

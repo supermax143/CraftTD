@@ -33,7 +33,6 @@ namespace Unity.Presentation
 		{
 			UpdateLanguageSelector();
 			UpdateEpochSelector();
-			UpdateFoodProductionInput();
 			UpdateMoneyInput();
 		}
 
@@ -42,10 +41,7 @@ namespace Unity.Presentation
 			_moneyInput.text = _model.Money.ToString();
 		}
 
-		private void UpdateFoodProductionInput()
-		{
-			_foodProductionInput.text = _dataStorage.FoodProductionPerSecond.ToString();
-		}
+		
 
 		private void UpdateEpochSelector()
 		{
@@ -79,7 +75,6 @@ namespace Unity.Presentation
 		public void Save()
 		{
 			_epochManager.SetEpoch(_epochSelector.value);
-			_dataStorage.SetFoodProductionPerSecond(float.Parse(_foodProductionInput.text));
 			_model.Money = uint.Parse(_moneyInput.text);
 		}
 	}

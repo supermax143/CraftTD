@@ -25,6 +25,7 @@ namespace Unity.Presentation.Windows
         public override void Initialize()
         {
             Epoch.OnMoneyChanged += UpdateMoney;
+            Epoch.OnUnitOpened += UpdateUnits;
             UpdateMoney();
             UpdateUnits();
         }
@@ -47,6 +48,7 @@ namespace Unity.Presentation.Windows
         private void OnDestroy()
         {
             Epoch.OnMoneyChanged -= UpdateMoney;
+            Epoch.OnUnitOpened -= UpdateUnits;
         }
     }
 }

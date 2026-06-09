@@ -14,7 +14,7 @@ namespace Core.Application.DataStorage.StorageItems
     {
         public uint Money = 0;
         public uint FoodProductionLevel = 0;
-        public uint TowerUpgradeLevel = 0;
+        public uint TowerLevel = 0;
         public List<UnitTier> OpenedUnits = new();
     }
 
@@ -64,12 +64,12 @@ namespace Core.Application.DataStorage.StorageItems
         }
         
         
-        public uint TowerUpgradeLevel
+        public uint TowerLevel
         {
-            get => _epochDataInfo.TowerUpgradeLevel;
+            get => _epochDataInfo.TowerLevel;
             set
             {
-                _epochDataInfo.TowerUpgradeLevel = value;
+                _epochDataInfo.TowerLevel = value;
                 Save();
             }
         }
@@ -115,7 +115,7 @@ namespace Core.Application.DataStorage.StorageItems
             {
                 Money = 0,
                 FoodProductionLevel = 0,
-                TowerUpgradeLevel = 0,
+                TowerLevel = 0,
                 OpenedUnits = new List<UnitTier>() { UnitTier.Tier1 }
             };
         }

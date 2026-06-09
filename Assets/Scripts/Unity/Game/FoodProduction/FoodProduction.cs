@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Core.Application.DataStorage;
+using Core.Application.Models;
 using Unity.Utils.Time;
 using UnityEngine;
 using Zenject;
@@ -12,8 +13,12 @@ namespace Unity.Game
         public event Action OnFoodProductionStarted;
         public event Action OnFoodChanged;
         
-        [Inject] private IDataStorage _dataStorage;
-
+        /*[Inject] private IDataStorage _dataStorage;
+        [Inject] private GameStats _gameStats;*/
+        [Inject] private IMainModel _mainModel;
+        
+        private EpochModel Epoch => _mainModel.Epoch;
+        
         private int _foodCount;
         private float _foodProductionTime;
         private Timer timer = new Timer();
@@ -29,7 +34,7 @@ namespace Unity.Game
 
         public void StartProduction()
         {
-            _foodProductionTime = 1 / _dataStorage.FoodProductionPerSecond;
+            _foodProductionTime = 1 / Epoch.FoodProductionSpeed;
             OnFoodProductionStarted?.Invoke();
             StartCoroutine(Produce());
             _started = true;

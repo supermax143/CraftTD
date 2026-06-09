@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using Core.Application.Interfaces.Info;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities.Editor;
 using UnityEngine;
 
 namespace Unity.Game
 {
     
     [Serializable]
-    public class EpochInfo : IEpochInfo
+    public class EpochInfo
     {
         [SerializeField]
         private string _epochName;
@@ -71,7 +71,7 @@ namespace Unity.Game
             }
         }
         
-        public IEnumerable<IUnitInfo> GetUnits()
+        public IEnumerable<UnitEntityInfo> GetUnits()
         {
             yield return _unitTier1;
             yield return _unitTier2;

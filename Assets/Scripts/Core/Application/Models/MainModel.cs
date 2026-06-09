@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Core.Application.Interfaces.Info;
+using Unity.Game;
 using Zenject;
 
 namespace Core.Application.Models
@@ -15,9 +15,9 @@ namespace Core.Application.Models
 #endif
     {
         
-        [Inject] private IChronologyInfo _chronology;
+        [Inject] private ChronologyInfo _chronology;
         [Inject] private DataStorage _dataStorage;
-        
+        [Inject] private GameStats _gameStats;
 
         public EpochModel Epoch => _epoch;
         private EpochModel _epoch;
@@ -38,7 +38,7 @@ namespace Core.Application.Models
         public async Task Init()
         {
             _chronology.TryGetEpochInfo(_dataStorage.CurrentEpochIndex, out var epochInfo);
-            _epoch = new EpochModel(epochInfo, _dataStorage.EpochData);
+            _epoch = new EpochModel(epochInfo, _dataStorage.EpochData, _gameStats);
         }
         
     }

@@ -31,7 +31,6 @@ namespace Core.Application.DataStorage
 
         public TutorialStorageData TutorialStorage => _tutorialStorageData;
         public PurchasesStorageData Purchases => _purchasesStorageData;
-        public float FoodProductionPerSecond => _foodProductionPerSecond.Value;
         public int CurrentEpochIndex => _curEpochIndex.Value;
         
 #if DEBUG_MODE
