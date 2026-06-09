@@ -9,6 +9,7 @@ namespace Core.Application.Models
     public class EpochModel
     {
         public event Action OnUnitOpened;
+        public event Action OnMoneyChanged;
         
         private readonly List<UnitModel> _units = new();
         private readonly IEpochInfo _info;
@@ -41,9 +42,19 @@ namespace Core.Application.Models
 
         public void OpenUnit(UnitTier tier)
         {
+            
+            var unitModel = GetUnitByTier(tier);
+            if (unitModel.IsUnitOpened || Money < unitModel.UnlockCost)
+            {
+                return;
+            }
+            
+            Money -= (uint)unitModel.UnlockCost;
+            
             _data.OpenUnit(tier);
             GetUnitByTier(tier).OpenUnit();
             OnUnitOpened?.Invoke();
+            OnMoneyChanged?.Invoke();
         }
     }
 }

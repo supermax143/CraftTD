@@ -24,10 +24,16 @@ namespace Unity.Presentation.Windows
         
         public override void Initialize()
         {
-            _moneyTF.text = _model.Money.ToString();
+            Epoch.OnMoneyChanged += UpdateMoney;
+            UpdateMoney();
             UpdateUnits();
         }
 
+        private void UpdateMoney()
+        {
+            _moneyTF.text = _model.Money.ToString();
+        }
+        
         private void UpdateUnits()
         {
             foreach (var unitOpenItem in _unitsItems)
@@ -37,7 +43,10 @@ namespace Unity.Presentation.Windows
                 unitOpenItem.OnUnitOpened += Epoch.OpenUnit;
             }
         }
-        
-        
+
+        private void OnDestroy()
+        {
+            Epoch.OnMoneyChanged -= UpdateMoney;
+        }
     }
 }
