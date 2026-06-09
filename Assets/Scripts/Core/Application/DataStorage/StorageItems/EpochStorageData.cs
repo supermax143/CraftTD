@@ -12,10 +12,10 @@ namespace Core.Application.DataStorage.StorageItems
     [System.Serializable]
     internal class EpochDataInfo
     {
-        public uint Money;
-        public uint FoodProductionLevel;
-        public uint TowerUpgradeLevel;
-        public readonly List<UnitTier> OpenedUnits = new();
+        public uint Money = 0;
+        public uint FoodProductionLevel = 0;
+        public uint TowerUpgradeLevel = 0;
+        public List<UnitTier> OpenedUnits = new();
     }
 
     internal class EpochStorageData
@@ -75,6 +75,11 @@ namespace Core.Application.DataStorage.StorageItems
         }
         
         
+        public bool IsUnitOpened(UnitTier tier)
+        {
+            return _epochDataInfo.OpenedUnits.Contains(tier);
+        }
+        
         public IEnumerable<UnitTier> GetOpenedUnits()
         {
             return _epochDataInfo.OpenedUnits;
@@ -109,6 +114,9 @@ namespace Core.Application.DataStorage.StorageItems
             _epochDataInfo = new EpochDataInfo
             {
                 Money = 0,
+                FoodProductionLevel = 0,
+                TowerUpgradeLevel = 0,
+                OpenedUnits = new List<UnitTier>() { UnitTier.Tier1 }
             };
         }
 
@@ -135,6 +143,7 @@ namespace Core.Application.DataStorage.StorageItems
             catch (System.Exception e)
             {
                 Debug.LogError($"Failed to load user data: {e.Message}");
+                
                 return null;
             }
         }

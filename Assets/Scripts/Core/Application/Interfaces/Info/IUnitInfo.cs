@@ -6,6 +6,7 @@ namespace Core.Application.Interfaces.Info
     {
         string Name { get; }
         UnitTier Tier { get; }
-        int Cost { get; }
+        int FoodCost { get; }
+        int UnlockCost { get; }
     }
 }

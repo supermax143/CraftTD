@@ -74,11 +74,11 @@ namespace Unity.Game
         public void BuyUnit(UnitTier tier)
         {
             _epochManager.TryGetUnitDataByTier(tier, out var unitData);
-            if (_foodProduction.FoodCount < unitData.Cost)
+            if (_foodProduction.FoodCount < unitData.FoodCost)
             {
                 return;
             }
-            _foodProduction.WithdrawFood(unitData.Cost);
+            _foodProduction.WithdrawFood(unitData.FoodCost);
             _spawner.Spawn(tier, 1);
         }
 

@@ -41,7 +41,7 @@ namespace Unity.Game
         
         public string Name => _name;
         public UnitTier Tier => _tier;
-        public int Cost => unitFoodCost.Value;
-        
+        public int FoodCost => unitFoodCost.Value;
+        public int UnlockCost => unitUnlockCost.Value;
     }
 }

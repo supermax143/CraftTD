@@ -36,7 +36,7 @@ namespace Unity.Presentation.HUD.UnitsPanael
         private void Start()
         {
             _epochManager.TryGetUnitDataByTier(_unitTier, out _unitInfo);
-            _foodCost = _unitInfo.Cost;
+            _foodCost = _unitInfo.FoodCost;
             _foodProduction.OnFoodChanged += UpdateBuyAvailable;
             UpdateView();
             UpdateBuyAvailable();

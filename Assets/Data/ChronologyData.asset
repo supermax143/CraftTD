@@ -91,7 +91,7 @@ MonoBehaviour:
       _detectionRange:
         _value: 4
       unitFoodCost:
-        _value: 1
+        _value: 3
       unitUnlockCost:
         _value: 300
       _rewardMoney:

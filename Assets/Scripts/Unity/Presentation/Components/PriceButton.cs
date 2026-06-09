@@ -26,9 +26,11 @@ namespace Unity.Presentation.Components
 
         private void UpdateView()
         {
-            var color = _price > 0 ? Color.red : Color.white;
+            var active = _model.Money >= _price;
+            _priceText.text = _price.ToString();
+            var color = active ? Color.black : Color.red;
             _priceText.color = color;
-            _button.interactable = _model.Money >= _price;
+            _button.interactable = active;
         }
     }
 }
