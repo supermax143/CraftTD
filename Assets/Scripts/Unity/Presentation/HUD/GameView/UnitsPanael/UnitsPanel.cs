@@ -1,5 +1,10 @@
-﻿using Unity.Presentation.Components;
+﻿using System;
+using System.Collections.Generic;
+using Core.Application.Models;
+using Unity.Presentation.Components;
+using Unity.Presentation.HUD.UnitsPanael;
 using UnityEngine;
+using Zenject;
 
 namespace Unity.Presentation.HUD
 {
@@ -7,5 +12,33 @@ namespace Unity.Presentation.HUD
     {
         [SerializeField]
         private ProductionProgressBar productionProgressBar;
+        [SerializeField] 
+        private List<BuyUnitButton> _buyUnitButtons;
+
+        [Inject]
+        private readonly IMainModel _model;
+        
+        private EpochModel Epoch => _model.Epoch;
+
+        private void Start()
+        {
+            Epoch.OnUnitOpened += UpdateButtons;
+            UpdateButtons();
+        }
+
+        private void UpdateButtons()
+        {
+            foreach (var buyUnitButton in _buyUnitButtons)
+            {
+                var unit = Epoch.GetUnitByTier(buyUnitButton.Tier);
+                buyUnitButton.gameObject.SetActive(unit.IsUnitOpened);
+            }   
+        }
+
+
+        private void OnDestroy()
+        {
+            Epoch.OnUnitOpened -= UpdateButtons;
+        }
     }
 }

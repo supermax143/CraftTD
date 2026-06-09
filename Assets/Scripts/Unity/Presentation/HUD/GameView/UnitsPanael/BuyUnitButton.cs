@@ -27,7 +27,9 @@ namespace Unity.Presentation.HUD.UnitsPanael
         
         private UnitEntityInfo _unitInfo;
         private int _foodCost;
-        
+
+        public UnitTier Tier => _unitTier;
+
         private void OnValidate()
         {
             _button = GetComponent<Button>();

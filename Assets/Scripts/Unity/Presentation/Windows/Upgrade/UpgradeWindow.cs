@@ -34,7 +34,10 @@ namespace Unity.Presentation.Windows
             {
                 var unitModel = Epoch.GetUnitByTier(unitOpenItem.Tier);
                 unitOpenItem.SetUnit(unitModel);
+                unitOpenItem.OnUnitOpened += Epoch.OpenUnit;
             }
         }
+        
+        
     }
 }

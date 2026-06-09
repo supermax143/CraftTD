@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Core.Application.DataStorage.StorageItems;
 using Core.Application.Interfaces.Info;
 using Unity.Game;
@@ -7,6 +8,7 @@ namespace Core.Application.Models
 {
     public class EpochModel
     {
+        public event Action OnUnitOpened;
         
         private readonly List<UnitModel> _units = new();
         private readonly IEpochInfo _info;
@@ -35,6 +37,13 @@ namespace Core.Application.Models
         public UnitModel GetUnitByTier(UnitTier tier)
         {
             return _units.Find(unit => unit.Tier == tier);
+        }
+
+        public void OpenUnit(UnitTier tier)
+        {
+            _data.OpenUnit(tier);
+            GetUnitByTier(tier).OpenUnit();
+            OnUnitOpened?.Invoke();
         }
     }
 }
