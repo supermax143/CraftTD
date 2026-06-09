@@ -26,7 +26,9 @@ namespace Unity.Installers
       [SerializeField]
       private GameSettings _gameSettings;
       [SerializeField]
-      private ChronologyInfo chronologyInfo;
+      private ChronologyInfo _chronologyInfo;
+      [SerializeField]
+      private GameStats _baseGameStats;
      
 
 
@@ -35,7 +37,8 @@ namespace Unity.Installers
          InitializeAddressables();
 
          //Data
-         Container.BindInterfacesAndSelfTo<ChronologyInfo>().FromInstance(chronologyInfo);
+         Container.BindInterfacesAndSelfTo<ChronologyInfo>().FromInstance(_chronologyInfo);
+         Container.BindInterfacesAndSelfTo<GameStats>().FromInstance(_baseGameStats);
          
          //EpochManager
          Container.Bind<EpochManager>().AsSingle();
