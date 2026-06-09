@@ -8,16 +8,16 @@ namespace Unity.Game
     {
         
         [Inject] private IDataStorage _dataStorage; 
-        [Inject] private ChronologyData _chronologyData;
+        [Inject] private ChronologyInfo _chronologyInfo;
         
-        public bool TryGetCurrentEpoch(out EpochData epoch)
+        public bool TryGetCurrentEpoch(out EpochInfo epoch)
         {
-            return _chronologyData.TryGetEpoch(_dataStorage.CurrentEpochIndex, out epoch);
+            return _chronologyInfo.TryGetEpoch(_dataStorage.CurrentEpochIndex, out epoch);
         }
         
         public void SetEpoch(int index)
         {
-            if (_chronologyData.Epochs.Count >= index || index < 0)
+            if (_chronologyInfo.Epochs.Count >= index || index < 0)
             {
                 return;
             }
@@ -25,9 +25,9 @@ namespace Unity.Game
             _dataStorage.SetCurrentEpoch(index);
         }
         
-        public IEnumerable<EpochData> GetEpochs() => _chronologyData.Epochs;
+        public IEnumerable<EpochInfo> GetEpochs() => _chronologyInfo.Epochs;
         
-        public bool TryGetUnitDataByTier(UnitTier tier, out UnitEntityData unit)
+        public bool TryGetUnitDataByTier(UnitTier tier, out UnitEntityInfo unit)
         {
             if (TryGetCurrentEpoch(out var epoch))
             {

@@ -38,8 +38,10 @@ MonoBehaviour:
         _value: 0.7
       _detectionRange:
         _value: 4
-      _unitCost:
+      unitFoodCost:
         _value: 1
+      unitUnlockCost:
+        _value: 0
       _rewardMoney:
         _value: 0
       _unitPrefab:
@@ -62,8 +64,10 @@ MonoBehaviour:
         _value: 1
       _detectionRange:
         _value: 4
-      _unitCost:
+      unitFoodCost:
         _value: 2
+      unitUnlockCost:
+        _value: 100
       _rewardMoney:
         _value: 0
       _unitPrefab:
@@ -86,8 +90,10 @@ MonoBehaviour:
         _value: 1
       _detectionRange:
         _value: 4
-      _unitCost:
-        _value: 3
+      unitFoodCost:
+        _value: 1
+      unitUnlockCost:
+        _value: 300
       _rewardMoney:
         _value: 0
       _unitPrefab:
@@ -158,8 +164,10 @@ MonoBehaviour:
         _value: 0.7
       _detectionRange:
         _value: 4
-      _unitCost:
-        _value: 1
+      unitFoodCost:
+        _value: 0
+      unitUnlockCost:
+        _value: 0
       _rewardMoney:
         _value: 0
       _unitPrefab:
@@ -182,8 +190,10 @@ MonoBehaviour:
         _value: 1
       _detectionRange:
         _value: 4
-      _unitCost:
-        _value: 2
+      unitFoodCost:
+        _value: 0
+      unitUnlockCost:
+        _value: 0
       _rewardMoney:
         _value: 0
       _unitPrefab:
@@ -206,8 +216,10 @@ MonoBehaviour:
         _value: 1
       _detectionRange:
         _value: 4
-      _unitCost:
-        _value: 3
+      unitFoodCost:
+        _value: 0
+      unitUnlockCost:
+        _value: 0
       _rewardMoney:
         _value: 0
       _unitPrefab:

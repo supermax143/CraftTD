@@ -8,7 +8,7 @@ namespace Unity.Game
 {
 
     [Serializable]
-    public class UnitEntityData : GameEntityData, IUnitInfo
+    public class UnitEntityInfo : GameEntityInfo, IUnitInfo
     {
         [SerializeField] 
         private string _name;

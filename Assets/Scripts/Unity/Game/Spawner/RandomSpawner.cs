@@ -12,7 +12,7 @@ namespace Unity.Game
         private int _count = 1;
         
         
-        public override void StartSpawn(EpochData epoch)
+        public override void StartSpawn(EpochInfo epoch)
         {
             base.StartSpawn(epoch);
             StartCoroutine(WaitSpawnDelay());

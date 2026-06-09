@@ -7,7 +7,7 @@ namespace Unity.Game
     {
         private int _waveIndex;
         
-        public override void StartSpawn(EpochData epoch)
+        public override void StartSpawn(EpochInfo epoch)
         {
             base.StartSpawn(epoch);
             StartCoroutine(SpawnNextWave());

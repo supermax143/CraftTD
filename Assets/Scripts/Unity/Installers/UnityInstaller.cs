@@ -26,7 +26,7 @@ namespace Unity.Installers
       [SerializeField]
       private GameSettings _gameSettings;
       [SerializeField]
-      private ChronologyData _chronologyData;
+      private ChronologyInfo chronologyInfo;
      
 
 
@@ -35,7 +35,7 @@ namespace Unity.Installers
          InitializeAddressables();
 
          //Data
-         Container.BindInterfacesAndSelfTo<ChronologyData>().FromInstance(_chronologyData);
+         Container.BindInterfacesAndSelfTo<ChronologyInfo>().FromInstance(chronologyInfo);
          
          //EpochManager
          Container.Bind<EpochManager>().AsSingle();

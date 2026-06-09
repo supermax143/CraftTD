@@ -33,7 +33,7 @@ namespace Unity.Game
         
         private Faction _faction;
         private Faction _opponentFaction;
-        private GameEntityData _data;
+        private GameEntityInfo _info;
         
         public Faction OpponentFaction => _opponentFaction;
         public AttackComponent Attack => _attackComponent;
@@ -70,19 +70,19 @@ namespace Unity.Game
             
         }
 
-        public override void SetData(GameEntityData data)
+        public override void SetData(GameEntityInfo info)
         {
-            _data = data;
+            _info = info;
             Initialize();
         }
 
         private void Initialize()
         {
-            _healthComponent.SetData(_data);
+            _healthComponent.SetData(_info);
             _attackTarget.Initialize(HealthComponent);
-            _moveComponent.SetData(_data);
-            _attackComponent.SetData(_data);
-            _targetSearchComponent.SetData(_data);
+            _moveComponent.SetData(_info);
+            _attackComponent.SetData(_info);
+            _targetSearchComponent.SetData(_info);
             
             _stateManager.Initialize(this);
             _stateManager.ChangeState<SearchTargetState>();
@@ -90,7 +90,7 @@ namespace Unity.Game
 
         public override IEnumerable<GameEntityAttribute> GetAllAttributes()
         {
-            return _data.GetAllAttributes();
+            return _info.GetAllAttributes();
         }
         
         public void Die()

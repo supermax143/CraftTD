@@ -34,14 +34,14 @@ namespace Unity.Game
         }
         
 
-        public virtual void SetData(GameEntityData data)
+        public virtual void SetData(GameEntityInfo info)
         {
-            if (data == null)
+            if (info == null)
             {
                 Debug.LogError($"{this.GetType().Name} SetData: data is null");
                 return;
             }
-            CopyAttributes(data.GetAllAttributes());
+            CopyAttributes(info.GetAllAttributes());
         }
 
         public void CopyAttributes(IEnumerable<GameEntityAttribute> attributes)

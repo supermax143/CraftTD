@@ -20,7 +20,7 @@ namespace Unity.Game
         private Faction _faction;
         private Faction _enemyFaction;
 
-        protected EpochData _epoch;
+        protected EpochInfo _epoch;
         private bool _canSpawn = false;
 
         private void Start()
@@ -35,7 +35,7 @@ namespace Unity.Game
         }
 
 
-        public virtual void StartSpawn(EpochData epoch)
+        public virtual void StartSpawn(EpochInfo epoch)
         {
             _canSpawn = true;
             _epoch = epoch;

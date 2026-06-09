@@ -6,15 +6,15 @@ using UnityEngine;
 namespace Unity.Game
 {
     [CreateAssetMenu(menuName = "CraftTD/ChronologyData", order = 1)]
-    public class ChronologyData : ScriptableObject, IChronologyInfo
+    public class ChronologyInfo : ScriptableObject, IChronologyInfo
     {
         [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "_epochName")]
         [SerializeField]
-        private List<EpochData> _epochs;
+        private List<EpochInfo> _epochs;
 
-        public List<EpochData> Epochs => _epochs;
+        public List<EpochInfo> Epochs => _epochs;
 
-        public bool TryGetEpoch(int index, out EpochData epoch)
+        public bool TryGetEpoch(int index, out EpochInfo epoch)
         {
             epoch = default;
             if (index >= 0 && index < _epochs.Count)

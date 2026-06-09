@@ -13,7 +13,7 @@ namespace Unity.Presentation.Components
 
     public UnitTier Tier => _tier;
 
-    public void SetUnit(UnitEntityData unit, bool opened)
+    public void SetUnit(UnitEntityInfo unit, bool opened)
     {
         _unitNameTF.text = unit.Tier.ToString();
         _priceButton.SetPrice(unit.Cost);

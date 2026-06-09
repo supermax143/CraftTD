@@ -50,10 +50,10 @@ namespace Unity.Game
             }
         }
 
-        public override void SetData(GameEntityData data)
+        public override void SetData(GameEntityInfo info)
         {
-            base.SetData(data);
-            _health.SetData(data);
+            base.SetData(info);
+            _health.SetData(info);
             _attackTarget.Initialize(_health);
         }
 

@@ -8,7 +8,7 @@ namespace Unity.Game
 {
     
     [Serializable]
-    public class EpochData : IEpochInfo
+    public class EpochInfo : IEpochInfo
     {
         [SerializeField]
         private string _epochName;
@@ -16,31 +16,31 @@ namespace Unity.Game
         [HideLabel]
         [InlineProperty]
         [SerializeField]
-        private TowerEntityData _tower;
+        private TowerEntityInfo _tower;
         
         [HideLabel]
         [InlineProperty]
         [SerializeField]
-        private UnitEntityData _unitTier1;
+        private UnitEntityInfo _unitTier1;
         [HideLabel]
         [InlineProperty]
         [SerializeField]
-        private UnitEntityData _unitTier2;
+        private UnitEntityInfo _unitTier2;
         [HideLabel]
         [InlineProperty]
         [SerializeField]
-        private UnitEntityData _unitTier3;
+        private UnitEntityInfo _unitTier3;
 
         [ListDrawerSettings(ShowIndexLabels = true)]
         [SerializeField]
         private List<UnitWave> _waves;
         
-        public TowerEntityData Tower => _tower;
+        public TowerEntityInfo Tower => _tower;
         public List<UnitWave> Waves => _waves;
 
         public string EpochName => _epochName;
         
-        public UnitEntityData GetUnitDataByTier(UnitTier tier)
+        public UnitEntityInfo GetUnitDataByTier(UnitTier tier)
         {
             switch (tier)
             {

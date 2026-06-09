@@ -20,9 +20,9 @@ namespace Unity.Game
         public float CurrentHealth => _currentHealth;
         public bool IsDead => _currentHealth <= 0;
 
-        public override void SetData(GameEntityData data)
+        public override void SetData(GameEntityInfo info)
         {
-            base.SetData(data);
+            base.SetData(info);
             _currentHealth = MaxHealth;
         }
 

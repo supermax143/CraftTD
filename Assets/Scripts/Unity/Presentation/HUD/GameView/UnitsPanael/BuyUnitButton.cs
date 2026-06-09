@@ -25,7 +25,7 @@ namespace Unity.Presentation.HUD.UnitsPanael
         [Inject] private EpochManager _epochManager;
         [Inject] private IGameController _gameController;
         
-        private UnitEntityData _unitData;
+        private UnitEntityInfo _unitInfo;
         private int _foodCost;
         
         private void OnValidate()
@@ -35,8 +35,8 @@ namespace Unity.Presentation.HUD.UnitsPanael
 
         private void Start()
         {
-            _epochManager.TryGetUnitDataByTier(_unitTier, out _unitData);
-            _foodCost = _unitData.Cost;
+            _epochManager.TryGetUnitDataByTier(_unitTier, out _unitInfo);
+            _foodCost = _unitInfo.Cost;
             _foodProduction.OnFoodChanged += UpdateBuyAvailable;
             UpdateView();
             UpdateBuyAvailable();

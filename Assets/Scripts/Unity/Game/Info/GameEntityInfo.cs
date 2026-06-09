@@ -7,7 +7,7 @@ using Unity.Game.Attributes;
 namespace Unity.Game
 {
     
-    public abstract class GameEntityData
+    public abstract class GameEntityInfo
     {
         private List<GameEntityAttribute> _attributes;
 

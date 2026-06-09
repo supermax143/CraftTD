@@ -15,7 +15,7 @@ namespace Unity.Installers
         [SerializeField]
         private FoodProduction _foodProduction;
         
-        [Inject] ChronologyData _chronologyData;
+        [Inject] ChronologyInfo _chronologyInfo;
         [Inject] IDataStorage _dataStorage;
         
         public override void InstallBindings()

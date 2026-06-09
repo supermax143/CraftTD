@@ -22,7 +22,7 @@ namespace Unity.Game
         [Inject] protected EpochManager _epochManager;
         
         public TowerController Tower => _tower;
-        private EpochData _epoch;
+        private EpochInfo _epoch;
         
         public Spawner Spawner => _spawner;
 

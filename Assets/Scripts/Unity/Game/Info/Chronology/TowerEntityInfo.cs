@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Unity.Game
 {
     [Serializable]
-    public class TowerEntityData : GameEntityData
+    public class TowerEntityInfo : GameEntityInfo
     {
         
         [InlineProperty, SerializeField] 
