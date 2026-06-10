@@ -35,7 +35,7 @@ namespace Core.Application.Models
         }
 #endif
 
-        public async Task Init()
+        public void Init()
         {
             _chronology.TryGetEpochInfo(_dataStorage.CurrentEpochIndex, out var epochInfo);
             _epoch = new EpochModel(epochInfo, _dataStorage.EpochData, _gameStats);

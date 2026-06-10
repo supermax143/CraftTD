@@ -1,11 +1,14 @@
-﻿using Unity.Game.Attributes;
+using Unity.Game.Attributes;
 using UnityEngine;
 
 namespace Unity.Game.Data.Attributes
 {
-    public class GameObjectEntityAttribute: GameEntityAttribute<GameObject>
+    public abstract class GameObjectEntityAttribute : GameEntityAttribute<GameObject>
     {
-        public GameObjectEntityAttribute(GameObject value, GameEntityAttributeKind kind) 
-            : base(value, kind) { }
+        public GameObjectEntityAttribute(GameObject value)
+            : base(value)
+        {
+        }
+
     }
 }
