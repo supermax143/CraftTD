@@ -61,10 +61,11 @@ namespace Unity.Presentation.Windows
 
         private void UpdateEpochButton()
         {
+            _completeEpochButton.gameObject.SetActive(_model.HasNextEpoch());
             _completeEpochButton.SetPrice(_model.GetEpochCompleteCost());
         }
         
-        private void CompleteEpoch()
+        public void CompleteEpoch()
         {
             _model.CompleteEpoch();
             UpdateView();

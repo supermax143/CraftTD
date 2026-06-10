@@ -39,7 +39,7 @@ namespace Unity.Presentation.Windows.Upgrade
         
         private void OnDestroy()
         {
-            Epoch.OnFoodProductionLevelChanged -= UpdateView;
+            Epoch.OnTowerLevelChanged -= UpdateView;
         }
     }
 }

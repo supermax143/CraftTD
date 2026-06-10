@@ -165,7 +165,7 @@ MonoBehaviour:
       _detectionRange:
         _value: 4
       unitFoodCost:
-        _value: 0
+        _value: 2
       unitUnlockCost:
         _value: 0
       _rewardMoney:
@@ -191,9 +191,9 @@ MonoBehaviour:
       _detectionRange:
         _value: 4
       unitFoodCost:
-        _value: 0
+        _value: 4
       unitUnlockCost:
-        _value: 0
+        _value: 200
       _rewardMoney:
         _value: 0
       _unitPrefab:
@@ -217,9 +217,9 @@ MonoBehaviour:
       _detectionRange:
         _value: 4
       unitFoodCost:
-        _value: 0
+        _value: 6
       unitUnlockCost:
-        _value: 0
+        _value: 600
       _rewardMoney:
         _value: 0
       _unitPrefab:

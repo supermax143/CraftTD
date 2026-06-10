@@ -88,7 +88,7 @@ namespace Core.Application.DataStorage
             get { return _epochData.Money; }
         }
 
-        public EpochStorageData EpochData => _epochData;
+        internal EpochStorageData EpochData => _epochData;
 
 
         public void AddPurchase(string id)

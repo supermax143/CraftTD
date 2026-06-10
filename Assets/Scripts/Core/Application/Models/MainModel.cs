@@ -37,11 +37,13 @@ namespace Core.Application.Models
 
         public void CompleteEpoch()
         {
-            if (GetEpochCompleteCost() < Money)
+            if (GetEpochCompleteCost() > Money)
             {
                 return;
             }
             _dataStorage.SetEpochIndex(_dataStorage.CurrentEpochIndex + 1);
+            _dataStorage.EpochData.Reset();
+            Init();
         }
 
         public int GetEpochCompleteCost()
