@@ -13,10 +13,16 @@ namespace Unity.Presentation.Windows
     [Window(nameof(UpgradeWindow))]
     public class UpgradeWindow : WindowBase
     {
+        
+        [SerializeField]
+        private TextMeshProUGUI _epochTF;
         [SerializeField]
         private List<UnitOpenItem> _unitsItems;
         [SerializeField]
         private TextMeshProUGUI _moneyTF;
+        [SerializeField]
+        private PriceButton _completeEpochButton;
+        
         
         [Inject] IMainModel _model;
         
@@ -26,9 +32,17 @@ namespace Unity.Presentation.Windows
         {
             Epoch.OnMoneyChanged += UpdateMoney;
             Epoch.OnUnitOpened += UpdateUnits;
+            UpdateView();
+        }
+
+        private void UpdateView()
+        {
+            _epochTF.text = Epoch.Name;
             UpdateMoney();
             UpdateUnits();
+            UpdateEpochButton();
         }
+        
 
         private void UpdateMoney()
         {
@@ -45,6 +59,17 @@ namespace Unity.Presentation.Windows
             }
         }
 
+        private void UpdateEpochButton()
+        {
+            _completeEpochButton.SetPrice(_model.GetEpochCompleteCost());
+        }
+        
+        private void CompleteEpoch()
+        {
+            _model.CompleteEpoch();
+            UpdateView();
+        }
+        
         private void OnDestroy()
         {
             Epoch.OnMoneyChanged -= UpdateMoney;

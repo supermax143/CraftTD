@@ -25,7 +25,6 @@ namespace Core.Application.DataStorage
         
         private TutorialStorageData _tutorialStorageData;
         private PurchasesStorageData _purchasesStorageData;
-        private FloatStorageVariable _foodProductionPerSecond;
         private IntStorageVariable _curEpochIndex;
         private EpochStorageData _epochData;
 
@@ -43,10 +42,9 @@ namespace Core.Application.DataStorage
         public Task Init()
         {
             _tutorialStorageData = new TutorialStorageData(_localStorageProvider);
-            _epochData = new EpochStorageData(_globalStorageProvider);
-            _foodProductionPerSecond = new FloatStorageVariable("FoodProduction", _localStorageProvider, .25f);
+            _epochData = new EpochStorageData(_localStorageProvider);
             _curEpochIndex = new IntStorageVariable("CurrentEpoch", _localStorageProvider, 0);
-            
+            _purchasesStorageData = new PurchasesStorageData(_localStorageProvider);
             Debug.Log($"{this.GetType().Name} Initialized");
             return Task.CompletedTask;
         }
@@ -56,11 +54,19 @@ namespace Core.Application.DataStorage
         {
             _localStorageProvider.Reset();
             _globalStorageProvider.Reset();
+            
             _tutorialStorageData.Reset();
+            _curEpochIndex.Value = 0;
             _epochData.Reset();
             _purchasesStorageData.Reset();
         }
 
+        internal void SetEpochIndex(int index)
+        {
+            _curEpochIndex.Value = index;
+            _epochData.Reset();
+        }
+        
         public void AddMoney(uint Value)
         {
             _epochData.AddMoney(Value);
@@ -76,10 +82,6 @@ namespace Core.Application.DataStorage
             _curEpochIndex.Value = index;
         }
 
-        public void SetFoodProductionPerSecond(float value)
-        {
-            _foodProductionPerSecond.Value = value;
-        }
         
         public uint UserMoney
         {

@@ -2,11 +2,13 @@ using System.Linq;
 using Core.Application.DataStorage;
 using Core.Application.Interfaces;
 using Core.Application.Interfaces.ApplicationSession;
+using Core.Application.Interfaces.Windows;
 using Core.Application.Models;
 using Core.Domain.Services;
 using Core.Domain.Services.ApplicationSession;
 using TMPro;
 using Unity.Game;
+using Unity.Presentation.Windows;
 using UnityEngine;
 using Zenject;
 
@@ -30,7 +32,9 @@ namespace Unity.Presentation
 		private TMP_InputField _foodProductionInput;
 		[SerializeField]
 		private TMP_InputField _moneyInput;
-		
+
+		[Inject] private IWindowsController _windowsController;
+
 		private void Start()
 		{
 			UpdateLanguageSelector();
@@ -61,6 +65,15 @@ namespace Unity.Presentation
 			 _localization.SetLanguage(_languageSelector.options[value].text);
 		}
 
+		public void ShowUpgradeWindow()
+		{
+			_windowsController.ShowWindow<UpgradeWindow>(window =>
+			{
+				window.Initialize();
+				window.Show();
+			});
+		}
+		
 		public void StartGame()
 		{
 			_applicationSession.CurrentState.StartGame();
@@ -73,7 +86,7 @@ namespace Unity.Presentation
 		
 		public void Reset()
 		{
-			_dataStorage.Reset();
+			_mainModel.Reset();
 			UpdateMoneyInput();
 		}
 	}

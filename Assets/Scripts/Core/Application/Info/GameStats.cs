@@ -12,7 +12,9 @@ namespace Unity.Game
         [SerializeField] private float _foodProductionPerLevel = .02f;
         [SerializeField] private float _baseTowerHealth = 2;
         [SerializeField] private float _towerHealthPerLevel = 2;
-       
+        [SerializeField] private float _baseEpochCompleteCost = 2000;
+        [SerializeField] private float _epochCompleteCostMultiplier = 8;
+        
         public float BaseFoodProductionSpeed => _baseFoodProductionSpeed;
         public float FoodProductionPerLevel => _foodProductionPerLevel;
         public float BaseTowerHealth => _baseTowerHealth;
@@ -29,5 +31,8 @@ namespace Unity.Game
 
         public int GetTowerHealth(uint towerLevel) 
             => (int)(_baseTowerHealth + _towerHealthPerLevel * towerLevel);
+        
+        public int GetEpochCompleteCost(int epochIndex)  => (int)(_baseEpochCompleteCost * epochIndex);
+        
     }
 }

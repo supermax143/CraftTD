@@ -20,12 +20,15 @@ namespace Core.Application.Models
         private readonly EpochStorageData _data;
         private readonly GameStats _gameStats;
 
+        
+        
         public uint Money
         {
             get => _data.Money;
             set => _data.Money = value;
         }
 
+        public string Name => _info.EpochName;
         public uint FoodProductionLevel => _data.FoodProductionLevel;
         public uint TowerLevel => _data.TowerLevel;
         public IEnumerable<UnitModel> Units => _units;

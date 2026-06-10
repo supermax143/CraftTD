@@ -5,6 +5,10 @@ namespace Core.Application.Models
     {
         EpochModel Epoch { get; }
         uint Money { get; set; }
+        bool HasNextEpoch();
+        void CompleteEpoch();
+        int GetEpochCompleteCost();
+        void Reset();
     }
     
     internal interface IMainModelInternal : IMainModel

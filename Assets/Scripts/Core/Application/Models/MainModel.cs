@@ -35,10 +35,34 @@ namespace Core.Application.Models
         }
 #endif
 
+        public void CompleteEpoch()
+        {
+            if (GetEpochCompleteCost() < Money)
+            {
+                return;
+            }
+            _dataStorage.SetEpochIndex(_dataStorage.CurrentEpochIndex + 1);
+        }
+
+        public int GetEpochCompleteCost()
+        {
+            return _gameStats.GetEpochCompleteCost(_dataStorage.CurrentEpochIndex + 1);
+        }
+        
+        public bool HasNextEpoch() => 
+            _dataStorage.CurrentEpochIndex < _chronology.Epochs.Count-1;
+        
+        
         public void Init()
         {
             _chronology.TryGetEpochInfo(_dataStorage.CurrentEpochIndex, out var epochInfo);
             _epoch = new EpochModel(epochInfo, _dataStorage.EpochData, _gameStats);
+        }
+        
+        public void Reset()
+        {
+            _dataStorage.Reset();
+            Init();
         }
         
     }
