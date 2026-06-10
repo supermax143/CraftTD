@@ -16,9 +16,11 @@ namespace Unity.Presentation
 	{
 		[Inject] private IApplicationSession _applicationSession;
 		[Inject] private ILocalization _localization;
-		[Inject] private EpochManager _epochManager;
 		[Inject] private IDataStorage _dataStorage;
-		[Inject] private IMainModel _model;
+		[Inject] private IMainModel _mainModel;
+        
+		private EpochModel Epoch => _mainModel.Epoch;
+        
 		
 		[SerializeField]
 		private TMP_Dropdown _languageSelector;
@@ -32,22 +34,14 @@ namespace Unity.Presentation
 		private void Start()
 		{
 			UpdateLanguageSelector();
-			UpdateEpochSelector();
 			UpdateMoneyInput();
 		}
 
 		private void UpdateMoneyInput()
 		{
-			_moneyInput.text = _model.Money.ToString();
+			_moneyInput.text = Epoch.Money.ToString();
 		}
 
-		
-
-		private void UpdateEpochSelector()
-		{
-			_epochSelector.options = _epochManager.GetEpochs().
-				Select(epochData => new TMP_Dropdown.OptionData { text = epochData.EpochName } ).ToList();
-		}
 
 		private void UpdateLanguageSelector()
 		{
@@ -74,8 +68,13 @@ namespace Unity.Presentation
 		
 		public void Save()
 		{
-			_epochManager.SetEpoch(_epochSelector.value);
-			_model.Money = uint.Parse(_moneyInput.text);
+			Epoch.Money = uint.Parse(_moneyInput.text);
+		}
+		
+		public void Reset()
+		{
+			_dataStorage.Reset();
+			UpdateMoneyInput();
 		}
 	}
 }

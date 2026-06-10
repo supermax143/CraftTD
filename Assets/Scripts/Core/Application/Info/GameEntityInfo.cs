@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Application.Info.Attributes.AttrimuteModdifiers;
 using Unity.Game.Attributes;
 
 namespace Unity.Game
@@ -47,6 +48,19 @@ namespace Unity.Game
 
             attribute = default;
             return false;
+        }
+        
+        
+        public void AddModifier(AttributeModifierBase modifier)
+        {
+            foreach (var attr in GetAllAttributes())
+            {
+                if (attr.Kind == modifier.Kind)
+                {
+                    attr.AddModifier(modifier);
+                    break;
+                }
+            }
         }
     }
 }

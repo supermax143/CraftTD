@@ -8,10 +8,12 @@ namespace Core.Application.Models
         private bool _isUnitOpened;
 
         public bool IsUnitOpened => _isUnitOpened;
-        public UnitTier Tier => _info.Tier;
-        public int FoodCost => _info.FoodCost;
-        public int UnlockCost => _info.UnlockCost;
-        
+        public UnitTier Tier => Info.Tier;
+        public int FoodCost => Info.FoodCost;
+        public int UnlockCost => Info.UnlockCost;
+
+        public UnitEntityInfo Info => _info;
+
         public void OpenUnit()
         {
             _isUnitOpened = true;

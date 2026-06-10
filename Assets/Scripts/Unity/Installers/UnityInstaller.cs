@@ -40,8 +40,6 @@ namespace Unity.Installers
          Container.BindInterfacesAndSelfTo<ChronologyInfo>().FromInstance(_chronologyInfo);
          Container.BindInterfacesAndSelfTo<GameStats>().FromInstance(_baseGameStats);
          
-         //EpochManager
-         Container.Bind<EpochManager>().AsSingle();
          
          Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle();
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();

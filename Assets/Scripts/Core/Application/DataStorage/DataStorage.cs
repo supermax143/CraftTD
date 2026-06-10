@@ -56,7 +56,6 @@ namespace Core.Application.DataStorage
         {
             _localStorageProvider.Reset();
             _globalStorageProvider.Reset();
-            
             _tutorialStorageData.Reset();
             _epochData.Reset();
             _purchasesStorageData.Reset();

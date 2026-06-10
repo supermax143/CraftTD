@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core.Application.Interfaces.ApplicationSession;
+using Core.Application.Models;
 using UnityEngine;
 using Zenject;
 
@@ -17,8 +18,10 @@ namespace Unity.Game
         [SerializeField] 
         private FoodProduction _foodProduction;
 
-        [Inject] private EpochManager _epochManager;
         [Inject] private IApplicationSession _applicationSession;
+        [Inject] private IMainModel _mainModel;
+        
+        private EpochModel Epoch => _mainModel.Epoch;
         
         private Spawner _spawner;
         private bool _started = false;
@@ -73,12 +76,12 @@ namespace Unity.Game
         
         public void BuyUnit(UnitTier tier)
         {
-            _epochManager.TryGetUnitDataByTier(tier, out var unitData);
-            if (_foodProduction.FoodCount < unitData.FoodCost)
+            var unit = Epoch.GetUnitByTier(tier);
+            if (_foodProduction.FoodCount < unit.FoodCost)
             {
                 return;
             }
-            _foodProduction.WithdrawFood(unitData.FoodCost);
+            _foodProduction.WithdrawFood(unit.FoodCost);
             _spawner.Spawn(tier, 1);
         }
 

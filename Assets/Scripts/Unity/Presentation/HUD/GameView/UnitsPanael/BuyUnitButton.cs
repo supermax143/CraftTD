@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.Application.Models;
 using TMPro;
 using Unity.Game;
 using UnityEngine;
@@ -22,10 +23,12 @@ namespace Unity.Presentation.HUD.UnitsPanael
         private TMP_Text _foodCostTF;
         
         [Inject] private IFoodProduction _foodProduction;
-        [Inject] private EpochManager _epochManager;
         [Inject] private IGameController _gameController;
+        [Inject] private IMainModel _mainModel;
         
-        private UnitEntityInfo _unitInfo;
+        private EpochModel Epoch => _mainModel.Epoch;
+        
+        private UnitModel _unit;
         private int _foodCost;
 
         public UnitTier Tier => _unitTier;
@@ -37,8 +40,8 @@ namespace Unity.Presentation.HUD.UnitsPanael
 
         private void Start()
         {
-            _epochManager.TryGetUnitDataByTier(_unitTier, out _unitInfo);
-            _foodCost = _unitInfo.FoodCost;
+            _unit = Epoch.GetUnitByTier(_unitTier);
+            _foodCost = _unit.FoodCost;
             _foodProduction.OnFoodChanged += UpdateBuyAvailable;
             UpdateView();
             UpdateBuyAvailable();

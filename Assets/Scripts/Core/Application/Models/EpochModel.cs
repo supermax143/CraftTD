@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core.Application.DataStorage.StorageItems;
+using Core.Application.Info.Attributes.AttrimuteModdifiers;
 using Unity.Game;
 
 namespace Core.Application.Models
@@ -13,10 +14,12 @@ namespace Core.Application.Models
         public event Action OnTowerLevelChanged;
         
         private readonly List<UnitModel> _units = new();
+        private TowerModel _tower;
+        
         private readonly EpochInfo _info;
         private readonly EpochStorageData _data;
         private readonly GameStats _gameStats;
-        
+
         public uint Money
         {
             get => _data.Money;
@@ -29,17 +32,29 @@ namespace Core.Application.Models
         public float FoodProductionSpeed => _gameStats.GetFoodProductionSpeed(FoodProductionLevel);
         public int FoodProductionUpgradeCost => _gameStats.GetFoodProductionSpeedCost(FoodProductionLevel);
         public int TowerUpgradeCost => _gameStats.GetTowerUpgradeCost(TowerLevel);
-        public object TowerHealth => _gameStats.GetTowerHealth(TowerLevel);
+        public int TowerHealth => _gameStats.GetTowerHealth(TowerLevel);
+
+        public TowerModel Tower => _tower;
+        public EpochInfo Info => _info;
 
         internal EpochModel(EpochInfo info, EpochStorageData data, GameStats gameStats)
         {
             _info = info;
             _data = data;
             _gameStats = gameStats;
+            
+            AddTowers();
+            
             foreach (var unit in _info.GetUnits())
             {
                 _units.Add(new UnitModel(unit, _data.IsUnitOpened(unit.Tier)));
             }
+        }
+
+        private void AddTowers()
+        {
+            _tower = new TowerModel(_info.Tower);
+            _tower.AddModifier(new HealthTowerAddModifier(TowerHealth));
         }
 
         public UnitModel GetUnitByTier(UnitTier tier)

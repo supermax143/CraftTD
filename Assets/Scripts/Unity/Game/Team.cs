@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.Application.Models;
 using Unity.Utils.Time;
 using UnityEngine;
 using Zenject;
@@ -19,10 +20,13 @@ namespace Unity.Game
         [SerializeField] 
         private Faction _enemyFaction;
         
-        [Inject] protected EpochManager _epochManager;
+        [Inject] IMainModel _model;
+        
+        public EpochModel Epoch => _model.Epoch;
+        
+        
         
         public TowerController Tower => _tower;
-        private EpochInfo _epoch;
         
         public Spawner Spawner => _spawner;
 
@@ -37,15 +41,14 @@ namespace Unity.Game
 
         public void Initialize()
         {
-            _epochManager.TryGetCurrentEpoch(out _epoch);
             _tower.SetFaction(_faction);
             _spawner.SetFaction(_faction, _enemyFaction);
-            _tower.SetData(_epoch.Tower);
+            _tower.SetData(Epoch.Tower.Info);
         }
 
         public void StartGame()
         {
-            _spawner.StartSpawn(_epoch);
+            _spawner.StartSpawn(Epoch);
         }
         
     }

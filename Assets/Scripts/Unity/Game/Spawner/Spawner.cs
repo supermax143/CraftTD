@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Core.Application.Models;
 using Unity.Game.Attributes.Specific;
 using Unity.Utils.Time;
 using UnityEngine;
@@ -20,7 +21,7 @@ namespace Unity.Game
         private Faction _faction;
         private Faction _enemyFaction;
 
-        protected EpochInfo _epoch;
+        protected EpochModel _epoch;
         private bool _canSpawn = false;
 
         private void Start()
@@ -35,7 +36,7 @@ namespace Unity.Game
         }
 
 
-        public virtual void StartSpawn(EpochInfo epoch)
+        public virtual void StartSpawn(EpochModel epoch)
         {
             _canSpawn = true;
             _epoch = epoch;
@@ -53,9 +54,9 @@ namespace Unity.Game
             {
                 var spawnDelta = new Vector3(Random.Range(-_spawnRange, _spawnRange), 0, Random.Range(-_spawnRange, _spawnRange));
 
-                var unitData = _epoch.GetUnitDataByTier(tier);
+                var unitModel = _epoch.GetUnitByTier(tier);
                 
-                if (!unitData.TryGetAttribute<UnitPrefabAttribute>(out var unitPrefabAttribute))
+                if (!unitModel.Info.TryGetAttribute<UnitPrefabAttribute>(out var unitPrefabAttribute))
                 {
                     throw new System.Exception("No unit prefab found");
                 }
@@ -68,7 +69,7 @@ namespace Unity.Game
                 {
                     unit.transform.LookAt(target.transform);
                 }
-                unit.SetData(unitData);
+                unit.SetData(unitModel.Info);
             }
         }
 

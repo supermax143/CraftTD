@@ -11,5 +11,6 @@ namespace Core.Application.DataStorage
         int CurrentEpochIndex { get; }
         void AddMoney(uint Value);
         void SetCurrentEpoch(int index);
+        void Reset();
     }
 }
