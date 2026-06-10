@@ -57,6 +57,8 @@ MonoBehaviour:
   - {fileID: 6170028206161201533}
   _moneyTF: {fileID: 1105978317007703921}
   _completeEpochButton: {fileID: 7209599584162488811}
+  _foodUpgradePanel: {fileID: 6685458223104419286}
+  _towerUpgradePanel: {fileID: 5302860307853783498}
 --- !u!1 &304902824515779926
 GameObject:
   m_ObjectHideFlags: 0

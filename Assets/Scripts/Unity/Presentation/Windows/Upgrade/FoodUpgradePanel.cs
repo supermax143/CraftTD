@@ -25,7 +25,7 @@ namespace Unity.Presentation.Windows.Upgrade
             UpdateView();
         }
 
-        private void UpdateView()
+        public void UpdateView()
         {
             var price = Epoch.FoodProductionUpgradeCost;//GameStats.FoodProductionSpeedCost(Epoch.FoodProductionLevel);
             _priceButton.SetPrice(price);

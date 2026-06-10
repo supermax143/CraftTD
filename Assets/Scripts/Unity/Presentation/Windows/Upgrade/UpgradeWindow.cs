@@ -5,6 +5,7 @@ using TMPro;
 using Unity.Game;
 using Unity.Infrastructure.Windows;
 using Unity.Presentation.Components;
+using Unity.Presentation.Windows.Upgrade;
 using UnityEngine;
 using Zenject;
 
@@ -22,7 +23,10 @@ namespace Unity.Presentation.Windows
         private TextMeshProUGUI _moneyTF;
         [SerializeField]
         private PriceButton _completeEpochButton;
-        
+        [SerializeField]
+        private FoodUpgradePanel _foodUpgradePanel;
+        [SerializeField]
+        private TowerUpgradePanel _towerUpgradePanel;
         
         [Inject] IMainModel _model;
         
@@ -41,6 +45,8 @@ namespace Unity.Presentation.Windows
             UpdateMoney();
             UpdateUnits();
             UpdateEpochButton();
+            _foodUpgradePanel.UpdateView();
+            _towerUpgradePanel.UpdateView();
         }
         
 
