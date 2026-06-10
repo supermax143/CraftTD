@@ -32,12 +32,12 @@ namespace Unity.Installers
      
 
 
-      public override void InstallBindings()
+      public override async void InstallBindings()
       {
          InitializeAddressables();
 
          //Data
-         Container.BindInterfacesAndSelfTo<ChronologyInfo>().FromInstance(_chronologyInfo);
+         Container.BindInterfacesAndSelfTo<ChronologyInfo>().FromNewScriptableObject(_chronologyInfo).AsSingle();
          Container.BindInterfacesAndSelfTo<GameStats>().FromInstance(_baseGameStats);
          
          

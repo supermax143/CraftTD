@@ -23,8 +23,8 @@ namespace Unity.Game
 
 
         public Transform SearchTransform => transform;
-        public float DetectionRange => _detectionRange.Value;
-        public float AttackRange => _attackRange.Value;
+        public float DetectionRange => _detectionRange.ValueModified;
+        public float AttackRange => _attackRange.ValueModified;
         
         
         

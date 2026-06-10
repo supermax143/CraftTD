@@ -54,7 +54,7 @@ namespace Core.Application.Models
         private void AddTowers()
         {
             _tower = new TowerModel(_info.Tower);
-            _tower.AddModifier(new HealthTowerAddModifier(TowerHealth));
+            _tower.AddModifier(new HealthTowerAddModifier(GetHashCode(), TowerHealth));
         }
 
         public UnitModel GetUnitByTier(UnitTier tier)
@@ -84,6 +84,8 @@ namespace Core.Application.Models
             
             Money -= (uint)_gameStats.GetTowerUpgradeCost(TowerLevel);
             _data.TowerLevel++;
+            
+            _tower.AddModifier(new HealthTowerAddModifier(GetHashCode(), TowerHealth));
             OnTowerLevelChanged?.Invoke();
             OnMoneyChanged?.Invoke();
         }

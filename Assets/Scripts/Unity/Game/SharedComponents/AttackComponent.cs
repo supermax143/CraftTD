@@ -26,10 +26,10 @@ namespace Unity.Game
         private AttackCooldownAttribute _attackCooldown;
         
 
-        public float AttackRange => _attackRange.Value;
-        public float AttackSpeed => _attackSpeed.Value;
-        public float AttackCooldown => _attackCooldown.Value;
-        public float Damage => _damage.Value;
+        public float AttackRange => _attackRange.ValueModified;
+        public float AttackSpeed => _attackSpeed.ValueModified;
+        public float AttackCooldown => _attackCooldown.ValueModified;
+        public float Damage => _damage.ValueModified;
         
         private Coroutine _attackCoroutine;
 
@@ -68,7 +68,10 @@ namespace Unity.Game
         
         public void Deactivate()
         {
-            StopCoroutine(_attackCoroutine);
+            if (_attackCoroutine != null)
+            {
+                StopCoroutine(_attackCoroutine);
+            }
         }
         
         public bool CheckRange(AttackTarget target)

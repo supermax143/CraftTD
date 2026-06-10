@@ -61,7 +61,7 @@ namespace Unity.Game
                     throw new System.Exception("No unit prefab found");
                 }
                 
-                var prefab = unitPrefabAttribute.Value;//epoch.GetRandomUnitTier().TryGetAttribute();
+                var prefab = unitPrefabAttribute.ValueModified;
                 var unit = _container.InstantiatePrefabForComponent<UnitController>(prefab, _spawnTransform);
                 unit.SetFaction(_faction, _enemyFaction);
                 unit.transform.position = transform.position + spawnDelta;

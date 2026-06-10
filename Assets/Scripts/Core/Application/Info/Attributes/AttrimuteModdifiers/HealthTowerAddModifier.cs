@@ -4,9 +4,7 @@ namespace Core.Application.Info.Attributes.AttrimuteModdifiers
 {
     public class HealthTowerAddModifier : AttributeModifier<int>
     {
-        private readonly int _value;
-
-        public HealthTowerAddModifier(int value)
+        public HealthTowerAddModifier(int id, int value) : base(id, value)
         {
             _value = value;
         }

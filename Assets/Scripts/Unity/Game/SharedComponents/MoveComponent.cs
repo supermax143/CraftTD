@@ -38,7 +38,7 @@ namespace Unity.Game
         private void MoveToTarget(Vector3 targetPosition)
         {
             var direction = (targetPosition - transform.position).normalized;
-            var delta = direction * (_moveSpeed.Value * Time.deltaTime);
+            var delta = direction * (_moveSpeed.ValueModified * Time.deltaTime);
             delta.y = 0;
             transform.position += delta;
             

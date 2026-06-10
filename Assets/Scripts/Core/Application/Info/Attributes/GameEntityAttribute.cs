@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Core.Application.Info.Attributes.AttrimuteModdifiers;
+using ModestTree;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -37,14 +38,52 @@ namespace Unity.Game.Attributes
             if (other.GetType() != GetType()) return;
 
             SetValueObject(other.GetValueObject());
+            Modifiers.Clear();
+            foreach (var modifier in other.Modifiers)
+            {
+                AddModifier(modifier);
+            }
         }
 
         public virtual void AddModifier(AttributeModifierBase modifier)
         {
+            if (TryGetModifier(modifier.ID, out var curModifier))
+            {
+                curModifier.Replace(modifier);
+                return;
+            }
+            
             Modifiers.Add(modifier);
             OnModifiersChanged();
         }
 
+        public virtual void RemoveModifier(int id)
+        {
+            if (!TryGetModifier(id, out var modifier))
+            {
+                return;
+            }
+            
+            Modifiers.Remove(modifier);
+            OnModifiersChanged();
+        }
+
+        private bool TryGetModifier(int id, out AttributeModifierBase result)
+        {
+            result = default;
+            foreach (var modifier in Modifiers)
+            {
+                if (modifier.ID != id)
+                {
+                    continue;
+                }
+                result = modifier;
+                return  true;
+            }
+
+            return false;
+        }
+        
         public virtual void RemoveModifier(AttributeModifierBase modifier)
         {
             Modifiers.Remove(modifier);
@@ -68,7 +107,7 @@ namespace Unity.Game.Attributes
         }
 
 
-        public TValue Value
+        /*public TValue Value
         {
             get => _value;
             set
@@ -78,13 +117,19 @@ namespace Unity.Game.Attributes
                 _value = value;
                 _isDirty = true;
             }
-        }
+        }*/
 
         public TValue ValueModified
         {
             get
             {
-                if (_isDirty) RecalculateValueModified();
+                if (Modifiers.IsEmpty())
+                {
+                    return _value;
+                }
+                
+                if (_isDirty) 
+                    RecalculateValueModified();
                 return _valueModified;
             }
         }
