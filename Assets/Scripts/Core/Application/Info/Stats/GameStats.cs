@@ -50,6 +50,48 @@ namespace Unity.Game
         
         
         
+        public static double GetUnitDamage(int tier, int epoch)
+        {
+            if (tier is < 1 or > 3 || epoch < 1) 
+                throw new ArgumentException("Invalid tier or epoch");
+
+            double baseDmg = tier == 3 ? 4.0 : 2.0;
+            return baseDmg * Math.Pow(3, epoch - 1);
+        }
+
+        
+        public static int GetUnitHealth(int tier, int epoch)
+        {
+            if (tier is < 1 or > 3 || epoch < 1) 
+                throw new ArgumentException("Invalid tier or epoch");
+
+            return tier switch
+            {
+                1 => (int)Math.Round(2.0 * Math.Pow(3, epoch)),
+                2 => (int)Math.Round(2.0 * Math.Pow(3, epoch - 1)),
+                3 => (int)Math.Round(30.0 * Math.Pow(3, epoch - 1)),
+                _ => throw new ArgumentException("Invalid tier")
+            };
+        }
+
+       
+        public static int GetUnitFood(int tier, int epoch)
+        {
+            if (tier is < 1 or > 3 || epoch < 1) 
+                throw new ArgumentException("Invalid tier or epoch");
+
+            var (baseValue, step) = tier switch
+            {
+                1 => (3, 1.4),
+                2 => (5, 2.8),
+                3 => (7, 3.4),
+                _ => throw new ArgumentException("Invalid tier")
+            };
+
+            return (int)Math.Round(baseValue + step * (epoch - 1));
+        }
+        
+        
         public int GetUnitKillReward(uint epoch, UnitTier tier)
         {
             var baseCost = tier switch
@@ -82,10 +124,6 @@ namespace Unity.Game
             return (int)(baseCost * Math.Pow(_unitOpeningCostMultiplier, epoch));
         }
         
-        public float BaseFoodProductionSpeed => _baseFoodProductionSpeed;
-        public float FoodProductionPerLevel => _foodProductionPerLevel;
-        public float BaseTowerUpgradeHealth => _baseTowerUpgradeHealth;
-        public float TowerUpgradeHealthPerLevel => _towerUpgradeHealthPerLevel;
         
         internal int GetFoodProductionSpeedCost(uint level) 
             => (int)Math.Floor( 8f * Math.Pow(1.18, (float)level));
