@@ -22,12 +22,25 @@ namespace Unity.Game
         [SerializeField] private int _towerHealthMultiplier = 3;
         
         
-        [SerializeField] private int _baseTowerRewardPlayer = 100;
+        [SerializeField] private int _baseTowerReward = 100;
         [SerializeField] private int _towerRewardMultiplier = 2;
         
-        public int GetTowerReward(uint epoch, Faction faction)
-            => (int)(_baseTowerRewardPlayer * Math.Pow(_towerRewardMultiplier, epoch));
-
+        [SerializeField] private int _baseUnitOpeningCostTier2 = 150;
+        [SerializeField] private int _baseUnitOpeningCostTier3 = 400;
+        [SerializeField] private int _unitOpeningCostMultiplier = 8;
+        
+        
+        
+        
+        public int GetTowerReward(uint epoch)
+            => (int)(_baseTowerReward * Math.Pow(_towerRewardMultiplier, epoch));
+        
+        public int GetUnitOpeningCost(uint epoch, UnitTier tier)
+        {
+            var baseCost = tier == UnitTier.Tier2 ? _baseUnitOpeningCostTier2 : _baseUnitOpeningCostTier3;
+            return (int)(baseCost * Math.Pow(_unitOpeningCostMultiplier, epoch));
+        }
+        
         public float BaseFoodProductionSpeed => _baseFoodProductionSpeed;
         public float FoodProductionPerLevel => _foodProductionPerLevel;
         public float BaseTowerUpgradeHealth => _baseTowerUpgradeHealth;
