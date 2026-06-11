@@ -15,6 +15,11 @@ namespace Unity.Game
         private TowerPrefabAttribute _towerPrefab;
        
         private HealthAttribute _health = new();
-        
+
+        public void Initialize(GameStats gameStats, uint epoch, Faction faction)
+        {
+            _health = new HealthAttribute(gameStats.GetTowerHealth(epoch, faction));
+        }
+
     }
 }

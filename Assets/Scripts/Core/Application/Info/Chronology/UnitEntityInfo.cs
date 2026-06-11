@@ -19,13 +19,9 @@ namespace Unity.Game
         [InlineProperty, SerializeField] 
         private UnitPrefabAttribute _unitPrefab;
         
-        [InlineProperty, SerializeField] 
         private MoveSpeedAttribute _moveSpeed;
-        [InlineProperty, SerializeField] 
         private AttackRangeAttribute _attackRange;
-        [InlineProperty, SerializeField] 
         private AttackSpeedAttribute _attackSpeed;
-        
         private HealthAttribute _health;
         private DamageAttribute _damage;
         private UnitFoodCostAttribute _foodCost;

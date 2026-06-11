@@ -14,7 +14,9 @@ namespace Core.Application.Models
         public event Action OnTowerLevelChanged;
         
         private readonly List<UnitModel> _units = new();
-        private TowerModel _tower;
+        private List<TowerModel> _towers = new();
+        
+        
         
         private readonly EpochInfo _info;
         private readonly EpochStorageData _data;
@@ -37,9 +39,11 @@ namespace Core.Application.Models
         public int TowerUpgradeCost => _gameStats.GetTowerUpgradeCost(TowerLevel);
         public int TowerHealth => _gameStats.GetTowerHealth(TowerLevel);
 
-        public TowerModel Tower => _tower;
+        
         public EpochInfo Info => _info;
 
+        public TowerModel GetTower(Faction faction) => _towers.Find(tower => tower.Faction == faction);
+        
         internal EpochModel(int currentEpochId, EpochInfo info, EpochStorageData data, GameStats gameStats)
         {
             _epochId = currentEpochId;
@@ -61,8 +65,11 @@ namespace Core.Application.Models
 
         private void AddTowers()
         {
-            _tower = new TowerModel(_info.Tower);
-            _tower.AddModifier(new HealthTowerAddModifier(GetHashCode(), TowerHealth));
+            var tower = new TowerModel(_info.Tower, _gameStats, Faction.Player, _epochId);
+            tower.AddModifier(new HealthTowerAddModifier(GetHashCode(), TowerHealth));
+            _towers.Add(tower);
+            tower = new TowerModel(_info.Tower, _gameStats, Faction.Enemy, _epochId);
+            _towers.Add(tower);
         }
 
         public UnitModel GetUnitByTier(UnitTier tier)
@@ -93,7 +100,7 @@ namespace Core.Application.Models
             Money -= (uint)_gameStats.GetTowerUpgradeCost(TowerLevel);
             _data.TowerLevel++;
             
-            _tower.AddModifier(new HealthTowerAddModifier(GetHashCode(), TowerHealth));
+            GetTower(Faction.Player).AddModifier(new HealthTowerAddModifier(GetHashCode(), TowerHealth));
             OnTowerLevelChanged?.Invoke();
             OnMoneyChanged?.Invoke();
         }

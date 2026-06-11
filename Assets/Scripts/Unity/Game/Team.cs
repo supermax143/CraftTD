@@ -43,7 +43,7 @@ namespace Unity.Game
         {
             _tower.SetFaction(_faction);
             _spawner.SetFaction(_faction, _enemyFaction);
-            _tower.SetData(Epoch.Tower.Info);
+            _tower.SetData(Epoch.GetTower(_faction).Info);
         }
 
         public void StartGame()

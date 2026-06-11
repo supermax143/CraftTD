@@ -60,9 +60,7 @@ namespace Unity.Game
         [SerializeField] private int _baseUnitHealthTier2 = 2;
         [SerializeField] private int _baseUnitHealthTier3 = 30;
         [Space]
-        [SerializeField] private float _baseUnitMoveSpeedTier1 = 1f;
-        [SerializeField] private float _baseUnitMoveSpeedTier2 = 1f;
-        [SerializeField] private float _baseUnitMoveSpeedTier3 = 0.8f;
+        [SerializeField] private float _baseUnitMoveSpeed = 1f;
         [Space]
         [SerializeField] private float _baseUnitAttackRangeTier1 = 1f;
         [SerializeField] private float _baseUnitAttackRangeTier2 = 2.5f;
@@ -134,12 +132,12 @@ namespace Unity.Game
         }
         
         public int GetTowerKillReward(uint epoch)
-            => (int)(_baseTowerReward * Math.Pow(_towerRewardMultiplier, epoch));
+            => (int)(_baseTowerReward * Math.Pow(_towerRewardMultiplier, epoch-1));
         
         public int GetUnitOpeningCost(uint epoch, UnitTier tier)
         {
             var baseCost = tier == UnitTier.Tier2 ? _baseUnitOpeningCostTier2 : _baseUnitOpeningCostTier3;
-            return (int)(baseCost * Math.Pow(_unitOpeningCostMultiplier, epoch));
+            return (int)(baseCost * Math.Pow(_unitOpeningCostMultiplier, epoch-1));
         }
         
         
@@ -166,13 +164,7 @@ namespace Unity.Game
 
         public float GetUnitMoveSpeed(UnitTier tier, int epoch)
         {
-            float baseSpeed = tier switch
-            {
-                UnitTier.Tier1 => _baseUnitMoveSpeedTier1,
-                UnitTier.Tier2 => _baseUnitMoveSpeedTier2,
-                UnitTier.Tier3 => _baseUnitMoveSpeedTier3,
-            };
-            return baseSpeed;
+            return _baseUnitMoveSpeed;
         }
 
         public float GetUnitAttackRange(UnitTier tier, int epoch)
@@ -196,6 +188,6 @@ namespace Unity.Game
             };
             return baseSpeed;
         }
-        }
+        
     }
 }

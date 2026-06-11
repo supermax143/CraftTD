@@ -14,5 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.GameStats
   _baseFoodProductionSpeed: 0.18
   _foodProductionPerLevel: 0.02
-  _baseTowerHealth: 2
-  _towerHealthPerLevel: 2
+  _baseTowerUpgradeHealth: 2
+  _towerUpgradeHealthPerLevel: 2
+  _baseEpochCompleteCost: 2000
+  _epochCompleteCostMultiplier: 8
+  _baseTowerHealthPlayer: 2
+  _baseTowerHealthEnamy: 500
+  _towerHealthMultiplier: 3
+  _baseTowerReward: 100
+  _towerRewardMultiplier: 2
+  _baseUnitOpeningCostTier2: 150
+  _baseUnitOpeningCostTier3: 400
+  _unitOpeningCostMultiplier: 8
+  _baseUnitRewardTier1: 10
+  _baseUnitRewardTier2: 50
+  _baseUnitRewardTier3: 100
+  _unitRewardMultiplier: 10
+  _baseUnitDamageTier1: 2
+  _baseUnitDamageTier2: 2
+  _baseUnitDamageTier3: 4
+  _baseUnitHealthTier1: 2
+  _baseUnitHealthTier2: 2
+  _baseUnitHealthTier3: 30
+  _baseUnitMoveSpeed: 2
+  _baseUnitAttackRangeTier1: 1
+  _baseUnitAttackRangeTier2: 2.5
+  _baseUnitAttackRangeTier3: 1
+  _baseUnitAttackSpeedTier1: 1
+  _baseUnitAttackSpeedTier2: 1.2
+  _baseUnitAttackSpeedTier3: 1.5
