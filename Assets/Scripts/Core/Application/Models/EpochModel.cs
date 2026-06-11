@@ -19,9 +19,9 @@ namespace Core.Application.Models
         private readonly EpochInfo _info;
         private readonly EpochStorageData _data;
         private readonly GameStats _gameStats;
+        private readonly int _epochId;
 
-        
-        
+
         public uint Money
         {
             get => _data.Money;
@@ -40,8 +40,9 @@ namespace Core.Application.Models
         public TowerModel Tower => _tower;
         public EpochInfo Info => _info;
 
-        internal EpochModel(EpochInfo info, EpochStorageData data, GameStats gameStats)
+        internal EpochModel(int currentEpochId, EpochInfo info, EpochStorageData data, GameStats gameStats)
         {
+            _epochId = currentEpochId;
             _info = info;
             _data = data;
             _gameStats = gameStats;
@@ -54,7 +55,7 @@ namespace Core.Application.Models
         {
             foreach (var unit in _info.GetUnits())
             {
-                _units.Add(new UnitModel(unit, _data.IsUnitOpened(unit.Tier)));
+                _units.Add(new UnitModel(unit, _data.IsUnitOpened(unit.Tier), _gameStats, _epochId));
             }
         }
 

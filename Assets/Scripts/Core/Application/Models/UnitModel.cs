@@ -14,15 +14,19 @@ namespace Core.Application.Models
 
         public UnitEntityInfo Info => _info;
 
+        
+        
         public void OpenUnit()
         {
             _isUnitOpened = true;
         }
         
-        public UnitModel(UnitEntityInfo info, bool isUnitOpened)
+        public UnitModel(UnitEntityInfo info, bool isUnitOpened, GameStats stats, int epochId)
         {
             _info = info;
+            _info.Initialize(stats, (uint)epochId);
             _isUnitOpened = isUnitOpened;
+            
         }
 
     }

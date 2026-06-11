@@ -47,6 +47,9 @@ namespace Unity.Game
         [SerializeField] private int _baseUnitRewardTier3;
         [SerializeField] private int _unitRewardMultiplier;
         
+        
+        
+        
         public int GetUnitKillReward(uint epoch, UnitTier tier)
         {
             var baseCost = tier switch

@@ -46,11 +46,11 @@ namespace Core.Application.Models
             Init();
         }
 
-        public int CurrentEpoch => _dataStorage.CurrentEpochIndex + 1;
+        public int CurrentEpochId => _dataStorage.CurrentEpochIndex + 1;
         
         public int GetEpochCompleteCost()
         {
-            return _gameStats.GetEpochCompleteCost(CurrentEpoch);
+            return _gameStats.GetEpochCompleteCost(CurrentEpochId);
         }
         
         public bool HasNextEpoch() => 
@@ -60,7 +60,7 @@ namespace Core.Application.Models
         public void Init()
         {
             _chronology.TryGetEpochInfo(_dataStorage.CurrentEpochIndex, out var epochInfo);
-            _epoch = new EpochModel(epochInfo, _dataStorage.EpochData, _gameStats);
+            _epoch = new EpochModel(CurrentEpochId ,epochInfo, _dataStorage.EpochData, _gameStats);
         }
         
         public void Reset()

@@ -16,8 +16,6 @@ MonoBehaviour:
   - _epochName: "\u041F\u0435\u0440\u0432\u043E\u0431\u044B\u0442\u043D\u0430\u044F
       \u044D\u043F\u043E\u0445\u0430"
     _tower:
-      _health:
-        _value: 100
       _towerPrefab:
         _value: {fileID: 6563548916185858267, guid: 787862c76b6a5a549b8dcdcd77da43fc,
           type: 3}
@@ -34,11 +32,7 @@ MonoBehaviour:
         _value: 1
       _attackSpeed:
         _value: 1
-      _attackCooldown:
-        _value: 0.7
-      _detectionRange:
-        _value: 4
-      unitFoodCost:
+      _foodCost:
         _value: 1
       unitUnlockCost:
         _value: 0
@@ -60,11 +54,7 @@ MonoBehaviour:
         _value: 3
       _attackSpeed:
         _value: 1
-      _attackCooldown:
-        _value: 1
-      _detectionRange:
-        _value: 4
-      unitFoodCost:
+      _foodCost:
         _value: 2
       unitUnlockCost:
         _value: 100
@@ -86,11 +76,7 @@ MonoBehaviour:
         _value: 1
       _attackSpeed:
         _value: 1
-      _attackCooldown:
-        _value: 1
-      _detectionRange:
-        _value: 4
-      unitFoodCost:
+      _foodCost:
         _value: 3
       unitUnlockCost:
         _value: 300
@@ -142,8 +128,6 @@ MonoBehaviour:
         _count: 5
   - _epochName: "\u0421\u0440\u0435\u0434\u043D\u0438\u0435 \u0412\u0435\u043A\u0430"
     _tower:
-      _health:
-        _value: 100
       _towerPrefab:
         _value: {fileID: 6563548916185858267, guid: 787862c76b6a5a549b8dcdcd77da43fc,
           type: 3}
@@ -160,11 +144,7 @@ MonoBehaviour:
         _value: 1
       _attackSpeed:
         _value: 1
-      _attackCooldown:
-        _value: 0.7
-      _detectionRange:
-        _value: 4
-      unitFoodCost:
+      _foodCost:
         _value: 2
       unitUnlockCost:
         _value: 0
@@ -186,11 +166,7 @@ MonoBehaviour:
         _value: 3
       _attackSpeed:
         _value: 1
-      _attackCooldown:
-        _value: 1
-      _detectionRange:
-        _value: 4
-      unitFoodCost:
+      _foodCost:
         _value: 4
       unitUnlockCost:
         _value: 200
@@ -212,11 +188,7 @@ MonoBehaviour:
         _value: 1
       _attackSpeed:
         _value: 1
-      _attackCooldown:
-        _value: 1
-      _detectionRange:
-        _value: 4
-      unitFoodCost:
+      _foodCost:
         _value: 6
       unitUnlockCost:
         _value: 600

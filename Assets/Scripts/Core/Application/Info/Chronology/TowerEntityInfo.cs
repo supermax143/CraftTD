@@ -12,9 +12,9 @@ namespace Unity.Game
     {
         
         [InlineProperty, SerializeField] 
-        private HealthAttribute _health;
-        [InlineProperty, SerializeField] 
         private TowerPrefabAttribute _towerPrefab;
        
+        private HealthAttribute _health = new();
+        
     }
 }
