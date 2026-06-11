@@ -52,20 +52,23 @@ namespace Unity.Game
         
         [Space]
         [Header("Unit Stats")]
-        [SerializeField] private double _baseUnitDamageTier1 = 2;
-        [SerializeField] private double _baseUnitDamageTier2 = 2;
-        [SerializeField] private double _baseUnitDamageTier3 = 4;
+        [SerializeField] private int _baseUnitDamageTier1 = 2;
+        [SerializeField] private int _baseUnitDamageTier2 = 2;
+        [SerializeField] private int _baseUnitDamageTier3 = 4;
+
+        [SerializeField] private int _baseUnitHealthTier1 = 2;
+        [SerializeField] private int _baseUnitHealthTier2 = 2;
+        [SerializeField] private int _baseUnitHealthTier3 = 30;
         
-        public double GetUnitDamage(UnitTier tier, int epoch)
+        public int GetUnitDamage(UnitTier tier, int epoch)
         {
-            double baseDmg = tier switch
+            float baseDmg = tier switch
             {
                 UnitTier.Tier1 => _baseUnitDamageTier1,
                 UnitTier.Tier2 => _baseUnitDamageTier2,
                 UnitTier.Tier3 => _baseUnitDamageTier3,
-                _ => 0
             };
-            return baseDmg * Math.Pow(3, epoch - 1);
+            return (int)(baseDmg * Math.Pow(3, epoch - 1));
         }
 
         
@@ -74,10 +77,9 @@ namespace Unity.Game
 
             return tier switch
             {
-                UnitTier.Tier1 => (int)Math.Round(2.0 * Math.Pow(3, epoch)),
-                UnitTier.Tier2 => (int)Math.Round(2.0 * Math.Pow(3, epoch - 1)),
-                UnitTier.Tier3 => (int)Math.Round(30.0 * Math.Pow(3, epoch - 1)),
-                _ => throw new ArgumentException("Invalid tier")
+                UnitTier.Tier1 => (int)Math.Round(_baseUnitHealthTier1 * Math.Pow(3, epoch - 1)),
+                UnitTier.Tier2 => (int)Math.Round(_baseUnitHealthTier2 * Math.Pow(3, epoch - 1)),
+                UnitTier.Tier3 => (int)Math.Round(_baseUnitHealthTier3 * Math.Pow(3, epoch - 1)),
             };
         }
 
@@ -90,7 +92,6 @@ namespace Unity.Game
                 UnitTier.Tier1 => (3, 1.4),
                 UnitTier.Tier2 => (5, 2.8),
                 UnitTier.Tier3 => (7, 3.4),
-                _ => throw new ArgumentException("Invalid tier")
             };
 
             return (int)Math.Round(baseValue + step * (epoch - 1));
@@ -106,7 +107,7 @@ namespace Unity.Game
                 UnitTier.Tier3 => _baseUnitRewardTier3,
                 _ => 0
             };
-            return (int)(baseCost * Math.Pow(_unitRewardMultiplier, epoch));
+            return (int)(baseCost * Math.Pow(_unitRewardMultiplier, epoch-1));
         }
         
         
