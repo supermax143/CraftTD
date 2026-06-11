@@ -47,7 +47,11 @@ namespace Core.Application.Models
             _gameStats = gameStats;
             
             AddTowers();
-            
+            AddUnits();
+        }
+
+        private void AddUnits()
+        {
             foreach (var unit in _info.GetUnits())
             {
                 _units.Add(new UnitModel(unit, _data.IsUnitOpened(unit.Tier)));

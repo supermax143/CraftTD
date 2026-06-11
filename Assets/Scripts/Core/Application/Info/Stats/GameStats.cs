@@ -8,32 +8,44 @@ namespace Unity.Game
     public class GameStats : ScriptableObject
     {
 
-        [SerializeField] private float _baseFoodProductionSpeed = .18f;
-        [SerializeField] private float _foodProductionPerLevel = .02f;
+        [Header("Food Production")]
+        [SerializeField] private float _baseFoodProductionSpeed;
+        [SerializeField] private float _foodProductionPerLevel;
         
-        [SerializeField] private int _baseTowerUpgradeHealth = 2;
-        [SerializeField] private int _towerUpgradeHealthPerLevel = 2;
+        [Space]
+        [Header("Tower Upgrade")]
+        [SerializeField] private int _baseTowerUpgradeHealth;
+        [SerializeField] private int _towerUpgradeHealthPerLevel;
         
-        [SerializeField] private int _baseEpochCompleteCost = 2000;
-        [SerializeField] private int _epochCompleteCostMultiplier = 8;
+        [Space]
+        [Header("Epoch Complete")]
+        [SerializeField] private int _baseEpochCompleteCost;
+        [SerializeField] private int _epochCompleteCostMultiplier;
         
-        [SerializeField] private int _baseTowerHealthPlayer = 2;
-        [SerializeField] private int _baseTowerHealthEnamy = 500;
-        [SerializeField] private int _towerHealthMultiplier = 3;
+        [Space]
+        [Header("Tower Health")]
+        [SerializeField] private int _baseTowerHealthPlayer;
+        [SerializeField] private int _baseTowerHealthEnamy;
+        [SerializeField] private int _towerHealthMultiplier;
         
         
-        [SerializeField] private int _baseTowerReward = 100;
-        [SerializeField] private int _towerRewardMultiplier = 2;
+        [Space]
+        [Header("Tower Reward")]
+        [SerializeField] private int _baseTowerReward;
+        [SerializeField] private int _towerRewardMultiplier;
         
-        [SerializeField] private int _baseUnitOpeningCostTier2 = 150;
-        [SerializeField] private int _baseUnitOpeningCostTier3 = 400;
-        [SerializeField] private int _unitOpeningCostMultiplier = 8;
+        [Space]
+        [Header("Unit Opening")]
+        [SerializeField] private int _baseUnitOpeningCostTier2;
+        [SerializeField] private int _baseUnitOpeningCostTier3;
+        [SerializeField] private int _unitOpeningCostMultiplier;
         
-        [SerializeField] private int _baseUnitRewardTier1 = 10;
-        [SerializeField] private int _baseUnitRewardTier2 = 50;
-        [SerializeField] private int _baseUnitRewardTier3 = 100;
-        [SerializeField] private int _unitRewardMultiplier = 10;
-       
+        [Space]
+        [Header("Unit Reward")]
+        [SerializeField] private int _baseUnitRewardTier1;
+        [SerializeField] private int _baseUnitRewardTier2;
+        [SerializeField] private int _baseUnitRewardTier3;
+        [SerializeField] private int _unitRewardMultiplier;
         
         public int GetUnitKillReward(uint epoch, UnitTier tier)
         {
