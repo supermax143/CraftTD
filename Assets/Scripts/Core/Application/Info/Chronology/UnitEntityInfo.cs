@@ -20,10 +20,10 @@ namespace Unity.Game
         [InlineProperty, SerializeField] 
         private DamageAttribute _damage;
         [InlineProperty, SerializeField] 
+        private UnitFoodCostAttribute _foodCost;
+        [InlineProperty, SerializeField] 
         private UnitPrefabAttribute _unitPrefab;
         
-        [InlineProperty, SerializeField] 
-        private UnitFoodCostAttribute _foodCost;
         [InlineProperty, SerializeField] 
         private MoveSpeedAttribute _moveSpeed;
         [InlineProperty, SerializeField] 
