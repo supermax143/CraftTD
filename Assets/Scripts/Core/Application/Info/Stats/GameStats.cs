@@ -51,10 +51,22 @@ namespace Unity.Game
         [Header("Unit Stats")]*/
         
         
+        
+        
+
+        [SerializeField] private double _baseUnitDamageTier1;
+        [SerializeField] private double _baseUnitDamageTier2;
+        [SerializeField] private double _baseUnitDamageTier3;
+        
         public double GetUnitDamage(UnitTier tier, int epoch)
         {
-
-            double baseDmg = tier == UnitTier.Tier3 ? 4.0 : 2.0;
+            double baseDmg = tier switch
+            {
+                UnitTier.Tier1 => _baseUnitDamageTier1,
+                UnitTier.Tier2 => _baseUnitDamageTier2,
+                UnitTier.Tier3 => _baseUnitDamageTier3,
+                _ => 0
+            };
             return baseDmg * Math.Pow(3, epoch - 1);
         }
 
