@@ -47,44 +47,39 @@ namespace Unity.Game
         [SerializeField] private int _baseUnitRewardTier3;
         [SerializeField] private int _unitRewardMultiplier;
         
+        /*[Space]
+        [Header("Unit Stats")]*/
         
         
-        
-        public static double GetUnitDamage(int tier, int epoch)
+        public double GetUnitDamage(UnitTier tier, int epoch)
         {
-            if (tier is < 1 or > 3 || epoch < 1) 
-                throw new ArgumentException("Invalid tier or epoch");
 
-            double baseDmg = tier == 3 ? 4.0 : 2.0;
+            double baseDmg = tier == UnitTier.Tier3 ? 4.0 : 2.0;
             return baseDmg * Math.Pow(3, epoch - 1);
         }
 
         
-        public static int GetUnitHealth(int tier, int epoch)
+        public int GetUnitHealth(UnitTier tier, int epoch)
         {
-            if (tier is < 1 or > 3 || epoch < 1) 
-                throw new ArgumentException("Invalid tier or epoch");
 
             return tier switch
             {
-                1 => (int)Math.Round(2.0 * Math.Pow(3, epoch)),
-                2 => (int)Math.Round(2.0 * Math.Pow(3, epoch - 1)),
-                3 => (int)Math.Round(30.0 * Math.Pow(3, epoch - 1)),
+                UnitTier.Tier1 => (int)Math.Round(2.0 * Math.Pow(3, epoch)),
+                UnitTier.Tier2 => (int)Math.Round(2.0 * Math.Pow(3, epoch - 1)),
+                UnitTier.Tier3 => (int)Math.Round(30.0 * Math.Pow(3, epoch - 1)),
                 _ => throw new ArgumentException("Invalid tier")
             };
         }
 
        
-        public static int GetUnitFood(int tier, int epoch)
+        public int GetUnitFood(UnitTier tier, int epoch)
         {
-            if (tier is < 1 or > 3 || epoch < 1) 
-                throw new ArgumentException("Invalid tier or epoch");
 
             var (baseValue, step) = tier switch
             {
-                1 => (3, 1.4),
-                2 => (5, 2.8),
-                3 => (7, 3.4),
+                UnitTier.Tier1 => (3, 1.4),
+                UnitTier.Tier2 => (5, 2.8),
+                UnitTier.Tier3 => (7, 3.4),
                 _ => throw new ArgumentException("Invalid tier")
             };
 
