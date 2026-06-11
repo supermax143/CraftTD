@@ -5,6 +5,7 @@ namespace Core.Application.Models
     {
         EpochModel Epoch { get; }
         uint Money { get; set; }
+        int CurrentEpoch { get; }
         bool HasNextEpoch();
         void CompleteEpoch();
         int GetEpochCompleteCost();

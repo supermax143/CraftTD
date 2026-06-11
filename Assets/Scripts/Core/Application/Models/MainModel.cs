@@ -46,9 +46,11 @@ namespace Core.Application.Models
             Init();
         }
 
+        public int CurrentEpoch => _dataStorage.CurrentEpochIndex + 1;
+        
         public int GetEpochCompleteCost()
         {
-            return _gameStats.GetEpochCompleteCost(_dataStorage.CurrentEpochIndex + 1);
+            return _gameStats.GetEpochCompleteCost(CurrentEpoch);
         }
         
         public bool HasNextEpoch() => 
