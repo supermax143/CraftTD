@@ -12,18 +12,18 @@ namespace Unity.Game
         
         
         [Inject] private IGameController _gameController;
-        
+
+        [Inject] private GameStats _gameStats;
         /*private TargetSearchData _data;
         private UnitController _unit;*/
 
         [SerializeField] 
         private AttackRangeAttribute _attackRange;
-        [SerializeField] 
-        private DetectionRangeAttribute _detectionRange;
+        
 
 
         public Transform SearchTransform => transform;
-        public float DetectionRange => _detectionRange.ValueModified;
+        public float DetectionRange => _gameStats.DetectionRange;
         public float AttackRange => _attackRange.ValueModified;
         
         

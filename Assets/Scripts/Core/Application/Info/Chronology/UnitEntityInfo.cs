@@ -28,6 +28,7 @@ namespace Unity.Game
         private UnitUnlockCostAttribute _unlockCost = new();
         private RewardMoneyAttribute _rewardMoney = new();
         
+        
         public string Name => _name;
         public UnitTier Tier => _tier;
         public int FoodCost => _foodCost.ValueModified;

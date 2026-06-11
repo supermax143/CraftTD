@@ -69,7 +69,11 @@ namespace Unity.Game
         [SerializeField] private float _baseUnitAttackSpeedTier1 = 1f;
         [SerializeField] private float _baseUnitAttackSpeedTier2 = 1.2f;
         [SerializeField] private float _baseUnitAttackSpeedTier3 = 1.5f;
-        
+        [Space] 
+        [SerializeField] public float _detectionRange = 3;
+
+        public float DetectionRange => _detectionRange;
+
         public int GetUnitDamage(UnitTier tier, int epoch)
         {
             float baseDmg = tier switch
