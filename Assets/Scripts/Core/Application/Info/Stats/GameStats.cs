@@ -29,10 +29,36 @@ namespace Unity.Game
         [SerializeField] private int _baseUnitOpeningCostTier3 = 400;
         [SerializeField] private int _unitOpeningCostMultiplier = 8;
         
+        [SerializeField] private int _baseUnitRewardTier1 = 10;
+        [SerializeField] private int _baseUnitRewardTier2 = 50;
+        [SerializeField] private int _baseUnitRewardTier3 = 100;
+        [SerializeField] private int _unitRewardMultiplier = 10;
+       
+        
+        public int GetUnitKillReward(uint epoch, UnitTier tier)
+        {
+            var baseCost = tier switch
+            {
+                UnitTier.Tier1 => _baseUnitRewardTier1,
+                UnitTier.Tier2 => _baseUnitRewardTier2,
+                UnitTier.Tier3 => _baseUnitRewardTier3,
+                _ => 0
+            };
+            return (int)(baseCost * Math.Pow(_unitRewardMultiplier, epoch));
+        }
         
         
+        public int StartFoodCount(int epoch)
+        {
+            if (epoch <= 2)
+            {
+                return epoch;
+            }
+
+            return epoch + 1;
+        }
         
-        public int GetTowerReward(uint epoch)
+        public int GetTowerKillReward(uint epoch)
             => (int)(_baseTowerReward * Math.Pow(_towerRewardMultiplier, epoch));
         
         public int GetUnitOpeningCost(uint epoch, UnitTier tier)
