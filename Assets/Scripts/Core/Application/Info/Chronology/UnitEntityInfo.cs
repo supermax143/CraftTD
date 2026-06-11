@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Sirenix.OdinInspector;
 using Unity.Game.Attributes.Specific;
 using UnityEngine;
@@ -49,6 +49,12 @@ namespace Unity.Game
                 new DamageAttribute(gameStats.GetUnitDamage(_tier, (int)epoch));
             _foodCost = 
                 new UnitFoodCostAttribute(gameStats.GetUnitFood(_tier, (int)epoch));
+            _moveSpeed = 
+                new MoveSpeedAttribute(gameStats.GetUnitMoveSpeed(_tier, (int)epoch));
+            _attackRange = 
+                new AttackRangeAttribute(gameStats.GetUnitAttackRange(_tier, (int)epoch));
+            _attackSpeed = 
+                new AttackSpeedAttribute(gameStats.GetUnitAttackSpeed(_tier, (int)epoch));
         }
     }
 }

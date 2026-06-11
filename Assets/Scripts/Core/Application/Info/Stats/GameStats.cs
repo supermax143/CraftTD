@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 namespace Unity.Game
@@ -55,10 +55,22 @@ namespace Unity.Game
         [SerializeField] private int _baseUnitDamageTier1 = 2;
         [SerializeField] private int _baseUnitDamageTier2 = 2;
         [SerializeField] private int _baseUnitDamageTier3 = 4;
-
+        [Space]
         [SerializeField] private int _baseUnitHealthTier1 = 2;
         [SerializeField] private int _baseUnitHealthTier2 = 2;
         [SerializeField] private int _baseUnitHealthTier3 = 30;
+        [Space]
+        [SerializeField] private float _baseUnitMoveSpeedTier1 = 1f;
+        [SerializeField] private float _baseUnitMoveSpeedTier2 = 1f;
+        [SerializeField] private float _baseUnitMoveSpeedTier3 = 0.8f;
+        [Space]
+        [SerializeField] private float _baseUnitAttackRangeTier1 = 1f;
+        [SerializeField] private float _baseUnitAttackRangeTier2 = 2.5f;
+        [SerializeField] private float _baseUnitAttackRangeTier3 = 1f;
+        [Space]
+        [SerializeField] private float _baseUnitAttackSpeedTier1 = 1f;
+        [SerializeField] private float _baseUnitAttackSpeedTier2 = 1.2f;
+        [SerializeField] private float _baseUnitAttackSpeedTier3 = 1.5f;
         
         public int GetUnitDamage(UnitTier tier, int epoch)
         {
@@ -150,6 +162,40 @@ namespace Unity.Game
         {
             var baseHealth = faction == Faction.Player ? _baseTowerHealthPlayer : _baseTowerHealthEnamy;
             return (int)(baseHealth * Math.Pow(_towerHealthMultiplier, epoch - 1));
+        }
+
+        public float GetUnitMoveSpeed(UnitTier tier, int epoch)
+        {
+            float baseSpeed = tier switch
+            {
+                UnitTier.Tier1 => _baseUnitMoveSpeedTier1,
+                UnitTier.Tier2 => _baseUnitMoveSpeedTier2,
+                UnitTier.Tier3 => _baseUnitMoveSpeedTier3,
+            };
+            return baseSpeed;
+        }
+
+        public float GetUnitAttackRange(UnitTier tier, int epoch)
+        {
+            float baseRange = tier switch
+            {
+                UnitTier.Tier1 => _baseUnitAttackRangeTier1,
+                UnitTier.Tier2 => _baseUnitAttackRangeTier2,
+                UnitTier.Tier3 => _baseUnitAttackRangeTier3,
+            };
+            return baseRange;
+        }
+
+        public float GetUnitAttackSpeed(UnitTier tier, int epoch)
+        {
+            float baseSpeed = tier switch
+            {
+                UnitTier.Tier1 => _baseUnitAttackSpeedTier1,
+                UnitTier.Tier2 => _baseUnitAttackSpeedTier2,
+                UnitTier.Tier3 => _baseUnitAttackSpeedTier3,
+            };
+            return baseSpeed;
+        }
         }
     }
 }
