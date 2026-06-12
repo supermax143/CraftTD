@@ -6,7 +6,7 @@ namespace Core.Application.Info.Attributes.AttrimuteModdifiers
     {
         private int _id;
         
-        public abstract GameEntityAttributeKind Kind { get; }
+        public abstract GameEntityAttributeKind AttributeKind { get; }
 
         public int ID => _id;
 

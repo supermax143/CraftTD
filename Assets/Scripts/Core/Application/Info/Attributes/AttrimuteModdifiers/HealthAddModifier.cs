@@ -9,8 +9,9 @@ namespace Core.Application.Info.Attributes.AttrimuteModdifiers
             _value = value;
         }
 
-        public override GameEntityAttributeKind Kind => GameEntityAttributeKind.Health;
-
+        public override GameEntityAttributeKind AttributeKind => GameEntityAttributeKind.Health;
+        public ModifierAttributeKind ModifierKind => ModifierAttributeKind.Add;
+        
         public override int Apply(int baseValue)
         {
             return baseValue += _value;

@@ -59,7 +59,7 @@ namespace Unity.Game
         {
             foreach (var attr in GetAllAttributes())
             {
-                if (attr.Kind == modifier.Kind)
+                if (attr.Kind == modifier.AttributeKind)
                 {
                     attr.AddModifier(modifier);
                     break;

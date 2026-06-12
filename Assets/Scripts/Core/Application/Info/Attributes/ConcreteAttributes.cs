@@ -60,17 +60,7 @@ namespace Unity.Game.Attributes.Specific
         public override GameEntityAttributeKind Kind => GameEntityAttributeKind.DetectionRange;
     }
 
-    [Serializable]
-    public class DetectionIntervalAttribute : FloatEntityAttribute
-    {
-        public DetectionIntervalAttribute(float value = 0f)
-            : base(value)
-        {
-        }
-
-        public override GameEntityAttributeKind Kind => GameEntityAttributeKind.DetectionInterval;
-    }
-
+    
     [Serializable]
     public class HealthAttribute : IntEntityAttribute
     {

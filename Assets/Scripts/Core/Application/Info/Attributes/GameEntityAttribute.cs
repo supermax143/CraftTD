@@ -144,7 +144,7 @@ namespace Unity.Game.Attributes
             var currentValue = _value;
 
             foreach (var modifier in Modifiers)
-                if (modifier is AttributeModifier<TValue> typedModifier && typedModifier.Kind == Kind)
+                if (modifier is AttributeModifier<TValue> typedModifier && typedModifier.AttributeKind == Kind)
                     currentValue = typedModifier.Apply(currentValue);
 
             _valueModified = currentValue;
