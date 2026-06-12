@@ -38,12 +38,6 @@ namespace Unity.Game
             _opponentFaction = opponentFaction;
         }
         
-        /*public void Initialize(TargetSearchData data, UnitController unit)
-        {
-            _data = data;   
-            _unit = unit;
-        }*/
-        
         
         public bool TryGetClosestTarget(out AttackTarget target)
         {
@@ -71,6 +65,10 @@ namespace Unity.Game
 
         private void OnDrawGizmos()
         {
+            if (!Application.isPlaying)
+            {
+                return;
+            }
             Gizmos.color = Color.blue;
             DrawCircle(transform.position, DetectionRange);
             Gizmos.color = Color.red;
@@ -79,6 +77,7 @@ namespace Unity.Game
 
         private void DrawCircle(Vector3 center, float radius)
         {
+            
             const int segments = 32;
             var angleStep = 360f / segments;
             

@@ -21,6 +21,7 @@ namespace Unity.Installers
         {
             Container.Bind<IGameController>().FromInstance(_gameController).AsSingle();
             Container.Bind<IFoodProduction>().FromInstance(_foodProduction).AsSingle();
+            Container.BindInterfacesAndSelfTo<LevelRewardAggregator>().AsSingle();
         }
         
     }

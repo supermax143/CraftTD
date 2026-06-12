@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Core.Application.Models;
 using Unity.Game.Attributes;
 using Unity.Settings;
 using UnityEngine;
@@ -26,10 +27,13 @@ namespace Unity.Game
         private MoveComponent _moveComponent;
         [SerializeField, HideInInspector]
         private TargetSearchComponent _targetSearchComponent;
-       
-        
-        
+        [SerializeField, HideInInspector]
+        private RewardComponent _rewardComponent;
+
+
+
         [Inject] private GameSettings _gameSettings;
+        [Inject] private IMainModel _mainModel;
         
         private Faction _faction;
         private Faction _opponentFaction;
@@ -52,6 +56,7 @@ namespace Unity.Game
             _attackComponent = GetComponentInChildren<AttackComponent>();
             _moveComponent = GetComponentInChildren<MoveComponent>();
             _targetSearchComponent = GetComponentInChildren<TargetSearchComponent>();
+            _rewardComponent = GetComponentInChildren<RewardComponent>();
         }
 
         
@@ -83,7 +88,14 @@ namespace Unity.Game
             _moveComponent.SetData(_data);
             _attackComponent.SetData(_data);
             _targetSearchComponent.SetData(_data);
-            
+            if (_faction == Faction.Enemy)
+            {
+                _rewardComponent.Initialize(HealthComponent);
+                _rewardComponent.SetData(_data);
+            }
+
+            //_healthComponent.OnDeath += OnDeathHandler;
+
             _stateManager.Initialize(this);
             _stateManager.ChangeState<SearchTargetState>();
         }
@@ -97,6 +109,23 @@ namespace Unity.Game
         {
             Destroy(gameObject);
         }
+
+        /*private void OnDeathHandler()
+        {
+            if (_faction == Faction.Enemy)
+            {
+                var epoch = _mainModel.Epoch;
+                epoch.Money += (uint)_rewardComponent.RewardMoney;
+            }
+        }*/
+
+        /*private void OnDestroy()
+        {
+            if (_healthComponent != null)
+            {
+                _healthComponent.OnDeath -= OnDeathHandler;
+            }
+        }*/
 
     }
 }

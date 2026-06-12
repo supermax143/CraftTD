@@ -20,6 +20,7 @@ namespace Unity.Game
 
         [Inject] private IApplicationSession _applicationSession;
         [Inject] private IMainModel _mainModel;
+        [Inject] private ILevelRewardAggregator _rewardAggregator;
         
         private EpochModel Epoch => _mainModel.Epoch;
         
@@ -58,6 +59,7 @@ namespace Unity.Game
         {
             _foodProduction.StopProduction();
             OnTowerDestroyed?.Invoke(tower.Faction);
+            _mainModel.Epoch.Money += _rewardAggregator.Money;
         }
 
 

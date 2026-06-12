@@ -40,7 +40,6 @@ namespace Unity.Installers
          Container.BindInterfacesAndSelfTo<ChronologyInfo>().FromNewScriptableObject(_chronologyInfo).AsSingle();
          Container.BindInterfacesAndSelfTo<GameStats>().FromInstance(_baseGameStats);
          
-         
          Container.BindInterfacesAndSelfTo<LocalizationController>().AsSingle();
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
          Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController);

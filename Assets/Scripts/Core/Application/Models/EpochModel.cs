@@ -89,8 +89,8 @@ namespace Core.Application.Models
                     entity.AddModifier(modifier);
                 }
             }
-            
-            var unitModel = new UnitModel(info, entity, tier == UnitTier.Tier1);
+            var unitOpened = tier == UnitTier.Tier1 || _data.IsUnitOpened(tier);
+            var unitModel = new UnitModel(info, entity, unitOpened);
             units.Add(unitModel);
         }
         
