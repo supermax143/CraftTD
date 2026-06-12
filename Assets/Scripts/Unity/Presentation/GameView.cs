@@ -1,4 +1,4 @@
-﻿using Core.Application.Interfaces.Windows;
+using Core.Application.Interfaces.Windows;
 using TMPro;
 using Unity.Game;
 using Unity.Presentation.Windows;
@@ -22,7 +22,7 @@ namespace Unity.Presentation
 
         private void UpdateMoney()
         {
-            _moneyTF.text = _rewardAggregator.Money.ToString();
+            _moneyTF.text = _rewardAggregator.Money.Value.ToString();
         }
         
         

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Application.Interfaces.ApplicationSession;
@@ -59,7 +59,7 @@ namespace Unity.Game
         {
             _foodProduction.StopProduction();
             OnTowerDestroyed?.Invoke(tower.Faction);
-            _mainModel.Epoch.Money += _rewardAggregator.Money;
+            _mainModel.Epoch.Money += Resource.Money(_rewardAggregator.Money.Value);
         }
 
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Core.Application.Models;
 using TMPro;
@@ -52,7 +52,7 @@ namespace Unity.Presentation.Windows
 
         private void UpdateMoney()
         {
-            _moneyTF.text = _model.Money.ToString();
+            _moneyTF.text = _model.Money.Value.ToString();
         }
         
         private void UpdateUnits()

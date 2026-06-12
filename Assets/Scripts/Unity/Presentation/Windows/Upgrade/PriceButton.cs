@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Core.Application.Models;
 using TMPro;
 using UnityEngine;
@@ -34,7 +34,7 @@ namespace Unity.Presentation.Components
 
         private void UpdateView()
         {
-            var active = _model.Money >= _price;
+            var active = _model.Money.Value >= _price;
             _priceText.text = _price.ToString();
             var color = active ? Color.black : Color.red;
             _priceText.color = color;

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.Application.Models;
 using Newtonsoft.Json;
 using Unity.Game;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Core.Application.DataStorage.StorageItems
     [System.Serializable]
     internal class EpochDataInfo
     {
-        public uint Money = 0;
+        public Resource Money = Resource.Money(0);
         public uint FoodProductionLevel = 0;
         public uint TowerLevel = 0;
         public List<UnitTier> OpenedUnits = new();
@@ -42,7 +43,7 @@ namespace Core.Application.DataStorage.StorageItems
             }
         }
 
-        public uint Money
+        public Resource Money
         {
             get => _epochDataInfo.Money;
             set
@@ -96,9 +97,9 @@ namespace Core.Application.DataStorage.StorageItems
         }
         
         
-        public void AddMoney(uint amount)
+        public void AddMoney(int amount)
         {
-            _epochDataInfo.Money += amount;
+            _epochDataInfo.Money += Resource.Money(amount);
             Save();
         }
         
@@ -113,7 +114,7 @@ namespace Core.Application.DataStorage.StorageItems
         {
             _epochDataInfo = new EpochDataInfo
             {
-                Money = 0,
+                Money = Resource.Money(0),
                 FoodProductionLevel = 0,
                 TowerLevel = 0,
                 OpenedUnits = new List<UnitTier>() { UnitTier.Tier1 }

@@ -17,13 +17,13 @@ namespace Unity.Infrastructure.Tutorial.Units.Data
         
         protected override IEnumerable<IUnitValuePort> DefineValuePortsInternal()
         {
-            yield return ValueInput(MONEY, 0u);
+            yield return ValueInput(MONEY, 0);
         }
-        
+
         protected override void OnExecute(Flow flow)
         {
-            var money = GetValue<uint>(flow, MONEY);
-            _model.Money = money;
+            var money = GetValue<int>(flow, MONEY);
+            _model.Money = Resource.Money(money);
         }
     }
 }

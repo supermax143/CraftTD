@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Unity.Game;
 using Zenject;
@@ -22,7 +22,7 @@ namespace Core.Application.Models
         public EpochModel Epoch => _epoch;
         private EpochModel _epoch;
 
-        public uint Money
+        public Resource Money
         {
             get => _epoch.Money;
             set => _epoch.Money = value;
@@ -37,10 +37,12 @@ namespace Core.Application.Models
 
         public void CompleteEpoch()
         {
-            if (GetEpochCompleteCost() > Money)
+            var cost = Resource.Money(GetEpochCompleteCost());
+            if (cost > Money)
             {
                 return;
             }
+            Money -= cost;
             _dataStorage.SetEpochIndex(_dataStorage.CurrentEpochIndex + 1);
             _dataStorage.EpochData.Reset();
             Init();

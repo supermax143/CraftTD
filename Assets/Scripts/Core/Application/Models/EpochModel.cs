@@ -27,7 +27,7 @@ namespace Core.Application.Models
         private readonly int _epochId;
 
 
-        public uint Money
+        public Resource Money
         {
             get => _data.Money;
             set => _data.Money = value;
@@ -129,12 +129,13 @@ namespace Core.Application.Models
         
         public void UpgradeFoodProduction()
         {
-            if (Money < _gameStats.GetFoodProductionSpeedCost(FoodProductionLevel))
+            var cost = Resource.Money(_gameStats.GetFoodProductionSpeedCost(FoodProductionLevel));
+            if (Money < cost)
             {
                 return;
             }
             
-            Money -= (uint)_gameStats.GetFoodProductionSpeedCost(FoodProductionLevel);
+            Money -= cost;
             _data.FoodProductionLevel++;
             OnFoodProductionLevelChanged?.Invoke();
             OnMoneyChanged?.Invoke();
@@ -142,12 +143,13 @@ namespace Core.Application.Models
         
         public void UpgradeTowerLevel()
         {
-            if (Money < _gameStats.GetTowerUpgradeCost(TowerLevel))
+            var cost = Resource.Money(_gameStats.GetTowerUpgradeCost(TowerLevel));
+            if (Money < cost)
             {
                 return;
             }
             
-            Money -= (uint)_gameStats.GetTowerUpgradeCost(TowerLevel);
+            Money -= cost;
             _data.TowerLevel++;
             
             GetTower(Faction.Player).AddModifier(new HealthAddModifier(GetHashCode(), TowerHealth));
@@ -159,12 +161,12 @@ namespace Core.Application.Models
         {
             if (!TryGetUnitModel(tier, Faction.Player, out var unitModel) || 
                 unitModel.IsUnitOpened || 
-                Money < unitModel.UnlockCost)
+                Money < Resource.Money(unitModel.UnlockCost))
             {
                 return;
             }
             
-            Money -= (uint)unitModel.UnlockCost;
+            Money -= Resource.Money(unitModel.UnlockCost);
             
             _data.OpenUnit(tier);
             unitModel.OpenUnit();

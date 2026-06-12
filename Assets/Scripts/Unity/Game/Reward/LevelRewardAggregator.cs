@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using Core.Application.Models;
 
 namespace Unity.Game
 {
@@ -7,13 +8,13 @@ namespace Unity.Game
 
         public event Action OnMoneyChanged;
         
-        private uint _money;
+        private Resource _money = Resource.Money(0);
 
-        public uint Money => _money;
+        public Resource Money => _money;
 
         public void AddMoney(int amount)
         {
-            _money += (uint)amount;
+            _money += Resource.Money(amount);
             OnMoneyChanged?.Invoke();
         }
         

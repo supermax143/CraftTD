@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Core.Application.DataStorage.StorageItems;
 using Core.Application.Interfaces;
+using Core.Application.Models;
 using UnityEngine;
 using Zenject;
 
@@ -67,14 +68,14 @@ namespace Core.Application.DataStorage
             _epochData.Reset();
         }
         
-        public void AddMoney(uint Value)
+        public void AddMoney(int amount)
         {
-            _epochData.AddMoney(Value);
+            _epochData.AddMoney(amount);
         }
-        
-        public void SetMoney(uint Value)
+
+        public void SetMoney(Resource money)
         {
-            _epochData.Money = Value;
+            _epochData.Money = money;
         }
 
         public void SetCurrentEpoch(int index)
@@ -82,8 +83,8 @@ namespace Core.Application.DataStorage
             _curEpochIndex.Value = index;
         }
 
-        
-        public uint UserMoney
+
+        public Resource UserMoney
         {
             get { return _epochData.Money; }
         }

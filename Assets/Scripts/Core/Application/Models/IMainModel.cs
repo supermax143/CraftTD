@@ -1,10 +1,10 @@
-﻿
+
 namespace Core.Application.Models
 {
     public interface IMainModel 
     {
         EpochModel Epoch { get; }
-        uint Money { get; set; }
+        Resource Money { get; set; }
         int CurrentEpochNumber { get; }
         bool HasNextEpoch();
         void CompleteEpoch();

@@ -43,7 +43,7 @@ namespace Unity.Presentation
 
 		private void UpdateMoneyInput()
 		{
-			_moneyInput.text = Epoch.Money.ToString();
+			_moneyInput.text = Epoch.Money.Value.ToString();
 		}
 
 
@@ -81,7 +81,7 @@ namespace Unity.Presentation
 		
 		public void Save()
 		{
-			Epoch.Money = uint.Parse(_moneyInput.text);
+			Epoch.Money = Resource.Money(int.Parse(_moneyInput.text));
 		}
 		
 		public void Reset()
