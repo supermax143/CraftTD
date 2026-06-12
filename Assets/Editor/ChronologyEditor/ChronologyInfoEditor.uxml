@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="ChronologyInfoEditor.uss" />
+    
+    <ui:VisualElement name="root-container" style="flex-grow: 1; flex-direction: column;">
+        <ui:VisualElement name="header-container" style="flex-direction: row; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #555;">
+            <ui:Label name="title-label" text="Chronology Info Editor" style="font-size: 16px; font-weight: bold; color: #fff;" />
+            <ui:Button name="add-epoch-button" text="Add New Epoch" style="width: 150px;" />
+        </ui:VisualElement>
+        
+        <ui:VisualElement name="tabs-container" style="flex-direction: row; background-color: #2d2d2d; border-bottom: 1px solid #555;">
+            <ui:ScrollView name="tabs-scroll" mode="Horizontal" style="flex-grow: 1;">
+                <ui:VisualElement name="tabs-content" style="flex-direction: row; flex-grow: 1;" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+        
+        <ui:VisualElement name="epoch-content-container" style="flex-grow: 1; padding: 10px;">
+            <ui:Label name="no-epoch-label" text="No epoch selected" style="font-style: italic; color: #888;" />
+            <ui:VisualElement name="epoch-fields-container" style="display: none;">
+                <ui:TextField name="epoch-name-field" label="Epoch Name" />
+                <uie:PropertyField name="tower-field" binding-path="_tower" label="Tower" />
+                <uie:PropertyField name="unit-tier1-field" binding-path="_unitTier1" label="Unit Tier 1" />
+                <uie:PropertyField name="unit-tier2-field" binding-path="_unitTier2" label="Unit Tier 2" />
+                <uie:PropertyField name="unit-tier3-field" binding-path="_unitTier3" label="Unit Tier 3" />
+                <uie:PropertyField name="waves-field" binding-path="_waves" label="Waves" />
+                <uie:PropertyField name="unit-tier1-modifiers-field" binding-path="_unitTier1Modifiers" label="Unit Tier 1 Modifiers" />
+                <uie:PropertyField name="unit-tier2-modifiers-field" binding-path="_unitTier2Modifiers" label="Unit Tier 2 Modifiers" />
+                <uie:PropertyField name="unit-tier3-modifiers-field" binding-path="_unitTier3Modifiers" label="Unit Tier 3 Modifiers" />
+                
+                <ui:VisualElement name="epoch-actions" style="flex-direction: row; margin-top: 10px;">
+                    <ui:Button name="remove-epoch-button" text="Remove Epoch" style="width: 150px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

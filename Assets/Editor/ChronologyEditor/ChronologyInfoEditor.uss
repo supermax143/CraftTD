@@ -1,0 +1,27 @@
+.epoch-tab {
+    background-color: #393939;
+    border-right: 1px solid #555;
+    border-bottom: 1px solid #555;
+    padding: 8px 16px;
+    cursor: pointer;
+    unity-font-style: normal;
+    font-size: 13px;
+    color: #ccc;
+    min-width: 80px;
+    flex-grow: 0;
+}
+
+.epoch-tab:hover {
+    background-color: #4a4a4a;
+    color: #fff;
+}
+
+.epoch-tab.selected {
+    background-color: #0e639c;
+    color: #fff;
+    border-bottom: 2px solid #0078d4;
+}
+
+.epoch-tab:focus {
+    outline: none;
+}
