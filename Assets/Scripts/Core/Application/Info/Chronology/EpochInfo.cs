@@ -1,5 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using Core.Application.Info.Attributes.AttributeModifiers;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities.Editor;
 using UnityEngine;
@@ -34,6 +36,13 @@ namespace Unity.Game
         [ListDrawerSettings(ShowIndexLabels = true)]
         [SerializeField]
         private List<UnitWave> _waves;
+        
+        [SerializeField]
+        private List<AttributeModifierWrapper> _unitTier1Modifiers;
+        [SerializeField]
+        private List<AttributeModifierWrapper> _unitTier2Modifiers;
+        [SerializeField]
+        private List<AttributeModifierWrapper> _unitTier3Modifiers;
         
         public TowerInfo Tower => _tower;
         public List<UnitWave> Waves => _waves;
@@ -76,6 +85,17 @@ namespace Unity.Game
             yield return _unitTier1;
             yield return _unitTier2;
             yield return _unitTier3;
+        }
+        
+        public IEnumerable<AttributeModifierWrapper> GetUnitModifiers(UnitTier tier)
+        {
+            return tier switch
+            {
+                UnitTier.Tier1 => _unitTier1Modifiers ?? Enumerable.Empty<AttributeModifierWrapper>(),
+                UnitTier.Tier2 => _unitTier2Modifiers ?? Enumerable.Empty<AttributeModifierWrapper>(),
+                UnitTier.Tier3 => _unitTier3Modifiers ?? Enumerable.Empty<AttributeModifierWrapper>(),
+                _ => Enumerable.Empty<AttributeModifierWrapper>()
+            };
         }
 
         

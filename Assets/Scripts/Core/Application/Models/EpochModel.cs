@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Core.Application.DataStorage.StorageItems;
 using Core.Application.Info.Attributes.AttributeModifiers;
@@ -80,6 +80,16 @@ namespace Core.Application.Models
             }
             
             var entity = GetUnitEntity(tier, faction, _epochId);
+            var modifiers = _info.GetUnitModifiers(tier);
+            foreach (var modifierWrapper in modifiers)
+            {
+                var modifier = modifierWrapper.GetModifier(GetHashCode());
+                if (modifier != null)
+                {
+                    entity.AddModifier(modifier);
+                }
+            }
+            
             var unitModel = new UnitModel(info, entity, tier == UnitTier.Tier1);
             units.Add(unitModel);
         }

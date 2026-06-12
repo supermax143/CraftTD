@@ -11,18 +11,12 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
     {
         [SerializeField]
         private GameEntityAttributeKind _attributeKind;
-        
         [SerializeField]
         private ModifierAttributeKind _modifierKind;
         
         [SerializeField]
         private float _value;
         
-        [ShowInInspector]
-        public GameEntityAttributeKind AttributeKind => _attributeKind;
-        
-        [ShowInInspector]
-        public ModifierAttributeKind ModifierKind => _modifierKind;
         
         public AttributeModifierBase GetModifier(int id)
         {
