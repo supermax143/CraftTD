@@ -1,0 +1,20 @@
+using Unity.Game.Attributes;
+
+namespace Core.Application.Info.Attributes.AttrimuteModdifiers
+{
+    public class DamageMultiplyModifier : AttributeModifier<float>
+    {
+        public DamageMultiplyModifier(int id, float value) : base(id, value)
+        {
+            _value = value;
+        }
+
+        public override GameEntityAttributeKind AttributeKind => GameEntityAttributeKind.Damage;
+        public ModifierAttributeKind ModifierKind => ModifierAttributeKind.Multiply;
+
+        public override float Apply(float baseValue)
+        {
+            return baseValue * _value;
+        }
+    }
+}
