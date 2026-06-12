@@ -1,7 +1,7 @@
 ﻿using System;
 using Unity.Game.Attributes;
 
-namespace Core.Application.Info.Attributes.AttrimuteModdifiers
+namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     [Serializable]
     public class AttributeModifierWrapper

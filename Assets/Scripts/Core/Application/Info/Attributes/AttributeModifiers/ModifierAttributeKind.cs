@@ -1,4 +1,4 @@
-﻿namespace Core.Application.Info.Attributes.AttrimuteModdifiers
+﻿namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public enum ModifierAttributeKind
     {

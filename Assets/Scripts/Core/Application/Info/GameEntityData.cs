@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Core.Application.Info.Attributes.AttrimuteModdifiers;
+using Core.Application.Info.Attributes.AttributeModifiers;
 using Unity.Game.Attributes;
 
 namespace Unity.Game

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Core.Application.Info.Attributes.AttrimuteModdifiers;
+using Core.Application.Info.Attributes.AttributeModifiers;
 using ModestTree;
 using Sirenix.OdinInspector;
 using UnityEngine;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core.Application.DataStorage.StorageItems;
-using Core.Application.Info.Attributes.AttrimuteModdifiers;
+using Core.Application.Info.Attributes.AttributeModifiers;
 using Unity.Game;
 using Unity.Game.Entity;
 

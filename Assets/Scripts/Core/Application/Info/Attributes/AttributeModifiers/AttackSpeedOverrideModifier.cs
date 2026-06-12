@@ -1,6 +1,6 @@
 using Unity.Game.Attributes;
 
-namespace Core.Application.Info.Attributes.AttrimuteModdifiers
+namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public class AttackSpeedOverrideModifier : AttributeModifier<float>
     {
