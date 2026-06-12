@@ -16,16 +16,34 @@
         
         <ui:VisualElement name="epoch-content-container" style="flex-grow: 1; padding: 10px;">
             <ui:Label name="no-epoch-label" text="No epoch selected" style="font-style: italic; color: #888;" />
-            <ui:VisualElement name="epoch-fields-container" style="display: none;">
+            <ui:VisualElement name="epoch-fields-container" style="display: none; flex-direction: column;">
                 <ui:TextField name="epoch-name-field" label="Epoch Name" />
                 <uie:PropertyField name="tower-field" binding-path="_tower" label="Tower" />
-                <uie:PropertyField name="unit-tier1-field" binding-path="_unitTier1" label="Unit Tier 1" />
-                <uie:PropertyField name="unit-tier2-field" binding-path="_unitTier2" label="Unit Tier 2" />
-                <uie:PropertyField name="unit-tier3-field" binding-path="_unitTier3" label="Unit Tier 3" />
                 <uie:PropertyField name="waves-field" binding-path="_waves" label="Waves" />
-                <uie:PropertyField name="unit-tier1-modifiers-field" binding-path="_unitTier1Modifiers" label="Unit Tier 1 Modifiers" />
-                <uie:PropertyField name="unit-tier2-modifiers-field" binding-path="_unitTier2Modifiers" label="Unit Tier 2 Modifiers" />
-                <uie:PropertyField name="unit-tier3-modifiers-field" binding-path="_unitTier3Modifiers" label="Unit Tier 3 Modifiers" />
+                
+                <ui:VisualElement name="unit-tier-tabs-container" style="flex-direction: row; background-color: #2d2d2d; border-bottom: 1px solid #555; margin-top: 10px;">
+                    <ui:ScrollView name="unit-tier-tabs-scroll" mode="Horizontal" style="flex-grow: 1;">
+                        <ui:VisualElement name="unit-tier-tabs-content" style="flex-direction: row; flex-grow: 1;" />
+                    </ui:ScrollView>
+                </ui:VisualElement>
+                
+                <ui:VisualElement name="unit-tier-content-container" style="flex-grow: 1; margin-top: 10px;">
+                    <ui:VisualElement name="unit-tier1-container" style="display: none; flex-direction: column;">
+                        <ui:Label name="unit-tier1-label" text="Unit Tier 1" style="font-weight: bold; font-size: 14px; margin-bottom: 5px;" />
+                        <ui:VisualElement name="unit-tier1-field-container" style="flex-direction: column;" />
+                        <uie:PropertyField name="unit-tier1-modifiers-field" label="Unit Tier 1 Modifiers" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="unit-tier2-container" style="display: none; flex-direction: column;">
+                        <ui:Label name="unit-tier2-label" text="Unit Tier 2" style="font-weight: bold; font-size: 14px; margin-bottom: 5px;" />
+                        <ui:VisualElement name="unit-tier2-field-container" style="flex-direction: column;" />
+                        <uie:PropertyField name="unit-tier2-modifiers-field" label="Unit Tier 2 Modifiers" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="unit-tier3-container" style="display: none; flex-direction: column;">
+                        <ui:Label name="unit-tier3-label" text="Unit Tier 3" style="font-weight: bold; font-size: 14px; margin-bottom: 5px;" />
+                        <ui:VisualElement name="unit-tier3-field-container" style="flex-direction: column;" />
+                        <uie:PropertyField name="unit-tier3-modifiers-field" label="Unit Tier 3 Modifiers" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
                 
                 <ui:VisualElement name="epoch-actions" style="flex-direction: row; margin-top: 10px;">
                     <ui:Button name="remove-epoch-button" text="Remove Epoch" style="width: 150px;" />

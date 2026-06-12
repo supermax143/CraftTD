@@ -19,11 +19,19 @@ namespace Editor.ChronologyEditor
         private VisualElement _tabsContent;
         private VisualElement _epochFieldsContainer;
         private Label _noEpochLabel;
+        private VisualElement _unitTierTabsContent;
+        private VisualElement _unitTier1Container;
+        private VisualElement _unitTier2Container;
+        private VisualElement _unitTier3Container;
+        private VisualElement _unitTier1FieldContainer;
+        private VisualElement _unitTier2FieldContainer;
+        private VisualElement _unitTier3FieldContainer;
         
         private SerializedObject _serializedObject;
         private SerializedProperty _epochsProperty;
         
         private int _selectedEpochIndex = -1;
+        private int _selectedUnitTierIndex = 0;
         private ChronologyInfo _chronologyInfo;
         
         [MenuItem("Assets/Chronology Editor")]
@@ -73,6 +81,13 @@ namespace Editor.ChronologyEditor
             _tabsContent = _root.Q<VisualElement>("tabs-content");
             _epochFieldsContainer = _root.Q<VisualElement>("epoch-fields-container");
             _noEpochLabel = _root.Q<Label>("no-epoch-label");
+            _unitTierTabsContent = _root.Q<VisualElement>("unit-tier-tabs-content");
+            _unitTier1Container = _root.Q<VisualElement>("unit-tier1-container");
+            _unitTier2Container = _root.Q<VisualElement>("unit-tier2-container");
+            _unitTier3Container = _root.Q<VisualElement>("unit-tier3-container");
+            _unitTier1FieldContainer = _root.Q<VisualElement>("unit-tier1-field-container");
+            _unitTier2FieldContainer = _root.Q<VisualElement>("unit-tier2-field-container");
+            _unitTier3FieldContainer = _root.Q<VisualElement>("unit-tier3-field-container");
             
             var addEpochButton = _root.Q<Button>("add-epoch-button");
             addEpochButton.clicked += AddNewEpoch;
@@ -196,26 +211,93 @@ namespace Editor.ChronologyEditor
             var towerField = _root.Q<PropertyField>("tower-field");
             towerField.BindProperty(epochProperty.FindPropertyRelative("_tower"));
             
-            var unitTier1Field = _root.Q<PropertyField>("unit-tier1-field");
-            unitTier1Field.BindProperty(epochProperty.FindPropertyRelative("_unitTier1"));
-            
-            var unitTier2Field = _root.Q<PropertyField>("unit-tier2-field");
-            unitTier2Field.BindProperty(epochProperty.FindPropertyRelative("_unitTier2"));
-            
-            var unitTier3Field = _root.Q<PropertyField>("unit-tier3-field");
-            unitTier3Field.BindProperty(epochProperty.FindPropertyRelative("_unitTier3"));
-            
             var wavesField = _root.Q<PropertyField>("waves-field");
             wavesField.BindProperty(epochProperty.FindPropertyRelative("_waves"));
             
-            var unitTier1ModifiersField = _root.Q<PropertyField>("unit-tier1-modifiers-field");
-            unitTier1ModifiersField.BindProperty(epochProperty.FindPropertyRelative("_unitTier1Modifiers"));
+            RefreshUnitTierTabs();
+            ShowUnitTierFields(_selectedUnitTierIndex);
+        }
+        
+        private void RefreshUnitTierTabs()
+        {
+            _unitTierTabsContent.Clear();
             
-            var unitTier2ModifiersField = _root.Q<PropertyField>("unit-tier2-modifiers-field");
-            unitTier2ModifiersField.BindProperty(epochProperty.FindPropertyRelative("_unitTier2Modifiers"));
+            var tiers = new[] { "Tier 1", "Tier 2", "Tier 3" };
             
-            var unitTier3ModifiersField = _root.Q<PropertyField>("unit-tier3-modifiers-field");
-            unitTier3ModifiersField.BindProperty(epochProperty.FindPropertyRelative("_unitTier3Modifiers"));
+            for (int i = 0; i < tiers.Length; i++)
+            {
+                var tab = new Button
+                {
+                    text = tiers[i],
+                    name = $"unit-tier-tab-{i}"
+                };
+                
+                tab.AddToClassList("epoch-tab");
+                
+                if (i == _selectedUnitTierIndex)
+                {
+                    tab.AddToClassList("selected");
+                }
+                
+                var capturedIndex = i;
+                tab.clicked += () =>
+                {
+                    _selectedUnitTierIndex = capturedIndex;
+                    RefreshUnitTierTabs();
+                    ShowUnitTierFields(capturedIndex);
+                };
+                
+                _unitTierTabsContent.Add(tab);
+            }
+        }
+        
+        private void ShowUnitTierFields(int tierIndex)
+        {
+            _unitTier1Container.style.display = DisplayStyle.None;
+            _unitTier2Container.style.display = DisplayStyle.None;
+            _unitTier3Container.style.display = DisplayStyle.None;
+            
+            if (_selectedEpochIndex < 0 || _selectedEpochIndex >= _epochsProperty.arraySize)
+                return;
+            
+            var epochProperty = _epochsProperty.GetArrayElementAtIndex(_selectedEpochIndex);
+            
+            switch (tierIndex)
+            {
+                case 0:
+                    _unitTier1Container.style.display = DisplayStyle.Flex;
+                    _unitTier1FieldContainer.Clear();
+                    var unitTier1Property = epochProperty.FindPropertyRelative("_unitTier1");
+                    var unitTier1Field = new PropertyField(unitTier1Property);
+                    unitTier1Field.BindProperty(unitTier1Property);
+                    _unitTier1FieldContainer.Add(unitTier1Field);
+                    
+                    var unitTier1ModifiersField = _root.Q<PropertyField>("unit-tier1-modifiers-field");
+                    unitTier1ModifiersField.BindProperty(epochProperty.FindPropertyRelative("_unitTier1Modifiers"));
+                    break;
+                case 1:
+                    _unitTier2Container.style.display = DisplayStyle.Flex;
+                    _unitTier2FieldContainer.Clear();
+                    var unitTier2Property = epochProperty.FindPropertyRelative("_unitTier2");
+                    var unitTier2Field = new PropertyField(unitTier2Property);
+                    unitTier2Field.BindProperty(unitTier2Property);
+                    _unitTier2FieldContainer.Add(unitTier2Field);
+                    
+                    var unitTier2ModifiersField = _root.Q<PropertyField>("unit-tier2-modifiers-field");
+                    unitTier2ModifiersField.BindProperty(epochProperty.FindPropertyRelative("_unitTier2Modifiers"));
+                    break;
+                case 2:
+                    _unitTier3Container.style.display = DisplayStyle.Flex;
+                    _unitTier3FieldContainer.Clear();
+                    var unitTier3Property = epochProperty.FindPropertyRelative("_unitTier3");
+                    var unitTier3Field = new PropertyField(unitTier3Property);
+                    unitTier3Field.BindProperty(unitTier3Property);
+                    _unitTier3FieldContainer.Add(unitTier3Field);
+                    
+                    var unitTier3ModifiersField = _root.Q<PropertyField>("unit-tier3-modifiers-field");
+                    unitTier3ModifiersField.BindProperty(epochProperty.FindPropertyRelative("_unitTier3Modifiers"));
+                    break;
+            }
         }
         
         private void HideEpochFields()
