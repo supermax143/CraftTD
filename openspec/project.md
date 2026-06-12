@@ -1,0 +1,334 @@
+# CraftTD Project Documentation
+
+## Project Overview
+
+**CraftTD** - Tower Defense игра на Unity с системой эпох, прогрессией и визуальным туториалом.
+
+### Basic Information
+- **Project Name**: CraftTD
+- **Type**: Tower Defense Game
+- **Unity Version**: 6000.3.6f1
+- **Language**: C#
+- **Repository**: supermax143/CraftTD
+
+## Technology Stack
+
+### Core Technologies
+- **Unity Engine**: 6000.3.6f1
+- **Render Pipeline**: Universal Render Pipeline (URP) 17.3.0
+- **Scripting**: C# (.NET)
+
+### Key Packages
+- **Zenject (Extenject)**: Dependency Injection container
+  - Repository: https://github.com/modesttree/Zenject
+  - Used for: DI, binding, scene context
+  
+- **UniTask**: Async/await operations
+  - Repository: https://github.com/Cysharp/UniTask
+  - Used for: Asynchronous operations, Task-based programming
+  
+- **Addressables**: Asset management system
+  - Version: 2.8.0
+  - Used for: Resource loading, asset management, memory optimization
+  
+- **Newtonsoft JSON**: JSON serialization
+  - Version: 3.2.2
+  - Used for: Data serialization/deserialization
+  
+- **Visual Scripting**: Visual programming
+  - Version: 1.9.9
+  - Used for: Visual tutorial system
+  
+- **Unity Timeline**: Timeline-based sequencing
+  - Version: 1.8.10
+  
+- **Unity UGUI**: UI system
+  - Version: 2.0.0
+
+## Architecture
+
+### Layer Structure
+
+```
+Assets/Scripts/
+├── Core.Application/    # Core application logic (platform-independent)
+├── Unity/              # Unity-specific implementation
+└── Shared/             # Shared types and constants
+```
+
+### Core.Application Layer
+**Purpose**: Platform-independent business logic
+
+**Components**:
+- **ApplicationStateMachine**: State machine for application states
+  - States: BootstrapState, MainMenuState, GameState, DebugState
+  - Manages application lifecycle
+  
+- **Models**: Business logic models
+  - `EpochModel`: Game epoch management
+  - `UnitModel`: Unit data and state
+  - `TowerModel`: Tower data and state
+  
+- **Info**: Game configuration and data
+  - `Attributes`: Attribute modifiers system
+  - `Chronology`: Epoch progression
+  - `Entity`: Game entity definitions
+  - `Stats`: Game statistics and balance
+  
+- **DataStorage**: Data persistence layer
+  - Storage items: EpochStorageData, TutorialStorageData, PurchasesStorageData
+  - Storage variables: Bool, Int, Float, String, Uint
+  - Providers: ILocalStorageProvider, IGlobalStorageProvider
+  
+- **Interfaces**: Core abstractions
+  - ApplicationSession, Bootstrap, DataStorage, Localization, ResourceManager, Windows
+
+### Unity Layer
+**Purpose**: Unity-specific implementation and infrastructure
+
+**Components**:
+- **Bootstrap**: Application initialization
+  - `GameBootrstarp`: Main bootstrap controller
+  
+- **Game**: Game-specific logic
+  - `GameController`: Main game controller
+  - `Team`: Team management (Player/Enemy)
+  - `Unit`: Unit controllers and logic
+  - `Tower`: Tower controllers
+  - `Spawner`: Unit spawning system
+  - `Weapon`: Weapon system
+  - `FoodProduction`: Resource production
+  - `Reward`: Level reward system
+  - `SharedComponents`: Reusable game components
+  
+- **Infrastructure**: Supporting systems
+  - `Advertisement`: Ad integration (DummyAdvertisementAPI)
+  - `DataStorage`: Unity data storage implementation (PlayerPrefsStorageProvider)
+  - `GameEvents`: Event bus system (GameEventsBus)
+  - `Localization`: Localization controller
+  - `Purchases`: Purchase system (DummyPurchasesController)
+  - `ResourceManager`: Addressables-based resource management
+  - `Scenes`: Scene loading system (ScenesLoader)
+  - `Tutorial`: Visual tutorial system
+  - `Windows`: Window management system
+  
+- **Installers**: Zenject DI bindings
+  - `UnityInstaller`: Root installer
+  - `GameSceneInstaller`: Game scene specific bindings
+  
+- **Presentation**: UI and presentation
+  - UI components and views
+  
+- **Settings**: Game settings
+  - `GameSettings`: Configuration ScriptableObject
+  
+- **Utils**: Unity utilities
+  - Helper functions and extensions
+
+### Shared Layer
+**Purpose**: Shared types and constants
+
+**Components**:
+- **Enums**:
+  - `Faction`: Player, Enemy
+  - `UnitTier`: Tier1, Tier2, Tier3
+  - `TargetType`: Unit, Tower
+  
+- **Constants**: Game constants
+- **Utils**: Shared utility functions
+
+## Game Mechanics
+
+### Core Systems
+
+#### Epoch System
+- Game divided into epochs with progression
+- Each epoch has unique units and modifiers
+- Epoch data persisted via EpochStorageData
+
+#### Unit System
+- Three tiers of units (Tier1, Tier2, Tier3)
+- Units have attributes: Health, Damage, AttackSpeed, MoveSpeed, AttackRange, DetectionRange
+- Attribute modifiers system (Add, Multiply, Override)
+- Units cost food to spawn
+- Units can be unlocked per epoch
+
+#### Tower System
+- Each faction has a tower
+- Tower health upgradeable
+- Tower destruction triggers game end
+- Tower damage affects reward
+
+#### Resource System
+- **Money**: Main currency for upgrades
+- **Food**: Resource for unit production
+- Food production upgradeable
+- Production stops when tower destroyed
+
+#### Combat System
+- Units attack enemies automatically
+- Weapon system with range and damage
+- Target search system
+- Attack targets: Units, Towers
+
+### Tutorial System
+**Visual Tutorial System** based on Visual Scripting:
+
+**Components**:
+- `TutorialController`: Main tutorial manager
+- `TutorialTasksChain`: Chain of tutorial tasks
+- `TutorialTask`: Individual tutorial task
+- `TutorialTaskWrapper`: Task execution wrapper
+- `TutorialTag`: UI element tagging for tutorial
+
+**Tutorial Units** (Custom Visual Scripting Units):
+- **PauseGame/UnpauseGame**: Game pause control
+- **BlockShoot/UnblockShoot**: Shooting control
+- **CheckShoot**: Check if shooting
+- **CheckInputMove**: Check movement input
+- **ClickUnit**: Click handling
+- **CheckClickUnit**: Click verification
+- **WaitUnit**: Time-based waiting
+- **WaitGameEventUnit**: Event-based waiting
+- **Overlay units**: Overlay control
+- **Scene units**: Scene control
+- **Data units**: Data manipulation
+
+## Dependency Injection
+
+### Zenject Configuration
+
+**Root Installer** (`UnityInstaller`):
+- Binds infrastructure controllers
+- Binds data storage providers
+- Binds resource manager
+- Binds localization system
+- Binds tutorial controller
+- Binds windows controller
+
+**Scene Installer** (`GameSceneInstaller`):
+- Binds game-specific controllers
+- Binds game systems
+
+### Injection Pattern
+- Constructor injection for services
+- Field injection with `[Inject]` attribute
+- Method injection for scene context
+
+## Data Storage
+
+### Storage Architecture
+- **LocalStorageProvider**: PlayerPrefs-based storage
+- **GlobalStorageProvider**: Global game data
+- **DataStorage**: Unified storage interface
+
+### Storage Items
+- `EpochStorageData`: Epoch progress and unlocks
+- `TutorialStorageData`: Tutorial completion state
+- `PurchasesStorageData`: Purchase data
+
+### Storage Variables
+- Typed storage variables: Bool, Int, Float, String, Uint
+- Automatic persistence
+
+## Event System
+
+### GameEventsBus
+Central event bus for game-wide events:
+- Tower destruction
+- Unit spawned
+- Game state changes
+- Tutorial events
+
+## Localization
+
+### Localization System
+- `LocalizationController`: Main localization manager
+- Key-based localization
+- Runtime language switching
+
+## Scene Management
+
+### Scene Loading
+- `ScenesLoader`: Async scene loading
+- Addressables-based scene management
+- Scene context injection
+
+## Code Conventions
+
+### Naming Conventions
+- **Classes**: PascalCase
+- **Methods**: PascalCase
+- **Fields**: _camelCase (private), PascalCase (public)
+- **Properties**: PascalCase
+- **Interfaces**: I prefix (e.g., IGameController)
+- **Enums**: PascalCase
+- **Constants**: PascalCase
+
+### Commenting Rules
+- **Comments only for classes**: Add XML summary comments only to class declarations
+- **No method comments**: Method names should be self-explanatory
+- **No field comments**: Field names should be self-explanatory
+- **No inline comments**: Keep code clean and minimal
+
+**Example**:
+```csharp
+/// <summary>
+/// Компонент для управления тинтингом материала через MaterialPropertyBlock
+/// Позволяет применять тинт только к конкретному рендереру без изменения материала
+/// </summary>
+public class TintController : MonoBehaviour
+{
+    private Color _tintColor;
+    // No comments to fields and methods
+}
+```
+
+### Language Rules
+- **Code and comments**: English
+- **Discussions and documentation**: Russian
+
+### Architecture Principles
+- **Separation of concerns**: Clear layer separation
+- **Dependency Injection**: Use Zenject for all dependencies
+- **Interface-based programming**: Prefer interfaces over concrete implementations
+- **Async/await**: Use UniTask for async operations
+- **Event-driven**: Use event bus for cross-system communication
+
+## Build Configuration
+
+### Assembly Definitions
+- **Assembly-CSharp**: Main Unity assembly
+- **Assembly-CSharp-firstpass**: Pre-compiled assembly
+- **Core.Application**: Core application logic
+- **Shared**: Shared types
+- **Common**: Common utilities
+- **View**: View layer
+- Unity-specific assemblies for various packages
+
+## Development Workflow
+
+### Scene Context
+- Each scene has its own DiContainer
+- Scene context injected into tutorial system
+- Per-scene bindings via installers
+
+### Resource Management
+- Addressables for all runtime assets
+- Handle storage for memory management
+- Async loading with UniTask
+
+### Testing
+- Unity Test Framework 1.6.0
+- Test assemblies configured
+
+## Known Issues and Limitations
+
+### Dummy Implementations
+- `DummyPurchasesController`: Placeholder for purchase system
+- `DummyAdvertisementAPI`: Placeholder for ad system
+
+### TODO
+- Replace dummy implementations with real SDKs
+- Add unit tests
+- Add integration tests
