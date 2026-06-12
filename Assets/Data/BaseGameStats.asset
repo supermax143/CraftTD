@@ -41,5 +41,6 @@ MonoBehaviour:
   _baseUnitAttackRangeTier2: 2.5
   _baseUnitAttackRangeTier3: 1
   _baseUnitAttackSpeedTier1: 1
-  _baseUnitAttackSpeedTier2: 1.2
-  _baseUnitAttackSpeedTier3: 1.5
+  _baseUnitAttackSpeedTier2: 1
+  _baseUnitAttackSpeedTier3: 1
+  _detectionRange: 3

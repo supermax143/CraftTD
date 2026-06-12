@@ -22,13 +22,11 @@ namespace Unity.Game
         private AttackRangeAttribute _attackRange;
         [SerializeField] 
         private AttackSpeedAttribute _attackSpeed;
-        [SerializeField] 
-        private AttackCooldownAttribute _attackCooldown;
+       
         
 
         public float AttackRange => _attackRange.ValueModified;
         public float AttackSpeed => _attackSpeed.ValueModified;
-        public float AttackCooldown => _attackCooldown.ValueModified;
         public float Damage => _damage.ValueModified;
         
         private Coroutine _attackCoroutine;
@@ -54,15 +52,15 @@ namespace Unity.Game
 
         private IEnumerator Attack()
         {
+            yield return new WaitForSeconds(AttackSpeed);
+            _moveComponent.RotateTo(_target.GetClosestPosition(transform.position));
             if (_target == null)
             {
                 Debug.LogError($"{this.GetType().Name} Target is null");
                 yield break;
             }
 
-            _moveComponent.RotateTo(_target.GetClosestPosition(transform.position));
             _weapon.Attack(_target, Damage);
-            yield return new WaitForSeconds(AttackCooldown);
             _attackCoroutine = StartCoroutine(Attack());
         }
         
