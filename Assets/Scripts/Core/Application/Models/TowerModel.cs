@@ -14,6 +14,8 @@ namespace Core.Application.Models
         public TowerInfo Info => _info;
         public Faction Faction => _entity.Faction;
 
+        public TowerEntity Entity => _entity;
+
         public TowerModel(TowerInfo info, TowerEntity entity)
         {
             _info = info;
@@ -23,7 +25,7 @@ namespace Core.Application.Models
 
         public void AddModifier(AttributeModifierBase modifier)
         {
-            _info.AddModifier(modifier);
+            _entity.AddModifier(modifier);
         }
     }
 }
