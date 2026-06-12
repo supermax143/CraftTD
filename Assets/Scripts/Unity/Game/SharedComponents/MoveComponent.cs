@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Unity.Game
 {
-    public class MoveComponent : GameEntity
+    public class MoveComponent : GameComponent
     {
         [SerializeField]
         private MoveSpeedAttribute _moveSpeed = new MoveSpeedAttribute(4);

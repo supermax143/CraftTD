@@ -9,7 +9,7 @@ using Zenject;
 namespace Unity.Game
 {
     [RequireComponent(typeof(UnitView))]
-    public class UnitController : GameEntity
+    public class UnitController : GameComponent
     {
         
         [SerializeField, HideInInspector] 
@@ -33,7 +33,7 @@ namespace Unity.Game
         
         private Faction _faction;
         private Faction _opponentFaction;
-        private GameEntityInfo _info;
+        private GameEntityData _data;
         
         public Faction OpponentFaction => _opponentFaction;
         public AttackComponent Attack => _attackComponent;
@@ -70,19 +70,19 @@ namespace Unity.Game
             
         }
 
-        public override void SetData(GameEntityInfo info)
+        public override void SetData(GameEntityData data)
         {
-            _info = info;
+            _data = data;
             Initialize();
         }
 
         private void Initialize()
         {
-            _healthComponent.SetData(_info);
+            _healthComponent.SetData(_data);
             _attackTarget.Initialize(HealthComponent);
-            _moveComponent.SetData(_info);
-            _attackComponent.SetData(_info);
-            _targetSearchComponent.SetData(_info);
+            _moveComponent.SetData(_data);
+            _attackComponent.SetData(_data);
+            _targetSearchComponent.SetData(_data);
             
             _stateManager.Initialize(this);
             _stateManager.ChangeState<SearchTargetState>();
@@ -90,7 +90,7 @@ namespace Unity.Game
 
         public override IEnumerable<GameEntityAttribute> GetAllAttributes()
         {
-            return _info.GetAllAttributes();
+            return _data.GetAllAttributes();
         }
         
         public void Die()

@@ -1,12 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Application.Info.Attributes.AttrimuteModdifiers;
 using Unity.Game.Attributes;
-using UnityEngine;
 
 namespace Unity.Game
 {
-    public abstract class GameEntity : MonoBehaviour
+    
+    public abstract class GameEntityData
     {
         private List<GameEntityAttribute> _attributes;
 
@@ -19,6 +21,10 @@ namespace Unity.Game
             return _attributes;
         }
 
+        public void RefreshAttributes()
+        {
+            _attributes = null;
+        }
         
         private IEnumerable<GameEntityAttribute> GetAllAttributesFromReflection()
         {
@@ -32,30 +38,10 @@ namespace Unity.Game
                 }
             }
         }
-        
 
-        public virtual void SetData(GameEntityInfo info)
-        {
-            if (info == null)
-            {
-                Debug.LogError($"{this.GetType().Name} SetData: data is null");
-                return;
-            }
-            CopyAttributes(info.GetAllAttributes());
-        }
-
-        public void CopyAttributes(IEnumerable<GameEntityAttribute> attributes)
-        {
-            foreach (var attribute in attributes)
-            {
-                CopyAttributeIfExist(attribute);
-            }
-        }
-        
         public bool TryGetAttribute<T>(out T attribute) where T : GameEntityAttribute
         {
-            var allAttributes = GetAllAttributes();
-            foreach (var attr in allAttributes)
+            foreach (var attr in GetAllAttributes())
             {
                 if (attr is T typedAttr)
                 {
@@ -67,19 +53,18 @@ namespace Unity.Game
             attribute = default;
             return false;
         }
-
-        public void CopyAttributeIfExist(GameEntityAttribute copy)
+        
+        
+        public void AddModifier(AttributeModifierBase modifier)
         {
-            foreach (var attribute in GetAllAttributes())
+            foreach (var attr in GetAllAttributes())
             {
-                if (attribute.GetType() != copy.GetType())
+                if (attr.Kind == modifier.Kind)
                 {
-                    continue;
+                    attr.AddModifier(modifier);
+                    break;
                 }
-                attribute.CopyValueFrom(copy);
-                break;
             }
         }
-        
     }
 }

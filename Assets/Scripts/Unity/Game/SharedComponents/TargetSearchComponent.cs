@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Unity.Game
 {
-    public class TargetSearchComponent : GameEntity
+    public class TargetSearchComponent : GameComponent
     {
         public const float DETECTION_INTERVAL = .3f;
         

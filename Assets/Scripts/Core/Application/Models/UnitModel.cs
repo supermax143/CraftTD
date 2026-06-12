@@ -1,32 +1,35 @@
 ﻿using Unity.Game;
+using Unity.Game.Entity;
 
 namespace Core.Application.Models
 {
     public class UnitModel
     {
-        private readonly UnitEntityInfo _info;
-        private bool _isUnitOpened;
 
+        private readonly UnitInfo _info;
+        private bool _isUnitOpened;
+        private readonly UnitEntity _entity;
+        
+        
         public bool IsUnitOpened => _isUnitOpened;
         public UnitTier Tier => Info.Tier;
-        public int FoodCost => Info.FoodCost;
-        public int UnlockCost => Info.UnlockCost;
+        public int FoodCost => _entity.FoodCost;
+        public int UnlockCost => _entity.UnlockCost;
+        public UnitInfo Info => _info;
 
-        public UnitEntityInfo Info => _info;
+        public UnitEntity Entity => _entity;
 
-        
-        
+
         public void OpenUnit()
         {
             _isUnitOpened = true;
         }
         
-        public UnitModel(UnitEntityInfo info, bool isUnitOpened, GameStats stats, int epochId)
+        public UnitModel(UnitInfo info, UnitEntity entity, bool isUnitOpened)
         {
             _info = info;
-            _info.Initialize(stats, (uint)epochId);
+            _entity = entity;
             _isUnitOpened = isUnitOpened;
-            
         }
 
     }

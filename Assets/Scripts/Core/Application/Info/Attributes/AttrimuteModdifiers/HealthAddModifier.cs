@@ -2,9 +2,9 @@
 
 namespace Core.Application.Info.Attributes.AttrimuteModdifiers
 {
-    public class HealthTowerAddModifier : AttributeModifier<int>
+    public class HealthAddModifier : AttributeModifier<int>
     {
-        public HealthTowerAddModifier(int id, int value) : base(id, value)
+        public HealthAddModifier(int id, int value) : base(id, value)
         {
             _value = value;
         }

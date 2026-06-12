@@ -8,7 +8,7 @@ using Zenject;
 namespace Unity.Game
 {
     [RequireComponent(typeof(TowerView))]
-    public class TowerController : GameEntity
+    public class TowerController : GameComponent
     {
 
         public event Action<TowerController> OnDestroyed;
@@ -50,10 +50,10 @@ namespace Unity.Game
             }
         }
 
-        public override void SetData(GameEntityInfo info)
+        public override void SetData(GameEntityData data)
         {
-            base.SetData(info);
-            _health.SetData(info);
+            base.SetData(data);
+            _health.SetData(data);
             _attackTarget.Initialize(_health);
         }
 

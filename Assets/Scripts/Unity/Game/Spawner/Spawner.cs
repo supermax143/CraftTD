@@ -54,14 +54,12 @@ namespace Unity.Game
             {
                 var spawnDelta = new Vector3(Random.Range(-_spawnRange, _spawnRange), 0, Random.Range(-_spawnRange, _spawnRange));
 
-                var unitModel = _epoch.GetUnitByTier(tier);
-                
-                if (!unitModel.Info.TryGetAttribute<UnitPrefabAttribute>(out var unitPrefabAttribute))
+                if (!_epoch.TryGetUnitModel(tier, _faction, out var unitModel))
                 {
-                    throw new System.Exception("No unit prefab found");
+                    throw new System.Exception("No unit model found");
                 }
-                
-                var prefab = unitPrefabAttribute.ValueModified;
+
+                var prefab = unitModel.Info.UnitPrefab;
                 var unit = _container.InstantiatePrefabForComponent<UnitController>(prefab, _spawnTransform);
                 unit.SetFaction(_faction, _enemyFaction);
                 unit.transform.position = transform.position + spawnDelta;
@@ -69,7 +67,7 @@ namespace Unity.Game
                 {
                     unit.transform.LookAt(target.transform);
                 }
-                unit.SetData(unitModel.Info);
+                unit.SetData(unitModel.Entity);
             }
         }
 

@@ -16,31 +16,31 @@ namespace Unity.Game
         [HideLabel]
         [InlineProperty]
         [SerializeField]
-        private TowerEntityInfo _tower;
+        private TowerInfo _tower;
         
         [HideLabel]
         [InlineProperty]
         [SerializeField]
-        private UnitEntityInfo _unitTier1;
+        private UnitInfo _unitTier1;
         [HideLabel]
         [InlineProperty]
         [SerializeField]
-        private UnitEntityInfo _unitTier2;
+        private UnitInfo _unitTier2;
         [HideLabel]
         [InlineProperty]
         [SerializeField]
-        private UnitEntityInfo _unitTier3;
+        private UnitInfo _unitTier3;
 
         [ListDrawerSettings(ShowIndexLabels = true)]
         [SerializeField]
         private List<UnitWave> _waves;
         
-        public TowerEntityInfo Tower => _tower;
+        public TowerInfo Tower => _tower;
         public List<UnitWave> Waves => _waves;
 
         public string EpochName => _epochName;
         
-        public UnitEntityInfo GetUnitDataByTier(UnitTier tier)
+        public UnitInfo GetUnitDataByTier(UnitTier tier)
         {
             switch (tier)
             {
@@ -71,7 +71,7 @@ namespace Unity.Game
             }
         }
         
-        public IEnumerable<UnitEntityInfo> GetUnits()
+        public IEnumerable<UnitInfo> GetUnits()
         {
             yield return _unitTier1;
             yield return _unitTier2;

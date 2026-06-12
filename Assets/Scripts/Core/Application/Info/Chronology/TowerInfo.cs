@@ -8,18 +8,19 @@ using UnityEngine;
 namespace Unity.Game
 {
     [Serializable]
-    public class TowerEntityInfo : GameEntityInfo
+    public class TowerInfo : GameEntityData
     {
         
         [InlineProperty, SerializeField] 
         private TowerPrefabAttribute _towerPrefab;
        
-        private HealthAttribute _health = new();
+        /*private HealthAttribute _health = new();
 
         public void Initialize(GameStats gameStats, uint epoch, Faction faction)
         {
             _health = new HealthAttribute(gameStats.GetTowerHealth(epoch, faction));
-        }
+            RefreshAttributes();
+        }*/
 
     }
 }

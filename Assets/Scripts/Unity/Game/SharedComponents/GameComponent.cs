@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Core.Application.Info.Attributes.AttrimuteModdifiers;
 using Unity.Game.Attributes;
+using UnityEngine;
 
 namespace Unity.Game
 {
-    
-    public abstract class GameEntityInfo
+    public abstract class GameComponent : MonoBehaviour
     {
         private List<GameEntityAttribute> _attributes;
 
@@ -34,10 +32,30 @@ namespace Unity.Game
                 }
             }
         }
+        
 
+        public virtual void SetData(GameEntityData data)
+        {
+            if (data == null)
+            {
+                Debug.LogError($"{this.GetType().Name} SetData: data is null");
+                return;
+            }
+            CopyAttributes(data.GetAllAttributes());
+        }
+
+        public void CopyAttributes(IEnumerable<GameEntityAttribute> attributes)
+        {
+            foreach (var attribute in attributes)
+            {
+                CopyAttributeIfExist(attribute);
+            }
+        }
+        
         public bool TryGetAttribute<T>(out T attribute) where T : GameEntityAttribute
         {
-            foreach (var attr in GetAllAttributes())
+            var allAttributes = GetAllAttributes();
+            foreach (var attr in allAttributes)
             {
                 if (attr is T typedAttr)
                 {
@@ -49,18 +67,19 @@ namespace Unity.Game
             attribute = default;
             return false;
         }
-        
-        
-        public void AddModifier(AttributeModifierBase modifier)
+
+        public void CopyAttributeIfExist(GameEntityAttribute copy)
         {
-            foreach (var attr in GetAllAttributes())
+            foreach (var attribute in GetAllAttributes())
             {
-                if (attr.Kind == modifier.Kind)
+                if (attribute.GetType() != copy.GetType())
                 {
-                    attr.AddModifier(modifier);
-                    break;
+                    continue;
                 }
+                attribute.CopyValueFrom(copy);
+                break;
             }
         }
+        
     }
 }

@@ -1,6 +1,8 @@
-﻿using Core.Application.Models;
+﻿using System;
+using Core.Application.Models;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 using Zenject;
@@ -17,7 +19,13 @@ namespace Unity.Presentation.Components
         [Inject] private IMainModel _model;
         
         private int _price;
-        
+
+        public Button Button => _button;
+
+        private void Start()
+        {
+        }
+
         public void SetPrice(int price)
         {
             _price = price;

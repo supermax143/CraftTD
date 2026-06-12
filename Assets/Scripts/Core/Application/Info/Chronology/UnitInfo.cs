@@ -7,7 +7,7 @@ namespace Unity.Game
 {
 
     [Serializable]
-    public class UnitEntityInfo : GameEntityInfo
+    public class UnitInfo
     {
         [SerializeField] 
         private string _name;
@@ -17,21 +17,23 @@ namespace Unity.Game
         
         
         [InlineProperty, SerializeField] 
-        private UnitPrefabAttribute _unitPrefab;
+        private UnitPrefabAttribute _unitPrefab;//TODO: заменить на обычное поле.
         
-        private MoveSpeedAttribute _moveSpeed;
+        /*private MoveSpeedAttribute _moveSpeed;
         private AttackRangeAttribute _attackRange;
         private AttackSpeedAttribute _attackSpeed;
         private HealthAttribute _health;
         private DamageAttribute _damage;
         private UnitFoodCostAttribute _foodCost;
         private UnitUnlockCostAttribute _unlockCost = new();
-        private RewardMoneyAttribute _rewardMoney = new();
+        private RewardMoneyAttribute _rewardMoney = new();*/
         
         
         public string Name => _name;
         public UnitTier Tier => _tier;
-        public int FoodCost => _foodCost.ValueModified;
+        public GameObject UnitPrefab => _unitPrefab.ValueModified;
+        
+        /*public int FoodCost => _foodCost.ValueModified;
         public int UnlockCost => _unlockCost.ValueModified;
 
         public void Initialize(GameStats gameStats, uint epoch)
@@ -52,6 +54,7 @@ namespace Unity.Game
                 new AttackRangeAttribute(gameStats.GetUnitAttackRange(_tier, (int)epoch));
             _attackSpeed = 
                 new AttackSpeedAttribute(gameStats.GetUnitAttackSpeed(_tier, (int)epoch));
-        }
+            RefreshAttributes();
+        }*/
     }
 }

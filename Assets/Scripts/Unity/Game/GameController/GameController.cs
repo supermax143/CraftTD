@@ -76,8 +76,9 @@ namespace Unity.Game
         
         public void BuyUnit(UnitTier tier)
         {
-            var unit = Epoch.GetUnitByTier(tier);
-            if (_foodProduction.FoodCount < unit.FoodCost)
+            
+            if (!Epoch.TryGetUnitModel(tier, Faction.Player, out var unit)||
+                _foodProduction.FoodCount < unit.FoodCost)
             {
                 return;
             }

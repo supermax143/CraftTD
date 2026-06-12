@@ -40,7 +40,7 @@ namespace Unity.Presentation.HUD.UnitsPanael
 
         private void Start()
         {
-            _unit = Epoch.GetUnitByTier(_unitTier);
+            Epoch.TryGetUnitModel(_unitTier, Faction.Player, out _unit);
             _foodCost = _unit.FoodCost;
             _foodProduction.OnFoodChanged += UpdateBuyAvailable;
             UpdateView();

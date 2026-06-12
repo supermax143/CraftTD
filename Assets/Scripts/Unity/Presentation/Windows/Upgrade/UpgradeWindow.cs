@@ -59,7 +59,7 @@ namespace Unity.Presentation.Windows
         {
             foreach (var unitOpenItem in _unitsItems)
             {
-                var unitModel = Epoch.GetUnitByTier(unitOpenItem.Tier);
+                Epoch.TryGetUnitModel(unitOpenItem.Tier, Faction.Player, out var unitModel);
                 unitOpenItem.SetUnit(unitModel);
                 unitOpenItem.OnUnitOpened += Epoch.OpenUnit;
             }

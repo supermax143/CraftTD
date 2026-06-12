@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core.Application.Models;
+using Unity.Game;
 using Unity.Presentation.Components;
 using Unity.Presentation.HUD.UnitsPanael;
 using UnityEngine;
@@ -30,7 +31,7 @@ namespace Unity.Presentation.HUD
         {
             foreach (var buyUnitButton in _buyUnitButtons)
             {
-                var unit = Epoch.GetUnitByTier(buyUnitButton.Tier);
+                Epoch.TryGetUnitModel(buyUnitButton.Tier, Faction.Player, out var unit);
                 buyUnitButton.gameObject.SetActive(unit.IsUnitOpened);
             }   
         }

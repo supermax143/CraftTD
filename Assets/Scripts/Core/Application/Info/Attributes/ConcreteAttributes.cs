@@ -48,16 +48,6 @@ namespace Unity.Game.Attributes.Specific
         public override GameEntityAttributeKind Kind => GameEntityAttributeKind.AttackTime;
     }
 
-    [Serializable]
-    public class AttackCooldownAttribute : FloatEntityAttribute
-    {
-        public AttackCooldownAttribute(float value = 0f)
-            : base(value)
-        {
-        }
-
-        public override GameEntityAttributeKind Kind => GameEntityAttributeKind.AttackCooldown;
-    }
 
     [Serializable]
     public class DetectionRangeAttribute : FloatEntityAttribute

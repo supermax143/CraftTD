@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Unity.Game
 {
-    public class AttackComponent : GameEntity
+    public class AttackComponent : GameComponent
     {
         
         [SerializeField, HideInInspector]
@@ -80,6 +80,18 @@ namespace Unity.Game
             return distance <= AttackRange;
         }
 
-        
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            Vector3 position = transform.position + Vector3.up * 3f;
+            Color healthColor = Color.white;
+            UnityEditor.Handles.Label(position, $"d: {Damage}", new GUIStyle
+            {
+                normal = { textColor = healthColor },
+                fontSize = 12,
+                fontStyle = FontStyle.Bold
+            });
+        }
+#endif
     }
 }

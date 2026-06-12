@@ -28,7 +28,7 @@ namespace Unity.Game
         [Space]
         [Header("Tower Health")]
         [SerializeField] private int _baseTowerHealthPlayer = 2;
-        [SerializeField] private int _baseTowerHealthEnamy = 500;
+        [SerializeField] private int _baseTowerHealthEnemy = 500;
         [SerializeField] private int _towerHealthMultiplier = 3;
         
         [Space]
@@ -162,7 +162,7 @@ namespace Unity.Game
 
         public int GetTowerHealth(uint epoch, Faction faction)
         {
-            var baseHealth = faction == Faction.Player ? _baseTowerHealthPlayer : _baseTowerHealthEnamy;
+            var baseHealth = faction == Faction.Player ? _baseTowerHealthPlayer : _baseTowerHealthEnemy;
             return (int)(baseHealth * Math.Pow(_towerHealthMultiplier, epoch - 1));
         }
 
