@@ -16,10 +16,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
         private ModifierAttributeKind _modifierKind;
         
         [SerializeField]
-        private float _floatValue;
-        
-        [SerializeField]
-        private int _intValue;
+        private float _value;
         
         [ShowInInspector]
         public GameEntityAttributeKind AttributeKind => _attributeKind;
@@ -31,15 +28,15 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
         {
             return _attributeKind switch
             {
-                GameEntityAttributeKind.Damage => CreateFloatModifier<DamageAttribute>(id, _floatValue, _modifierKind),
-                GameEntityAttributeKind.AttackRange => CreateFloatModifier<AttackRangeAttribute>(id, _floatValue, _modifierKind),
-                GameEntityAttributeKind.MoveSpeed => CreateFloatModifier<MoveSpeedAttribute>(id, _floatValue, _modifierKind),
-                GameEntityAttributeKind.AttackTime => CreateFloatModifier<AttackSpeedAttribute>(id, _floatValue, _modifierKind),
-                GameEntityAttributeKind.DetectionRange => CreateFloatModifier<DetectionRangeAttribute>(id, _floatValue, _modifierKind),
-                GameEntityAttributeKind.Health => CreateIntModifier<HealthAttribute>(id, _intValue, _modifierKind),
-                GameEntityAttributeKind.UnitFoodCost => CreateIntModifier<UnitFoodCostAttribute>(id, _intValue, _modifierKind),
-                GameEntityAttributeKind.UnitUnlockCost => CreateIntModifier<UnitUnlockCostAttribute>(id, _intValue, _modifierKind),
-                GameEntityAttributeKind.RewardMoney => CreateIntModifier<RewardMoneyAttribute>(id, _intValue, _modifierKind),
+                GameEntityAttributeKind.Damage => CreateFloatModifier<DamageAttribute>(id, _value, _modifierKind),
+                GameEntityAttributeKind.AttackRange => CreateFloatModifier<AttackRangeAttribute>(id, _value, _modifierKind),
+                GameEntityAttributeKind.MoveSpeed => CreateFloatModifier<MoveSpeedAttribute>(id, _value, _modifierKind),
+                GameEntityAttributeKind.AttackTime => CreateFloatModifier<AttackSpeedAttribute>(id, _value, _modifierKind),
+                GameEntityAttributeKind.DetectionRange => CreateFloatModifier<DetectionRangeAttribute>(id, _value, _modifierKind),
+                GameEntityAttributeKind.Health => CreateIntModifier<HealthAttribute>(id, _value, _modifierKind),
+                GameEntityAttributeKind.UnitFoodCost => CreateIntModifier<UnitFoodCostAttribute>(id, _value, _modifierKind),
+                GameEntityAttributeKind.UnitUnlockCost => CreateIntModifier<UnitUnlockCostAttribute>(id, _value, _modifierKind),
+                GameEntityAttributeKind.RewardMoney => CreateIntModifier<RewardMoneyAttribute>(id, _value, _modifierKind),
                 _ => null
             };
         }
@@ -55,13 +52,14 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
             };
         }
         
-        private AttributeModifierBase CreateIntModifier<T>(int id, int value, ModifierAttributeKind kind) where T : IntEntityAttribute
+        private AttributeModifierBase CreateIntModifier<T>(int id, float value, ModifierAttributeKind kind) where T : IntEntityAttribute
         {
+            int intValue = Mathf.RoundToInt(value);
             return kind switch
             {
-                ModifierAttributeKind.Add => new IntAddModifier<T>(id, value),
-                ModifierAttributeKind.Multiply => new IntMultiplyModifier<T>(id, value),
-                ModifierAttributeKind.Override => new IntOverrideModifier<T>(id, value),
+                ModifierAttributeKind.Add => new IntAddModifier<T>(id, intValue),
+                ModifierAttributeKind.Multiply => new IntMultiplyModifier<T>(id, intValue),
+                ModifierAttributeKind.Override => new IntOverrideModifier<T>(id, intValue),
                 _ => null
             };
         }
