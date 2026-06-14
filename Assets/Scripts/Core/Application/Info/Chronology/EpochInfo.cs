@@ -37,10 +37,13 @@ namespace Unity.Game
         [SerializeField]
         private List<UnitWave> _waves;
         
+        [ListDrawerSettings(ListElementLabelName = "Label")]
         [SerializeField]
         private List<AttributeModifierWrapper> _unitTier1Modifiers;
+        [ListDrawerSettings(ListElementLabelName = "Label")]
         [SerializeField]
         private List<AttributeModifierWrapper> _unitTier2Modifiers;
+        [ListDrawerSettings(ListElementLabelName = "Label")]
         [SerializeField]
         private List<AttributeModifierWrapper> _unitTier3Modifiers;
         

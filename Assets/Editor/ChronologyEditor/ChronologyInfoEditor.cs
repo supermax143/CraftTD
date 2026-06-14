@@ -208,8 +208,9 @@ namespace Editor.ChronologyEditor
                 RefreshTabs();
             });
             
+            var towerPrefabProperty = epochProperty.FindPropertyRelative("_tower._towerPrefab._value");
             var towerField = _root.Q<PropertyField>("tower-field");
-            towerField.BindProperty(epochProperty.FindPropertyRelative("_tower"));
+            towerField.BindProperty(towerPrefabProperty);
             
             var wavesField = _root.Q<PropertyField>("waves-field");
             wavesField.BindProperty(epochProperty.FindPropertyRelative("_waves"));
@@ -268,36 +269,57 @@ namespace Editor.ChronologyEditor
                     _unitTier1Container.style.display = DisplayStyle.Flex;
                     _unitTier1FieldContainer.Clear();
                     var unitTier1Property = epochProperty.FindPropertyRelative("_unitTier1");
-                    var unitTier1Field = new PropertyField(unitTier1Property);
-                    unitTier1Field.BindProperty(unitTier1Property);
-                    _unitTier1FieldContainer.Add(unitTier1Field);
+                    AddUnitInfoFields(_unitTier1FieldContainer, unitTier1Property);
                     
-                    var unitTier1ModifiersField = _root.Q<PropertyField>("unit-tier1-modifiers-field");
-                    unitTier1ModifiersField.BindProperty(epochProperty.FindPropertyRelative("_unitTier1Modifiers"));
+                    var unitTier1ModifiersContainer = _root.Q<VisualElement>("unit-tier1-modifiers-container");
+                    var unitTier1ModifiersProperty = epochProperty.FindPropertyRelative("_unitTier1Modifiers");
+                    AddModifiersList(unitTier1ModifiersContainer, unitTier1ModifiersProperty);
                     break;
                 case 1:
                     _unitTier2Container.style.display = DisplayStyle.Flex;
                     _unitTier2FieldContainer.Clear();
                     var unitTier2Property = epochProperty.FindPropertyRelative("_unitTier2");
-                    var unitTier2Field = new PropertyField(unitTier2Property);
-                    unitTier2Field.BindProperty(unitTier2Property);
-                    _unitTier2FieldContainer.Add(unitTier2Field);
+                    AddUnitInfoFields(_unitTier2FieldContainer, unitTier2Property);
                     
-                    var unitTier2ModifiersField = _root.Q<PropertyField>("unit-tier2-modifiers-field");
-                    unitTier2ModifiersField.BindProperty(epochProperty.FindPropertyRelative("_unitTier2Modifiers"));
+                    var unitTier2ModifiersContainer = _root.Q<VisualElement>("unit-tier2-modifiers-container");
+                    var unitTier2ModifiersProperty = epochProperty.FindPropertyRelative("_unitTier2Modifiers");
+                    AddModifiersList(unitTier2ModifiersContainer, unitTier2ModifiersProperty);
                     break;
                 case 2:
                     _unitTier3Container.style.display = DisplayStyle.Flex;
                     _unitTier3FieldContainer.Clear();
                     var unitTier3Property = epochProperty.FindPropertyRelative("_unitTier3");
-                    var unitTier3Field = new PropertyField(unitTier3Property);
-                    unitTier3Field.BindProperty(unitTier3Property);
-                    _unitTier3FieldContainer.Add(unitTier3Field);
+                    AddUnitInfoFields(_unitTier3FieldContainer, unitTier3Property);
                     
-                    var unitTier3ModifiersField = _root.Q<PropertyField>("unit-tier3-modifiers-field");
-                    unitTier3ModifiersField.BindProperty(epochProperty.FindPropertyRelative("_unitTier3Modifiers"));
+                    var unitTier3ModifiersContainer = _root.Q<VisualElement>("unit-tier3-modifiers-container");
+                    var unitTier3ModifiersProperty = epochProperty.FindPropertyRelative("_unitTier3Modifiers");
+                    AddModifiersList(unitTier3ModifiersContainer, unitTier3ModifiersProperty);
                     break;
             }
+        }
+        
+        private void AddUnitInfoFields(VisualElement container, SerializedProperty unitInfoProperty)
+        {
+            var nameField = new PropertyField(unitInfoProperty.FindPropertyRelative("_name"), "Name");
+            nameField.BindProperty(unitInfoProperty.FindPropertyRelative("_name"));
+            container.Add(nameField);
+            
+            var tierField = new PropertyField(unitInfoProperty.FindPropertyRelative("_tier"), "Tier");
+            tierField.BindProperty(unitInfoProperty.FindPropertyRelative("_tier"));
+            container.Add(tierField);
+            
+            var prefabField = new PropertyField(unitInfoProperty.FindPropertyRelative("_unitPrefab._value"), "Prefab");
+            prefabField.BindProperty(unitInfoProperty.FindPropertyRelative("_unitPrefab._value"));
+            container.Add(prefabField);
+        }
+        
+        private void AddModifiersList(VisualElement container, SerializedProperty modifiersProperty)
+        {
+            container.Clear();
+            
+            var propertyField = new PropertyField(modifiersProperty);
+            propertyField.BindProperty(modifiersProperty);
+            container.Add(propertyField);
         }
         
         private void HideEpochFields()

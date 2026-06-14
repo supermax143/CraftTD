@@ -17,6 +17,8 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
         [SerializeField]
         private float _value;
         
+        public string Label => $"{_attributeKind}_{_modifierKind}_{_value}";
+        
         
         public AttributeModifierBase GetModifier(int id)
         {

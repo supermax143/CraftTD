@@ -31,17 +31,17 @@
                     <ui:VisualElement name="unit-tier1-container" style="display: none; flex-direction: column;">
                         <ui:Label name="unit-tier1-label" text="Unit Tier 1" style="font-weight: bold; font-size: 14px; margin-bottom: 5px;" />
                         <ui:VisualElement name="unit-tier1-field-container" style="flex-direction: column;" />
-                        <uie:PropertyField name="unit-tier1-modifiers-field" label="Unit Tier 1 Modifiers" />
+                        <ui:VisualElement name="unit-tier1-modifiers-container" style="flex-direction: column;" />
                     </ui:VisualElement>
                     <ui:VisualElement name="unit-tier2-container" style="display: none; flex-direction: column;">
                         <ui:Label name="unit-tier2-label" text="Unit Tier 2" style="font-weight: bold; font-size: 14px; margin-bottom: 5px;" />
                         <ui:VisualElement name="unit-tier2-field-container" style="flex-direction: column;" />
-                        <uie:PropertyField name="unit-tier2-modifiers-field" label="Unit Tier 2 Modifiers" />
+                        <ui:VisualElement name="unit-tier2-modifiers-container" style="flex-direction: column;" />
                     </ui:VisualElement>
                     <ui:VisualElement name="unit-tier3-container" style="display: none; flex-direction: column;">
                         <ui:Label name="unit-tier3-label" text="Unit Tier 3" style="font-weight: bold; font-size: 14px; margin-bottom: 5px;" />
                         <ui:VisualElement name="unit-tier3-field-container" style="flex-direction: column;" />
-                        <uie:PropertyField name="unit-tier3-modifiers-field" label="Unit Tier 3 Modifiers" />
+                        <ui:VisualElement name="unit-tier3-modifiers-container" style="flex-direction: column;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
                 
