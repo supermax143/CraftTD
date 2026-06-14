@@ -18,7 +18,7 @@
             <ui:Label name="no-epoch-label" text="No epoch selected" style="font-style: italic; color: #888;" />
             <ui:VisualElement name="epoch-fields-container" style="display: none; flex-direction: column;">
                 <ui:TextField name="epoch-name-field" label="Epoch Name" />
-                <uie:PropertyField name="tower-field" binding-path="_tower" label="Tower" />
+                <ui:VisualElement name="tower-field-container" style="flex-direction: column;" />
                 <uie:PropertyField name="waves-field" binding-path="_waves" label="Waves" />
                 
                 <ui:VisualElement name="unit-tier-tabs-container" style="flex-direction: row; background-color: #2d2d2d; border-bottom: 1px solid #555; margin-top: 10px;">

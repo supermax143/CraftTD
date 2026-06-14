@@ -209,8 +209,11 @@ namespace Editor.ChronologyEditor
             });
             
             var towerPrefabProperty = epochProperty.FindPropertyRelative("_tower._towerPrefab._value");
-            var towerField = _root.Q<PropertyField>("tower-field");
+            var towerFieldContainer = _root.Q<VisualElement>("tower-field-container");
+            towerFieldContainer.Clear();
+            var towerField = new GameObjectPreviewField("Tower Prefab");
             towerField.BindProperty(towerPrefabProperty);
+            towerFieldContainer.Add(towerField);
             
             var wavesField = _root.Q<PropertyField>("waves-field");
             wavesField.BindProperty(epochProperty.FindPropertyRelative("_waves"));
@@ -308,8 +311,9 @@ namespace Editor.ChronologyEditor
             tierField.BindProperty(unitInfoProperty.FindPropertyRelative("_tier"));
             container.Add(tierField);
             
-            var prefabField = new PropertyField(unitInfoProperty.FindPropertyRelative("_unitPrefab._value"), "Prefab");
-            prefabField.BindProperty(unitInfoProperty.FindPropertyRelative("_unitPrefab._value"));
+            var prefabProperty = unitInfoProperty.FindPropertyRelative("_unitPrefab._value");
+            var prefabField = new GameObjectPreviewField("Unit Prefab");
+            prefabField.BindProperty(prefabProperty);
             container.Add(prefabField);
         }
         
