@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 200
+    spritePixelsToUnits: 500
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -963,7 +963,7 @@ ScriptedImporter:
       guid: b2c57cdc7dd07574bbcd3f840e58bbad
       position: {x: 61.314026, y: 162.79199, z: 0}
       rotation: {x: 0, y: 0, z: -0.70434743, w: 0.70985544}
-      length: 54.767776
+      length: 54.767838
       parentId: -1
       color:
         serializedVersion: 2
@@ -1965,9 +1965,9 @@ ScriptedImporter:
     spriteBone:
     - name: leg_l_bone_1
       guid: f87e1449e490bd3439edfccac1c18988
-      position: {x: 49.17399, y: 0.00022316189, z: 0}
-      rotation: {x: 0, y: 0, z: -0.27910668, w: 0.96026015}
-      length: 51.69731
+      position: {x: 49.173115, y: 0.00055546366, z: 0}
+      rotation: {x: 0, y: 0, z: -0.27910656, w: 0.9602602}
+      length: 51.697308
       parentId: 1
       color:
         serializedVersion: 2
@@ -1975,8 +1975,8 @@ ScriptedImporter:
     - name: leg_l_bone
       guid: 98c3b80e502a38e48b9911ef6da9c0c3
       position: {x: 102.377075, y: 91.384766, z: 0}
-      rotation: {x: 0, y: 0, z: 0.8990627, w: -0.43782008}
-      length: 49.17351
+      rotation: {x: 0, y: 0, z: 0.89906275, w: -0.43781996}
+      length: 49.1735
       parentId: -1
       color:
         serializedVersion: 2
@@ -3695,8 +3695,8 @@ ScriptedImporter:
     - name: leg_l_bone
       guid: 98c3b80e502a38e48b9911ef6da9c0c3
       position: {x: 84.527565, y: 176.97935, z: 0}
-      rotation: {x: 0, y: -0, z: 0.9453188, w: 0.32614776}
-      length: 49.17352
+      rotation: {x: 0, y: -0, z: 0.94531876, w: 0.32614788}
+      length: 49.173496
       parentId: 0
       color:
         serializedVersion: 2
@@ -3723,14 +3723,14 @@ ScriptedImporter:
       guid: b2c57cdc7dd07574bbcd3f840e58bbad
       position: {x: 152.93472, y: -120.95754, z: 0}
       rotation: {x: 0, y: -0, z: -0.99999243, w: 0.0038947524}
-      length: 54.767765
+      length: 54.767826
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4278255488
     - name: arm_r_bone1
       guid: 4603b7c465faaa04baf6ebd6109a9d16
-      position: {x: 54.767784, y: 0.00030968306, z: 0}
+      position: {x: 54.767845, y: 0.00030920762, z: 0}
       rotation: {x: 0, y: 0, z: 0.0043723984, w: -0.99999046}
       length: 79.618385
       parentId: 5
@@ -3757,8 +3757,8 @@ ScriptedImporter:
         rgba: 4294901888
     - name: leg_l_bone_1
       guid: f87e1449e490bd3439edfccac1c18988
-      position: {x: 49.173523, y: -0.000014046607, z: 0}
-      rotation: {x: 0, y: 0, z: -0.27910668, w: 0.96026015}
+      position: {x: 49.17347, y: -0.000004705351, z: 0}
+      rotation: {x: 0, y: 0, z: -0.27910653, w: 0.9602602}
       length: 51.69731
       parentId: 2
       color:
@@ -3857,7 +3857,7 @@ ScriptedImporter:
       order: 0
     dimension: {x: 0, y: 0}
     characterGroups: []
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.4606389, y: 0.25774002}
     boneReadOnly: 0
   platformSettings:
   - name: DefaultTexturePlatform
@@ -3910,8 +3910,8 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   mosaicLayers: 1
   characterMode: 1
-  documentPivot: {x: 0.5, y: 0}
-  documentAlignment: 7
+  documentPivot: {x: 0.4606389, y: 0.25774002}
+  documentAlignment: 9
   importHiddenLayers: 0
   layerMappingOption: 2
   generatePhysicsShape: 0

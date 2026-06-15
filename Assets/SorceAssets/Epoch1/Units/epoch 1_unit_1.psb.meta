@@ -1084,7 +1084,7 @@ ScriptedImporter:
     - position: {x: 93.821, y: 83.72099}
       boneWeight:
         weight0: 0.78787875
-        weight1: 0.21212119
+        weight1: 0.21212125
         weight2: 0
         weight3: 0
         boneIndex0: 0
@@ -1094,7 +1094,7 @@ ScriptedImporter:
     - position: {x: 111.295, y: 48.705994}
       boneWeight:
         weight0: 0.8939394
-        weight1: 0.106060594
+        weight1: 0.106060624
         weight2: 0
         weight3: 0
         boneIndex0: 0
@@ -2911,9 +2911,9 @@ ScriptedImporter:
     spriteBone:
     - name: arm_r_bone1
       guid: 4603b7c465faaa04baf6ebd6109a9d16
-      position: {x: 220.61766, y: 0.00009086581, z: 0}
-      rotation: {x: 0, y: 0, z: -0.122500084, w: 0.99246854}
-      length: 158.20117
+      position: {x: 220.61766, y: 0.00021019741, z: 0}
+      rotation: {x: 0, y: 0, z: -0.12250034, w: 0.99246854}
+      length: 158.20119
       parentId: 1
       color:
         serializedVersion: 2
@@ -2921,8 +2921,8 @@ ScriptedImporter:
     - name: arm_r_bone
       guid: b2c57cdc7dd07574bbcd3f840e58bbad
       position: {x: 48.395264, y: 439.5902, z: 0}
-      rotation: {x: 0, y: 0, z: -0.63238984, w: 0.7746503}
-      length: 220.6177
+      rotation: {x: 0, y: 0, z: -0.63238966, w: 0.77465045}
+      length: 220.61765
       parentId: -1
       color:
         serializedVersion: 2
@@ -4110,16 +4110,16 @@ ScriptedImporter:
     - name: arm_r_bone
       guid: b2c57cdc7dd07574bbcd3f840e58bbad
       position: {x: 377.665, y: -244.62721, z: 0}
-      rotation: {x: 0, y: -0, z: -0.9936911, w: 0.112151876}
-      length: 220.61766
+      rotation: {x: 0, y: -0, z: -0.9936911, w: 0.11215213}
+      length: 220.61758
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4278255488
     - name: arm_r_bone1
       guid: 4603b7c465faaa04baf6ebd6109a9d16
-      position: {x: 220.61763, y: 0.00005981615, z: 0}
-      rotation: {x: 0, y: 0, z: -0.12250012, w: 0.99246854}
+      position: {x: 220.61752, y: -0.000050891234, z: 0}
+      rotation: {x: 0, y: 0, z: -0.12250037, w: 0.9924685}
       length: 158.20116
       parentId: 7
       color:
@@ -4227,7 +4227,7 @@ ScriptedImporter:
       order: 0
     dimension: {x: 0, y: 0}
     characterGroups: []
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.48549855, y: 0.1948766}
     boneReadOnly: 0
   platformSettings:
   - name: DefaultTexturePlatform
@@ -4280,8 +4280,8 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   mosaicLayers: 1
   characterMode: 1
-  documentPivot: {x: 0.5, y: 0}
-  documentAlignment: 7
+  documentPivot: {x: 0.48549855, y: 0.1948766}
+  documentAlignment: 9
   importHiddenLayers: 0
   layerMappingOption: 2
   generatePhysicsShape: 0
