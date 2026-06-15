@@ -43,6 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 61938867
+    locked: 0
+  - name: Gamefield
+    uniqueID: 2737399671
+    locked: 0
   - name: Windows
     uniqueID: 3348143597
     locked: 0
