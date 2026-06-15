@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 500
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -4239,7 +4239,7 @@ ScriptedImporter:
     textureCompression: 1
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
   - name: Standalone
@@ -4420,7 +4420,7 @@ ScriptedImporter:
   rigPSDLayers: []
   sharedRigPSDLayers: []
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639171229246478605
+  platformSettingsDirtyTick: 639171466940520595
   spriteSizeExpandChanged: 0
   generateGOHierarchy: 0
   textureAssetName: 
