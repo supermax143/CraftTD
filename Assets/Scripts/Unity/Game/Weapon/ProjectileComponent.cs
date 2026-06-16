@@ -7,21 +7,22 @@ namespace Unity.Game.Projectile
     public class ProjectileComponent : MonoBehaviour
     {
 
-        private float _speed;
+        [SerializeField]
+        private float _speed = 15;
+        
         private float _damage;
        
         private Coroutine _moveCoroutine;
         private AttackTargetBase _target;
         private Timer _timer = new();
         
-        public void Launch(AttackTargetBase target, float speed, float damage)
+        public void Launch(AttackTargetBase target, float damage)
         {
             if (_moveCoroutine != null)
             {
                 StopCoroutine(_moveCoroutine);
             }
             _target = target;
-            _speed = speed;
             _damage = damage;
             _moveCoroutine = StartCoroutine(Move());
         }

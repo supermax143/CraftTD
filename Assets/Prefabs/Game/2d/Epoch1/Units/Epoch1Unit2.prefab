@@ -83,6 +83,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 8255182563951653487, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 9061967524654161785}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -164,14 +169,67 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2568999453377577720, guid: b9c8ad48810b63b4d83a16aa3cc7136a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9061967524654161785}
+    - targetCorrespondingSourceObject: {fileID: 8609621395312483062, guid: b9c8ad48810b63b4d83a16aa3cc7136a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8055487361944040091}
   m_SourcePrefab: {fileID: 100100000, guid: b9c8ad48810b63b4d83a16aa3cc7136a, type: 3}
+--- !u!1 &2720563949881831383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8609621395312483062, guid: b9c8ad48810b63b4d83a16aa3cc7136a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5961331544785466657}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8055487361944040091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2720563949881831383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9cc19974ca4ad1b9ecb65449f9091d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Projectile.ProjectileComponent
+--- !u!4 &6592665378141554752 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 704599280385555809, guid: b9c8ad48810b63b4d83a16aa3cc7136a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5961331544785466657}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7049283248457887674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3706166383553616539, guid: b9c8ad48810b63b4d83a16aa3cc7136a,
     type: 3}
   m_PrefabInstance: {fileID: 5961331544785466657}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8150402692216977369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2568999453377577720, guid: b9c8ad48810b63b4d83a16aa3cc7136a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5961331544785466657}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9061967524654161785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8150402692216977369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f27e18926747e19f30938b88926911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Projectile.RangedWeapon
+  _barrel: {fileID: 6592665378141554752}
+  _projectilePrefab: {fileID: 3476111542875554784, guid: da16f703930ff784190b2936e9537b1a,
+    type: 3}
 --- !u!212 &9019754047550196516 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3429066639907995141, guid: b9c8ad48810b63b4d83a16aa3cc7136a,

@@ -88,6 +88,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8255182563951653487, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 3193925991661240054}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -169,7 +174,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7771028808276254457, guid: 0074c9a251067bf49aa141ccc588651e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3193925991661240054}
   m_SourcePrefab: {fileID: 100100000, guid: 0074c9a251067bf49aa141ccc588651e, type: 3}
 --- !u!212 &1047276694785709036 stripped
 SpriteRenderer:
@@ -177,6 +186,24 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 7229400564674531064}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1120200064280367105 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7771028808276254457, guid: 0074c9a251067bf49aa141ccc588651e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7229400564674531064}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3193925991661240054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120200064280367105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9486698523554d28b7af01a75c4ab2c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Projectile.MeleeWeapon
 --- !u!4 &2252883730962466914 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8867627607813342874, guid: 0074c9a251067bf49aa141ccc588651e,

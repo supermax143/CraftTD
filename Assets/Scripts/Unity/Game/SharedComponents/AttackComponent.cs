@@ -74,7 +74,7 @@ namespace Unity.Game
         
         public bool CheckRange(AttackTargetBase target)
         {
-            var position = transform.position;
+            Vector2 position = transform.position;
             var targetPosition = target.GetClosestPosition(position);
             var distance = Vector3.Distance(position, targetPosition);
             return distance <= AttackRange;

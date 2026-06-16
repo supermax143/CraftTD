@@ -17,7 +17,7 @@ MonoBehaviour:
       \u044D\u043F\u043E\u0445\u0430"
     _tower:
       _towerPrefab:
-        _value: {fileID: 6563548916185858267, guid: 787862c76b6a5a549b8dcdcd77da43fc,
+        _value: {fileID: 8055821016266724607, guid: fe884df816c12074082be57f3ffbdb6e,
           type: 3}
     _unitTier1:
       _name: 
