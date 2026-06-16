@@ -46,28 +46,16 @@ namespace Unity.Presentation.Components
         
         public void PlayAttack()
         {
-            if (IsAttackState())
-            {
-                return;
-            }
             PlayAnimation(Triggers.Attack);
         }
         
         public void PlayIdle()
         {
-            if (IsIdleState())
-            {
-                return;
-            }
             PlayAnimation(Triggers.Idle);
         }
         
         public void PlayWalk()
         {
-            if (IsWalkState())
-            {
-                return;
-            }
             PlayAnimation(Triggers.Walk);
         }
         

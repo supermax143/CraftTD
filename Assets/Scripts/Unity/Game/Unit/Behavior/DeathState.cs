@@ -5,6 +5,7 @@
         public override void Enter()
         {
             _unit.Die();
+            _unit.View.StartIdle();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Unity.Game
                 ChangeState<MoveToTargetState>();
                 return;
             }
-            
+            _unit.View.StartIdle();
             Debug.LogError($"{this.GetType().Name} Target not found");
         }
         
