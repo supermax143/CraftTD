@@ -23,11 +23,11 @@ namespace Unity.Game
         
         private UnitController _unit;
         private UnitState _currentState;
-        private AttackTarget _currentTarget;
+        private AttackTargetBase _currentTarget;
 
         [Inject] private IGameController _gameController;
         
-        public AttackTarget CurrentTarget
+        public AttackTargetBase CurrentTarget
         {
             get => _currentTarget;
             set => _currentTarget = value;

@@ -14,7 +14,7 @@ namespace Unity.Game
         private bool _moving = false;
 
 
-        public void StartMove(AttackTarget target)
+        public void StartMove(AttackTargetBase target)
         {
             _targetPosition = target.GetClosestPosition(transform.position);
             _moving = true;

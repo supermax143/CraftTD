@@ -16,7 +16,7 @@ namespace Unity.Game
         [SerializeField, HideInInspector]
         private TowerView _view;
         [SerializeField, HideInInspector]
-        private AttackTarget _attackTarget;
+        private AttackTargetBase attackTarget;
         [SerializeField, HideInInspector]
         private HealthComponent _health;
         
@@ -26,7 +26,7 @@ namespace Unity.Game
 
         public Faction Faction => _faction;
 
-        public AttackTarget AttackTarget => _attackTarget;
+        public AttackTargetBase AttackTarget => attackTarget;
 
         private void Start()
         {
@@ -37,13 +37,13 @@ namespace Unity.Game
         {
             _view = GetComponentInChildren<TowerView>();
             _health = GetComponentInChildren<HealthComponent>();
-            _attackTarget = GetComponentInChildren<AttackTarget>();
+            attackTarget = GetComponentInChildren<AttackTargetBase>();
         }
 
         public void SetFaction(Faction faction)
         {
             _faction = faction;
-            _attackTarget.SetFaction(_faction);
+            attackTarget.SetFaction(_faction);
             if (_gameSettings.TryGetFactionColor(faction, out var color))
             {
                 _view.SetColor(color);
@@ -54,7 +54,7 @@ namespace Unity.Game
         {
             base.SetData(data);
             _health.SetData(data);
-            _attackTarget.Initialize(_health);
+            attackTarget.Initialize(_health);
         }
 
         private void OnDeath()

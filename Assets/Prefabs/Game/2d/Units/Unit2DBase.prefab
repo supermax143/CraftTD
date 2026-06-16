@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7601698528332875747}
-  - component: {fileID: 6495165674543068032}
   - component: {fileID: 8114988838657312046}
+  - component: {fileID: 2210838683872346125}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -33,20 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3525600170920847951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6495165674543068032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4290492454159376608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c30c34e0fdaa47809489d75999fb9778, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget
-  _targetType: 0
-  _collider: {fileID: 0}
 --- !u!70 &8114988838657312046
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -84,6 +70,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.67, y: 0.16}
   m_Direction: 1
+--- !u!114 &2210838683872346125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290492454159376608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63709e0616924c15b72815407fa44559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget2D
+  _targetType: 0
+  _collider: {fileID: 8114988838657312046}
 --- !u!1 &5971790945569815702
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitActor
   _view: {fileID: 5483068426547807}
-  _attackTarget: {fileID: 6495165674543068032}
+  attackTarget: {fileID: 2210838683872346125}
   _stateManager: {fileID: 7089783761961880826}
   _healthComponent: {fileID: 4728101536793293616}
   _attackComponent: {fileID: 8255182563951653487}

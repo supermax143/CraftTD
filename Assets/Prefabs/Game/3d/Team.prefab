@@ -44,8 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243617a53d054326974429dfc3b0ce64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Spawner
-  _unitPrefab: {fileID: 5971790945569815702, guid: f86166669c4bc844e989c972e4fda41e,
-    type: 3}
   _spawnRange: 1
   _spawnTransform: {fileID: 0}
 --- !u!1 &6918054501536219524
@@ -96,7 +94,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Team
   _tower: {fileID: 6378261742482692532}
   _spawner: {fileID: 6917813634538986498}
-  _spawnDelay: 1
   _faction: 0
   _enemyFaction: 1
 --- !u!1001 &1906911432196699413
@@ -182,7 +179,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 1.09
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 794280673416406228, guid: 787862c76b6a5a549b8dcdcd77da43fc, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

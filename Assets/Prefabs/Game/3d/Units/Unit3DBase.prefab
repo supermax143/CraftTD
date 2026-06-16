@@ -213,8 +213,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7601698528332875747}
-  - component: {fileID: 6495165674543068032}
   - component: {fileID: 1209257796767301313}
+  - component: {fileID: 268544085200345302}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -237,20 +237,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3525600170920847951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6495165674543068032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4290492454159376608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c30c34e0fdaa47809489d75999fb9778, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget
-  _targetType: 0
-  _collider: {fileID: 1209257796767301313}
 --- !u!136 &1209257796767301313
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -274,6 +260,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &268544085200345302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290492454159376608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d000666f6d054ca195c9eff1649ca4fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget3D
+  _targetType: 0
+  _collider: {fileID: 1209257796767301313}
 --- !u!1 &5971790945569815702
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitActor
   _view: {fileID: 5483068426547807}
-  _attackTarget: {fileID: 6495165674543068032}
+  attackTarget: {fileID: 268544085200345302}
   _stateManager: {fileID: 7089783761961880826}
   _healthComponent: {fileID: 4728101536793293616}
   _attackComponent: {fileID: 8255182563951653487}

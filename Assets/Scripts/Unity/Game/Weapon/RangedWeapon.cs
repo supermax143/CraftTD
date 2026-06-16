@@ -10,7 +10,7 @@ namespace Unity.Game.Projectile
         private GameObject _projectilePrefab;
         
         
-        public override void Attack(AttackTarget target, float damage)
+        public override void Attack(AttackTargetBase target, float damage)
         {
             var projectile = Instantiate(_projectilePrefab, _barrel.position, _barrel.rotation);
             projectile.GetComponent<ProjectileComponent>().Launch(target, 15, damage);

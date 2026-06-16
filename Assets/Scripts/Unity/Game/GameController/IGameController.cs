@@ -6,6 +6,6 @@ namespace Unity.Game
     {
         void BuyUnit(UnitTier tier);
         event Action<Faction> OnTowerDestroyed;
-        bool TryGetOpponentTower(Faction opponentFaction,out AttackTarget target);
+        bool TryGetOpponentTower(Faction opponentFaction,out AttackTargetBase target);
     }
 }

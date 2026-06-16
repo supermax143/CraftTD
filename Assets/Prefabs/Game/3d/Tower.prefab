@@ -116,8 +116,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1321342442797270034}
-  - component: {fileID: 794280673416406228}
   - component: {fileID: 2392200487647484628}
+  - component: {fileID: 7259404739722750636}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -140,19 +140,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2299833601342917533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &794280673416406228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5005719700984917530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c30c34e0fdaa47809489d75999fb9778, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget
-  _targetType: 1
 --- !u!65 &2392200487647484628
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -174,6 +161,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.11, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7259404739722750636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005719700984917530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d000666f6d054ca195c9eff1649ca4fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget3D
+  _targetType: 1
+  _collider: {fileID: 2392200487647484628}
 --- !u!1 &6563548916185858267
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Tower
   _view: {fileID: 3542076869629970396}
-  _attackTarget: {fileID: 794280673416406228}
+  attackTarget: {fileID: 7259404739722750636}
   _health: {fileID: 381178223281390181}
 --- !u!114 &3542076869629970396
 MonoBehaviour:
@@ -238,6 +239,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.TowerView
   _tintController: {fileID: 1106594671575104161}
+  _blinkEffect: {fileID: 0}
+  _healthComponent: {fileID: 381178223281390181}
 --- !u!114 &381178223281390181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,4 +253,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53480c8241d4392aad598aa7d0f67d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.HealthComponent
-  _maxHealth: 100
+  _health:
+    _value: 10

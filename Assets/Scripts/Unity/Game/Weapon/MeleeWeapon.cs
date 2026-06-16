@@ -2,7 +2,7 @@
 {
     public class MeleeWeapon : Weapon
     {
-        public override void Attack(AttackTarget target, float damage)
+        public override void Attack(AttackTargetBase target, float damage)
         {
             target.HealthComponent.TakeDamage(damage);
         }

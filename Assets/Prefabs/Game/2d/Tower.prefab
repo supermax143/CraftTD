@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8535785989358852752}
-  - component: {fileID: 4970422446757673864}
   - component: {fileID: 6743440904812379134}
+  - component: {fileID: 7349024599059812467}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -33,20 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6353193346670427762}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4970422446757673864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5376757521577440603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c30c34e0fdaa47809489d75999fb9778, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget
-  _targetType: 1
-  _collider: {fileID: 0}
 --- !u!61 &6743440904812379134
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -93,6 +79,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.59, y: 3.65}
   m_EdgeRadius: 0
+--- !u!114 &7349024599059812467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5376757521577440603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63709e0616924c15b72815407fa44559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget2D
+  _targetType: 1
+  _collider: {fileID: 6743440904812379134}
 --- !u!1 &7451840049857404402
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Tower
   _view: {fileID: 7258192515379625128}
-  _attackTarget: {fileID: 4970422446757673864}
+  attackTarget: {fileID: 7349024599059812467}
   _health: {fileID: 6206104869365584860}
 --- !u!114 &7258192515379625128
 MonoBehaviour:

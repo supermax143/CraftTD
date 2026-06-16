@@ -31,7 +31,7 @@ namespace Unity.Game
         
         private Coroutine _attackCoroutine;
 
-        private AttackTarget _target;
+        private AttackTargetBase _target;
 
         private void OnValidate()
         {
@@ -40,7 +40,7 @@ namespace Unity.Game
         }
         
        
-        public void Activate(AttackTarget target)
+        public void Activate(AttackTargetBase target)
         {
             _target = target;
             if (_attackCoroutine != null)
@@ -72,7 +72,7 @@ namespace Unity.Game
             }
         }
         
-        public bool CheckRange(AttackTarget target)
+        public bool CheckRange(AttackTargetBase target)
         {
             var position = transform.position;
             var targetPosition = target.GetClosestPosition(position);

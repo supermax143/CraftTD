@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b407edb1f3e45f3847d70084b6c8c29, type: 3}
-  m_Name: ChronologyData
+  m_Name: ChronologyData2D
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.ChronologyData
   _epochs:
   - _epochName: "\u041F\u0435\u0440\u0432\u043E\u0431\u044B\u0442\u043D\u0430\u044F
@@ -23,19 +23,19 @@ MonoBehaviour:
       _name: 
       _tier: 0
       _unitPrefab:
-        _value: {fileID: 5664583615172295447, guid: c91991e774fc6c048bf2e802abebfdd0,
+        _value: {fileID: 8611390108655034055, guid: 2f7543a589c12be429ab77b6a9614ebe,
           type: 3}
     _unitTier2:
       _name: 
       _tier: 1
       _unitPrefab:
-        _value: {fileID: 5664583615172295447, guid: b33838309d23b3b4cb4e8d91ed052447,
+        _value: {fileID: 8611390108655034055, guid: 5ce9a341bf7694a409f4cc19ac62434e,
           type: 3}
     _unitTier3:
       _name: 
       _tier: 2
       _unitPrefab:
-        _value: {fileID: 5664583615172295447, guid: ed4106c5e449b974d997e6c72c4e5a62,
+        _value: {fileID: 8611390108655034055, guid: f84714416a619964990efe90c5f1877e,
           type: 3}
     _waves:
     - _squads:
@@ -99,19 +99,19 @@ MonoBehaviour:
       _name: 
       _tier: 0
       _unitPrefab:
-        _value: {fileID: 5664583615172295447, guid: c91991e774fc6c048bf2e802abebfdd0,
+        _value: {fileID: 8611390108655034055, guid: 2f7543a589c12be429ab77b6a9614ebe,
           type: 3}
     _unitTier2:
       _name: 
       _tier: 1
       _unitPrefab:
-        _value: {fileID: 5664583615172295447, guid: b33838309d23b3b4cb4e8d91ed052447,
+        _value: {fileID: 8611390108655034055, guid: 5ce9a341bf7694a409f4cc19ac62434e,
           type: 3}
     _unitTier3:
       _name: 
       _tier: 2
       _unitPrefab:
-        _value: {fileID: 5664583615172295447, guid: ed4106c5e449b974d997e6c72c4e5a62,
+        _value: {fileID: 8611390108655034055, guid: f84714416a619964990efe90c5f1877e,
           type: 3}
     _waves:
     - _squads:

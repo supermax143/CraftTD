@@ -11,10 +11,10 @@ namespace Unity.Game.Projectile
         private float _damage;
        
         private Coroutine _moveCoroutine;
-        private AttackTarget _target;
+        private AttackTargetBase _target;
         private Timer _timer = new();
         
-        public void Launch(AttackTarget target, float speed, float damage)
+        public void Launch(AttackTargetBase target, float speed, float damage)
         {
             if (_moveCoroutine != null)
             {

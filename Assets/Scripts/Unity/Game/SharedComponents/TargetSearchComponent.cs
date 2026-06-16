@@ -39,7 +39,7 @@ namespace Unity.Game
         }
         
         
-        public bool TryGetClosestTarget(out AttackTarget target)
+        public bool TryGetClosestTarget(out AttackTargetBase target)
         {
             var colliders = Physics.OverlapSphere(SearchTransform.position, DetectionRange)
                 .OrderByDescending(x => Vector3.Distance(x.transform.position, SearchTransform.position))
@@ -49,7 +49,7 @@ namespace Unity.Game
             
             foreach (var c in colliders)
             {
-                var t = c.GetComponent<AttackTarget>();
+                var t = c.GetComponent<AttackTargetBase>();
                 if (t != null && !t.IsDead && t.Faction == _opponentFaction)
                 {
                     target = t;
@@ -60,7 +60,7 @@ namespace Unity.Game
             return  target != null;
         }
         
-        public bool TryGetTargetTower(out AttackTarget target)
+        public bool TryGetTargetTower(out AttackTargetBase target)
             => _gameController.TryGetOpponentTower(_opponentFaction, out target);
 
         private void OnDrawGizmos()

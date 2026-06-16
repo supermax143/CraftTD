@@ -63,7 +63,7 @@ namespace Unity.Game
         }
 
 
-        public bool TryGetOpponentTower(Faction opponentFaction,out AttackTarget target)
+        public bool TryGetOpponentTower(Faction opponentFaction,out AttackTargetBase target)
         {
             target = default;
             var team = _teams.FirstOrDefault(team => team.Tower.Faction == opponentFaction);
