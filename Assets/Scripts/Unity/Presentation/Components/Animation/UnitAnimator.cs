@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.Game;
 using UnityEngine;
 
 namespace Unity.Presentation.Components
@@ -6,7 +7,10 @@ namespace Unity.Presentation.Components
     public class UnitAnimator : MonoBehaviour
     {
         
+        [SerializeField, HideInInspector]
         private Animator _animator;
+        [SerializeField, HideInInspector]
+        private UnitAnimationEvents _animationEvents;
 
         private int _currentTrigger;
 
@@ -30,11 +34,16 @@ namespace Unity.Presentation.Components
         }
         
         
-        private void Start()
+        private void OnValidate()
         {
             _animator = GetComponentInChildren<Animator>();
+            if (_animator != null && !_animator.TryGetComponent(out _animationEvents))
+            {
+                _animationEvents = _animator.gameObject.AddComponent<UnitAnimationEvents>();
+            }
         }
 
+        
         public void PlayAttack()
         {
             if (IsAttackState())

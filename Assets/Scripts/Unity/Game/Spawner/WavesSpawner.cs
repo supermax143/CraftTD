@@ -27,7 +27,6 @@ namespace Unity.Game
             {
                 yield return new WaitForSeconds(squad.Delay);
                 Spawn(squad.Tier, squad.Count);
-                yield break;
             }
             _waveIndex++;
             

@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Unity.Game.Attributes.Specific;
 using Unity.Game.Projectile;
+using Unity.Presentation.Components;
 using Unity.Utils.Time;
 using UnityEngine;
 
@@ -22,8 +24,9 @@ namespace Unity.Game
         private AttackRangeAttribute _attackRange;
         [SerializeField] 
         private AttackSpeedAttribute _attackSpeed;
+        [SerializeField, HideInInspector]
+        private UnitAnimationEvents _animationEvents;
        
-        
 
         public float AttackRange => _attackRange.ValueModified;
         public float AttackSpeed => _attackSpeed.ValueModified;
@@ -33,16 +36,41 @@ namespace Unity.Game
 
         private AttackTargetBase _target;
 
+        
         private void OnValidate()
         {
             _weapon = GetComponentInChildren<Weapon>();
             _moveComponent = GetComponentInChildren<MoveComponentBase>();
+            _animationEvents = GetComponentInChildren<UnitAnimationEvents>();
         }
-        
-       
+
+        private void Start()
+        {
+            if (_animationEvents != null)
+            {
+                _animationEvents.OnAttackActivate += AttackActivate;
+            }
+        }
+
+        private void AttackActivate()
+        {
+            if (_target == null)
+            {
+                Debug.LogError($"{this.GetType().Name} Target is null");
+                return;
+            }
+            _weapon.Attack(_target, Damage);
+        }
+
         public void Activate(AttackTargetBase target)
         {
+
             _target = target;
+            if (_animationEvents != null)
+            {
+                return;
+            }
+            //кейс без аниматора
             if (_attackCoroutine != null)
             {
                 StopCoroutine(_attackCoroutine);
