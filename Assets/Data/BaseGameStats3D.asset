@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2bb72e69684072b46494c09e1a11dc, type: 3}
+  m_Name: BaseGameStats3D
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.GameStats
+  _baseFoodProductionSpeed: 0.18
+  _foodProductionPerLevel: 0.02
+  _baseTowerUpgradeHealth: 2
+  _towerUpgradeHealthPerLevel: 2
+  _baseEpochCompleteCost: 2000
+  _epochCompleteCostMultiplier: 8
+  _baseTowerHealthPlayer: 2
+  _baseTowerHealthEnamy: 500
+  _towerHealthMultiplier: 3
+  _baseTowerReward: 100
+  _towerRewardMultiplier: 2
+  _baseUnitOpeningCostTier2: 150
+  _baseUnitOpeningCostTier3: 400
+  _unitOpeningCostMultiplier: 8
+  _baseUnitRewardTier1: 10
+  _baseUnitRewardTier2: 50
+  _baseUnitRewardTier3: 100
+  _unitRewardMultiplier: 10
+  _baseUnitDamageTier1: 2
+  _baseUnitDamageTier2: 2
+  _baseUnitDamageTier3: 4
+  _baseUnitHealthTier1: 2
+  _baseUnitHealthTier2: 2
+  _baseUnitHealthTier3: 30
+  _baseUnitMoveSpeed: 2
+  _baseUnitAttackRangeTier1: 1
+  _baseUnitAttackRangeTier2: 2.5
+  _baseUnitAttackRangeTier3: 1
+  _baseUnitAttackSpeedTier1: 1
+  _baseUnitAttackSpeedTier2: 1
+  _baseUnitAttackSpeedTier3: 1
+  _detectionRange: 3
