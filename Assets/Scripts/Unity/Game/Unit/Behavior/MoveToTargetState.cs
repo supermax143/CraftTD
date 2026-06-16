@@ -14,7 +14,7 @@ namespace Unity.Game
 
         public override void Enter()
         {
-            _detectionTimer.Start(TargetSearchComponent.DETECTION_INTERVAL);
+            _detectionTimer.Start(TargetSearchComponentBase.DETECTION_INTERVAL);
             _unit.MoveComponent.StartMove(_stateManager.CurrentTarget);
         }
 
@@ -41,7 +41,7 @@ namespace Unity.Game
                     _unit.MoveComponent.StartMove(_stateManager.CurrentTarget);
                 }
                 
-                _detectionTimer.Start(TargetSearchComponent.DETECTION_INTERVAL);
+                _detectionTimer.Start(TargetSearchComponentBase.DETECTION_INTERVAL);
             }
             
             

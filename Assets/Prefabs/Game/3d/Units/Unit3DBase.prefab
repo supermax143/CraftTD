@@ -287,10 +287,10 @@ GameObject:
   - component: {fileID: 5483068426547807}
   - component: {fileID: 4728101536793293616}
   - component: {fileID: 8255182563951653487}
-  - component: {fileID: 2650900694220129844}
-  - component: {fileID: 7813210451020228870}
   - component: {fileID: 5838668036529748326}
   - component: {fileID: 2575392991732380378}
+  - component: {fileID: 2870023332376488046}
+  - component: {fileID: 919819446819850668}
   m_Layer: 0
   m_Name: Unit3DBase
   m_TagString: Untagged
@@ -333,8 +333,8 @@ MonoBehaviour:
   _stateManager: {fileID: 7089783761961880826}
   _healthComponent: {fileID: 4728101536793293616}
   _attackComponent: {fileID: 8255182563951653487}
-  _moveComponent: {fileID: 2650900694220129844}
-  _targetSearchComponent: {fileID: 7813210451020228870}
+  _moveComponent: {fileID: 2870023332376488046}
+  _targetSearchComponent: {fileID: 919819446819850668}
   _rewardComponent: {fileID: 2575392991732380378}
 --- !u!114 &5483068426547807
 MonoBehaviour:
@@ -377,41 +377,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48dec60fcf94c7589c4af10a484edf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackComponent
-  _moveComponent: {fileID: 2650900694220129844}
+  _moveComponent: {fileID: 2870023332376488046}
   _weapon: {fileID: 0}
   _damage:
     _value: 0
   _attackRange:
     _value: 0
   _attackSpeed:
-    _value: 0
---- !u!114 &2650900694220129844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5971790945569815702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 772997a197ca472d91c50742bba15994, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.MoveComponent
-  _moveSpeed:
-    _value: 4
---- !u!114 &7813210451020228870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5971790945569815702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81bfc31051894bf9a86ea6325601a443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.TargetSearchComponent
-  _attackRange:
     _value: 0
 --- !u!54 &5838668036529748326
 Rigidbody:
@@ -453,6 +425,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.RewardComponent
   _rewardMoney:
+    _value: 0
+--- !u!114 &2870023332376488046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971790945569815702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a31bdbf733eaa1140a698f8d244927a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.MoveComponent3D
+  _moveSpeed:
+    _value: 4
+--- !u!114 &919819446819850668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971790945569815702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcaa6e83b7686a94eb1fa779a323f1b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.TargetSearchComponent3D
+  _attackRange:
     _value: 0
 --- !u!1 &6735294149039191266
 GameObject:

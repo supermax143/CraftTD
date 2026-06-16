@@ -24,9 +24,9 @@ namespace Unity.Game
         [SerializeField, HideInInspector]
         private AttackComponent _attackComponent;
         [SerializeField, HideInInspector]
-        private MoveComponent _moveComponent;
+        private MoveComponentBase _moveComponent;
         [SerializeField, HideInInspector]
-        private TargetSearchComponent _targetSearchComponent;
+        private TargetSearchComponentBase _targetSearchComponent;
         [SerializeField, HideInInspector]
         private RewardComponent _rewardComponent;
 
@@ -42,8 +42,8 @@ namespace Unity.Game
         public Faction OpponentFaction => _opponentFaction;
         public AttackComponent Attack => _attackComponent;
         public HealthComponent HealthComponent => _healthComponent;
-        public MoveComponent MoveComponent => _moveComponent;
-        public TargetSearchComponent TargetSearchComponent => _targetSearchComponent;
+        public MoveComponentBase MoveComponent => _moveComponent;
+        public TargetSearchComponentBase TargetSearchComponent => _targetSearchComponent;
         public Faction Faction => _faction;
 
 
@@ -54,8 +54,8 @@ namespace Unity.Game
             _stateManager = GetComponentInChildren<UnitStateManager>();
             _healthComponent = GetComponentInChildren<HealthComponent>();
             _attackComponent = GetComponentInChildren<AttackComponent>();
-            _moveComponent = GetComponentInChildren<MoveComponent>();
-            _targetSearchComponent = GetComponentInChildren<TargetSearchComponent>();
+            _moveComponent = GetComponentInChildren<MoveComponentBase>();
+            _targetSearchComponent = GetComponentInChildren<TargetSearchComponentBase>();
             _rewardComponent = GetComponentInChildren<RewardComponent>();
         }
 

@@ -10,7 +10,7 @@ namespace Unity.Game
     {
         
         [SerializeField, HideInInspector]
-        private MoveComponent _moveComponent;
+        private MoveComponentBase _moveComponent;
         
         [SerializeField]
         private Weapon _weapon;
@@ -36,7 +36,7 @@ namespace Unity.Game
         private void OnValidate()
         {
             _weapon = GetComponentInChildren<Weapon>();
-            _moveComponent = GetComponentInChildren<MoveComponent>();
+            _moveComponent = GetComponentInChildren<MoveComponentBase>();
         }
         
        
