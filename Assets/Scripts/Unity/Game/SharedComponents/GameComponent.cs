@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Game.Attributes;
@@ -22,14 +22,19 @@ namespace Unity.Game
         
         private IEnumerable<GameEntityAttribute> GetAllAttributesFromReflection()
         {
-            var fields = GetType().GetFields(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            foreach (var fieldInfo in fields)
+            var type = GetType();
+            while (type != null)
             {
-                var attribute = fieldInfo.GetValue(this) as GameEntityAttribute;
-                if (attribute != null)
+                var fields = type.GetFields(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.DeclaredOnly);
+                foreach (var fieldInfo in fields)
                 {
-                    yield return attribute;
+                    var attribute = fieldInfo.GetValue(this) as GameEntityAttribute;
+                    if (attribute != null)
+                    {
+                        yield return attribute;
+                    }
                 }
+                type = type.BaseType;
             }
         }
         

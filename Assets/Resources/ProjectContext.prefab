@@ -236,7 +236,7 @@ MonoBehaviour:
   _tutorialController: {fileID: 7958714817276208944}
   _gameSettings: {fileID: 11400000, guid: 0ac77448c818fa6468273506bebee18c, type: 2}
   _chronologyInfo: {fileID: 11400000, guid: 106b5a41af594844dba6fb81ca718221, type: 2}
-  _baseGameStats: {fileID: 11400000, guid: b8b17ad0b8863954e9764a31b7738bfa, type: 2}
+  _baseGameStats: {fileID: 11400000, guid: 9bd3b21350ad82042b103d73bcba3cec, type: 2}
 --- !u!114 &3856448572725618157
 MonoBehaviour:
   m_ObjectHideFlags: 0

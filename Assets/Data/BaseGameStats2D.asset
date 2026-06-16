@@ -19,7 +19,7 @@ MonoBehaviour:
   _baseEpochCompleteCost: 2000
   _epochCompleteCostMultiplier: 8
   _baseTowerHealthPlayer: 2
-  _baseTowerHealthEnamy: 500
+  _baseTowerHealthEnemy: 500
   _towerHealthMultiplier: 3
   _baseTowerReward: 100
   _towerRewardMultiplier: 2
@@ -36,7 +36,7 @@ MonoBehaviour:
   _baseUnitHealthTier1: 2
   _baseUnitHealthTier2: 2
   _baseUnitHealthTier3: 30
-  _baseUnitMoveSpeed: 2
+  _baseUnitMoveSpeed: 0.5
   _baseUnitAttackRangeTier1: 1
   _baseUnitAttackRangeTier2: 2.5
   _baseUnitAttackRangeTier3: 1
