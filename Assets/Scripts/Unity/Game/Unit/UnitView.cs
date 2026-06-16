@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Unity.Presentation.Components;
 using UnityEngine;
 using Utils.ColorEffects;
 
@@ -13,6 +14,8 @@ namespace Unity.Game
         private BlinkEffect _blinkEffect;
         [SerializeField, HideInInspector]
         private HealthComponent _healthComponent;
+        [SerializeField, HideInInspector]
+        private UnitAnimator _unitAnimator;
         
         private Coroutine _blinkCoroutine;
         private Color _color;
@@ -22,6 +25,7 @@ namespace Unity.Game
             _healthComponent = GetComponentInChildren<HealthComponent>();
             _tintController = GetComponentInChildren<TintController>();
             _blinkEffect = GetComponentInChildren<BlinkEffect>();
+            _unitAnimator = GetComponentInChildren<UnitAnimator>();
         }
 
         private void Start()
@@ -57,6 +61,21 @@ namespace Unity.Game
         private void OnDestroy()
         {
             _healthComponent.OnDamage -= OnDamage;
+        }
+        
+        public void StartWalking()
+        {
+            _unitAnimator.PlayWalk();
+        }
+        
+        public void StartAttacking()
+        {
+            _unitAnimator.PlayAttack();
+        }
+        
+        public void StartIdle()
+        {
+            _unitAnimator.PlayIdle();
         }
     }
 }

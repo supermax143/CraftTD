@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 2622176864238402614}
   - component: {fileID: 8163352174406496096}
   - component: {fileID: 1096172699770815386}
+  - component: {fileID: 8875554840662799739}
   m_Layer: 0
   m_Name: Unit2DBase
   m_TagString: Untagged
@@ -161,6 +162,7 @@ MonoBehaviour:
   _tintController: {fileID: 1449801927241130090}
   _blinkEffect: {fileID: 8011989231495147525}
   _healthComponent: {fileID: 4728101536793293616}
+  _unitAnimator: {fileID: 8875554840662799739}
 --- !u!114 &4728101536793293616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +266,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &8875554840662799739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5971790945569815702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eddecd3a5664d478798da07c89fd701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.UnitAnimator
 --- !u!1 &6735294149039191266
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,6 +46,8 @@ namespace Unity.Game
         public TargetSearchComponentBase TargetSearchComponent => _targetSearchComponent;
         public Faction Faction => _faction;
 
+        public UnitView View => _view;
+
 
         private void OnValidate()
         {
@@ -71,7 +73,7 @@ namespace Unity.Game
                 Debug.LogError(this.GetType().Name + ": Can't find faction color " + faction.ToString());
                 color = Color.purple;
             }
-            _view.SetColor(color);
+            View.SetColor(color);
             
         }
 

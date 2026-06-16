@@ -11,6 +11,7 @@ namespace Unity.Game
         public override void Enter()
         {
             _unit.Attack.Activate(_stateManager.CurrentTarget);
+            _unit.View.StartAttacking();
         }
 
 
