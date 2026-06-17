@@ -1,6 +1,7 @@
 ﻿using System;
 using Unity.Game;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Unity.Presentation.Components
 {
@@ -91,5 +92,17 @@ namespace Unity.Presentation.Components
             _currentTrigger = trigger;
         }
         
+        
+        public void SetRandomFrame()
+        {
+            if (_animator == null)
+            {
+                return;
+            }
+
+            var stateInfo = _animator.GetCurrentAnimatorStateInfo(Layers.Base);
+            var randomTime = Random.Range(0f, stateInfo.length);
+            _animator.PlayInFixedTime(stateInfo.shortNameHash, Layers.Base, randomTime);
+        }
     }
 }

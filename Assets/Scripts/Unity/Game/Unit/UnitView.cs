@@ -51,7 +51,6 @@ namespace Unity.Game
         private IEnumerator DamageAnimation()
         {
             _tintController.SetTintColor(Color.red);
-            //yield return _blinkEffect.Show();
             yield return new WaitForSeconds(0.2f);
             _tintController.SetTintColor(_color);
             
@@ -88,6 +87,11 @@ namespace Unity.Game
             var pos = transform.position;
             pos.z = pos.y * 0.001f;
             transform.position = pos;
+        }
+        
+        public void SetRandomFrame()
+        {
+            _unitAnimator.SetRandomFrame();
         }
     }
 }

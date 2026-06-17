@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using Core.Application.Models;
 using Unity.Game.Attributes.Specific;
@@ -73,9 +74,17 @@ namespace Unity.Game
                 unit.SetFaction(_faction, _enemyFaction);
                 unit.transform.position = transform.position + spawnDelta;
                 unit.SetData(unitModel.Entity);
+                StartCoroutine(RandomizeAnimation(unit.View));
             }
         }
 
+        private IEnumerator RandomizeAnimation(UnitView unit)
+        {
+            yield return new WaitForSeconds(.1f);
+            unit.SetRandomFrame();
+        }
+        
+        
         private void OnDestroy()
         {
             _gameController.OnTowerDestroyed -= TowerDestroyedHandler;
