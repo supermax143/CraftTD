@@ -1,5 +1,6 @@
 ﻿using System;
 using Unity.Settings;
+using Unity.Utils;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -48,6 +49,8 @@ namespace Unity.Game
             {
                 _view.SetColor(color);
             }
+            var layer = _faction == Faction.Player ? Layers.PlayerTower : Layers.EnemyTower;
+            gameObject.SetLayerRecursively(layer);
         }
 
         public override void SetData(GameEntityData data)

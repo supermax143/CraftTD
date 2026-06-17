@@ -88,6 +88,16 @@ PrefabInstance:
       propertyPath: _weapon
       value: 
       objectReference: {fileID: 9061967524654161785}
+    - target: {fileID: 8875554840662799739, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 2110949178663016668}
+    - target: {fileID: 8875554840662799739, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: _animationEvents
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -174,11 +184,21 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 9061967524654161785}
+    - targetCorrespondingSourceObject: {fileID: 2568999453377577720, guid: b9c8ad48810b63b4d83a16aa3cc7136a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 8609621395312483062, guid: b9c8ad48810b63b4d83a16aa3cc7136a,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8055487361944040091}
   m_SourcePrefab: {fileID: 100100000, guid: b9c8ad48810b63b4d83a16aa3cc7136a, type: 3}
+--- !u!95 &2110949178663016668 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5760524363767492093, guid: b9c8ad48810b63b4d83a16aa3cc7136a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5961331544785466657}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2720563949881831383 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8609621395312483062, guid: b9c8ad48810b63b4d83a16aa3cc7136a,
@@ -197,6 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9cc19974ca4ad1b9ecb65449f9091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Projectile.ProjectileComponent
+  _speed: 15
 --- !u!4 &6592665378141554752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 704599280385555809, guid: b9c8ad48810b63b4d83a16aa3cc7136a,

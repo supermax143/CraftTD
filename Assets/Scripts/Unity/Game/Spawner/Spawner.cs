@@ -2,6 +2,7 @@
 using System.Linq;
 using Core.Application.Models;
 using Unity.Game.Attributes.Specific;
+using Unity.Utils;
 using Unity.Utils.Time;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -61,6 +62,8 @@ namespace Unity.Game
 
                 var prefab = unitModel.Info.UnitPrefab;
                 var unit = _container.InstantiatePrefabForComponent<UnitController>(prefab, _spawnTransform);
+                var layer = _faction == Faction.Player ? Layers.Player : Layers.Enemy;
+                unit.gameObject.SetLayerRecursively(layer);
                 unit.SetFaction(_faction, _enemyFaction);
                 unit.transform.position = transform.position + spawnDelta;
                 unit.SetData(unitModel.Entity);

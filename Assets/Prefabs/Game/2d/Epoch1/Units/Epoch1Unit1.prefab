@@ -93,6 +93,16 @@ PrefabInstance:
       propertyPath: _weapon
       value: 
       objectReference: {fileID: 3193925991661240054}
+    - target: {fileID: 8875554840662799739, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 975624222770310539}
+    - target: {fileID: 8875554840662799739, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: _animationEvents
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -179,7 +189,17 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3193925991661240054}
+    - targetCorrespondingSourceObject: {fileID: 7771028808276254457, guid: 0074c9a251067bf49aa141ccc588651e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0074c9a251067bf49aa141ccc588651e, type: 3}
+--- !u!95 &975624222770310539 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7627374342071034739, guid: 0074c9a251067bf49aa141ccc588651e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7229400564674531064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1047276694785709036 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7699837152956275988, guid: 0074c9a251067bf49aa141ccc588651e,

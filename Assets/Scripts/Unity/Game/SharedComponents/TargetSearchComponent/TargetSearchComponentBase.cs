@@ -28,6 +28,7 @@ namespace Unity.Game
         {
             _faction = faction;
             _opponentFaction = opponentFaction;
+            
         }
 
         public void Initialize(MoveComponentBase moveComponent)
