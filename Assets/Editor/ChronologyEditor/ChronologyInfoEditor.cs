@@ -26,12 +26,15 @@ namespace Editor.ChronologyEditor
         private VisualElement _unitTier1FieldContainer;
         private VisualElement _unitTier2FieldContainer;
         private VisualElement _unitTier3FieldContainer;
+        private VisualElement _wavesContainer;
+        private VisualElement _squadsContainer;
         
         private SerializedObject _serializedObject;
         private SerializedProperty _epochsProperty;
         
         private int _selectedEpochIndex = -1;
         private int _selectedUnitTierIndex = 0;
+        private int _selectedWaveIndex = -1;
         private ChronologyInfo _chronologyInfo;
         
         [MenuItem("Assets/Chronology Editor")]
@@ -88,6 +91,18 @@ namespace Editor.ChronologyEditor
             _unitTier1FieldContainer = _root.Q<VisualElement>("unit-tier1-field-container");
             _unitTier2FieldContainer = _root.Q<VisualElement>("unit-tier2-field-container");
             _unitTier3FieldContainer = _root.Q<VisualElement>("unit-tier3-field-container");
+            
+            var wavesField = _root.Q<PropertyField>("waves-field");
+            wavesField.style.display = DisplayStyle.None;
+            
+            _wavesContainer = new VisualElement();
+            _wavesContainer.name = "waves-container";
+            wavesField.parent.Insert(wavesField.parent.IndexOf(wavesField), _wavesContainer);
+            
+            _squadsContainer = new VisualElement();
+            _squadsContainer.name = "squads-container";
+            _squadsContainer.style.marginTop = 10;
+            _wavesContainer.Add(_squadsContainer);
             
             var addEpochButton = _root.Q<Button>("add-epoch-button");
             addEpochButton.clicked += AddNewEpoch;
@@ -215,11 +230,180 @@ namespace Editor.ChronologyEditor
             towerField.BindProperty(towerPrefabProperty);
             towerFieldContainer.Add(towerField);
             
-            var wavesField = _root.Q<PropertyField>("waves-field");
-            wavesField.BindProperty(epochProperty.FindPropertyRelative("_waves"));
+            RefreshWavesList();
             
             RefreshUnitTierTabs();
             ShowUnitTierFields(_selectedUnitTierIndex);
+        }
+        
+        private void RefreshWavesList()
+        {
+            _wavesContainer.Clear();
+            
+            _squadsContainer = new VisualElement();
+            _squadsContainer.name = "squads-container";
+            _squadsContainer.style.marginTop = 10;
+            _wavesContainer.Add(_squadsContainer);
+            
+            if (_selectedEpochIndex < 0 || _selectedEpochIndex >= _epochsProperty.arraySize)
+                return;
+            
+            var epochProperty = _epochsProperty.GetArrayElementAtIndex(_selectedEpochIndex);
+            var wavesProperty = epochProperty.FindPropertyRelative("_waves");
+            
+            var wavesLabel = new Label("Waves");
+            wavesLabel.style.fontSize = 16;
+            wavesLabel.style.marginBottom = 5;
+            _wavesContainer.Add(wavesLabel);
+            
+            var wavesButtonsContainer = new VisualElement();
+            wavesButtonsContainer.style.flexDirection = FlexDirection.Row;
+            wavesButtonsContainer.style.flexWrap = Wrap.Wrap;
+            _wavesContainer.Add(wavesButtonsContainer);
+            
+            for (int i = 0; i < wavesProperty.arraySize; i++)
+            {
+                var waveIndex = i;
+                var waveButton = new Button
+                {
+                    text = $"Wave {i + 1}",
+                    name = $"wave-button-{i}"
+                };
+                
+                waveButton.AddToClassList("epoch-tab");
+                
+                if (i == _selectedWaveIndex)
+                {
+                    waveButton.AddToClassList("selected");
+                }
+                
+                waveButton.clicked += () =>
+                {
+                    _selectedWaveIndex = waveIndex;
+                    RefreshWavesList();
+                    ShowSquads(waveIndex);
+                };
+                
+                wavesButtonsContainer.Add(waveButton);
+            }
+            
+            var addWaveButton = new Button
+            {
+                text = "+ Add Wave"
+            };
+            addWaveButton.style.width = 100;
+            addWaveButton.clicked += () => AddNewWave(wavesProperty);
+            wavesButtonsContainer.Add(addWaveButton);
+            
+            if (wavesProperty.arraySize > 0 && _selectedWaveIndex >= 0)
+            {
+                ShowSquads(_selectedWaveIndex);
+            }
+        }
+        
+        private void AddNewWave(SerializedProperty wavesProperty)
+        {
+            _serializedObject.Update();
+            wavesProperty.arraySize++;
+            _serializedObject.ApplyModifiedProperties();
+            _selectedWaveIndex = wavesProperty.arraySize - 1;
+            RefreshWavesList();
+        }
+        
+        private void ShowSquads(int waveIndex)
+        {
+            _squadsContainer.Clear();
+            
+            if (_selectedEpochIndex < 0 || _selectedEpochIndex >= _epochsProperty.arraySize)
+                return;
+            
+            var epochProperty = _epochsProperty.GetArrayElementAtIndex(_selectedEpochIndex);
+            var wavesProperty = epochProperty.FindPropertyRelative("_waves");
+            
+            if (waveIndex < 0 || waveIndex >= wavesProperty.arraySize)
+                return;
+            
+            var waveProperty = wavesProperty.GetArrayElementAtIndex(waveIndex);
+            var squadsProperty = waveProperty.FindPropertyRelative("_squads");
+            
+            var squadsLabel = new Label($"Wave {waveIndex + 1} - Squads");
+            squadsLabel.style.fontSize = 16;
+            squadsLabel.style.marginBottom = 5;
+            _squadsContainer.Add(squadsLabel);
+            
+            var squadsScrollView = new ScrollView();
+            squadsScrollView.mode = ScrollViewMode.Horizontal;
+            squadsScrollView.style.flexGrow = 1;
+            _squadsContainer.Add(squadsScrollView);
+            
+            for (int i = 0; i < squadsProperty.arraySize; i++)
+            {
+                var squadProperty = squadsProperty.GetArrayElementAtIndex(i);
+                var squadContainer = new VisualElement();
+                squadContainer.style.flexDirection = FlexDirection.Column;
+                squadContainer.style.borderLeftWidth = 2;
+                squadContainer.style.borderLeftColor = new Color(0.3f, 0.3f, 0.3f);
+                squadContainer.style.paddingLeft = 10;
+                squadContainer.style.marginBottom = 10;
+                squadContainer.style.minWidth = 200;
+                
+                var squadHeader = new VisualElement();
+                squadHeader.style.flexDirection = FlexDirection.Row;
+                squadHeader.style.justifyContent = Justify.SpaceBetween;
+                squadHeader.style.alignItems = Align.Center;
+                
+                var squadLabel = new Label($"Squad {i + 1}");
+                squadHeader.Add(squadLabel);
+                
+                var removeSquadButton = new Button
+                {
+                    text = "Remove"
+                };
+                removeSquadButton.style.width = 80;
+                var capturedSquadIndex = i;
+                removeSquadButton.clicked += () => RemoveSquad(squadsProperty, capturedSquadIndex);
+                squadHeader.Add(removeSquadButton);
+                
+                squadContainer.Add(squadHeader);
+                
+                var delayField = new PropertyField(squadProperty.FindPropertyRelative("_delay"), "Delay");
+                delayField.BindProperty(squadProperty.FindPropertyRelative("_delay"));
+                squadContainer.Add(delayField);
+                
+                var tierField = new PropertyField(squadProperty.FindPropertyRelative("_tier"), "Tier");
+                tierField.BindProperty(squadProperty.FindPropertyRelative("_tier"));
+                squadContainer.Add(tierField);
+                
+                var countField = new PropertyField(squadProperty.FindPropertyRelative("_count"), "Count");
+                countField.BindProperty(squadProperty.FindPropertyRelative("_count"));
+                squadContainer.Add(countField);
+                
+                squadsScrollView.Add(squadContainer);
+            }
+            
+            var addSquadButton = new Button
+            {
+                text = "+ Add Squad"
+            };
+            addSquadButton.style.marginTop = 10;
+            addSquadButton.clicked += () => AddNewSquad(squadsProperty);
+            _squadsContainer.Add(addSquadButton);
+        }
+        
+        private void AddNewSquad(SerializedProperty squadsProperty)
+        {
+            _serializedObject.Update();
+            squadsProperty.arraySize++;
+            _serializedObject.ApplyModifiedProperties();
+            ShowSquads(_selectedWaveIndex);
+        }
+        
+        private void RemoveSquad(SerializedProperty squadsProperty, int squadIndex)
+        {
+            _serializedObject.Update();
+            squadsProperty.DeleteArrayElementAtIndex(squadIndex);
+            _serializedObject.ApplyModifiedProperties();
+            ShowSquads(_selectedWaveIndex);
         }
         
         private void RefreshUnitTierTabs()

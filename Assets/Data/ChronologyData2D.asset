@@ -78,11 +78,18 @@ MonoBehaviour:
       - _delay: 10
         _tier: 0
         _count: 5
+    - _squads:
+      - _delay: 10
+        _tier: 0
+        _count: 3
+      - _delay: 10
+        _tier: 1
+        _count: 1
+      - _delay: 10
+        _tier: 0
+        _count: 5
     _unitTier1Modifiers: []
-    _unitTier2Modifiers:
-    - _attributeKind: 0
-      _modifierKind: 0
-      _value: 0
+    _unitTier2Modifiers: []
     _unitTier3Modifiers:
     - _attributeKind: 7
       _modifierKind: 2
@@ -144,6 +151,16 @@ MonoBehaviour:
       - _delay: 3
         _tier: 2
         _count: 2
+    - _squads:
+      - _delay: 3
+        _tier: 0
+        _count: 3
+      - _delay: 3
+        _tier: 1
+        _count: 1
+      - _delay: 3
+        _tier: 0
+        _count: 5
     - _squads:
       - _delay: 3
         _tier: 0

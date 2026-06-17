@@ -25,3 +25,10 @@
 .epoch-tab:focus {
     outline: none;
 }
+
+.zone-border {
+    border-width: 2px;
+    border-color: rgb(102, 102, 102);
+    padding: 10px;
+    margin-bottom: 10px;
+}

@@ -18,8 +18,7 @@
             <ui:Label name="no-epoch-label" text="No epoch selected" style="font-style: italic; color: #888;" />
             <ui:VisualElement name="epoch-fields-container" style="display: none; flex-direction: column;">
                 <ui:TextField name="epoch-name-field" label="Epoch Name" />
-                <ui:VisualElement name="tower-field-container" style="flex-direction: column;" />
-                <uie:PropertyField name="waves-field" binding-path="_waves" label="Waves" />
+                <ui:VisualElement name="tower-field-container" style="flex-direction: column;" class="zone-border" />
                 
                 <ui:VisualElement name="unit-tier-tabs-container" style="flex-direction: row; background-color: #2d2d2d; border-bottom: 1px solid #555; margin-top: 10px;">
                     <ui:ScrollView name="unit-tier-tabs-scroll" mode="Horizontal" style="flex-grow: 1;">
@@ -27,7 +26,7 @@
                     </ui:ScrollView>
                 </ui:VisualElement>
                 
-                <ui:VisualElement name="unit-tier-content-container" style="flex-grow: 1; margin-top: 10px;">
+                <ui:VisualElement name="unit-tier-content-container" style="flex-grow: 1; margin-top: 10px;" class="zone-border">
                     <ui:VisualElement name="unit-tier1-container" style="display: none; flex-direction: column;">
                         <ui:Label name="unit-tier1-label" text="Unit Tier 1" style="font-weight: bold; font-size: 14px; margin-bottom: 5px;" />
                         <ui:VisualElement name="unit-tier1-field-container" style="flex-direction: column;" />
@@ -44,6 +43,8 @@
                         <ui:VisualElement name="unit-tier3-modifiers-container" style="flex-direction: column;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
+                
+                <uie:PropertyField name="waves-field" binding-path="_waves" label="Waves"  />
                 
                 <ui:VisualElement name="epoch-actions" style="flex-direction: row; margin-top: 10px;">
                     <ui:Button name="remove-epoch-button" text="Remove Epoch" style="width: 150px;" />
