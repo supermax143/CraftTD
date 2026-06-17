@@ -20,7 +20,7 @@ namespace Unity.Infrastructure.Scenes
 
       public async Task  LoadInitGameScene() => await LoadScene(SceneNames.InitGameScene);
       public async Task  LoadMainMenuScene() => await LoadScene(SceneNames.MainMenuScene);
-      public async Task  LoadGameScene() => await LoadScene(SceneNames.GameScene);
+      public async Task  LoadGameScene() => await LoadScene(SceneNames.GameScene2D);
 
       private async Task LoadScene(string scene)
       {

@@ -80,7 +80,7 @@ namespace Unity.Game
 
         private IEnumerator RandomizeAnimation(UnitView unit)
         {
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.3f);
             unit.SetRandomFrame();
         }
         
