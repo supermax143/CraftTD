@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Unity.Game
 {
@@ -14,11 +16,10 @@ namespace Unity.Game
         
         protected override void MoveToTarget(Vector3 targetPosition)
         {
-            Vector2 targetPos = targetPosition;
-            Vector2 direction = (targetPosition - transform.position).normalized;
+            var direction = (targetPosition - transform.position).normalized;
             var delta = direction * (MoveSpeed * Time.deltaTime);
-            Debug.Log(targetPosition);
-            transform.position += (Vector3)delta;
+            transform.position += delta;
+            _view.UpdateSortingByPosition();
         }
     }
 }

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2062782939622426347}
   - component: {fileID: 4364126013872895933}
-  - component: {fileID: 6053222340268298448}
   m_Layer: 0
   m_Name: Team
   m_TagString: Untagged
@@ -51,19 +50,6 @@ MonoBehaviour:
   _spawner: {fileID: 2726158116029261811}
   _faction: 0
   _enemyFaction: 1
---- !u!210 &6053222340268298448
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6407800309210555718}
-  m_Enabled: 1
-  m_SortingLayerID: -1557567625
-  m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_SortAtRoot: 0
-  m_Sort3DAs2D: 0
 --- !u!1 &7147538385530571495
 GameObject:
   m_ObjectHideFlags: 0

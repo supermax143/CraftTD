@@ -1,3 +1,4 @@
+using System;
 using Unity.Game.Attributes.Specific;
 using UnityEngine;
 
@@ -7,15 +8,22 @@ namespace Unity.Game
     {
         [SerializeField]
         private MoveSpeedAttribute _moveSpeed = new MoveSpeedAttribute(4);
-
+        [SerializeField, HideInInspector]
+        protected UnitView _view;
+        
         private bool _moving = false;
         private AttackTargetBase _target;
 
         public float MoveSpeed => _moveSpeed.ValueModified;
          public Vector3 TargetPosition => _target.GetClosestPosition(transform.position);
-        //public Vector3 TargetPosition => _target.transform.position;
         
         public bool IsMoving => _moving;
+
+        private void OnValidate()
+        {
+            _view = GetComponentInChildren<UnitView>();
+        }
+
 
         public void StartMove(AttackTargetBase target)
         {

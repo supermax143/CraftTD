@@ -16,16 +16,21 @@ namespace Unity.Game
         private HealthComponent _healthComponent;
         [SerializeField, HideInInspector]
         private UnitAnimator _unitAnimator;
+        [SerializeField, HideInInspector]
+        private SpriteRenderer[] _renderers;
+        
         
         private Coroutine _blinkCoroutine;
         private Color _color;
 
+        
         private void OnValidate()
         {
             _healthComponent = GetComponentInChildren<HealthComponent>();
             _tintController = GetComponentInChildren<TintController>();
             _blinkEffect = GetComponentInChildren<BlinkEffect>();
             _unitAnimator = GetComponentInChildren<UnitAnimator>();
+            _renderers = GetComponentsInChildren<SpriteRenderer>();
         }
 
         private void Start()
@@ -76,6 +81,13 @@ namespace Unity.Game
         public void StartIdle()
         {
             _unitAnimator.PlayIdle();
+        }
+        
+        public void UpdateSortingByPosition()
+        {
+            var pos = transform.position;
+            pos.z = pos.y * 0.001f;
+            transform.position = pos;
         }
     }
 }
