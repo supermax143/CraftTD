@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7601698528332875747}
-  - component: {fileID: 8114988838657312046}
   - component: {fileID: 2210838683872346125}
+  - component: {fileID: 2138349690866555639}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -33,8 +33,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3525600170920847951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &8114988838657312046
-CapsuleCollider2D:
+--- !u!114 &2210838683872346125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290492454159376608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63709e0616924c15b72815407fa44559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget2D
+  _targetType: 0
+  _collider: {fileID: 2138349690866555639}
+--- !u!58 &2138349690866555639
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -68,22 +82,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.67, y: 0.16}
-  m_Direction: 1
---- !u!114 &2210838683872346125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4290492454159376608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63709e0616924c15b72815407fa44559, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.AttackTarget2D
-  _targetType: 0
-  _collider: {fileID: 8114988838657312046}
+  m_Radius: 0.29
 --- !u!1 &5971790945569815702
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitActor
   _view: {fileID: 5483068426547807}
-  attackTarget: {fileID: 2210838683872346125}
+  _attackTarget: {fileID: 2210838683872346125}
   _stateManager: {fileID: 7089783761961880826}
   _healthComponent: {fileID: 4728101536793293616}
   _attackComponent: {fileID: 8255182563951653487}
@@ -197,6 +196,7 @@ MonoBehaviour:
     _value: 0
   _attackSpeed:
     _value: 0
+  _animationEvents: {fileID: 0}
 --- !u!114 &2575392991732380378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +278,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eddecd3a5664d478798da07c89fd701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.UnitAnimator
+  _animator: {fileID: 0}
+  _animationEvents: {fileID: 0}
 --- !u!1 &6735294149039191266
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,7 +41,7 @@ MonoBehaviour:
     - _squads:
       - _delay: 3
         _tier: 0
-        _count: 1
+        _count: 5
       - _delay: 10
         _tier: 0
         _count: 2

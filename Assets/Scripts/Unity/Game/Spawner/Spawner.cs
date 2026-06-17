@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Core.Application.Models;
 using Unity.Game.Attributes.Specific;
@@ -53,7 +53,13 @@ namespace Unity.Game
         {
             for (int i = 0; i < count; i++)
             {
-                var spawnDelta = new Vector3(Random.Range(-_spawnRange, _spawnRange), 0, Random.Range(-_spawnRange, _spawnRange));
+                float angle = i * 2.39996f;
+                float radius = Mathf.Sqrt(i) * (_spawnRange / Mathf.Sqrt(count));
+                float x = radius * Mathf.Cos(angle);
+                float y = radius * Mathf.Sin(angle);
+                //добавить вариант для 3d
+                
+                var spawnDelta = new Vector3(x, y);
 
                 if (!_epoch.TryGetUnitModel(tier, _faction, out var unitModel))
                 {

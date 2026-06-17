@@ -746,7 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea752b632384c3884bbab5aa3b0e295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.WavesSpawner
-  _spawnRange: 0
+  _spawnRange: 0.1
   _spawnTransform: {fileID: 1440878770335148824}
 --- !u!1 &433330275
 GameObject:
@@ -1780,7 +1780,7 @@ PrefabInstance:
         type: 3}
       propertyPath: '_targetRenderers.Array.data[0]'
       value: 
-      objectReference: {fileID: 1877613100}
+      objectReference: {fileID: 0}
     - target: {fileID: 6407800309210555718, guid: a481c300c7131ec46a2f6dcf2bdb7410,
         type: 3}
       propertyPath: m_Name
@@ -1794,7 +1794,7 @@ PrefabInstance:
     - target: {fileID: 7143856889741987975, guid: a481c300c7131ec46a2f6dcf2bdb7410,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.06
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 7353210561457883416, guid: a481c300c7131ec46a2f6dcf2bdb7410,
         type: 3}
@@ -1815,12 +1815,6 @@ PrefabInstance:
 --- !u!4 &1877613099 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2062782939622426347, guid: a481c300c7131ec46a2f6dcf2bdb7410,
-    type: 3}
-  m_PrefabInstance: {fileID: 1877613098}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1877613100 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6662587045349148458, guid: a481c300c7131ec46a2f6dcf2bdb7410,
     type: 3}
   m_PrefabInstance: {fileID: 1877613098}
   m_PrefabAsset: {fileID: 0}
@@ -2270,7 +2264,7 @@ PrefabInstance:
     - target: {fileID: 8987591655963708404, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4200459182925675648, guid: f6dd9f82fe5c2b742b9abe125c84c7d2, type: 3}
