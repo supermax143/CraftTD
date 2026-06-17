@@ -63,10 +63,6 @@ namespace Unity.Game
                 var unit = _container.InstantiatePrefabForComponent<UnitController>(prefab, _spawnTransform);
                 unit.SetFaction(_faction, _enemyFaction);
                 unit.transform.position = transform.position + spawnDelta;
-                // if(_gameController.TryGetOpponentTower(unit.OpponentFaction, out var target))
-                // {
-                //     unit.transform.LookAt(target.transform);
-                // }
                 unit.SetData(unitModel.Entity);
             }
         }

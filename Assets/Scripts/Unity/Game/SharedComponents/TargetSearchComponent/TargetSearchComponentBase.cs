@@ -7,13 +7,15 @@ namespace Unity.Game
 {
     public abstract class TargetSearchComponentBase : GameComponent
     {
-        public const float DETECTION_INTERVAL = .3f;
+        public const float DETECTION_INTERVAL = .1f;
 
         [Inject] private IGameController _gameController;
         [Inject] private GameStats _gameStats;
 
         [SerializeField]
         private AttackRangeAttribute _attackRange;
+
+        private MoveComponentBase _moveComponent;
 
         public Transform SearchTransform => transform;
         public float DetectionRange => _gameStats.DetectionRange;
@@ -27,6 +29,12 @@ namespace Unity.Game
             _faction = faction;
             _opponentFaction = opponentFaction;
         }
+
+        public void Initialize(MoveComponentBase moveComponent)
+        {
+            _moveComponent = moveComponent;
+        }
+        
 
         public abstract bool TryGetClosestTarget(out AttackTargetBase target);
 
@@ -43,8 +51,15 @@ namespace Unity.Game
             DrawCircle(transform.position, DetectionRange);
             Gizmos.color = Color.red;
             DrawCircle(transform.position, AttackRange);
+
+            if (_moveComponent != null && _moveComponent.IsMoving)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawLine(transform.position, _moveComponent.TargetPosition);
+            }
         }
 
         protected abstract void DrawCircle(Vector3 center, float radius);
+
     }
 }

@@ -16,7 +16,7 @@ namespace Unity.Game
         [SerializeField, HideInInspector] 
         private UnitView _view;
         [SerializeField, HideInInspector]
-        private AttackTargetBase attackTarget;
+        private AttackTargetBase _attackTarget;
         [SerializeField, HideInInspector]
         private UnitStateManager _stateManager;
         [SerializeField, HideInInspector]
@@ -52,7 +52,7 @@ namespace Unity.Game
         private void OnValidate()
         {
             _view = GetComponentInChildren<UnitView>();
-            attackTarget = GetComponentInChildren<AttackTargetBase>();
+            _attackTarget = GetComponentInChildren<AttackTargetBase>();
             _stateManager = GetComponentInChildren<UnitStateManager>();
             _healthComponent = GetComponentInChildren<HealthComponent>();
             _attackComponent = GetComponentInChildren<AttackComponent>();
@@ -66,7 +66,7 @@ namespace Unity.Game
         {
             _faction = faction;
             _opponentFaction = enemyFaction;
-            attackTarget.SetFaction(_faction);
+            _attackTarget.SetFaction(_faction);
             _targetSearchComponent.SetFaction(_faction, _opponentFaction);
             if (!_gameSettings.TryGetFactionColor(faction, out var color))
             {
@@ -86,10 +86,11 @@ namespace Unity.Game
         private void Initialize()
         {
             _healthComponent.SetData(_data);
-            attackTarget.Initialize(HealthComponent);
+            _attackTarget.Initialize(HealthComponent);
             _moveComponent.SetData(_data);
             _attackComponent.SetData(_data);
             _targetSearchComponent.SetData(_data);
+            _targetSearchComponent.Initialize(_moveComponent);
             if (_faction == Faction.Enemy)
             {
                 _rewardComponent.Initialize(HealthComponent);
