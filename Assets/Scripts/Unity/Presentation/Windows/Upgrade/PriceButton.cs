@@ -6,7 +6,6 @@ using UnityEngine.Assertions.Must;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 using Zenject;
-using Image = Microsoft.Unity.VisualStudio.Editor.Image;
 
 namespace Unity.Presentation.Components
 {

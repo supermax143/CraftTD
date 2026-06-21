@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.Application.Info.Attributes.AttributeModifiers;
 using Sirenix.OdinInspector;
-using Sirenix.Utilities.Editor;
 using UnityEngine;
 
 namespace Unity.Game
