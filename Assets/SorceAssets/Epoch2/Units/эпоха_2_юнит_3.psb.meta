@@ -191,7 +191,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 391.604, y: 178.196}
       boneWeight:
-        weight0: 0.59999996
+        weight0: 0.6
         weight1: 0.39999998
         weight2: 0
         weight3: 0
@@ -381,7 +381,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 120.928, y: 9.783997}
       boneWeight:
-        weight0: 0.8333334
+        weight0: 0.8333333
         weight1: 0.16666667
         weight2: 0
         weight3: 0
@@ -391,7 +391,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 177.496, y: -1.5}
       boneWeight:
-        weight0: 0.6666667
+        weight0: 0.6666666
         weight1: 0.33333334
         weight2: 0
         weight3: 0
@@ -1720,9 +1720,9 @@ ScriptedImporter:
     spriteBone:
     - name: weapon_bone
       guid: 08b9d622ac8377a47b5593c658c29fdb
-      position: {x: 44.83795, y: 44.315796, z: 0}
+      position: {x: 44.83795, y: 44.315857, z: 0}
       rotation: {x: 0, y: 0, z: 0.6127566, w: 0.7902717}
-      length: 574.89075
+      length: 574.8906
       parentId: -1
       color:
         serializedVersion: 2
@@ -2093,17 +2093,17 @@ ScriptedImporter:
     - name: arm_r_bone
       guid: b2c57cdc7dd07574bbcd3f840e58bbad
       position: {x: 41.237793, y: 369.64734, z: 0}
-      rotation: {x: 0, y: 0, z: -0.6295105, w: 0.77699196}
-      length: 212.8891
+      rotation: {x: 0, y: 0, z: -0.6295104, w: 0.776992}
+      length: 212.88908
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4278255488
     - name: arm_r_bone1
       guid: 4603b7c465faaa04baf6ebd6109a9d16
-      position: {x: 212.88905, y: 0.0001699759, z: 0}
-      rotation: {x: 0, y: 0, z: 0.13869803, w: 0.9903347}
-      length: 125.67629
+      position: {x: 212.8891, y: 0.00005959635, z: 0}
+      rotation: {x: 0, y: 0, z: 0.13869794, w: 0.99033475}
+      length: 125.67627
       parentId: 0
       color:
         serializedVersion: 2
@@ -2142,7 +2142,7 @@ ScriptedImporter:
         boneIndex3: 0
     - position: {x: 246.748, y: 126.696}
       boneWeight:
-        weight0: 0.7745709
+        weight0: 0.7745708
         weight1: 0.22542916
         weight2: 0
         weight3: 0
@@ -3139,16 +3139,16 @@ ScriptedImporter:
     - name: arm_r_bone
       guid: b2c57cdc7dd07574bbcd3f840e58bbad
       position: {x: 316.15393, y: -188.33101, z: 0}
-      rotation: {x: 0, y: 0, z: -0.99423605, w: 0.10721356}
-      length: 212.88905
+      rotation: {x: 0, y: -0, z: -0.994236, w: 0.10721369}
+      length: 212.88907
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4278255488
     - name: arm_r_bone1
       guid: 4603b7c465faaa04baf6ebd6109a9d16
-      position: {x: 212.88905, y: 0.00007628644, z: 0}
-      rotation: {x: 0, y: 0, z: 0.138698, w: 0.99033475}
+      position: {x: 212.88908, y: -0.000012780389, z: 0}
+      rotation: {x: 0, y: 0, z: 0.13869786, w: 0.99033475}
       length: 125.676254
       parentId: 6
       color:
@@ -3256,7 +3256,7 @@ ScriptedImporter:
       order: 0
     dimension: {x: 0, y: 0}
     characterGroups: []
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.50149506, y: 0.20168272}
     boneReadOnly: 0
   platformSettings:
   - name: DefaultTexturePlatform
@@ -3321,8 +3321,8 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   mosaicLayers: 1
   characterMode: 1
-  documentPivot: {x: 0.5, y: 0}
-  documentAlignment: 7
+  documentPivot: {x: 0.50149506, y: 0.20168272}
+  documentAlignment: 9
   importHiddenLayers: 0
   layerMappingOption: 2
   generatePhysicsShape: 0

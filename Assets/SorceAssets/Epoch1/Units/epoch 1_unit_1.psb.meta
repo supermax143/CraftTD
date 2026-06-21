@@ -2002,7 +2002,7 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4278223103
-    - name: arm_l_bone
+    - name: arm_l_bone1
       guid: 90768255705906d4e8da2563baaf25be
       position: {x: 221.24133, y: 0.00013793552, z: 0}
       rotation: {x: 0, y: 0, z: 0.090488106, w: 0.9958976}
@@ -2911,7 +2911,7 @@ ScriptedImporter:
     spriteBone:
     - name: arm_r_bone1
       guid: 4603b7c465faaa04baf6ebd6109a9d16
-      position: {x: 220.61766, y: 0.00021019741, z: 0}
+      position: {x: 220.61757, y: 0.000102814774, z: 0}
       rotation: {x: 0, y: 0, z: -0.12250034, w: 0.99246854}
       length: 158.20119
       parentId: 1
@@ -2922,7 +2922,7 @@ ScriptedImporter:
       guid: b2c57cdc7dd07574bbcd3f840e58bbad
       position: {x: 48.395264, y: 439.5902, z: 0}
       rotation: {x: 0, y: 0, z: -0.63238966, w: 0.77465045}
-      length: 220.61765
+      length: 220.61758
       parentId: -1
       color:
         serializedVersion: 2
@@ -4089,7 +4089,7 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4294901760
-    - name: arm_l_bone
+    - name: arm_l_bone1
       guid: 90768255705906d4e8da2563baaf25be
       position: {x: 221.24127, y: -0.00000077534423, z: 0}
       rotation: {x: 0, y: 0, z: 0.09048809, w: 0.99589753}
@@ -4110,16 +4110,16 @@ ScriptedImporter:
     - name: arm_r_bone
       guid: b2c57cdc7dd07574bbcd3f840e58bbad
       position: {x: 377.665, y: -244.62721, z: 0}
-      rotation: {x: 0, y: -0, z: -0.9936911, w: 0.11215213}
-      length: 220.61758
+      rotation: {x: 0, y: -0, z: -0.9936911, w: 0.11215212}
+      length: 220.61752
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4278255488
     - name: arm_r_bone1
       guid: 4603b7c465faaa04baf6ebd6109a9d16
-      position: {x: 220.61752, y: -0.000050891234, z: 0}
-      rotation: {x: 0, y: 0, z: -0.12250037, w: 0.9924685}
+      position: {x: 220.61746, y: -0.00006140006, z: 0}
+      rotation: {x: 0, y: 0, z: -0.12250036, w: 0.9924685}
       length: 158.20116
       parentId: 7
       color:
