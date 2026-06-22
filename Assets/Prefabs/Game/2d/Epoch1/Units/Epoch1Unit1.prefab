@@ -110,6 +110,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8255182563951653487, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 567750588614022071}
+    - target: {fileID: 8255182563951653487, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
       propertyPath: _animationEvents
       value: 
       objectReference: {fileID: 275764502547324634}
@@ -226,6 +231,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 275764502547324634}
+    - targetCorrespondingSourceObject: {fileID: 7771028808276254457, guid: 0074c9a251067bf49aa141ccc588651e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 567750588614022071}
   m_SourcePrefab: {fileID: 100100000, guid: 0074c9a251067bf49aa141ccc588651e, type: 3}
 --- !u!212 &737708328483402439 stripped
 SpriteRenderer:
@@ -263,6 +272,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05a26e7806242f49327f03ccbd1f826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.UnitAnimationEvents
+--- !u!114 &567750588614022071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2219393101003923274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9486698523554d28b7af01a75c4ab2c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Projectile.MeleeWeapon
 --- !u!212 &2699608260190761572 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5792206002141656023, guid: 0074c9a251067bf49aa141ccc588651e,

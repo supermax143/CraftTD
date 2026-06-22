@@ -85,9 +85,14 @@ public class TintController : MonoBehaviour
 
     private void UpdateSpriteColor()
     {
-        foreach (SpriteRenderer ren in _targetRenderers)
+        foreach (Renderer ren in _targetRenderers)
         {
-            ren.color = _tintColor;
+            if (ren is not SpriteRenderer spriteRenderer)
+            {
+                continue;
+            }
+            
+            spriteRenderer.color = _tintColor;
         }
     }
 }
