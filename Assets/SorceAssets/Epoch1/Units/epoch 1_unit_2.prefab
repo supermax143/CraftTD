@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: -8653719598885068355, guid: e8e148cf9af48194d994ee1fd38cd654,
         type: 3}
       propertyPath: m_Name
-      value: Epoch1Unit2
+      value: epoch 1_unit_2
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: e8e148cf9af48194d994ee1fd38cd654,
         type: 3}
@@ -61,6 +61,11 @@ PrefabInstance:
     - target: {fileID: -7552582706839291426, guid: e8e148cf9af48194d994ee1fd38cd654,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1462316988306326755, guid: e8e148cf9af48194d994ee1fd38cd654,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2610119593664721964, guid: e8e148cf9af48194d994ee1fd38cd654,
