@@ -17,7 +17,7 @@ MonoBehaviour:
       \u044D\u043F\u043E\u0445\u0430"
     _tower:
       _towerPrefab:
-        _value: {fileID: 8055821016266724607, guid: fe884df816c12074082be57f3ffbdb6e,
+        _value: {fileID: 3331345286125286545, guid: 82d4d4a5c47a64844839ce4e40fa5cbb,
           type: 3}
     _unitTier1:
       _name: 
@@ -90,35 +90,29 @@ MonoBehaviour:
         _count: 5
     _unitTier1Modifiers: []
     _unitTier2Modifiers: []
-    _unitTier3Modifiers:
-    - _attributeKind: 7
-      _modifierKind: 2
-      _value: 1000
-    - _attributeKind: 7
-      _modifierKind: 2
-      _value: 1000
+    _unitTier3Modifiers: []
   - _epochName: "\u0421\u0440\u0435\u0434\u043D\u0438\u0435 \u0412\u0435\u043A\u0430"
     _tower:
       _towerPrefab:
-        _value: {fileID: 6563548916185858267, guid: 787862c76b6a5a549b8dcdcd77da43fc,
+        _value: {fileID: 3331345286125286545, guid: d4c2e861e61f07e46add1f8140a7435e,
           type: 3}
     _unitTier1:
       _name: 
       _tier: 0
       _unitPrefab:
-        _value: {fileID: 8611390108655034055, guid: 2f7543a589c12be429ab77b6a9614ebe,
+        _value: {fileID: 8611390108655034055, guid: 5478d929fba3a8c4c8220eb8b1f09ef1,
           type: 3}
     _unitTier2:
       _name: 
       _tier: 1
       _unitPrefab:
-        _value: {fileID: 8611390108655034055, guid: 5ce9a341bf7694a409f4cc19ac62434e,
+        _value: {fileID: 8611390108655034055, guid: 19c6c995d768dca43b00c9a8fd184ede,
           type: 3}
     _unitTier3:
       _name: 
       _tier: 2
       _unitPrefab:
-        _value: {fileID: 8611390108655034055, guid: f84714416a619964990efe90c5f1877e,
+        _value: {fileID: 8611390108655034055, guid: f9eacdd973d016043948fbe31a544bb2,
           type: 3}
     _waves:
     - _squads:
