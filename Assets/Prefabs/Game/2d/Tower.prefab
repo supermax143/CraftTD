@@ -593,6 +593,7 @@ MonoBehaviour:
   _targetRenderers:
   - {fileID: 5875621515808463919}
   _tintColorProperty: _Color
+  _useColorProperty: 0
 --- !u!1 &8055821016266724607
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +629,7 @@ Transform:
   - {fileID: 7254977044279615764}
   - {fileID: 8535785989358852752}
   - {fileID: 3522088940236751225}
+  - {fileID: 5631726699426698186}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2800611737174044161
@@ -672,5 +674,112 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53480c8241d4392aad598aa7d0f67d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.HealthComponent
+  _progressBar: {fileID: 7243490997760515532}
   _health:
     _value: 10
+--- !u!1001 &1461842874964270455
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6353193346670427762}
+    m_Modifications:
+    - target: {fileID: 6145579355339735421, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.29899997
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4a982a7c90c0d945ae7eb651a88132e, type: 3}
+--- !u!4 &5631726699426698186 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1461842874964270455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7243490997760515532 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8128873040461103291, guid: f4a982a7c90c0d945ae7eb651a88132e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1461842874964270455}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca8432dcdb349e19cd08a2556f54867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Utils.SpriteProgressbar

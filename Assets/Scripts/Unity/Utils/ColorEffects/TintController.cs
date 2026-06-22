@@ -13,6 +13,8 @@ public class TintController : MonoBehaviour
     private Renderer[] _targetRenderers;
     [SerializeField]
     private string _tintColorProperty;
+    [SerializeField]
+    public bool _useColorProperty = false;
     
     private int _tintColorID;
     
@@ -63,6 +65,12 @@ public class TintController : MonoBehaviour
         {
             return;
         }
+
+        if (_useColorProperty)
+        {
+            UpdateSpriteColor();
+            return;
+        }
         
         _propertyBlock.SetColor(_tintColorID, _tintColor);
         
@@ -74,5 +82,12 @@ public class TintController : MonoBehaviour
             }
         }
     }
-    
+
+    private void UpdateSpriteColor()
+    {
+        foreach (SpriteRenderer ren in _targetRenderers)
+        {
+            ren.color = _tintColor;
+        }
+    }
 }

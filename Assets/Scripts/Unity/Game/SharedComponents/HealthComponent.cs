@@ -1,6 +1,7 @@
 using System;
 using Unity.Game.Attributes;
 using Unity.Game.Attributes.Specific;
+using Unity.Utils;
 using UnityEngine;
 
 namespace Unity.Game
@@ -10,7 +11,8 @@ namespace Unity.Game
         public event Action OnDamage;
         public event Action OnDeath;
         
-        
+        [SerializeField]
+        private SpriteProgressbar _progressBar;
         [SerializeField]
         private HealthAttribute _health = new HealthAttribute(10);
         
@@ -24,6 +26,8 @@ namespace Unity.Game
         {
             base.SetData(data);
             _currentHealth = MaxHealth;
+            _progressBar.Initialize(MaxHealth, MaxHealth);
+            _progressBar.gameObject.SetActive(false);
         }
 
         public void TakeDamage(float damage)
@@ -35,6 +39,8 @@ namespace Unity.Game
                 OnDeath?.Invoke();
             }
             OnDamage?.Invoke();
+            _progressBar.SetValue(_currentHealth);
+            _progressBar.gameObject.SetActive(true);
             Debug.Log($"Health: {_currentHealth} / {MaxHealth}");
         }
 

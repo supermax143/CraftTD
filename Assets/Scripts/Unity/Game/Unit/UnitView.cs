@@ -53,7 +53,6 @@ namespace Unity.Game
             _tintController.SetTintColor(Color.red);
             yield return new WaitForSeconds(0.2f);
             _tintController.SetTintColor(_color);
-            
         }
 
         public void SetColor(Color color)

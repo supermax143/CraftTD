@@ -25,8 +25,7 @@ namespace Utils.ColorEffects
         public IEnumerator Show()
         {
             StopAnimation();
-            _blinkCoroutine = StartCoroutine(Animate());
-            yield return _blinkCoroutine;
+            yield return StartCoroutine(Animate());
             _blinkCoroutine = null;
         }
 
