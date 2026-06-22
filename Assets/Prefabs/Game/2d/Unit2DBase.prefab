@@ -217,6 +217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.RewardComponent
   _rewardMoney:
     _value: 0
+  _rewardMoneyView: {fileID: 8501616313035668715, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
+    type: 3}
 --- !u!114 &2622176864238402614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,16 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Utils.ColorEffects.BlinkEffect
   _tintColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
-  _targetRenderers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _targetRenderers: []
   _tintColorProperty: _BaseColor
   _useColorProperty: 1
   _blinkDuration: 1
