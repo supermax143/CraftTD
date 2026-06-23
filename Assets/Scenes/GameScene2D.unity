@@ -1030,6 +1030,7 @@ Transform:
   m_Children:
   - {fileID: 277753465}
   - {fileID: 315824541}
+  - {fileID: 1064528742}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055722449
@@ -1095,6 +1096,108 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moneyTF: {fileID: 1681045305}
+--- !u!1 &1064528741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1064528742}
+  - component: {fileID: 1064528743}
+  m_Layer: 0
+  m_Name: DropManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1064528742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064528741}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1031219517}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1064528743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064528741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af815f6ca6114063bf175612abc38bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.DropManager
+  _rewardMoneyView: {fileID: 8501616313035668715, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
+    type: 3}
+  minLaunchForce: 2
+  maxLaunchForce: 4
+  _curveY:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 3.0714288
+      outSlope: 3.0714288
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.220047
+    - serializedVersion: 3
+      time: 0.25613084
+      value: 0.86304265
+      inSlope: -1.072227
+      outSlope: -1.072227
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.39347667
+      value: 1.158952
+      inSlope: 1.1463821
+      outSlope: 1.1463821
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -1.0125002
+      outSlope: -1.0125002
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.27669057
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  overshootScale: 1.3
+  finalScale: 1
+  popDuration: 0.18
+  minDistanceX: 2
+  maxDistanceX: 3
+  moveDuration: 2
+  firstBounceHeight: 0.6
+  bounceCount: 4
+  bounceDecay: 0.5
+  bounceDurationDecay: 0.55
+  firstBounceDuration: 0.25
+  _scaleEase: 30
 --- !u!1 &1352965566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,6 +1414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Installers.GameSceneInstaller
   _gameController: {fileID: 277753466}
   _foodProduction: {fileID: 315824542}
+  _dropManager: {fileID: 1064528743}
 --- !u!114 &1632939797 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4551608291531972666, guid: 5c53bf6a41c4dac49831097db42f9711,
@@ -1966,74 +2070,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118841483}
   m_CullTransparentMesh: 1
---- !u!1001 &3092740379248900914
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3837733208225909044, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.01763916
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837733208225909044, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.91597986
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837733208225909044, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837733208225909044, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837733208225909044, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837733208225909044, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837733208225909044, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837733208225909044, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837733208225909044, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837733208225909044, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8501616313035668715, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
-        type: 3}
-      propertyPath: m_Name
-      value: ResourceDrop
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: feaf9d0c36d4c964aa716659bd8ddcc0, type: 3}
 --- !u!114 &3810716409540990663 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3348771874527351027, guid: 5c53bf6a41c4dac49831097db42f9711,
@@ -2329,4 +2365,3 @@ SceneRoots:
   - {fileID: 1849812279}
   - {fileID: 1031219517}
   - {fileID: 4192125743556613102}
-  - {fileID: 3092740379248900914}

@@ -11,6 +11,9 @@ namespace Unity.Game
         [SerializeField] private float minLaunchForce = 2f;
         [SerializeField] private float maxLaunchForce = 4f;
         
+        [SerializeField]
+        private AnimationCurve _curveY;
+        
         [Header("Скейл (вылет)")]
         public float overshootScale = 1.3f;
         public float finalScale = 1f;
@@ -29,9 +32,12 @@ namespace Unity.Game
         public float firstBounceDuration = 0.25f;
 
         [Header("Squash на ударе")]
-        public float squashAmount = 0.2f;
-        public float squashDuration = 0.08f;
-
+        /*public float squashAmount = 0.2f;
+        public float squashDuration = 0.08f;*/
+        [Header("удары")]
+        [SerializeField]
+        private Ease _scaleEase = Ease.InBounce;
+        
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
@@ -48,54 +54,90 @@ namespace Unity.Game
 
 
             var drop = rewardView.transform;
+
+
+            drop.localScale = Vector3.one * .5f;
+
+            float angle = Random.Range(0f, 360f);
+            Vector2 direction = new Vector2(
+                Mathf.Cos(angle * Mathf.Deg2Rad),
+                Mathf.Sin(angle * Mathf.Deg2Rad)
+            );
+            Vector2 randomOffset = direction * Random.Range(minDistanceX, maxDistanceX);
+
             
-           
-            drop.localScale = Vector3.zero;
-
-            transform.localScale = Vector3.zero;
-
-            float dirX = Random.value > 0.5f ? 1f : -1f;
-            float distX = Random.Range(minDistanceX, maxDistanceX);
-            float groundY = drop.position.y; // уровень "пола" в 2D
-            float targetX = drop.position.x + dirX * distX;
-
-            Sequence seq = DOTween.Sequence();
-
-            // 1. Вылет — скейл 0 -> 1.3, движение по X стартует параллельно
-            seq.Append(drop.DOScale(overshootScale, popDuration).SetEase(Ease.OutQuad));
-            seq.Join(drop.DOMoveX(targetX, moveDuration).SetEase(Ease.OutCubic));
-
-            // 2. Возврат скейла к финальному размеру
-            seq.Append(drop.DOScale(finalScale, 0.12f).SetEase(Ease.OutQuad));
-
-            // 3. Цикл затухающих прыжков по Y
-            float height = firstBounceHeight;
-            float upDuration = firstBounceDuration;
-            float downDuration = firstBounceDuration * 1.1f;
-
-            for (int i = 0; i < bounceCount; i++)
-            {
-                float peakY = groundY + height;
-
-                // взлёт
-                seq.Append(drop.DOMoveY(peakY, upDuration).SetEase(Ease.OutQuad));
-
-                // в момент пика — лёгкое вытягивание (stretch), опционально
-                seq.Join(drop.DOScale(finalScale * (1f + squashAmount * 0.3f), upDuration).SetEase(Ease.OutQuad));
-
-                // падение
-                seq.Append(drop.DOMoveY(groundY, downDuration).SetEase(Ease.InQuad));
-
-                // squash в момент удара о "пол"
-                seq.Join(DOTween.Sequence()
-                    .Append(drop.DOScale(new Vector3(finalScale * (1f + squashAmount), finalScale * (1f - squashAmount), 1f), squashDuration))
-                    .Append(drop.DOScale(Vector3.one * finalScale, squashDuration)));
-
-                // уменьшаем параметры для следующего прыжка
-                height *= bounceDecay;
-                upDuration *= bounceDurationDecay;
-                downDuration *= bounceDurationDecay;
-            }
+            Play(
+                drop,
+                randomOffset,
+                bounces: 4,
+                totalDuration: 1.5f
+            );
         }
+        
+        public static Sequence Play(
+            Transform target,
+            Vector2 horizontalOffset,
+            int bounces = 3,
+            float totalDuration = 1.2f)
+        {
+            Sequence moveSeq = DOTween.Sequence();
+
+            Vector3 startPos = target.position;
+
+            // Горизонтальное затухающее движение
+            moveSeq.Join(
+                target.DOMoveX(startPos.x + horizontalOffset.x, totalDuration)
+                    .SetEase(Ease.OutCubic)
+                );
+
+            float bounceDuration = totalDuration / bounces;
+            float height = 2f;
+            Sequence jumpSeq = DOTween.Sequence();
+            for (int i = 0; i < bounces; i++)
+            {
+                JumpSeq(target, height, i, jumpSeq, startPos, bounceDuration);
+            }
+
+            return moveSeq;
+        }
+
+        private static void JumpSeq(Transform target, float height, int i, Sequence seq, Vector3 startPos, float bounceDuration)
+        {
+            float jumpHeight = height * Mathf.Pow(0.5f, i);
+
+            
+            
+            // Вверх
+            seq.Append(
+                target.DOMoveY(startPos.y + jumpHeight, bounceDuration * 0.4f)
+                    .SetEase(Ease.OutQuad)
+            );
+
+            // Вниз
+            seq.Append(
+                target.DOMoveY(startPos.y, bounceDuration * 0.6f)
+                    .SetEase(Ease.InQuad)
+            );
+
+            // Squash при касании земли
+            seq.AppendCallback(() =>
+            {
+                target.DOKill(false);
+
+                Sequence squash = DOTween.Sequence();
+
+                squash.Append(
+                    target.DOScale(
+                        new Vector3(1.15f, 0.85f, 1),
+                        0.05f)
+                );
+
+                squash.Append(
+                    target.DOScale(Vector3.one, 0.1f)
+                        .SetEase(Ease.OutBack)
+                );
+            });
+        }
+        
     }
 }
