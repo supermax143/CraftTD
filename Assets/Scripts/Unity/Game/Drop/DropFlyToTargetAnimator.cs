@@ -34,19 +34,27 @@ namespace Unity.Game
         public void FlyToIcon(Transform flyingObject, float delay, Action<Transform> onComplete)
         {
             initialScale = flyingObject.localScale;
-            // 1. Получаем экранные координаты иконки (в пикселях)
-            Vector3 iconScreenPos = GetUIScreenPosition(targetIcon);
-
-            // 2. Конвертируем экранные координаты в мировые координаты на глубине дропа
-            // Z для ScreenToWorldPoint - это дистанция от камеры до объекта
-            float zDistance = Mathf.Abs(mainCam.transform.position.z - transform.position.z);
-            Vector3 targetWorldPos = mainCam.ScreenToWorldPoint(new Vector3(iconScreenPos.x, iconScreenPos.y, zDistance));
+            
+            // 1. Получаем целевую позицию в мировых координатах
+            Vector3 targetWorldPos;
+            if (_canvas.renderMode == RenderMode.ScreenSpaceCamera)
+            {
+                // Для Screen Space - Camera используем мировые координаты напрямую
+                Vector3[] corners = new Vector3[4];
+                targetIcon.GetWorldCorners(corners);
+                targetWorldPos = (corners[0] + corners[2]) / 2f;
+            }
+            else
+            {
+                // Для Overlay используем экранные координаты
+                Vector3 iconScreenPos = GetUIScreenPosition(targetIcon);
+                float zDistance = Mathf.Abs(mainCam.transform.position.z - transform.position.z);
+                targetWorldPos = mainCam.ScreenToWorldPoint(new Vector3(iconScreenPos.x, iconScreenPos.y, zDistance));
+            }
 
             // 3. Рассчитываем целевой масштаб (чтобы дроп стал ровно размером с иконку)
             float dropSize = GetDropSize(flyingObject);
-            Debug.Log($"dropSize: {dropSize}, has SpriteRenderer: {flyingObject.GetComponent<SpriteRenderer>() != null}");
             Vector3 targetScale = CalculateTargetScale(dropSize);
-            Debug.Log($"targetScale: {targetScale}");
 
             // 4. Настраиваем точки для кривой Безье (красивая дуга)
             Vector3 startPos = flyingObject.position;
@@ -58,6 +66,19 @@ namespace Unity.Game
             // Сбрасываем состояние перед полетом
             flyingObject.localScale = initialScale;
             flyingObject.rotation = Quaternion.identity;
+
+            // Настраиваем сортировку выше UI
+            var spriteRenderer = flyingObject.GetComponentInChildren<SpriteRenderer>();
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.sortingLayerName = "Windows";
+                spriteRenderer.sortingOrder = 100;
+            }
+
+            // Перемещаем объект ближе к камере для рендеринга выше UI
+            /*Vector3 pos = flyingObject.position;
+            pos.z = mainCam.transform.position.z - 1f;
+            flyingObject.position = pos;*/
 
             var seq = DOTween.Sequence();
 
@@ -131,6 +152,16 @@ namespace Unity.Game
 
         private Vector3 CalculateTargetScale(float dropSize)
         {
+            if (_canvas.renderMode == RenderMode.ScreenSpaceCamera)
+            {
+                // Для Screen Space - Camera используем мировые координаты напрямую
+                Vector3[] corners = new Vector3[4];
+                targetIcon.GetWorldCorners(corners);
+                float iconWorldHeight = corners[1].y - corners[0].y;
+                float scaleFactor = iconWorldHeight / dropSize;
+                return new Vector3(scaleFactor, scaleFactor, 1f);
+            }
+            
             if (mainCam.orthographic)
             {
                 float pixelToWorld = (mainCam.orthographicSize * 2f) / Screen.height;
@@ -139,6 +170,7 @@ namespace Unity.Game
                 float scaleFactor = iconWorldHeight / dropSize;
                 return new Vector3(scaleFactor, scaleFactor, 1f);
             }
+            
             Debug.LogWarning("Перспективная камера не поддерживается в этом упрощенном расчете!");
             return Vector3.one;
         }
