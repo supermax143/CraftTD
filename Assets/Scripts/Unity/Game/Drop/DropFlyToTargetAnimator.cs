@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -26,7 +26,6 @@ namespace Unity.Game
         private void Awake()
         {
             if (mainCam == null) mainCam = Camera.main;
-            initialScale = transform.localScale;
         }
 
         /// <summary>
@@ -34,6 +33,7 @@ namespace Unity.Game
         /// </summary>
         public void FlyToIcon(Transform flyingObject, float delay, Action<Transform> onComplete)
         {
+            initialScale = flyingObject.localScale;
             // 1. Получаем экранные координаты иконки (в пикселях)
             Vector3 iconScreenPos = GetUIScreenPosition(targetIcon);
 
@@ -43,7 +43,10 @@ namespace Unity.Game
             Vector3 targetWorldPos = mainCam.ScreenToWorldPoint(new Vector3(iconScreenPos.x, iconScreenPos.y, zDistance));
 
             // 3. Рассчитываем целевой масштаб (чтобы дроп стал ровно размером с иконку)
-            Vector3 targetScale = CalculateTargetScale();
+            float dropSize = GetDropSize(flyingObject);
+            Debug.Log($"dropSize: {dropSize}, has SpriteRenderer: {flyingObject.GetComponent<SpriteRenderer>() != null}");
+            Vector3 targetScale = CalculateTargetScale(dropSize);
+            Debug.Log($"targetScale: {targetScale}");
 
             // 4. Настраиваем точки для кривой Безье (красивая дуга)
             Vector3 startPos = flyingObject.position;
@@ -68,10 +71,9 @@ namespace Unity.Game
                     .SetEase(Ease.InBack) // InBack дает эффект "всасывания" в UI в конце
                     .OnComplete(() =>
                     {
-                        // Финальный сочный Squash перед исчезновением
-                        PlayFinalSquash(flyingObject, onComplete);
-                    })).SetDelay(delay);    
-            
+                        onComplete.Invoke(flyingObject);
+                    })).SetDelay(delay);
+
         }
 
         /// <summary>
@@ -117,27 +119,26 @@ namespace Unity.Game
         /// Рассчитывает, во сколько раз нужно увеличить/уменьшить дроп, 
         /// чтобы он визуально совпал с UI иконкой.
         /// </summary>
-        private Vector3 CalculateTargetScale()
+        private float GetDropSize(Transform obj)
         {
-            // Для Orthographic камеры (стандарт для 2D)
+            var spriteRenderer = obj.GetComponentInChildren<SpriteRenderer>();
+            if (spriteRenderer != null && spriteRenderer.sprite != null)
+            {
+                return spriteRenderer.bounds.size.y;
+            }
+            return baseDropSize;
+        }
+
+        private Vector3 CalculateTargetScale(float dropSize)
+        {
             if (mainCam.orthographic)
             {
-                // Сколько мировых юнитов занимает 1 пиксель на экране
                 float pixelToWorld = (mainCam.orthographicSize * 2f) / Screen.height;
-                
-                // Реальный размер иконки в пикселях (с учетом её lossyScale)
                 float iconPixelHeight = targetIcon.rect.height * targetIcon.lossyScale.y;
-                
-                // Переводим размер иконки в мировые юниты
                 float iconWorldHeight = iconPixelHeight * pixelToWorld;
-                
-                // Вычисляем итоговый множитель масштаба
-                float scaleFactor = iconWorldHeight / baseDropSize;
+                float scaleFactor = iconWorldHeight / dropSize;
                 return new Vector3(scaleFactor, scaleFactor, 1f);
             }
-            
-            // Если камера перспективная, расчет сложнее (зависит от дистанции), 
-            // но для 2D игр обычно используется блок выше.
             Debug.LogWarning("Перспективная камера не поддерживается в этом упрощенном расчете!");
             return Vector3.one;
         }
@@ -157,14 +158,5 @@ namespace Unity.Game
             return RectTransformUtility.WorldToScreenPoint(mainCam, rect.position);
         }
 
-        private void PlayFinalSquash(Transform target, System.Action<Transform> onComplete)
-        {
-            target.DOScale(new Vector3(finalSquash.x * transform.localScale.x, finalSquash.y * transform.localScale.y, 1f), 0.05f)
-                .SetEase(Ease.OutQuad)
-                .OnComplete(() =>
-                {
-                    onComplete?.Invoke(target);
-                });
-        }
     }
 }
