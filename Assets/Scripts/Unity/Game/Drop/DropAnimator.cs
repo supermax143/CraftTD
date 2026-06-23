@@ -1,75 +1,53 @@
+﻿using System;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Unity.Game
 {
-    public class DropManager : MonoBehaviour
+    public class DropAnimator : MonoBehaviour
     {
+        
         [SerializeField]
-        private GameObject _rewardMoneyView;
+        private float _minDistance = 1.5f;
+        [SerializeField]
+        private float _maxDistance = 2f;
+        [SerializeField]
+        private float _bounceDuration = 0.5f;
         
-        [Header("Горизонтальное движение (X)")]
-        public float _minDistanceX = 1.5f;
-        public float _maxDistanceX = 2f;
-        public float _totalDuration = 1.5f;
         
-        private void Update()
+        public void Show( Transform target, Action<Transform> onComplete)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector2 inputPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                ShowDrop(inputPosition);
-            }
-        }
-
-        public void ShowDrop(Vector2 position)
-        {
-            GameObject rewardView = Instantiate(_rewardMoneyView, position, Quaternion.identity);
-            var drop = rewardView.transform;
-
-            drop.localScale = Vector3.one * .5f;
-
             float angle = Random.Range(0f, 360f);
-            
             Vector2 direction = new Vector2(
                 Mathf.Cos(angle * Mathf.Deg2Rad),
                 Mathf.Sin(angle * Mathf.Deg2Rad)
             );
-            Vector2 randomOffset = direction * Random.Range(_minDistanceX, _maxDistanceX);
-
             
-            Play(
-                drop,
-                randomOffset,
-                bounces: Random.Range(2, 4));
-        }
-        
-        public void Play(
-            Transform target,
-            Vector2 offset,
-            int bounces = 3)
-        {
+            Vector2 offset = direction * Random.Range(_minDistance, _maxDistance);
+            int bounces = (int)Mathf.Round(offset.magnitude) + 1;
+            
             Sequence moveSeq = DOTween.Sequence();
 
             Vector3 startPos = target.position;
-
+            
             // Горизонтальное затухающее движение
-            moveSeq.Join(
-                target.DOMoveX(startPos.x + offset.x, _totalDuration)
-                    //.SetEase(Ease.OutCubic)
-                );
+            moveSeq.Join( target.DOMoveX(startPos.x + offset.x, _bounceDuration * bounces) );
 
-            float bounceDuration = _totalDuration / bounces;
+            
+            float bounceDuration = _bounceDuration;
             float startJumpHeight = 2f;
             Sequence jumpSeq = DOTween.Sequence();
             float baseYStep = offset.y/bounces;
             float currentPosition = target.position.y;
-            Debug.Log(baseYStep);
             for (int i = 0; i < bounces; i++)
             {
                 JumpSeq(target, startJumpHeight, i, jumpSeq, baseYStep, bounceDuration, ref currentPosition);
             }
-
+            moveSeq.onComplete += () =>
+            {
+                onComplete?.Invoke(target);
+            };
         }
 
         private static void JumpSeq(Transform target, float height, int i, Sequence seq, float yStep, float bounceDuration, ref float currentBaseY)
@@ -83,6 +61,14 @@ namespace Unity.Game
                     .SetEase(Ease.OutQuad)
             );
 
+            if (i == 0)
+            {
+                seq.Join(
+                    target.DOScale(1, bounceDuration * 0.4f)
+                );
+            }
+            
+            
             // Вниз
             currentBaseY += baseYStep;
             seq.Append(
@@ -109,6 +95,5 @@ namespace Unity.Game
                 );
             });
         }
-        
     }
 }
