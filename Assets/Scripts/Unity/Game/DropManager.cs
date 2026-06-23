@@ -8,35 +8,10 @@ namespace Unity.Game
         [SerializeField]
         private GameObject _rewardMoneyView;
         
-        [SerializeField] private float minLaunchForce = 2f;
-        [SerializeField] private float maxLaunchForce = 4f;
-        
-        [SerializeField]
-        private AnimationCurve _curveY;
-        
-        [Header("Скейл (вылет)")]
-        public float overshootScale = 1.3f;
-        public float finalScale = 1f;
-        public float popDuration = 0.18f;
-
         [Header("Горизонтальное движение (X)")]
-        public float minDistanceX = 0.4f;
-        public float maxDistanceX = 1.0f;
-        public float moveDuration = 0.6f;
-
-        [Header("Баунсы по Y")]
-        public float firstBounceHeight = 0.6f;
-        public int bounceCount = 4;
-        public float bounceDecay = 0.5f;   // во сколько раз уменьшается высота каждого след. прыжка
-        public float bounceDurationDecay = 0.55f; // во сколько раз уменьшается время каждого след. прыжка
-        public float firstBounceDuration = 0.25f;
-
-        [Header("Squash на ударе")]
-        /*public float squashAmount = 0.2f;
-        public float squashDuration = 0.08f;*/
-        [Header("удары")]
-        [SerializeField]
-        private Ease _scaleEase = Ease.InBounce;
+        public float _minDistanceX = 1.5f;
+        public float _maxDistanceX = 2f;
+        public float _totalDuration = 1.5f;
         
         private void Update()
         {
@@ -50,35 +25,29 @@ namespace Unity.Game
         public void ShowDrop(Vector2 position)
         {
             GameObject rewardView = Instantiate(_rewardMoneyView, position, Quaternion.identity);
-            var startScale = _rewardMoneyView.transform.localScale;
-
-
             var drop = rewardView.transform;
-
 
             drop.localScale = Vector3.one * .5f;
 
             float angle = Random.Range(0f, 360f);
+            
             Vector2 direction = new Vector2(
                 Mathf.Cos(angle * Mathf.Deg2Rad),
                 Mathf.Sin(angle * Mathf.Deg2Rad)
             );
-            Vector2 randomOffset = direction * Random.Range(minDistanceX, maxDistanceX);
+            Vector2 randomOffset = direction * Random.Range(_minDistanceX, _maxDistanceX);
 
             
             Play(
                 drop,
                 randomOffset,
-                bounces: 4,
-                totalDuration: 1.5f
-            );
+                bounces: Random.Range(2, 4));
         }
         
-        public static Sequence Play(
+        public void Play(
             Transform target,
             Vector2 offset,
-            int bounces = 3,
-            float totalDuration = 1.2f)
+            int bounces = 3)
         {
             Sequence moveSeq = DOTween.Sequence();
 
@@ -86,35 +55,38 @@ namespace Unity.Game
 
             // Горизонтальное затухающее движение
             moveSeq.Join(
-                target.DOMoveX(startPos.x + offset.x, totalDuration)
-                    .SetEase(Ease.OutCubic)
+                target.DOMoveX(startPos.x + offset.x, _totalDuration)
+                    //.SetEase(Ease.OutCubic)
                 );
 
-            float bounceDuration = totalDuration / bounces;
+            float bounceDuration = _totalDuration / bounces;
             float startJumpHeight = 2f;
             Sequence jumpSeq = DOTween.Sequence();
+            float baseYStep = offset.y/bounces;
+            float currentPosition = target.position.y;
+            Debug.Log(baseYStep);
             for (int i = 0; i < bounces; i++)
             {
-                JumpSeq(target, startJumpHeight, i, jumpSeq, target.position, bounceDuration);
+                JumpSeq(target, startJumpHeight, i, jumpSeq, baseYStep, bounceDuration, ref currentPosition);
             }
 
-            return moveSeq;
         }
 
-        private static void JumpSeq(Transform target, float height, int i, Sequence seq, Vector3 startPos, float bounceDuration)
+        private static void JumpSeq(Transform target, float height, int i, Sequence seq, float yStep, float bounceDuration, ref float currentBaseY)
         {
             float jumpHeight = height * Mathf.Pow(0.5f, i);
-
+            float baseYStep = yStep * Mathf.Pow(0.5f, i);
             
             // Вверх
             seq.Append(
-                target.DOMoveY(startPos.y + jumpHeight, bounceDuration * 0.4f)
+                target.DOMoveY(currentBaseY + jumpHeight, bounceDuration * 0.4f)
                     .SetEase(Ease.OutQuad)
             );
 
             // Вниз
+            currentBaseY += baseYStep;
             seq.Append(
-                target.DOMoveY(startPos.y, bounceDuration * 0.6f)
+                target.DOMoveY(currentBaseY, bounceDuration * 0.6f)
                     .SetEase(Ease.InQuad)
             );
 

@@ -1189,9 +1189,9 @@ MonoBehaviour:
   overshootScale: 1.3
   finalScale: 1
   popDuration: 0.18
-  minDistanceX: 2
-  maxDistanceX: 3
-  moveDuration: 2
+  minDistanceX: 1.5
+  maxDistanceX: 2
+  moveDuration: 1.5
   firstBounceHeight: 0.6
   bounceCount: 4
   bounceDecay: 0.5
