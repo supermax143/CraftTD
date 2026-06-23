@@ -32,7 +32,7 @@ namespace Unity.Game
         /// <summary>
         /// Запускает полет дропа в UI иконку
         /// </summary>
-        public void FlyToIcon(Transform flyingObject, Action<Transform> onComplete)
+        public void FlyToIcon(Transform flyingObject, float delay, Action<Transform> onComplete)
         {
             // 1. Получаем экранные координаты иконки (в пикселях)
             Vector3 iconScreenPos = GetUIScreenPosition(targetIcon);
@@ -56,19 +56,22 @@ namespace Unity.Game
             flyingObject.localScale = initialScale;
             flyingObject.rotation = Quaternion.identity;
 
-            // 5. Запускаем анимацию через DOTween.To (кастомная кривая)
-            DOTween.To(
-                () => 0f, 
-                t => UpdateFlight(flyingObject ,t, startPos, midPoint, targetWorldPos, targetScale), 
-                1f, 
-                flightDuration
-            )
-            .SetEase(Ease.InBack) // InBack дает эффект "всасывания" в UI в конце
-            .OnComplete(() => 
-            {
-                // Финальный сочный Squash перед исчезновением
-                PlayFinalSquash(flyingObject, onComplete);
-            });
+            var seq = DOTween.Sequence();
+
+            seq.Append(
+                DOTween.To(
+                        () => 0f,
+                        t => UpdateFlight(flyingObject, t, startPos, midPoint, targetWorldPos, targetScale),
+                        1f,
+                        flightDuration
+                    )
+                    .SetEase(Ease.InBack) // InBack дает эффект "всасывания" в UI в конце
+                    .OnComplete(() =>
+                    {
+                        // Финальный сочный Squash перед исчезновением
+                        PlayFinalSquash(flyingObject, onComplete);
+                    })).SetDelay(delay);    
+            
         }
 
         /// <summary>

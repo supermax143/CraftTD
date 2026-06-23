@@ -37,7 +37,7 @@ namespace Unity.Game
 
             _dropAnimator.Show(drop, (target) =>
             {
-                _flyToTargetAnimator.FlyToIcon(drop, (drop) =>
+                _flyToTargetAnimator.FlyToIcon(drop, 2,(drop) =>
                 {
                     //Destroy(drop.gameObject);
                 });
