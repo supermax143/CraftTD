@@ -14,6 +14,8 @@ namespace Unity.Installers
         private GameController _gameController;
         [SerializeField]
         private FoodProduction _foodProduction;
+        [SerializeField]
+        private DropManager _dropManager;
         
         [Inject] IDataStorage _dataStorage;
         
@@ -22,6 +24,7 @@ namespace Unity.Installers
             Container.Bind<IGameController>().FromInstance(_gameController).AsSingle();
             Container.Bind<IFoodProduction>().FromInstance(_foodProduction).AsSingle();
             Container.BindInterfacesAndSelfTo<LevelRewardAggregator>().AsSingle();
+            Container.Bind<DropManager>().FromInstance(_dropManager).AsSingle();
         }
         
     }
