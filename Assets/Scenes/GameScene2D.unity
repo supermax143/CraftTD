@@ -971,7 +971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 35.399994, y: 0}
+  m_AnchoredPosition: {x: 41, y: 0}
   m_SizeDelta: {x: 224.125, y: 37.6194}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1030942565
@@ -1193,7 +1193,7 @@ MonoBehaviour:
   mainCam: {fileID: 7318331}
   targetIcon: {fileID: 1183916470}
   flightDuration: 1
-  arcHeight: 2.5
+  arcHeight: 2
   baseDropSize: 1
   flightStretch: {x: 0.8, y: 1.2}
   finalSquash: {x: 1.4, y: 0.6}

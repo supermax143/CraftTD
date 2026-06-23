@@ -10,20 +10,22 @@ namespace Unity.Presentation
     public class GameView : MonoBehaviour
     {
         
-        [SerializeField] private TMP_Text _moneyTF;
+        // [SerializeField] private TMP_Text _moneyTF;
         
         [Inject] private ILevelRewardAggregator _rewardAggregator;
 
-        private void Start()
+        /*private void Start()
         {
             _rewardAggregator.OnMoneyChanged += UpdateMoney;
             UpdateMoney();
-        }
+        }*/
 
+        /*
         private void UpdateMoney()
         {
             _moneyTF.text = _rewardAggregator.Money.Value.ToString();
         }
+        */
         
         
         [Inject] private IWindowsController _windowsController;

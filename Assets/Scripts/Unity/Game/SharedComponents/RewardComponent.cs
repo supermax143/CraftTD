@@ -1,4 +1,5 @@
 using System;
+using Core.Application.Models;
 using DG.Tweening;
 using Unity.Game.Attributes.Specific;
 using UnityEngine;
@@ -16,7 +17,7 @@ namespace Unity.Game
         private RewardMoneyAttribute _rewardMoney = new RewardMoneyAttribute(0);
         
         [Inject] ILevelRewardAggregator _rewardAggregator;
-        
+        [Inject] DropManager _dropManager;
         
         private HealthComponent _healthComponent;
 
@@ -31,10 +32,8 @@ namespace Unity.Game
         private void OnDeathHandler()
         {
             _rewardAggregator.AddMoney(RewardMoney);
+            _dropManager.ShowDrop(new Resource(ResourceType.Money, RewardMoney), transform.position);
         }
-
-       
-        
         
         private void OnDestroy()
         {

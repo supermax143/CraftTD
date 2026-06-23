@@ -21,6 +21,12 @@ namespace Unity.Presentation.HUD
         public void Awake()
         {
             _resource = new Resource(Type, 0);
+            UpdateCount();
+        }
+
+        private void UpdateCount()
+        {
+            _text.text = _resource.Value.ToString();
         }
 
         public RectTransform GetTargetRect()
@@ -28,9 +34,10 @@ namespace Unity.Presentation.HUD
             return _icon.rectTransform;
         }
         
-        public void AddResource()
+        public void AddResource(Resource resource)
         {
-            
+            _resource += resource;
+            UpdateCount();
         }
         
         

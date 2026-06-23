@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Core.Application.Models;
 using DG.Tweening;
 using Unity.Presentation.HUD;
 using UnityEngine;
@@ -17,29 +18,31 @@ namespace Unity.Game
         private DropAnimator _dropAnimator;
         [SerializeField]
         private DropFlyToTargetAnimator _flyToTargetAnimator;
+       
         
         [Inject] private IEnumerable<IDropTarget> _dropTargets;
         
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            /*if (Input.GetMouseButtonDown(0))
             {
                 Vector2 inputPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                ShowDrop(inputPosition);
-            }
+                ShowDrop( new Resource(ResourceType.Money, 1)  ,inputPosition);
+            }*/
         }
 
-        public void ShowDrop(Vector2 position)
+        public void ShowDrop(Resource resource, Vector2 position)
         {
             GameObject rewardView = Instantiate(_rewardMoneyView, position, Quaternion.identity);
             var drop = rewardView.transform;
             drop.localScale = Vector3.one * .5f;
-
+            var targetIcon = _dropTargets.FirstOrDefault().GetTargetRect();
             _dropAnimator.Show(drop, (target) =>
             {
-                _flyToTargetAnimator.FlyToIcon(drop, 2,(drop) =>
+                _flyToTargetAnimator.FlyToIcon(targetIcon, drop, 2,(drop) =>
                 {
-                    //Destroy(drop.gameObject);
+                    _dropTargets.FirstOrDefault().AddResource(resource);
+                    Destroy(drop.gameObject);
                 });
             });
             
