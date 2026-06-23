@@ -76,7 +76,7 @@ namespace Unity.Game
         
         public static Sequence Play(
             Transform target,
-            Vector2 horizontalOffset,
+            Vector2 offset,
             int bounces = 3,
             float totalDuration = 1.2f)
         {
@@ -86,16 +86,16 @@ namespace Unity.Game
 
             // Горизонтальное затухающее движение
             moveSeq.Join(
-                target.DOMoveX(startPos.x + horizontalOffset.x, totalDuration)
+                target.DOMoveX(startPos.x + offset.x, totalDuration)
                     .SetEase(Ease.OutCubic)
                 );
 
             float bounceDuration = totalDuration / bounces;
-            float height = 2f;
+            float startJumpHeight = 2f;
             Sequence jumpSeq = DOTween.Sequence();
             for (int i = 0; i < bounces; i++)
             {
-                JumpSeq(target, height, i, jumpSeq, startPos, bounceDuration);
+                JumpSeq(target, startJumpHeight, i, jumpSeq, target.position, bounceDuration);
             }
 
             return moveSeq;
@@ -105,7 +105,6 @@ namespace Unity.Game
         {
             float jumpHeight = height * Mathf.Pow(0.5f, i);
 
-            
             
             // Вверх
             seq.Append(
