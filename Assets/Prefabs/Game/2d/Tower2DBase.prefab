@@ -621,8 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TintController
   _tintColor: {r: 1, g: 0, b: 1, a: 1}
-  _targetRenderers:
-  - {fileID: 5875621515808463919}
+  _targetRenderers: []
   _tintColorProperty: _Color
   _useColorProperty: 0
 --- !u!1 &8055821016266724607
