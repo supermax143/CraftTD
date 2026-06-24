@@ -53,7 +53,7 @@ namespace Unity.Game
                 _view.SetColor(color);
             }
             var layer = _faction == Faction.Player ? Layers.PlayerTower : Layers.EnemyTower;
-            gameObject.SetLayerRecursively(layer);
+            gameObject.SetLayerRecursively(layer, Layers.SpawnBorder);
         }
 
         public override void SetData(GameEntityData data)

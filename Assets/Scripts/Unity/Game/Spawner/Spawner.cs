@@ -70,6 +70,17 @@ namespace Unity.Game
                 
                 var spawnDelta = new Vector3(x, y);
 
+                if (count == 1)
+                {
+                    float randAng = Random.Range(0f, 360f);
+                    spawnDelta = new Vector2(
+                        Mathf.Cos(randAng * Mathf.Deg2Rad),
+                        Mathf.Sin(randAng * Mathf.Deg2Rad)
+                    );
+                    spawnDelta *= .1f;
+                }
+                
+                
                 if (!_epoch.TryGetUnitModel(tier, _faction, out var unitModel))
                 {
                     throw new System.Exception("No unit model found");

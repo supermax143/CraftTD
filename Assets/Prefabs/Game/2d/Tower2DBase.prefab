@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3522088940236751225}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 53932978327476708}
   - component: {fileID: 226461187804574044}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5424499875141042681}
   - component: {fileID: 7169362674094387066}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,6 +190,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3, y: 0.2}
   m_EdgeRadius: 0
+--- !u!1 &1100462657805365907
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2459846635412851983}
+  m_Layer: 0
+  m_Name: DropTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2459846635412851983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100462657805365907}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.49, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6353193346670427762}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1165160082006789858
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7626771278282135387}
   - component: {fileID: 7194402485647389375}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,6 +661,7 @@ Transform:
   - {fileID: 7254977044279615764}
   - {fileID: 8535785989358852752}
   - {fileID: 3522088940236751225}
+  - {fileID: 2459846635412851983}
   - {fileID: 5631726699426698186}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -694,6 +726,7 @@ MonoBehaviour:
   _rewardMoney:
     _value: 0
   _dropDirection: {x: 0, y: 0}
+  _dropTransform: {fileID: 2459846635412851983}
 --- !u!1001 &1461842874964270455
 PrefabInstance:
   m_ObjectHideFlags: 0

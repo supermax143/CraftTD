@@ -3,6 +3,7 @@ using Core.Application.Models;
 using Unity.Game.Attributes.Specific;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Unity.Game
 {
@@ -16,7 +17,8 @@ namespace Unity.Game
         private RewardMoneyAttribute _rewardMoney = new RewardMoneyAttribute(0);
         [SerializeField] 
         private Vector2 _dropDirection;
-        
+        [SerializeField] 
+        private Transform _dropTransform;
         
         [Inject] private ILevelRewardAggregator _rewardAggregator;
         [Inject] private DropManager _dropManager;
@@ -35,11 +37,14 @@ namespace Unity.Game
         {
             float rewardRatio = damage / _healthComponent.MaxHealth;
             int reward = Mathf.RoundToInt(rewardRatio * RewardMoney);
+            var direction = _dropDirection;
             
+            float angle = Random.Range(0f, 360f);
+            direction.y = Mathf.Sin(angle * Mathf.Deg2Rad);
             if (reward > 0)
             {
                 _rewardAggregator.AddMoney(reward);
-                _dropManager.ShowDrop(new Resource(ResourceType.Money, reward), transform.position, _dropDirection);
+                _dropManager.ShowDrop(new Resource(ResourceType.Money, reward), _dropTransform.position, direction);
             }
         }
         
