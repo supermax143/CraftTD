@@ -22,7 +22,7 @@ namespace Unity.Game
         [Inject] private IMainModel _mainModel;
         [Inject] private ILevelRewardAggregator _rewardAggregator;
         
-        private EpochModel Epoch => _mainModel.Epoch;
+        private EpochModel Epoch => _mainModel.PlayerEpoch;
         
         private Spawner _spawner;
         private bool _started = false;
@@ -59,7 +59,7 @@ namespace Unity.Game
         {
             _foodProduction.StopProduction();
             OnTowerDestroyed?.Invoke(tower.Faction);
-            _mainModel.Epoch.Money += Resource.Money(_rewardAggregator.Money.Value);
+            _mainModel.PlayerEpoch.Money += Resource.Money(_rewardAggregator.Money.Value);
         }
 
 
@@ -79,7 +79,7 @@ namespace Unity.Game
         public void BuyUnit(UnitTier tier)
         {
             
-            if (!Epoch.TryGetUnitModel(tier, Faction.Player, out var unit)||
+            if (!Epoch.TryGetUnitModel(tier, out var unit)||
                 _foodProduction.FoodCount < unit.FoodCost)
             {
                 return;

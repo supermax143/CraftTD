@@ -19,7 +19,7 @@ namespace Unity.Presentation.HUD
         [Inject]
         private readonly IMainModel _model;
         
-        private EpochModel Epoch => _model.Epoch;
+        private EpochModel Epoch => _model.PlayerEpoch;
 
         private void Start()
         {
@@ -31,7 +31,7 @@ namespace Unity.Presentation.HUD
         {
             foreach (var buyUnitButton in _buyUnitButtons)
             {
-                Epoch.TryGetUnitModel(buyUnitButton.Tier, Faction.Player, out var unit);
+                Epoch.TryGetUnitModel(buyUnitButton.Tier, out var unit);
                 buyUnitButton.gameObject.SetActive(unit.IsUnitOpened);
             }   
         }

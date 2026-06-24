@@ -13,11 +13,13 @@ namespace Core.Application.Models
         public event Action OnMoneyChanged;
         public event Action OnFoodProductionLevelChanged;
         public event Action OnTowerLevelChanged;
-        
-        private Dictionary<Faction, List<UnitModel>> _factionToUnits = new ();
-        
-        
-        private List<TowerModel> _towers = new();
+
+
+        private readonly List<UnitModel> units = new();
+
+        private TowerModel _tower;
+        /*private Dictionary<Faction, List<UnitModel>> _factionToUnits = new ();
+        private List<TowerModel> _towers = new();*/
         
         
         
@@ -25,6 +27,7 @@ namespace Core.Application.Models
         private readonly EpochStorageData _data;
         private readonly GameStats _gameStats;
         private readonly int _epochId;
+        private readonly Faction _faction;
 
 
         public Resource Money
@@ -44,10 +47,13 @@ namespace Core.Application.Models
         
         public EpochInfo Info => _info;
 
-        public TowerModel GetTower(Faction faction) => _towers.Find(tower => tower.Faction == faction);
+        public TowerModel Tower => _tower;
+
+        //public TowerModel GetTower(Faction faction) => _towers.Find(tower => tower.Faction == faction);
         
-        internal EpochModel(int currentEpochId, EpochInfo info, EpochStorageData data, GameStats gameStats)
+        internal EpochModel( Faction faction, int currentEpochId, EpochInfo info, EpochStorageData data, GameStats gameStats)
         {
+            _faction = faction;
             _epochId = currentEpochId;
             _info = info;
             _data = data;
@@ -61,26 +67,26 @@ namespace Core.Application.Models
         {
             foreach (var unitInfo in _info.GetUnits())
             {
-                AddUnitModel(Faction.Player, unitInfo.Tier, unitInfo);
-                AddUnitModel(Faction.Enemy, unitInfo.Tier, unitInfo);
+                AddUnitModel(unitInfo.Tier, unitInfo);
             }
         }
 
-        private void AddUnitModel(Faction faction, UnitTier tier, UnitInfo info)
+        private void AddUnitModel(UnitTier tier, UnitInfo info)
         {
-            if (TryGetUnitModel(tier, faction, out _))
+            if (TryGetUnitModel(tier, out _))
             {
                 return;
             }
             
-            if (!_factionToUnits.TryGetValue(faction, out List<UnitModel> units))
+            /*if (!_factionToUnits.TryGetValue(faction, out List<UnitModel> units))
             {
                 units = new List<UnitModel>();
                 _factionToUnits.Add(faction, units);
-            }
+            }*/
             
-            var entity = GetUnitEntity(tier, faction, _epochId);
+            var entity = GetUnitEntity(tier, _epochId);
             var modifiers = _info.GetUnitModifiers(tier);
+            
             foreach (var modifierWrapper in modifiers)
             {
                 var modifier = modifierWrapper.GetModifier(GetHashCode());
@@ -97,34 +103,28 @@ namespace Core.Application.Models
         
         private void AddTowers()
         {
-            var tower = new TowerModel(_info.Tower, GetTowerEntity(Faction.Player, _epochId));
-            tower.AddModifier(new HealthAddModifier(GetHashCode(), TowerHealth));
-            _towers.Add(tower);
-            tower = new TowerModel(_info.Tower, GetTowerEntity(Faction.Enemy, _epochId));
-            _towers.Add(tower);
+            _tower = new TowerModel(_info.Tower, GetTowerEntity(_epochId));
+            if (_faction == Faction.Player)
+            {
+                _tower.AddModifier(new HealthAddModifier(GetHashCode(), TowerHealth));
+            }
         }
 
         
-        public bool TryGetUnitModel(UnitTier tier, Faction faction, out UnitModel unitModel)
+        public bool TryGetUnitModel(UnitTier tier, out UnitModel unitModel)
         {
-            unitModel = null;
-            if (!_factionToUnits.TryGetValue(faction, out List<UnitModel> units))
-            {
-                return false;
-            }
-            
             unitModel = units.Find(unit => unit.Tier == tier);
             return unitModel != null;
         }
 
-        private TowerEntity GetTowerEntity(Faction faction, int epochId)
+        private TowerEntity GetTowerEntity(int epochId)
         {
-            return new TowerEntity(faction, (uint)epochId, _gameStats);
+            return new TowerEntity(_faction, (uint)epochId, _gameStats);
         }
         
-        private UnitEntity GetUnitEntity(UnitTier tier ,Faction faction, int epochId)
+        private UnitEntity GetUnitEntity(UnitTier tier ,int epochId)
         {
-            return new UnitEntity(tier, faction,(uint)epochId, _gameStats);
+            return new UnitEntity(tier, _faction, (uint)epochId, _gameStats);
         }
         
         public void UpgradeFoodProduction()
@@ -152,14 +152,14 @@ namespace Core.Application.Models
             Money -= cost;
             _data.TowerLevel++;
             
-            GetTower(Faction.Player).AddModifier(new HealthAddModifier(GetHashCode(), TowerHealth));
+            Tower.AddModifier(new HealthAddModifier(GetHashCode(), TowerHealth));
             OnTowerLevelChanged?.Invoke();
             OnMoneyChanged?.Invoke();
         }
         
         public void OpenUnit(UnitTier tier)
         {
-            if (!TryGetUnitModel(tier, Faction.Player, out var unitModel) || 
+            if (!TryGetUnitModel(tier, out var unitModel) || 
                 unitModel.IsUnitOpened || 
                 Money < Resource.Money(unitModel.UnlockCost))
             {

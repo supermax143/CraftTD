@@ -81,7 +81,7 @@ namespace Unity.Game
                 }
                 
                 
-                if (!_epoch.TryGetUnitModel(tier, _faction, out var unitModel))
+                if (!_epoch.TryGetUnitModel(tier, out var unitModel))
                 {
                     throw new System.Exception("No unit model found");
                 }

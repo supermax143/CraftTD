@@ -17,7 +17,7 @@ namespace Unity.Presentation.Windows.Upgrade
         [Inject] private IMainModel _mainModel;
         [Inject] private GameStats _gameStats;
         
-        private EpochModel Epoch => _mainModel.Epoch;
+        private EpochModel Epoch => _mainModel.PlayerEpoch;
 
         private void Start()
         {

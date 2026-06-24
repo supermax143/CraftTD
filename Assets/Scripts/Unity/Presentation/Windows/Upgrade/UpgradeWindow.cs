@@ -30,7 +30,7 @@ namespace Unity.Presentation.Windows
         
         [Inject] IMainModel _model;
         
-        public EpochModel Epoch => _model.Epoch;
+        public EpochModel Epoch => _model.PlayerEpoch;
         
         public override void Initialize()
         {
@@ -59,7 +59,7 @@ namespace Unity.Presentation.Windows
         {
             foreach (var unitOpenItem in _unitsItems)
             {
-                Epoch.TryGetUnitModel(unitOpenItem.Tier, Faction.Player, out var unitModel);
+                Epoch.TryGetUnitModel(unitOpenItem.Tier, out var unitModel);
                 unitOpenItem.SetUnit(unitModel);
                 unitOpenItem.OnUnitOpened += Epoch.OpenUnit;
             }

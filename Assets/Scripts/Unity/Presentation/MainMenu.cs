@@ -21,7 +21,7 @@ namespace Unity.Presentation
 		[Inject] private IDataStorage _dataStorage;
 		[Inject] private IMainModel _mainModel;
         
-		private EpochModel Epoch => _mainModel.Epoch;
+		private EpochModel Epoch => _mainModel.PlayerEpoch;
         
 		
 		[SerializeField]

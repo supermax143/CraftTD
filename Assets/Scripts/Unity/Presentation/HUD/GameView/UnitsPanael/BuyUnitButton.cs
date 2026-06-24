@@ -26,7 +26,7 @@ namespace Unity.Presentation.HUD.UnitsPanael
         [Inject] private IGameController _gameController;
         [Inject] private IMainModel _mainModel;
         
-        private EpochModel Epoch => _mainModel.Epoch;
+        private EpochModel Epoch => _mainModel.PlayerEpoch;
         
         private UnitModel _unit;
         private int _foodCost;
@@ -40,7 +40,7 @@ namespace Unity.Presentation.HUD.UnitsPanael
 
         private void Start()
         {
-            Epoch.TryGetUnitModel(_unitTier, Faction.Player, out _unit);
+            Epoch.TryGetUnitModel(_unitTier, out _unit);
             _foodCost = _unit.FoodCost;
             _foodProduction.OnFoodChanged += UpdateBuyAvailable;
             UpdateView();

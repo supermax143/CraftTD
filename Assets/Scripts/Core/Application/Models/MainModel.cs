@@ -19,13 +19,16 @@ namespace Core.Application.Models
         [Inject] private DataStorage _dataStorage;
         [Inject] private GameStats _gameStats;
 
-        public EpochModel Epoch => _epoch;
-        private EpochModel _epoch;
+        public EpochModel PlayerEpoch => _playerEpoch;
+        public EpochModel EnemyEpoch => _enemyEpoch;
+        
+        private EpochModel _playerEpoch;
+        private EpochModel _enemyEpoch;
 
         public Resource Money
         {
-            get => _epoch.Money;
-            set => _epoch.Money = value;
+            get => _playerEpoch.Money;
+            set => _playerEpoch.Money = value;
         }
 
 #if DEBUG_MODE
@@ -49,7 +52,8 @@ namespace Core.Application.Models
         }
 
         public int CurrentEpochNumber => _dataStorage.CurrentEpochIndex + 1;
-        
+
+
         public int GetEpochCompleteCost()
         {
             return _gameStats.GetEpochCompleteCost(CurrentEpochNumber);
@@ -62,7 +66,8 @@ namespace Core.Application.Models
         public void Init()
         {
             _chronology.TryGetEpochInfo(_dataStorage.CurrentEpochIndex, out var epochInfo);
-            _epoch = new EpochModel(CurrentEpochNumber ,epochInfo, _dataStorage.EpochData, _gameStats);
+            _playerEpoch = new EpochModel( Faction.Player, CurrentEpochNumber ,epochInfo, _dataStorage.EpochData, _gameStats);
+            _enemyEpoch = new EpochModel( Faction.Enemy, CurrentEpochNumber ,epochInfo, _dataStorage.EpochData, _gameStats);
         }
         
         public void Reset()

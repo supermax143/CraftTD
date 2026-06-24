@@ -21,8 +21,8 @@ namespace Unity.Game
         private Faction _enemyFaction;
         
         [Inject] IMainModel _model;
-        
-        public EpochModel Epoch => _model.Epoch;
+
+        public EpochModel Epoch => _faction == Faction.Player ? _model.PlayerEpoch : _model.EnemyEpoch;
         
         
         
@@ -43,7 +43,7 @@ namespace Unity.Game
         {
             _tower.SetFaction(_faction);
             _spawner.SetFaction(_faction, _enemyFaction);
-            _tower.SetData(Epoch.GetTower(_faction).Entity);
+            _tower.SetData(Epoch.Tower.Entity);
         }
 
         public void StartGame()

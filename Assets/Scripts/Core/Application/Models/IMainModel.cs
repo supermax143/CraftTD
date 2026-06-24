@@ -3,7 +3,8 @@ namespace Core.Application.Models
 {
     public interface IMainModel 
     {
-        EpochModel Epoch { get; }
+        EpochModel EnemyEpoch { get; }
+        EpochModel PlayerEpoch { get; }
         Resource Money { get; set; }
         int CurrentEpochNumber { get; }
         bool HasNextEpoch();
@@ -14,7 +15,6 @@ namespace Core.Application.Models
     
     internal interface IMainModelInternal : IMainModel
     {
-        
     }
     
 }
