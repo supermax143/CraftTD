@@ -37,7 +37,6 @@ public class TintController : MonoBehaviour
         
         if (_targetRenderers == null || _targetRenderers.Length == 0)
         {
-            Debug.LogError($"TintController: No renderers found on {gameObject.name}", this);
             enabled = false;
             return;
         }

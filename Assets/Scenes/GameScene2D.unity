@@ -1111,7 +1111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ad664660634ba88f564b18a96cc185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moneyTF: {fileID: 1681045305}
 --- !u!1 &1064528741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,13 +1189,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.DropFlyToTargetAnimator
   _canvas: {fileID: 17063988}
-  mainCam: {fileID: 7318331}
-  targetIcon: {fileID: 1183916470}
-  flightDuration: 1
-  arcHeight: 2
-  baseDropSize: 1
-  flightStretch: {x: 0.8, y: 1.2}
-  finalSquash: {x: 1.4, y: 0.6}
+  _mainCam: {fileID: 0}
+  _flightDuration: 0.6
+  _arcHeight: 2.5
 --- !u!1 &1183916469
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,10 +2029,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -5.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2280881324780543890, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
+        type: 3}
+      propertyPath: _dropDirection.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4291895082917622117, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
         type: 3}
       propertyPath: m_Name
       value: GameField2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 6101628010778397196, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
+        type: 3}
+      propertyPath: _blockSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7435362847261980680, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
+        type: 3}
+      propertyPath: _dropDirection.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8615946594953210360, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
         type: 3}

@@ -20,6 +20,8 @@ namespace Unity.Game
         private AttackTargetBase attackTarget;
         [SerializeField, HideInInspector]
         private HealthComponent _health;
+        [SerializeField, HideInInspector]
+        private RewardForDamageComponent _rewardForDamage;
         
         [Inject] private GameSettings _gameSettings;
         
@@ -39,6 +41,7 @@ namespace Unity.Game
             _view = GetComponentInChildren<TowerView>();
             _health = GetComponentInChildren<HealthComponent>();
             attackTarget = GetComponentInChildren<AttackTargetBase>();
+            _rewardForDamage = GetComponentInChildren<RewardForDamageComponent>();
         }
 
         public void SetFaction(Faction faction)
@@ -58,6 +61,11 @@ namespace Unity.Game
             base.SetData(data);
             _health.SetData(data);
             attackTarget.Initialize(_health);
+            if (_faction == Faction.Enemy)
+            {
+                _rewardForDamage.Initialize(_health);
+                _rewardForDamage.SetData(data);
+            }
         }
 
         private void OnDeath()

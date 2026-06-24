@@ -29,7 +29,7 @@ namespace Unity.Game
             _healthComponent.OnDamage += OnDamage;
         }
 
-        private void OnDamage()
+        private void OnDamage(int damage)
         {
             if (_blinkCoroutine != null)
             {

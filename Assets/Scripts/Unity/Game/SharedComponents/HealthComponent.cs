@@ -8,7 +8,7 @@ namespace Unity.Game
 {
     public class HealthComponent : GameComponent
     {
-        public event Action OnDamage;
+        public event Action<int> OnDamage;
         public event Action OnDeath;
         
         [SerializeField]
@@ -32,13 +32,18 @@ namespace Unity.Game
 
         public void TakeDamage(float damage)
         {
+            if (damage > _currentHealth)
+            {
+                damage = _currentHealth;
+            }
+            
             _currentHealth -= damage;
             if (_currentHealth <= 0)
             {
                 _currentHealth = 0;
                 OnDeath?.Invoke();
             }
-            OnDamage?.Invoke();
+            OnDamage?.Invoke((int)damage);
             _progressBar.SetValue(_currentHealth);
             _progressBar.gameObject.SetActive(true);
             Debug.Log($"Health: {_currentHealth} / {MaxHealth}");

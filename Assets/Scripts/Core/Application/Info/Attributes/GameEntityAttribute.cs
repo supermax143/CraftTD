@@ -105,20 +105,7 @@ namespace Unity.Game.Attributes
         {
             _value = value;
         }
-
-
-        /*public TValue Value
-        {
-            get => _value;
-            set
-            {
-                if (EqualityComparer<TValue>.Default.Equals(_value, value)) return;
-
-                _value = value;
-                _isDirty = true;
-            }
-        }*/
-
+        
         public TValue ValueModified
         {
             get

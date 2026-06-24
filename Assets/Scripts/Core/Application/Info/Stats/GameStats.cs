@@ -33,8 +33,8 @@ namespace Unity.Game
         
         [Space]
         [Header("Tower Reward")]
-        [SerializeField] private int _baseTowerReward = 100;
-        [SerializeField] private int _towerRewardMultiplier = 2;
+        [SerializeField] private int _baseTowerReward = 500;
+        [SerializeField] private int _towerRewardMultiplier = 8;
         
         [Space]
         [Header("Unit Opening")]

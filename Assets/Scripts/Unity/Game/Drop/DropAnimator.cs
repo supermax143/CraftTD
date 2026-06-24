@@ -16,13 +16,16 @@ namespace Unity.Game
         private float _bounceDuration = 0.5f;
         
         
-        public void Show( Transform target, Action<Transform> onComplete)
+        public void Show( Transform target, Vector2 direction = default, Action<Transform> onComplete = null)
         {
             float angle = Random.Range(0f, 360f);
-            Vector2 direction = new Vector2(
-                Mathf.Cos(angle * Mathf.Deg2Rad),
-                Mathf.Sin(angle * Mathf.Deg2Rad)
-            );
+            if (direction == default || direction == Vector2.zero)
+            {
+                direction = new Vector2(
+                    Mathf.Cos(angle * Mathf.Deg2Rad),
+                    Mathf.Sin(angle * Mathf.Deg2Rad)
+                );
+            }
             
             Vector2 offset = direction * Random.Range(_minDistance, _maxDistance);
             int bounces = (int)Mathf.Round(offset.magnitude) + 1;

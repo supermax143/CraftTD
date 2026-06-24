@@ -6,6 +6,7 @@ namespace Unity.Game.Entity
     {
         
         private HealthAttribute _health = new();
+        private RewardMoneyAttribute _rewardMoney = new();
         private readonly Faction _faction;
 
         public Faction Faction => _faction;
@@ -14,6 +15,7 @@ namespace Unity.Game.Entity
         {
             _faction = faction;
             _health = new HealthAttribute(gameStats.GetTowerHealth(epoch, faction));
+            _rewardMoney = new RewardMoneyAttribute(gameStats.GetTowerKillReward(epoch));
         }
 
     }

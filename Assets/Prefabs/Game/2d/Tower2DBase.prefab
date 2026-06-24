@@ -606,6 +606,7 @@ GameObject:
   - component: {fileID: 2800611737174044161}
   - component: {fileID: 7258192515379625128}
   - component: {fileID: 6206104869365584860}
+  - component: {fileID: 1745612026439261076}
   m_Layer: 0
   m_Name: Tower2DBase
   m_TagString: Untagged
@@ -647,6 +648,7 @@ MonoBehaviour:
   _view: {fileID: 7258192515379625128}
   attackTarget: {fileID: 7349024599059812467}
   _health: {fileID: 6206104869365584860}
+  _rewardForDamage: {fileID: 1745612026439261076}
 --- !u!114 &7258192515379625128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,6 +679,21 @@ MonoBehaviour:
   _progressBar: {fileID: 7243490997760515532}
   _health:
     _value: 10
+--- !u!114 &1745612026439261076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055821016266724607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e26619a8753f204d944ded2b0f5625f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.RewardForDamageComponent
+  _rewardMoney:
+    _value: 0
+  _dropDirection: {x: 0, y: 0}
 --- !u!1001 &1461842874964270455
 PrefabInstance:
   m_ObjectHideFlags: 0

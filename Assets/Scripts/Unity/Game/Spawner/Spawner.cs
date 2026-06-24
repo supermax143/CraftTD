@@ -14,9 +14,13 @@ namespace Unity.Game
 {
     public class Spawner : MonoBehaviour
     {
-        [SerializeField] private float _spawnRange;
-        [SerializeField] private Transform _spawnTransform;
-       
+        [SerializeField] 
+        private float _spawnRange;
+        [SerializeField]
+        private Transform _spawnTransform;
+        [SerializeField]
+        private bool _blockSpawn = false;
+        
         [Inject] private DiContainer _container;
         [Inject] private IGameController _gameController;
         
@@ -52,6 +56,10 @@ namespace Unity.Game
         
         public void Spawn(UnitTier tier, int count)
         {
+            if (_blockSpawn)
+            {
+                return;
+            }
             for (int i = 0; i < count; i++)
             {
                 float angle = i * 2.39996f;

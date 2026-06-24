@@ -31,13 +31,13 @@ namespace Unity.Game
             }*/
         }
 
-        public void ShowDrop(Resource resource, Vector2 position)
+        public void ShowDrop(Resource resource, Vector2 position, Vector2 direction = default)
         {
             GameObject rewardView = Instantiate(_rewardMoneyView, position, Quaternion.identity);
             var drop = rewardView.transform;
             drop.localScale = Vector3.one * .5f;
             var targetIcon = _dropTargets.FirstOrDefault().GetTargetRect();
-            _dropAnimator.Show(drop, (target) =>
+            _dropAnimator.Show(drop, direction, (target) =>
             {
                 _flyToTargetAnimator.FlyToIcon(targetIcon, drop, 2,(drop) =>
                 {
