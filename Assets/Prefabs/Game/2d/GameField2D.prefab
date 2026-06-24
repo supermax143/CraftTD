@@ -2737,7 +2737,7 @@ Transform:
   m_GameObject: {fileID: 7449836589433110371}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.1914, z: 0}
+  m_LocalPosition: {x: 0, y: 7.6055, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2797,7 +2797,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 31.47, y: 5.398055}
+  m_Size: {x: 31.47, y: 14.226335}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3086,7 +3086,7 @@ GameObject:
   - component: {fileID: 3770829214553736674}
   - component: {fileID: 2746597721641264032}
   m_Layer: 0
-  m_Name: Decor
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3422,7 +3422,7 @@ Transform:
   m_GameObject: {fileID: 8908343056171499261}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -7.886, z: 0}
+  m_LocalPosition: {x: 0, y: -12.563, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3482,7 +3482,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 31.47, y: 2.283172}
+  m_Size: {x: 31.47, y: 11.637224}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
