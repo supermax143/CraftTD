@@ -7,11 +7,11 @@ namespace Unity.Game
     public class WavesSpawner : Spawner
     {
         private int _waveIndex;
-        
+        private Coroutine _spawnCorotine;
         public override void StartSpawn(EpochModel epoch)
         {
             base.StartSpawn(epoch);
-            StartCoroutine(SpawnNextWave());
+           _spawnCorotine = StartCoroutine(SpawnNextWave());
         }
 
         private IEnumerator SpawnNextWave()
@@ -30,7 +30,7 @@ namespace Unity.Game
             }
             _waveIndex++;
             
-            StartCoroutine(SpawnNextWave());
+            _spawnCorotine = StartCoroutine(SpawnNextWave());
         }
         
         
@@ -38,6 +38,16 @@ namespace Unity.Game
         {
             base.TowerDestroyedHandler(faction);
             StopAllCoroutines();
+        }
+
+        public override void Reset()
+        {
+            if (_spawnCorotine != null)
+            {
+                StopCoroutine(_spawnCorotine);
+            }
+            _waveIndex = 0;
+            base.Reset();
         }
     }
 }

@@ -71,9 +71,14 @@ namespace Unity.Game
         private void OnDeath()
         {
             OnDestroyed?.Invoke(this);
+            Dispose();
+        }
+
+        public void Dispose()
+        {
             Destroy(gameObject);
         }
-        
+
         private void OnDestroy()
         {
             _health.OnDeath -= OnDeath;

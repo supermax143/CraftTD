@@ -12,7 +12,7 @@ namespace Unity.Game
     {
         
         [InlineProperty, SerializeField] 
-        private TowerPrefabAttribute _towerPrefab;
+        private TowerPrefabAttribute _towerPrefab;//TODO: Сделать обычным префабом
        
         /*private HealthAttribute _health = new();
 
@@ -22,5 +22,6 @@ namespace Unity.Game
             RefreshAttributes();
         }*/
 
+        public GameObject TowerPrefab => _towerPrefab.ValueModified;
     }
 }

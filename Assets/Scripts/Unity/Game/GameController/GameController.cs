@@ -12,6 +12,8 @@ using Unity.Infrastructure.Advertisement;
 using Unity.Infrastructure.Advertisement.Transactions;
 using Unity.Presentation.Windows.Result;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Unity.Game
@@ -45,7 +47,7 @@ namespace Unity.Game
             foreach (var team in _teams)
             {
                 team.Initialize();
-                team.Tower.OnDestroyed += TowerDestroyedHandler;
+                team.OnTowerDestroyed += TowerDestroyedHandler;
                 if (team.Faction == Faction.Player)
                 {
                     _spawner = team.Spawner;
@@ -85,7 +87,13 @@ namespace Unity.Game
             _resultWindow.OnHide += OnResultWindowClose;
         }
 
-        
+        private void Update()
+        {
+
+#if UNITY_EDITOR
+            UpdateEditorShortcuts();
+#endif
+        }
         
         private void WatchAdForDoubleMoney()
         {
@@ -147,5 +155,28 @@ namespace Unity.Game
         {
             _applicationSession.CurrentState.ExitGame();
         }
+        
+#if UNITY_EDITOR
+        private void UpdateEditorShortcuts()
+        {
+            
+            var keyboard = Keyboard.current;
+            if (keyboard == null)
+            {
+                return;
+            }
+
+            if (keyboard.tKey.wasPressedThisFrame)
+            {
+                Time.timeScale = 10f;
+            }
+
+            if (keyboard.tKey.wasReleasedThisFrame)
+            {
+                Time.timeScale = 1f;
+            }
+           
+        }
+#endif
     }
 }

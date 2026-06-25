@@ -12,6 +12,7 @@ namespace Unity.Game
     [RequireComponent(typeof(UnitView))]
     public class UnitController : GameComponent
     {
+        public event Action<UnitController> OnDie;
         
         [SerializeField, HideInInspector] 
         private UnitView _view;
@@ -97,8 +98,6 @@ namespace Unity.Game
                 _rewardComponent.SetData(_data);
             }
 
-            //_healthComponent.OnDeath += OnDeathHandler;
-
             _stateManager.Initialize(this);
             _stateManager.ChangeState<SearchTargetState>();
         }
@@ -110,25 +109,13 @@ namespace Unity.Game
         
         public void Die()
         {
-            Destroy(gameObject);
+            OnDie?.Invoke(this);
+            Dispose();
         }
 
-        /*private void OnDeathHandler()
+        public void Dispose()
         {
-            if (_faction == Faction.Enemy)
-            {
-                var epoch = _mainModel.Epoch;
-                epoch.Money += (uint)_rewardComponent.RewardMoney;
-            }
-        }*/
-
-        /*private void OnDestroy()
-        {
-            if (_healthComponent != null)
-            {
-                _healthComponent.OnDeath -= OnDeathHandler;
-            }
-        }*/
-
+            Destroy(gameObject);
+        }
     }
 }

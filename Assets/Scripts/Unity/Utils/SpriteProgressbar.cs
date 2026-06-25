@@ -29,7 +29,11 @@ namespace Unity.Utils
         
         private void UpdateView()
         {
-            _progress.transform.localScale = new Vector3(_currentValue / _maxValue, 1, 1);
+            if (_progress == null)
+            {
+                return;
+            }
+            _progress.localScale = new Vector3(_currentValue / _maxValue, 1, 1);
         }
     }
 }

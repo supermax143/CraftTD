@@ -1,12 +1,8 @@
 using System;
 using System.Collections;
-using System.Linq;
 using Core.Application.Models;
-using Unity.Game.Attributes.Specific;
 using Unity.Utils;
-using Unity.Utils.Time;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -14,6 +10,9 @@ namespace Unity.Game
 {
     public class Spawner : MonoBehaviour
     {
+        public event Action<UnitController> OnUnitSpawned;
+        
+        
         [SerializeField] 
         private float _spawnRange;
         [SerializeField]
@@ -40,7 +39,6 @@ namespace Unity.Game
             _faction = faction;
             _enemyFaction = enemyFaction;
         }
-
 
         public virtual void StartSpawn(EpochModel epoch)
         {
@@ -93,16 +91,27 @@ namespace Unity.Game
                 unit.SetFaction(_faction, _enemyFaction);
                 unit.transform.position = transform.position + spawnDelta;
                 unit.SetData(unitModel.Entity);
+                OnUnitSpawned?.Invoke(unit);
                 StartCoroutine(RandomizeAnimation(unit.View));
             }
         }
 
         private IEnumerator RandomizeAnimation(UnitView unit)
         {
+            if (unit == null)
+            {
+                yield break;
+            }
             yield return new WaitForSeconds(.3f);
             unit.SetRandomFrame();
         }
-        
+
+        public virtual void Reset()
+        {
+            _blockSpawn = false;
+            _canSpawn = false;
+            _epoch = null;
+        }
         
         private void OnDestroy()
         {
