@@ -182,6 +182,7 @@ RectTransform:
   - {fileID: 2016718547571642493}
   - {fileID: 8907167695975659658}
   - {fileID: 1298333314621435454}
+  - {fileID: 7003896952421923170}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -237,6 +238,7 @@ MonoBehaviour:
   _gameSettings: {fileID: 11400000, guid: 0ac77448c818fa6468273506bebee18c, type: 2}
   _chronologyInfo: {fileID: 11400000, guid: 106b5a41af594844dba6fb81ca718221, type: 2}
   _baseGameStats: {fileID: 11400000, guid: 9bd3b21350ad82042b103d73bcba3cec, type: 2}
+  _advertisementController: {fileID: 2732569855505565650}
 --- !u!114 &3856448572725618157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +353,55 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
+--- !u!1 &6435364441147233122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7003896952421923170}
+  - component: {fileID: 2732569855505565650}
+  m_Layer: 0
+  m_Name: Advertisements
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7003896952421923170
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435364441147233122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2638617841443220894}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2732569855505565650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6435364441147233122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 232a2097a95b0604c849effccbfb6295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Infrastructure.Advertisement.AdvertisementController
 --- !u!1 &6694253302271421472
 GameObject:
   m_ObjectHideFlags: 0

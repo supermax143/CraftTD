@@ -10,10 +10,11 @@ namespace Unity.Presentation.Windows
 
 		public event Action<IWindow> OnShow;
 		public event Action<IWindow> OnHide;
+		public event Action<IWindow> OnStartHide;
 		
 		protected virtual void Awake()
 		{
-			Hide();
+			gameObject.SetActive(false);
 		}
 
 		public virtual void Initialize() { }
@@ -27,11 +28,13 @@ namespace Unity.Presentation.Windows
 		public virtual void Hide()
 		{
 			gameObject.SetActive(false);
-			OnHide?.Invoke(this);
+			OnStartHide?.Invoke(this);
+			Close();//TODO: вызывать клоус только после сокрытия окна
 		}
 
 		private void Close()
 		{
+			OnHide?.Invoke(this);
 			Destroy(gameObject);
 		}
 		

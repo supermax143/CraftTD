@@ -128,7 +128,7 @@ namespace Unity.Infrastructure.Advertisement
             ShowAdvertisement(_container.Resolve<AdvertisementContinueGame>());
         }
 
-        public void ShowRewardedAddReward()
+        public void ShowRewardedDoubleReward()
         {
             ShowAdvertisement(_container.Resolve<AdvertisementDoubleReward>());
         }

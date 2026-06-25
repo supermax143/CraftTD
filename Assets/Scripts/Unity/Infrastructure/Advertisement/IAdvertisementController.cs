@@ -8,7 +8,7 @@ namespace Unity.Infrastructure.Advertisement
         void AddListener<TAdvertisement>(Action<TAdvertisement> listener) where TAdvertisement : AdvertisementBase;
         void RemoveListener<TAdvertisement>(Action<TAdvertisement> listener) where TAdvertisement : AdvertisementBase;
         void ShowRewardedContinueGame();
-        void ShowRewardedAddReward();
+        void ShowRewardedDoubleReward();
         event Action OnAdvertisementStartShow;
         void ShowFullscreen();
         void Initialize();

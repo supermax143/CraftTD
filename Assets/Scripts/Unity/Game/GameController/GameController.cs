@@ -30,12 +30,12 @@ namespace Unity.Game
         [Inject] private IMainModel _mainModel;
         [Inject] private ILevelRewardAggregator _rewardAggregator;
         [Inject] private IWindowsController _windowsController;
+        [Inject] private IAdvertisementController _advertisementController;
         
         private EpochModel Epoch => _mainModel.PlayerEpoch;
         
         private Spawner _spawner;
         private bool _started = false;
-        private IAdvertisementController _advertisementController;
 
         private ResultWindow _resultWindow;
         
@@ -90,13 +90,13 @@ namespace Unity.Game
         private void WatchAdForDoubleMoney()
         {
             _advertisementController.AddListener<AdvertisementDoubleReward>(OnAdWatched);
+            _advertisementController.ShowRewardedDoubleReward();
         }
 
         private void OnAdWatched(AdvertisementDoubleReward adv)
         {
             if (adv.AdvResult == AdvertisementBase.Result.Completed)
             {
-                
                 _rewardAggregator.AddMoney(_rewardAggregator.Money.Value);
             }
             _resultWindow.UpdateReward(_rewardAggregator.Money);

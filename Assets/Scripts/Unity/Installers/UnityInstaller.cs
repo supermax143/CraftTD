@@ -1,7 +1,9 @@
 using Core.Application.DataStorage;
 using Unity.Bootstrap;
 using Unity.Game;
+using Unity.Infrastructure.Advertisement;
 using Unity.Infrastructure.Advertisement.API;
+using Unity.Infrastructure.Advertisement.Transactions;
 using Unity.Infrastructure.DataStorage;
 using Unity.Infrastructure.GameEvents;
 using Unity.Infrastructure.Localization;
@@ -29,7 +31,8 @@ namespace Unity.Installers
       private ChronologyInfo _chronologyInfo;
       [SerializeField]
       private GameStats _baseGameStats;
-     
+      [SerializeField]
+      private AdvertisementController _advertisementController;
 
 
       public override async void InstallBindings()
@@ -49,6 +52,8 @@ namespace Unity.Installers
          Container.BindInterfacesAndSelfTo<GameSettings>().FromInstance(_gameSettings);
          Container.BindInterfacesAndSelfTo<DummyPurchasesController>().AsSingle();
          Container.BindInterfacesAndSelfTo<DummyAdvertisementAPI>().AsSingle();
+         Container.BindInterfacesAndSelfTo<AdvertisementController>().FromInstance(_advertisementController).AsSingle();
+         Container.Bind<AdvertisementDoubleReward>().AsTransient();
          
          //Data Storage
          Container.Bind<ILocalStorageProvider>().To<PlayerPrefsStorageProvider>().AsTransient();
@@ -56,6 +61,8 @@ namespace Unity.Installers
          
          //Tutorial
          Container.BindInterfacesAndSelfTo<TutorialController>().FromInstance(_tutorialController);
+         
+         //Advertisement
       }
 
       private static void InitializeAddressables()
