@@ -56,7 +56,6 @@ namespace Unity.Game
         {
             if (_target == null)
             {
-                Debug.LogError($"{this.GetType().Name} Target is null");
                 return;
             }
             _weapon.Attack(_target, Damage);
@@ -81,7 +80,11 @@ namespace Unity.Game
         private IEnumerator Attack()
         {
             yield return new WaitForSeconds(AttackSpeed);
-            _moveComponent.RotateTo(_target.GetClosestPosition(transform.position));
+            if (!_target.TryGetClosestPosition(transform.position, out var targetPosition))
+            {
+                yield return null;
+            }
+            _moveComponent.RotateTo(targetPosition);
             if (_target == null)
             {
                 Debug.LogError($"{this.GetType().Name} Target is null");
@@ -103,7 +106,10 @@ namespace Unity.Game
         public bool CheckRange(AttackTargetBase target)
         {
             Vector2 position = transform.position;
-            var targetPosition = target.GetClosestPosition(position);
+            if (!target.TryGetClosestPosition(position, out var targetPosition))
+            {
+                return false;
+            }
             var distance = Vector3.Distance(position, targetPosition);
             return distance <= AttackRange;
         }

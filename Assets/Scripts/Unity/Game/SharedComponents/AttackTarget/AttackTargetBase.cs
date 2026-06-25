@@ -19,8 +19,8 @@ namespace Unity.Game
         private HealthComponent _healthComponent;
         
         private Faction _faction;
-        
-        public abstract Vector3 GetClosestPosition(Vector3 position);
+
+        public abstract bool TryGetClosestPosition(Vector3 position, out Vector3 closestPosition);
 
         public void SetFaction(Faction faction)
         {
@@ -59,30 +59,5 @@ namespace Unity.Game
             _collider = GetComponent<TCollider>();
         }
 
-        /*private void DeathHandler()
-        {
-            OnDeath?.Invoke();
-        }*/
-        
-        /*public void SetFaction(Faction faction)
-        {
-            _faction = faction;
-        }
-
-        public void Initialize(HealthComponent health)
-        {
-            _healthComponent = health;
-            _healthComponent.OnDeath += DeathHandler;
-        }
-        
-        public Vector3 GetClosestPosition(Vector3 position)
-        {
-            return _collider.ClosestPoint(position);
-        }*/
-        
-        /*private void OnDestroy()
-        {
-            _healthComponent.OnDeath -= DeathHandler;
-        }*/
     }
 }

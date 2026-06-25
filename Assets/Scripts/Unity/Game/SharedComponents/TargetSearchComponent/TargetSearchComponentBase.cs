@@ -56,7 +56,11 @@ namespace Unity.Game
             if (_moveComponent != null && _moveComponent.IsMoving)
             {
                 Gizmos.color = Color.blue;
-                Gizmos.DrawLine(transform.position, _moveComponent.TargetPosition);
+                if (!_moveComponent.TryTargetPosition(out var pos))
+                {
+                    return;
+                }
+                Gizmos.DrawLine(transform.position, pos);
             }
         }
 

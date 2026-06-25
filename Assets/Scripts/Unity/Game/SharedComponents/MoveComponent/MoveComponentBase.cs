@@ -15,7 +15,9 @@ namespace Unity.Game
         private AttackTargetBase _target;
 
         public float MoveSpeed => _moveSpeed.ValueModified;
-         public Vector3 TargetPosition => _target.GetClosestPosition(transform.position);
+
+        public bool TryTargetPosition(out Vector3 pos) 
+            => _target.TryGetClosestPosition(transform.position, out pos);
         
         public bool IsMoving => _moving;
 
@@ -43,7 +45,10 @@ namespace Unity.Game
                 return;
             }
 
-            var pos = TargetPosition;
+            if (!TryTargetPosition(out var pos))
+            {
+                return;
+            }
             MoveToTarget(pos);
             RotateTo(pos);
         }

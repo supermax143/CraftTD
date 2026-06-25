@@ -30,7 +30,11 @@ namespace Unity.Game.Projectile
         private IEnumerator Move()
         {
             var startPosition = transform.position;
-            var targetPosition = _target.GetClosestPosition(transform.position);
+            if (!_target.TryGetClosestPosition(transform.position, out var targetPosition))
+            {
+                yield return null;
+            }
+            //var targetPosition = _target.TryGetClosestPosition(transform.position);
             var time = Vector3.Distance(transform.position, targetPosition) / _speed;
             _timer.Start(time);
             while (!_timer.IsComplete)

@@ -4,9 +4,15 @@ namespace Unity.Game
 {
     public class AttackTarget3D : AttackTargetBase<Collider>
     {
-        public override Vector3 GetClosestPosition(Vector3 position)
+        public override bool TryGetClosestPosition(Vector3 position, out Vector3 closestPosition)
         {
-            return _collider.ClosestPoint(position);
+            closestPosition = default;
+            if (_collider == null)
+            {
+                return false;
+            }
+            closestPosition = _collider.ClosestPoint(position);
+            return true;
         }
     }
 }
