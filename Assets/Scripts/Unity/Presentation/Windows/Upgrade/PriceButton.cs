@@ -20,10 +20,7 @@ namespace Unity.Presentation.Components
         private int _price;
 
         public Button Button => _button;
-
-        private void Start()
-        {
-        }
+        
 
         public void SetPrice(int price)
         {

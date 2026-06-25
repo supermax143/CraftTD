@@ -5,7 +5,7 @@ namespace Core.Application.Interfaces.Windows
 {
    public interface IWindowsController
    {
-      UniTask<IWindow> ShowWindow<TWindow>() where TWindow : IWindow;
-      void ShowWindow<TWindow>(Action<IWindow> handler) where TWindow : IWindow;
+      UniTask<TWindow> ShowWindow<TWindow>() where TWindow : class, IWindow;
+      void ShowWindow<TWindow>(Action<IWindow> handler) where TWindow : class, IWindow;
    }
 }

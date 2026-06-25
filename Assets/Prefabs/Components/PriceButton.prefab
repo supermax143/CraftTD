@@ -273,3 +273,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.PriceButton
   _priceText: {fileID: 6651464641033468106}
   _button: {fileID: 2867443693809576802}
+  _Icon: {fileID: 0}

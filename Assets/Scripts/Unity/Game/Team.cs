@@ -42,14 +42,18 @@ namespace Unity.Game
         public void Initialize()
         {
             _tower.SetFaction(_faction);
-            _spawner.SetFaction(_faction, _enemyFaction);
             _tower.SetData(Epoch.Tower.Entity);
+            _spawner.SetFaction(_faction, _enemyFaction);
         }
 
         public void StartGame()
         {
             _spawner.StartSpawn(Epoch);
         }
-        
+
+        public void Reset()
+        {
+            Debug.Log($"{this.GetType().Name} Reset");
+        }
     }
 }

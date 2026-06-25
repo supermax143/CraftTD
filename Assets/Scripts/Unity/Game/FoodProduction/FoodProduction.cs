@@ -73,5 +73,13 @@ namespace Unity.Game
             _foodCount -= count;
             OnFoodChanged?.Invoke();
         }
+
+        public void Reset()
+        {
+            StopProduction();
+            _foodCount = 0;
+            _curProgress = 0;
+            _started = false;
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace Unity.Presentation.Windows
 			OnHide?.Invoke(this);
 		}
 
-		public void Close()
+		private void Close()
 		{
 			Destroy(gameObject);
 		}

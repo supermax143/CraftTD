@@ -62,18 +62,19 @@ namespace Unity.Infrastructure.Windows
             OnAnyWindowClosed?.Invoke(member.WindowName);
         }
         
-        public void ShowWindow<TWindow>(Action<IWindow> handler) where TWindow : IWindow
+        public void ShowWindow<TWindow>(Action<IWindow> handler) where TWindow : class, IWindow
         {
             ShowWindowInternal<TWindow>(handler).Forget();
         }
 
-        private async UniTask ShowWindowInternal<TWindow>(Action<IWindow> handler) where TWindow : IWindow
+        private async UniTask ShowWindowInternal<TWindow>(Action<IWindow> handler) where TWindow : class, IWindow
         {
             var window = await ShowWindow<TWindow>();
             handler?.Invoke(window);
         }
         
-        public async UniTask<IWindow> ShowWindow<TWindow>() where TWindow : IWindow
+
+        public async UniTask<TWindow> ShowWindow<TWindow>() where TWindow : class, IWindow
         {
             var windowType =  typeof(TWindow);
             if (!WindowAttribute.TryGetName(windowType, out var windowName))
@@ -95,7 +96,7 @@ namespace Unity.Infrastructure.Windows
                 }
                 
                 
-                return InitializeInstance(windowPrefab, windowName);
+                return InitializeInstance<TWindow>(windowPrefab, windowName);
             }
             catch (Exception ex)
             {
@@ -109,9 +110,9 @@ namespace Unity.Infrastructure.Windows
             
         }
 
-        private IWindow InitializeInstance(GameObject windowPrefab, string windowName)
+        private TWindow InitializeInstance<TWindow>(GameObject windowPrefab, string windowName)where TWindow : class, IWindow
         {
-            var window = _diContainer.InstantiatePrefabForComponent<IWindow>(windowPrefab, _windowsParent);
+            var window = _diContainer.InstantiatePrefabForComponent<TWindow>(windowPrefab, _windowsParent);
             var windowsListMember = window.GameObject.AddComponent<WindowsListMember>();
             windowsListMember.Initialize(this, windowName);
 
@@ -124,7 +125,7 @@ namespace Unity.Infrastructure.Windows
             _windowsList.Add(windowsListMember);
             UpdateBackgroundIndex();
 
-
+            (window as WindowBase).Initialize();
             OnWindowLoadComplete?.Invoke();
 
             return window;

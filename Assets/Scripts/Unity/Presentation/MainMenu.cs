@@ -69,7 +69,6 @@ namespace Unity.Presentation
 		{
 			_windowsController.ShowWindow<UpgradeWindow>(window =>
 			{
-				window.Initialize();
 				window.Show();
 			});
 		}

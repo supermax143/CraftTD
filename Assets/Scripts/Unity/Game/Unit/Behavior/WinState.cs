@@ -6,7 +6,7 @@ namespace Unity.Game
     {
         public override void Enter()
         {
-            _unit.transform.localScale = Vector3.one * 2;
+            _unit.View.StartIdle();
         }
     }
 }
