@@ -10,6 +10,7 @@ namespace Core.Application.DataStorage
         PurchasesStorageData Purchases { get; }
         Resource UserMoney { get; }
         int CurrentPlayerEpochIndex { get; }
+        int CurrentEnemyEpochIndex { get; }
         void AddMoney(int amount);
         void SetCurrentPlayerEpoch(int index);
         void Reset();

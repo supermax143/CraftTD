@@ -942,6 +942,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6088230225082082810}
     m_Modifications:
+    - target: {fileID: 454675820706027892, guid: e39e15e82621d8f4b905c6f13ff7fc88,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 366391118174752053}
+    - target: {fileID: 454675820706027892, guid: e39e15e82621d8f4b905c6f13ff7fc88,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectPrevEpoch
+      objectReference: {fileID: 0}
+    - target: {fileID: 454675820706027892, guid: e39e15e82621d8f4b905c6f13ff7fc88,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Unity.Presentation.StartBattlePanel, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 752620215202355816, guid: e39e15e82621d8f4b905c6f13ff7fc88,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1047,26 +1062,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleStartPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 1328737528372073469, guid: e39e15e82621d8f4b905c6f13ff7fc88,
+    - target: {fileID: 4620902457776145047, guid: e39e15e82621d8f4b905c6f13ff7fc88,
         type: 3}
-      propertyPath: m_text
-      value: <--
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 366391118174752053}
+    - target: {fileID: 4620902457776145047, guid: e39e15e82621d8f4b905c6f13ff7fc88,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectNextEpoch
       objectReference: {fileID: 0}
-    - target: {fileID: 1328737528372073469, guid: e39e15e82621d8f4b905c6f13ff7fc88,
+    - target: {fileID: 4620902457776145047, guid: e39e15e82621d8f4b905c6f13ff7fc88,
         type: 3}
-      propertyPath: m_fontSize
-      value: 72
-      objectReference: {fileID: 0}
-    - target: {fileID: 3940020974245831024, guid: e39e15e82621d8f4b905c6f13ff7fc88,
-        type: 3}
-      propertyPath: m_text
-      value: -->
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Unity.Presentation.StartBattlePanel, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e39e15e82621d8f4b905c6f13ff7fc88, type: 3}
+--- !u!114 &366391118174752053 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4430266040653474180, guid: e39e15e82621d8f4b905c6f13ff7fc88,
+    type: 3}
+  m_PrefabInstance: {fileID: 4066426906751952049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274b828bd5d64f67a4e58627e409ca45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.StartBattlePanel
 --- !u!224 &3611607226636074713 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 752620215202355816, guid: e39e15e82621d8f4b905c6f13ff7fc88,

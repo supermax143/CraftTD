@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 6289721254005565993}
   - component: {fileID: 1316685085470860206}
   - component: {fileID: 7780242359587323584}
+  - component: {fileID: 1495833683786963887}
   m_Layer: 5
   m_Name: UnitsBuyPanel
   m_TagString: Untagged
@@ -371,6 +372,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &1495833683786963887
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697124578011493310}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &9076857403914359405
 GameObject:
   m_ObjectHideFlags: 0

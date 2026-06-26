@@ -13,16 +13,23 @@ namespace Unity.Presentation
     {
         [SerializeField, HideInInspector]
         private HUDGameAnimatorController _animator;
-        
+        [SerializeField, HideInInspector]
+        private StartBattlePanel _startBattlePanel;
         
         [Inject] private ILevelRewardAggregator _rewardAggregator;
         [Inject] private IWindowsController _windowsController;
 
         private void OnValidate()
         {
-            _animator = GetComponent<HUDGameAnimatorController>();
+            _animator = GetComponentInChildren<HUDGameAnimatorController>();
+            _startBattlePanel = GetComponentInChildren<StartBattlePanel>();
         }
 
+        private void Start()
+        {
+            _startBattlePanel.UpdateView();
+        }
+        
         public void ShowExampleWindow()
         {
            _windowsController.ShowWindow<UpgradeWindow>(window =>

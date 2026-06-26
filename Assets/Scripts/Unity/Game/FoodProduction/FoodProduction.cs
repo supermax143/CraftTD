@@ -33,7 +33,7 @@ namespace Unity.Game
 
         public void StartProduction()
         {
-            _foodCount = _gameStats.StartFoodCount(_mainModel.CurrentEpochNumber);
+            _foodCount = _gameStats.StartFoodCount(_mainModel.CurrentPlayerEpochNumber);
             _foodProductionTime = 1 / Epoch.FoodProductionSpeed;
             OnFoodProductionStarted?.Invoke();
             StartCoroutine(Produce());

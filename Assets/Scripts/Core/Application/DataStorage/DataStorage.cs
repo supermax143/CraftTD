@@ -33,7 +33,7 @@ namespace Core.Application.DataStorage
         public TutorialStorageData TutorialStorage => _tutorialStorageData;
         public PurchasesStorageData Purchases => _purchasesStorageData;
         public int CurrentPlayerEpochIndex => _curPlayerEpochIndex.Value;
-        public int CurEnemyEpochIndex => _curEnemyEpochIndex.Value;
+        public int CurrentEnemyEpochIndex => _curEnemyEpochIndex.Value;
         
 #if DEBUG_MODE
         public void Initialize()
@@ -88,7 +88,7 @@ namespace Core.Application.DataStorage
             _curPlayerEpochIndex.Value = index;
         }
 
-        public void SetCurrentEnemyEpoch(int index)
+        public void SetEnemyEpochIndex(int index)
         {
             _curEnemyEpochIndex.Value = index;
         }

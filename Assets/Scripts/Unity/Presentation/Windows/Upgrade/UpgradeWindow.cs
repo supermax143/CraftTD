@@ -22,11 +22,11 @@ namespace Unity.Presentation.Windows
         [SerializeField]
         private TextMeshProUGUI _moneyTF;
         [SerializeField]
-        private PriceButton _completeEpochButton;
-        [SerializeField]
         private FoodUpgradePanel _foodUpgradePanel;
         [SerializeField]
         private TowerUpgradePanel _towerUpgradePanel;
+        [SerializeField]
+        private EpochCompletePanel _epochCompletePanel;
         
         [Inject] IMainModel _model;
         
@@ -36,6 +36,7 @@ namespace Unity.Presentation.Windows
         {
             Epoch.OnMoneyChanged += UpdateMoney;
             Epoch.OnUnitOpened += UpdateUnits;
+            _epochCompletePanel.OnEpochComplete += UpdateView;
             UpdateView();
         }
 
@@ -44,9 +45,9 @@ namespace Unity.Presentation.Windows
             _epochTF.text = Epoch.Name;
             UpdateMoney();
             UpdateUnits();
-            UpdateEpochButton();
             _foodUpgradePanel.UpdateView();
             _towerUpgradePanel.UpdateView();
+            _epochCompletePanel.UpdateView();
         }
         
 
@@ -64,23 +65,12 @@ namespace Unity.Presentation.Windows
                 unitOpenItem.OnUnitOpened += Epoch.OpenUnit;
             }
         }
-
-        private void UpdateEpochButton()
-        {
-            _completeEpochButton.gameObject.SetActive(_model.HasNextEpoch());
-            _completeEpochButton.SetPrice(_model.GetEpochCompleteCost());
-        }
-        
-        public void CompleteEpoch()
-        {
-            _model.CompleteEpoch();
-            UpdateView();
-        }
         
         private void OnDestroy()
         {
             Epoch.OnMoneyChanged -= UpdateMoney;
             Epoch.OnUnitOpened -= UpdateUnits;
+            _epochCompletePanel.OnEpochComplete -= UpdateView;
         }
     }
 }

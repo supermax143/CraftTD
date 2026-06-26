@@ -6,11 +6,15 @@ namespace Core.Application.Models
         EpochModel EnemyEpoch { get; }
         EpochModel PlayerEpoch { get; }
         Resource Money { get; set; }
-        int CurrentEpochNumber { get; }
+        int CurrentPlayerEpochNumber { get; }
+        int CurrentEnemyEpochNumber { get; }
+        int SelectedEnemyEpochIndex { get; }
         bool HasNextEpoch();
-        void CompleteEpoch();
+        void IncreaseEnemyEpoch();
+        void CompleteEpochForMoney();
         int GetEpochCompleteCost();
         void Reset();
+        void SelectEnemyEpochIndex(int index);
     }
     
     internal interface IMainModelInternal : IMainModel

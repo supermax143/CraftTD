@@ -18,15 +18,11 @@ namespace Core.Application.Models
         private readonly List<UnitModel> units = new();
 
         private TowerModel _tower;
-        /*private Dictionary<Faction, List<UnitModel>> _factionToUnits = new ();
-        private List<TowerModel> _towers = new();*/
-        
-        
         
         private readonly EpochInfo _info;
         private readonly EpochStorageData _data;
         private readonly GameStats _gameStats;
-        private readonly int _epochId;
+        private readonly int _epochNumber;
         private readonly Faction _faction;
 
 
@@ -43,18 +39,18 @@ namespace Core.Application.Models
         public int FoodProductionUpgradeCost => _gameStats.GetFoodProductionSpeedCost(FoodProductionLevel);
         public int TowerUpgradeCost => _gameStats.GetTowerUpgradeCost(TowerLevel);
         public int TowerHealth => _gameStats.GetTowerHealth(TowerLevel);
+        public int EpochNumber => _epochNumber;
 
         
         public EpochInfo Info => _info;
 
         public TowerModel Tower => _tower;
 
-        //public TowerModel GetTower(Faction faction) => _towers.Find(tower => tower.Faction == faction);
-        
-        internal EpochModel( Faction faction, int currentEpochId, EpochInfo info, EpochStorageData data, GameStats gameStats)
+
+        internal EpochModel( Faction faction, int epochNumber, EpochInfo info, EpochStorageData data, GameStats gameStats)
         {
             _faction = faction;
-            _epochId = currentEpochId;
+            _epochNumber = epochNumber;
             _info = info;
             _data = data;
             _gameStats = gameStats;
@@ -78,13 +74,7 @@ namespace Core.Application.Models
                 return;
             }
             
-            /*if (!_factionToUnits.TryGetValue(faction, out List<UnitModel> units))
-            {
-                units = new List<UnitModel>();
-                _factionToUnits.Add(faction, units);
-            }*/
-            
-            var entity = GetUnitEntity(tier, _epochId);
+            var entity = GetUnitEntity(tier, _epochNumber);
             var modifiers = _info.GetUnitModifiers(tier);
             
             foreach (var modifierWrapper in modifiers)
@@ -103,7 +93,7 @@ namespace Core.Application.Models
         
         private void AddTowers()
         {
-            _tower = new TowerModel(_info.Tower, GetTowerEntity(_epochId));
+            _tower = new TowerModel(_info.Tower, GetTowerEntity(_epochNumber));
             if (_faction == Faction.Player)
             {
                 _tower.AddModifier(new HealthAddModifier(GetHashCode(), TowerHealth));

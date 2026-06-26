@@ -78,14 +78,19 @@ namespace Unity.Game
         {
             _foodProduction.StopProduction();
             OnTowerDestroyed?.Invoke(tower.Faction);
-            ShowResultDelayed(tower.Faction != Faction.Player);
+            var playerWin = tower.Faction != Faction.Player;
+            ShowResultDelayed(playerWin);
+            if (_mainModel.CurrentEnemyEpochNumber < _mainModel.CurrentPlayerEpochNumber)
+            {
+                _mainModel.IncreaseEnemyEpoch();
+            }
         }
 
-        public async UniTask ShowResultDelayed(bool isVictory)
+        public async UniTask ShowResultDelayed(bool playerWin)
         {
             UniTask.WaitForSeconds(1);
             _resultWindow = await _windowsController.ShowWindow<ResultWindow>();
-            _resultWindow.SetResult(_rewardAggregator.Money, isVictory);
+            _resultWindow.SetResult(_rewardAggregator.Money, playerWin);
             _resultWindow.Show();
             _resultWindow.OnAdStartWatch += WatchAdForDoubleMoney;
             _resultWindow.OnHide += OnResultWindowClose;

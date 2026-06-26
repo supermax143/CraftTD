@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using Unity.Game;
 using Zenject;
 
@@ -25,11 +23,16 @@ namespace Core.Application.Models
         private EpochModel _playerEpoch;
         private EpochModel _enemyEpoch;
 
+        private int _selectedEnemyEpochIndex;
+        
         public Resource Money
         {
             get => _playerEpoch.Money;
             set => _playerEpoch.Money = value;
         }
+        public int CurrentPlayerEpochNumber => _dataStorage.CurrentPlayerEpochIndex + 1;
+        public int CurrentEnemyEpochNumber => _dataStorage.CurrentPlayerEpochIndex + 1;
+        public int SelectedEnemyEpochIndex => _selectedEnemyEpochIndex;
 
 #if DEBUG_MODE
         public void Initialize()
@@ -38,7 +41,7 @@ namespace Core.Application.Models
         }
 #endif
 
-        public void CompleteEpoch()
+        public void CompleteEpochForMoney()
         {
             var cost = Resource.Money(GetEpochCompleteCost());
             if (cost > Money)
@@ -48,27 +51,44 @@ namespace Core.Application.Models
             Money -= cost;
             _dataStorage.SetPlayerEpochIndex(_dataStorage.CurrentPlayerEpochIndex + 1);
             _dataStorage.EpochData.Reset();
-            _dataStorage.SetCurrentEnemyEpoch(0);
+            _dataStorage.SetEnemyEpochIndex(0);
             Init();
         }
 
-        public int CurrentEpochNumber => _dataStorage.CurrentPlayerEpochIndex + 1;
-
+        public void IncreaseEnemyEpoch()
+        {
+            _dataStorage.SetEnemyEpochIndex(_dataStorage.CurrentEnemyEpochIndex + 1);
+            SelectEnemyEpochIndex(_dataStorage.CurrentEnemyEpochIndex);
+        }
 
         public int GetEpochCompleteCost()
         {
-            return _gameStats.GetEpochCompleteCost(CurrentEpochNumber);
+            return _gameStats.GetEpochCompleteCost(CurrentPlayerEpochNumber);
         }
         
         public bool HasNextEpoch() => 
             _dataStorage.CurrentPlayerEpochIndex < _chronology.Epochs.Count-1;
         
+        public void SelectEnemyEpochIndex(int index)
+        {
+            if (index < 0 || index >= _chronology.Epochs.Count)
+            {
+                return;
+            }
+            _selectedEnemyEpochIndex = index;
+            _enemyEpoch = GetEpochModel(_selectedEnemyEpochIndex, Faction.Enemy);
+        }
         
         public void Init()
         {
-            _chronology.TryGetEpochInfo(_dataStorage.CurrentPlayerEpochIndex, out var epochInfo);
-            _playerEpoch = new EpochModel( Faction.Player, CurrentEpochNumber ,epochInfo, _dataStorage.EpochData, _gameStats);
-            _enemyEpoch = new EpochModel( Faction.Enemy, CurrentEpochNumber ,epochInfo, _dataStorage.EpochData, _gameStats);
+            _playerEpoch = GetEpochModel(_dataStorage.CurrentPlayerEpochIndex, Faction.Player);
+            _enemyEpoch = GetEpochModel(_dataStorage.CurrentPlayerEpochIndex, Faction.Enemy);
+        }
+
+        private EpochModel GetEpochModel(int index, Faction faction)
+        {
+            _chronology.TryGetEpochInfo(index, out var epochInfo);
+            return new EpochModel(faction, index + 1, epochInfo, _dataStorage.EpochData, _gameStats);
         }
         
         public void Reset()
