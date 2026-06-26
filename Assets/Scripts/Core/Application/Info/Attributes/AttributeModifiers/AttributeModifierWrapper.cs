@@ -1,5 +1,4 @@
 using System;
-using Sirenix.OdinInspector;
 using Unity.Game.Attributes;
 using Unity.Game.Attributes.Specific;
 using UnityEngine;

@@ -10,6 +10,7 @@ using Cysharp.Threading.Tasks.Triggers;
 using DG.Tweening;
 using Unity.Infrastructure.Advertisement;
 using Unity.Infrastructure.Advertisement.Transactions;
+using Unity.Presentation;
 using Unity.Presentation.Windows.Result;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,7 +28,9 @@ namespace Unity.Game
         private List<Team> _teams;
         [SerializeField] 
         private FoodProduction _foodProduction;
-
+        [SerializeField]
+        private HUDGameView _hud;
+        
         [Inject] private IApplicationSession _applicationSession;
         [Inject] private IMainModel _mainModel;
         [Inject] private ILevelRewardAggregator _rewardAggregator;
@@ -62,6 +65,7 @@ namespace Unity.Game
                 return;
             }
             
+            _hud.SetIsUpgradeState(false);
             foreach (var team in _teams)
             {
                 team.StartGame();
@@ -123,6 +127,7 @@ namespace Unity.Game
             {
                 team.Reset();
             }
+            _hud.SetIsUpgradeState(true);
         }
 
 

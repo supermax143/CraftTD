@@ -5,15 +5,11 @@ using Random = UnityEngine.Random;
 
 namespace Unity.Presentation.Components
 {
-    public class UnitAnimator : MonoBehaviour
+    public class UnitAnimatorController : AnimatorControllerBase
     {
         
         [SerializeField, HideInInspector]
-        private Animator _animator;
-        [SerializeField, HideInInspector]
         private UnitAnimationEvents _animationEvents;
-
-        private int _currentTrigger;
 
         private static class Layers
         {
@@ -34,17 +30,16 @@ namespace Unity.Presentation.Components
             public static readonly int Attack = Animator.StringToHash(nameof(Attack));
         }
         
-        
-        private void OnValidate()
+
+        protected void OnValidate()
         {
-            _animator = GetComponentInChildren<Animator>();
+            base.OnValidate();
             if (_animator != null && !_animator.TryGetComponent(out _animationEvents))
             {
                 _animationEvents = _animator.gameObject.AddComponent<UnitAnimationEvents>();
             }
         }
 
-        
         public void PlayAttack()
         {
             PlayAnimation(Triggers.Attack);
@@ -61,48 +56,8 @@ namespace Unity.Presentation.Components
         }
         
         
-        
         public bool IsIdleState() => IsPlayingState(States.Idle, Layers.Base);
         public bool IsWalkState() => IsPlayingState(States.Walk, Layers.Base);
         public bool IsAttackState() => IsPlayingState(States.Attack, Layers.Base);
-        
-        protected bool IsPlayingState(int shortNameHash, int layerIndex)
-        {
-            if (_animator == null)
-            {
-                return false;
-            }
-            var state = _animator.GetCurrentAnimatorStateInfo(layerIndex);
-            return shortNameHash == state.shortNameHash;
-        }
-        
-        private void PlayAnimation(int trigger)
-        {
-            if (_animator == null)
-            {
-                return;
-            }
-            
-            if (_currentTrigger != 0)
-            {
-                _animator.ResetTrigger(_currentTrigger);
-            }
-
-            _animator.SetTrigger(trigger);
-            _currentTrigger = trigger;
-        }
-        
-        
-        public void SetRandomFrame()
-        {
-            if (_animator == null)
-            {
-                return;
-            }
-
-            var stateInfo = _animator.GetCurrentAnimatorStateInfo(Layers.Base);
-            var randomTime = Random.Range(0f, stateInfo.length);
-            _animator.PlayInFixedTime(stateInfo.shortNameHash, Layers.Base, randomTime);
-        }
     }
 }

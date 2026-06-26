@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Application.Info.Attributes.AttributeModifiers;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Unity.Game
@@ -14,35 +13,23 @@ namespace Unity.Game
         [SerializeField]
         private string _epochName;
         
-        [HideLabel]
-        [InlineProperty]
         [SerializeField]
         private TowerInfo _tower;
         
-        [HideLabel]
-        [InlineProperty]
         [SerializeField]
         private UnitInfo _unitTier1;
-        [HideLabel]
-        [InlineProperty]
         [SerializeField]
         private UnitInfo _unitTier2;
-        [HideLabel]
-        [InlineProperty]
         [SerializeField]
         private UnitInfo _unitTier3;
 
-        [ListDrawerSettings(ShowIndexLabels = true)]
         [SerializeField]
         private List<UnitWave> _waves;
         
-        [ListDrawerSettings(ListElementLabelName = "Label")]
         [SerializeField]
         private List<AttributeModifierWrapper> _unitTier1Modifiers;
-        [ListDrawerSettings(ListElementLabelName = "Label")]
         [SerializeField]
         private List<AttributeModifierWrapper> _unitTier2Modifiers;
-        [ListDrawerSettings(ListElementLabelName = "Label")]
         [SerializeField]
         private List<AttributeModifierWrapper> _unitTier3Modifiers;
         

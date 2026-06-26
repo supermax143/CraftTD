@@ -26,12 +26,14 @@ namespace Core.Application.DataStorage
         
         private TutorialStorageData _tutorialStorageData;
         private PurchasesStorageData _purchasesStorageData;
-        private IntStorageVariable _curEpochIndex;
+        private IntStorageVariable _curPlayerEpochIndex;
+        private IntStorageVariable _curEnemyEpochIndex;
         private EpochStorageData _epochData;
 
         public TutorialStorageData TutorialStorage => _tutorialStorageData;
         public PurchasesStorageData Purchases => _purchasesStorageData;
-        public int CurrentEpochIndex => _curEpochIndex.Value;
+        public int CurrentPlayerEpochIndex => _curPlayerEpochIndex.Value;
+        public int CurEnemyEpochIndex => _curEnemyEpochIndex.Value;
         
 #if DEBUG_MODE
         public void Initialize()
@@ -44,7 +46,8 @@ namespace Core.Application.DataStorage
         {
             _tutorialStorageData = new TutorialStorageData(_localStorageProvider);
             _epochData = new EpochStorageData(_localStorageProvider);
-            _curEpochIndex = new IntStorageVariable("CurrentEpoch", _localStorageProvider, 0);
+            _curPlayerEpochIndex = new IntStorageVariable("CurrentPlayerEpoch", _localStorageProvider, 0);
+            _curEnemyEpochIndex = new IntStorageVariable("CurrentEnemyEpoch", _localStorageProvider, 0);
             _purchasesStorageData = new PurchasesStorageData(_localStorageProvider);
             Debug.Log($"{this.GetType().Name} Initialized");
             return Task.CompletedTask;
@@ -57,16 +60,18 @@ namespace Core.Application.DataStorage
             _globalStorageProvider.Reset();
             
             _tutorialStorageData.Reset();
-            _curEpochIndex.Value = 0;
+            _curPlayerEpochIndex.Value = 0;
             _epochData.Reset();
             _purchasesStorageData.Reset();
         }
 
-        internal void SetEpochIndex(int index)
+        internal void SetPlayerEpochIndex(int index)
         {
-            _curEpochIndex.Value = index;
+            _curPlayerEpochIndex.Value = index;
             _epochData.Reset();
         }
+        
+        
         
         public void AddMoney(int amount)
         {
@@ -78,11 +83,15 @@ namespace Core.Application.DataStorage
             _epochData.Money = money;
         }
 
-        public void SetCurrentEpoch(int index)
+        public void SetCurrentPlayerEpoch(int index)
         {
-            _curEpochIndex.Value = index;
+            _curPlayerEpochIndex.Value = index;
         }
 
+        public void SetCurrentEnemyEpoch(int index)
+        {
+            _curEnemyEpochIndex.Value = index;
+        }
 
         public Resource UserMoney
         {
@@ -90,6 +99,8 @@ namespace Core.Application.DataStorage
         }
 
         internal EpochStorageData EpochData => _epochData;
+
+        
 
 
         public void AddPurchase(string id)

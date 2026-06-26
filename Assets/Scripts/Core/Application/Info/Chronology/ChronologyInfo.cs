@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Unity.Game
@@ -7,7 +6,6 @@ namespace Unity.Game
     [CreateAssetMenu(menuName = "CraftTD/ChronologyData", order = 1)]
     public class ChronologyInfo : ScriptableObject
     {
-        [ListDrawerSettings(ShowIndexLabels = true, ListElementLabelName = "_epochName")]
         [SerializeField]
         private List<EpochInfo> _epochs;
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Unity.Game
@@ -8,7 +7,6 @@ namespace Unity.Game
     [Serializable]
     public class UnitWave
     {
-        [ListDrawerSettings(ShowIndexLabels = true)]
         [SerializeField]
         private List<UnitsSquad> _squads;
         

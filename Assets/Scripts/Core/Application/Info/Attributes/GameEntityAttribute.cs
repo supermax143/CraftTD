@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Core.Application.Info.Attributes.AttributeModifiers;
 using ModestTree;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Unity.Game.Attributes
@@ -94,7 +93,8 @@ namespace Unity.Game.Attributes
     [Serializable]
     public abstract class GameEntityAttribute<TValue> : GameEntityAttribute
     {
-        [HideLabel] [SerializeField] private TValue _value;
+        [SerializeField] 
+        private TValue _value;
 
         private bool _isDirty;
 

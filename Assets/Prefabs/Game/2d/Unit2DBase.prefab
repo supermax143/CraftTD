@@ -163,7 +163,7 @@ MonoBehaviour:
   _tintController: {fileID: 1449801927241130090}
   _blinkEffect: {fileID: 8011989231495147525}
   _healthComponent: {fileID: 4728101536793293616}
-  _unitAnimator: {fileID: 8875554840662799739}
+  unitAnimatorController: {fileID: 8875554840662799739}
   _renderers:
   - {fileID: 906180565178909311}
   - {fileID: 3948062115093877817}
@@ -217,8 +217,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.RewardComponent
   _rewardMoney:
     _value: 0
-  _rewardMoneyView: {fileID: 8501616313035668715, guid: feaf9d0c36d4c964aa716659bd8ddcc0,
-    type: 3}
 --- !u!114 &2622176864238402614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,7 +517,7 @@ PrefabInstance:
     - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.6
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
         type: 3}

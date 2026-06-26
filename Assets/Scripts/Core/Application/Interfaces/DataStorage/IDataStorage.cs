@@ -9,9 +9,9 @@ namespace Core.Application.DataStorage
         TutorialStorageData TutorialStorage { get; }
         PurchasesStorageData Purchases { get; }
         Resource UserMoney { get; }
-        int CurrentEpochIndex { get; }
+        int CurrentPlayerEpochIndex { get; }
         void AddMoney(int amount);
-        void SetCurrentEpoch(int index);
+        void SetCurrentPlayerEpoch(int index);
         void Reset();
     }
 }

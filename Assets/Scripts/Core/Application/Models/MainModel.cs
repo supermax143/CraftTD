@@ -46,12 +46,13 @@ namespace Core.Application.Models
                 return;
             }
             Money -= cost;
-            _dataStorage.SetEpochIndex(_dataStorage.CurrentEpochIndex + 1);
+            _dataStorage.SetPlayerEpochIndex(_dataStorage.CurrentPlayerEpochIndex + 1);
             _dataStorage.EpochData.Reset();
+            _dataStorage.SetCurrentEnemyEpoch(0);
             Init();
         }
 
-        public int CurrentEpochNumber => _dataStorage.CurrentEpochIndex + 1;
+        public int CurrentEpochNumber => _dataStorage.CurrentPlayerEpochIndex + 1;
 
 
         public int GetEpochCompleteCost()
@@ -60,12 +61,12 @@ namespace Core.Application.Models
         }
         
         public bool HasNextEpoch() => 
-            _dataStorage.CurrentEpochIndex < _chronology.Epochs.Count-1;
+            _dataStorage.CurrentPlayerEpochIndex < _chronology.Epochs.Count-1;
         
         
         public void Init()
         {
-            _chronology.TryGetEpochInfo(_dataStorage.CurrentEpochIndex, out var epochInfo);
+            _chronology.TryGetEpochInfo(_dataStorage.CurrentPlayerEpochIndex, out var epochInfo);
             _playerEpoch = new EpochModel( Faction.Player, CurrentEpochNumber ,epochInfo, _dataStorage.EpochData, _gameStats);
             _enemyEpoch = new EpochModel( Faction.Enemy, CurrentEpochNumber ,epochInfo, _dataStorage.EpochData, _gameStats);
         }

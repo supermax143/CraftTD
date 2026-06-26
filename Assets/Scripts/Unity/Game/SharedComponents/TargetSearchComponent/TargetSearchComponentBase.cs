@@ -1,4 +1,3 @@
-using Sirenix.OdinInspector;
 using Unity.Game.Attributes.Specific;
 using UnityEngine;
 using Zenject;

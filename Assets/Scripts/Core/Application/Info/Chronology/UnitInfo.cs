@@ -1,5 +1,4 @@
 using System;
-using Sirenix.OdinInspector;
 using Unity.Game.Attributes.Specific;
 using UnityEngine;
 
@@ -14,9 +13,7 @@ namespace Unity.Game
         [SerializeField] 
         private UnitTier _tier;
 
-        
-        
-        [InlineProperty, SerializeField] 
+        [SerializeField] 
         private UnitPrefabAttribute _unitPrefab;//TODO: заменить на обычное поле.
         
         

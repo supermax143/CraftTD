@@ -15,7 +15,7 @@ namespace Unity.Game
         [SerializeField, HideInInspector]
         private HealthComponent _healthComponent;
         [SerializeField, HideInInspector]
-        private UnitAnimator _unitAnimator;
+        private UnitAnimatorController unitAnimatorController;
         [SerializeField, HideInInspector]
         private SpriteRenderer[] _renderers;
         
@@ -29,7 +29,7 @@ namespace Unity.Game
             _healthComponent = GetComponentInChildren<HealthComponent>();
             _tintController = GetComponentInChildren<TintController>();
             _blinkEffect = GetComponentInChildren<BlinkEffect>();
-            _unitAnimator = GetComponentInChildren<UnitAnimator>();
+            unitAnimatorController = GetComponentInChildren<UnitAnimatorController>();
             _renderers = GetComponentsInChildren<SpriteRenderer>();
         }
 
@@ -68,17 +68,17 @@ namespace Unity.Game
         
         public void StartWalking()
         {
-            _unitAnimator.PlayWalk();
+            unitAnimatorController.PlayWalk();
         }
         
         public void StartAttacking()
         {
-            _unitAnimator.PlayAttack();
+            unitAnimatorController.PlayAttack();
         }
         
         public void StartIdle()
         {
-            _unitAnimator.PlayIdle();
+            unitAnimatorController.PlayIdle();
         }
         
         public void UpdateSortingByPosition()
@@ -90,7 +90,7 @@ namespace Unity.Game
         
         public void SetRandomFrame()
         {
-            _unitAnimator.SetRandomFrame();
+            unitAnimatorController.SetRandomFrame();
         }
     }
 }
