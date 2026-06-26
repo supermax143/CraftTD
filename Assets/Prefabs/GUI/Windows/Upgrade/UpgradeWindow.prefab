@@ -1937,12 +1937,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
       propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
       propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5302860307853783498}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5302860307853783498}
     - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
@@ -1957,12 +1972,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
       propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Unity.Presentation.Windows.Upgrade.TowerUpgradePanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Unity.Presentation.Windows.Upgrade.TowerUpgradePanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
       propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2289,12 +2324,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
       propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
       propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6685458223104419286}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6685458223104419286}
     - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
@@ -2309,12 +2359,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
       propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Unity.Presentation.Windows.Upgrade.FoodUpgradePanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Unity.Presentation.Windows.Upgrade.FoodUpgradePanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
       propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: _onActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []

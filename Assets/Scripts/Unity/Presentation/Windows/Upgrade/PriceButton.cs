@@ -13,24 +13,21 @@ using Zenject;
 
 namespace Unity.Presentation.Components
 {
-    public class PriceButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class PriceButton : PointerDownClicker
     {
-        public UnityEvent OnActivated;
         
         [SerializeField] private TextMeshProUGUI _priceText;
         [SerializeField] private Button _button;
         [SerializeField] private Image _Icon;
-        [SerializeField] private float _activationInterval = 0.1f;
-        
+
         [Inject] private IMainModel _model;
         
         private int _price;
-        private Coroutine _pressCoroutine;
+        
+        protected override bool Active => _model.Money.Value >= _price;
         
         public Button Button => _button;
-        
-        private bool Active => _model.Money.Value >= _price;
-        
+
         public void SetPrice(int price)
         {
             _price = price;
@@ -44,27 +41,7 @@ namespace Unity.Presentation.Components
             _priceText.color = color;
             _button.interactable = Active;
         }
-        
-        public void OnPointerDown(PointerEventData eventData)
-        {
-            _pressCoroutine = StartCoroutine(Activate());
-        }
-       
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            if (_pressCoroutine != null)
-            {
-                StopCoroutine(_pressCoroutine);
-            }
-        }
-        
-        private IEnumerator Activate()
-        {
-            yield return new WaitForSeconds(_activationInterval);
-            yield return new WaitUntil(() => Active);
-            OnActivated?.Invoke();
-            _pressCoroutine = StartCoroutine(Activate());
-        }
+
 
     }
 }
