@@ -31,7 +31,7 @@ namespace Core.Application.Models
             set => _playerEpoch.Money = value;
         }
         public int CurrentPlayerEpochNumber => _dataStorage.CurrentPlayerEpochIndex + 1;
-        public int CurrentEnemyEpochNumber => _dataStorage.CurrentPlayerEpochIndex + 1;
+        public int CurrentEnemyEpochNumber => _dataStorage.CurrentEnemyEpochIndex + 1;
         public int SelectedEnemyEpochIndex => _selectedEnemyEpochIndex;
 
 #if DEBUG_MODE
@@ -41,6 +41,11 @@ namespace Core.Application.Models
         }
 #endif
 
+        public void CompleteEpoch()
+        {
+            
+        }
+        
         public void CompleteEpochForMoney()
         {
             var cost = Resource.Money(GetEpochCompleteCost());
@@ -52,7 +57,8 @@ namespace Core.Application.Models
             _dataStorage.SetPlayerEpochIndex(_dataStorage.CurrentPlayerEpochIndex + 1);
             _dataStorage.EpochData.Reset();
             _dataStorage.SetEnemyEpochIndex(0);
-            Init();
+            _playerEpoch = GetEpochModel(_dataStorage.CurrentPlayerEpochIndex, Faction.Player);
+            SelectEnemyEpochIndex(_dataStorage.CurrentEnemyEpochIndex);
         }
 
         public void IncreaseEnemyEpoch()
@@ -71,7 +77,9 @@ namespace Core.Application.Models
         
         public void SelectEnemyEpochIndex(int index)
         {
-            if (index < 0 || index >= _chronology.Epochs.Count)
+            if (index < 0 || 
+                index > CurrentPlayerEpochNumber - 1 ||
+                index > CurrentEnemyEpochNumber - 1)
             {
                 return;
             }
@@ -82,7 +90,12 @@ namespace Core.Application.Models
         public void Init()
         {
             _playerEpoch = GetEpochModel(_dataStorage.CurrentPlayerEpochIndex, Faction.Player);
-            _enemyEpoch = GetEpochModel(_dataStorage.CurrentPlayerEpochIndex, Faction.Enemy);
+            var selectedEnemyEpochIndex = 
+                _dataStorage.CurrentEnemyEpochIndex > _dataStorage.CurrentPlayerEpochIndex ? 
+                    _dataStorage.CurrentPlayerEpochIndex : 
+                    _dataStorage.CurrentEnemyEpochIndex;
+            /*_enemyEpoch = GetEpochModel(selectedEnemyEpochIndex, Faction.Enemy);*/
+            SelectEnemyEpochIndex(selectedEnemyEpochIndex);
         }
 
         private EpochModel GetEpochModel(int index, Faction faction)

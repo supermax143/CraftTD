@@ -61,6 +61,7 @@ namespace Core.Application.DataStorage
             
             _tutorialStorageData.Reset();
             _curPlayerEpochIndex.Value = 0;
+            _curEnemyEpochIndex.Value = 0;
             _epochData.Reset();
             _purchasesStorageData.Reset();
         }

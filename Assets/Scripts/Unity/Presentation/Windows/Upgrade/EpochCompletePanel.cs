@@ -30,7 +30,7 @@ namespace Unity.Presentation.Windows.Upgrade
         public void UpdateView()
         {
             UpdateState();
-            UpdateEpochButton();
+            UpdateUpgradeButton();
         }
 
         private void UpdateState()
@@ -49,7 +49,7 @@ namespace Unity.Presentation.Windows.Upgrade
             }
         }
 
-        private void UpdateEpochButton()
+        private void UpdateUpgradeButton()
         {
             gameObject.SetActive(true);
             switch (_state)
@@ -69,7 +69,8 @@ namespace Unity.Presentation.Windows.Upgrade
             }
         }
         
-        public void CompleteEpoch()
+        
+        public void CompleteEpochForMoney()
         {
             _model.CompleteEpochForMoney();
             OnEpochComplete?.Invoke();

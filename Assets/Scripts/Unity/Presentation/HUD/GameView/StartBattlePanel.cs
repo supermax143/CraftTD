@@ -20,7 +20,7 @@ namespace Unity.Presentation
         public void UpdateView()
         {
             _selectPrevEpoch.interactable = _mainModel.SelectedEnemyEpochIndex > 0;
-            _selectNextEpoch.interactable = _mainModel.SelectedEnemyEpochIndex < _mainModel.CurrentPlayerEpochNumber;
+            _selectNextEpoch.interactable = _mainModel.SelectedEnemyEpochIndex < _mainModel.CurrentPlayerEpochNumber-1;
         }
         
         public void SelectNextEpoch()

@@ -168,3 +168,80 @@ MonoBehaviour:
     _unitTier1Modifiers: []
     _unitTier2Modifiers: []
     _unitTier3Modifiers: []
+  - _epochName: "\u041C\u0443\u0448\u043A\u0435\u0442\u0435\u0440\u044B"
+    _tower:
+      _towerPrefab:
+        _value: {fileID: 3331345286125286545, guid: 03ca828c38f6450478a401d02a7ab1c3,
+          type: 3}
+    _unitTier1:
+      _name: 
+      _tier: 0
+      _unitPrefab:
+        _value: {fileID: 8611390108655034055, guid: 07426e005cf629b4fb3942df2fe1ba64,
+          type: 3}
+    _unitTier2:
+      _name: 
+      _tier: 1
+      _unitPrefab:
+        _value: {fileID: 8611390108655034055, guid: 9d476f3d78dee544fb165f0d26787f2c,
+          type: 3}
+    _unitTier3:
+      _name: 
+      _tier: 2
+      _unitPrefab:
+        _value: {fileID: 8611390108655034055, guid: c9b24cbf11fab8641931b2950dbc6510,
+          type: 3}
+    _waves:
+    - _squads:
+      - _delay: 3
+        _tier: 0
+        _count: 1
+      - _delay: 3
+        _tier: 0
+        _count: 2
+      - _delay: 3
+        _tier: 0
+        _count: 4
+    - _squads:
+      - _delay: 3
+        _tier: 1
+        _count: 2
+      - _delay: 3
+        _tier: 0
+        _count: 3
+      - _delay: 3
+        _tier: 2
+        _count: 2
+    - _squads:
+      - _delay: 3
+        _tier: 0
+        _count: 5
+      - _delay: 3
+        _tier: 2
+        _count: 1
+      - _delay: 3
+        _tier: 2
+        _count: 2
+    - _squads:
+      - _delay: 3
+        _tier: 0
+        _count: 3
+      - _delay: 3
+        _tier: 1
+        _count: 1
+      - _delay: 3
+        _tier: 0
+        _count: 5
+    - _squads:
+      - _delay: 3
+        _tier: 0
+        _count: 3
+      - _delay: 3
+        _tier: 1
+        _count: 1
+      - _delay: 3
+        _tier: 0
+        _count: 5
+    _unitTier1Modifiers: []
+    _unitTier2Modifiers: []
+    _unitTier3Modifiers: []

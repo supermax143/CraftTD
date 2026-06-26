@@ -80,7 +80,7 @@ namespace Unity.Game
             OnTowerDestroyed?.Invoke(tower.Faction);
             var playerWin = tower.Faction != Faction.Player;
             ShowResultDelayed(playerWin);
-            if (_mainModel.CurrentEnemyEpochNumber < _mainModel.CurrentPlayerEpochNumber)
+            if (_mainModel.CurrentEnemyEpochNumber <= _mainModel.CurrentPlayerEpochNumber)
             {
                 _mainModel.IncreaseEnemyEpoch();
             }
@@ -88,6 +88,10 @@ namespace Unity.Game
 
         public async UniTask ShowResultDelayed(bool playerWin)
         {
+            if (_resultWindow != null)
+            {
+                return;
+            }
             UniTask.WaitForSeconds(1);
             _resultWindow = await _windowsController.ShowWindow<ResultWindow>();
             _resultWindow.SetResult(_rewardAggregator.Money, playerWin);
