@@ -69,6 +69,11 @@ namespace Unity.Presentation.Windows.Upgrade
             }
         }
         
+        public void CompleteEpoch()
+        {
+            _model.CompleteEpoch();
+            OnEpochComplete?.Invoke();
+        }
         
         public void CompleteEpochForMoney()
         {

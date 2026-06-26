@@ -1,4 +1,6 @@
 
+using System;
+
 namespace Core.Application.Models
 {
     public interface IMainModel 
@@ -15,6 +17,9 @@ namespace Core.Application.Models
         int GetEpochCompleteCost();
         void Reset();
         void SelectEnemyEpochIndex(int index);
+        void CompleteEpoch();
+        event Action OnEnemyEpochChanged;
+        event Action OnPlayerEpochChanged;
     }
     
     internal interface IMainModelInternal : IMainModel

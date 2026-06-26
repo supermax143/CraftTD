@@ -1,10 +1,10 @@
+using System;
 using Unity.Game;
 using Zenject;
 
 namespace Core.Application.Models
 {
     using DataStorage = DataStorage.DataStorage;
-
     
 #if DEBUG_MODE
     internal class MainModel : IMainModelInternal, IInitializable
@@ -12,6 +12,9 @@ namespace Core.Application.Models
     internal class MainModel : IMainModelInternal, IBootstrapStep
 #endif
     {
+        
+        public event Action OnEnemyEpochChanged;
+        public event Action OnPlayerEpochChanged;
         
         [Inject] private ChronologyInfo _chronology;
         [Inject] private DataStorage _dataStorage;
@@ -43,7 +46,12 @@ namespace Core.Application.Models
 
         public void CompleteEpoch()
         {
-            
+            _dataStorage.SetPlayerEpochIndex(_dataStorage.CurrentPlayerEpochIndex + 1);
+            _dataStorage.EpochData.Reset();
+            _dataStorage.SetEnemyEpochIndex(0);
+            _playerEpoch = GetEpochModel(_dataStorage.CurrentPlayerEpochIndex, Faction.Player);
+            SelectEnemyEpochIndex(_dataStorage.CurrentEnemyEpochIndex);
+            OnPlayerEpochChanged?.Invoke();
         }
         
         public void CompleteEpochForMoney()
@@ -54,11 +62,7 @@ namespace Core.Application.Models
                 return;
             }
             Money -= cost;
-            _dataStorage.SetPlayerEpochIndex(_dataStorage.CurrentPlayerEpochIndex + 1);
-            _dataStorage.EpochData.Reset();
-            _dataStorage.SetEnemyEpochIndex(0);
-            _playerEpoch = GetEpochModel(_dataStorage.CurrentPlayerEpochIndex, Faction.Player);
-            SelectEnemyEpochIndex(_dataStorage.CurrentEnemyEpochIndex);
+            CompleteEpoch();
         }
 
         public void IncreaseEnemyEpoch()
@@ -85,6 +89,7 @@ namespace Core.Application.Models
             }
             _selectedEnemyEpochIndex = index;
             _enemyEpoch = GetEpochModel(_selectedEnemyEpochIndex, Faction.Enemy);
+            OnEnemyEpochChanged?.Invoke();
         }
         
         public void Init()
@@ -94,7 +99,7 @@ namespace Core.Application.Models
                 _dataStorage.CurrentEnemyEpochIndex > _dataStorage.CurrentPlayerEpochIndex ? 
                     _dataStorage.CurrentPlayerEpochIndex : 
                     _dataStorage.CurrentEnemyEpochIndex;
-            /*_enemyEpoch = GetEpochModel(selectedEnemyEpochIndex, Faction.Enemy);*/
+
             SelectEnemyEpochIndex(selectedEnemyEpochIndex);
         }
 

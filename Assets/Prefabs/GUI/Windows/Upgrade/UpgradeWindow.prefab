@@ -1788,7 +1788,7 @@ PrefabInstance:
     - target: {fileID: 2867443693809576802, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2867443693809576802, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
@@ -1924,6 +1924,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: _activationInterval
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5302860307853783498}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Unity.Presentation.Windows.Upgrade.TowerUpgradePanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2100,7 +2140,7 @@ PrefabInstance:
     - target: {fileID: 2867443693809576802, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2867443693809576802, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
@@ -2111,7 +2151,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6685458223104419286}
+      objectReference: {fileID: 0}
     - target: {fileID: 2867443693809576802, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -2120,17 +2160,17 @@ PrefabInstance:
     - target: {fileID: 2867443693809576802, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UpgradeLevel
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2867443693809576802, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Unity.Presentation.Windows.Upgrade.FoodUpgradePanel, Assembly-CSharp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2867443693809576802, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5093057439741095126, guid: f79bc04dee7642144af06d70b05e9056,
         type: 3}
@@ -2236,6 +2276,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: _activationInterval
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6685458223104419286}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Unity.Presentation.Windows.Upgrade.FoodUpgradePanel, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169571029069586665, guid: f79bc04dee7642144af06d70b05e9056,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2545,11 +2625,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3104152788195315455}
     m_Modifications:
-    - target: {fileID: 216314037494532516, guid: 67aeba96a7d4fd642a0cdf0f074bb8b8,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5812853450018531323}
     - target: {fileID: 1522151460581478113, guid: 67aeba96a7d4fd642a0cdf0f074bb8b8,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2649,21 +2724,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5554213525507480040, guid: 67aeba96a7d4fd642a0cdf0f074bb8b8,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 4041687869607660625}
-    - target: {fileID: 5554213525507480040, guid: 67aeba96a7d4fd642a0cdf0f074bb8b8,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CompleteEpoch
-      objectReference: {fileID: 0}
-    - target: {fileID: 5554213525507480040, guid: 67aeba96a7d4fd642a0cdf0f074bb8b8,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Unity.Presentation.Windows.Upgrade.EpochCompletePanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6274085565881253998, guid: 67aeba96a7d4fd642a0cdf0f074bb8b8,
         type: 3}
