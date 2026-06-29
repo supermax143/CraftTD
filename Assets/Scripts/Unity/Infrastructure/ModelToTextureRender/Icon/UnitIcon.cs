@@ -15,7 +15,7 @@ namespace Environments.Land.Scripts.Runtime.GUI
         {
            _assetReference = assetReference;
             var prototype = await _assetReference.LoadAssetReference<Object>(_assetReference.AssetGUID);
-            var targetGO = _diContainer.InstantiatePrefab(prototype);
+            var targetGO = Instantiate(prototype) as GameObject;
             _modelHolder = _diContainer.InstantiateComponent<ModelHolder>(targetGO);
             _modelHolder.AddRenderTarget(_rendererTarget);
             _rendererTarget.SetWorldSize(_modelHolder.GetWorldBounds().size);

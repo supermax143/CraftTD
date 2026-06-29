@@ -1,4 +1,5 @@
 using Core.Application.DataStorage;
+using Exploration.Scripts.Controllers.ModelRender;
 using Unity.Bootstrap;
 using Unity.Game;
 using Unity.Infrastructure.Advertisement;
@@ -61,8 +62,7 @@ namespace Unity.Installers
          
          //Tutorial
          Container.BindInterfacesAndSelfTo<TutorialController>().FromInstance(_tutorialController);
-         
-         //Advertisement
+         BindController<ModelToAtlasRenderer>();
       }
 
       private static void InitializeAddressables()
@@ -72,7 +72,11 @@ namespace Unity.Installers
          AddressableExtention.Initialize(handleStorage);
       }
       
-
+      private void BindController<TController>() where TController: Component
+      {
+         var instance = gameObject.GetComponentInChildren<TController>();
+         Container.BindInterfacesAndSelfTo<TController>().FromInstance(instance);
+      }
 
    }
 }

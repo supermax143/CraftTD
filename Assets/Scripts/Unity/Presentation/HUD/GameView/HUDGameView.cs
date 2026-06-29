@@ -18,11 +18,7 @@ namespace Unity.Presentation
         private HUDGameAnimatorController _animator;
         [SerializeField, HideInInspector]
         private StartBattlePanel _startBattlePanel;
-
-        [SerializeField]
-        private UnitIcon unitIcon;
-        [SerializeField]
-        private AssetReference assetReference;
+        
         
         [Inject] private ILevelRewardAggregator _rewardAggregator;
         [Inject] private IWindowsController _windowsController;
@@ -36,7 +32,6 @@ namespace Unity.Presentation
         private void Start()
         {
             _startBattlePanel.UpdateView();
-            unitIcon.Initialize(assetReference);
         }
         
         public void ShowExampleWindow()

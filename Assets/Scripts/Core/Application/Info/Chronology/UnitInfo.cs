@@ -1,6 +1,7 @@
 using System;
 using Unity.Game.Attributes.Specific;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Unity.Game
 {
@@ -13,13 +14,16 @@ namespace Unity.Game
         [SerializeField] 
         private UnitTier _tier;
 
+        /*
         [SerializeField] 
         private UnitPrefabAttribute _unitPrefab;//TODO: заменить на обычное поле.
-        
+        */
+        [SerializeField] 
+        private AssetReference _unitPrefab;
         
         public string Name => _name;
         public UnitTier Tier => _tier;
-        public GameObject UnitPrefab => _unitPrefab.ValueModified;
+        public AssetReference UnitPrefab => _unitPrefab;
         
     }
 }

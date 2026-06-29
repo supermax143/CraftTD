@@ -495,8 +495,8 @@ namespace Editor.ChronologyEditor
             tierField.BindProperty(unitInfoProperty.FindPropertyRelative("_tier"));
             container.Add(tierField);
             
-            var prefabProperty = unitInfoProperty.FindPropertyRelative("_unitPrefab._value");
-            var prefabField = new GameObjectPreviewField("Unit Prefab");
+            var prefabProperty = unitInfoProperty.FindPropertyRelative("_unitPrefab");
+            var prefabField = new AssetReferencePreviewField("Unit Prefab");
             prefabField.BindProperty(prefabProperty);
             container.Add(prefabField);
         }

@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using Core.Application.Models;
+using Cysharp.Threading.Tasks;
+using Unity.Infrastructure.ResourceManager;
 using Unity.Utils;
 using UnityEngine;
 using Zenject;
@@ -52,7 +55,7 @@ namespace Unity.Game
         }
         
         
-        public void Spawn(UnitTier tier, int count)
+        public async Task Spawn(UnitTier tier, int count)
         {
             if (_blockSpawn)
             {
@@ -83,8 +86,8 @@ namespace Unity.Game
                 {
                     throw new System.Exception("No unit model found");
                 }
-
-                var prefab = unitModel.Info.UnitPrefab;
+                var assetReference = unitModel.Info.UnitPrefab;
+                var prefab = await assetReference.LoadAssetReference<GameObject>(assetReference.AssetGUID);
                 var unit = _container.InstantiatePrefabForComponent<UnitController>(prefab, _spawnTransform);
                 var layer = _faction == Faction.Player ? Layers.Player : Layers.Enemy;
                 unit.gameObject.SetLayerRecursively(layer);

@@ -23,20 +23,29 @@ MonoBehaviour:
       _name: 
       _tier: 0
       _unitPrefab:
-        _value: {fileID: 8611390108655034055, guid: 2f7543a589c12be429ab77b6a9614ebe,
-          type: 3}
+        m_AssetGUID: 2f7543a589c12be429ab77b6a9614ebe
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
     _unitTier2:
       _name: 
       _tier: 1
       _unitPrefab:
-        _value: {fileID: 8611390108655034055, guid: 5ce9a341bf7694a409f4cc19ac62434e,
-          type: 3}
+        m_AssetGUID: 5ce9a341bf7694a409f4cc19ac62434e
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
     _unitTier3:
       _name: 
       _tier: 2
       _unitPrefab:
-        _value: {fileID: 8611390108655034055, guid: f84714416a619964990efe90c5f1877e,
-          type: 3}
+        m_AssetGUID: f84714416a619964990efe90c5f1877e
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
     _waves:
     - _squads:
       - _delay: 3
@@ -100,20 +109,29 @@ MonoBehaviour:
       _name: 
       _tier: 0
       _unitPrefab:
-        _value: {fileID: 8611390108655034055, guid: 5478d929fba3a8c4c8220eb8b1f09ef1,
-          type: 3}
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
     _unitTier2:
       _name: 
       _tier: 1
       _unitPrefab:
-        _value: {fileID: 8611390108655034055, guid: 19c6c995d768dca43b00c9a8fd184ede,
-          type: 3}
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
     _unitTier3:
       _name: 
       _tier: 2
       _unitPrefab:
-        _value: {fileID: 8611390108655034055, guid: f9eacdd973d016043948fbe31a544bb2,
-          type: 3}
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
     _waves:
     - _squads:
       - _delay: 3
@@ -177,20 +195,29 @@ MonoBehaviour:
       _name: 
       _tier: 0
       _unitPrefab:
-        _value: {fileID: 8611390108655034055, guid: 07426e005cf629b4fb3942df2fe1ba64,
-          type: 3}
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
     _unitTier2:
       _name: 
       _tier: 1
       _unitPrefab:
-        _value: {fileID: 8611390108655034055, guid: 9d476f3d78dee544fb165f0d26787f2c,
-          type: 3}
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
     _unitTier3:
       _name: 
       _tier: 2
       _unitPrefab:
-        _value: {fileID: 8611390108655034055, guid: c9b24cbf11fab8641931b2950dbc6510,
-          type: 3}
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
     _waves:
     - _squads:
       - _delay: 3

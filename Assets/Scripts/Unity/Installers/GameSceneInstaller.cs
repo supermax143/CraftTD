@@ -24,7 +24,7 @@ namespace Unity.Installers
             BindController<GameController>();
             BindController<FoodProduction>();
             BindController<DropManager>();
-            BindController<ModelToAtlasRenderer>();
+            
         }
         
         private void BindController<TController>() where TController: Component

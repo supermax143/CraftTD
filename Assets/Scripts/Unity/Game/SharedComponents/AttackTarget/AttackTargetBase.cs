@@ -41,7 +41,10 @@ namespace Unity.Game
         
         private void OnDestroy()
         {
-            _healthComponent.OnDeath -= DeathHandler;
+            if (_healthComponent != null)
+            {
+                _healthComponent.OnDeath -= DeathHandler;
+            }
         }
     }
     

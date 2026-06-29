@@ -21,7 +21,7 @@ namespace Unity.Presentation.Components
         public void SetUnit(UnitModel unitModel)
         {
             _unitModel = unitModel;
-            _unitNameTF.text = _unitModel.Tier.ToString();
+            _unitIcon.Initialize(unitModel.Info.UnitPrefab);
             _priceButton.SetPrice(_unitModel.UnlockCost);
             _priceButton.gameObject.SetActive(!_unitModel.IsUnitOpened);
         }

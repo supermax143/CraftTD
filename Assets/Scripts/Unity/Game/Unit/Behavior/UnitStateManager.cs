@@ -108,7 +108,10 @@ namespace Unity.Game
 
         private void OnDestroy()
         {
-            _gameController.OnTowerDestroyed -= OnTowerDestroyed;
+            if (_gameController != null)
+            {
+                _gameController.OnTowerDestroyed -= OnTowerDestroyed;
+            }
             if (_unit != null && _unit.HealthComponent != null)
             {
                 _unit.HealthComponent.OnDeath -= OnUnitDeath;
