@@ -324,7 +324,7 @@ Canvas:
   m_GameObject: {fileID: 17063985}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 7318331}
   m_PlaneDistance: 10
   m_PixelPerfect: 0
@@ -488,8 +488,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: -28.08, y: 28.08}
+  m_SizeDelta: {x: 143.84, y: 143.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &432505602
 MonoBehaviour:
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
-  m_Material: {fileID: 2100000, guid: a0380b3e0a230d44f9364b52d3d3bafa, type: 2}
+  m_Material: {fileID: 2100000, guid: 78a17fdc4fee5634391406dadfa3658b, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -539,8 +539,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Environments.Land.Scripts.Runtime.GUI.BuildingIcon
   _rendererTarget: {fileID: 432505605}
-  UnitPrefab: {fileID: 8611390108655034055, guid: f84714416a619964990efe90c5f1877e,
-    type: 3}
 --- !u!114 &432505605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,7 +614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6918085ed9c74f218ebd484d9b71e16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Exploration.Scripts.Controllers.ModelRender.ModelToAtlasRenderer
-  _material: {fileID: 2100000, guid: a0380b3e0a230d44f9364b52d3d3bafa, type: 2}
+  _material: {fileID: 2100000, guid: 78a17fdc4fee5634391406dadfa3658b, type: 2}
 --- !u!1 &917081721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1061,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShowUpgradeWindowButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4469099381706283643, guid: d67f2e937ec04504cb6360371c3bb047,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 73.899994
+      objectReference: {fileID: 0}
     - target: {fileID: 5730112416236269794, guid: d67f2e937ec04504cb6360371c3bb047,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1235,9 +1238,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8296935809817044739, guid: d67f2e937ec04504cb6360371c3bb047,
         type: 3}
+      propertyPath: unitIcon
+      value: 
+      objectReference: {fileID: 432505604}
+    - target: {fileID: 8296935809817044739, guid: d67f2e937ec04504cb6360371c3bb047,
+        type: 3}
       propertyPath: _buildingIcon
       value: 
       objectReference: {fileID: 432505604}
+    - target: {fileID: 8296935809817044739, guid: d67f2e937ec04504cb6360371c3bb047,
+        type: 3}
+      propertyPath: assetReference.m_AssetGUID
+      value: 2f7543a589c12be429ab77b6a9614ebe
+      objectReference: {fileID: 0}
     - target: {fileID: 8303289771853300346, guid: d67f2e937ec04504cb6360371c3bb047,
         type: 3}
       propertyPath: m_Alpha

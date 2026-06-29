@@ -95,7 +95,10 @@ namespace Exploration.Scripts.Controllers.ModelRender
         
         public void AddRenderers(Renderer[] renderers)
         {
-            var sortedRenderers = renderers.OrderByDescending(r => r.transform.position.z);
+            var sortedRenderers = 
+                renderers.
+                    OrderByDescending(r => r.transform.position.z).
+                    ThenBy(r => r.sortingOrder);
 
             foreach (var r in sortedRenderers)
             {

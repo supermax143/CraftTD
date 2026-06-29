@@ -1,11 +1,13 @@
 using System;
 using Core.Application.Interfaces.Windows;
+using DG.Tweening;
 using Environments.Land.Scripts.Runtime.GUI;
 using TMPro;
 using Unity.Game;
 using Unity.Presentation.Components;
 using Unity.Presentation.Windows;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Unity.Presentation
@@ -18,7 +20,9 @@ namespace Unity.Presentation
         private StartBattlePanel _startBattlePanel;
 
         [SerializeField]
-        private BuildingIcon _buildingIcon;
+        private UnitIcon unitIcon;
+        [SerializeField]
+        private AssetReference assetReference;
         
         [Inject] private ILevelRewardAggregator _rewardAggregator;
         [Inject] private IWindowsController _windowsController;
@@ -32,7 +36,7 @@ namespace Unity.Presentation
         private void Start()
         {
             _startBattlePanel.UpdateView();
-            _buildingIcon.Initialize(1);
+            unitIcon.Initialize(assetReference);
         }
         
         public void ShowExampleWindow()

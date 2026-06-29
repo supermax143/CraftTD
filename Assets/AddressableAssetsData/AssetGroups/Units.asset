@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Units
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Units
+  m_GUID: 995be36e8f49da249a1ed233bacad366
+  m_SerializeEntries:
+  - m_GUID: 07426e005cf629b4fb3942df2fe1ba64
+    m_Address: Epoch3Unit1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 19c6c995d768dca43b00c9a8fd184ede
+    m_Address: Epoch2Unit2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f7543a589c12be429ab77b6a9614ebe
+    m_Address: Epoch1Unit1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5478d929fba3a8c4c8220eb8b1f09ef1
+    m_Address: Epoch2Unit1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ce9a341bf7694a409f4cc19ac62434e
+    m_Address: Epoch1Unit2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d476f3d78dee544fb165f0d26787f2c
+    m_Address: Epoch3Unit2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9b24cbf11fab8641931b2950dbc6510
+    m_Address: Epoch3Unit3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f84714416a619964990efe90c5f1877e
+    m_Address: Epoch1Unit3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9eacdd973d016043948fbe31a544bb2
+    m_Address: Epoch2Unit3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 0d505db509e0e9b43876bf21e80fba51, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 9e7b34c8e9c1df242a0c07a8007af2b8, type: 2}
+    - {fileID: 11400000, guid: a35e4da959a59a747a6bd797d0af8eb1, type: 2}

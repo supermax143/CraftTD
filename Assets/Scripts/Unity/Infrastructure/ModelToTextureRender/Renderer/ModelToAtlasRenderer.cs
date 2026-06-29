@@ -12,6 +12,7 @@ namespace Exploration.Scripts.Controllers.ModelRender
     /// <summary>
     /// рендерит в атлас 
     /// </summary>
+    [DefaultExecutionOrder(20)]
     public class ModelToAtlasRenderer : ModelToTextureRendererBase, IModelToTextureRenderer, IRenderModelsSpawnHandler
     {
         private class AtlasPage
@@ -241,13 +242,13 @@ namespace Exploration.Scripts.Controllers.ModelRender
                             continue;
                         }
 
-                        var skin = rnd.GetComponent<SpriteSkin>();
+                        /*var skin = rnd.GetComponent<SpriteSkin>();
                         if (skin != null)
                         {
                             skin.forceCpuDeformation = true;
                             skin.alwaysUpdate = true;
                             skin.autoRebind = true;
-                        }
+                        }*/
                         CommandBuffer.DrawRenderer(rnd, rnd.sharedMaterial);
                     }
         
