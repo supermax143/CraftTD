@@ -9,6 +9,7 @@ namespace Unity.Utils
         public static readonly int PlayerTower = LayerMask.NameToLayer(nameof(PlayerTower));
         public static readonly int EnemyTower = LayerMask.NameToLayer(nameof(EnemyTower));
         public static readonly int SpawnBorder = LayerMask.NameToLayer(nameof(SpawnBorder));
+        public static readonly int Hidden = LayerMask.NameToLayer(nameof(Hidden));
         
     }
 }

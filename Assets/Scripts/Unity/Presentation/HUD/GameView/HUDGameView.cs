@@ -1,5 +1,6 @@
 using System;
 using Core.Application.Interfaces.Windows;
+using Environments.Land.Scripts.Runtime.GUI;
 using TMPro;
 using Unity.Game;
 using Unity.Presentation.Components;
@@ -15,6 +16,9 @@ namespace Unity.Presentation
         private HUDGameAnimatorController _animator;
         [SerializeField, HideInInspector]
         private StartBattlePanel _startBattlePanel;
+
+        [SerializeField]
+        private BuildingIcon _buildingIcon;
         
         [Inject] private ILevelRewardAggregator _rewardAggregator;
         [Inject] private IWindowsController _windowsController;
@@ -28,6 +32,7 @@ namespace Unity.Presentation
         private void Start()
         {
             _startBattlePanel.UpdateView();
+            _buildingIcon.Initialize(1);
         }
         
         public void ShowExampleWindow()
