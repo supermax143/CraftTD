@@ -15,7 +15,7 @@ namespace Unity.Presentation.Components
         [SerializeField, HideInInspector]
         private Image _image;
         
-        private readonly Timer _timer = new();
+        private readonly Timer _timer = new(TimeType.Unscaled);
         private Coroutine _coroutine;
 
         private void OnValidate()

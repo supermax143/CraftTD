@@ -3,6 +3,7 @@ using Core.Application.Models;
 using Environments.Land.Scripts.Runtime.GUI;
 using TMPro;
 using Unity.Game;
+using Unity.Presentation.Components;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ using Zenject;
 namespace Unity.Presentation.HUD.UnitsPanael
 {
     [RequireComponent(typeof(Button))]
-    public class BuyUnitButton : MonoBehaviour
+    public class BuyUnitButton : PointerDownClicker
     {
         [SerializeField, HideInInspector]
         private Button _button;
@@ -33,6 +34,7 @@ namespace Unity.Presentation.HUD.UnitsPanael
         private int _foodCost;
 
         public UnitTier Tier => _unitTier;
+        protected override bool Active => _foodProduction.FoodCount >= _foodCost;
 
         private void OnValidate()
         {
@@ -63,6 +65,7 @@ namespace Unity.Presentation.HUD.UnitsPanael
         {
             _gameController.BuyUnit(_unitTier);
         }
+
     }
     
 }

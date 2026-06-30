@@ -452,24 +452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a80852f80c344b885dd1f713bee6822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.FoodProduction
---- !u!1 &501756469 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2999223256127328591, guid: d67f2e937ec04504cb6360371c3bb047,
-    type: 3}
-  m_PrefabInstance: {fileID: 1555765092149297128}
-  m_PrefabAsset: {fileID: 0}
---- !u!225 &501756474
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 501756469}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &917081721
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,24 +801,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfff2407606745859e7684d6c83471ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Team
---- !u!1 &2129346745 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3461418164040998190, guid: d67f2e937ec04504cb6360371c3bb047,
-    type: 3}
-  m_PrefabInstance: {fileID: 1555765092149297128}
-  m_PrefabAsset: {fileID: 0}
---- !u!225 &2129346750
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2129346745}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1001 &1555765092149297128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -870,6 +834,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 277753466}
+    - target: {fileID: 1895655766967256990, guid: d67f2e937ec04504cb6360371c3bb047,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 2065374823837529116, guid: d67f2e937ec04504cb6360371c3bb047,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1105,11 +1074,6 @@ PrefabInstance:
       propertyPath: assetReference.m_AssetGUID
       value: 2f7543a589c12be429ab77b6a9614ebe
       objectReference: {fileID: 0}
-    - target: {fileID: 8303289771853300346, guid: d67f2e937ec04504cb6360371c3bb047,
-        type: 3}
-      propertyPath: m_Alpha
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8522913507899907375, guid: d67f2e937ec04504cb6360371c3bb047,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1153,15 +1117,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2999223256127328591, guid: d67f2e937ec04504cb6360371c3bb047,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 501756474}
-    - targetCorrespondingSourceObject: {fileID: 3461418164040998190, guid: d67f2e937ec04504cb6360371c3bb047,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2129346750}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d67f2e937ec04504cb6360371c3bb047, type: 3}
 --- !u!1001 &4192125743556613102
 PrefabInstance:

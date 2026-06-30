@@ -29,9 +29,9 @@ namespace Unity.Presentation.Components
         
         private IEnumerator Activate()
         {
-            yield return new WaitForSeconds(_activationInterval);
             yield return new WaitUntil(() => Active);
             _onActivated?.Invoke();
+            yield return new WaitForSeconds(_activationInterval);
             _pressCoroutine = StartCoroutine(Activate());
         }
     }

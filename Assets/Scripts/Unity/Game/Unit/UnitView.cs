@@ -21,8 +21,9 @@ namespace Unity.Game
         private HealthComponent _healthComponent;
         private Coroutine _blinkCoroutine;
         private Color _color;
+        private Transform _rootTransform;
 
-        
+
         private void OnValidate()
         {
             _healthComponent = GetComponentInChildren<HealthComponent>();
@@ -32,8 +33,9 @@ namespace Unity.Game
             _renderers = GetComponentsInChildren<SpriteRenderer>();
         }
 
-        public void Initialize(HealthComponent healthComponent)
+        public void Initialize(HealthComponent healthComponent, Transform rootTransform)
         {
+            _rootTransform = rootTransform;
             _healthComponent = healthComponent;
             _healthComponent.OnDamage += OnDamage;
         }
@@ -87,9 +89,9 @@ namespace Unity.Game
         
         public void UpdateSortingByPosition()
         {
-            var pos = transform.position;
+            var pos = _rootTransform.position;
             pos.z = pos.y * 0.001f;
-            transform.position = pos;
+            _rootTransform.position = pos;
         }
         
         public void SetRandomFrame()

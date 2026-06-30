@@ -86,7 +86,7 @@ namespace Unity.Game
         private void Initialize()
         {
             _healthComponent.SetData(_data);
-            _view.Initialize(_healthComponent);
+            _view.Initialize(_healthComponent, transform);
             _attackTarget.Initialize(_healthComponent);
             _moveComponent.SetData(_data);
             _attackComponent.SetData(_data);

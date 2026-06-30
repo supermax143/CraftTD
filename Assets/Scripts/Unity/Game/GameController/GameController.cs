@@ -81,7 +81,8 @@ namespace Unity.Game
             _foodProduction.StopProduction();
             OnGameFinished?.Invoke(winner);
             var playerWin = winner == Faction.Player;
-            if (_mainModel.CurrentEnemyEpochNumber <= _mainModel.CurrentPlayerEpochNumber)
+            if (winner == Faction.Player &&
+                _mainModel.CurrentEnemyEpochNumber <= _mainModel.CurrentPlayerEpochNumber)
             {
                 _mainModel.IncreaseEnemyEpoch();
             }
@@ -90,7 +91,8 @@ namespace Unity.Game
 
         private void TowerDestroyedHandler(TowerController tower)
         {
-            EndGame(tower.Faction);
+            var winner = tower.Faction == Faction.Player ? Faction.Enemy : Faction.Player;
+            EndGame(winner);
         }
 
         
@@ -98,15 +100,6 @@ namespace Unity.Game
         {
             await UniTask.WaitForSeconds(1);
             await ShowResultWindow();
-            /*if (_resultWindow != null)
-            {
-                return;
-            }
-            _resultWindow = await _windowsController.ShowWindow<ResultWindow>();
-            _resultWindow.SetResult(_rewardAggregator.Money, playerWin);
-            _resultWindow.Show();
-            _resultWindow.OnAdStartWatch += WatchAdForDoubleMoney;
-            _resultWindow.OnHide += OnResultWindowClose;*/
         }
 
         private void Update()
