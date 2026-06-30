@@ -111,7 +111,6 @@ namespace Unity.Game
 
         public virtual void Reset()
         {
-            _blockSpawn = false;
             _canSpawn = false;
             _epoch = null;
         }

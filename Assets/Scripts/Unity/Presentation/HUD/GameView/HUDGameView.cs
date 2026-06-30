@@ -67,6 +67,14 @@ namespace Unity.Presentation
         public void SetIsUpgradeState(bool value)
         {
             _animator.SetIsUpgradeState(value);
+            if (value)
+            {
+                _unitsBuyPanel.Clear();
+            }
+            else
+            {
+                _unitsBuyPanel.UpdateView();
+            }
         }
     }
 }

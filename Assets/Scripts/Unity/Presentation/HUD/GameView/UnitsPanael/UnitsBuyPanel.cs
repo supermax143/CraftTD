@@ -26,8 +26,6 @@ namespace Unity.Presentation.HUD
             Epoch.OnUnitOpened += UpdateView;
             UpdateView();
         }
-
-        
         
         public void UpdateView()
         {
@@ -35,13 +33,24 @@ namespace Unity.Presentation.HUD
             {
                 Epoch.TryGetUnitModel(buyUnitButton.Tier, out var unit);
                 buyUnitButton.gameObject.SetActive(unit.IsUnitOpened);
+                if (unit.IsUnitOpened)
+                {
+                    buyUnitButton.UpdateView();
+                }
             }   
         }
-
 
         private void OnDestroy()
         {
             Epoch.OnUnitOpened -= UpdateView;
+        }
+
+        public void Clear()
+        {
+            foreach (var buyUnitButton in _buyUnitButtons)
+            {
+                buyUnitButton.Clear();
+            }  
         }
     }
 }

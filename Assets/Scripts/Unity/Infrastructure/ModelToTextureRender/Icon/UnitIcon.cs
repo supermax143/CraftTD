@@ -15,6 +15,10 @@ namespace Environments.Land.Scripts.Runtime.GUI
         
         protected override async UniTask SpawnLandObject(AssetReference assetReference)
         {
+            if (_modelHolder != null)
+            {
+                Dispose();
+            }
            _assetReference = assetReference;
             var unitPrefab = await _assetReference.LoadAssetReference<Object>(_assetReference.AssetGUID);
             var prototype = unitPrefab.GetComponentInChildren<UnitView>().gameObject;
@@ -27,11 +31,11 @@ namespace Environments.Land.Scripts.Runtime.GUI
 
         public override void Dispose()
         {
-            AddressableExtention.ReleaseTag(_assetReference.AssetGUID);
-            if (_modelHolder != null && _modelHolder.gameObject != null)
+            if (_assetReference != null)
             {
-                Destroy(_modelHolder.gameObject);
+                AddressableExtention.ReleaseTag(_assetReference.AssetGUID);
             }
+            
             base.Dispose();
         }
     }

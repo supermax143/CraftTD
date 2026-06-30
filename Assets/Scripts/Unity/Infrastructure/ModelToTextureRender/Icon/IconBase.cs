@@ -44,6 +44,9 @@ public abstract class IconBase : MonoBehaviour
         if (_modelHolder != null)
         {
             _modelHolder.Dispose();
+            Destroy(_modelHolder.gameObject);
+            _modelHolder = null;
+            
         }
     }
 }

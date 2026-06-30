@@ -30,7 +30,6 @@ namespace Unity.Presentation.HUD.UnitsPanael
         
         private EpochModel Epoch => _mainModel.PlayerEpoch;
         
-        private UnitModel _unit;
         private int _foodCost;
 
         public UnitTier Tier => _unitTier;
@@ -43,17 +42,16 @@ namespace Unity.Presentation.HUD.UnitsPanael
 
         private void Start()
         {
-            Epoch.TryGetUnitModel(_unitTier, out _unit);
-            _foodCost = _unit.FoodCost;
             _foodProduction.OnFoodChanged += UpdateBuyAvailable;
-            UpdateView();
-            UpdateBuyAvailable();
         }
 
-        private void UpdateView()
+        public void UpdateView()
         {
+            Epoch.TryGetUnitModel(_unitTier, out var  unit);
+            _foodCost = unit.FoodCost;
             _foodCostTF.text = _foodCost.ToString();
-            _unitIcon.Initialize(_unit.Info.UnitPrefab);
+            _unitIcon.Initialize(unit.Info.UnitPrefab);
+            UpdateBuyAvailable();
         }
 
         private void UpdateBuyAvailable()
@@ -66,6 +64,10 @@ namespace Unity.Presentation.HUD.UnitsPanael
             _gameController.BuyUnit(_unitTier);
         }
 
+        public void Clear()
+        {
+            _unitIcon.Dispose();
+        }
     }
     
 }
