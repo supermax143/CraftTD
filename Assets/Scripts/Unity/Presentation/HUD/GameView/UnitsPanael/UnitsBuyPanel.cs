@@ -9,7 +9,7 @@ using Zenject;
 
 namespace Unity.Presentation.HUD
 {
-    public class UnitsPanel : MonoBehaviour
+    public class UnitsBuyPanel : MonoBehaviour
     {
         [SerializeField]
         private ProductionProgressBar productionProgressBar;
@@ -23,11 +23,13 @@ namespace Unity.Presentation.HUD
 
         private void Start()
         {
-            Epoch.OnUnitOpened += UpdateButtons;
-            UpdateButtons();
+            Epoch.OnUnitOpened += UpdateView;
+            UpdateView();
         }
 
-        private void UpdateButtons()
+        
+        
+        public void UpdateView()
         {
             foreach (var buyUnitButton in _buyUnitButtons)
             {
@@ -39,7 +41,7 @@ namespace Unity.Presentation.HUD
 
         private void OnDestroy()
         {
-            Epoch.OnUnitOpened -= UpdateButtons;
+            Epoch.OnUnitOpened -= UpdateView;
         }
     }
 }

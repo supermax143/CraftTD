@@ -5,6 +5,7 @@ using Environments.Land.Scripts.Runtime.GUI;
 using TMPro;
 using Unity.Game;
 using Unity.Presentation.Components;
+using Unity.Presentation.HUD;
 using Unity.Presentation.Windows;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -18,7 +19,8 @@ namespace Unity.Presentation
         private HUDGameAnimatorController _animator;
         [SerializeField, HideInInspector]
         private StartBattlePanel _startBattlePanel;
-        
+        [SerializeField]
+        private UnitsBuyPanel _unitsBuyPanel;
         
         [Inject] private ILevelRewardAggregator _rewardAggregator;
         [Inject] private IWindowsController _windowsController;
@@ -27,11 +29,17 @@ namespace Unity.Presentation
         {
             _animator = GetComponentInChildren<HUDGameAnimatorController>();
             _startBattlePanel = GetComponentInChildren<StartBattlePanel>();
+            _unitsBuyPanel = GetComponentInChildren<UnitsBuyPanel>();
         }
 
-        private void Start()
+        public void UpdateView()
         {
             _startBattlePanel.UpdateView();
+            _unitsBuyPanel.UpdateView();
+        }
+        
+        private void Start()
+        {
         }
         
         public void ShowExampleWindow()
