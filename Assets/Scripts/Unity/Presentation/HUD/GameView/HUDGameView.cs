@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Core.Application.Interfaces.Windows;
 using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks.Triggers;
 using DG.Tweening;
 using Environments.Land.Scripts.Runtime.GUI;
 using TMPro;
@@ -24,6 +25,8 @@ namespace Unity.Presentation
         private StartBattlePanel _startBattlePanel;
         [SerializeField]
         private UnitsBuyPanel _unitsBuyPanel;
+        [SerializeField]
+        private ResourceContainer _earnedMoney;
         
         [Inject] private ILevelRewardAggregator _rewardAggregator;
         [Inject] private IWindowsController _windowsController;
@@ -40,6 +43,7 @@ namespace Unity.Presentation
         {
             _startBattlePanel.UpdateView();
             _unitsBuyPanel.UpdateView();
+            _earnedMoney.SetValue(0);
         }
         
       

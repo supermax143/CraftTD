@@ -22,24 +22,24 @@ namespace Unity.Presentation
         {
             _mainModel.OnEnemyEpochChanged += UpdateView;
             _mainModel.OnPlayerEpochChanged += UpdateView;
+            UpdateView();
         }
 
         public void UpdateView()
         {
             _selectPrevEpoch.interactable = _mainModel.SelectedEnemyEpochIndex > 0;
             _selectNextEpoch.interactable = 
-                _mainModel.SelectedEnemyEpochIndex < _mainModel.CurrentPlayerEpochNumber-1 && 
-                _mainModel.CurrentPlayerEpochNumber < _mainModel.CurrentEnemyEpochNumber;
+                _mainModel.SelectedEnemyEpochIndex < _mainModel.CurrentPlayerEpochNumber-1; 
         }
         
         public void SelectNextEpoch()
         {
-            _mainModel.SelectEnemyEpochIndex(_mainModel.CurrentEnemyEpochNumber + 1);
+            _mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex + 1);
         }
         
         public void SelectPrevEpoch()
         {
-            _mainModel.SelectEnemyEpochIndex(_mainModel.CurrentEnemyEpochNumber - 1);
+            _mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex - 1);
         }
 
         private void OnDestroy()

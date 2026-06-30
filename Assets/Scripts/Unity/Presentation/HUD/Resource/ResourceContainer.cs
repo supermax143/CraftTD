@@ -24,6 +24,12 @@ namespace Unity.Presentation.HUD
             UpdateCount();
         }
 
+        public void SetValue(int value)
+        {
+            _resource.Value = value;
+            UpdateCount();
+        }
+        
         private void UpdateCount()
         {
             _text.text = _resource.Value.ToString();
@@ -39,7 +45,6 @@ namespace Unity.Presentation.HUD
             _resource += resource;
             UpdateCount();
         }
-        
         
     }
 }

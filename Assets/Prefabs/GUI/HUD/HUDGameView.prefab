@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4469099381706283643}
   - component: {fileID: 150175873408567245}
   - component: {fileID: 5889509524470985595}
+  - component: {fileID: 2436046632428865497}
   m_Layer: 0
   m_Name: MoneyPanel
   m_TagString: Untagged
@@ -80,6 +81,18 @@ MonoBehaviour:
   _icon: {fileID: 8181787814697600378}
   _text: {fileID: 288364862875367371}
   _resourceType: 1
+--- !u!225 &2436046632428865497
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761674624743020208}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1978029506410921137
 GameObject:
   m_ObjectHideFlags: 0

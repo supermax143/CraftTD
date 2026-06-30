@@ -8,5 +8,6 @@ namespace Unity.Game
         void AddMoney(int amount);
         Resource Money { get; }
         event Action OnMoneyChanged;
+        void Reset();
     }
 }

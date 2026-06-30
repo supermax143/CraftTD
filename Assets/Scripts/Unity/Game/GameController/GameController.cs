@@ -58,8 +58,11 @@ namespace Unity.Game
                     _spawner = team.Spawner;
                 }
             }
+            _mainModel.OnEnemyEpochChanged += UpdateView;
+            _mainModel.OnPlayerEpochChanged += UpdateView;
         }
 
+        
         public void StartGame()
         {
             if (_started)
@@ -131,16 +134,22 @@ namespace Unity.Game
             _resultWindow.OnAdStartWatch -= WatchAdForDoubleMoney;
             _resultWindow.OnHide -= OnResultWindowClose;
             _resultWindow = null;
-            _mainModel.PlayerEpoch.Money += Resource.Money(_rewardAggregator.Money.Value);
+            _mainModel.PlayerEpoch.Money += _rewardAggregator.Money;
+            _rewardAggregator.Reset();
             _started = false;
+            _hud.SetIsUpgradeState(true);
+            UpdateView();
+        }
+
+        private void UpdateView()
+        {
             _foodProduction.Reset();
             foreach (var team in _teams)
             {
                 team.Reset();
             }
-            _hud.SetIsUpgradeState(true);
         }
-
+        
 
         public bool TryGetOpponentTower(Faction opponentFaction,out AttackTargetBase target)
         {
@@ -190,7 +199,13 @@ namespace Unity.Game
         {
             _applicationSession.CurrentState.ExitGame();
         }
-        
+
+        private void OnDestroy()
+        {
+            _mainModel.OnEnemyEpochChanged -= UpdateView;
+            _mainModel.OnPlayerEpochChanged -= UpdateView;
+        }
+
 #if UNITY_EDITOR
         private void UpdateEditorShortcuts()
         {

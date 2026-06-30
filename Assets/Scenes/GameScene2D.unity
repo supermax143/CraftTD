@@ -1167,6 +1167,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameField2D
       objectReference: {fileID: 0}
+    - target: {fileID: 6101628010778397196, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
+        type: 3}
+      propertyPath: _blockSpawn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6896675868156394100, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
         type: 3}
       propertyPath: m_LocalScale.x

@@ -195,7 +195,7 @@ MonoBehaviour:
       _name: 
       _tier: 0
       _unitPrefab:
-        m_AssetGUID: 07426e005cf629b4fb3942df2fe1ba64
+        m_AssetGUID: d65960520f3ecb84abf80124bf8870b5
         m_SubObjectName: 
         m_SubObjectType: 
         m_SubObjectGUID: 
@@ -204,7 +204,7 @@ MonoBehaviour:
       _name: 
       _tier: 1
       _unitPrefab:
-        m_AssetGUID: 9d476f3d78dee544fb165f0d26787f2c
+        m_AssetGUID: 02e4b99576b1a244b9c887debf4c8c66
         m_SubObjectName: 
         m_SubObjectType: 
         m_SubObjectGUID: 
@@ -213,7 +213,7 @@ MonoBehaviour:
       _name: 
       _tier: 2
       _unitPrefab:
-        m_AssetGUID: c9b24cbf11fab8641931b2950dbc6510
+        m_AssetGUID: 6dc696cbb25774b4b963f4805432e716
         m_SubObjectName: 
         m_SubObjectType: 
         m_SubObjectGUID: 
