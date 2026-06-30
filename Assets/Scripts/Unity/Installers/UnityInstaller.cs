@@ -25,8 +25,6 @@ namespace Unity.Installers
       [SerializeField]
       private WindowsController _windowsController;
       [SerializeField]
-      private TutorialController _tutorialController;
-      [SerializeField]
       private GameSettings _gameSettings;
       [SerializeField]
       private ChronologyInfo _chronologyInfo;
@@ -48,7 +46,6 @@ namespace Unity.Installers
          Container.BindInterfacesAndSelfTo<ScenesLoader>().AsSingle();
          Container.BindInterfacesAndSelfTo<WindowsController>().FromInstance(_windowsController);
          Container.BindInterfacesAndSelfTo<GameBootrstarp>().AsSingle();
-         Container.BindInterfacesAndSelfTo<ResourceManager>().AsSingle();
          Container.BindInterfacesAndSelfTo<GameEventsBus>().AsSingle();
          Container.BindInterfacesAndSelfTo<GameSettings>().FromInstance(_gameSettings);
          Container.BindInterfacesAndSelfTo<DummyPurchasesController>().AsSingle();
@@ -61,8 +58,9 @@ namespace Unity.Installers
          Container.Bind<IGlobalStorageProvider>().To<PlayerPrefsStorageProvider>().AsTransient();
          
          //Tutorial
-         Container.BindInterfacesAndSelfTo<TutorialController>().FromInstance(_tutorialController);
+         BindController<TutorialController>();
          BindController<ModelToAtlasRenderer>();
+         BindController<ResourceManager>();
       }
 
       private static void InitializeAddressables()

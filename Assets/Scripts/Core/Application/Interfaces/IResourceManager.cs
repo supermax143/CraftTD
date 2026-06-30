@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
+using Core.Application.Models;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Core.Application.Interfaces
 {
@@ -7,5 +9,7 @@ namespace Core.Application.Interfaces
    {
       Task<T> Load<T>(string key, string tag)
          where T : Object;
+
+      bool TryGetResourceIcon(ResourceType resourceType, out AssetReferenceSprite resourceAsset);
    }
 }

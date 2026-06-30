@@ -5,6 +5,7 @@ using Unity.Game;
 using Unity.Infrastructure.Advertisement;
 using Unity.Infrastructure.Advertisement.Transactions;
 using Unity.Infrastructure.Windows;
+using Unity.Presentation.HUD;
 using UnityEngine;
 using Zenject;
 
@@ -18,11 +19,10 @@ namespace Unity.Presentation.Windows.Result
         [SerializeField]
         private TextMeshProUGUI _resultLabel;
         [SerializeField]
-        private TextMeshProUGUI _moneyLabel;
+        private ResourceContainer _resourceContainer;
 
         
         private bool _isVictory;
-        private Resource _reward;
 
         public void SetResult(Resource reward, bool isVictory)
         {
@@ -33,20 +33,14 @@ namespace Unity.Presentation.Windows.Result
         
         public void UpdateReward(Resource reward)
         {
-            _reward = reward;
-            UpdateMoney();
+            _resourceContainer.SetValue(reward.Value);
         }
         
         private void UpdateView()
         {
             _resultLabel.text = _isVictory ? "Victory" : "Defeat";
-            UpdateMoney();
         }
 
-        private void UpdateMoney()
-        {
-            _moneyLabel.text = _reward.Value.ToString();
-        }
 
         public void WatchAdForDoubleMoney()
         {
