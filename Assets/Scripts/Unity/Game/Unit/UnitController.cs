@@ -9,7 +9,6 @@ using Zenject;
 
 namespace Unity.Game
 {
-    [RequireComponent(typeof(UnitView))]
     public class UnitController : GameComponent
     {
         public event Action<UnitController> OnDie;
@@ -87,14 +86,15 @@ namespace Unity.Game
         private void Initialize()
         {
             _healthComponent.SetData(_data);
-            _attackTarget.Initialize(HealthComponent);
+            _view.Initialize(_healthComponent);
+            _attackTarget.Initialize(_healthComponent);
             _moveComponent.SetData(_data);
             _attackComponent.SetData(_data);
             _targetSearchComponent.SetData(_data);
             _targetSearchComponent.Initialize(_moveComponent);
             if (_faction == Faction.Enemy)
             {
-                _rewardComponent.Initialize(HealthComponent);
+                _rewardComponent.Initialize(_healthComponent);
                 _rewardComponent.SetData(_data);
             }
 

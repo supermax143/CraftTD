@@ -1,5 +1,6 @@
 ﻿using System;
 using Core.Application.Models;
+using Environments.Land.Scripts.Runtime.GUI;
 using TMPro;
 using Unity.Game;
 using UnityEngine;
@@ -18,9 +19,9 @@ namespace Unity.Presentation.HUD.UnitsPanael
         [SerializeField]
         private UnitTier _unitTier;
         [SerializeField]
-        private TMP_Text _unitNameTF;
-        [SerializeField]
         private TMP_Text _foodCostTF;
+        [SerializeField] 
+        private UnitIcon _unitIcon;
         
         [Inject] private IFoodProduction _foodProduction;
         [Inject] private IGameController _gameController;
@@ -49,8 +50,8 @@ namespace Unity.Presentation.HUD.UnitsPanael
 
         private void UpdateView()
         {
-            _unitNameTF.text = _unitTier.ToString();
             _foodCostTF.text = _foodCost.ToString();
+            _unitIcon.Initialize(_unit.Info.UnitPrefab);
         }
 
         private void UpdateBuyAvailable()

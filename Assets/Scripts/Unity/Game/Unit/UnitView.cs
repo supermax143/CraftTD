@@ -13,13 +13,12 @@ namespace Unity.Game
         [SerializeField, HideInInspector]
         private BlinkEffect _blinkEffect;
         [SerializeField, HideInInspector]
-        private HealthComponent _healthComponent;
-        [SerializeField, HideInInspector]
-        private UnitAnimatorController unitAnimatorController;
+        private UnitAnimatorController _unitAnimatorController;
         [SerializeField, HideInInspector]
         private SpriteRenderer[] _renderers;
         
         
+        private HealthComponent _healthComponent;
         private Coroutine _blinkCoroutine;
         private Color _color;
 
@@ -29,14 +28,16 @@ namespace Unity.Game
             _healthComponent = GetComponentInChildren<HealthComponent>();
             _tintController = GetComponentInChildren<TintController>();
             _blinkEffect = GetComponentInChildren<BlinkEffect>();
-            unitAnimatorController = GetComponentInChildren<UnitAnimatorController>();
+            _unitAnimatorController = GetComponentInChildren<UnitAnimatorController>();
             _renderers = GetComponentsInChildren<SpriteRenderer>();
         }
 
-        private void Start()
+        public void Initialize(HealthComponent healthComponent)
         {
+            _healthComponent = healthComponent;
             _healthComponent.OnDamage += OnDamage;
         }
+        
 
         private void OnDamage(int damage)
         {
@@ -63,22 +64,25 @@ namespace Unity.Game
 
         private void OnDestroy()
         {
-            _healthComponent.OnDamage -= OnDamage;
+            if (_healthComponent != null)
+            {
+                _healthComponent.OnDamage -= OnDamage;
+            }
         }
         
         public void StartWalking()
         {
-            unitAnimatorController.PlayWalk();
+            _unitAnimatorController.PlayWalk();
         }
         
         public void StartAttacking()
         {
-            unitAnimatorController.PlayAttack();
+            _unitAnimatorController.PlayAttack();
         }
         
         public void StartIdle()
         {
-            unitAnimatorController.PlayIdle();
+            _unitAnimatorController.PlayIdle();
         }
         
         public void UpdateSortingByPosition()
@@ -90,7 +94,8 @@ namespace Unity.Game
         
         public void SetRandomFrame()
         {
-            unitAnimatorController.SetRandomFrame();
+            _unitAnimatorController.SetRandomFrame();
         }
+
     }
 }

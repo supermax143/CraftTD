@@ -12,7 +12,6 @@ namespace Exploration.Scripts.Controllers.ModelRender
     /// <summary>
     /// рендерит в атлас 
     /// </summary>
-    [DefaultExecutionOrder(20)]
     public class ModelToAtlasRenderer : ModelToTextureRendererBase, IModelToTextureRenderer, IRenderModelsSpawnHandler
     {
         private class AtlasPage

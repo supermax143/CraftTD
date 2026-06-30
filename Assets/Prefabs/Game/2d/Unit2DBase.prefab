@@ -93,14 +93,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3525600170920847951}
   - component: {fileID: 7130790434163748106}
-  - component: {fileID: 5483068426547807}
   - component: {fileID: 4728101536793293616}
   - component: {fileID: 8255182563951653487}
   - component: {fileID: 2575392991732380378}
   - component: {fileID: 2622176864238402614}
   - component: {fileID: 8163352174406496096}
   - component: {fileID: 1096172699770815386}
-  - component: {fileID: 8875554840662799739}
   - component: {fileID: 8333790392402029733}
   m_Layer: 0
   m_Name: Unit2DBase
@@ -140,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff16ea9f3fe4228b3abbb589d1a2d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitActor
-  _view: {fileID: 5483068426547807}
+  _view: {fileID: 3762705999574058185}
   _attackTarget: {fileID: 2210838683872346125}
   _stateManager: {fileID: 7089783761961880826}
   _healthComponent: {fileID: 4728101536793293616}
@@ -148,25 +146,6 @@ MonoBehaviour:
   _moveComponent: {fileID: 2622176864238402614}
   _targetSearchComponent: {fileID: 8163352174406496096}
   _rewardComponent: {fileID: 2575392991732380378}
---- !u!114 &5483068426547807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5971790945569815702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80ab9f03df0c4ef6b5d27de6c8af423e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitView
-  _tintController: {fileID: 1449801927241130090}
-  _blinkEffect: {fileID: 8011989231495147525}
-  _healthComponent: {fileID: 4728101536793293616}
-  unitAnimatorController: {fileID: 8875554840662799739}
-  _renderers:
-  - {fileID: 906180565178909311}
-  - {fileID: 3948062115093877817}
 --- !u!114 &4728101536793293616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.MoveComponent2D
   _moveSpeed:
     _value: 4
-  _view: {fileID: 5483068426547807}
+  _view: {fileID: 3762705999574058185}
 --- !u!114 &8163352174406496096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,20 +252,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8875554840662799739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5971790945569815702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eddecd3a5664d478798da07c89fd701, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.UnitAnimator
-  _animator: {fileID: 0}
-  _animationEvents: {fileID: 0}
 --- !u!210 &8333790392402029733
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -311,6 +276,8 @@ GameObject:
   - component: {fileID: 3502686921280439868}
   - component: {fileID: 1449801927241130090}
   - component: {fileID: 8011989231495147525}
+  - component: {fileID: 3762705999574058185}
+  - component: {fileID: 87661978012594203}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -367,6 +334,37 @@ MonoBehaviour:
   _tintColorProperty: _BaseColor
   _useColorProperty: 1
   _blinkDuration: 1
+--- !u!114 &3762705999574058185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735294149039191266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ab9f03df0c4ef6b5d27de6c8af423e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitView
+  _tintController: {fileID: 1449801927241130090}
+  _blinkEffect: {fileID: 8011989231495147525}
+  _healthComponent: {fileID: 0}
+  _unitAnimatorController: {fileID: 87661978012594203}
+  _renderers: []
+--- !u!114 &87661978012594203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735294149039191266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eddecd3a5664d478798da07c89fd701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.UnitAnimatorController
+  _animator: {fileID: 0}
+  _animationEvents: {fileID: 0}
 --- !u!1 &8562988452578140486
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,12 +562,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4a982a7c90c0d945ae7eb651a88132e, type: 3}
---- !u!212 &906180565178909311 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8263515621172424106, guid: f4a982a7c90c0d945ae7eb651a88132e,
-    type: 3}
-  m_PrefabInstance: {fileID: 9096850961821183957}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1076658513119981422 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8128873040461103291, guid: f4a982a7c90c0d945ae7eb651a88132e,
@@ -585,12 +577,6 @@ MonoBehaviour:
 --- !u!4 &2616848676114571624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6516264188342898365, guid: f4a982a7c90c0d945ae7eb651a88132e,
-    type: 3}
-  m_PrefabInstance: {fileID: 9096850961821183957}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &3948062115093877817 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5257060121675873260, guid: f4a982a7c90c0d945ae7eb651a88132e,
     type: 3}
   m_PrefabInstance: {fileID: 9096850961821183957}
   m_PrefabAsset: {fileID: 0}

@@ -88,11 +88,11 @@ namespace Unity.Game
 
         public async UniTask ShowResultDelayed(bool playerWin)
         {
+            UniTask.WaitForSeconds(1);
             if (_resultWindow != null)
             {
                 return;
             }
-            UniTask.WaitForSeconds(1);
             _resultWindow = await _windowsController.ShowWindow<ResultWindow>();
             _resultWindow.SetResult(_rewardAggregator.Money, playerWin);
             _resultWindow.Show();
