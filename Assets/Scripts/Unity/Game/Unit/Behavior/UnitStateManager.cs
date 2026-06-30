@@ -51,7 +51,7 @@ namespace Unity.Game
                 state.enabled = false;
             }
             _unit.HealthComponent.OnDeath += OnUnitDeath;
-            _gameController.OnTowerDestroyed += OnTowerDestroyed;
+            _gameController.OnGameFinished += OnGameFinished;
         }
 
         private void OnUnitDeath()
@@ -61,16 +61,16 @@ namespace Unity.Game
             ChangeState<DeathState>();
         }
         
-        private void OnTowerDestroyed(Faction faction)
+        private void OnGameFinished(Faction winner)
         {
-            _gameController.OnTowerDestroyed -= OnTowerDestroyed;
-            if (faction == _unit.Faction)
+            _gameController.OnGameFinished -= OnGameFinished;
+            if (winner == _unit.Faction)
             {
-                ChangeState<LoseState>();
+                ChangeState<WinState>();
             }
             else
             {
-                ChangeState<WinState>();
+                ChangeState<LoseState>();
             }
             
         }
@@ -110,7 +110,7 @@ namespace Unity.Game
         {
             if (_gameController != null)
             {
-                _gameController.OnTowerDestroyed -= OnTowerDestroyed;
+                _gameController.OnGameFinished -= OnGameFinished;
             }
             if (_unit != null && _unit.HealthComponent != null)
             {

@@ -62,12 +62,12 @@ namespace Unity.Infrastructure.Windows
             OnAnyWindowClosed?.Invoke(member.WindowName);
         }
         
-        public void ShowWindow<TWindow>(Action<IWindow> handler) where TWindow : class, IWindow
+        public void ShowWindow<TWindow>(Action<TWindow> handler) where TWindow : class, IWindow
         {
             ShowWindowInternal<TWindow>(handler).Forget();
         }
 
-        private async UniTask ShowWindowInternal<TWindow>(Action<IWindow> handler) where TWindow : class, IWindow
+        private async UniTask ShowWindowInternal<TWindow>(Action<TWindow> handler) where TWindow : class, IWindow
         {
             var window = await ShowWindow<TWindow>();
             handler?.Invoke(window);

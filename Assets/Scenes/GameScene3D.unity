@@ -1566,7 +1566,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1055722453}
         m_TargetAssemblyTypeName: View.GameView, Assembly-CSharp
-        m_MethodName: ShowExampleWindow
+        m_MethodName: ShowUpgradeWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

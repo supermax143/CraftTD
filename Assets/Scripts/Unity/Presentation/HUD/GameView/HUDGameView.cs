@@ -1,5 +1,7 @@
 using System;
+using System.Threading.Tasks;
 using Core.Application.Interfaces.Windows;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Environments.Land.Scripts.Runtime.GUI;
 using TMPro;
@@ -7,6 +9,7 @@ using Unity.Game;
 using Unity.Presentation.Components;
 using Unity.Presentation.HUD;
 using Unity.Presentation.Windows;
+using Unity.Presentation.Windows.Pause;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
@@ -24,6 +27,7 @@ namespace Unity.Presentation
         
         [Inject] private ILevelRewardAggregator _rewardAggregator;
         [Inject] private IWindowsController _windowsController;
+        [Inject] private IGameController _gameController;
 
         private void OnValidate()
         {
@@ -38,16 +42,22 @@ namespace Unity.Presentation
             _unitsBuyPanel.UpdateView();
         }
         
-        private void Start()
-        {
-        }
-        
-        public void ShowExampleWindow()
+      
+        public void ShowUpgradeWindow()
         {
            _windowsController.ShowWindow<UpgradeWindow>(window =>
            {
                window.Show();
            });
+        }
+        
+        public void ShowPauseWindow()
+        {
+            _windowsController.ShowWindow<PauseWindow>(window =>
+            {
+                window.Initialize(_gameController);
+                window.Show();
+            });
         }
         
         public void SetIsUpgradeState(bool value)

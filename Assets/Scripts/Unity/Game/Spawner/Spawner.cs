@@ -34,7 +34,7 @@ namespace Unity.Game
 
         private void Start()
         {
-            _gameController.OnTowerDestroyed += TowerDestroyedHandler;
+            _gameController.OnGameFinished += TowerDestroyedHandler;
         }
 
         public void SetFaction(Faction faction, Faction enemyFaction)
@@ -118,7 +118,7 @@ namespace Unity.Game
         
         private void OnDestroy()
         {
-            _gameController.OnTowerDestroyed -= TowerDestroyedHandler;
+            _gameController.OnGameFinished -= TowerDestroyedHandler;
         }
     }
 }

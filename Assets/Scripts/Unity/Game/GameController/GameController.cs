@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Core.Application.Interfaces.ApplicationSession;
 using Core.Application.Interfaces.Windows;
 using Core.Application.Models;
@@ -22,7 +23,7 @@ namespace Unity.Game
     public class GameController : MonoBehaviour, IGameController
     {
         
-        public event Action<Faction> OnTowerDestroyed;
+        public event Action<Faction> OnGameFinished;
         
         [SerializeField]
         private List<Team> _teams;
@@ -41,6 +42,7 @@ namespace Unity.Game
         
         private Spawner _spawner;
         private bool _started = false;
+        private bool _isPaused = false;
 
         private ResultWindow _resultWindow;
         
@@ -73,23 +75,30 @@ namespace Unity.Game
             _foodProduction.StartProduction();
             _started = true;
         }
-
-        private void TowerDestroyedHandler(TowerController tower)
+        
+        public void EndGame(Faction winner)
         {
             _foodProduction.StopProduction();
-            OnTowerDestroyed?.Invoke(tower.Faction);
-            var playerWin = tower.Faction != Faction.Player;
-            ShowResultDelayed(playerWin);
+            OnGameFinished?.Invoke(winner);
+            var playerWin = winner == Faction.Player;
             if (_mainModel.CurrentEnemyEpochNumber <= _mainModel.CurrentPlayerEpochNumber)
             {
                 _mainModel.IncreaseEnemyEpoch();
             }
+            ShowResultDelayed(playerWin);
         }
 
-        public async UniTask ShowResultDelayed(bool playerWin)
+        private void TowerDestroyedHandler(TowerController tower)
         {
-            UniTask.WaitForSeconds(1);
-            if (_resultWindow != null)
+            EndGame(tower.Faction);
+        }
+
+        
+        private async UniTask ShowResultDelayed(bool playerWin)
+        {
+            await UniTask.WaitForSeconds(1);
+            await ShowResultWindow();
+            /*if (_resultWindow != null)
             {
                 return;
             }
@@ -97,7 +106,7 @@ namespace Unity.Game
             _resultWindow.SetResult(_rewardAggregator.Money, playerWin);
             _resultWindow.Show();
             _resultWindow.OnAdStartWatch += WatchAdForDoubleMoney;
-            _resultWindow.OnHide += OnResultWindowClose;
+            _resultWindow.OnHide += OnResultWindowClose;*/
         }
 
         private void Update()
@@ -163,6 +172,25 @@ namespace Unity.Game
             }
             _foodProduction.WithdrawFood(unit.FoodCost);
             _spawner.Spawn(tier, 1);
+        }
+
+        public void Pause(bool pause)
+        {
+            _isPaused = pause;
+            Time.timeScale = pause ? 0f : 1f;
+        }
+
+        public async Task ShowResultWindow()
+        {
+            if (_resultWindow != null)
+            {
+                return;
+            }
+            _resultWindow = await _windowsController.ShowWindow<ResultWindow>();
+            _resultWindow.SetResult(_rewardAggregator.Money, false);
+            _resultWindow.Show();
+            _resultWindow.OnAdStartWatch += WatchAdForDoubleMoney;
+            _resultWindow.OnHide += OnResultWindowClose;
         }
 
         public void ExitGame()
