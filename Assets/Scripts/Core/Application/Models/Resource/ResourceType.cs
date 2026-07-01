@@ -3,6 +3,7 @@ namespace Core.Application.Models
     public enum ResourceType
     {
         Food,
-        Money
+        Money,
+        Crystal
     }
 }
