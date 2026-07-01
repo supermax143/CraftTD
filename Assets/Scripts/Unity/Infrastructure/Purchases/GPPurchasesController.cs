@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,9 +15,8 @@ namespace Zombies.Purchases
     {
 
         public event Action<string> OnPurchaseComplete;
-        
-        
-        //[Inject] private ShopData _shopData;
+
+        [Inject] private Core.Application.Models.IShopModel _shopModel;
         [Inject] private IDataStorage _dataStorage;
         
         public bool ProductsInitialized { get; private set; }
@@ -102,23 +101,14 @@ namespace Zombies.Purchases
         private void PurchaseCompleteHandler(string id)
         {
             Debug.Log($"PurchaseComplete: {id} ");
-            /*if (!_shopData.IsPurchaseConsumable(id))
+
+            if (_shopModel.IsPurchased(id))
             {
-                if (_dataStorage.GetPurchase(id) > 0)
-                {
-                    return;
-                }
-                _dataStorage.Purchases.AddPurchase(id);
-                OnPurchaseComplete?.Invoke(id);
                 return;
-            }*/
-            
-            GP_Payments.Consume(id, (id) =>
-            {
-                //_dataStorage.AddMoney(_shopData.GetMoneyAmount(id));
-                OnPurchaseComplete?.Invoke(id);
-            });
-            
+            }
+
+            _shopModel.GrantRealMoneyPurchase(id);
+            OnPurchaseComplete?.Invoke(id);
         }
         
         private void CheckInitialized()

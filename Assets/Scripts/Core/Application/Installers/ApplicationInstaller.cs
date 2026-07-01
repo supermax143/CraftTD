@@ -19,7 +19,7 @@ namespace Core.Application.Installers
          Container.Bind<MainMenuState>().AsTransient();
          Container.Bind<GameState>().AsTransient();
          Container.BindInterfacesAndSelfTo<ApplicationSession.ApplicationStateMachine>().AsSingle();
-         
+         Container.BindInterfacesAndSelfTo<InventoryModel>().AsSingle();
          
          //Models
          Container.BindInterfacesAndSelfTo<MainModel>().AsSingle();

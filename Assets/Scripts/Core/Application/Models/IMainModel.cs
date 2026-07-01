@@ -8,6 +8,7 @@ namespace Core.Application.Models
         EpochModel EnemyEpoch { get; }
         EpochModel PlayerEpoch { get; }
         InventoryModel Inventory { get; }
+        IShopModel Shop { get; }
         Resource Money { get; set; }
         int CurrentPlayerEpochNumber { get; }
         int CurrentEnemyEpochNumber { get; }

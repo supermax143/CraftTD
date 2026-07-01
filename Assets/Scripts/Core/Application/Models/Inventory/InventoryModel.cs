@@ -1,64 +1,66 @@
 using System;
 using System.Collections.Generic;
+using Core.Application.DataStorage;
 using Core.Application.DataStorage.StorageItems;
+using Zenject;
 
 namespace Core.Application.Models
 {
-    public class InventoryModel
+    public class InventoryModel : IInventoryModel
     {
         public event Action OnMoneyChanged;
         public event Action OnCrystalChanged;
         public event Action OnItemsChanged;
 
-        private readonly InventoryStorageData _data;
+        
+        [Inject] private readonly IDataStorage _dataStorage;
+        
+        private InventoryStorageData InventoryData => _dataStorage.Inventory;
 
-        public InventoryModel(InventoryStorageData data)
-        {
-            _data = data;
-        }
+       
 
         public Resource Money
         {
-            get => _data.Money;
+            get => InventoryData.Money;
             set
             {
-                _data.Money = value;
+                InventoryData.Money = value;
                 OnMoneyChanged?.Invoke();
             }
         }
 
         public Resource Crystal
         {
-            get => _data.Crystal;
+            get => InventoryData.Crystal;
             set
             {
-                _data.Crystal = value;
+                InventoryData.Crystal = value;
                 OnCrystalChanged?.Invoke();
             }
         }
 
-        public IReadOnlyList<Item> Items => _data.GetItems();
+        public IReadOnlyList<Item> Items => InventoryData.GetItems();
 
         public void AddItem(Item item)
         {
-            _data.AddItem(item);
+            InventoryData.AddItem(item);
             OnItemsChanged?.Invoke();
         }
 
         public void RemoveItem(string itemId)
         {
-            _data.RemoveItem(itemId);
+            InventoryData.RemoveItem(itemId);
             OnItemsChanged?.Invoke();
         }
 
         public bool HasItem(string itemId)
         {
-            return _data.HasItem(itemId);
+            return InventoryData.HasItem(itemId);
         }
 
         public Item GetItem(string itemId)
         {
-            return _data.GetItem(itemId);
+            return InventoryData.GetItem(itemId);
         }
     }
 }

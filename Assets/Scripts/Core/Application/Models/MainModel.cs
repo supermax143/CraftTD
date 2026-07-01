@@ -19,14 +19,16 @@ namespace Core.Application.Models
         [Inject] private ChronologyInfo _chronology;
         [Inject] private DataStorage _dataStorage;
         [Inject] private GameStats _gameStats;
+        [Inject] private ShopModel _shop;
+        [Inject] private InventoryModel _inventory;
 
         public EpochModel PlayerEpoch => _playerEpoch;
         public EpochModel EnemyEpoch => _enemyEpoch;
         public InventoryModel Inventory => _inventory;
+        public IShopModel Shop => _shop;
 
         private EpochModel _playerEpoch;
         private EpochModel _enemyEpoch;
-        private InventoryModel _inventory;
 
         private int _selectedEnemyEpochIndex;
         
@@ -96,7 +98,6 @@ namespace Core.Application.Models
         
         public void Init()
         {
-            _inventory = new InventoryModel(_dataStorage.Inventory);
             _playerEpoch = GetEpochModel(_dataStorage.CurrentPlayerEpochIndex, Faction.Player);
             var selectedEnemyEpochIndex = 
                 _dataStorage.CurrentEnemyEpochIndex > _dataStorage.CurrentPlayerEpochIndex ? 

@@ -1,4 +1,6 @@
 using Core.Application.DataStorage;
+using Core.Application.Info.Shop;
+using Core.Application.Models;
 using Exploration.Scripts.Controllers.ModelRender;
 using Unity.Bootstrap;
 using Unity.Game;
@@ -32,6 +34,8 @@ namespace Unity.Installers
       private GameStats _baseGameStats;
       [SerializeField]
       private AdvertisementController _advertisementController;
+      [SerializeField]
+      private ShopConfig _shopConfig;
 
 
       public override async void InstallBindings()
@@ -52,6 +56,10 @@ namespace Unity.Installers
          Container.BindInterfacesAndSelfTo<DummyAdvertisementAPI>().AsSingle();
          Container.BindInterfacesAndSelfTo<AdvertisementController>().FromInstance(_advertisementController).AsSingle();
          Container.Bind<AdvertisementDoubleReward>().AsTransient();
+         
+         //Shop
+         Container.BindInterfacesAndSelfTo<ShopModel>().AsSingle();
+         Container.BindInterfacesAndSelfTo<ShopConfig>().FromInstance(_shopConfig).AsSingle();
          
          //Data Storage
          Container.Bind<ILocalStorageProvider>().To<PlayerPrefsStorageProvider>().AsTransient();
