@@ -8,12 +8,11 @@ namespace Core.Application.DataStorage.StorageItems
 {
     /// <summary>
     /// JSON-serializable structure for user data storage.
-    /// Contains money and weapon levels.
+    /// Contains weapon levels and opened units.
     /// </summary>
     [System.Serializable]
     internal class EpochDataInfo
     {
-        public Resource Money = Resource.Money(0);
         public uint FoodProductionLevel = 0;
         public uint TowerLevel = 0;
         public List<UnitTier> OpenedUnits = new();
@@ -40,16 +39,6 @@ namespace Core.Application.DataStorage.StorageItems
             else
             {
                 InitializeDefaultData();
-            }
-        }
-
-        public Resource Money
-        {
-            get => _epochDataInfo.Money;
-            set
-            {
-                _epochDataInfo.Money = value;
-                Save();
             }
         }
 
@@ -97,14 +86,7 @@ namespace Core.Application.DataStorage.StorageItems
         }
         
         
-        public void AddMoney(int amount)
-        {
-            _epochDataInfo.Money += Resource.Money(amount);
-            Save();
-        }
-        
-
-        public void Reset()
+                public void Reset()
         {
             InitializeDefaultData();
             Save();
@@ -114,7 +96,6 @@ namespace Core.Application.DataStorage.StorageItems
         {
             _epochDataInfo = new EpochDataInfo
             {
-                Money = Resource.Money(0),
                 FoodProductionLevel = 0,
                 TowerLevel = 0,
                 OpenedUnits = new List<UnitTier>() { UnitTier.Tier1 }

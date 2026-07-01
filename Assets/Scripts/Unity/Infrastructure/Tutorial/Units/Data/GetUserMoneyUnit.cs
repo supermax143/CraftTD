@@ -12,11 +12,11 @@ namespace Unity.Infrastructure.Tutorial.Units.Data
     {
         private const string RESULT = "result";
 
-        [Inject] private IDataStorage _dataStorage;
+        [Inject] private IMainModel _model;
 
         protected override int GetResult(Flow flow)
         {
-            return _dataStorage.UserMoney.Value;
+            return _model.Inventory.Money.Value;
         }
     }
 }

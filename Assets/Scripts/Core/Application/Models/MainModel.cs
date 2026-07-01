@@ -22,16 +22,18 @@ namespace Core.Application.Models
 
         public EpochModel PlayerEpoch => _playerEpoch;
         public EpochModel EnemyEpoch => _enemyEpoch;
-        
+        public InventoryModel Inventory => _inventory;
+
         private EpochModel _playerEpoch;
         private EpochModel _enemyEpoch;
+        private InventoryModel _inventory;
 
         private int _selectedEnemyEpochIndex;
         
         public Resource Money
         {
-            get => _playerEpoch.Money;
-            set => _playerEpoch.Money = value;
+            get => _inventory.Money;
+            set => _inventory.Money = value;
         }
         public int CurrentPlayerEpochNumber => _dataStorage.CurrentPlayerEpochIndex + 1;
         public int CurrentEnemyEpochNumber => _dataStorage.CurrentEnemyEpochIndex + 1;
@@ -94,6 +96,7 @@ namespace Core.Application.Models
         
         public void Init()
         {
+            _inventory = new InventoryModel(_dataStorage.Inventory);
             _playerEpoch = GetEpochModel(_dataStorage.CurrentPlayerEpochIndex, Faction.Player);
             var selectedEnemyEpochIndex = 
                 _dataStorage.CurrentEnemyEpochIndex > _dataStorage.CurrentPlayerEpochIndex ? 
@@ -106,7 +109,7 @@ namespace Core.Application.Models
         private EpochModel GetEpochModel(int index, Faction faction)
         {
             _chronology.TryGetEpochInfo(index, out var epochInfo);
-            return new EpochModel(faction, index + 1, epochInfo, _dataStorage.EpochData, _gameStats);
+            return new EpochModel(faction, index + 1, epochInfo, _dataStorage.EpochData, _gameStats, _inventory);
         }
         
         public void Reset()

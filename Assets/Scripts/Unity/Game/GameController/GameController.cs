@@ -134,7 +134,7 @@ namespace Unity.Game
             _resultWindow.OnAdStartWatch -= WatchAdForDoubleMoney;
             _resultWindow.OnHide -= OnResultWindowClose;
             _resultWindow = null;
-            _mainModel.PlayerEpoch.Money += _rewardAggregator.Money;
+            _mainModel.Inventory.Money += _rewardAggregator.Money;
             _rewardAggregator.Reset();
             _started = false;
             _hud.SetIsUpgradeState(true);

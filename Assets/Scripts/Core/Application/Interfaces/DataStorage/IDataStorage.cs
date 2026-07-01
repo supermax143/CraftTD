@@ -8,10 +8,9 @@ namespace Core.Application.DataStorage
     {
         TutorialStorageData TutorialStorage { get; }
         PurchasesStorageData Purchases { get; }
-        Resource UserMoney { get; }
+        InventoryStorageData Inventory { get; }
         int CurrentPlayerEpochIndex { get; }
         int CurrentEnemyEpochIndex { get; }
-        void AddMoney(int amount);
         void SetCurrentPlayerEpoch(int index);
         void Reset();
     }

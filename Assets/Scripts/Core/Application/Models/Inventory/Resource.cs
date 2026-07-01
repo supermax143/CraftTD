@@ -20,6 +20,7 @@ namespace Core.Application.Models
 
         public static Resource Money(int value) => new Resource(ResourceType.Money, value);
         public static Resource Food(int value) => new Resource(ResourceType.Food, value);
+        public static Resource Crystal(int value) => new Resource(ResourceType.Crystal, value);
 
         public static Resource operator +(Resource a, Resource b)
         {

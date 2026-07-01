@@ -10,7 +10,6 @@ namespace Core.Application.Models
     public class EpochModel
     {
         public event Action OnUnitOpened;
-        public event Action OnMoneyChanged;
         public event Action OnFoodProductionLevelChanged;
         public event Action OnTowerLevelChanged;
 
@@ -24,13 +23,7 @@ namespace Core.Application.Models
         private readonly GameStats _gameStats;
         private readonly int _epochNumber;
         private readonly Faction _faction;
-
-
-        public Resource Money
-        {
-            get => _data.Money;
-            set => _data.Money = value;
-        }
+        private readonly InventoryModel _inventory;
 
         public string Name => _info.EpochName;
         public uint FoodProductionLevel => _data.FoodProductionLevel;
@@ -47,14 +40,15 @@ namespace Core.Application.Models
         public TowerModel Tower => _tower;
 
 
-        internal EpochModel( Faction faction, int epochNumber, EpochInfo info, EpochStorageData data, GameStats gameStats)
+        internal EpochModel(Faction faction, int epochNumber, EpochInfo info, EpochStorageData data, GameStats gameStats, InventoryModel inventory)
         {
             _faction = faction;
             _epochNumber = epochNumber;
             _info = info;
             _data = data;
             _gameStats = gameStats;
-            
+            _inventory = inventory;
+
             AddTowers();
             AddUnits();
         }
@@ -120,48 +114,45 @@ namespace Core.Application.Models
         public void UpgradeFoodProduction()
         {
             var cost = Resource.Money(_gameStats.GetFoodProductionSpeedCost(FoodProductionLevel));
-            if (Money < cost)
+            if (_inventory.Money < cost)
             {
                 return;
             }
-            
-            Money -= cost;
+
+            _inventory.Money -= cost;
             _data.FoodProductionLevel++;
             OnFoodProductionLevelChanged?.Invoke();
-            OnMoneyChanged?.Invoke();
         }
         
         public void UpgradeTowerLevel()
         {
             var cost = Resource.Money(_gameStats.GetTowerUpgradeCost(TowerLevel));
-            if (Money < cost)
+            if (_inventory.Money < cost)
             {
                 return;
             }
-            
-            Money -= cost;
+
+            _inventory.Money -= cost;
             _data.TowerLevel++;
-            
+
             Tower.AddModifier(new HealthAddModifier(GetHashCode(), TowerHealth));
             OnTowerLevelChanged?.Invoke();
-            OnMoneyChanged?.Invoke();
         }
         
         public void OpenUnit(UnitTier tier)
         {
-            if (!TryGetUnitModel(tier, out var unitModel) || 
-                unitModel.IsUnitOpened || 
-                Money < Resource.Money(unitModel.UnlockCost))
+            if (!TryGetUnitModel(tier, out var unitModel) ||
+                unitModel.IsUnitOpened ||
+                _inventory.Money < Resource.Money(unitModel.UnlockCost))
             {
                 return;
             }
-            
-            Money -= Resource.Money(unitModel.UnlockCost);
-            
+
+            _inventory.Money -= Resource.Money(unitModel.UnlockCost);
+
             _data.OpenUnit(tier);
             unitModel.OpenUnit();
             OnUnitOpened?.Invoke();
-            OnMoneyChanged?.Invoke();
         }
 
         
