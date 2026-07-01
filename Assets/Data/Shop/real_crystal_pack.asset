@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888bdac19ea1b2b4e8da26c1a87f468f, type: 3}
+  m_Name: real_crystal_pack
+  m_EditorClassIdentifier: Core.Application::Core.Application.Info.Shop.ShopItemConfig
+  _id: real_crystal_pack
+  _displayName: Crystal Pack (Premium)
+  _description: Get 500 Crystals!
+  _icon: {fileID: 0}
+  _paymentType: 1
+  _currencyType: 0
+  _price: 0
+  _isConsumable: 1
+  _localizedPricePlaceholder: $4.99
+  _rewardType: 0
+  _rewardResourceType: 1
+  _rewardAmount: 500
