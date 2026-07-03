@@ -87,6 +87,11 @@ namespace Unity.Game
             _unitAnimatorController.PlayIdle();
         }
         
+        public void StartDie()
+        {
+            _unitAnimatorController.PlayDie();
+        }
+        
         public void UpdateSortingByPosition()
         {
             var pos = _rootTransform.position;

@@ -21,6 +21,7 @@ namespace Unity.Presentation.Components
             public static readonly int Idle = Animator.StringToHash(nameof(Idle));
             public static readonly int Walk = Animator.StringToHash(nameof(Walk));
             public static readonly int Attack = Animator.StringToHash(nameof(Attack));
+            public static readonly int Die = Animator.StringToHash(nameof(Die));
         }
         
         private static class Triggers
@@ -28,6 +29,7 @@ namespace Unity.Presentation.Components
             public static readonly int Idle = Animator.StringToHash(nameof(Idle));
             public static readonly int Walk = Animator.StringToHash(nameof(Walk));
             public static readonly int Attack = Animator.StringToHash(nameof(Attack));
+            public static readonly int Die = Animator.StringToHash(nameof(Die));
         }
         
 
@@ -55,9 +57,14 @@ namespace Unity.Presentation.Components
             PlayAnimation(Triggers.Walk);
         }
         
+        public void PlayDie()
+        {
+            PlayAnimation(Triggers.Die);
+        }
         
         public bool IsIdleState() => IsPlayingState(States.Idle, Layers.Base);
         public bool IsWalkState() => IsPlayingState(States.Walk, Layers.Base);
         public bool IsAttackState() => IsPlayingState(States.Attack, Layers.Base);
+
     }
 }

@@ -45,10 +45,15 @@ namespace Unity.Game
             }
             OnDamage?.Invoke((int)damage);
             _progressBar.SetValue(_currentHealth);
-            _progressBar.gameObject.SetActive(true);
+            _progressBar.gameObject.SetActive(_currentHealth > 0);
             Debug.Log($"Health: {_currentHealth} / {MaxHealth}");
         }
 
+        public void HideHealth()
+        {
+            _progressBar.gameObject.SetActive(false);
+        }
+        
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {

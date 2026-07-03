@@ -20,7 +20,9 @@ namespace Unity.Game
 
         public void Die(Vector2 hitDirection)
         {
-            //_unit.gameObject.SetLayerRecursively(Layers.Dead);
+            _unit.gameObject.SetLayerRecursively(Layers.Dead);
+            _unit.HealthComponent.HideHealth();
+            _unit.View.StartDie();
             // Включаем физику
             rb.bodyType = RigidbodyType2D.Dynamic;
             // Отбрасываем
@@ -51,11 +53,11 @@ namespace Unity.Game
             seq.Append(visual.DOLocalMoveY(0f, 0.07f).SetEase(Ease.InQuad));
 
             // Одновременно вращение
-            visual.DOLocalRotate(
+            /*visual.DOLocalRotate(
                     new Vector3(0, 0, sign * 40f),
                     0.6f,
                     RotateMode.FastBeyond360)
-                .SetEase(Ease.OutCubic);
+                .SetEase(Ease.OutCubic);*/
 
             // Немного "расплющить" при первом ударе
             seq.Insert(
