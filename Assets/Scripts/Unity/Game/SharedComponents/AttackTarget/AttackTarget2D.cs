@@ -14,5 +14,6 @@ namespace Unity.Game
             closestPosition = _collider.ClosestPoint(position);
             return true;
         }
+        
     }
 }

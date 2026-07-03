@@ -9,6 +9,9 @@ namespace Unity.Game
         
         [SerializeField]
         private TargetType _targetType;
+        [SerializeField]
+        private Transform _attackTransform;
+        
         
         public HealthComponent HealthComponent => _healthComponent;
         public TargetType Type => _targetType;
@@ -22,6 +25,17 @@ namespace Unity.Game
 
         public abstract bool TryGetClosestPosition(Vector3 position, out Vector3 closestPosition);
 
+        public bool TryGetAttackPosition(Vector3 position, out Vector3 pos)
+        {
+            if (_attackTransform == null)
+            {
+                pos = position;
+                return false;
+            }
+            pos = _attackTransform.position;
+            return true;
+        }
+        
         public void SetFaction(Faction faction)
         {
             _faction = faction;

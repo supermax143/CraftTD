@@ -30,18 +30,21 @@ namespace Unity.Game.Projectile
         private IEnumerator Move()
         {
             var startPosition = transform.position;
-            if (!_target.TryGetClosestPosition(transform.position, out var targetPosition))
+            
+            /*if (!_target.TryGetAttackPosition(transform.position, out var targetPosition))
             {
                 yield return null;
-            }
-            //var targetPosition = _target.TryGetClosestPosition(transform.position);
+            }*/
+
+            Vector3 targetPosition = default;
             var time = Vector3.Distance(transform.position, targetPosition) / _speed;
             _timer.Start(time);
             while (!_timer.IsComplete)
             {
-                if (_target == null)
+                if (!_target.TryGetAttackPosition(transform.position, out targetPosition))
                 {
                     Destroy(gameObject);
+                    yield break;
                 }
                 transform.position = Vector3.Lerp(startPosition, targetPosition, _timer.Progress);
                 yield return null;
