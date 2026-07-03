@@ -16,7 +16,6 @@ namespace Unity.Game
         {
             _detectionTimer.Start(TargetSearchComponentBase.DETECTION_INTERVAL);
             _unit.MoveComponent.StartMove(_stateManager.CurrentTarget);
-            _unit.View.StartWalking();
         }
 
         public override void UpdateState()
@@ -44,9 +43,6 @@ namespace Unity.Game
                 
                 _detectionTimer.Start(TargetSearchComponentBase.DETECTION_INTERVAL);
             }
-            
-            
-            //MoveToTarget(_stateManager.CurrentTarget);
         }
 
         public override void Exit()

@@ -11,8 +11,7 @@ namespace Unity.Game
     public class AttackComponent : GameComponent
     {
         
-        [SerializeField, HideInInspector]
-        private MoveComponentBase _moveComponent;
+        public event Action OnAttack;
         
         [SerializeField]
         private Weapon _weapon;
@@ -33,23 +32,40 @@ namespace Unity.Game
         public float Damage => _damage.ValueModified;
         
         private Coroutine _attackCoroutine;
-
-        private AttackTargetBase _target;
-
         
+        private AttackTargetBase _target;
+        private UnitView _view;
+        private MoveComponentBase _moveComponent;
+
+
         private void OnValidate()
         {
             _weapon = GetComponentInChildren<Weapon>();
-            _moveComponent = GetComponentInChildren<MoveComponentBase>();
             _animationEvents = GetComponentInChildren<UnitAnimationEvents>();
         }
 
+        public void Initialize(UnitView view, MoveComponentBase moveComponent)
+        {
+            _view = view;
+            _moveComponent = moveComponent;
+        }
+        
         private void Start()
         {
             if (_animationEvents != null)
             {
                 _animationEvents.OnAttackActivate += AttackActivate;
+                _animationEvents.OnAttackAnimationStart += AttackAnimationStart;
             }
+        }
+
+        private void AttackAnimationStart()
+        {
+            if(_target == null)
+            {
+                return;
+            }
+            _moveComponent.RotateTo(_target.transform.position);
         }
 
         private void AttackActivate()
@@ -59,6 +75,7 @@ namespace Unity.Game
                 return;
             }
             _weapon.Attack(_target, Damage);
+            OnAttack?.Invoke();
         }
 
         public void Activate(AttackTargetBase target)
@@ -67,6 +84,7 @@ namespace Unity.Game
             _target = target;
             if (_animationEvents != null)
             {
+                _view.StartAttacking();
                 return;
             }
             //кейс без аниматора
@@ -92,6 +110,7 @@ namespace Unity.Game
             }
 
             _weapon.Attack(_target, Damage);
+            OnAttack?.Invoke();
             _attackCoroutine = StartCoroutine(Attack());
         }
         
@@ -127,5 +146,6 @@ namespace Unity.Game
             });
         }
 #endif
+       
     }
 }

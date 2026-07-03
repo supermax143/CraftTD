@@ -10,8 +10,24 @@ namespace Unity.Game
 
         public override void Enter()
         {
+            _unit.Attack.OnAttack += OnAttackComplete;
             _unit.Attack.Activate(_stateManager.CurrentTarget);
-            _unit.View.StartAttacking();
+        }
+
+        private void OnAttackComplete()
+        {
+            var curTarget = _stateManager.CurrentTarget;
+            if (curTarget == null || curTarget.Type == TargetType.Unit)
+            {
+                return;
+            }
+            
+            var targetSearch = _unit.TargetSearchComponent;
+            if (targetSearch.TryGetClosestTarget(out var target) && target.Type == TargetType.Tower)
+            {
+               return;
+            }
+            _stateManager.CurrentTarget = target;
         }
 
 
@@ -35,6 +51,7 @@ namespace Unity.Game
         public override void Exit()
         {
             base.Exit();
+            _unit.Attack.OnAttack -= OnAttackComplete;
             _unit.Attack.Deactivate();
         }
 

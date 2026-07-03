@@ -7,21 +7,12 @@ namespace Unity.Game
     {
         public override bool TryGetClosestTarget(out AttackTargetBase target)
         {
-            var colliders = Physics2D.OverlapCircleAll(SearchTransform.position, DetectionRange)
-                .OrderByDescending(x => Vector2.Distance(x.transform.position, SearchTransform.position))
-                .ToArray();
-
-            target = null;
-
-            foreach (var c in colliders)
-            {
-                var t = c.GetComponent<AttackTargetBase>();
-                if (t != null && !t.IsDead && t.Faction == _opponentFaction)
-                {
-                    target = t;
-                    break;
-                }
-            }
+            target = Physics2D.OverlapCircleAll(SearchTransform.position, DetectionRange)
+                .Select(c => c.GetComponent<AttackTargetBase>())
+                .Where(t => t != null && !t.IsDead && t.Faction == _opponentFaction)
+                .OrderBy(t => t.Type == TargetType.Tower)
+                .ThenBy(t => Vector2.Distance(t.transform.position, SearchTransform.position))
+                .FirstOrDefault();
 
             return target != null;
         }

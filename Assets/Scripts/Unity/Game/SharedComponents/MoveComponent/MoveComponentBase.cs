@@ -30,6 +30,7 @@ namespace Unity.Game
         public void StartMove(AttackTargetBase target)
         {
             _target = target;
+            _view.StartWalking();
             _moving = true;
         }
 

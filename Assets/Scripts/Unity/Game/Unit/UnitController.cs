@@ -89,7 +89,8 @@ namespace Unity.Game
             _view.Initialize(_healthComponent, transform);
             _attackTarget.Initialize(_healthComponent);
             _moveComponent.SetData(_data);
-            _attackComponent.SetData(_data);
+            _attackComponent.SetData( _data);
+            _attackComponent.Initialize(_view, _moveComponent);
             _targetSearchComponent.SetData(_data);
             _targetSearchComponent.Initialize(_moveComponent);
             if (_faction == Faction.Enemy)

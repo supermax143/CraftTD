@@ -25,6 +25,11 @@ namespace Unity.Presentation.Components
             {
                 return;
             }
+
+            if (_currentTrigger == trigger)
+            {
+                return;
+            }
             
             if (_currentTrigger != 0)
             {

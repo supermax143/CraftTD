@@ -19,7 +19,7 @@ namespace Unity.Game
                 return;
             }
             _unit.View.StartIdle();
-            Debug.LogError($"{this.GetType().Name} Target not found");
+            Debug.Log($"{this.GetType().Name} Wait For Target");
         }
         
     }
