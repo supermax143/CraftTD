@@ -45,6 +45,7 @@ namespace Unity.Game
         public MoveComponentBase MoveComponent => _moveComponent;
         public TargetSearchComponentBase TargetSearchComponent => _targetSearchComponent;
         public AttackTargetBase AttackTarget => _attackTarget;
+        public RewardComponent RewardComponent1 => _rewardComponent;
         public Faction Faction => _faction;
 
         public UnitView View => _view;
@@ -113,6 +114,7 @@ namespace Unity.Game
         public void Die()
         {
             OnDie?.Invoke(this);
+            _rewardComponent.OnDeathHandler();
             Dispose();
         }
 

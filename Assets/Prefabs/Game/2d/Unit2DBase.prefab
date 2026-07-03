@@ -270,7 +270,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.0002
-  m_LinearDamping: 0.1
+  m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -395,6 +395,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.UnitAnimatorController
   _animator: {fileID: 0}
+  _dieClips:
+  - {fileID: 7400000, guid: d623b5cb07a64924a8877af0b83128a4, type: 2}
+  - {fileID: 7400000, guid: ea27e31b918a5554db093a27688ee17b, type: 2}
+  - {fileID: 7400000, guid: 2db4e33a8143db94086bf038c55ea0e5, type: 2}
   _animationEvents: {fileID: 0}
 --- !u!1 &8562988452578140486
 GameObject:

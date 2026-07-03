@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Unity.Game;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -7,7 +7,9 @@ namespace Unity.Presentation.Components
 {
     public class UnitAnimatorController : AnimatorControllerBase
     {
-        
+        [SerializeField]
+        private AnimationClip[] _dieClips;
+
         [SerializeField, HideInInspector]
         private UnitAnimationEvents _animationEvents;
 
@@ -35,6 +37,7 @@ namespace Unity.Presentation.Components
 
         protected void OnValidate()
         {
+            
             base.OnValidate();
             if (_animator != null && !_animator.TryGetComponent(out _animationEvents))
             {
@@ -59,6 +62,13 @@ namespace Unity.Presentation.Components
         
         public void PlayDie()
         {
+            if (_dieClips != null && _dieClips.Length > 0)
+            {
+                var randomClip = _dieClips[Random.Range(0, _dieClips.Length)];
+                var overrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
+                overrideController["Die"] = randomClip;
+                _animator.runtimeAnimatorController = overrideController;
+            }
             PlayAnimation(Triggers.Die);
         }
         

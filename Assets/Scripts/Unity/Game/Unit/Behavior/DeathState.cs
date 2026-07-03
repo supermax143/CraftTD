@@ -1,4 +1,4 @@
-﻿using DG.Tweening;
+using DG.Tweening;
 using Unity.Utils;
 using UnityEngine;
 
@@ -68,7 +68,7 @@ namespace Unity.Game
             seq.OnComplete(() =>
             {
                 visual.localPosition = Vector3.zero;
-                _unit.Die();
+                DOVirtual.DelayedCall(.7f, () => _unit.Die());
             });
         }
         

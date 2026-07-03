@@ -26,10 +26,10 @@ namespace Unity.Game
         public void Initialize(HealthComponent healthComponent)
         {
             _healthComponent = healthComponent;
-            _healthComponent.OnDeath += OnDeathHandler;
+            //_healthComponent.OnDeath += OnDeathHandler;
         }
 
-        private void OnDeathHandler()
+        public void OnDeathHandler()
         {
             _rewardAggregator.AddMoney(RewardMoney);
             _dropManager.ShowDrop(new Resource(ResourceType.Money, RewardMoney), transform.position);
@@ -41,7 +41,7 @@ namespace Unity.Game
             {
                 return;
             }
-            _healthComponent.OnDeath -= OnDeathHandler;
+            //_healthComponent.OnDeath -= OnDeathHandler;
         }
     }
 }

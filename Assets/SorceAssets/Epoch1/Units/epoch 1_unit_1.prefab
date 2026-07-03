@@ -123,6 +123,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6103440010209950930, guid: 51a2516b43bddf2468f2e993c1609d98,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.036420804
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103440010209950930, guid: 51a2516b43bddf2468f2e993c1609d98,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103440010209950930, guid: 51a2516b43bddf2468f2e993c1609d98,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.99933654
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103440010209950930, guid: 51a2516b43bddf2468f2e993c1609d98,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -184.174
+      objectReference: {fileID: 0}
     - target: {fileID: 6987802632102592666, guid: 51a2516b43bddf2468f2e993c1609d98,
         type: 3}
       propertyPath: m_Color.b
