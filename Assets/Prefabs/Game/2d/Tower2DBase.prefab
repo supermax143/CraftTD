@@ -759,7 +759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.RewardForDamageComponent
   _rewardMoney:
     _value: 0
-  _dropDirection: {x: 0, y: 0}
+  _dropDirection: {x: -1, y: 0}
   _dropTransform: {fileID: 2459846635412851983}
 --- !u!1001 &1461842874964270455
 PrefabInstance:

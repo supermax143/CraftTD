@@ -70,7 +70,9 @@ namespace Unity.Game
 
         private void AttackActivate()
         {
-            if (_target == null || !_target.TryGetAttackPosition(transform.position, out var targetPosition))
+            if (_target == null ||
+                _target.IsDead  ||
+                !_target.TryGetAttackPosition(transform.position, out var targetPosition))
             {
                 return;
             }
@@ -106,7 +108,7 @@ namespace Unity.Game
                 yield return null;
             }
             _moveComponent.RotateTo(targetPosition);
-            if (_target == null)
+            if (_target == null || _target.IsDead)
             {
                 Debug.LogError($"{this.GetType().Name} Target is null");
                 yield break;

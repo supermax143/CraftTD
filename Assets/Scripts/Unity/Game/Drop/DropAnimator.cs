@@ -18,9 +18,9 @@ namespace Unity.Game
         
         public void Show( Transform target, Vector2 direction = default, Action<Transform> onComplete = null)
         {
-            float angle = Random.Range(0f, 360f);
             if (direction == default || direction == Vector2.zero)
             {
+                float angle = Random.Range(0f, 360f);
                 direction = new Vector2(
                     Mathf.Cos(angle * Mathf.Deg2Rad),
                     Mathf.Sin(angle * Mathf.Deg2Rad)
@@ -50,10 +50,20 @@ namespace Unity.Game
             moveSeq.onComplete += () =>
             {
                 onComplete?.Invoke(target);
+                UpdateSortingByPosition(target);
             };
+            
+            
         }
 
-        private static void JumpSeq(Transform target, float height, int i, Sequence seq, float yStep, float bounceDuration, ref float currentBaseY)
+        public void UpdateSortingByPosition(Transform target)
+        {
+            var pos = target.position;
+            pos.z = pos.y * 0.001f;
+            target.position = pos;
+        }
+        
+        private void JumpSeq(Transform target, float height, int i, Sequence seq, float yStep, float bounceDuration, ref float currentBaseY)
         {
             float jumpHeight = height * Mathf.Pow(0.5f, i);
             float baseYStep = yStep * Mathf.Pow(0.5f, i);
@@ -83,7 +93,7 @@ namespace Unity.Game
             seq.AppendCallback(() =>
             {
                 target.DOKill(false);
-
+                UpdateSortingByPosition(target);
                 Sequence squash = DOTween.Sequence();
 
                 squash.Append(

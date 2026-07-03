@@ -94,16 +94,18 @@ namespace Unity.Game
             flyingObject.rotation = Quaternion.identity;
 
             // Настраиваем сортировку выше UI
-            var spriteRenderer = flyingObject.GetComponentInChildren<SpriteRenderer>();
+            /*var spriteRenderer = flyingObject.GetComponentInChildren<SpriteRenderer>();
             if (spriteRenderer != null)
             {
                 spriteRenderer.sortingLayerName = "Windows";
                 spriteRenderer.sortingOrder = 100;
-            }
+            }*/
             
 
             var seq = DOTween.Sequence();
 
+            
+            
             seq.Append(
                 DOTween.To(
                         () => 0f,

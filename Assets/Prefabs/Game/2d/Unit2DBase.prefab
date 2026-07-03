@@ -484,7 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.DeathState
   rb: {fileID: 1096172699770815386}
   visual: {fileID: 3502686921280439868}
-  knockbackForce: 0.0001
+  knockbackForce: 0.0002
 --- !u!114 &7089783761961880826
 MonoBehaviour:
   m_ObjectHideFlags: 0

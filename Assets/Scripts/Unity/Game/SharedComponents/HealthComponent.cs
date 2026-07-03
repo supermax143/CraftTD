@@ -32,6 +32,11 @@ namespace Unity.Game
 
         public void TakeDamage(float damage)
         {
+            if (_currentHealth == 0)
+            {
+                return;
+            }
+            
             if (damage > _currentHealth)
             {
                 damage = _currentHealth;

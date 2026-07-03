@@ -664,7 +664,7 @@ MonoBehaviour:
   _canvas: {fileID: 17063988}
   _mainCam: {fileID: 0}
   _flightDuration: 1.5
-  _arcHeight: 2.5
+  _arcHeight: 1
 --- !u!1 &1584959696
 GameObject:
   m_ObjectHideFlags: 0

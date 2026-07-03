@@ -53,8 +53,19 @@ namespace Unity.Game
 
         private IEnumerator DamageAnimation()
         {
-            _tintController.SetTintColor(Color.red);
+            /*_tintController.SetTintColor(Color.red);
             yield return new WaitForSeconds(0.2f);
+            _tintController.SetTintColor(_color);*/
+            _tintController.SetTintColor(Color.red);
+            foreach (var renderer in _renderers)
+            {
+                renderer.color = Color.red;
+            }
+            yield return new WaitForSeconds(0.1f);
+            foreach (var renderer in _renderers)
+            {
+                renderer.color = Color.white;
+            }
             _tintController.SetTintColor(_color);
         }
 
