@@ -70,11 +70,14 @@ namespace Unity.Game
 
         private void AttackActivate()
         {
-            if (_target == null)
+            if (_target == null || !_target.TryGetAttackPosition(transform.position, out var targetPosition))
             {
                 return;
             }
-            _weapon.Attack(_target, Damage);
+            
+           
+            var direction = (targetPosition - transform.position).normalized;
+            _weapon.Attack(_target, Damage, direction);
             OnAttack?.Invoke();
         }
 
@@ -109,7 +112,7 @@ namespace Unity.Game
                 yield break;
             }
 
-            _weapon.Attack(_target, Damage);
+            _weapon.Attack(_target, Damage, Vector3.zero);
             OnAttack?.Invoke();
             _attackCoroutine = StartCoroutine(Attack());
         }

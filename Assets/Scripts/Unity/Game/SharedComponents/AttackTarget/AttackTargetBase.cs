@@ -18,10 +18,13 @@ namespace Unity.Game
 
         public bool IsDead => _healthComponent.IsDead;
         public Faction Faction => _faction;
-        
+
+        public Vector3 LastAttackDirection => _lastAttackDirection;
+
         private HealthComponent _healthComponent;
         
         private Faction _faction;
+        private Vector3 _lastAttackDirection;
 
         public abstract bool TryGetClosestPosition(Vector3 position, out Vector3 closestPosition);
 
@@ -59,6 +62,11 @@ namespace Unity.Game
             {
                 _healthComponent.OnDeath -= DeathHandler;
             }
+        }
+
+        public void SetLastAttackDirection(Vector3 direction)
+        {
+            _lastAttackDirection = direction;
         }
     }
     

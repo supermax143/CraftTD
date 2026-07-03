@@ -30,11 +30,6 @@ namespace Unity.Game.Projectile
         private IEnumerator Move()
         {
             var startPosition = transform.position;
-            
-            /*if (!_target.TryGetAttackPosition(transform.position, out var targetPosition))
-            {
-                yield return null;
-            }*/
 
             Vector3 targetPosition = default;
             var time = Vector3.Distance(transform.position, targetPosition) / _speed;
@@ -52,6 +47,7 @@ namespace Unity.Game.Projectile
             transform.position = targetPosition;
             if (_target != null || _target.HealthComponent != null)
             {
+                _target.SetLastAttackDirection(_target.transform.position - startPosition);
                 _target.HealthComponent.TakeDamage(_damage);
             }
             Destroy(gameObject);
