@@ -106,4 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9cc19974ca4ad1b9ecb65449f9091d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Projectile.ProjectileComponent
-  _speed: 20
+  _speed: 15

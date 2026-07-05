@@ -31,7 +31,11 @@ namespace Unity.Game.Projectile
         {
             var startPosition = transform.position;
 
-            Vector3 targetPosition = default;
+            if (!_target.TryGetAttackPosition(transform.position, out var targetPosition))
+            {
+                Destroy(gameObject);
+                yield break;
+            }
             var time = Vector3.Distance(transform.position, targetPosition) / _speed;
             _timer.Start(time);
             while (!_timer.IsComplete)
