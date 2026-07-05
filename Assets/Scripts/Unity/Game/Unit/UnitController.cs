@@ -114,7 +114,10 @@ namespace Unity.Game
         public void Die()
         {
             OnDie?.Invoke(this);
-            _rewardComponent.OnDeathHandler();
+            if (_faction == Faction.Enemy)
+            {
+                _rewardComponent.OnDeathHandler();
+            }
             Dispose();
         }
 

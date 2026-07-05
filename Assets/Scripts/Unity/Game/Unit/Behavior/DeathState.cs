@@ -29,7 +29,13 @@ namespace Unity.Game
             rb.linearVelocity = Vector2.zero;
             rb.AddForce(hitDirection.normalized * knockbackForce, ForceMode2D.Impulse);
 
-            PlayBounceAnimation(hitDirection);
+            DOVirtual.DelayedCall(1.5f, () => _unit.Die());
+            //PlayBounceAnimation(hitDirection);
+        }
+
+        public override void UpdateState()
+        {
+            _unit.View.UpdateSortingByPosition();
         }
 
         private void PlayBounceAnimation(Vector2 direction)
@@ -52,12 +58,7 @@ namespace Unity.Game
             seq.Append(visual.DOLocalMoveY(0.08f, 0.07f).SetEase(Ease.OutQuad));
             seq.Append(visual.DOLocalMoveY(0f, 0.07f).SetEase(Ease.InQuad));
 
-            // Одновременно вращение
-            /*visual.DOLocalRotate(
-                    new Vector3(0, 0, sign * 40f),
-                    0.6f,
-                    RotateMode.FastBeyond360)
-                .SetEase(Ease.OutCubic);*/
+           
 
             // Немного "расплющить" при первом ударе
             seq.Insert(

@@ -18,5 +18,6 @@ namespace Unity.Presentation.Components
         {
             OnAttackActivate?.Invoke();
         }
+        
     }
 }
