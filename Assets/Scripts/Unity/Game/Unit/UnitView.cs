@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Unity.Presentation.Components;
+using Unity.Utils.Time;
 using UnityEngine;
 using Utils.ColorEffects;
 
@@ -101,6 +102,38 @@ namespace Unity.Game
         public void StartDie()
         {
             _unitAnimatorController.PlayDie();
+            StartCoroutine(DeathAnimation());
+        }
+        
+        private IEnumerator DeathAnimation()
+        {
+            var _propertyBlock = new MaterialPropertyBlock();
+            var dissolveId = Shader.PropertyToID("_DissolveAmount");
+            var timer = new Timer();
+            timer.Start(1);
+
+            while (!timer.IsComplete)
+            {
+                _propertyBlock.SetFloat(dissolveId, timer.Progress);
+                foreach (var renderer in _renderers)
+                {
+                    if (renderer != null)
+                    {
+                        renderer.SetPropertyBlock(_propertyBlock);
+                    }
+                }
+                yield return null;
+            }
+            
+            _propertyBlock.SetFloat(dissolveId, 1);
+            foreach (var renderer in _renderers)
+            {
+                if (renderer != null)
+                {
+                    renderer.SetPropertyBlock(_propertyBlock);
+                }
+            }
+            
         }
         
         public void UpdateSortingByPosition()
