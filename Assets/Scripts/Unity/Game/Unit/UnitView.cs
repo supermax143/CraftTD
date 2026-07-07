@@ -23,8 +23,29 @@ namespace Unity.Game
         private Coroutine _blinkCoroutine;
         private Color _color;
         private Transform _rootTransform;
-        
-        
+        private MaterialPropertyBlock _propertyBlock;
+
+        private void Awake()
+        {
+            _propertyBlock = new MaterialPropertyBlock();
+            
+            /*var boundsTopId = Shader.PropertyToID("_BoundsTop");
+            var boundsBottomId = Shader.PropertyToID("_BoundsBottom");
+            Bounds bounds = _renderers[0].bounds;
+
+            
+            foreach (var r in _renderers)
+                bounds.Encapsulate(r.bounds);
+            _propertyBlock.SetFloat(boundsTopId, bounds.max.y);
+            _propertyBlock.SetFloat(boundsBottomId, bounds.min.y);
+            foreach (var renderer in _renderers)
+            {
+                if (renderer != null)
+                {
+                    renderer.SetPropertyBlock(_propertyBlock);
+                }
+            }*/
+        }
 
         private void OnValidate()
         {
@@ -111,13 +132,22 @@ namespace Unity.Game
         
         private IEnumerator DeathAnimation()
         {
-            MaterialPropertyBlock _propertyBlock = new MaterialPropertyBlock();
+            
             var dissolveId = Shader.PropertyToID("_DissolveAmount");
+            var boundsTopId = Shader.PropertyToID("_BoundsTop");
+            var boundsBottomId = Shader.PropertyToID("_BoundsBottom");
             var timer = new Timer();
-            timer.Start(1);
+            yield return new WaitForSeconds(1);
+            timer.Start(.7f);
 
             while (!timer.IsComplete)
             {
+                Bounds bounds = _renderers[0].bounds;
+
+                foreach (var r in _renderers)
+                    bounds.Encapsulate(r.bounds);
+                /*_propertyBlock.SetFloat(boundsTopId, bounds.max.y);
+                _propertyBlock.SetFloat(boundsBottomId, bounds.min.y);*/
                 _propertyBlock.SetFloat(dissolveId, timer.Progress);
                 foreach (var renderer in _renderers)
                 {
@@ -140,14 +170,13 @@ namespace Unity.Game
             
         }
 
-        /*private void Update()
+        /*
+        private void Update()
         {
             Bounds bounds = _renderers[0].bounds;
 
             foreach (var r in _renderers)
                 bounds.Encapsulate(r.bounds);
-            _propertyBlock.SetFloat("_BoundsTop", bounds.max.y);
-            _propertyBlock.SetFloat("_BoundsBottom", bounds.min.y);
             foreach (var renderer in _renderers)
             {
                 if (renderer != null)
@@ -155,7 +184,8 @@ namespace Unity.Game
                     renderer.SetPropertyBlock(_propertyBlock);
                 }
             }
-        }*/
+        }
+        */
 
 
         public void UpdateSortingByPosition()
