@@ -140,3 +140,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _speed: 10
+  _bounceCount: 2
+  _bounceDistance: 0.7
+  _bounceHeight: 0.6
+  _bounceDuration: 0.3
