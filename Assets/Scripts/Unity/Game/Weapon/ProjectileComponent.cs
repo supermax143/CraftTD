@@ -8,6 +8,8 @@ namespace Unity.Game.Projectile
     {
 
         [SerializeField]
+        private AnimationCurve _flyArc;
+        [SerializeField]
         private float _speed = 15;
         
         private float _damage;
@@ -45,7 +47,11 @@ namespace Unity.Game.Projectile
                     Destroy(gameObject);
                     yield break;
                 }
-                transform.position = Vector3.Lerp(startPosition, targetPosition, _timer.Progress);
+                var yArc = _flyArc.Evaluate(_timer.Progress);
+                var pos = Vector3.Lerp(startPosition, targetPosition, _timer.Progress);
+                pos.y += yArc;
+                
+                transform.position = pos;
                 yield return null;
             }
             transform.position = targetPosition;

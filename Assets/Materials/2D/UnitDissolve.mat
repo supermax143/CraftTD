@@ -84,11 +84,11 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DissolveAmount: 0
-    - _DissolveScale: 13.28
+    - _DissolveScale: 7.9
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnableExternalAlpha: 0
-    - _OutlineThikness: 0.1
+    - _OutlineThikness: 0.15
     - _QueueOffset: 0
     - _SampleGI: 0
     - _SrcBlend: 1
