@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: UnitDissolve
-  m_Shader: {fileID: -6465566751694194690, guid: 22f9c3be8f950a24b9f5a10ecf1ef86f,
+  m_Shader: {fileID: -6465566751694194690, guid: 5f8f4489bab3edd4aaee3de2f9b6495f,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -81,7 +81,7 @@ Material:
     - _BlendOp: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DissolveAmount: 1
+    - _DissolveAmount: 0
     - _DissolveScale: 13.28
     - _DstBlend: 0
     - _DstBlendAlpha: 0

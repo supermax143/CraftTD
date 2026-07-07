@@ -23,7 +23,8 @@ namespace Unity.Game
         private Coroutine _blinkCoroutine;
         private Color _color;
         private Transform _rootTransform;
-
+        
+        
 
         private void OnValidate()
         {
@@ -99,15 +100,18 @@ namespace Unity.Game
             _unitAnimatorController.PlayIdle();
         }
         
+        [ContextMenu("Die")]
         public void StartDie()
         {
             _unitAnimatorController.PlayDie();
             StartCoroutine(DeathAnimation());
         }
         
+        
+        
         private IEnumerator DeathAnimation()
         {
-            var _propertyBlock = new MaterialPropertyBlock();
+            MaterialPropertyBlock _propertyBlock = new MaterialPropertyBlock();
             var dissolveId = Shader.PropertyToID("_DissolveAmount");
             var timer = new Timer();
             timer.Start(1);
@@ -135,7 +139,25 @@ namespace Unity.Game
             }
             
         }
-        
+
+        /*private void Update()
+        {
+            Bounds bounds = _renderers[0].bounds;
+
+            foreach (var r in _renderers)
+                bounds.Encapsulate(r.bounds);
+            _propertyBlock.SetFloat("_BoundsTop", bounds.max.y);
+            _propertyBlock.SetFloat("_BoundsBottom", bounds.min.y);
+            foreach (var renderer in _renderers)
+            {
+                if (renderer != null)
+                {
+                    renderer.SetPropertyBlock(_propertyBlock);
+                }
+            }
+        }*/
+
+
         public void UpdateSortingByPosition()
         {
             var pos = _rootTransform.position;
