@@ -133,22 +133,24 @@ namespace Unity.Game
         private IEnumerator DeathAnimation()
         {
             
-            var dissolveId = Shader.PropertyToID("_DissolveAmount");
+            var dissolveId = Shader.PropertyToID("_Dissolve");
+            var dissolveAmountId = Shader.PropertyToID("_DissolveAmount");
             var boundsTopId = Shader.PropertyToID("_BoundsTop");
             var boundsBottomId = Shader.PropertyToID("_BoundsBottom");
             var timer = new Timer();
             yield return new WaitForSeconds(1);
             timer.Start(.7f);
 
+            _propertyBlock.SetFloat(dissolveId, 1);
             while (!timer.IsComplete)
             {
-                Bounds bounds = _renderers[0].bounds;
-
+                /*Bounds bounds = _renderers[0].bounds;
                 foreach (var r in _renderers)
                     bounds.Encapsulate(r.bounds);
-                /*_propertyBlock.SetFloat(boundsTopId, bounds.max.y);
+                _propertyBlock.SetFloat(boundsTopId, bounds.max.y);
                 _propertyBlock.SetFloat(boundsBottomId, bounds.min.y);*/
-                _propertyBlock.SetFloat(dissolveId, timer.Progress);
+                
+                _propertyBlock.SetFloat(dissolveAmountId, timer.Progress);
                 foreach (var renderer in _renderers)
                 {
                     if (renderer != null)
@@ -159,7 +161,7 @@ namespace Unity.Game
                 yield return null;
             }
             
-            _propertyBlock.SetFloat(dissolveId, 1);
+            _propertyBlock.SetFloat(dissolveId, 0);
             foreach (var renderer in _renderers)
             {
                 if (renderer != null)
