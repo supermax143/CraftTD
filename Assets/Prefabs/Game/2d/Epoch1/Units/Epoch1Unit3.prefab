@@ -52,6 +52,16 @@ PrefabInstance:
       propertyPath: '_renderers.Array.data[9]'
       value: 
       objectReference: {fileID: 1417376072164324968}
+    - target: {fileID: 87661978012594203, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 613930408411084909}
+    - target: {fileID: 87661978012594203, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: _animationEvents
+      value: 
+      objectReference: {fileID: 1102413277364844279}
     - target: {fileID: 1449801927241130090, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: _tintColorProperty
@@ -67,6 +77,16 @@ PrefabInstance:
       propertyPath: '_targetRenderers.Array.data[0]'
       value: 
       objectReference: {fileID: 4328378021808182509}
+    - target: {fileID: 2138349690866555639, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2616848676114571624, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.715
+      objectReference: {fileID: 0}
     - target: {fileID: 3502686921280439868, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -122,6 +142,51 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: _renderers.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: '_renderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 7153348031268850603}
+    - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: '_renderers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 4328378021808182509}
+    - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: '_renderers.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6875469448477662855}
+    - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: '_renderers.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1515595513440613687}
+    - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: '_renderers.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2835192291558184212}
+    - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: '_renderers.Array.data[5]'
+      value: 
+      objectReference: {fileID: 7858859831682838943}
+    - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: '_renderers.Array.data[6]'
+      value: 
+      objectReference: {fileID: 3751632592123198682}
+    - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: '_renderers.Array.data[7]'
+      value: 
+      objectReference: {fileID: 2159979612154846186}
     - target: {fileID: 5971790945569815702, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: m_Name
