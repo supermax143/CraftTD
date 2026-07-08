@@ -12,8 +12,6 @@ namespace Unity.Game
         [SerializeField, HideInInspector]
         private TintController _tintController;
         [SerializeField, HideInInspector]
-        private BlinkEffect _blinkEffect;
-        [SerializeField, HideInInspector]
         private UnitAnimatorController _unitAnimatorController;
         [SerializeField, HideInInspector]
         private SpriteRenderer[] _renderers;
@@ -24,11 +22,29 @@ namespace Unity.Game
         private Color _color;
         private Transform _rootTransform;
         private MaterialPropertyBlock _propertyBlock;
+        
+        private int _dissolveId;
+        private int _dissolveAmountId;
+        private int _boundsTopId;
+        private int _boundsBottomId;
+        private int _hitEffectId;
+        private int _hitAmountId;
 
+        private Timer _animationTimer = new(TimeType.Unscaled);
+        
         private void Awake()
         {
             _propertyBlock = new MaterialPropertyBlock();
             
+            _dissolveId = Shader.PropertyToID("_Dissolve");
+            _dissolveAmountId = Shader.PropertyToID("_DissolveAmount");
+            _boundsTopId = Shader.PropertyToID("_BoundsTop");
+            _boundsBottomId = Shader.PropertyToID("_BoundsBottom");
+            
+            _hitEffectId = Shader.PropertyToID("_HitEffect");
+            _hitAmountId = Shader.PropertyToID("_HitAmount");
+              
+                    
             /*var boundsTopId = Shader.PropertyToID("_BoundsTop");
             var boundsBottomId = Shader.PropertyToID("_BoundsBottom");
             Bounds bounds = _renderers[0].bounds;
@@ -51,7 +67,6 @@ namespace Unity.Game
         {
             _healthComponent = GetComponentInChildren<HealthComponent>();
             _tintController = GetComponentInChildren<TintController>();
-            _blinkEffect = GetComponentInChildren<BlinkEffect>();
             _unitAnimatorController = GetComponentInChildren<UnitAnimatorController>();
             _renderers = GetComponentsInChildren<SpriteRenderer>();
         }
@@ -76,19 +91,30 @@ namespace Unity.Game
 
         private IEnumerator DamageAnimation()
         {
-            /*_tintController.SetTintColor(Color.red);
-            yield return new WaitForSeconds(0.2f);
-            _tintController.SetTintColor(_color);*/
-            _tintController.SetTintColor(Color.red);
-            foreach (var renderer in _renderers)
+            _propertyBlock.SetFloat(_hitEffectId, 1);
+            _animationTimer.Start(.1f);
+            _tintController.SetTintColor(Color.white);
+            while (!_animationTimer.IsComplete)
             {
-                renderer.color = Color.red;
+                _propertyBlock.SetFloat(_hitAmountId, _animationTimer.Progress);
+                UpdateRenderersPropertyBlock();
+                yield return null;
             }
-            yield return new WaitForSeconds(0.1f);
-            foreach (var renderer in _renderers)
+            
+            _propertyBlock.SetFloat(_hitAmountId, 1);
+            UpdateRenderersPropertyBlock();
+            
+            _animationTimer.Start(.1f);
+            while (!_animationTimer.IsComplete)
             {
-                renderer.color = Color.white;
+                _propertyBlock.SetFloat(_hitAmountId,1 - _animationTimer.Progress);
+                UpdateRenderersPropertyBlock();
+                yield return null;
             }
+            
+            _propertyBlock.SetFloat(_hitAmountId, 0);
+            _propertyBlock.SetFloat(_hitEffectId, 0);
+            UpdateRenderersPropertyBlock();
             _tintController.SetTintColor(_color);
         }
 
@@ -132,36 +158,30 @@ namespace Unity.Game
         
         private IEnumerator DeathAnimation()
         {
-            
-            var dissolveId = Shader.PropertyToID("_Dissolve");
-            var dissolveAmountId = Shader.PropertyToID("_DissolveAmount");
-            var boundsTopId = Shader.PropertyToID("_BoundsTop");
-            var boundsBottomId = Shader.PropertyToID("_BoundsBottom");
-            var timer = new Timer();
             yield return new WaitForSeconds(1);
-            timer.Start(.7f);
-
-            _propertyBlock.SetFloat(dissolveId, 1);
-            while (!timer.IsComplete)
+            _animationTimer.Start(.7f);
+            _propertyBlock.SetFloat(_dissolveId, 1);
+            while (!_animationTimer.IsComplete)
             {
+                //нужно передавать параметр bound в шейдер для корректного применения к разным спрайтоам одного юнита
                 /*Bounds bounds = _renderers[0].bounds;
                 foreach (var r in _renderers)
                     bounds.Encapsulate(r.bounds);
                 _propertyBlock.SetFloat(boundsTopId, bounds.max.y);
                 _propertyBlock.SetFloat(boundsBottomId, bounds.min.y);*/
                 
-                _propertyBlock.SetFloat(dissolveAmountId, timer.Progress);
-                foreach (var renderer in _renderers)
-                {
-                    if (renderer != null)
-                    {
-                        renderer.SetPropertyBlock(_propertyBlock);
-                    }
-                }
+                _propertyBlock.SetFloat(_dissolveAmountId, _animationTimer.Progress);
+                UpdateRenderersPropertyBlock();
                 yield return null;
             }
             
-            _propertyBlock.SetFloat(dissolveId, 0);
+            _propertyBlock.SetFloat(_dissolveId, 0);
+            UpdateRenderersPropertyBlock();
+            
+        }
+
+        private void UpdateRenderersPropertyBlock()
+        {
             foreach (var renderer in _renderers)
             {
                 if (renderer != null)
@@ -169,8 +189,8 @@ namespace Unity.Game
                     renderer.SetPropertyBlock(_propertyBlock);
                 }
             }
-            
         }
+
 
         /*
         private void Update()

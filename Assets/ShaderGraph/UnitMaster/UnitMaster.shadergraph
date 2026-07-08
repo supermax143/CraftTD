@@ -590,10 +590,10 @@
     "promotedFromAssetID": "",
     "promotedFromCategoryName": "",
     "promotedOrdering": -1,
-    "m_Name": "HitAmmount",
+    "m_Name": "HitAmount",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "HitAmmount",
-    "m_DefaultReferenceName": "_HitAmmount",
+    "m_RefNameGeneratedByDisplayName": "HitAmount",
+    "m_DefaultReferenceName": "_HitAmount",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -1372,8 +1372,8 @@
     "m_ObjectId": "8231061589a64463b946626baef93daf",
     "m_Title": "Hit Effect",
     "m_Position": {
-        "x": -3045.999755859375,
-        "y": 1486.0
+        "x": -3045.99951171875,
+        "y": 1485.9998779296875
     }
 }
 
@@ -1518,8 +1518,8 @@
     "m_ObjectId": "9c9d0dfb4b6f4c179792be7d819eae82",
     "m_Title": "Dissolve",
     "m_Position": {
-        "x": -3540.999755859375,
-        "y": 1486.9998779296875
+        "x": -3540.99951171875,
+        "y": 1486.999755859375
     }
 }
 
@@ -1984,7 +1984,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "ce374aec4c37498fa1b118777482c8ff",
     "m_Id": 0,
-    "m_DisplayName": "HitAmmount",
+    "m_DisplayName": "HitAmount",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_HideConnector": false,
