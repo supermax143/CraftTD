@@ -307,9 +307,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3502686921280439868}
   - component: {fileID: 1449801927241130090}
-  - component: {fileID: 8011989231495147525}
   - component: {fileID: 3762705999574058185}
   - component: {fileID: 87661978012594203}
+  - component: {fileID: 4829596173189205385}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -349,23 +349,6 @@ MonoBehaviour:
   - {fileID: 0}
   _tintColorProperty: _Color
   _useColorProperty: 1
---- !u!114 &8011989231495147525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6735294149039191266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dc163a289e74ecf85ad000a1bb69adb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Utils.ColorEffects.BlinkEffect
-  _tintColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
-  _targetRenderers: []
-  _tintColorProperty: _BaseColor
-  _useColorProperty: 1
-  _blinkDuration: 1
 --- !u!114 &3762705999574058185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,9 +362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UnitView
   _tintController: {fileID: 1449801927241130090}
-  _blinkEffect: {fileID: 8011989231495147525}
   _unitAnimatorController: {fileID: 87661978012594203}
-  _renderers: []
+  _effectsController: {fileID: 4829596173189205385}
 --- !u!114 &87661978012594203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +382,19 @@ MonoBehaviour:
   - {fileID: 7400000, guid: ea27e31b918a5554db093a27688ee17b, type: 2}
   - {fileID: 7400000, guid: 2db4e33a8143db94086bf038c55ea0e5, type: 2}
   _animationEvents: {fileID: 0}
+--- !u!114 &4829596173189205385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735294149039191266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644c3ea5adf04de7a564de64fd3ff409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Utils.ColorEffects.FieldObjectEffectsController
+  _renderers: []
 --- !u!1 &8562988452578140486
 GameObject:
   m_ObjectHideFlags: 0

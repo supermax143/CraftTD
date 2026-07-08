@@ -8,10 +8,6 @@ namespace Unity.Game
     {
         
         [SerializeField, HideInInspector]
-        private TintController _tintController;
-        [SerializeField, HideInInspector]
-        private BlinkEffect _blinkEffect;
-        [SerializeField, HideInInspector]
         private HealthComponent _healthComponent;
 
         private Coroutine _blinkCoroutine;
@@ -20,8 +16,6 @@ namespace Unity.Game
         private void OnValidate()
         {
             _healthComponent = GetComponentInChildren<HealthComponent>();
-            _tintController = GetComponentInChildren<TintController>();
-            _blinkEffect = GetComponentInChildren<BlinkEffect>();
         }
         
         private void Start()
@@ -41,17 +35,12 @@ namespace Unity.Game
 
         private IEnumerator DamageAnimation()
         {
-            _tintController.SetTintColor(Color.red);
-            //yield return _blinkEffect.Show();
             yield return new WaitForSeconds(0.2f);
-            _tintController.SetTintColor(_color);
             
         }
 
         public void SetColor(Color color)
         {
-            _color = color;
-            _tintController.SetTintColor(color);
         }
     }
 }

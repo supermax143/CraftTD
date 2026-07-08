@@ -617,7 +617,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7254977044279615764}
-  - component: {fileID: 6643098872481786179}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -642,22 +641,6 @@ Transform:
   - {fileID: 6361075469996735987}
   m_Father: {fileID: 6353193346670427762}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6643098872481786179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7451840049857404402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8740a3b95beccf84f81d917a825340d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TintController
-  _tintColor: {r: 1, g: 0, b: 1, a: 1}
-  _targetRenderers: []
-  _tintColorProperty: _Color
-  _useColorProperty: 0
 --- !u!1 &8055821016266724607
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2cc53248f140aea16f665323a87757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.TowerView
-  _tintController: {fileID: 6643098872481786179}
+  _tintController: {fileID: 0}
   _blinkEffect: {fileID: 0}
   _healthComponent: {fileID: 6206104869365584860}
 --- !u!114 &6206104869365584860

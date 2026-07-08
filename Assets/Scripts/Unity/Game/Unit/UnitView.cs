@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Unity.Presentation.Components;
 using Unity.Utils.Time;
 using UnityEngine;
@@ -14,27 +13,26 @@ namespace Unity.Game
         [SerializeField, HideInInspector]
         private UnitAnimatorController _unitAnimatorController;
         [SerializeField, HideInInspector]
-        private SpriteRenderer[] _renderers;
+        private FieldObjectEffectsController _effectsController;
         
         
         private HealthComponent _healthComponent;
-        private Coroutine _blinkCoroutine;
         private Color _color;
         private Transform _rootTransform;
-        private MaterialPropertyBlock _propertyBlock;
         
-        private int _dissolveId;
+        /*private int _dissolveId;
+        private MaterialPropertyBlock _propertyBlock;
         private int _dissolveAmountId;
         private int _boundsTopId;
         private int _boundsBottomId;
         private int _hitEffectId;
-        private int _hitAmountId;
-
         private Timer _animationTimer = new(TimeType.Unscaled);
+        private int _hitAmountId;*/
+
         
         private void Awake()
         {
-            _propertyBlock = new MaterialPropertyBlock();
+            /*_propertyBlock = new MaterialPropertyBlock();
             
             _dissolveId = Shader.PropertyToID("_Dissolve");
             _dissolveAmountId = Shader.PropertyToID("_DissolveAmount");
@@ -42,7 +40,7 @@ namespace Unity.Game
             _boundsBottomId = Shader.PropertyToID("_BoundsBottom");
             
             _hitEffectId = Shader.PropertyToID("_HitEffect");
-            _hitAmountId = Shader.PropertyToID("_HitAmount");
+            _hitAmountId = Shader.PropertyToID("_HitAmount");*/
               
                     
             /*var boundsTopId = Shader.PropertyToID("_BoundsTop");
@@ -65,10 +63,10 @@ namespace Unity.Game
 
         private void OnValidate()
         {
-            _healthComponent = GetComponentInChildren<HealthComponent>();
             _tintController = GetComponentInChildren<TintController>();
             _unitAnimatorController = GetComponentInChildren<UnitAnimatorController>();
-            _renderers = GetComponentsInChildren<SpriteRenderer>();
+            _effectsController = GetComponentInChildren<FieldObjectEffectsController>();
+            //_renderers = GetComponentsInChildren<SpriteRenderer>();
         }
 
         public void Initialize(HealthComponent healthComponent, Transform rootTransform)
@@ -81,15 +79,16 @@ namespace Unity.Game
 
         private void OnDamage(int damage)
         {
-            if (_blinkCoroutine != null)
+            /*if (_blinkCoroutine != null)
             {
                 StopCoroutine(_blinkCoroutine);
             }
-            _blinkCoroutine = StartCoroutine(DamageAnimation());
+            _blinkCoroutine = StartCoroutine(DamageAnimation());*/
+            StartCoroutine(_effectsController.ShowHitEffect(.2f));
         }
 
 
-        private IEnumerator DamageAnimation()
+        /*private IEnumerator DamageAnimation()
         {
             _propertyBlock.SetFloat(_hitEffectId, 1);
             _animationTimer.Start(.1f);
@@ -116,7 +115,7 @@ namespace Unity.Game
             _propertyBlock.SetFloat(_hitEffectId, 0);
             UpdateRenderersPropertyBlock();
             _tintController.SetTintColor(_color);
-        }
+        }*/
 
         public void SetColor(Color color)
         {
@@ -159,7 +158,8 @@ namespace Unity.Game
         private IEnumerator DeathAnimation()
         {
             yield return new WaitForSeconds(1);
-            _animationTimer.Start(.7f);
+            yield return _effectsController.ShowDissolveEffect(.7f);
+            /*_animationTimer.Start(.7f);
             _propertyBlock.SetFloat(_dissolveId, 1);
             while (!_animationTimer.IsComplete)
             {
@@ -168,7 +168,7 @@ namespace Unity.Game
                 foreach (var r in _renderers)
                     bounds.Encapsulate(r.bounds);
                 _propertyBlock.SetFloat(boundsTopId, bounds.max.y);
-                _propertyBlock.SetFloat(boundsBottomId, bounds.min.y);*/
+                _propertyBlock.SetFloat(boundsBottomId, bounds.min.y);#1#
                 
                 _propertyBlock.SetFloat(_dissolveAmountId, _animationTimer.Progress);
                 UpdateRenderersPropertyBlock();
@@ -176,11 +176,11 @@ namespace Unity.Game
             }
             
             _propertyBlock.SetFloat(_dissolveId, 0);
-            UpdateRenderersPropertyBlock();
+            UpdateRenderersPropertyBlock();*/
             
         }
 
-        private void UpdateRenderersPropertyBlock()
+        /*private void UpdateRenderersPropertyBlock()
         {
             foreach (var renderer in _renderers)
             {
@@ -190,6 +190,7 @@ namespace Unity.Game
                 }
             }
         }
+        */
 
 
         /*
