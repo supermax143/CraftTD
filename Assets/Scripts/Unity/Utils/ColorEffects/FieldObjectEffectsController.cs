@@ -15,16 +15,14 @@ namespace Utils.ColorEffects
 
         private static class ShaderProperties
         {
-            
+            public static readonly int _Dissolve = Shader.PropertyToID(nameof(_Dissolve));
+            public static readonly int _DissolveAmount = Shader.PropertyToID(nameof(_DissolveAmount));
+            public static readonly int _BoundsTop = Shader.PropertyToID(nameof(_BoundsTop));
+            public static readonly int _BoundsBottom = Shader.PropertyToID(nameof(_BoundsBottom));
+            public static readonly int _HitEffect = Shader.PropertyToID(nameof(_HitEffect));
+            public static readonly int _HitAmount = Shader.PropertyToID(nameof(_HitAmount));
         }
-        private int _dissolveId = Shader.PropertyToID("_Dissolve");
-        private int _dissolveAmountId = Shader.PropertyToID("_DissolveAmount");
-        private int _boundsTopId = Shader.PropertyToID("_BoundsTop");
-        private int _boundsBottomId = Shader.PropertyToID("_BoundsBottom");
-        private int _hitEffectId = Shader.PropertyToID("_HitEffect");
-        private int _hitAmountId = Shader.PropertyToID("_HitAmount");
-        
-        
+
         private Timer _animationTimer = new(TimeType.Unscaled);
         
         private void OnValidate()
@@ -56,7 +54,7 @@ namespace Utils.ColorEffects
         public IEnumerator ShowDissolveEffect(float time)
         {
             _animationTimer.Start(time);
-            _propertyBlock.SetFloat(_dissolveId, 1);
+            _propertyBlock.SetFloat(ShaderProperties._Dissolve, 1);
             while (!_animationTimer.IsComplete)
             {
                 //нужно передавать параметр bound в шейдер для корректного применения к разным спрайтоам одного юнита
@@ -66,38 +64,38 @@ namespace Utils.ColorEffects
                 _propertyBlock.SetFloat(boundsTopId, bounds.max.y);
                 _propertyBlock.SetFloat(boundsBottomId, bounds.min.y);*/
                 
-                _propertyBlock.SetFloat(_dissolveAmountId, _animationTimer.Progress);
+                _propertyBlock.SetFloat(ShaderProperties._DissolveAmount, _animationTimer.Progress);
                 UpdateRenderersPropertyBlock();
                 yield return null;
             }
-            _propertyBlock.SetFloat(_dissolveId, 0);
+            _propertyBlock.SetFloat(ShaderProperties._Dissolve, 0);
             UpdateRenderersPropertyBlock();
         }
         
         public IEnumerator ShowHitEffect(float time)
         {
-            _propertyBlock.SetFloat(_hitEffectId, 1);
+            _propertyBlock.SetFloat(ShaderProperties._HitEffect, 1);
             _animationTimer.Start(time/2);
             while (!_animationTimer.IsComplete)
             {
-                _propertyBlock.SetFloat(_hitAmountId, _animationTimer.Progress);
+                _propertyBlock.SetFloat(ShaderProperties._HitAmount, _animationTimer.Progress);
                 UpdateRenderersPropertyBlock();
                 yield return null;
             }
             
-            _propertyBlock.SetFloat(_hitAmountId, 1);
+            _propertyBlock.SetFloat(ShaderProperties._HitAmount, 1);
             UpdateRenderersPropertyBlock();
             
             _animationTimer.Start(time/2);
             while (!_animationTimer.IsComplete)
             {
-                _propertyBlock.SetFloat(_hitAmountId,1 - _animationTimer.Progress);
+                _propertyBlock.SetFloat(ShaderProperties._HitAmount,1 - _animationTimer.Progress);
                 UpdateRenderersPropertyBlock();
                 yield return null;
             }
             
-            _propertyBlock.SetFloat(_hitAmountId, 0);
-            _propertyBlock.SetFloat(_hitEffectId, 0);
+            _propertyBlock.SetFloat(ShaderProperties._HitAmount, 0);
+            _propertyBlock.SetFloat(ShaderProperties._HitEffect, 0);
             UpdateRenderersPropertyBlock();
         }
         
