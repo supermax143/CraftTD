@@ -247,7 +247,7 @@ Transform:
   m_GameObject: {fileID: 1165160082006789858}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.468, y: 0.004, z: 0}
+  m_LocalPosition: {x: -0.468, y: 0.004, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -279,7 +279,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: ce52352c4eaa955478d6ba9a9678e60f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -339,7 +339,7 @@ Transform:
   m_GameObject: {fileID: 1677496571158777925}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.511, y: 0.002, z: 0}
+  m_LocalPosition: {x: 2.511, y: 0.002, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -371,7 +371,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: ce52352c4eaa955478d6ba9a9678e60f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -617,6 +617,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7254977044279615764}
+  - component: {fileID: 8392426241493984243}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -641,6 +642,21 @@ Transform:
   - {fileID: 6361075469996735987}
   m_Father: {fileID: 6353193346670427762}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8392426241493984243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7451840049857404402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644c3ea5adf04de7a564de64fd3ff409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Utils.ColorEffects.FieldObjectEffectsController
+  _renderers:
+  - {fileID: 5875621515808463919}
+  - {fileID: 5308868104190503264}
 --- !u!1 &8055821016266724607
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,9 +726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2cc53248f140aea16f665323a87757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.TowerView
-  _tintController: {fileID: 0}
-  _blinkEffect: {fileID: 0}
   _healthComponent: {fileID: 6206104869365584860}
+  _effectsController: {fileID: 8392426241493984243}
 --- !u!114 &6206104869365584860
 MonoBehaviour:
   m_ObjectHideFlags: 0

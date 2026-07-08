@@ -9,13 +9,16 @@ namespace Unity.Game
         
         [SerializeField, HideInInspector]
         private HealthComponent _healthComponent;
-
+        [SerializeField, HideInInspector]
+        private FieldObjectEffectsController _effectsController;
+        
         private Coroutine _blinkCoroutine;
         private Color _color;
 
         private void OnValidate()
         {
             _healthComponent = GetComponentInChildren<HealthComponent>();
+            _effectsController = GetComponentInChildren<FieldObjectEffectsController>();
         }
         
         private void Start()
@@ -35,8 +38,7 @@ namespace Unity.Game
 
         private IEnumerator DamageAnimation()
         {
-            yield return new WaitForSeconds(0.2f);
-            
+            yield return _effectsController.ShowHitEffect(.2f);
         }
 
         public void SetColor(Color color)
