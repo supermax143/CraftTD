@@ -131,43 +131,43 @@ PrefabInstance:
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: _renderers.Array.size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[0]'
       value: 
-      objectReference: {fileID: 692275018954569514}
+      objectReference: {fileID: 3189664416621157509}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[1]'
       value: 
-      objectReference: {fileID: 3189664416621157509}
+      objectReference: {fileID: 1619173332038269589}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[2]'
       value: 
-      objectReference: {fileID: 1619173332038269589}
+      objectReference: {fileID: 5824202859541379600}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[3]'
       value: 
-      objectReference: {fileID: 5824202859541379600}
+      objectReference: {fileID: 2710009132534349574}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[4]'
       value: 
-      objectReference: {fileID: 2710009132534349574}
+      objectReference: {fileID: 1439639617656464932}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[5]'
       value: 
-      objectReference: {fileID: 1439639617656464932}
+      objectReference: {fileID: 2948947163111175289}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[6]'
       value: 
-      objectReference: {fileID: 2948947163111175289}
+      objectReference: {fileID: 3699486374234229707}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[7]'
@@ -266,21 +266,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1584658653321159789}
     m_Modifications:
-    - target: {fileID: 173774308437626673, guid: c54a7188c52ffcf469f282fbfe6c0135,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 173774308437626673, guid: c54a7188c52ffcf469f282fbfe6c0135,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 173774308437626673, guid: c54a7188c52ffcf469f282fbfe6c0135,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2374676364624000372, guid: c54a7188c52ffcf469f282fbfe6c0135,
         type: 3}
       propertyPath: m_Name
@@ -336,7 +321,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8628061455085663633, guid: c54a7188c52ffcf469f282fbfe6c0135,
+    - target: {fileID: 7049351915046253258, guid: c54a7188c52ffcf469f282fbfe6c0135,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -354,12 +339,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7909700888687120943}
   m_SourcePrefab: {fileID: 100100000, guid: c54a7188c52ffcf469f282fbfe6c0135, type: 3}
---- !u!212 &692275018954569514 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 6566691371249123851, guid: c54a7188c52ffcf469f282fbfe6c0135,
-    type: 3}
-  m_PrefabInstance: {fileID: 5961331544785466657}
-  m_PrefabAsset: {fileID: 0}
 --- !u!212 &1439639617656464932 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 4701837099940877061, guid: c54a7188c52ffcf469f282fbfe6c0135,
