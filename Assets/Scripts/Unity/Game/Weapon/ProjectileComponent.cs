@@ -10,7 +10,8 @@ namespace Unity.Game.Projectile
         [Header("Flight")]
         [SerializeField] private AnimationCurve _flyArc;
         [SerializeField] private float _speed = 15f;
-
+        [SerializeField] private float _rotationSpeed = 0f;
+        
         [Header("Bounce")]
         [SerializeField] private int _bounceCount = 4;
         [SerializeField] private float _bounceDistance = 1.2f;
@@ -22,9 +23,11 @@ namespace Unity.Game.Projectile
         private Coroutine _moveCoroutine;
         private AttackTargetBase _target;
         private readonly Timer _timer = new();
-
+        private Vector3 _direction;
+        
         public void Launch(AttackTargetBase target, float damage)
         {
+            _direction = (target.transform.position - transform.position).normalized;
             DOTween.Kill(transform);
 
             if (_moveCoroutine != null)
@@ -66,7 +69,11 @@ namespace Unity.Game.Projectile
                 pos.y += _flyArc.Evaluate(_timer.Progress);
 
                 transform.position = pos;
-
+                
+                var rotation = transform.localRotation.eulerAngles;
+                rotation.z += _rotationSpeed * Time.deltaTime * -Mathf.Sign(_direction.x);
+                transform.localRotation = Quaternion.Euler(rotation) ;
+                Debug.Log(transform.rotation);
                 yield return null;
             }
 
@@ -83,7 +90,7 @@ namespace Unity.Game.Projectile
 
         private void PlayBounceAndDestroy(Vector3 startPosition)
         {
-            Vector3 direction = (startPosition - transform.position).normalized;
+            Vector3 direction = _direction * -1;//(startPosition - transform.position).normalized;
 
             Sequence sequence = DOTween.Sequence();
 
