@@ -25,6 +25,7 @@ namespace Unity.Game
         
         [Inject] private DiContainer _container;
         [Inject] private IGameController _gameController;
+        [Inject] protected GameStats _gameStats;
         
         private Faction _faction;
         private Faction _enemyFaction;

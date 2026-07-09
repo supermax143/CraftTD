@@ -16,13 +16,13 @@ namespace Unity.Game
         public class UnitsSquad
         {
             [SerializeField] 
-            private float _delay = 3;
+            private GameStats.UnitSquadDelay _delay = GameStats.UnitSquadDelay.Normal;
             [SerializeField] 
             private UnitTier _tier;
             [SerializeField] 
             private int _count;
             
-            public float Delay => _delay;
+            public GameStats.UnitSquadDelay Delay => _delay;
             public UnitTier Tier => _tier;
             public int Count => _count;
 

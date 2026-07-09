@@ -7,7 +7,15 @@ namespace Unity.Game
     [CreateAssetMenu(menuName = "CraftTD/GameStats", order = 1)]
     public class GameStats : ScriptableObject
     {
-
+        public enum UnitSquadDelay
+        {
+            Normal, 
+            Short
+        };
+        
+        [Header("Food Production")]
+        [SerializeField] private float _squadDelayNormal = 3f;
+        [SerializeField] private float _squadDelayShort = 1.5f;
         
         
         
@@ -191,6 +199,19 @@ namespace Unity.Game
                 UnitTier.Tier3 => _baseUnitAttackSpeedTier3,
             };
             return baseSpeed;
+        }
+
+        public float GetSquadDelay(UnitSquadDelay delay)
+        {
+            switch (delay)
+            {
+                case UnitSquadDelay.Normal: 
+                    return _squadDelayNormal;
+                case UnitSquadDelay.Short:
+                    return _squadDelayShort;
+                default:
+                    return _squadDelayNormal;
+            }
         }
         
     }

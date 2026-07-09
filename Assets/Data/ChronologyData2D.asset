@@ -48,55 +48,42 @@ MonoBehaviour:
         m_EditorAssetChanged: 0
     _waves:
     - _squads:
-      - _delay: 3
+      - _delay: 1
         _tier: 0
         _count: 1
-      - _delay: 10
+      - _delay: 0
         _tier: 0
-        _count: 2
-      - _delay: 10
+        _count: 1
+      - _delay: 0
         _tier: 0
         _count: 2
     - _squads:
-      - _delay: 10
-        _tier: 1
-        _count: 2
-      - _delay: 10
+      - _delay: 0
         _tier: 0
         _count: 3
-      - _delay: 10
+      - _delay: 0
+        _tier: 1
+        _count: 2
+      - _delay: 0
+        _tier: 2
+        _count: 1
+    - _squads:
+      - _delay: 0
+        _tier: 0
+        _count: 5
+      - _delay: 0
+        _tier: 1
+        _count: 2
+      - _delay: 0
         _tier: 2
         _count: 2
     - _squads:
-      - _delay: 10
+      - _delay: 0
         _tier: 0
-        _count: 5
-      - _delay: 10
+        _count: 9
+      - _delay: 0
         _tier: 2
-        _count: 1
-      - _delay: 10
-        _tier: 2
-        _count: 2
-    - _squads:
-      - _delay: 10
-        _tier: 0
-        _count: 3
-      - _delay: 10
-        _tier: 1
-        _count: 1
-      - _delay: 10
-        _tier: 0
-        _count: 5
-    - _squads:
-      - _delay: 10
-        _tier: 0
-        _count: 3
-      - _delay: 10
-        _tier: 1
-        _count: 1
-      - _delay: 10
-        _tier: 0
-        _count: 5
+        _count: 6
     _unitTier1Modifiers: []
     _unitTier2Modifiers: []
     _unitTier3Modifiers: []
@@ -134,55 +121,52 @@ MonoBehaviour:
         m_EditorAssetChanged: 0
     _waves:
     - _squads:
-      - _delay: 3
+      - _delay: 1
         _tier: 0
         _count: 1
-      - _delay: 3
+      - _delay: 0
         _tier: 0
         _count: 2
-      - _delay: 3
+      - _delay: 0
         _tier: 0
         _count: 4
     - _squads:
-      - _delay: 3
+      - _delay: 0
         _tier: 1
         _count: 2
-      - _delay: 3
+      - _delay: 0
         _tier: 0
         _count: 3
-      - _delay: 3
+      - _delay: 0
         _tier: 2
         _count: 2
     - _squads:
-      - _delay: 3
+      - _delay: 0
         _tier: 0
         _count: 5
-      - _delay: 3
+      - _delay: 0
         _tier: 2
         _count: 1
-      - _delay: 3
+      - _delay: 0
         _tier: 2
         _count: 2
     - _squads:
-      - _delay: 3
-        _tier: 0
-        _count: 3
-      - _delay: 3
+      - _delay: 0
         _tier: 1
-        _count: 1
-      - _delay: 3
+        _count: 2
+      - _delay: 0
         _tier: 0
         _count: 5
+      - _delay: 0
+        _tier: 2
+        _count: 3
     - _squads:
-      - _delay: 3
-        _tier: 0
-        _count: 3
-      - _delay: 3
-        _tier: 1
-        _count: 1
-      - _delay: 3
+      - _delay: 0
         _tier: 0
         _count: 5
+      - _delay: 0
+        _tier: 2
+        _count: 3
     _unitTier1Modifiers: []
     _unitTier2Modifiers: []
     _unitTier3Modifiers: []
@@ -220,54 +204,40 @@ MonoBehaviour:
         m_EditorAssetChanged: 0
     _waves:
     - _squads:
-      - _delay: 3
+      - _delay: 1
         _tier: 0
         _count: 1
-      - _delay: 3
+      - _delay: 0
         _tier: 0
         _count: 2
-      - _delay: 3
+      - _delay: 0
         _tier: 0
-        _count: 4
-    - _squads:
-      - _delay: 3
+        _count: 2
+      - _delay: 1
         _tier: 1
-        _count: 2
-      - _delay: 3
-        _tier: 0
-        _count: 3
-      - _delay: 3
-        _tier: 2
-        _count: 2
+        _count: 1
     - _squads:
-      - _delay: 3
+      - _delay: 0
         _tier: 0
         _count: 5
-      - _delay: 3
+      - _delay: 0
         _tier: 2
         _count: 1
-      - _delay: 3
-        _tier: 2
+      - _delay: 0
+        _tier: 0
+        _count: 2
+      - _delay: 1
+        _tier: 1
         _count: 2
     - _squads:
-      - _delay: 3
+      - _delay: 0
+        _tier: 2
+        _count: 2
+      - _delay: 1
         _tier: 0
-        _count: 3
-      - _delay: 3
-        _tier: 1
-        _count: 1
-      - _delay: 3
-        _tier: 0
-        _count: 5
-    - _squads:
-      - _delay: 3
-        _tier: 0
-        _count: 3
-      - _delay: 3
-        _tier: 1
-        _count: 1
-      - _delay: 3
-        _tier: 0
+        _count: 16
+      - _delay: 1
+        _tier: 2
         _count: 5
     _unitTier1Modifiers: []
     _unitTier2Modifiers: []

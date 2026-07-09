@@ -25,7 +25,7 @@ namespace Unity.Game
             var wave = _epoch.Info.Waves[_waveIndex];
             foreach (var squad in wave.Squads)
             {
-                yield return new WaitForSeconds(squad.Delay);
+                yield return new WaitForSeconds(_gameStats.GetSquadDelay(squad.Delay));
                 Spawn(squad.Tier, squad.Count);
             }
             _waveIndex++;
