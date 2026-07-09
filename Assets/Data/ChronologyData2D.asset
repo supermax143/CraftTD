@@ -245,3 +245,76 @@ MonoBehaviour:
     - _attributeKind: 1
       _modifierKind: 2
       _value: 3
+  - _epochName: "\u041C\u0438\u0440\u043E\u0432\u0430\u044F \u0412\u043E\u0439\u043D\u0430"
+    _tower:
+      _towerPrefab:
+        _value: {fileID: 3331345286125286545, guid: 83f0a9758916b694687fa575adde64b1,
+          type: 3}
+    _unitTier1:
+      _name: 
+      _tier: 0
+      _unitPrefab:
+        m_AssetGUID: bcd45df3961075e49ab4bdb87b08914f
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    _unitTier2:
+      _name: 
+      _tier: 1
+      _unitPrefab:
+        m_AssetGUID: 8e74d027b9ba75a4f81ad08545a3691e
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    _unitTier3:
+      _name: 
+      _tier: 2
+      _unitPrefab:
+        m_AssetGUID: 0aa391fde8a12e248aa037c22d3b5793
+        m_SubObjectName: 
+        m_SubObjectType: 
+        m_SubObjectGUID: 
+        m_EditorAssetChanged: 0
+    _waves:
+    - _squads:
+      - _delay: 1
+        _tier: 0
+        _count: 1
+      - _delay: 0
+        _tier: 0
+        _count: 1
+      - _delay: 0
+        _tier: 0
+        _count: 2
+    - _squads:
+      - _delay: 0
+        _tier: 0
+        _count: 3
+      - _delay: 0
+        _tier: 1
+        _count: 2
+      - _delay: 0
+        _tier: 0
+        _count: 1
+    - _squads:
+      - _delay: 0
+        _tier: 0
+        _count: 5
+      - _delay: 1
+        _tier: 1
+        _count: 2
+      - _delay: 1
+        _tier: 2
+        _count: 2
+    - _squads:
+      - _delay: 0
+        _tier: 0
+        _count: 10
+      - _delay: 0
+        _tier: 2
+        _count: 5
+    _unitTier1Modifiers: []
+    _unitTier2Modifiers: []
+    _unitTier3Modifiers: []
