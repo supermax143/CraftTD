@@ -756,9 +756,9 @@ ScriptedImporter:
     spriteBone:
     - name: arm_l_bone1
       guid: 90768255705906d4e8da2563baaf25be
-      position: {x: 30.522036, y: -0.0000067490782, z: 0}
-      rotation: {x: 0, y: 0, z: 0.7181334, w: 0.69590557}
-      length: 38.309204
+      position: {x: 30.521965, y: 0.0000042720935, z: 0}
+      rotation: {x: 0, y: 0, z: 0.7181331, w: 0.69590586}
+      length: 38.309196
       parentId: 1
       color:
         serializedVersion: 2
@@ -766,8 +766,8 @@ ScriptedImporter:
     - name: arm_l_bone
       guid: 95a10fb61c9bf30428cbad83a176e2d9
       position: {x: 33.582947, y: 60.6369, z: 0}
-      rotation: {x: 0, y: 0, z: 0.91010404, w: -0.4143798}
-      length: 30.522007
+      rotation: {x: 0, y: 0, z: 0.9101039, w: -0.41438022}
+      length: 30.521978
       parentId: -1
       color:
         serializedVersion: 2
@@ -1236,18 +1236,18 @@ ScriptedImporter:
     spriteBone:
     - name: arm_r_bone1
       guid: 4603b7c465faaa04baf6ebd6109a9d16
-      position: {x: 30.857935, y: -0.000028871316, z: 0}
-      rotation: {x: 0, y: 0, z: -0.6232104, w: -0.78205425}
-      length: 34.4109
+      position: {x: 30.857962, y: -0.000026318208, z: 0}
+      rotation: {x: 0, y: 0, z: -0.6232098, w: -0.7820548}
+      length: 34.410904
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4286643968
     - name: arm_r_bone
       guid: b2c57cdc7dd07574bbcd3f840e58bbad
-      position: {x: -2.9454346, y: 27.503052, z: 0}
-      rotation: {x: 0, y: 0, z: 0.36693683, w: -0.93024594}
-      length: 30.857912
+      position: {x: -2.9454346, y: 27.503082, z: 0}
+      rotation: {x: 0, y: 0, z: 0.36693594, w: -0.9302462}
+      length: 30.85794
       parentId: -1
       color:
         serializedVersion: 2
@@ -1552,8 +1552,8 @@ ScriptedImporter:
     - name: weapon_bone
       guid: 08b9d622ac8377a47b5593c658c29fdb
       position: {x: 46.513336, y: 45.448883, z: 0}
-      rotation: {x: 0, y: 0, z: -0.19232535, w: -0.9813313}
-      length: 42.881004
+      rotation: {x: 0, y: 0, z: -0.19232538, w: -0.9813312}
+      length: 42.881012
       parentId: -1
       color:
         serializedVersion: 2
@@ -3359,16 +3359,16 @@ ScriptedImporter:
     - name: arm_l_bone
       guid: 95a10fb61c9bf30428cbad83a176e2d9
       position: {x: 65.80673, y: 30.954252, z: 0}
-      rotation: {x: 0, y: -0, z: 0.9381529, w: 0.34622127}
-      length: 30.522003
+      rotation: {x: 0, y: -0, z: 0.9381531, w: 0.34622085}
+      length: 30.521976
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4294901760
     - name: arm_l_bone1
       guid: 90768255705906d4e8da2563baaf25be
-      position: {x: 30.521988, y: 0.000011417891, z: 0}
-      rotation: {x: 0, y: 0, z: 0.7181334, w: 0.6959055}
+      position: {x: 30.521992, y: -0.0000062850504, z: 0}
+      rotation: {x: 0, y: 0, z: 0.7181331, w: 0.69590586}
       length: 38.3092
       parentId: 4
       color:
@@ -3386,16 +3386,16 @@ ScriptedImporter:
     - name: arm_r_bone
       guid: b2c57cdc7dd07574bbcd3f840e58bbad
       position: {x: 78.34819, y: 2.678217, z: 0}
-      rotation: {x: 0, y: 0, z: -0.53899646, w: 0.8423081}
-      length: 30.857906
+      rotation: {x: 0, y: 0, z: -0.5389956, w: 0.84230864}
+      length: 30.857924
       parentId: 6
       color:
         serializedVersion: 2
         rgba: 4278255488
     - name: arm_r_bone1
       guid: 4603b7c465faaa04baf6ebd6109a9d16
-      position: {x: 30.857914, y: 0.000004098576, z: 0}
-      rotation: {x: 0, y: 0, z: -0.62321043, w: -0.7820543}
+      position: {x: 30.857956, y: -0.0000029938528, z: 0}
+      rotation: {x: 0, y: 0, z: -0.6232097, w: -0.78205484}
       length: 34.41089
       parentId: 7
       color:
@@ -3419,6 +3419,15 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4294901888
+    - name: weapon_bone_2
+      guid: 95e6c04e0fe4123438ed87c6ee169fc5
+      position: {x: 214.40018, y: -11.698179, z: 0}
+      rotation: {x: 0, y: 0, z: -0.084845975, w: 0.9963941}
+      length: 14.706571
+      parentId: 6
+      color:
+        serializedVersion: 2
+        rgba: 4286513407
     parts:
     - spritePosition:
         x: 458
