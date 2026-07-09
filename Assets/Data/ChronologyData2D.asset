@@ -241,4 +241,7 @@ MonoBehaviour:
         _count: 5
     _unitTier1Modifiers: []
     _unitTier2Modifiers: []
-    _unitTier3Modifiers: []
+    _unitTier3Modifiers:
+    - _attributeKind: 1
+      _modifierKind: 2
+      _value: 3
