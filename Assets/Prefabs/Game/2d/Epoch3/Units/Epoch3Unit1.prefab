@@ -30,6 +30,26 @@ PrefabInstance:
       propertyPath: _animationEvents
       value: 
       objectReference: {fileID: 275764502547324634}
+    - target: {fileID: 1449801927241130090, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: _targetRenderers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449801927241130090, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: '_targetRenderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6597505564506665303}
+    - target: {fileID: 1449801927241130090, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: '_targetRenderers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6003169217917232403}
+    - target: {fileID: 1449801927241130090, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: '_targetRenderers.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8436518668245145251}
     - target: {fileID: 3525600170920847951, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -370,6 +390,11 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ce52352c4eaa955478d6ba9a9678e60f, type: 2}
+    - target: {fileID: 7336383657426495270, guid: b45bd488b198c3e4a9f75208dbd25bb6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7525394532300852736, guid: b45bd488b198c3e4a9f75208dbd25bb6,
         type: 3}
       propertyPath: m_IsActive

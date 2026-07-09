@@ -40,6 +40,11 @@ PrefabInstance:
       propertyPath: _targetRenderers.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1449801927241130090, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: '_targetRenderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2862203988839570305}
     - target: {fileID: 3502686921280439868, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: m_LocalPosition.y
