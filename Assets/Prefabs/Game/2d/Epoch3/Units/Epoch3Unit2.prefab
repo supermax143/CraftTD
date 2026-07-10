@@ -605,6 +605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Projectile.RangedWeapon
   _barrel: {fileID: 0}
   _projectilePrefab: {fileID: 0}
+  _instantDamageEffect: 0
 --- !u!114 &7909700888687120943
 MonoBehaviour:
   m_ObjectHideFlags: 0
