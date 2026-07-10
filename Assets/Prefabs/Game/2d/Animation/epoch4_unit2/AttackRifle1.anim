@@ -105,7 +105,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.35
-        value: {x: 0, y: 0, z: 200.918}
+        value: {x: 0, y: 0, z: 196.712}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -114,9 +114,9 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.46666667
-        value: {x: 0, y: 0, z: 200.918}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 195.992}
+        inSlope: {x: 0, y: 0, z: -15.709114}
+        outSlope: {x: 0, y: 0, z: -15.709114}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -242,7 +242,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1/weapon_bone/arm_r_bone1_2/MuzzleFlash
+    path: base_bone/body_bone/arm_l_bone/arm_l_bone1/weapon_bone/weapon_barrel/MuzzleFlash
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -295,7 +295,7 @@ AnimationClip:
       isSerializeReferenceCurve: 0
       metaData: 0
     - serializedVersion: 2
-      path: 3976506764
+      path: 3307391473
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -734,7 +734,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.35
-        value: 200.918
+        value: 196.712
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -743,9 +743,9 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.46666667
-        value: 200.918
-        inSlope: 0
-        outSlope: 0
+        value: 195.992
+        inSlope: -15.709114
+        outSlope: -15.709114
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -991,7 +991,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1/weapon_bone/arm_r_bone1_2/MuzzleFlash
+    path: base_bone/body_bone/arm_l_bone/arm_l_bone1/weapon_bone/weapon_barrel/MuzzleFlash
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -1004,7 +1004,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: base_bone/body_bone/arm_l_bone
+    path: base_bone/body_bone/arm_l_bone/arm_l_bone1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1016,7 +1016,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: base_bone/body_bone/arm_l_bone
+    path: base_bone/body_bone/arm_l_bone/arm_l_bone1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1028,7 +1028,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: base_bone/body_bone/arm_l_bone
+    path: base_bone/body_bone/arm_l_bone/arm_l_bone1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1112,7 +1112,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1
+    path: base_bone/body_bone/arm_l_bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1124,7 +1124,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1
+    path: base_bone/body_bone/arm_l_bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1136,7 +1136,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1
+    path: base_bone/body_bone/arm_l_bone
     classID: 4
     script: {fileID: 0}
     flags: 0

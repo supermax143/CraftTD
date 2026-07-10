@@ -1236,8 +1236,8 @@ ScriptedImporter:
     spriteBone:
     - name: arm_r_bone1
       guid: 4603b7c465faaa04baf6ebd6109a9d16
-      position: {x: 30.857962, y: -0.000026318208, z: 0}
-      rotation: {x: 0, y: 0, z: -0.6232098, w: -0.7820548}
+      position: {x: 30.857979, y: -0.000008432792, z: 0}
+      rotation: {x: 0, y: 0, z: -0.62321, w: -0.7820546}
       length: 34.410904
       parentId: 1
       color:
@@ -1246,8 +1246,8 @@ ScriptedImporter:
     - name: arm_r_bone
       guid: b2c57cdc7dd07574bbcd3f840e58bbad
       position: {x: -2.9454346, y: 27.503082, z: 0}
-      rotation: {x: 0, y: 0, z: 0.36693594, w: -0.9302462}
-      length: 30.85794
+      rotation: {x: 0, y: 0, z: 0.36693624, w: -0.9302461}
+      length: 30.857958
       parentId: -1
       color:
         serializedVersion: 2
@@ -3386,16 +3386,16 @@ ScriptedImporter:
     - name: arm_r_bone
       guid: b2c57cdc7dd07574bbcd3f840e58bbad
       position: {x: 78.34819, y: 2.678217, z: 0}
-      rotation: {x: 0, y: 0, z: -0.5389956, w: 0.84230864}
-      length: 30.857924
+      rotation: {x: 0, y: 0, z: -0.53899586, w: 0.8423084}
+      length: 30.857946
       parentId: 6
       color:
         serializedVersion: 2
         rgba: 4278255488
     - name: arm_r_bone1
       guid: 4603b7c465faaa04baf6ebd6109a9d16
-      position: {x: 30.857956, y: -0.0000029938528, z: 0}
-      rotation: {x: 0, y: 0, z: -0.6232097, w: -0.78205484}
+      position: {x: 30.85801, y: -0.00003533852, z: 0}
+      rotation: {x: 0, y: 0, z: -0.62321, w: -0.7820546}
       length: 34.41089
       parentId: 7
       color:
@@ -3419,7 +3419,7 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4294901888
-    - name: weapon_bone_2
+    - name: weapon_barrel
       guid: 95e6c04e0fe4123438ed87c6ee169fc5
       position: {x: 214.40018, y: -11.698179, z: 0}
       rotation: {x: 0, y: 0, z: -0.084845975, w: 0.9963941}

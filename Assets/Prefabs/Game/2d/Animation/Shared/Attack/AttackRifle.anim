@@ -160,7 +160,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5
+        time: 0.46666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -181,7 +181,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1/weapon_bone/weapon_bone_2/MuzzleFlash
+    path: base_bone/body_bone/arm_l_bone/arm_l_bone1/weapon_bone/weapon_barrel/MuzzleFlash
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -224,7 +224,7 @@ AnimationClip:
       isSerializeReferenceCurve: 0
       metaData: 0
     - serializedVersion: 2
-      path: 2431510922
+      path: 3307391473
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -701,7 +701,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.5
+        time: 0.46666667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -722,7 +722,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1/weapon_bone/weapon_bone_2/MuzzleFlash
+    path: base_bone/body_bone/arm_l_bone/arm_l_bone1/weapon_bone/weapon_barrel/MuzzleFlash
     classID: 1
     script: {fileID: 0}
     flags: 0

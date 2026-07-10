@@ -111,9 +111,9 @@ ScriptedImporter:
     spriteBone:
     - name: arm_l_bone1
       guid: 2e480dff4455fb1449961bfc113784c7
-      position: {x: 90.10465, y: 0.000011461612, z: 0}
-      rotation: {x: 0, y: 0, z: 0.7488034, w: 0.6627922}
-      length: 92.48375
+      position: {x: 90.104576, y: 0.000021410982, z: 0}
+      rotation: {x: 0, y: 0, z: 0.74880344, w: 0.66279227}
+      length: 92.483765
       parentId: 1
       color:
         serializedVersion: 2
@@ -121,8 +121,8 @@ ScriptedImporter:
     - name: arm_l_bone
       guid: 95a10fb61c9bf30428cbad83a176e2d9
       position: {x: 58.90677, y: 136.98645, z: 0}
-      rotation: {x: 0, y: 0, z: 0.78345275, w: -0.6214513}
-      length: 90.10468
+      rotation: {x: 0, y: 0, z: 0.7834528, w: -0.6214514}
+      length: 90.10466
       parentId: -1
       color:
         serializedVersion: 2
@@ -461,7 +461,7 @@ ScriptedImporter:
       guid: 8ee94ec8c28c8dd4398ef4f25e6fbdaf
       position: {x: 14.282166, y: 24.244934, z: 0}
       rotation: {x: 0, y: 0, z: -0.019039627, w: -0.9998188}
-      length: 53.49015
+      length: 53.490154
       parentId: -1
       color:
         serializedVersion: 2
@@ -767,7 +767,7 @@ ScriptedImporter:
       guid: 8ee94ec8c28c8dd4398ef4f25e6fbdaf
       position: {x: 128.28217, y: 9.244934, z: 0}
       rotation: {x: 0, y: 0, z: -0.019039627, w: -0.9998188}
-      length: 53.49015
+      length: 53.490154
       parentId: -1
       color:
         serializedVersion: 2
@@ -3458,8 +3458,8 @@ ScriptedImporter:
     - name: arm_l_bone
       guid: 95a10fb61c9bf30428cbad83a176e2d9
       position: {x: 171.6723, y: 88.87576, z: 0}
-      rotation: {x: 0, y: -0, z: 0.9939809, w: 0.10955385}
-      length: 90.104645
+      rotation: {x: 0, y: -0, z: 0.99398094, w: 0.10955385}
+      length: 90.10463
       parentId: 1
       color:
         serializedVersion: 2
@@ -3502,8 +3502,8 @@ ScriptedImporter:
         rgba: 4294901888
     - name: arm_l_bone1
       guid: 2e480dff4455fb1449961bfc113784c7
-      position: {x: 90.10465, y: 0.000020052235, z: 0}
-      rotation: {x: 0, y: 0, z: 0.74880344, w: 0.6627922}
+      position: {x: 90.1046, y: 0.000015383519, z: 0}
+      rotation: {x: 0, y: 0, z: 0.7488034, w: 0.6627922}
       length: 92.483734
       parentId: 4
       color:
@@ -3518,7 +3518,7 @@ ScriptedImporter:
       color:
         serializedVersion: 2
         rgba: 4294901888
-    - name: weapon_bone_3
+    - name: weapon_barrel
       guid: cd5fb968e7bafac4bad2d6c6e01cb69f
       position: {x: 200.7361, y: -2.561972, z: 0}
       rotation: {x: 0, y: 0, z: -0.042742394, w: 0.99908614}
