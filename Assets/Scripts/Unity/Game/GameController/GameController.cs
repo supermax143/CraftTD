@@ -102,7 +102,7 @@ namespace Unity.Game
         private async UniTask ShowResultDelayed(bool playerWin)
         {
             await UniTask.WaitForSeconds(1);
-            await ShowResultWindow();
+            await ShowResultWindow(playerWin);
         }
 
         private void Update()
@@ -182,14 +182,14 @@ namespace Unity.Game
             Time.timeScale = pause ? 0f : 1f;
         }
 
-        public async Task ShowResultWindow()
+        public async Task ShowResultWindow(bool playerWin)
         {
             if (_resultWindow != null)
             {
                 return;
             }
             _resultWindow = await _windowsController.ShowWindow<ResultWindow>();
-            _resultWindow.SetResult(_rewardAggregator.Money, false);
+            _resultWindow.SetResult(_rewardAggregator.Money, playerWin);
             _resultWindow.Show();
             _resultWindow.OnAdStartWatch += WatchAdForDoubleMoney;
             _resultWindow.OnHide += OnResultWindowClose;
