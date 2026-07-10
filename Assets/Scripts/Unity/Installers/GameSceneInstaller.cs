@@ -25,7 +25,7 @@ namespace Unity.Installers
             BindController<GameController>();
             BindController<FoodProduction>();
             BindController<DropManager>();
-            BindController<EffectSpawnManager>();
+            BindController<VisualEffectSpawnManager>();
             
         }
         

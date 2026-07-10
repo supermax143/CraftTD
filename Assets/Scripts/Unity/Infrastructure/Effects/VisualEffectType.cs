@@ -2,9 +2,11 @@ using UnityEngine;
 
 namespace Unity.Infrastructure.Effects
 {
-    public enum EffectType
+    public enum VisualEffectType
     {
+        None,
         MuzzleCannon,
-        MuzzleRifle
+        MuzzleRifle,
+        ExplosionCanon,
     }
 }

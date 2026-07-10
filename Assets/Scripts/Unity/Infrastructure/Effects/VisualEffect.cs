@@ -6,14 +6,14 @@ namespace Unity.Infrastructure.Effects
 {
     public class VisualEffect : MonoBehaviour
     {
-        public event Action OnComplete;
+        public event Action<VisualEffect> OnComplete;
         
         [SerializeField]
-        private EffectType _effectType;
+        private VisualEffectType visualEffectType;
         [SerializeField]
         private float _time = 1;
         
-        public EffectType Type => _effectType;
+        public VisualEffectType Type => visualEffectType;
 
         public void Spawn()
         {
@@ -23,7 +23,7 @@ namespace Unity.Infrastructure.Effects
         private IEnumerator WaitFinish()
         {
             yield return new WaitForSeconds(_time);
-            OnComplete?.Invoke();
+            OnComplete?.Invoke(this);
         }
         
     }

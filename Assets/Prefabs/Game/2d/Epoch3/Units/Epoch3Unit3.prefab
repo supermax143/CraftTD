@@ -718,8 +718,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f27e18926747e19f30938b88926911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Projectile.RangedWeapon
-  _barrel: {fileID: 0}
-  _projectilePrefab: {fileID: 0}
+  _barrel: {fileID: 593490749807223178}
+  _projectilePrefab: {fileID: 3476111542875554784, guid: df289be5a29583d41880450142173084,
+    type: 3}
 --- !u!95 &2884339352159184341
 Animator:
   serializedVersion: 7

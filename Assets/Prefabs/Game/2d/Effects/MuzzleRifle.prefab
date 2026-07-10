@@ -4816,4 +4816,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b45096a89846919476d35b478164a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Infrastructure.Effects.VisualEffect
-  _effectType: 1
+  visualEffectType: 2
+  _time: 1

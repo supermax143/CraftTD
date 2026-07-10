@@ -12,19 +12,20 @@ namespace Unity.Game.Projectile
         [SerializeField] private AnimationCurve _flyArc;
         [SerializeField] private float _speed = 15f;
         [SerializeField] private float _rotationSpeed = 0f;
-
-        private float _damage;
+        [SerializeField] private bool _isTopTarget = true;
+        [SerializeField] private VisualEffectType _hitEffect = VisualEffectType.None;
+        
         private Coroutine _moveCoroutine;
-        private AttackTargetBase _target;
+        protected AttackTargetBase _target;
         private readonly Timer _timer = new();
+        protected float _damage;
         protected Vector3 _direction;
-        protected EffectSpawnManager _effectSpawnManager;
+        protected VisualEffectSpawnManager _effectsSpawner;
 
-        protected abstract void OnFlyghtComplete();
 
-        public void Launch(AttackTargetBase target, float damage, EffectSpawnManager effectSpawnManager)
+        public void Launch(AttackTargetBase target, float damage, VisualEffectSpawnManager visualEffectSpawnManager)
         {
-            _effectSpawnManager = effectSpawnManager;
+            _effectsSpawner = visualEffectSpawnManager;
             _direction = (target.transform.position - transform.position).normalized;
             DOTween.Kill(transform);
 
@@ -45,7 +46,7 @@ namespace Unity.Game.Projectile
         {
             var startPosition = transform.position;
 
-            if (!_target.TryGetAttackPosition(transform.position, false, out var targetPosition))
+            if (!_target.TryGetAttackPosition(_isTopTarget, out var targetPosition))
             {
                 Destroy(gameObject);
                 yield break;
@@ -57,7 +58,7 @@ namespace Unity.Game.Projectile
 
             while (!_timer.IsComplete)
             {
-                if (!_target.TryGetAttackPosition(transform.position, false, out targetPosition))
+                if (!_target.TryGetAttackPosition(false, out targetPosition))
                 {
                     Destroy(gameObject);
                     yield break;
@@ -77,15 +78,34 @@ namespace Unity.Game.Projectile
 
             transform.position = targetPosition;
 
-            if (_target != null && _target.HealthComponent != null)
-            {
-                _target.SetLastAttackDirection(_target.transform.position - startPosition);
-                _target.HealthComponent.TakeDamage(_damage);
-            }
-
-            OnFlyghtComplete();
+            ApplyDamage(startPosition);
+            ShowHitEffect();
+            OnFlightComplete();
         }
 
+        protected virtual void OnFlightComplete()
+        {
+            Destroy(gameObject);
+        }
         
+        protected virtual void ShowHitEffect()
+        {
+            if (_hitEffect == VisualEffectType.None)
+            {
+                return;
+            }
+            _effectsSpawner.SpawnEffect(_hitEffect, transform.position, transform.parent);
+        }
+        
+        protected virtual void ApplyDamage(Vector3 startPosition)
+        {
+            
+            if (_target == null || _target.HealthComponent == null)
+            {
+                return;
+            }
+            _target.SetLastAttackDirection(_target.transform.position - startPosition);
+            _target.HealthComponent.TakeDamage(_damage);
+        }
     }
 }
