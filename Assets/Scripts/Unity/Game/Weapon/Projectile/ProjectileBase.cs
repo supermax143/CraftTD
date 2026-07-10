@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using DG.Tweening;
+using Unity.Infrastructure.Effects;
 using Unity.Utils.Time;
 using UnityEngine;
 
@@ -17,11 +18,13 @@ namespace Unity.Game.Projectile
         private AttackTargetBase _target;
         private readonly Timer _timer = new();
         protected Vector3 _direction;
-        
+        protected EffectSpawnManager _effectSpawnManager;
+
         protected abstract void OnFlyghtComplete();
 
-        public void Launch(AttackTargetBase target, float damage)
+        public void Launch(AttackTargetBase target, float damage, EffectSpawnManager effectSpawnManager)
         {
+            _effectSpawnManager = effectSpawnManager;
             _direction = (target.transform.position - transform.position).normalized;
             DOTween.Kill(transform);
 
@@ -82,6 +85,7 @@ namespace Unity.Game.Projectile
 
             OnFlyghtComplete();
         }
+
         
     }
 }

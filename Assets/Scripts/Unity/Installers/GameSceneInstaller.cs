@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using Core.Application.DataStorage;
 using Exploration.Scripts.Controllers.ModelRender;
 using Unity.Game;
+using Unity.Infrastructure.Effects;
 using Unity.Presentation.HUD;
 using UnityEngine;
 using Zenject;
@@ -24,6 +25,7 @@ namespace Unity.Installers
             BindController<GameController>();
             BindController<FoodProduction>();
             BindController<DropManager>();
+            BindController<EffectSpawnManager>();
             
         }
         
