@@ -72,7 +72,7 @@ namespace Unity.Game
         {
             if (_target == null ||
                 _target.IsDead  ||
-                !_target.TryGetAttackPosition(transform.position, out var targetPosition))
+                !_target.TryGetAttackPosition(transform.position, false, out var targetPosition))
             {
                 return;
             }

@@ -28,8 +28,13 @@ namespace Unity.Game
 
         public abstract bool TryGetClosestPosition(Vector3 position, out Vector3 closestPosition);
 
-        public bool TryGetAttackPosition(Vector3 position, out Vector3 pos)
+        public bool TryGetAttackPosition(Vector3 position, bool bottom,out Vector3 pos)
         {
+            if (bottom)
+            {
+                pos = transform.position;
+                return  true;
+            }
             if (_attackTransform == null)
             {
                 pos = position;

@@ -19,7 +19,7 @@ namespace Unity.Game.Projectile
             else
             {
                 var projectile = Instantiate(_projectilePrefab, _barrel.position, _barrel.rotation);
-                projectile.GetComponent<ProjectileComponent>().Launch(target, damage);
+                projectile.GetComponent<ProjectileBounce>().Launch(target, damage);
             }
         }
 

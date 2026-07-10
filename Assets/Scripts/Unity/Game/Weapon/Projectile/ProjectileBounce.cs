@@ -5,12 +5,9 @@ using UnityEngine;
 
 namespace Unity.Game.Projectile
 {
-    public class ProjectileComponent : MonoBehaviour
+    public class ProjectileBounce : ProjectileBase
     {
-        [Header("Flight")]
-        [SerializeField] private AnimationCurve _flyArc;
-        [SerializeField] private float _speed = 15f;
-        [SerializeField] private float _rotationSpeed = 0f;
+       
         
         [Header("Bounce")]
         [SerializeField] private int _bounceCount = 4;
@@ -18,14 +15,13 @@ namespace Unity.Game.Projectile
         [SerializeField] private float _bounceHeight = 0.4f;
         [SerializeField] private float _bounceDuration = 0.18f;
 
-        private float _damage;
-
+        /*private float _damage;
         private Coroutine _moveCoroutine;
         private AttackTargetBase _target;
         private readonly Timer _timer = new();
-        private Vector3 _direction;
+        private Vector3 _direction;*/
         
-        public void Launch(AttackTargetBase target, float damage)
+        /*public void Launch(AttackTargetBase target, float damage)
         {
             _direction = (target.transform.position - transform.position).normalized;
             DOTween.Kill(transform);
@@ -47,7 +43,7 @@ namespace Unity.Game.Projectile
         {
             var startPosition = transform.position;
 
-            if (!_target.TryGetAttackPosition(transform.position, out var targetPosition))
+            if (!_target.TryGetAttackPosition(transform.position, false, out var targetPosition))
             {
                 Destroy(gameObject);
                 yield break;
@@ -59,7 +55,7 @@ namespace Unity.Game.Projectile
 
             while (!_timer.IsComplete)
             {
-                if (!_target.TryGetAttackPosition(transform.position, out targetPosition))
+                if (!_target.TryGetAttackPosition(transform.position, false, out targetPosition))
                 {
                     Destroy(gameObject);
                     yield break;
@@ -86,11 +82,11 @@ namespace Unity.Game.Projectile
             }
 
             PlayBounceAndDestroy(startPosition);
-        }
+        }*/
 
-        private void PlayBounceAndDestroy(Vector3 startPosition)
+        protected override void OnFlyghtComplete()
         {
-            Vector3 direction = _direction * -1;//(startPosition - transform.position).normalized;
+            Vector3 direction = _direction * -1;
 
             Sequence sequence = DOTween.Sequence();
 
