@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2337604318081050129}
   - component: {fileID: 8091013415829603435}
   - component: {fileID: 5553627211130639963}
+  - component: {fileID: -8727298060565736860}
   m_Layer: 0
   m_Name: MuzzleCannon
   m_TagString: Untagged
@@ -4908,6 +4909,19 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &-8727298060565736860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608129719476632595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b45096a89846919476d35b478164a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Infrastructure.Effects.VisualEffect
+  _effectType: 0
 --- !u!1 &1620471128814820767
 GameObject:
   m_ObjectHideFlags: 0

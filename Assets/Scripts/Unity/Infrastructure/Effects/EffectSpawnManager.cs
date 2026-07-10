@@ -22,9 +22,9 @@ namespace Unity.Infrastructure.Effects
         [SerializeField]
         private EffectAsset[] _effectAssets;
 
-        private Dictionary<EffectType, GameObject> _prefabCache = new Dictionary<EffectType, GameObject>();
-        private Dictionary<EffectType, Queue<GameObject>> _objectPools = new Dictionary<EffectType, Queue<GameObject>>();
-        private Dictionary<GameObject, float> _activeEffects = new Dictionary<GameObject, float>();
+        private Dictionary<EffectType, GameObject> _prefabCache = new ();
+        private Dictionary<EffectType, Queue<VisualEffect>> _objectPools = new ();
+        private Dictionary<VisualEffect, float> _activeEffects = new ();
 
         [Inject]
         private void Initialize()
@@ -38,7 +38,7 @@ namespace Unity.Infrastructure.Effects
             {
                 if (!_objectPools.ContainsKey(effectAsset.effectType))
                 {
-                    _objectPools[effectAsset.effectType] = new Queue<GameObject>();
+                    _objectPools[effectAsset.effectType] = new Queue<VisualEffect>();
                 }
             }
         }
@@ -52,7 +52,7 @@ namespace Unity.Infrastructure.Effects
 
             if (_prefabCache.TryGetValue(effectType, out GameObject prefab))
             {
-                GameObject effect = GetFromPool(effectType, prefab, position, parent);
+                var effect = GetFromPool(effectType, prefab, position, parent);
                 _activeEffects[effect] = Time.time + duration;
             }
         }
@@ -70,28 +70,29 @@ namespace Unity.Infrastructure.Effects
             }
         }
 
-        private GameObject GetFromPool(EffectType effectType, GameObject prefab, Vector3 position, Transform parent)
+        private VisualEffect GetFromPool(EffectType effectType, GameObject prefab, Vector3 position, Transform parent)
         {
-            if (_objectPools.TryGetValue(effectType, out Queue<GameObject> pool) && pool.Count > 0)
+            if (_objectPools.TryGetValue(effectType, out Queue<VisualEffect> pool) && pool.Count > 0)
             {
-                GameObject effect = pool.Dequeue();
+                var effect = pool.Dequeue();
                 effect.transform.position = position;
                 effect.transform.SetParent(parent);
-                effect.SetActive(true);
+                effect.gameObject.SetActive(true);
+                effect.Spawn();
                 return effect;
             }
 
-            GameObject newEffect = Instantiate(prefab, position, Quaternion.identity, parent);
+            var newEffect = Instantiate(prefab, position, Quaternion.identity, parent).GetComponent<VisualEffect>();
             return newEffect;
         }
 
-        private void ReturnToPool(EffectType effectType, GameObject effect)
+        private void ReturnToPool(EffectType effectType, VisualEffect effect)
         {
-            effect.SetActive(false);
+            effect.gameObject.SetActive(false);
             
             if (!_objectPools.ContainsKey(effectType))
             {
-                _objectPools[effectType] = new Queue<GameObject>();
+                _objectPools[effectType] = new Queue<VisualEffect>();
             }
             
             _objectPools[effectType].Enqueue(effect);
@@ -99,21 +100,20 @@ namespace Unity.Infrastructure.Effects
 
         private bool TryGetEffectTypeFromPrefab(GameObject prefab, out EffectType effectType)
         {
+            var visualEffect = prefab.GetComponent<VisualEffect>();
             effectType = default;
-            foreach (var kvp in _prefabCache)
+            if (visualEffect == null)
             {
-                if (kvp.Value == prefab)
-                {
-                    effectType = kvp.Key;
-                    return true;
-                }
+                return false;
             }
-            return false;
+            
+            effectType = visualEffect.Type;
+            return true;
         }
 
         private void Update()
         {
-            List<GameObject> effectsToReturn = new List<GameObject>();
+            List<VisualEffect> effectsToReturn = new List<VisualEffect>();
             
             foreach (var kvp in _activeEffects)
             {
@@ -125,13 +125,8 @@ namespace Unity.Infrastructure.Effects
 
             foreach (var effect in effectsToReturn)
             {
-                if (!TryGetEffectTypeFromPrefab(effect, out var effectType))
-                {
-                    Debug.LogError($"{this.GetType().Name} effect {effect} not found");
-                    continue;
-                }
                 _activeEffects.Remove(effect);
-                ReturnToPool(effectType, effect);
+                ReturnToPool(effect.Type, effect);
             }
         }
 
@@ -141,10 +136,10 @@ namespace Unity.Infrastructure.Effects
             {
                 while (pool.Count > 0)
                 {
-                    GameObject effect = pool.Dequeue();
+                    var effect = pool.Dequeue();
                     if (effect != null)
                     {
-                        Destroy(effect);
+                        Destroy(effect.gameObject);
                     }
                 }
             }

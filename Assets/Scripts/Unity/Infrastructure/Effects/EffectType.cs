@@ -4,6 +4,7 @@ namespace Unity.Infrastructure.Effects
 {
     public enum EffectType
     {
-        CannonMuzzle,
+        MuzzleCannon,
+        MuzzleRifle
     }
 }
