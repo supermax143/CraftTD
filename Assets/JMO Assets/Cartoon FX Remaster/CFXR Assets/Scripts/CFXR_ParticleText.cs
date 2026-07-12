@@ -130,7 +130,8 @@ namespace CartoonFX
             string newText = null,
             float? newSize = null,
             Color? newColor1 = null, Color? newColor2 = null, Color? newBackgroundColor = null,
-            float? newLifetimeMultiplier = null
+            float? newLifetimeMultiplier = null,
+            float? newRotation = null
         )
         {
 #if UNITY_EDITOR
@@ -317,7 +318,7 @@ namespace CartoonFX
 
                         ps.textureSheetAnimation.SetSprite(0, sprite);
 
-                        mainModule.startRotation = Mathf.Deg2Rad * rotation;
+                        mainModule.startRotation = Mathf.Deg2Rad * newRotation != null ? newRotation.Value : rotation;
                         mainModule.startColor = backgroundColor;
 
                         var customData = ps.customData;

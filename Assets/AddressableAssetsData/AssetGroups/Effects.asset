@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Effects
   m_GUID: 648725783626d5d459353952d7b74879
   m_SerializeEntries:
+  - m_GUID: 0b4e09327d2b29443ba9a354c13b774c
+    m_Address: HitBubble4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5b1aefe2c1c71d44a8377bb8ff7a0d6f
     m_Address: MuzzleCannon
     m_ReadOnly: 0
@@ -27,6 +32,21 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 89df7c7bbdec51f46accc9d0846321f9
     m_Address: MuzzleRifle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9cf5aab5facd11443aca005cb0a3d26d
+    m_Address: HitBubble1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc250847822715d4cb015f4573b02bb5
+    m_Address: HitBubble2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec69d29806a7d244096e2e6e7c68125f
+    m_Address: HitBubble3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

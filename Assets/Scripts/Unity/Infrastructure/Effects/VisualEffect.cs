@@ -15,8 +15,9 @@ namespace Unity.Infrastructure.Effects
         
         public VisualEffectType Type => visualEffectType;
 
-        public void Spawn()
+        public virtual void Spawn()
         {
+            gameObject.SetActive(true);
             StartCoroutine(WaitFinish());
         }
 

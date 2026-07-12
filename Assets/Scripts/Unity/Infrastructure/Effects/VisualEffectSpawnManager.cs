@@ -21,7 +21,9 @@ namespace Unity.Infrastructure.Effects
 
         [SerializeField]
         private EffectAsset[] _effectAssets;
-
+        [SerializeField]
+        private TextBubbleHelper _textBubbleHelper;
+        
         private Dictionary<VisualEffectType, GameObject> _prefabCache = new ();
         private Dictionary<VisualEffectType, Queue<VisualEffect>> _objectPools = new ();
 
@@ -42,19 +44,36 @@ namespace Unity.Infrastructure.Effects
             }
         }
 
-        public async void SpawnEffect(VisualEffectType visualEffectType, Vector3 position, Transform parent = null)
+        public async Task<VisualEffect> SpawnRandomHitBubble(Vector3 position,
+            Transform parent = null)
+        {
+            var visualEffectType = _textBubbleHelper.GetRandomBubbleType();
+            var bubble = await SpawnEffect(visualEffectType, position, parent, false) as TextBubbleVisualEffect;
+            bubble.SetText(_textBubbleHelper.GetRandomBubbleText());
+            bubble.Spawn();
+            return bubble;
+        }
+
+        public async Task<VisualEffect> SpawnEffect(VisualEffectType visualEffectType, Vector3 position, 
+            Transform parent = null, bool spawn = true)
         {
             if (!_prefabCache.ContainsKey(visualEffectType))
             {
                 await LoadPrefabAsync(visualEffectType);
             }
 
-            if (_prefabCache.TryGetValue(visualEffectType, out GameObject prefab))
+            if (!_prefabCache.TryGetValue(visualEffectType, out GameObject prefab))
             {
-                var effect = GetFromPool(visualEffectType, prefab, position, parent);
-                effect.OnComplete += ReturnToPool;
+                Debug.Log($"{GetType().Name} effect not found: {visualEffectType}");
+                return null;
+            }
+            var effect = GetFromPool(visualEffectType, prefab, position, parent);
+            effect.OnComplete += ReturnToPool;
+            if (spawn)
+            {
                 effect.Spawn();
             }
+            return effect;
         }
 
         private async Task LoadPrefabAsync(VisualEffectType visualEffectType)
@@ -77,11 +96,11 @@ namespace Unity.Infrastructure.Effects
                 var effect = pool.Dequeue();
                 effect.transform.position = position;
                 effect.transform.SetParent(parent);
-                effect.gameObject.SetActive(true);
                 return effect;
             }
 
             var newEffect = Instantiate(prefab, position, Quaternion.identity, parent).GetComponent<VisualEffect>();
+            newEffect.gameObject.SetActive(false);
             return newEffect;
         }
 

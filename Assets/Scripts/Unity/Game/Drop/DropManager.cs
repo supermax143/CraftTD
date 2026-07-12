@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.Application.Models;
 using DG.Tweening;
+using Unity.Infrastructure.Effects;
 using Unity.Presentation.HUD;
 using UnityEngine;
 using Zenject;
@@ -21,14 +22,16 @@ namespace Unity.Game
        
         
         [Inject] private IEnumerable<IDropTarget> _dropTargets;
+        [Inject] private VisualEffectSpawnManager _effectSpawnManager;
         
         private void Update()
         {
-            /*if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 Vector2 inputPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                ShowDrop( new Resource(ResourceType.Money, 1)  ,inputPosition);
-            }*/
+                //ShowDrop( new Resource(ResourceType.Money, 1)  ,inputPosition);
+                _effectSpawnManager.SpawnRandomHitBubble(inputPosition, transform);
+            }
         }
 
         public void ShowDrop(Resource resource, Vector2 position, Vector2 direction = default)

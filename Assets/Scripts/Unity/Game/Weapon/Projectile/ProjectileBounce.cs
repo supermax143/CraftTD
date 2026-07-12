@@ -19,7 +19,6 @@ namespace Unity.Game.Projectile
 
         protected override void OnFlightComplete()
         {
-            _effectsSpawner.SpawnEffect(VisualEffectType.MuzzleCannon, transform.position, transform.parent);
             Vector3 direction = _direction * -1;
 
             Sequence sequence = DOTween.Sequence();

@@ -369,6 +369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 17250381}
   - component: {fileID: 17250382}
+  - component: {fileID: 17250383}
   m_Layer: 0
   m_Name: EffectsManager
   m_TagString: Untagged
@@ -425,6 +426,50 @@ MonoBehaviour:
       m_SubObjectType: 
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
+  - visualEffectType: 4
+    effectPrefab:
+      m_AssetGUID: 9cf5aab5facd11443aca005cb0a3d26d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+  - visualEffectType: 5
+    effectPrefab:
+      m_AssetGUID: cc250847822715d4cb015f4573b02bb5
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+  - visualEffectType: 6
+    effectPrefab:
+      m_AssetGUID: ec69d29806a7d244096e2e6e7c68125f
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+  - visualEffectType: 7
+    effectPrefab:
+      m_AssetGUID: 0b4e09327d2b29443ba9a354c13b774c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+  _textBubbleHelper: {fileID: 17250383}
+--- !u!114 &17250383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17250380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd7bcae6b4c41f1b6c216e80f5e5f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Infrastructure.Effects.TextBubbleHelper
+  _hitBubblesTextsString: BAM, BOOM!, POW!, WH@M, S&M$H, K!AP, CR!SH, THUD, THW!P,
+    Z@P, K@BL, B@NG, KAP!W, W#CK, OOF!, Z00M, KERB, SPl@T, SN@P, RUMF
+  _hitBubbleTypes: 04000000050000000600000007000000
 --- !u!1 &277753464
 GameObject:
   m_ObjectHideFlags: 0
