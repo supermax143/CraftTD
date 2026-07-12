@@ -14,8 +14,6 @@ namespace Unity.Game.Projectile
         [SerializeField]
         private VisualEffectType _instantDamageEffect;
         
-        [Inject] private VisualEffectSpawnManager _visualEffectSpawnManager;
-        
         public override void Attack(AttackTargetBase target, float damage, Vector3 direction)
         {
             if (_projectilePrefab == null)

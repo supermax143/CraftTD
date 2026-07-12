@@ -19,10 +19,10 @@ namespace Unity.Game.Projectile
 
         protected override void OnFlightComplete()
         {
+            _effectsSpawner.SpawnRandomHitBubble(transform.position, null,
+                new Vector2(.3f,.3f), new Vector2(0,1));
             Vector3 direction = _direction * -1;
-
             Sequence sequence = DOTween.Sequence();
-
             Vector3 currentPos = transform.position;
 
             float distance = _bounceDistance;

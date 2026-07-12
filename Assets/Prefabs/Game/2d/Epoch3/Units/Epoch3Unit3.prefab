@@ -224,6 +224,11 @@ PrefabInstance:
       propertyPath: '_renderers.Array.data[9]'
       value: 
       objectReference: {fileID: 5119413291434388801}
+    - target: {fileID: 5615671223824261799, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.053
+      objectReference: {fileID: 0}
     - target: {fileID: 5971790945569815702, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: m_Name
@@ -721,6 +726,7 @@ MonoBehaviour:
   _barrel: {fileID: 593490749807223178}
   _projectilePrefab: {fileID: 3476111542875554784, guid: df289be5a29583d41880450142173084,
     type: 3}
+  _instantDamageEffect: 0
 --- !u!95 &2884339352159184341
 Animator:
   serializedVersion: 7

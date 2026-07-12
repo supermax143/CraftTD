@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ship
   - asteroid
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -48,6 +49,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 2737399671
+    locked: 0
+  - name: GameBubbles
+    uniqueID: 32811501
     locked: 0
   - name: Windows
     uniqueID: 3348143597

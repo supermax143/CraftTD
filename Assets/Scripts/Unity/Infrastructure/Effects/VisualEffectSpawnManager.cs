@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.Utils.Time;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Unity.Infrastructure.Effects
 {
@@ -23,11 +25,16 @@ namespace Unity.Infrastructure.Effects
         private EffectAsset[] _effectAssets;
         [SerializeField]
         private TextBubbleHelper _textBubbleHelper;
+        [SerializeField]
+        private float _textBubbleCooldown = .5f;
+        [SerializeField]
+        private Transform _effectsContainer;
         
         private Dictionary<VisualEffectType, GameObject> _prefabCache = new ();
         private Dictionary<VisualEffectType, Queue<VisualEffect>> _objectPools = new ();
 
-        [Inject]
+        private Timer _textBubbleCooldownTimer = new();
+        
         private void Initialize()
         {
             InitializePools();
@@ -45,12 +52,19 @@ namespace Unity.Infrastructure.Effects
         }
 
         public async Task<VisualEffect> SpawnRandomHitBubble(Vector3 position,
-            Transform parent = null)
+            Transform parent = null, Vector2 deltaX = default,Vector2 deltaY = default)
         {
+            if (!_textBubbleCooldownTimer.IsComplete)
+            {
+                return null;
+            }
+            var randomDelta = new Vector2(Random.Range(deltaX.x, deltaX.y), Random.Range(deltaY.x, deltaY.y));
+            position += new Vector3(randomDelta.x, randomDelta.y, -10);
             var visualEffectType = _textBubbleHelper.GetRandomBubbleType();
             var bubble = await SpawnEffect(visualEffectType, position, parent, false) as TextBubbleVisualEffect;
             bubble.SetText(_textBubbleHelper.GetRandomBubbleText());
             bubble.Spawn();
+            _textBubbleCooldownTimer.Start(_textBubbleCooldown);
             return bubble;
         }
 
@@ -66,6 +80,11 @@ namespace Unity.Infrastructure.Effects
             {
                 Debug.Log($"{GetType().Name} effect not found: {visualEffectType}");
                 return null;
+            }
+
+            if (parent == null)
+            {
+                parent = _effectsContainer;
             }
             var effect = GetFromPool(visualEffectType, prefab, position, parent);
             effect.OnComplete += ReturnToPool;

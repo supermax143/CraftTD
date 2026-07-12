@@ -455,6 +455,8 @@ MonoBehaviour:
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
   _textBubbleHelper: {fileID: 17250383}
+  _textBubbleCooldown: 0.1
+  _effectsContainer: {fileID: 0}
 --- !u!114 &17250383
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19893,6 +19893,7 @@ GameObject:
   - component: {fileID: 1597892742545182345}
   - component: {fileID: 2881291719998548329}
   - component: {fileID: 6099986091049680614}
+  - component: {fileID: 4612766357306803568}
   m_Layer: 0
   m_Name: HitBubble2
   m_TagString: Untagged
@@ -24830,7 +24831,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: daedbca3d89ee8640bed0c051d176ff9, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24899,9 +24899,22 @@ MonoBehaviour:
   visualEffectType: 5
   _time: 1
   _particleText: {fileID: 1597892742545182345}
-  _size: 0.4
+  _size: 0.3
   _rotationMin: -0.6
   _rotationMax: 0.6
+--- !u!210 &4612766357306803568
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6889676053574524597}
+  m_Enabled: 1
+  m_SortingLayerID: 32811501
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &7049853740404376123
 GameObject:
   m_ObjectHideFlags: 0
