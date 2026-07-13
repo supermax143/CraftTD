@@ -24,7 +24,7 @@ namespace Unity.Presentation.HUD
         private void Start()
         {
             Epoch.OnUnitOpened += UpdateView;
-            UpdateView();
+            //UpdateView();
         }
         
         public void UpdateView()
