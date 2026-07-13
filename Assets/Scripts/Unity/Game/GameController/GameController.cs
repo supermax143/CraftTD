@@ -108,7 +108,7 @@ namespace Unity.Game
         private void Update()
         {
 
-#if UNITY_EDITOR
+#if DEBUG_MODE
             UpdateEditorShortcuts();
 #endif
         }
@@ -206,7 +206,7 @@ namespace Unity.Game
             _mainModel.OnPlayerEpochChanged -= UpdateView;
         }
 
-#if UNITY_EDITOR
+#if DEBUG_MODE
         private void UpdateEditorShortcuts()
         {
             
