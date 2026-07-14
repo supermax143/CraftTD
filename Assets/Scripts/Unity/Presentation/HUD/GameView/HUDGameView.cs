@@ -38,13 +38,6 @@ namespace Unity.Presentation
             _startBattlePanel = GetComponentInChildren<StartBattlePanel>();
             _unitsBuyPanel = GetComponentInChildren<UnitsBuyPanel>();
         }
-
-        public void UpdateView()
-        {
-            _startBattlePanel.UpdateView();
-            _unitsBuyPanel.UpdateView();
-            _earnedMoney.SetValue(0);
-        }
         
       
         public void ShowUpgradeWindow()

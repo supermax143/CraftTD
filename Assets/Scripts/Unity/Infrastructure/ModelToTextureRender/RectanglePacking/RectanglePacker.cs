@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ModestTree;
 using UnityEngine;
 
 namespace Exploration.Scripts.Controllers.ModelToTextureRender.RectanglePacking
@@ -135,6 +136,10 @@ namespace Exploration.Scripts.Controllers.ModelToTextureRender.RectanglePacking
             }
 
             _pages.Clear();
+            if (_rectangles.IsEmpty())
+            {
+                return;
+            }
             PackRectangleInternal();
         }
         
@@ -192,7 +197,7 @@ namespace Exploration.Scripts.Controllers.ModelToTextureRender.RectanglePacking
 
             if (addedRectangles.Count == 0)
             {
-                Debug.LogError("Too small atlas size");
+                Debug.Log($"{GetType().Name} empty addedRectangles");
                 return;
             }
 

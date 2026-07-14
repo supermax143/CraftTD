@@ -1,6 +1,8 @@
-using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Core.Application.Models;
+using Cysharp.Threading.Tasks;
+using Exploration.Scripts.Controllers.ModelRender;
 using TMPro;
 using Unity.Game;
 using Unity.Infrastructure.Windows;
@@ -29,39 +31,48 @@ namespace Unity.Presentation.Windows
         private EpochCompletePanel _epochCompletePanel;
         
         [Inject] IMainModel _model;
+        [Inject] ModelToAtlasRenderer _modelToTextureRenderer;
         
         public EpochModel Epoch => _model.PlayerEpoch;
         
         public override void Initialize()
         {
             _model.Inventory.OnMoneyChanged += UpdateMoney;
-            Epoch.OnUnitOpened += UpdateUnits;
-            _epochCompletePanel.OnEpochComplete += UpdateView;
+            Epoch.OnUnitOpened += OnUnitsOpened;
+            _epochCompletePanel.OnEpochComplete += OnEpochComplete;
             UpdateView();
         }
 
-        private void UpdateView()
+        private void OnEpochComplete()
+        {
+            UpdateView();
+        }
+
+        private async UniTask UpdateView()
         {
             _epochTF.text = Epoch.Name;
+            _modelToTextureRenderer.BlockAtlasPack();
             UpdateMoney();
-            UpdateUnits();
+            await UpdateUnits();
+            _modelToTextureRenderer.UnblockAtlasPack();
             _foodUpgradePanel.UpdateView();
             _towerUpgradePanel.UpdateView();
             _epochCompletePanel.UpdateView();
         }
-        
 
         private void UpdateMoney()
         {
             _moneyTF.text = _model.Money.Value.ToString();
         }
         
-        private void UpdateUnits()
+        
+        
+        private async UniTask UpdateUnits()
         {
             foreach (var unitOpenItem in _unitsItems)
             {
                 Epoch.TryGetUnitModel(unitOpenItem.Tier, out var unitModel);
-                unitOpenItem.SetUnit(unitModel);
+                await unitOpenItem.SetUnit(unitModel);
                 unitOpenItem.OnUnitOpened += Epoch.OpenUnit;
             }
         }
@@ -69,8 +80,13 @@ namespace Unity.Presentation.Windows
         private void OnDestroy()
         {
             _model.Inventory.OnMoneyChanged -= UpdateMoney;
-            Epoch.OnUnitOpened -= UpdateUnits;
-            _epochCompletePanel.OnEpochComplete -= UpdateView;
+            Epoch.OnUnitOpened -= OnUnitsOpened;
+            _epochCompletePanel.OnEpochComplete -= OnEpochComplete;
+        }
+
+        private void OnUnitsOpened()
+        {
+            _ = UpdateUnits();
         }
     }
 }

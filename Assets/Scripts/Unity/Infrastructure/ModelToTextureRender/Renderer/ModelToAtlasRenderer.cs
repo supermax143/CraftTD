@@ -197,7 +197,6 @@ namespace Exploration.Scripts.Controllers.ModelRender
             var modelsRendered = 0;
             var screenBounds = new Rect(0, 0, Screen.width, Screen.height);
             var needRepack = false;
-            
             for (int pageIndex = 0; pageIndex < _packer.PagesCount; pageIndex++)
             {
                 CommandBuffer.Clear();
@@ -236,7 +235,7 @@ namespace Exploration.Scripts.Controllers.ModelRender
                     
                     foreach (var rnd in holder.Renderers)
                     {
-                        if (!IsRendererValid(rnd))
+                        if (!IsRendererValid(rnd) || rnd.sharedMaterial == null)
                         {
                             continue;
                         }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Core.Application.Models;
+using Cysharp.Threading.Tasks;
 using Environments.Land.Scripts.Runtime.GUI;
 using TMPro;
 using Unity.Game;
@@ -18,10 +20,10 @@ namespace Unity.Presentation.Components
 
         public UnitTier Tier => _tier;
 
-        public void SetUnit(UnitModel unitModel)
+        public async UniTask SetUnit(UnitModel unitModel)
         {
             _unitModel = unitModel;
-            _unitIcon.Initialize(unitModel.Info.UnitPrefab);
+            await _unitIcon.Initialize(unitModel.Info.UnitPrefab);
             _priceButton.SetPrice(_unitModel.UnlockCost);
             _priceButton.gameObject.SetActive(!_unitModel.IsUnitOpened);
         }
