@@ -5020,7 +5020,7 @@ MonoBehaviour:
   visualEffectType: 6
   _time: 1
   _particleText: {fileID: 4989939111335839477}
-  _size: 0.3
+  _size: 0.4
   _rotationMin: -0.6
   _rotationMax: 0.6
 --- !u!210 &-8624515067115068756
