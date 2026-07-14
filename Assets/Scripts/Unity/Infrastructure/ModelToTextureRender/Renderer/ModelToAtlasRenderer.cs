@@ -103,11 +103,11 @@ namespace Exploration.Scripts.Controllers.ModelRender
             _modelHoldersByRectId.Clear();
             if (_packer == null)
             {
-                _packer = new RectanglePacker(ATLAS_PAGE_WIDTH, ATLAS_PAGE_HEIGHT, 1);
+                _packer = new RectanglePacker(ATLAS_PAGE_WIDTH, ATLAS_PAGE_HEIGHT, 10);
             }
             else
             {
-                _packer.Reset(ATLAS_PAGE_WIDTH, ATLAS_PAGE_HEIGHT, 1);
+                _packer.Reset(ATLAS_PAGE_WIDTH, ATLAS_PAGE_HEIGHT, 10);
             }
             
             foreach (var holder in _modelHolders)

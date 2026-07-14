@@ -58,6 +58,11 @@ namespace Unity.Presentation.Windows
             _foodUpgradePanel.UpdateView();
             _towerUpgradePanel.UpdateView();
             _epochCompletePanel.UpdateView();
+            foreach (var unitOpenItem in _unitsItems)
+            {
+               unitOpenItem.gameObject.SetActive(false);
+               unitOpenItem.gameObject.SetActive(true);
+            }
         }
 
         private void UpdateMoney()

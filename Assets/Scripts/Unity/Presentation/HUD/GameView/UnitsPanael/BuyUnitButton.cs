@@ -1,5 +1,6 @@
 ﻿using System;
 using Core.Application.Models;
+using Cysharp.Threading.Tasks;
 using Environments.Land.Scripts.Runtime.GUI;
 using TMPro;
 using Unity.Game;
@@ -45,12 +46,12 @@ namespace Unity.Presentation.HUD.UnitsPanael
             _foodProduction.OnFoodChanged += UpdateBuyAvailable;
         }
 
-        public void UpdateView()
+        public async UniTask UpdateView()
         {
             Epoch.TryGetUnitModel(_unitTier, out var  unit);
             _foodCost = unit.FoodCost;
             _foodCostTF.text = _foodCost.ToString();
-            _unitIcon.Initialize(unit.Info.UnitPrefab);
+            await _unitIcon.Initialize(unit.Info.UnitPrefab);
             UpdateBuyAvailable();
         }
 

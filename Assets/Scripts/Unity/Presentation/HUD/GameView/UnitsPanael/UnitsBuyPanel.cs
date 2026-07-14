@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core.Application.Models;
+using Cysharp.Threading.Tasks;
+using Exploration.Scripts.Controllers.ModelRender;
 using Unity.Game;
 using Unity.Presentation.Components;
 using Unity.Presentation.HUD.UnitsPanael;
@@ -16,34 +18,42 @@ namespace Unity.Presentation.HUD
         [SerializeField] 
         private List<BuyUnitButton> _buyUnitButtons;
 
-        [Inject]
-        private readonly IMainModel _model;
+        [Inject] private readonly IMainModel _model;
+        [Inject] private readonly ModelToAtlasRenderer _modelToTextureRenderer;
         
         private EpochModel Epoch => _model.PlayerEpoch;
 
         private void Start()
         {
-            Epoch.OnUnitOpened += UpdateView;
+            Epoch.OnUnitOpened += OnUnitUpdated;
             //UpdateView();
         }
         
-        public void UpdateView()
+        private void OnUnitUpdated()
         {
+            UpdateView().Forget();
+        }
+        
+        public async UniTask UpdateView()
+        {
+            _modelToTextureRenderer.BlockAtlasPack();
             foreach (var buyUnitButton in _buyUnitButtons)
             {
                 Epoch.TryGetUnitModel(buyUnitButton.Tier, out var unit);
                 buyUnitButton.gameObject.SetActive(unit.IsUnitOpened);
                 if (unit.IsUnitOpened)
                 {
-                    buyUnitButton.UpdateView();
+                    await buyUnitButton.UpdateView();
                 }
             }   
+            _modelToTextureRenderer.UnblockAtlasPack();
         }
 
         private void OnDestroy()
         {
-            Epoch.OnUnitOpened -= UpdateView;
+            Epoch.OnUnitOpened -= OnUnitUpdated;
         }
+
 
         public void Clear()
         {
