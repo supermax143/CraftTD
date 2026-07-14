@@ -66,7 +66,7 @@ namespace Unity.Presentation
             }
             else
             {
-                _unitsBuyPanel.UpdateView();
+                _unitsBuyPanel.UpdateView().Forget();
             }
         }
     }

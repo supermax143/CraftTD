@@ -47,6 +47,17 @@ namespace Unity.Presentation.HUD
                 }
             }   
             _modelToTextureRenderer.UnblockAtlasPack();
+            
+            //TODO: в WEBGL не отображается подругому
+            foreach (var buyUnitButton in _buyUnitButtons)
+            {
+                if (!buyUnitButton.gameObject.activeSelf)
+                {
+                    continue;
+                }
+                buyUnitButton.gameObject.SetActive(false);
+                buyUnitButton.gameObject.SetActive(true);
+            }   
         }
 
         private void OnDestroy()

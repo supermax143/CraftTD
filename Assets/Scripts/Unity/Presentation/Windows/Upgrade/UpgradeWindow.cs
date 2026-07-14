@@ -58,6 +58,8 @@ namespace Unity.Presentation.Windows
             _foodUpgradePanel.UpdateView();
             _towerUpgradePanel.UpdateView();
             _epochCompletePanel.UpdateView();
+            
+            //TODO: в WEBGL не отображается подругому
             foreach (var unitOpenItem in _unitsItems)
             {
                unitOpenItem.gameObject.SetActive(false);
