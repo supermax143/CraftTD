@@ -1,4 +1,4 @@
-name: Build
+name: TestWorkfloe
 on: workflow_dispatch
 jobs:
   firstjob:
