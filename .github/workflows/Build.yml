@@ -27,13 +27,11 @@ jobs:
           fetch-depth: 0
           lfs: true
 
-  - uses: actions/cache@v4
-    with:
-      path: Library
-      key: Library-${{ inputs.targetPlatform }}-${{ hashFiles('Packages/packages-lock.json', 'ProjectSettings/ProjectVersion.txt') }}
-      restore-keys: |
-        Library-${{ inputs.targetPlatform }}-
-        Library-
+      - uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ inputs.targetPlatform }}
+          restore-keys: Library-
 
       # Проверяем свободное место ДО очистки
       - name: Check disk space before cleanup
