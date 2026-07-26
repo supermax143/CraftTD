@@ -21,31 +21,39 @@ jobs:
     name: Build for ${{ inputs.targetPlatform }}
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        targetPlatform:
-          - ${{ inputs.targetPlatform }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           lfs: true
+
       - uses: actions/cache@v3
         with:
           path: Library
-          key: Library-${{ matrix.targetPlatform }}
+          key: Library-${{ inputs.targetPlatform }}
           restore-keys: Library-
-      - if: matrix.targetPlatform == 'Android'
+
+      # Проверяем свободное место ДО очистки
+      - name: Check disk space before cleanup
+        run: df -h
+
+      # Освобождаем место на runner
+      - name: Free disk space
         uses: jlumbroso/free-disk-space@v1.3.1
+
+      # Проверяем свободное место ПОСЛЕ очистки
+      - name: Check disk space after cleanup
+        run: df -h
+
       - uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          targetPlatform: ${{ matrix.targetPlatform }}
+          targetPlatform: ${{ inputs.targetPlatform }}
+
       - uses: actions/upload-artifact@v4
         with:
-          name: Build-${{ matrix.targetPlatform }}
-          path: build/${{ matrix.targetPlatform }}
+          name: Build-${{ inputs.targetPlatform }}
+          path: build/${{ inputs.targetPlatform }}
