@@ -59,7 +59,7 @@ jobs:
           ls -la "$HOME"
 
       - name: Activate Unity license
-        uses: game-ci/unity-actions@v4
+        uses: game-ci/unity-actions@v2
         with:
           action: activate
           license: ${{ secrets.UNITY_LICENSE }}
