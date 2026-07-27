@@ -474,6 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Exploration.Scripts.Controllers.ModelRender.ModelToAtlasRenderer
   _material: {fileID: 2100000, guid: 78a17fdc4fee5634391406dadfa3658b, type: 2}
+  _renderOnce: 1
 --- !u!1 &6435364441147233122
 GameObject:
   m_ObjectHideFlags: 0

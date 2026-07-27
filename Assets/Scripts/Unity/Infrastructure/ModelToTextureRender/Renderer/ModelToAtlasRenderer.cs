@@ -40,7 +40,8 @@ namespace Exploration.Scripts.Controllers.ModelRender
         
         [SerializeField]
         private Material _material = null;
-
+        [SerializeField]
+        private bool _renderOnce = false;
         
         private readonly List<ModelHolder> _modelHolders = new();
         private Camera Camera => Camera.main;
@@ -51,7 +52,8 @@ namespace Exploration.Scripts.Controllers.ModelRender
         private readonly Dictionary<int, ModelHolder> _modelHoldersByRectId = new();
 
         private bool _atlasPackBlocked = false;
-
+        private bool _atlasesRendered = false;
+        
         public void BlockAtlasPack()
         {
             _atlasPackBlocked = true;
@@ -136,6 +138,8 @@ namespace Exploration.Scripts.Controllers.ModelRender
                 size.y /= ATLAS_PAGE_HEIGHT;
                 holder.RenderTarget.SetUV(pos, size);
             }
+            
+            _atlasesRendered = false;
         }
 
         //сортируем по дальности от камеры, для группировки страницы атласа
@@ -189,7 +193,13 @@ namespace Exploration.Scripts.Controllers.ModelRender
                 return;
             }
 
+            if (_renderOnce && _atlasesRendered)
+            {
+                return;
+            }
+            
             RenderModels();
+            _atlasesRendered = true;
         }
 
         private void RenderModels()
