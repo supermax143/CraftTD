@@ -257,7 +257,7 @@ namespace Exploration.Scripts.Controllers.ModelRender
                             skin.alwaysUpdate = true;
                             skin.autoRebind = true;
                         }*/
-                        CommandBuffer.DrawRenderer(rnd, rnd.sharedMaterial);
+                        CommandBuffer.DrawRenderer(rnd, rnd.sharedMaterial, 0, 0);
                     }
         
                     modelsRendered++;
