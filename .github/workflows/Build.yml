@@ -1,59 +1,42 @@
 name: Build project
 
-on:
-  workflow_dispatch:
-    inputs:
-      targetPlatform:
-        description: 'Platform to build'
-        required: true
-        type: choice
-        options:
-         # - StandaloneOSX
-         # - StandaloneWindows
-         # - StandaloneWindows64
-         # - StandaloneLinux64
-         # - iOS
-          - WebGL
-          - Android
+on: workflow_dispatch
 
 jobs:
-  build:
-    name: Build for ${{ inputs.targetPlatform }}
+  buildForAllSupportedPlatforms:
+    name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
-
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+        #  - StandaloneWindows # Build a Windows standalone.
+        #  - StandaloneWindows64 # Build a Windows 64-bit standalone.
+        #  - StandaloneLinux64 # Build a Linux 64-bit standalone.
+        #  - iOS # Build an iOS player.
+        # - Android # Build an Android .apk standalone app.
+          - WebGL # WebGL.
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           lfs: true
-
-      - uses: actions/cache@v4
+      - uses: actions/cache@v3
         with:
           path: Library
-          key: Library-${{ inputs.targetPlatform }}
+          key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
-
-      # Проверяем свободное место ДО очистки
-      - name: Check disk space before cleanup
-        run: df -h
-
-      # Освобождаем место на runner
-      - name: Free disk space
+      - if: matrix.targetPlatform == 'Android' || matrix.targetPlatform == 'WebGL'
         uses: jlumbroso/free-disk-space@v1.3.1
-
-      # Проверяем свободное место ПОСЛЕ очистки
-      - name: Check disk space after cleanup
-        run: df -h
-
       - uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          targetPlatform: ${{ inputs.targetPlatform }}
-
+          targetPlatform: ${{ matrix.targetPlatform }}
       - uses: actions/upload-artifact@v4
         with:
-          name: Build-${{ inputs.targetPlatform }}
-          path: build/${{ inputs.targetPlatform }}
+          name: Build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
