@@ -32,10 +32,10 @@ MonoBehaviour:
   _baseUnitRewardTier2: 50
   _baseUnitRewardTier3: 100
   _unitRewardMultiplier: 10
-  _baseUnitDamageTier1: 2
+  _baseUnitDamageTier1: 3
   _baseUnitDamageTier2: 2
   _baseUnitDamageTier3: 4
-  _baseUnitHealthTier1: 2
+  _baseUnitHealthTier1: 4
   _baseUnitHealthTier2: 2
   _baseUnitHealthTier3: 30
   _baseUnitMoveSpeed: 0.9
