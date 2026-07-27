@@ -20,8 +20,6 @@ jobs:
   build:
     name: Build for ${{ inputs.targetPlatform }}
     runs-on: ubuntu-latest
-    env:
-      HOME: /github/home
 
     steps:
       - uses: actions/checkout@v4
@@ -46,23 +44,6 @@ jobs:
       # Проверяем свободное место ПОСЛЕ очистки
       - name: Check disk space after cleanup
         run: df -h
-
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libxml2 libgl1-mesa-dri xvfb libxrandr2 libxss1 libxcursor1 libasound2
-
-      - name: Prepare Unity cache directories
-        run: |
-          mkdir -p "$HOME/.cache/unity3d" "$HOME/.local/share/unity3d"
-          chmod -R u+rwX "$HOME/.cache/unity3d" "$HOME/.local/share/unity3d"
-          ls -la "$HOME"
-
-      - name: Activate Unity license
-        uses: game-ci/unity-actions@v2
-        with:
-          action: activate
-          license: ${{ secrets.UNITY_LICENSE }}
 
       - uses: game-ci/unity-builder@v4
         env:
