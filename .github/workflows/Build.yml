@@ -27,10 +27,10 @@ jobs:
           path: Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
-        - name: Ensure Unity home directories
-          run: |
-            mkdir -p /github/home/.local/share/unity3d /github/home/.cache/unity3d
-            chmod -R 0755 /github/home/.local /github/home/.cache || true
+      - name: Ensure Unity home directories
+        run: |
+          mkdir -p /github/home/.local/share/unity3d /github/home/.cache/unity3d
+          chmod -R 0755 /github/home/.local /github/home/.cache || true
       - if: matrix.targetPlatform == 'Android' || matrix.targetPlatform == 'WebGL'
         uses: jlumbroso/free-disk-space@v1.3.1
       - uses: game-ci/unity-builder@v4
