@@ -17,6 +17,7 @@ namespace Utils.ColorEffects
         {
             public static readonly int _Dissolve = Shader.PropertyToID(nameof(_Dissolve));
             public static readonly int _DissolveAmount = Shader.PropertyToID(nameof(_DissolveAmount));
+            public static readonly int _DissolveVertical = Shader.PropertyToID(nameof(_DissolveVertical));
             public static readonly int _BoundsTop = Shader.PropertyToID(nameof(_BoundsTop));
             public static readonly int _BoundsBottom = Shader.PropertyToID(nameof(_BoundsBottom));
             public static readonly int _HitEffect = Shader.PropertyToID(nameof(_HitEffect));

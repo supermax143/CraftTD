@@ -79,8 +79,8 @@ Material:
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendOp: 0
-    - _BoundsBottom: 0
-    - _BoundsTop: 0
+    - _BoundsBottom: -0.26
+    - _BoundsTop: 3.7
     - _Cull: 2
     - _Cutoff: 0.5
     - _Dissolve: 0
@@ -100,15 +100,17 @@ Material:
     - _Surface: 0
     - _UseDissolve: 0
     - _VericalDissolve: 0
+    - _VerticalDissolveAmount: 0
+    - _VerticalOutlineThikness: 0.04
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
     - White: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DissolveColor: {r: 1, g: 1, b: 1, a: 1}
+    - _DissolveColor: {r: 2.9960783, g: 2.9960783, b: 2.9960783, a: 1}
     - _HitColor: {r: 1, g: 1, b: 1, a: 0}
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 10.43295, g: 8.90258, b: 0, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
