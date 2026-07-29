@@ -15,6 +15,16 @@ MonoBehaviour:
   m_GroupName: Default
   m_GUID: bd013abf932112c45a0fe315efc3121e
   m_SerializeEntries:
+  - m_GUID: 24603c8483260b54f88b9ac4ae90a1d5
+    m_Address: Assets/Prefabs/Game/2d/Effects/Explosions/explosion3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48ea36707e5bfdd43adaea4684d8ec5c
+    m_Address: Assets/Prefabs/Game/2d/Effects/Explosions/Explosion2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ae773709fe04b3b43a9eafba1825a46b
     m_Address: Localization
     m_ReadOnly: 0
@@ -22,6 +32,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d41d8c1458173934cba1e31b4f579898
     m_Address: Assets/Tutorial/TaskWrapper.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e40ef2b97bfaf2b4198238d4f777727b
+    m_Address: Assets/Prefabs/Game/2d/Effects/Explosions/Explosion1.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using Unity.Utils.Time;
 using UnityEngine;
 using Utils.ColorEffects;
 
@@ -43,6 +45,26 @@ namespace Unity.Game
 
         public void SetColor(Color color)
         {
+        }
+
+        public void ShowExplosion(Action onComplete)
+        {
+            StartCoroutine(ShowExplosionAnimation(onComplete));
+        }
+
+        private IEnumerator ShowExplosionAnimation(Action onComplete)
+        {
+            var timer = new Timer();
+            
+            timer.Start(3);
+            StartCoroutine(_effectsController.ShowDissolveEffect(3));
+            StartCoroutine(_effectsController.ShowVerticalDissolveEffect(3));
+            while (!timer.IsComplete)
+            {
+                
+                yield return null;
+            }
+            onComplete?.Invoke();
         }
     }
 }

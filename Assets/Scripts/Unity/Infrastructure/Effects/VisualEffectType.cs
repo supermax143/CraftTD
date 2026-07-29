@@ -11,6 +11,9 @@ namespace Unity.Infrastructure.Effects
         HitBubble1,
         HitBubble2,
         HitBubble3,
-        HitBubble4
+        HitBubble4,
+        Explosion1,
+        Explosion2,
+        Explosion3,
     }
 }

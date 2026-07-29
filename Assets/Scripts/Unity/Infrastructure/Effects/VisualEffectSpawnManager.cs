@@ -28,12 +28,17 @@ namespace Unity.Infrastructure.Effects
         [SerializeField]
         private float _textBubbleCooldown = .5f;
         [SerializeField]
+        private ExplosionHelper _explosionHelper;
+        [SerializeField]
+        private float _explosionCooldown = .5f;
+        [SerializeField]
         private Transform _effectsContainer;
         
         private Dictionary<VisualEffectType, GameObject> _prefabCache = new ();
         private Dictionary<VisualEffectType, Queue<VisualEffect>> _objectPools = new ();
 
         private Timer _textBubbleCooldownTimer = new();
+        private Timer _explosionCooldownTimer = new();
         
         private void Initialize()
         {
@@ -66,6 +71,21 @@ namespace Unity.Infrastructure.Effects
             bubble.Spawn();
             _textBubbleCooldownTimer.Start(_textBubbleCooldown);
             return bubble;
+        }
+
+        public async Task<VisualEffect> SpawnRandomExplosion(Vector3 position,
+            Transform parent = null, Vector2 deltaX = default, Vector2 deltaY = default)
+        {
+            if (!_explosionCooldownTimer.IsComplete)
+            {
+                return null;
+            }
+            var randomDelta = new Vector2(Random.Range(deltaX.x, deltaX.y), Random.Range(deltaY.x, deltaY.y));
+            position += new Vector3(randomDelta.x, randomDelta.y, -10);
+            var visualEffectType = _explosionHelper.GetRandomExplosionType();
+            var explosion = await SpawnEffect(visualEffectType, position, parent, true);
+            _explosionCooldownTimer.Start(_explosionCooldown);
+            return explosion;
         }
 
         public async Task<VisualEffect> SpawnEffect(VisualEffectType visualEffectType, Vector3 position, 

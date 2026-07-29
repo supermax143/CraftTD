@@ -71,7 +71,7 @@ namespace Unity.Game
         private void OnDeath()
         {
             OnDestroyed?.Invoke(this);
-            Dispose();
+            _view.ShowExplosion(Dispose);
         }
 
         public void Dispose()
