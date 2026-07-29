@@ -1338,10 +1338,10 @@
             "m_Id": "c985d615d0034fcb8cc55dc713525a28"
         },
         {
-            "m_Id": "b6952007712e46709ea0845defd728e0"
+            "m_Id": "165eba49e3a445d8add2f7f8afadcf56"
         },
         {
-            "m_Id": "165eba49e3a445d8add2f7f8afadcf56"
+            "m_Id": "b6952007712e46709ea0845defd728e0"
         }
     ]
 }
@@ -1545,10 +1545,10 @@
     "promotedFromAssetID": "",
     "promotedFromCategoryName": "",
     "promotedOrdering": -1,
-    "m_Name": "VericalDissolve",
+    "m_Name": "_VerticalDissolve",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "VericalDissolve",
-    "m_DefaultReferenceName": "_VericalDissolve",
+    "m_RefNameGeneratedByDisplayName": "_VerticalDissolve",
+    "m_DefaultReferenceName": "_VerticalDissolve",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -1823,6 +1823,9 @@
             "m_Id": "47b75d71a79b426f8c4e6f8ee74db855"
         },
         {
+            "m_Id": "0c44299b0cad403ba9c7860bfce17864"
+        },
+        {
             "m_Id": "af3b0470b7db44de98a8be9952727035"
         },
         {
@@ -1830,9 +1833,6 @@
         },
         {
             "m_Id": "c493d5abc71846b6bb30254256bb5b41"
-        },
-        {
-            "m_Id": "0c44299b0cad403ba9c7860bfce17864"
         },
         {
             "m_Id": "b978b7ca77fc4575ad4cd34d799f3c99"
@@ -2021,7 +2021,7 @@
     "m_Title": "Hit Effect",
     "m_Position": {
         "x": -4136.0,
-        "y": 1584.0001220703125
+        "y": 1584.0
     }
 }
 
@@ -2302,7 +2302,7 @@
     "m_Title": "Dissolve",
     "m_Position": {
         "x": -4632.0,
-        "y": 1585.0001220703125
+        "y": 1585.0
     }
 }
 
@@ -3361,7 +3361,7 @@
     "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
     "m_ObjectId": "fb4c8cc43bed425fbafefaf7ba18198c",
     "m_Id": 0,
-    "m_DisplayName": "VericalDissolve",
+    "m_DisplayName": "_VerticalDissolve",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_HideConnector": false,
