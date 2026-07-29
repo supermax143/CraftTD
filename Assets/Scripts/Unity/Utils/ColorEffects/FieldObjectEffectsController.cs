@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using Unity.Utils.Time;
 using UnityEngine;
 
@@ -12,6 +12,7 @@ namespace Utils.ColorEffects
 
 
         private MaterialPropertyBlock _propertyBlock;
+        private Bounds? _cachedBounds;
 
         private static class ShaderProperties
         {
@@ -32,6 +33,7 @@ namespace Utils.ColorEffects
         private void OnValidate()
         {
             _renderers = GetComponentsInChildren<SpriteRenderer>();
+            _cachedBounds = null;
         }
         
         private void Awake()
@@ -45,13 +47,6 @@ namespace Utils.ColorEffects
             _propertyBlock.SetFloat(ShaderProperties._Dissolve, 1);
             while (!_dissolveAnimationTimer.IsComplete)
             {
-                //нужно передавать параметр bound в шейдер для корректного применения к разным спрайтоам одного юнита
-                /*Bounds bounds = _renderers[0].bounds;
-                foreach (var r in _renderers)
-                    bounds.Encapsulate(r.bounds);
-                _propertyBlock.SetFloat(boundsTopId, bounds.max.y);
-                _propertyBlock.SetFloat(boundsBottomId, bounds.min.y);*/
-                
                 _propertyBlock.SetFloat(ShaderProperties._DissolveAmount, _dissolveAnimationTimer.Progress);
                 UpdateRenderersPropertyBlock();
                 yield return null;
@@ -94,14 +89,28 @@ namespace Utils.ColorEffects
             StartCoroutine(ShowDissolveEffect(2));
         }
         
-        public IEnumerator ShowVerticalDissolveEffect(float time)
+        public Bounds GetBounds()
         {
+            if (_cachedBounds.HasValue)
+            {
+                return _cachedBounds.Value;
+            }
+
             Bounds bounds = _renderers[0].bounds;
 
             foreach (var r in _renderers)
             {
                 bounds.Encapsulate(r.bounds);
             }
+
+            _cachedBounds = bounds;
+            return bounds;
+        }
+
+        public IEnumerator ShowVerticalDissolveEffect(float time)
+        {
+            Bounds bounds = GetBounds();
+            
             _propertyBlock.SetFloat(ShaderProperties._BoundsTop, bounds.max.y);
             _propertyBlock.SetFloat(ShaderProperties._BoundsBottom, bounds.min.y);
            

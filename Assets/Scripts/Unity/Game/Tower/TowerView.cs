@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
+using Unity.Infrastructure.Effects;
 using Unity.Utils.Time;
 using UnityEngine;
 using Utils.ColorEffects;
+using Zenject;
 
 namespace Unity.Game
 {
@@ -13,6 +15,8 @@ namespace Unity.Game
         private HealthComponent _healthComponent;
         [SerializeField, HideInInspector]
         private FieldObjectEffectsController _effectsController;
+        
+        [Inject] private VisualEffectSpawnManager _effectSpawnManager;
         
         private Coroutine _blinkCoroutine;
         private Color _color;
@@ -55,13 +59,13 @@ namespace Unity.Game
         private IEnumerator ShowExplosionAnimation(Action onComplete)
         {
             var timer = new Timer();
-            
+            var bounds = _effectsController.GetBounds();
             timer.Start(3);
             StartCoroutine(_effectsController.ShowDissolveEffect(3));
             StartCoroutine(_effectsController.ShowVerticalDissolveEffect(3));
             while (!timer.IsComplete)
             {
-                
+                _effectSpawnManager.SpawnRandomExplosion(inputPosition, transform);
                 yield return null;
             }
             onComplete?.Invoke();
