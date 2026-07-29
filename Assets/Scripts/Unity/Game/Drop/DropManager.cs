@@ -30,7 +30,8 @@ namespace Unity.Game
             {
                 Vector2 inputPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 //ShowDrop( new Resource(ResourceType.Money, 1)  ,inputPosition);
-                _effectSpawnManager.SpawnRandomHitBubble(inputPosition, transform);
+                //_effectSpawnManager.SpawnRandomHitBubble(inputPosition, transform);
+                _effectSpawnManager.SpawnRandomExplosion(inputPosition, transform);
             }
         }
 

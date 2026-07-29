@@ -72,6 +72,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 579598540221531929}
+    - targetCorrespondingSourceObject: {fileID: 8194992990867289339, guid: 99bc28c0d45f51c4fbac01080b73edc7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3045385657661689103}
   m_SourcePrefab: {fileID: 100100000, guid: 99bc28c0d45f51c4fbac01080b73edc7, type: 3}
 --- !u!1 &8839211280234998271 stripped
 GameObject:
@@ -93,3 +97,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Infrastructure.Effects.VisualEffect
   visualEffectType: 9
   _time: 1
+--- !u!210 &-3045385657661689103
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8839211280234998271}
+  m_Enabled: 1
+  m_SortingLayerID: 32811501
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
