@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using Unity.Infrastructure.Effects;
 using Unity.Utils.Time;
 using UnityEngine;
 using Utils.ColorEffects;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Unity.Game
 {
@@ -51,6 +52,12 @@ namespace Unity.Game
         {
         }
 
+        [ContextMenu("Test Show Explosion")]
+        public void TestShowExplosion()
+        {
+            ShowExplosion(null);
+        }
+        
         public void ShowExplosion(Action onComplete)
         {
             StartCoroutine(ShowExplosionAnimation(onComplete));
@@ -59,13 +66,22 @@ namespace Unity.Game
         private IEnumerator ShowExplosionAnimation(Action onComplete)
         {
             var timer = new Timer();
+            var explosionTimer = new Timer();
             var bounds = _effectsController.GetBounds();
             timer.Start(3);
+            explosionTimer.Start(0.2f);
             StartCoroutine(_effectsController.ShowDissolveEffect(3));
             StartCoroutine(_effectsController.ShowVerticalDissolveEffect(3));
             while (!timer.IsComplete)
             {
-                _effectSpawnManager.SpawnRandomExplosion(inputPosition, transform);
+                if (explosionTimer.IsComplete)
+                {
+                    var randomX = Random.Range(bounds.min.x, bounds.max.x);
+                    var randomY = Random.Range(bounds.min.y, bounds.max.y);
+                    var randomPosition = new Vector3(randomX, randomY, transform.position.z);
+                    _effectSpawnManager.SpawnRandomExplosion(randomPosition, transform);
+                    explosionTimer.Start(0.2f);
+                }
                 yield return null;
             }
             onComplete?.Invoke();
