@@ -16,6 +16,8 @@ namespace Unity.Game
         private HealthComponent _healthComponent;
         [SerializeField, HideInInspector]
         private FieldObjectEffectsController _effectsController;
+        [SerializeField]
+        private SpriteRenderer _boundsSprite;
         
         [Inject] private VisualEffectSpawnManager _effectSpawnManager;
         
@@ -32,6 +34,9 @@ namespace Unity.Game
         {
             _healthComponent.OnDamage += OnDamage;
         }
+
+        private Bounds GetBounds() => _boundsSprite.bounds;
+
 
         private void OnDamage(int damage)
         {
@@ -67,7 +72,7 @@ namespace Unity.Game
         {
             var timer = new Timer();
             var explosionTimer = new Timer();
-            var bounds = _effectsController.GetBounds();
+            var bounds = GetBounds();
             timer.Start(3);
             explosionTimer.Start(0.2f);
             StartCoroutine(_effectsController.ShowDissolveEffect(3));
@@ -77,7 +82,8 @@ namespace Unity.Game
                 if (explosionTimer.IsComplete)
                 {
                     var randomX = Random.Range(bounds.min.x, bounds.max.x);
-                    var randomY = Random.Range(bounds.min.y, bounds.max.y);
+                    var maxY = bounds.max.y - (bounds.size.y * timer.Progress);
+                    var randomY = Random.Range(bounds.min.y, maxY);
                     var randomPosition = new Vector3(randomX, randomY, transform.position.z);
                     _effectSpawnManager.SpawnRandomExplosion(randomPosition, transform);
                     explosionTimer.Start(0.2f);
