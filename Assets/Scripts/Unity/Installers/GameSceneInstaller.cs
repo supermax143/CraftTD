@@ -4,6 +4,7 @@ using System.Data.SqlTypes;
 using Core.Application.DataStorage;
 using Exploration.Scripts.Controllers.ModelRender;
 using Unity.Game;
+using Unity.Infrastructure.Camera;
 using Unity.Infrastructure.Effects;
 using Unity.Presentation.HUD;
 using UnityEngine;
@@ -26,7 +27,7 @@ namespace Unity.Installers
             BindController<FoodProduction>();
             BindController<DropManager>();
             BindController<VisualEffectSpawnManager>();
-            
+            BindController<CameraController>();
         }
         
         private void BindController<TController>() where TController: Component

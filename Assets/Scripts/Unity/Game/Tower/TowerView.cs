@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using Unity.Infrastructure.Camera;
 using Unity.Infrastructure.Effects;
+using Unity.Settings;
 using Unity.Utils.Time;
 using UnityEngine;
 using Utils.ColorEffects;
@@ -19,7 +21,10 @@ namespace Unity.Game
         [SerializeField]
         private SpriteRenderer _boundsSprite;
         
+        
         [Inject] private VisualEffectSpawnManager _effectSpawnManager;
+        [Inject] private ICameraController _cameraController;
+        [Inject] private GameSettings _gameSettings;
         
         private Coroutine _blinkCoroutine;
         private Color _color;
@@ -73,10 +78,11 @@ namespace Unity.Game
             var timer = new Timer();
             var explosionTimer = new Timer();
             var bounds = GetBounds();
-            timer.Start(3);
+            var time = _gameSettings.ExplosionAnimationTime;
+            timer.Start(time);
             explosionTimer.Start(0.2f);
-            StartCoroutine(_effectsController.ShowDissolveEffect(3));
-            StartCoroutine(_effectsController.ShowVerticalDissolveEffect(3));
+            StartCoroutine(_effectsController.ShowDissolveEffect(time));
+            StartCoroutine(_effectsController.ShowVerticalDissolveEffect(time));
             while (!timer.IsComplete)
             {
                 if (explosionTimer.IsComplete)
@@ -86,6 +92,7 @@ namespace Unity.Game
                     var randomY = Random.Range(bounds.min.y, maxY);
                     var randomPosition = new Vector3(randomX, randomY, transform.position.z);
                     _effectSpawnManager.SpawnRandomExplosion(randomPosition, transform);
+                    _cameraController.ShakeCamera();
                     explosionTimer.Start(0.2f);
                 }
                 yield return null;
