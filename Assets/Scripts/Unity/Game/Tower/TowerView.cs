@@ -91,7 +91,7 @@ namespace Unity.Game
                     var maxY = bounds.max.y - (bounds.size.y * timer.Progress);
                     var randomY = Random.Range(bounds.min.y, maxY);
                     var randomPosition = new Vector3(randomX, randomY, transform.position.z);
-                    _effectSpawnManager.SpawnRandomExplosion(randomPosition, transform);
+                    _effectSpawnManager.SpawnRandomExplosion(randomPosition);
                     _cameraController.ShakeCamera();
                     explosionTimer.Start(0.2f);
                 }
