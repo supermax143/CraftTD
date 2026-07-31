@@ -173,7 +173,7 @@ MonoBehaviour:
   - _epochName: "\u041C\u0443\u0448\u043A\u0435\u0442\u0435\u0440\u044B"
     _tower:
       _towerPrefab:
-        _value: {fileID: 3331345286125286545, guid: 03ca828c38f6450478a401d02a7ab1c3,
+        _value: {fileID: 3331345286125286545, guid: cc044a54233c9674dadece3eba0fa51a,
           type: 3}
     _unitTier1:
       _name: 
