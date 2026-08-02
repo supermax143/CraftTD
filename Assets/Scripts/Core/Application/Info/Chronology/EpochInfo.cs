@@ -17,6 +17,9 @@ namespace Unity.Game
         private TowerInfo _tower;
         
         [SerializeField]
+        private GameObject _locationPrefab;
+        
+        [SerializeField]
         private UnitInfo _unitTier1;
         [SerializeField]
         private UnitInfo _unitTier2;
@@ -34,6 +37,9 @@ namespace Unity.Game
         private List<AttributeModifierWrapper> _unitTier3Modifiers;
         
         public TowerInfo Tower => _tower;
+        
+        public GameObject LocationPrefab => _locationPrefab;
+        
         public List<UnitWave> Waves => _waves;
 
         public string EpochName => _epochName;

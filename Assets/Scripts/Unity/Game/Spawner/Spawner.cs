@@ -96,7 +96,6 @@ namespace Unity.Game
                 unit.transform.position = transform.position + spawnDelta;
                 unit.SetData(unitModel.Entity);
                 OnUnitSpawned?.Invoke(unit);
-                //StartCoroutine(RandomizeAnimation(unit.View));
             }
         }
 

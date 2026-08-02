@@ -19,6 +19,7 @@
             <ui:VisualElement name="epoch-fields-container" style="display: none; flex-direction: column;">
                 <ui:TextField name="epoch-name-field" label="Epoch Name" />
                 <ui:VisualElement name="tower-field-container" style="flex-direction: column;" class="zone-border" />
+                <ui:VisualElement name="location-field-container" style="flex-direction: column;" class="zone-border" />
                 
                 <ui:VisualElement name="unit-tier-tabs-container" style="flex-direction: row; background-color: #2d2d2d; border-bottom: 1px solid #555; margin-top: 10px;">
                     <ui:ScrollView name="unit-tier-tabs-scroll" mode="Horizontal" style="flex-grow: 1;">

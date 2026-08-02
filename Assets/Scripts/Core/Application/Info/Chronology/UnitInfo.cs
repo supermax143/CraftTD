@@ -13,11 +13,7 @@ namespace Unity.Game
         private string _name;
         [SerializeField] 
         private UnitTier _tier;
-
-        /*
-        [SerializeField] 
-        private UnitPrefabAttribute _unitPrefab;//TODO: заменить на обычное поле.
-        */
+        
         [SerializeField] 
         private AssetReference _unitPrefab;
         

@@ -230,6 +230,13 @@ namespace Editor.ChronologyEditor
             towerField.BindProperty(towerPrefabProperty);
             towerFieldContainer.Add(towerField);
             
+            var locationPrefabProperty = epochProperty.FindPropertyRelative("_locationPrefab");
+            var locationFieldContainer = _root.Q<VisualElement>("location-field-container");
+            locationFieldContainer.Clear();
+            var locationField = new GameObjectPreviewField("Location Prefab");
+            locationField.BindProperty(locationPrefabProperty);
+            locationFieldContainer.Add(locationField);
+            
             RefreshWavesList();
             
             RefreshUnitTierTabs();
