@@ -619,6 +619,7 @@ MonoBehaviour:
   - {fileID: 7645608149092296552}
   _foodProduction: {fileID: 315824542}
   _hud: {fileID: 1055722453}
+  _locationPlaceholder: {fileID: 826788171}
 --- !u!1 &315824540
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +664,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a80852f80c344b885dd1f713bee6822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.FoodProduction
+--- !u!4 &826788171 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4323670481412823747, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 4192125743556613102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &917081721
 GameObject:
   m_ObjectHideFlags: 0

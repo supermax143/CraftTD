@@ -31,6 +31,8 @@ namespace Unity.Game
         private FoodProduction _foodProduction;
         [SerializeField]
         private HUDGameView _hud;
+        [SerializeField]
+        private Transform _locationPlaceholder;
         
         [Inject] private IApplicationSession _applicationSession;
         [Inject] private IMainModel _mainModel;
@@ -39,6 +41,7 @@ namespace Unity.Game
         [Inject] private IAdvertisementController _advertisementController;
         
         private EpochModel Epoch => _mainModel.PlayerEpoch;
+        private EpochModel EnemyEpoch => _mainModel.EnemyEpoch;
         
         private Spawner _spawner;
         private bool _started = false;
@@ -58,6 +61,7 @@ namespace Unity.Game
                     _spawner = team.Spawner;
                 }
             }
+            UpdateLocation();
             _mainModel.OnEnemyEpochChanged += UpdateView;
             _mainModel.OnPlayerEpochChanged += UpdateView;
         }
@@ -147,6 +151,23 @@ namespace Unity.Game
             foreach (var team in _teams)
             {
                 team.Reset();
+            }
+            
+            UpdateLocation();
+        }
+        
+        private void UpdateLocation()
+        {
+            for (int i = _locationPlaceholder.childCount - 1; i >= 0; i--)
+            {
+                Destroy(_locationPlaceholder.GetChild(i).gameObject);
+            }
+            
+            var locationPrefab = EnemyEpoch.Info.LocationPrefab;
+            if (locationPrefab != null)
+            {
+                var locationGameObject = Instantiate(locationPrefab, _locationPlaceholder);
+                locationGameObject.transform.localPosition = Vector3.zero;
             }
         }
         

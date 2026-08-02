@@ -19,6 +19,8 @@ MonoBehaviour:
       _towerPrefab:
         _value: {fileID: 3331345286125286545, guid: 82d4d4a5c47a64844839ce4e40fa5cbb,
           type: 3}
+    _locationPrefab: {fileID: 6048917403400165134, guid: 667c37daeb6395249865587ce761d39a,
+      type: 3}
     _unitTier1:
       _name: 
       _tier: 0
@@ -92,6 +94,8 @@ MonoBehaviour:
       _towerPrefab:
         _value: {fileID: 3331345286125286545, guid: d4c2e861e61f07e46add1f8140a7435e,
           type: 3}
+    _locationPrefab: {fileID: 6048917403400165134, guid: 5698d28c0e1888a4fa7a6cbcec1dab4f,
+      type: 3}
     _unitTier1:
       _name: 
       _tier: 0
@@ -175,6 +179,8 @@ MonoBehaviour:
       _towerPrefab:
         _value: {fileID: 3331345286125286545, guid: cc044a54233c9674dadece3eba0fa51a,
           type: 3}
+    _locationPrefab: {fileID: 6048917403400165134, guid: aab036f1e5017d042b0e093d07882370,
+      type: 3}
     _unitTier1:
       _name: 
       _tier: 0
@@ -250,6 +256,8 @@ MonoBehaviour:
       _towerPrefab:
         _value: {fileID: 3331345286125286545, guid: 83f0a9758916b694687fa575adde64b1,
           type: 3}
+    _locationPrefab: {fileID: 6048917403400165134, guid: f59fad61bec23a34095f218d29a29f0a,
+      type: 3}
     _unitTier1:
       _name: 
       _tier: 0
