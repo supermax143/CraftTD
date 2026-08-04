@@ -2234,6 +2234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8067569285082872206}
+  - component: {fileID: 1715574540255151146}
   m_Layer: 0
   m_Name: LocationBase
   m_TagString: Untagged
@@ -2257,6 +2258,56 @@ Transform:
   - {fileID: 7264734393198460101}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1715574540255151146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031088453326054265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644c3ea5adf04de7a564de64fd3ff409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Utils.ColorEffects.FieldObjectEffectsController
+  _renderers:
+  - {fileID: 4980574413582276532}
+  - {fileID: 6347857440913100604}
+  - {fileID: 6221829941484502502}
+  - {fileID: 1357532520004988979}
+  - {fileID: 6690292845086942028}
+  - {fileID: 1754592469764035074}
+  - {fileID: 1826260595161106946}
+  - {fileID: 3277071727860412852}
+  - {fileID: 7948384735093854420}
+  - {fileID: 3649225164549353318}
+  - {fileID: 4011657406314708079}
+  - {fileID: 3670554052210695952}
+  - {fileID: 8481973755204754289}
+  - {fileID: 8661139271981801549}
+  - {fileID: 8088168605750317229}
+  - {fileID: 8050575926313742407}
+  - {fileID: 2076013545662629003}
+  - {fileID: 8761486517940615157}
+  - {fileID: 7948264973947231269}
+  - {fileID: 2798566760567582196}
+  - {fileID: 4977905152634550323}
+  - {fileID: 8576051875036796669}
+  - {fileID: 495983774949690923}
+  - {fileID: 2811475710649988999}
+  - {fileID: 1246095538182236836}
+  - {fileID: 2594117910072563670}
+  - {fileID: 7570441540654641569}
+  - {fileID: 3841367982738683096}
+  - {fileID: 2476640968053601245}
+  - {fileID: 7752658800484857808}
+  - {fileID: 7787237172277516347}
+  - {fileID: 576130677558038068}
+  - {fileID: 7622788639516334884}
+  - {fileID: 5838820594739330247}
+  - {fileID: 5766971253462592377}
+  - {fileID: 4677092351910871729}
+  dissolveDuration: 1
 --- !u!1 &6298105069085966653
 GameObject:
   m_ObjectHideFlags: 0

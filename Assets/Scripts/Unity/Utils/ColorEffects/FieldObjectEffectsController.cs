@@ -10,6 +10,8 @@ namespace Utils.ColorEffects
         [SerializeField, HideInInspector]
         private SpriteRenderer[] _renderers;
 
+        
+        public float dissolveDuration = 2;
 
         private MaterialPropertyBlock _propertyBlock;
         private Bounds? _cachedBounds;
@@ -24,11 +26,16 @@ namespace Utils.ColorEffects
             public static readonly int _BoundsBottom = Shader.PropertyToID(nameof(_BoundsBottom));
             public static readonly int _HitEffect = Shader.PropertyToID(nameof(_HitEffect));
             public static readonly int _HitAmount = Shader.PropertyToID(nameof(_HitAmount));
+            public static readonly int _HorizontalDissolve = Shader.PropertyToID(nameof(_HorizontalDissolve));
+            public static readonly int _HorizontalDissolveAmount = Shader.PropertyToID(nameof(_HorizontalDissolveAmount));
+            public static readonly int _BoundsLeft = Shader.PropertyToID(nameof(_BoundsLeft));
+            public static readonly int _BoundsRight = Shader.PropertyToID(nameof(_BoundsRight));
         }
 
         private readonly Timer _hitAnimationTimer = new(TimeType.Scaled);
         private readonly Timer _dissolveAnimationTimer = new(TimeType.Scaled);
         private readonly Timer _verticalDissolveAnimationTimer = new(TimeType.Scaled);
+        private readonly Timer _horizontalDissolveAnimationTimer = new(TimeType.Scaled);
         
         private void OnValidate()
         {
@@ -107,6 +114,31 @@ namespace Utils.ColorEffects
             return bounds;
         }
 
+        private Bounds GetScreenBoundsInWorld()
+        {
+            /*Camera mainCamera = Camera.main;
+            if (mainCamera == null)
+            {
+                return new Bounds();
+            }
+
+            Vector3 bottomLeft = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, 0));
+            Vector3 topRight = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+            
+            Vector3 center = (bottomLeft + topRight) / 2f;
+            Vector3 size = new Vector3(topRight.x - bottomLeft.x, topRight.y - bottomLeft.y, 0);
+            
+            return new Bounds(center, size);*/
+            Camera cam = Camera.main;
+
+            float height = cam.orthographicSize;
+            float width = height * cam.aspect;
+
+            return new Bounds(
+                cam.transform.position,
+                new Vector3(width * 2, height * 2, 0));
+        }
+
         public IEnumerator ShowVerticalDissolveEffect(float time)
         {
             Bounds bounds = GetBounds();
@@ -123,7 +155,32 @@ namespace Utils.ColorEffects
                 UpdateRenderersPropertyBlock();
                 yield return null;
             }
-            //_propertyBlock.SetFloat(ShaderProperties._VerticalDissolve, 0);
+            UpdateRenderersPropertyBlock();
+        }
+
+        
+        [ContextMenu("Show HDissolve")]
+        public void ShowHorizontalDissol()
+        {
+            StartCoroutine(ShowHorizontalDissolveEffect(dissolveDuration));
+        }
+        
+        public IEnumerator ShowHorizontalDissolveEffect(float time)
+        {
+            Bounds screenBounds = GetScreenBoundsInWorld();
+            
+            _propertyBlock.SetFloat(ShaderProperties._BoundsLeft, screenBounds.min.x);
+            _propertyBlock.SetFloat(ShaderProperties._BoundsRight, screenBounds.max.x);
+           
+            _horizontalDissolveAnimationTimer.Start(time);
+            _propertyBlock.SetFloat(ShaderProperties._HorizontalDissolve, 1);
+            UpdateRenderersPropertyBlock();
+            while (!_horizontalDissolveAnimationTimer.IsComplete)
+            {
+                _propertyBlock.SetFloat(ShaderProperties._HorizontalDissolveAmount, _horizontalDissolveAnimationTimer.Progress);
+                UpdateRenderersPropertyBlock();
+                yield return null;
+            }
             UpdateRenderersPropertyBlock();
         }
         
