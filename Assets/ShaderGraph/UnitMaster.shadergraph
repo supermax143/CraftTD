@@ -193,6 +193,9 @@
         },
         {
             "m_Id": "9da2b66bf5464a0fbc074bd8aa453535"
+        },
+        {
+            "m_Id": "3f626bf789ae4e438d05536a14422e2e"
         }
     ],
     "m_StickyNoteDatas": [],
@@ -1716,6 +1719,17 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.GroupData",
+    "m_ObjectId": "3f626bf789ae4e438d05536a14422e2e",
+    "m_Title": "Horizontal dissolve",
+    "m_Position": {
+        "x": -2919.000244140625,
+        "y": 1575.0001220703125
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Texture2DInputMaterialSlot",
     "m_ObjectId": "410247e4d29946e7aa454d83f6b787b2",
     "m_Id": 1,
@@ -2014,7 +2028,7 @@
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "594ce4c9e67a4098b4a37a9b74b7c8c0",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "3f626bf789ae4e438d05536a14422e2e"
     },
     "m_Name": "Property",
     "m_DrawState": {
@@ -2492,8 +2506,8 @@
     "m_ObjectId": "8231061589a64463b946626baef93daf",
     "m_Title": "Hit Effect",
     "m_Position": {
-        "x": -4097.99951171875,
-        "y": 1580.9998779296875
+        "x": -4098.0,
+        "y": 1581.0001220703125
     }
 }
 
@@ -2809,8 +2823,8 @@
     "m_ObjectId": "9c9d0dfb4b6f4c179792be7d819eae82",
     "m_Title": "Dissolve",
     "m_Position": {
-        "x": -4631.99951171875,
-        "y": 1584.9998779296875
+        "x": -4632.0,
+        "y": 1585.0
     }
 }
 
@@ -2856,8 +2870,8 @@
     "m_ObjectId": "9da2b66bf5464a0fbc074bd8aa453535",
     "m_Title": "Vertical dissolve",
     "m_Position": {
-        "x": -3548.999755859375,
-        "y": 1574.9998779296875
+        "x": -3549.000244140625,
+        "y": 1575.0001220703125
     }
 }
 
@@ -2949,7 +2963,7 @@
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "a14e5526d311423cacc7e2774c1e9c8a",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "3f626bf789ae4e438d05536a14422e2e"
     },
     "m_Name": "Property",
     "m_DrawState": {
@@ -3294,7 +3308,7 @@
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "b5d59120d03c4d339455a4770edf8f33",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "3f626bf789ae4e438d05536a14422e2e"
     },
     "m_Name": "Property",
     "m_DrawState": {
@@ -3480,7 +3494,7 @@
     "m_Type": "UnityEditor.ShaderGraph.SubGraphNode",
     "m_ObjectId": "bd2eff41e51743f88755e8db4eb9946e",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "3f626bf789ae4e438d05536a14422e2e"
     },
     "m_Name": "Horizontal Dissolve Subgraph",
     "m_DrawState": {
@@ -3708,7 +3722,7 @@
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "c5aefeb404634a6ea5b406cfa30f34e1",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "3f626bf789ae4e438d05536a14422e2e"
     },
     "m_Name": "Property",
     "m_DrawState": {
@@ -3780,7 +3794,7 @@
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "c8a6a7490c5c425e9d83c32bcf8df9b7",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "3f626bf789ae4e438d05536a14422e2e"
     },
     "m_Name": "Property",
     "m_DrawState": {
@@ -4011,7 +4025,7 @@
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "d6b52e11e4fb4745bcc51a8739010dbf",
     "m_Group": {
-        "m_Id": ""
+        "m_Id": "3f626bf789ae4e438d05536a14422e2e"
     },
     "m_Name": "Property",
     "m_DrawState": {
