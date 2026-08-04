@@ -1,5 +1,6 @@
 ﻿using System;
 using Core.Application.Models;
+using Unity.Game;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -17,6 +18,7 @@ namespace Unity.Presentation
         private Button _selectNextEpoch;
 
         [Inject] private IMainModel _mainModel;
+        [Inject] private IGameController _gameController;
 
         private void Start()
         {
@@ -35,12 +37,14 @@ namespace Unity.Presentation
         
         public void SelectNextEpoch()
         {
-            _mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex + 1);
+            //_mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex + 1);
+            _gameController.SelectNextEnemyEpoch();
         }
         
         public void SelectPrevEpoch()
         {
-            _mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex - 1);
+            //_mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex - 1);
+            _gameController.SelectPrevEnemyEpoch();
         }
 
         private void OnDestroy()

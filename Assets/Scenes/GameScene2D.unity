@@ -619,7 +619,8 @@ MonoBehaviour:
   - {fileID: 7645608149092296552}
   _foodProduction: {fileID: 315824542}
   _hud: {fileID: 1055722453}
-  _locationPlaceholder: {fileID: 826788171}
+  _locationContainer: {fileID: 4192125743556613103}
+  _epochSwitchingTime: 0.5
 --- !u!1 &315824540
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,12 +665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a80852f80c344b885dd1f713bee6822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.FoodProduction
---- !u!4 &826788171 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4323670481412823747, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
-    type: 3}
-  m_PrefabInstance: {fileID: 4192125743556613102}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &917081721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,6 +1423,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6dd9f82fe5c2b742b9abe125c84c7d2, type: 3}
+--- !u!114 &4192125743556613103 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4956265460663284723, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 4192125743556613102}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d289d6ec967f4bd7b4ba83fcf1406cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.LocationContainer
 --- !u!114 &7645608149092296552 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2526018559706426574, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,

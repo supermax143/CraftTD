@@ -99,5 +99,10 @@ namespace Unity.Game
             }
             onComplete?.Invoke();
         }
+        
+        public void Hide(float time)
+        {
+            StartCoroutine(_effectsController.ShowHorizontalDissolveEffect(time, 1));
+        }
     }
 }

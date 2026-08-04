@@ -70,7 +70,7 @@ Material:
     - _BoundsLeft: -8
     - _BoundsRight: 8
     - _EnableExternalAlpha: 0
-    - _HorizontalDissolve: 1
+    - _HorizontalDissolve: 0
     - _HorizontalDissolveAmount: 0
     - _HorizontalOutlineThikness: 0.01
     - _RotationA: 0

@@ -74,6 +74,11 @@ namespace Unity.Game
             _view.ShowExplosion(Dispose);
         }
 
+        public void Hide(float time)
+        {
+            _view.Hide(time);
+        }
+        
         public void Dispose()
         {
             Destroy(gameObject);

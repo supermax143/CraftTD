@@ -88,13 +88,7 @@ namespace Utils.ColorEffects
             _propertyBlock.SetFloat(ShaderProperties._HitEffect, 0);
             UpdateRenderersPropertyBlock();
         }
-
-        [ContextMenu("Show VDissolve")]
-        public void ShowVDissolve()
-        {
-            StartCoroutine(ShowVerticalDissolveEffect(2));
-            StartCoroutine(ShowDissolveEffect(2));
-        }
+        
         
         public Bounds GetBounds()
         {
@@ -116,19 +110,6 @@ namespace Utils.ColorEffects
 
         private Bounds GetScreenBoundsInWorld()
         {
-            /*Camera mainCamera = Camera.main;
-            if (mainCamera == null)
-            {
-                return new Bounds();
-            }
-
-            Vector3 bottomLeft = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, 0));
-            Vector3 topRight = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-            
-            Vector3 center = (bottomLeft + topRight) / 2f;
-            Vector3 size = new Vector3(topRight.x - bottomLeft.x, topRight.y - bottomLeft.y, 0);
-            
-            return new Bounds(center, size);*/
             Camera cam = Camera.main;
 
             float height = cam.orthographicSize;
@@ -157,17 +138,13 @@ namespace Utils.ColorEffects
             }
             UpdateRenderersPropertyBlock();
         }
-
         
-        [ContextMenu("Show HDissolve")]
-        public void ShowHorizontalDissol()
-        {
-            StartCoroutine(ShowHorizontalDissolveEffect(dissolveDuration));
-        }
         
-        public IEnumerator ShowHorizontalDissolveEffect(float time)
+        public IEnumerator ShowHorizontalDissolveEffect(float time, float targetValue)
         {
             Bounds screenBounds = GetScreenBoundsInWorld();
+            var startValue = targetValue == 1? 0 : 1;
+            
             
             _propertyBlock.SetFloat(ShaderProperties._BoundsLeft, screenBounds.min.x);
             _propertyBlock.SetFloat(ShaderProperties._BoundsRight, screenBounds.max.x);
@@ -177,7 +154,8 @@ namespace Utils.ColorEffects
             UpdateRenderersPropertyBlock();
             while (!_horizontalDissolveAnimationTimer.IsComplete)
             {
-                _propertyBlock.SetFloat(ShaderProperties._HorizontalDissolveAmount, _horizontalDissolveAnimationTimer.Progress);
+                var value = Mathf.Lerp(startValue, targetValue, _horizontalDissolveAnimationTimer.Progress);
+                _propertyBlock.SetFloat(ShaderProperties._HorizontalDissolveAmount, value);
                 UpdateRenderersPropertyBlock();
                 yield return null;
             }

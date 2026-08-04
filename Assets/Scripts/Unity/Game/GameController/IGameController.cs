@@ -11,5 +11,7 @@ namespace Unity.Game
         void Pause(bool pause);
 
         void EndGame(Faction winner);
+        void SelectNextEnemyEpoch();
+        void SelectPrevEnemyEpoch();
     }
 }

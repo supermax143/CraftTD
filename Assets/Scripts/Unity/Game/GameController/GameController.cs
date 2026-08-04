@@ -31,8 +31,12 @@ namespace Unity.Game
         private FoodProduction _foodProduction;
         [SerializeField]
         private HUDGameView _hud;
+        /*[SerializeField]
+        private Transform _locationPlaceholder;*/
         [SerializeField]
-        private Transform _locationPlaceholder;
+        private LocationContainer _locationContainer;
+        [SerializeField]
+        private float _epochSwitchingTime = 1f;
         
         [Inject] private IApplicationSession _applicationSession;
         [Inject] private IMainModel _mainModel;
@@ -46,7 +50,8 @@ namespace Unity.Game
         private Spawner _spawner;
         private bool _started = false;
         private bool _isPaused = false;
-
+        private bool _epochSwitchingBlocked = false;
+        
         private ResultWindow _resultWindow;
         
         
@@ -61,9 +66,10 @@ namespace Unity.Game
                     _spawner = team.Spawner;
                 }
             }
-            UpdateLocation();
-            _mainModel.OnEnemyEpochChanged += UpdateView;
-            _mainModel.OnPlayerEpochChanged += UpdateView;
+            _locationContainer.Initialize(EnemyEpoch.Info.LocationPrefab);
+            //UpdateLocation();
+            //_mainModel.OnEnemyEpochChanged += UpdateView;
+            //_mainModel.OnPlayerEpochChanged += UpdateView;
         }
 
         
@@ -96,13 +102,17 @@ namespace Unity.Game
             ShowResultDelayed(playerWin);
         }
 
+        private Team GetTeam(Faction faction)
+        {
+            return _teams.FirstOrDefault(team => team.Faction == faction);
+        }
+        
         private void TowerDestroyedHandler(TowerController tower)
         {
             var winner = tower.Faction == Faction.Player ? Faction.Enemy : Faction.Player;
             EndGame(winner);
         }
 
-        
         private async UniTask ShowResultDelayed(bool playerWin)
         {
             await UniTask.WaitForSeconds(1);
@@ -153,10 +163,10 @@ namespace Unity.Game
                 team.Reset();
             }
             
-            UpdateLocation();
+            //UpdateLocation();
         }
         
-        private void UpdateLocation()
+        /*private void UpdateLocation()
         {
             for (int i = _locationPlaceholder.childCount - 1; i >= 0; i--)
             {
@@ -169,9 +179,39 @@ namespace Unity.Game
                 var locationGameObject = Instantiate(locationPrefab, _locationPlaceholder);
                 locationGameObject.transform.localPosition = Vector3.zero;
             }
+        }*/
+        
+        public void SelectNextEnemyEpoch()
+        {
+            if (_epochSwitchingBlocked)
+            {
+                return;
+            }
+            _mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex + 1);
+            StartCoroutine(ShowEpochSwitching());
+        }
+
+        public void SelectPrevEnemyEpoch()
+        {
+            if (_epochSwitchingBlocked)
+            {
+                return;
+            }
+            _mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex - 1);
+            StartCoroutine(ShowEpochSwitching());
+        }
+
+        private IEnumerator ShowEpochSwitching()
+        {
+            _epochSwitchingBlocked = true;
+            var enemyTeam = GetTeam(Faction.Enemy);
+            enemyTeam.Tower.Hide(_epochSwitchingTime);
+            _locationContainer.SwitchToLocation(EnemyEpoch.Info.LocationPrefab, _epochSwitchingTime);
+            yield return new WaitForSeconds(_epochSwitchingTime);
+            UpdateView();
+            _epochSwitchingBlocked = false;
         }
         
-
         public bool TryGetOpponentTower(Faction opponentFaction,out AttackTargetBase target)
         {
             target = default;
