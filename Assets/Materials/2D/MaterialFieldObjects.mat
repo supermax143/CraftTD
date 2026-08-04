@@ -80,6 +80,8 @@ Material:
     - _Blend: 0
     - _BlendOp: 0
     - _BoundsBottom: -0.26
+    - _BoundsLeft: -1.95
+    - _BoundsRight: 4.55
     - _BoundsTop: 3.7
     - _Cull: 2
     - _Cutoff: 0.5
@@ -92,6 +94,9 @@ Material:
     - _HitAmmount: 0
     - _HitAmount: 0
     - _HitEffect: 0
+    - _HorizontalDissolve: 1
+    - _HorizontalDissolveAmount: 0.48
+    - _HorizontalOutlineThikness: 0.01
     - _OutlineThikness: 0.14
     - _QueueOffset: 0
     - _SampleGI: 0
@@ -102,7 +107,7 @@ Material:
     - _VericalDissolve: 1
     - _VerticalDissolve: 0
     - _VerticalDissolveAmount: 0
-    - _VerticalOutlineThikness: 0.04
+    - _VerticalOutlineThikness: 0.02
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
     m_Colors:
@@ -111,7 +116,9 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveColor: {r: 2.9960783, g: 2.9960783, b: 2.9960783, a: 1}
     - _HitColor: {r: 1, g: 1, b: 1, a: 0}
+    - _HorizontalDissolveOutlineColor: {r: 0, g: 8, b: 0, a: 1}
     - _OutlineColor: {r: 10.43295, g: 8.90258, b: 0, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+    - _VerticalDissolveOutlineColor: {r: 23.96863, g: 22.088737, b: 0.37597853, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
