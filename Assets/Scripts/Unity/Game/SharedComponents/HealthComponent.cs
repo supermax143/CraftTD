@@ -22,12 +22,16 @@ namespace Unity.Game
         public float CurrentHealth => _currentHealth;
         public bool IsDead => _currentHealth <= 0;
 
+        private void Start()
+        {
+            _progressBar.gameObject.SetActive(false);
+        }
+
         public override void SetData(GameEntityData data)
         {
             base.SetData(data);
             _currentHealth = MaxHealth;
             _progressBar.Initialize(MaxHealth, MaxHealth);
-            _progressBar.gameObject.SetActive(false);
         }
 
         public void TakeDamage(float damage)

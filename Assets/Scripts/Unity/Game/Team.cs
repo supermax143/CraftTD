@@ -35,7 +35,9 @@ namespace Unity.Game
         public Faction Faction => _faction;
 
         private TowerController _tower;
-
+        private TowerController _nextTower;
+        
+        
         private void OnValidate()
         {
             _spawner = GetComponentInChildren<Spawner>();
@@ -58,9 +60,23 @@ namespace Unity.Game
             _units.Remove(unit);
         }
 
-        public void Initialize()
+        public void InstantiateAndShowNextTower(GameObject prefab, float time, bool inversed)
         {
-            _tower = _container.InstantiatePrefabForComponent<TowerController>( Epoch.Info.Tower.TowerPrefab,_towerPlaceholder);
+            _nextTower = _container.InstantiatePrefabForComponent<TowerController>(prefab, _towerPlaceholder); 
+            _nextTower.Show(time, inversed);
+        }
+        
+        public void UpdateView()
+        {
+            if (_nextTower != null)
+            {
+                _tower = _nextTower;
+                _nextTower = null;
+            }
+            else
+            {
+                _tower = _container.InstantiatePrefabForComponent<TowerController>( Epoch.Info.Tower.TowerPrefab,_towerPlaceholder);
+            }
             _tower.OnDestroyed += TowerDestroyedHandler;
             _tower.SetFaction(_faction);
             _tower.SetData(Epoch.Tower.Entity);
@@ -92,7 +108,7 @@ namespace Unity.Game
                 unit.Dispose();
             }
             _spawner.Reset();
-            Initialize();
+            UpdateView();
         }
     }
 }

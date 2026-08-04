@@ -6,31 +6,51 @@ namespace Unity.Game
 {
     public class LocationContainer : MonoBehaviour
     {
+        
+        [SerializeField]
+        private Transform _currentLocationPlaceholder;
+        [SerializeField]
+        private Transform _nextLocationPlaceholder;
+        
         private FieldObjectEffectsController _effectController;
         private GameObject _currentLocation;
+        private GameObject _nextLocation;
         
         public void Initialize(GameObject location)
         {
-            for (int i = transform.childCount - 1; i >= 0; i--)
+            for (int i = _currentLocationPlaceholder.childCount - 1; i >= 0; i--)
             {
-                Destroy(transform.GetChild(i).gameObject);
+                Destroy(_currentLocationPlaceholder.GetChild(i).gameObject);
             }
-            UpdateLocation(location);
+            
+            for (int i = _nextLocationPlaceholder.childCount - 1; i >= 0; i--)
+            {
+                Destroy(_nextLocationPlaceholder.GetChild(i).gameObject);
+            }
+            AddNextLocation(location);
+            UpdateLocation();
         }
         
-        public void SwitchToLocation(GameObject location, float duration)
+        public void SwitchToLocation(GameObject location, float duration, bool inversed)
         {
-            StartCoroutine(AnimateLocationSwitch(location, duration));
+            StartCoroutine(AnimateLocationSwitch(location, duration, inversed));
         }
 
-        private IEnumerator AnimateLocationSwitch(GameObject location, float duration)
+        private IEnumerator AnimateLocationSwitch(GameObject location, float duration, bool inversed = false)
         {
-            yield return _effectController.ShowHorizontalDissolveEffect(duration, 1);
-            UpdateLocation(location);
+            AddNextLocation(location);
+            yield return _effectController.ShowHorizontalDissolveEffect(duration, 1, inversed);
+            UpdateLocation();
+        }
+        
+        private void AddNextLocation(GameObject location)
+        {
+            _nextLocation = Instantiate(location, _nextLocationPlaceholder);
+            _nextLocation.transform.localPosition = Vector3.zero;
         }
         
 
-        private void UpdateLocation(GameObject locationPrefab)
+        private void UpdateLocation()
         {
             
             if (_currentLocation != null)
@@ -38,8 +58,9 @@ namespace Unity.Game
                 Destroy(_currentLocation);
             }
             
-            _currentLocation = Instantiate(locationPrefab, transform);
-            _currentLocation.transform.localPosition = Vector3.zero;
+            _currentLocation = _nextLocation;
+            _currentLocation.transform.parent = _currentLocationPlaceholder;
+            _nextLocation = null;
             _effectController = _currentLocation.GetComponent<FieldObjectEffectsController>();
         }
         

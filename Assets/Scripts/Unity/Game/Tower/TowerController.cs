@@ -74,9 +74,14 @@ namespace Unity.Game
             _view.ShowExplosion(Dispose);
         }
 
-        public void Hide(float time)
+        public void Hide(float time, bool inversed = false)
         {
-            _view.Hide(time);
+            _view.Hide(time, inversed);
+        }
+        
+        public void Show(float time, bool inversed = false)
+        {
+            _view.Show(time, inversed);
         }
         
         public void Dispose()

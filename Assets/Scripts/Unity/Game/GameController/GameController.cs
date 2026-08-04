@@ -59,7 +59,7 @@ namespace Unity.Game
         {
             foreach (var team in _teams)
             {
-                team.Initialize();
+                team.UpdateView();
                 team.OnTowerDestroyed += TowerDestroyedHandler;
                 if (team.Faction == Faction.Player)
                 {
@@ -163,7 +163,6 @@ namespace Unity.Game
                 team.Reset();
             }
             
-            //UpdateLocation();
         }
         
         /*private void UpdateLocation()
@@ -188,7 +187,7 @@ namespace Unity.Game
                 return;
             }
             _mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex + 1);
-            StartCoroutine(ShowEpochSwitching());
+            StartCoroutine(ShowEpochSwitching(false));
         }
 
         public void SelectPrevEnemyEpoch()
@@ -198,15 +197,16 @@ namespace Unity.Game
                 return;
             }
             _mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex - 1);
-            StartCoroutine(ShowEpochSwitching());
+            StartCoroutine(ShowEpochSwitching(true));
         }
 
-        private IEnumerator ShowEpochSwitching()
+        private IEnumerator ShowEpochSwitching(bool inversed)
         {
             _epochSwitchingBlocked = true;
             var enemyTeam = GetTeam(Faction.Enemy);
-            enemyTeam.Tower.Hide(_epochSwitchingTime);
-            _locationContainer.SwitchToLocation(EnemyEpoch.Info.LocationPrefab, _epochSwitchingTime);
+            enemyTeam.InstantiateAndShowNextTower(EnemyEpoch.Tower.Info.TowerPrefab, _epochSwitchingTime, !inversed);
+            enemyTeam.Tower.Hide(_epochSwitchingTime, inversed);
+            _locationContainer.SwitchToLocation(EnemyEpoch.Info.LocationPrefab, _epochSwitchingTime, inversed);
             yield return new WaitForSeconds(_epochSwitchingTime);
             UpdateView();
             _epochSwitchingBlocked = false;

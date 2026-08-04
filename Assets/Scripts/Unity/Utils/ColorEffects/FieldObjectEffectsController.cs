@@ -30,6 +30,8 @@ namespace Utils.ColorEffects
             public static readonly int _HorizontalDissolveAmount = Shader.PropertyToID(nameof(_HorizontalDissolveAmount));
             public static readonly int _BoundsLeft = Shader.PropertyToID(nameof(_BoundsLeft));
             public static readonly int _BoundsRight = Shader.PropertyToID(nameof(_BoundsRight));
+            public static readonly int _HorizontalDissolveIversed = Shader.PropertyToID(nameof(_HorizontalDissolveIversed));
+
         }
 
         private readonly Timer _hitAnimationTimer = new(TimeType.Scaled);
@@ -140,7 +142,7 @@ namespace Utils.ColorEffects
         }
         
         
-        public IEnumerator ShowHorizontalDissolveEffect(float time, float targetValue)
+        public IEnumerator ShowHorizontalDissolveEffect(float time, float targetValue, bool inversed)
         {
             Bounds screenBounds = GetScreenBoundsInWorld();
             var startValue = targetValue == 1? 0 : 1;
@@ -151,6 +153,7 @@ namespace Utils.ColorEffects
            
             _horizontalDissolveAnimationTimer.Start(time);
             _propertyBlock.SetFloat(ShaderProperties._HorizontalDissolve, 1);
+            _propertyBlock.SetFloat(ShaderProperties._HorizontalDissolveIversed, inversed ? 1 : 0);
             UpdateRenderersPropertyBlock();
             while (!_horizontalDissolveAnimationTimer.IsComplete)
             {

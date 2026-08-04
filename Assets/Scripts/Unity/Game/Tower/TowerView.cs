@@ -100,9 +100,14 @@ namespace Unity.Game
             onComplete?.Invoke();
         }
         
-        public void Hide(float time)
+        public void Hide(float time, bool inversed)
         {
-            StartCoroutine(_effectsController.ShowHorizontalDissolveEffect(time, 1));
+            StartCoroutine(_effectsController.ShowHorizontalDissolveEffect(time, 1, inversed));
+        }
+
+        public void Show(float time, bool inversed)
+        {
+            StartCoroutine(_effectsController.ShowHorizontalDissolveEffect(time, 0, inversed));
         }
     }
 }
