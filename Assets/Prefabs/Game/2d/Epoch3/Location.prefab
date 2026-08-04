@@ -58,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: ff12dd463612a454a8651b89728bb921, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -242,7 +242,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: ff12dd463612a454a8651b89728bb921, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -334,7 +334,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: ff12dd463612a454a8651b89728bb921, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -426,7 +426,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: e6607545529400c478b04fb15a12cb20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -447,7 +447,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 1a7877d93d92f45469be635bb1e85b88, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -518,7 +518,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: ff12dd463612a454a8651b89728bb921, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -574,7 +574,7 @@ PrefabInstance:
     - target: {fileID: 1754592469764035074, guid: d1708784180c8cc42b61382e9ef1f9a3,
         type: 3}
       propertyPath: m_Size.x
-      value: 43.5
+      value: 60.8
       objectReference: {fileID: 0}
     - target: {fileID: 1754592469764035074, guid: d1708784180c8cc42b61382e9ef1f9a3,
         type: 3}
@@ -675,7 +675,7 @@ PrefabInstance:
     - target: {fileID: 7613163931327668099, guid: d1708784180c8cc42b61382e9ef1f9a3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.16
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 7748718328688471780, guid: d1708784180c8cc42b61382e9ef1f9a3,
         type: 3}
@@ -792,15 +792,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7742172068380872136, guid: d1708784180c8cc42b61382e9ef1f9a3,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 6490929221382704537}
+    - targetCorrespondingSourceObject: {fileID: 7742172068380872136, guid: d1708784180c8cc42b61382e9ef1f9a3,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 8495805877140858917}
     - targetCorrespondingSourceObject: {fileID: 7742172068380872136, guid: d1708784180c8cc42b61382e9ef1f9a3,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4484683937678167035}
-    - targetCorrespondingSourceObject: {fileID: 7742172068380872136, guid: d1708784180c8cc42b61382e9ef1f9a3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6490929221382704537}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1708784180c8cc42b61382e9ef1f9a3, type: 3}
 --- !u!4 &7723973334373169599 stripped
