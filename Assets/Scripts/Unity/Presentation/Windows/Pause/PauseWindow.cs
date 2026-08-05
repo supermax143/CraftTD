@@ -29,7 +29,7 @@ namespace Unity.Presentation.Windows.Pause
         public void EndGame()
         {
             _gameController.Pause(false);
-            _gameController.EndGame(Faction.Enemy);
+            _gameController.FinishRound(Faction.Enemy);
             Hide();
         }
     }

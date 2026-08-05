@@ -10,7 +10,7 @@ namespace Unity.Game
         bool TryGetOpponentTower(Faction opponentFaction,out AttackTargetBase target);
         void Pause(bool pause);
 
-        void EndGame(Faction winner);
+        void FinishRound(Faction winner);
         void SelectNextEnemyEpoch();
         void SelectPrevEnemyEpoch();
         void BlocUI();

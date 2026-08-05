@@ -12,6 +12,7 @@ namespace Unity.Infrastructure.VisualActions
     public class VisualActionsController : MonoBehaviour, IVisualActionsController
     {
         [Inject] private readonly IVisualActionFactories _visualActionFactories;
+        [Inject] private readonly IActionsDispatcher _actionsDispatcher;
         
         private readonly Queue<VisualActionBase> _actions = new();
         private Dictionary<Type, Func<IActionData, VisualActionBase>> _factories;
@@ -21,6 +22,7 @@ namespace Unity.Infrastructure.VisualActions
         private void Start()
         {
             _factories = _visualActionFactories.GetFactories(gameObject);
+            _actionsDispatcher.OnActionAdded += AddAction;
         }
 
         private bool TryCreateAction(IActionData actionData, out VisualActionBase action)

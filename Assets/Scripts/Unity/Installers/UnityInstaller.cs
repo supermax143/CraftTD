@@ -14,6 +14,7 @@ using Unity.Infrastructure.Purchases;
 using Unity.Infrastructure.ResourceManager;
 using Unity.Infrastructure.Scenes;
 using Unity.Infrastructure.Tutorial;
+using Unity.Infrastructure.VisualActions;
 using Unity.Infrastructure.Windows;
 using Unity.Settings;
 using UnityEngine;
@@ -55,6 +56,7 @@ namespace Unity.Installers
          Container.BindInterfacesAndSelfTo<DummyPurchasesController>().AsSingle();
          Container.BindInterfacesAndSelfTo<DummyAdvertisementAPI>().AsSingle();
          Container.BindInterfacesAndSelfTo<AdvertisementController>().FromInstance(_advertisementController).AsSingle();
+         Container.BindInterfacesAndSelfTo<ActionsDispatcher>().AsSingle();
          Container.Bind<AdvertisementDoubleReward>().AsTransient();
          
          //Shop

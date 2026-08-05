@@ -8,6 +8,7 @@ using Unity.Infrastructure.Camera;
 using Unity.Infrastructure.Effects;
 using Unity.Infrastructure.VisualActions;
 using Unity.Infrastructure.VisualActions.Factory;
+using Unity.Presentation;
 using Unity.Presentation.HUD;
 using UnityEngine;
 using Zenject;
@@ -18,11 +19,14 @@ namespace Unity.Installers
     {
         [SerializeField]
         private ResourceContainer[] _dropTargets;
+        [SerializeField]
+        private HUDGameView _hud;
         
         public override void InstallBindings()
         {
             Container.Bind<IEnumerable<IDropTarget>>().FromInstance(_dropTargets).AsSingle();
             Container.BindInterfacesAndSelfTo<LevelRewardAggregator>().AsSingle();
+            Container.Bind<HUDGameView>().FromInstance(_hud).AsSingle();
             
             BindController<GameController>();
             BindController<FoodProduction>();

@@ -1024,6 +1024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Installers.GameSceneInstaller
   _dropTargets:
   - {fileID: 1030942566}
+  _hud: {fileID: 1055722453}
 --- !u!1 &1849812277
 GameObject:
   m_ObjectHideFlags: 0

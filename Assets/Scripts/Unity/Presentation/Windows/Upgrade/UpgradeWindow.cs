@@ -5,6 +5,8 @@ using Cysharp.Threading.Tasks;
 using Exploration.Scripts.Controllers.ModelRender;
 using TMPro;
 using Unity.Game;
+using Unity.Infrastructure.VisualActions;
+using Unity.Infrastructure.VisualActions.ActionsData;
 using Unity.Infrastructure.Windows;
 using Unity.Presentation.Components;
 using Unity.Presentation.Windows.Upgrade;
@@ -32,6 +34,7 @@ namespace Unity.Presentation.Windows
         
         [Inject] IMainModel _model;
         [Inject] ModelToAtlasRenderer _modelToTextureRenderer;
+        [Inject] IActionsDispatcher _actionsDispatcher;
         
         public EpochModel Epoch => _model.PlayerEpoch;
         
@@ -45,6 +48,7 @@ namespace Unity.Presentation.Windows
 
         private void OnEpochComplete()
         {
+            _actionsDispatcher.AddAction(new ChangeEpochActionData(true, _model.EnemyEpoch));
             UpdateView();
         }
 
