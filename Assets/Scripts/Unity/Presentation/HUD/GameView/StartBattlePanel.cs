@@ -32,10 +32,12 @@ namespace Unity.Presentation
             _selectPrevEpoch.interactable =
                 _mainModel.SelectedEnemyEpochIndex > 0;
             
+            var playerEpochIndex = _mainModel.CurrentPlayerEpochNumber - 1;
             var enemyEpochIndex = _mainModel.CurrentEnemyEpochNumber - 1;
             var selectedEnemyEpochIndex = _mainModel.SelectedEnemyEpochIndex;
             _selectNextEpoch.interactable = 
                 selectedEnemyEpochIndex < enemyEpochIndex &&
+                selectedEnemyEpochIndex < playerEpochIndex &&
                 _mainModel.HasEpoch(selectedEnemyEpochIndex + 1); 
         }
         

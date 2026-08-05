@@ -1,4 +1,5 @@
-﻿using Unity.Infrastructure.VisualActions.ActionsData;
+﻿using Core.Application.Models;
+using Unity.Infrastructure.VisualActions.ActionsData;
 
 namespace Unity.Infrastructure.VisualActions
 {

@@ -19,8 +19,12 @@ namespace Unity.Settings
         private List<FactionColorPair> _factionColors;
         [SerializeField]
         private float _explosionAnimationTime = 3;
-
+        [SerializeField]
+        private float _epochChangeTime = .5f;
+        
         public float ExplosionAnimationTime => _explosionAnimationTime;
+
+        public float EpochChangeTime => _epochChangeTime;
 
         public bool TryGetFactionColor(Faction faction, out Color color)
         {

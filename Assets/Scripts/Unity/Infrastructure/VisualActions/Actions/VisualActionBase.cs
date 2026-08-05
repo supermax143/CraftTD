@@ -37,18 +37,4 @@ namespace Unity.Infrastructure.VisualActions.Actions
         protected virtual void OnInitialized() {}
     }
     
-    /// <summary>
-    /// визуальный евент ожидать которный не нужно: он сразу заканчивается и проигрывается в фоне по своим правилам
-    /// </summary>
-    /// <typeparam name="TData"></typeparam>
-    public abstract class InstantVisualActionBase<TData> : VisualActionBase<TData> where TData : IActionData
-    {
-        public sealed override void Execute()
-        {
-            Complete();
-            OnExecute();
-        }
-
-        protected abstract void OnExecute();
-    }
 }

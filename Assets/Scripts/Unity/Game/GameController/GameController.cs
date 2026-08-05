@@ -11,6 +11,8 @@ using Cysharp.Threading.Tasks.Triggers;
 using DG.Tweening;
 using Unity.Infrastructure.Advertisement;
 using Unity.Infrastructure.Advertisement.Transactions;
+using Unity.Infrastructure.VisualActions;
+using Unity.Infrastructure.VisualActions.ActionsData;
 using Unity.Presentation;
 using Unity.Presentation.Windows.Result;
 using UnityEngine;
@@ -43,14 +45,16 @@ namespace Unity.Game
         [Inject] private ILevelRewardAggregator _rewardAggregator;
         [Inject] private IWindowsController _windowsController;
         [Inject] private IAdvertisementController _advertisementController;
+        [Inject] private IVisualActionsController _visualActionsController;
         
         private EpochModel Epoch => _mainModel.PlayerEpoch;
         private EpochModel EnemyEpoch => _mainModel.EnemyEpoch;
-        
+        public LocationContainer LocationContainer => _locationContainer;
+
         private Spawner _spawner;
         private bool _started = false;
         private bool _isPaused = false;
-        private bool _epochSwitchingBlocked = false;
+        private bool _uiBlocked = false;
         
         private ResultWindow _resultWindow;
         
@@ -72,6 +76,8 @@ namespace Unity.Game
             //_mainModel.OnPlayerEpochChanged += UpdateView;
         }
 
+        public void BlocUI() => _uiBlocked = true;
+        public void UnblockUI() => _uiBlocked = false;
         
         public void StartGame()
         {
@@ -102,7 +108,7 @@ namespace Unity.Game
             ShowResultDelayed(playerWin);
         }
 
-        private Team GetTeam(Faction faction)
+        public Team GetTeam(Faction faction)
         {
             return _teams.FirstOrDefault(team => team.Faction == faction);
         }
@@ -152,10 +158,10 @@ namespace Unity.Game
             _rewardAggregator.Reset();
             _started = false;
             _hud.SetIsUpgradeState(true);
-            UpdateView();
+            Reset();
         }
 
-        private void UpdateView()
+        public void Reset()
         {
             _foodProduction.Reset();
             foreach (var team in _teams)
@@ -165,52 +171,39 @@ namespace Unity.Game
             
         }
         
-        /*private void UpdateLocation()
-        {
-            for (int i = _locationPlaceholder.childCount - 1; i >= 0; i--)
-            {
-                Destroy(_locationPlaceholder.GetChild(i).gameObject);
-            }
-            
-            var locationPrefab = EnemyEpoch.Info.LocationPrefab;
-            if (locationPrefab != null)
-            {
-                var locationGameObject = Instantiate(locationPrefab, _locationPlaceholder);
-                locationGameObject.transform.localPosition = Vector3.zero;
-            }
-        }*/
-        
         public void SelectNextEnemyEpoch()
         {
-            if (_epochSwitchingBlocked)
+            if (_uiBlocked)
             {
                 return;
             }
             _mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex + 1);
-            StartCoroutine(ShowEpochSwitching(false));
+            //StartCoroutine(ShowEpochSwitching(false));
+            _visualActionsController.AddAction(new ChangeEpochActionData(false, EnemyEpoch));
         }
 
         public void SelectPrevEnemyEpoch()
         {
-            if (_epochSwitchingBlocked)
+            if (_uiBlocked)
             {
                 return;
             }
             _mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex - 1);
-            StartCoroutine(ShowEpochSwitching(true));
+            _visualActionsController.AddAction(new ChangeEpochActionData(true, EnemyEpoch));
+            //StartCoroutine(ShowEpochSwitching(true));
         }
 
-        private IEnumerator ShowEpochSwitching(bool inversed)
+        /*private IEnumerator ShowEpochSwitching(bool inversed)
         {
-            _epochSwitchingBlocked = true;
+            _uiBlocked = true;
             var enemyTeam = GetTeam(Faction.Enemy);
             enemyTeam.InstantiateAndShowNextTower(EnemyEpoch.Tower.Info.TowerPrefab, _epochSwitchingTime, !inversed);
             enemyTeam.Tower.Hide(_epochSwitchingTime, inversed);
             _locationContainer.SwitchToLocation(EnemyEpoch.Info.LocationPrefab, _epochSwitchingTime, inversed);
             yield return new WaitForSeconds(_epochSwitchingTime);
             UpdateView();
-            _epochSwitchingBlocked = false;
-        }
+            _uiBlocked = false;
+        }*/
         
         public bool TryGetOpponentTower(Faction opponentFaction,out AttackTargetBase target)
         {
@@ -261,11 +254,11 @@ namespace Unity.Game
             _applicationSession.CurrentState.ExitGame();
         }
 
-        private void OnDestroy()
+        /*private void OnDestroy()
         {
             _mainModel.OnEnemyEpochChanged -= UpdateView;
             _mainModel.OnPlayerEpochChanged -= UpdateView;
-        }
+        }*/
 
 #if DEBUG_MODE
         private void UpdateEditorShortcuts()

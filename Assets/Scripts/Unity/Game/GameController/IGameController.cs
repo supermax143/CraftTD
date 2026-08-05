@@ -13,5 +13,10 @@ namespace Unity.Game
         void EndGame(Faction winner);
         void SelectNextEnemyEpoch();
         void SelectPrevEnemyEpoch();
+        void BlocUI();
+        void UnblockUI();
+        Team GetTeam(Faction faction);
+        LocationContainer LocationContainer { get; }
+        void Reset();
     }
 }

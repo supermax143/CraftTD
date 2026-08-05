@@ -29,7 +29,7 @@ namespace Unity.Infrastructure.VisualActions.Factory
 
             _factories = new Dictionary<Type, Func<IActionData, VisualActionBase>>
             {
-                { typeof(TeleportLandObjectActionData), SpawnAction<TeleportLandObjectVisual> },
+                { typeof(ChangeEpochActionData), SpawnAction<ChangeEpochVisual> },
             };
 
             return _factories;
