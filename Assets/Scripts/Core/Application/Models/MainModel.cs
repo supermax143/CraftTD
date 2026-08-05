@@ -80,8 +80,8 @@ namespace Core.Application.Models
             return _gameStats.GetEpochCompleteCost(CurrentPlayerEpochNumber);
         }
         
-        public bool HasNextEpoch() => 
-            _dataStorage.CurrentPlayerEpochIndex < _chronology.Epochs.Count-1;
+        public bool HasEpoch(int index) => 
+            index <= _chronology.Epochs.Count-1;
         
         public void SelectEnemyEpochIndex(int index)
         {

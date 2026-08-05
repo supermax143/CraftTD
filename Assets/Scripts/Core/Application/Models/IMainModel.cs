@@ -13,7 +13,6 @@ namespace Core.Application.Models
         int CurrentPlayerEpochNumber { get; }
         int CurrentEnemyEpochNumber { get; }
         int SelectedEnemyEpochIndex { get; }
-        bool HasNextEpoch();
         void IncreaseEnemyEpoch();
         void CompleteEpochForMoney();
         int GetEpochCompleteCost();
@@ -22,6 +21,7 @@ namespace Core.Application.Models
         void CompleteEpoch();
         event Action OnEnemyEpochChanged;
         event Action OnPlayerEpochChanged;
+        bool HasEpoch(int index);
     }
     
     internal interface IMainModelInternal : IMainModel
