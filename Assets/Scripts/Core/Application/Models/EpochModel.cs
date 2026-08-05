@@ -49,7 +49,7 @@ namespace Core.Application.Models
             _gameStats = gameStats;
             _inventory = inventory;
 
-            AddTowers();
+            AddTower();
             AddUnits();
         }
 
@@ -85,12 +85,16 @@ namespace Core.Application.Models
         }
         
         
-        private void AddTowers()
+        private void AddTower()
         {
             _tower = new TowerModel(_info.Tower, GetTowerEntity(_epochNumber));
             if (_faction == Faction.Player)
             {
                 _tower.AddModifier(new HealthAddModifier(GetHashCode(), TowerHealth));
+            }
+            else
+            {
+                _tower.AddModifier(new HealthOverrideModifier(GetHashCode(), 1));
             }
         }
 

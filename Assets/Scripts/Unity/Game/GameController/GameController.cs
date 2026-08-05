@@ -99,7 +99,8 @@ namespace Unity.Game
             var playerWin = winner == Faction.Player;
             _actionsDispatcher.AddAction(new ShowResultActionData(playerWin, 1f));
             if (winner == Faction.Player &&
-                _mainModel.CurrentEnemyEpochNumber <= _mainModel.CurrentPlayerEpochNumber)
+                _mainModel.CurrentEnemyEpochNumber <= _mainModel.CurrentPlayerEpochNumber &&
+                _mainModel.CurrentEnemyEpochNumber-1 == _mainModel.SelectedEnemyEpochIndex)
             {
                 _mainModel.IncreaseEnemyEpoch();
                 if (_mainModel.CurrentEnemyEpochNumber <= _mainModel.CurrentPlayerEpochNumber)
