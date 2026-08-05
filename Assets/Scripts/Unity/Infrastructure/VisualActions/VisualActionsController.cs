@@ -70,5 +70,10 @@ namespace Unity.Infrastructure.VisualActions
             _curAction = null;
             TryStartNextAction();
         }
+
+        private void OnDestroy()
+        {
+            _actionsDispatcher.OnActionAdded -= AddAction;
+        }
     }
 }

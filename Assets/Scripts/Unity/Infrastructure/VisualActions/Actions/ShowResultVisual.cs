@@ -29,7 +29,6 @@ namespace Unity.Infrastructure.VisualActions.Actions
         public override void Execute()
         {
             ShowResultWindow(Data.PlayerWin);
-            Complete();
         }
         
         public async UniTask ShowResultWindow(bool playerWin)
@@ -64,7 +63,7 @@ namespace Unity.Infrastructure.VisualActions.Actions
             _resultWindow = null;
             _mainModel.Inventory.Money += _rewardAggregator.Money;
             _rewardAggregator.Reset();
-            _hud.SetIsUpgradeState(true);
+            _hud.SetIsBattleState(false);
             _gameController.Reset();
             Complete();
         }

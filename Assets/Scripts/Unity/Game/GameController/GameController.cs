@@ -83,7 +83,7 @@ namespace Unity.Game
                 return;
             }
             
-            _hud.SetIsUpgradeState(false);
+            _hud.SetIsBattleState(true);
             foreach (var team in _teams)
             {
                 team.StartGame();
@@ -97,12 +97,16 @@ namespace Unity.Game
             _foodProduction.StopProduction();
             OnGameFinished?.Invoke(winner);
             var playerWin = winner == Faction.Player;
+            _actionsDispatcher.AddAction(new ShowResultActionData(playerWin, 1f));
             if (winner == Faction.Player &&
                 _mainModel.CurrentEnemyEpochNumber <= _mainModel.CurrentPlayerEpochNumber)
             {
                 _mainModel.IncreaseEnemyEpoch();
+                if (_mainModel.CurrentEnemyEpochNumber <= _mainModel.CurrentPlayerEpochNumber)
+                {
+                    _actionsDispatcher.AddAction(new ChangeEpochActionData(false, EnemyEpoch));
+                }
             }
-            _actionsDispatcher.AddAction(new ShowResultActionData(playerWin, 1f));
         }
 
         public Team GetTeam(Faction faction)
@@ -189,6 +193,14 @@ namespace Unity.Game
         public void ExitGame()
         {
             _applicationSession.CurrentState.ExitGame();
+        }
+
+        private void OnDestroy()
+        {
+            foreach (var team in _teams)
+            {
+                team.OnTowerDestroyed -= TowerDestroyedHandler;
+            }
         }
 
 #if DEBUG_MODE

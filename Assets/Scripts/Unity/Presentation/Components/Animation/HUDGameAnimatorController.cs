@@ -6,12 +6,12 @@ namespace Unity.Presentation.Components
     {
         private static class Flags
         {
-            public static readonly int IsUpgradeState = Animator.StringToHash(nameof(IsUpgradeState));
+            public static readonly int IsBattle = Animator.StringToHash(nameof(IsBattle));
         }
         
-        public void SetIsUpgradeState(bool value)
+        public void SetIsBattleState(bool value)
         {
-            SetBool(Flags.IsUpgradeState, value);
+            SetBool(Flags.IsBattle, value);
         }
         
     }

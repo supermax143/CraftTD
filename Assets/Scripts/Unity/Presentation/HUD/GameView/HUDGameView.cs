@@ -57,10 +57,10 @@ namespace Unity.Presentation
             });
         }
         
-        public void SetIsUpgradeState(bool value)
+        public void SetIsBattleState(bool value)
         {
-            _animator.SetIsUpgradeState(value);
-            if (value)
+            _animator.SetIsBattleState(value);
+            if (!value)
             {
                 _unitsBuyPanel.Clear();
             }
