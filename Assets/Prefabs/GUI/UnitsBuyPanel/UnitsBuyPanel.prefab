@@ -92,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.7
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -171,11 +171,11 @@ RectTransform:
   - {fileID: 1102103634741539282}
   m_Father: {fileID: 6289721254005565993}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 207.1, y: 0}
-  m_SizeDelta: {x: 337.0181, y: 72}
-  m_Pivot: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 56.68}
+  m_SizeDelta: {x: 686.7, y: 113.359}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4520528293595753907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,10 +193,10 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 4
+  m_ChildAlignment: 7
   m_Spacing: 10.97
   m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -239,8 +239,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 6.3200073, y: 0}
-  m_SizeDelta: {x: 60, y: 60}
+  m_AnchoredPosition: {x: 6.3200684, y: 0}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1526877574627800912
 CanvasRenderer:
@@ -304,8 +304,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6289721254005565993}
   - component: {fileID: 1316685085470860206}
-  - component: {fileID: 7780242359587323584}
   - component: {fileID: 1495833683786963887}
+  - component: {fileID: 5268743975726237704}
   m_Layer: 5
   m_Name: UnitsBuyPanel
   m_TagString: Untagged
@@ -342,36 +342,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8697124578011493310}
   m_CullTransparentMesh: 1
---- !u!114 &7780242359587323584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8697124578011493310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!225 &1495833683786963887
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -384,6 +354,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &5268743975726237704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8697124578011493310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c86905d54b4c3fb85453c2058bb5e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.UnitsPanel
+  productionProgressBar: {fileID: 7300012368881641692}
+  _buyUnitButtons:
+  - {fileID: 3348771874527351027}
+  - {fileID: 4551608291531972666}
+  - {fileID: 6512929195430513896}
 --- !u!1 &9076857403914359405
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,12 +497,12 @@ PrefabInstance:
     - target: {fileID: 4626337589078768699, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 193.4
       objectReference: {fileID: 0}
     - target: {fileID: 4626337589078768699, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 60
+      value: 210.8
       objectReference: {fileID: 0}
     - target: {fileID: 4626337589078768699, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
         type: 3}
@@ -582,6 +569,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3, type: 3}
+--- !u!114 &4551608291531972666 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1521630035785810177, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
+    type: 3}
+  m_PrefabInstance: {fileID: 3042012036933902651}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a565a56c9ef246dea5dee703d78e9ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.UnitsPanael.BuyUnitButton
 --- !u!224 &7639064095152135424 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4626337589078768699, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
@@ -634,12 +633,12 @@ PrefabInstance:
     - target: {fileID: 4626337589078768699, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 193.4
       objectReference: {fileID: 0}
     - target: {fileID: 4626337589078768699, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 60
+      value: 210.8
       objectReference: {fileID: 0}
     - target: {fileID: 4626337589078768699, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
         type: 3}
@@ -706,6 +705,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3, type: 3}
+--- !u!114 &3348771874527351027 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1521630035785810177, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4279774460645577202}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a565a56c9ef246dea5dee703d78e9ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.UnitsPanael.BuyUnitButton
 --- !u!224 &8885845834219007433 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4626337589078768699, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
@@ -763,12 +774,12 @@ PrefabInstance:
     - target: {fileID: 4626337589078768699, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 193.4
       objectReference: {fileID: 0}
     - target: {fileID: 4626337589078768699, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 60
+      value: 210.8
       objectReference: {fileID: 0}
     - target: {fileID: 4626337589078768699, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
         type: 3}
@@ -841,3 +852,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5728430206154968553}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6512929195430513896 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1521630035785810177, guid: 7a6d8ddf8312bb24db2a9e5f740b8bf3,
+    type: 3}
+  m_PrefabInstance: {fileID: 5728430206154968553}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a565a56c9ef246dea5dee703d78e9ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.UnitsPanael.BuyUnitButton

@@ -5,6 +5,7 @@ using Unity.Infrastructure.ResourceManager;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.UI;
 
 namespace Environments.Land.Scripts.Runtime.GUI
 {
@@ -12,6 +13,10 @@ namespace Environments.Land.Scripts.Runtime.GUI
     {
 
         private AssetReference _assetReference;
+        
+        public RawImage Image => _rendererTarget.Image;
+        
+        public UnitView UnitView => _modelHolder.GetComponent<UnitView>();
         
         protected override async UniTask SpawnLandObject(AssetReference assetReference)
         {

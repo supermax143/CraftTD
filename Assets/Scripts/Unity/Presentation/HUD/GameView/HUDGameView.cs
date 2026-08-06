@@ -25,8 +25,6 @@ namespace Unity.Presentation
         private StartBattlePanel _startBattlePanel;
         [SerializeField]
         private UnitsBuyPanel _unitsBuyPanel;
-        [SerializeField]
-        private ResourceContainer _earnedMoney;
         
         [Inject] private ILevelRewardAggregator _rewardAggregator;
         [Inject] private IWindowsController _windowsController;

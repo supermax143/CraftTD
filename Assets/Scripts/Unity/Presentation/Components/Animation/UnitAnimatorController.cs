@@ -72,6 +72,16 @@ namespace Unity.Presentation.Components
             PlayAnimation(Triggers.Die);
         }
         
+        public void PauseAnimation()
+        {
+            _animator.speed = 0;
+        }
+       
+        public void UnpauseAnimation()
+        {
+            _animator.speed = 1;
+        }
+        
         public bool IsIdleState() => IsPlayingState(States.Idle, Layers.Base);
         public bool IsWalkState() => IsPlayingState(States.Walk, Layers.Base);
         public bool IsAttackState() => IsPlayingState(States.Attack, Layers.Base);

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using DG.Tweening;
 using Unity.Presentation.Components;
 using UnityEngine;
 using Utils.ColorEffects;
@@ -64,6 +65,16 @@ namespace Unity.Game
         public void StartWalking()
         {
             _unitAnimatorController.PlayWalk();
+        }
+
+        public void Pause()
+        {
+            _unitAnimatorController.PauseAnimation();
+        }
+        
+        public void Unpause()
+        {
+            _unitAnimatorController.UnpauseAnimation();
         }
         
         public void StartAttacking()

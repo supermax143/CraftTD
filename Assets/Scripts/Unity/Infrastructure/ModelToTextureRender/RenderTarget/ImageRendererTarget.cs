@@ -31,6 +31,8 @@ public class ImageRendererTarget : RenderTargetBase
         max = _image.rectTransform.rect.max
     };
 
+    public RawImage Image => _image;
+
     public void SetWorldSize(Vector2 value)
     {
         _renderSize = value;

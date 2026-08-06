@@ -57,7 +57,23 @@ namespace Unity.Presentation.HUD.UnitsPanael
 
         private void UpdateBuyAvailable()
         {
-            _button.interactable = _foodProduction.FoodCount >= _foodCost;
+            if (!gameObject.activeInHierarchy)
+            {
+                return;
+            }
+            var active = _foodProduction.FoodCount >= _foodCost;
+            _button.interactable = active;
+            var color = _unitIcon.Image.color;
+            color.a = active ? 1f : .6f;
+            _unitIcon.Image.color = color;
+            if (active)
+            {
+                _unitIcon.UnitView.Unpause();
+            }
+            else
+            {
+                _unitIcon.UnitView.Pause();
+            }
         }
 
         public void BuyUnit()
