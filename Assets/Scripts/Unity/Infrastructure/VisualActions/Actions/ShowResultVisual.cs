@@ -9,6 +9,7 @@ using Unity.Infrastructure.Advertisement.Transactions;
 using Unity.Infrastructure.VisualActions.ActionsData;
 using Unity.Presentation;
 using Unity.Presentation.Windows.Result;
+using Unity.Settings;
 using UnityEngine;
 using Zenject;
 
@@ -22,6 +23,11 @@ namespace Unity.Infrastructure.VisualActions.Actions
         [Inject] private IAdvertisementController _advertisementController;
         [Inject] private IMainModel _mainModel;
         [Inject] private HUDGameView _hud;
+        [Inject] private GameSettings _gameSettings;
+        
+        private EpochModel PlayerEpoch => _mainModel.PlayerEpoch;
+        private EpochModel EnemyEpoch => _mainModel.EnemyEpoch;
+        
         
         private ResultWindow _resultWindow;
 
@@ -64,8 +70,34 @@ namespace Unity.Infrastructure.VisualActions.Actions
             _mainModel.Inventory.Money += _rewardAggregator.Money;
             _rewardAggregator.Reset();
             _hud.SetIsBattleState(false);
-            _gameController.Reset();
+            StartCoroutine(ResetLevel());
+            //_gameController.Reset();
+        }
+
+        private IEnumerator ResetLevel()
+        {
+
+            if (Data.ResetTower)
+            {
+                var faction = Data.PlayerWin ? Faction.Enemy : Faction.Player;
+                UpdateTeamTower(faction, faction == Faction.Enemy, _gameSettings.EpochChangeTime);
+                yield return new WaitForSeconds(_gameSettings.EpochChangeTime);
+                _gameController.Reset();
+            }
+            
             Complete();
+        }
+        
+        
+        private void UpdateTeamTower(Faction faction,bool inversed, float time)
+        {
+            var team = _gameController.GetTeam(faction);
+            var epoch = faction == Faction.Player ? PlayerEpoch : EnemyEpoch;
+            team.InstantiateAndShowNewTower(epoch.Tower.Info.TowerPrefab, time, !inversed);
+            if (!team.TowerDestroyed)
+            {
+                team.Tower.Hide(time, inversed);
+            }
         }
         
     }

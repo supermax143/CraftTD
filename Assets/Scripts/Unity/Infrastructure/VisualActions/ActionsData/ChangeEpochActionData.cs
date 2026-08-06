@@ -7,12 +7,12 @@ namespace Unity.Infrastructure.VisualActions.ActionsData
     {
         
         public bool ShowInversed { get; }
-        public EpochModel EnemyEpoch { get; }
+        public bool ChangePlayerTower { get;}
         
-        public ChangeEpochActionData(bool showInversed, EpochModel enemyEpoch)
+        public ChangeEpochActionData(bool showInversed, bool changePlayerTower)
         {
             ShowInversed = showInversed;
-            EnemyEpoch = enemyEpoch;
+            ChangePlayerTower = changePlayerTower;
         }
 
     }

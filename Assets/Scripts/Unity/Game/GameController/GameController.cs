@@ -47,7 +47,7 @@ namespace Unity.Game
         [Inject] private IAdvertisementController _advertisementController;
         [Inject] private IActionsDispatcher _actionsDispatcher;
         
-        private EpochModel Epoch => _mainModel.PlayerEpoch;
+        private EpochModel PlayerEpoch => _mainModel.PlayerEpoch;
         private EpochModel EnemyEpoch => _mainModel.EnemyEpoch;
         public LocationContainer LocationContainer => _locationContainer;
 
@@ -94,18 +94,22 @@ namespace Unity.Game
         
         public void FinishRound(Faction winner)
         {
+            var playerWin = winner == Faction.Player;
+            var epochIncreased = playerWin &&
+                                 _mainModel.CurrentEnemyEpochNumber <= _mainModel.CurrentPlayerEpochNumber &&
+                                 _mainModel.CurrentEnemyEpochNumber - 1 == _mainModel.SelectedEnemyEpochIndex;
+            var resetTower = !epochIncreased ||
+                             (playerWin && _mainModel.CurrentEnemyEpochNumber == _mainModel.CurrentPlayerEpochNumber);
+            
             _foodProduction.StopProduction();
             OnGameFinished?.Invoke(winner);
-            var playerWin = winner == Faction.Player;
-            _actionsDispatcher.AddAction(new ShowResultActionData(playerWin, 1f));
-            if (winner == Faction.Player &&
-                _mainModel.CurrentEnemyEpochNumber <= _mainModel.CurrentPlayerEpochNumber &&
-                _mainModel.CurrentEnemyEpochNumber-1 == _mainModel.SelectedEnemyEpochIndex)
+            _actionsDispatcher.AddAction(new ShowResultActionData(playerWin, resetTower, 1f));
+            if (epochIncreased)
             {
                 _mainModel.IncreaseEnemyEpoch();
                 if (_mainModel.CurrentEnemyEpochNumber <= _mainModel.CurrentPlayerEpochNumber)
                 {
-                    _actionsDispatcher.AddAction(new ChangeEpochActionData(false, EnemyEpoch));
+                    _actionsDispatcher.AddAction(new ChangeEpochActionData(false, false));
                 }
             }
         }
@@ -147,7 +151,7 @@ namespace Unity.Game
                 return;
             }
             _mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex + 1);
-            _actionsDispatcher.AddAction(new ChangeEpochActionData(false, EnemyEpoch));
+            _actionsDispatcher.AddAction(new ChangeEpochActionData(false, false));
         }
 
         public void SelectPrevEnemyEpoch()
@@ -157,7 +161,7 @@ namespace Unity.Game
                 return;
             }
             _mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex - 1);
-            _actionsDispatcher.AddAction(new ChangeEpochActionData(true, EnemyEpoch));
+            _actionsDispatcher.AddAction(new ChangeEpochActionData(true, false));
         }
         
         public bool TryGetOpponentTower(Faction opponentFaction,out AttackTargetBase target)
@@ -176,7 +180,7 @@ namespace Unity.Game
         public void BuyUnit(UnitTier tier)
         {
             
-            if (!Epoch.TryGetUnitModel(tier, out var unit)||
+            if (!PlayerEpoch.TryGetUnitModel(tier, out var unit)||
                 _foodProduction.FoodCount < unit.FoodCost)
             {
                 return;

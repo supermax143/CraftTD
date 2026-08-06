@@ -48,7 +48,7 @@ namespace Unity.Presentation.Windows
 
         private void OnEpochComplete()
         {
-            _actionsDispatcher.AddAction(new ChangeEpochActionData(true, _model.EnemyEpoch));
+            _actionsDispatcher.AddAction(new ChangeEpochActionData(true, true));
             UpdateView();
         }
 

@@ -34,9 +34,12 @@ namespace Unity.Game
 
         public Faction Faction => _faction;
 
+        public bool TowerDestroyed => _towerDestroyed;
+
         private TowerController _tower;
-        private TowerController _nextTower;
-        
+        private TowerController _newTower;
+
+        private bool _towerDestroyed = false;
         
         private void OnValidate()
         {
@@ -60,18 +63,18 @@ namespace Unity.Game
             _units.Remove(unit);
         }
 
-        public void InstantiateAndShowNextTower(GameObject prefab, float time, bool inversed)
+        public void InstantiateAndShowNewTower(GameObject prefab, float time, bool inversed)
         {
-            _nextTower = _container.InstantiatePrefabForComponent<TowerController>(prefab, _towerPlaceholder); 
-            _nextTower.Show(time, inversed);
+            _newTower = _container.InstantiatePrefabForComponent<TowerController>(prefab, _towerPlaceholder); 
+            _newTower.Show(time, inversed);
         }
         
         public void UpdateView()
         {
-            if (_nextTower != null)
+            if (_newTower != null)
             {
-                _tower = _nextTower;
-                _nextTower = null;
+                _tower = _newTower;
+                _newTower = null;
             }
             else
             {
@@ -81,10 +84,12 @@ namespace Unity.Game
             _tower.SetFaction(_faction);
             _tower.SetData(Epoch.Tower.Entity);
             _spawner.SetFaction(_faction, _enemyFaction);
+            _towerDestroyed = false;
         }
 
         private void TowerDestroyedHandler(TowerController tower)
         {
+            _towerDestroyed = true;
             OnTowerDestroyed?.Invoke(tower);
         }
 
@@ -108,6 +113,7 @@ namespace Unity.Game
                 unit.Dispose();
             }
             _spawner.Reset();
+            _towerDestroyed = false;
             UpdateView();
         }
     }
