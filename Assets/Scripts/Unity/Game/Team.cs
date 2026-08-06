@@ -98,6 +98,29 @@ namespace Unity.Game
             _spawner.StartSpawn(Epoch);
         }
 
+        public void HideAll(float time, bool inversed)
+        {
+            HideTower(time, inversed);
+            HideUnits(time, inversed);
+        }
+
+        public void HideTower(float time, bool inversed)
+        {
+            if (_towerDestroyed)
+            {
+                return;
+            }
+            _tower.Hide(time, inversed);
+        }
+        
+        public void HideUnits(float time, bool inversed)
+        {
+            foreach (var unit in _units)
+            {
+                unit.View.Hide(time, inversed);
+            }
+        }
+        
         public void Reset()
         {
             Debug.Log($"{this.GetType().Name} Reset");

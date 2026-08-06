@@ -89,6 +89,10 @@ namespace Unity.Game
             yield return _effectsController.ShowDissolveEffect(.7f);
         }
         
+        public void Hide(float time, bool inversed)
+        {
+            StartCoroutine(_effectsController.ShowHorizontalDissolveEffect(time, 1, inversed));
+        }
 
         public void UpdateSortingByPosition()
         {

@@ -81,6 +81,8 @@ namespace Unity.Infrastructure.VisualActions.Actions
             {
                 var faction = Data.PlayerWin ? Faction.Enemy : Faction.Player;
                 UpdateTeamTower(faction, faction == Faction.Enemy, _gameSettings.EpochChangeTime);
+                _gameController.GetTeam(Faction.Player).HideUnits(_gameSettings.EpochChangeTime, false);
+                _gameController.GetTeam(Faction.Enemy).HideUnits(_gameSettings.EpochChangeTime, false);
                 yield return new WaitForSeconds(_gameSettings.EpochChangeTime);
                 _gameController.Reset();
             }
@@ -94,10 +96,11 @@ namespace Unity.Infrastructure.VisualActions.Actions
             var team = _gameController.GetTeam(faction);
             var epoch = faction == Faction.Player ? PlayerEpoch : EnemyEpoch;
             team.InstantiateAndShowNewTower(epoch.Tower.Info.TowerPrefab, time, !inversed);
-            if (!team.TowerDestroyed)
+            team.HideTower(time, inversed);
+            /*if (!team.TowerDestroyed)
             {
                 team.Tower.Hide(time, inversed);
-            }
+            }*/
         }
         
     }
