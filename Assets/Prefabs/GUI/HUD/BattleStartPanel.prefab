@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4981011037757390471}
   - component: {fileID: 5245535622380173153}
   - component: {fileID: 116097311845270353}
-  - component: {fileID: 4620902457776145047}
+  - component: {fileID: 9139915963934187652}
   m_Layer: 5
   m_Name: NextEpoch
   m_TagString: Untagged
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4620902457776145047
+--- !u!114 &9139915963934187652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,9 +86,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 988050581387738008}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: cc896790d4c94db7ad57f4b800c0eadd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.MultiSpritesButton
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -121,9 +121,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Unity.Game.GameController, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 4430266040653474180}
+        m_TargetAssemblyTypeName: Unity.Presentation.StartBattlePanel, Assembly-CSharp
+        m_MethodName: SelectNextEpoch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -133,6 +133,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _images:
+  - {fileID: 116097311845270353}
+  - {fileID: 7655066284082689252}
 --- !u!1 &1049865659983974388
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +147,7 @@ GameObject:
   - component: {fileID: 5632209932578912670}
   - component: {fileID: 5413709871117008014}
   - component: {fileID: 6581553041010088803}
-  - component: {fileID: 454675820706027892}
+  - component: {fileID: 9073471798580557752}
   m_Layer: 5
   m_Name: PrevEpoch
   m_TagString: Untagged
@@ -210,7 +213,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &454675820706027892
+--- !u!114 &9073471798580557752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,9 +222,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1049865659983974388}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: cc896790d4c94db7ad57f4b800c0eadd, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.MultiSpritesButton
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -254,9 +257,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Unity.Game.GameController, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 4430266040653474180}
+        m_TargetAssemblyTypeName: Unity.Presentation.StartBattlePanel, Assembly-CSharp
+        m_MethodName: SelectPrevEpoch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -266,6 +269,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _images:
+  - {fileID: 6581553041010088803}
+  - {fileID: 7521911639601828972}
 --- !u!1 &1130378683612459221
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,8 +352,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.StartBattlePanel
   _startBattleButton: {fileID: 3284193332919177115}
-  _selectPrevEpoch: {fileID: 454675820706027892}
-  _selectNextEpoch: {fileID: 4620902457776145047}
+  _selectPrevEpoch: {fileID: 9073471798580557752}
+  _selectNextEpoch: {fileID: 9139915963934187652}
 --- !u!225 &2254331115623142273
 CanvasGroup:
   m_ObjectHideFlags: 0
