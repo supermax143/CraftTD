@@ -604,8 +604,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.8679245, b: 0.000000051732332, a: 1}
+  m_Material: {fileID: 2100000, guid: 8f400cbb751fc784b979b2c92e168bad, type: 2}
+  m_Color: {r: 0, g: 0.9150943, b: 0.00000005454387, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 1
+  m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
