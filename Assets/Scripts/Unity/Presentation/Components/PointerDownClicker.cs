@@ -24,7 +24,6 @@ namespace Unity.Presentation.Components
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            PlayClickSound();
             _pressCoroutine = StartCoroutine(Activate());
         }
        
