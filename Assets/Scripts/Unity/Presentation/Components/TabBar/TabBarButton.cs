@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace Unity.Presentation.Components.TabBar
 {
@@ -12,16 +11,7 @@ namespace Unity.Presentation.Components.TabBar
         [SerializeField]
         private string _value;
 
-        [SerializeField]
-        private Color _idleColor = Color.white;
-
-        [SerializeField]
-        private Color _selectedColor = Color.yellow;
-
-        [SerializeField]
-        private Color _disabledColor = Color.gray;
-
-        private Image _image;
+        private TabBarButtonAnimatorController _animatorController;
         private TabBar _tabBar;
         private TabState _state = TabState.Idle;
 
@@ -30,7 +20,7 @@ namespace Unity.Presentation.Components.TabBar
 
         private void Awake()
         {
-            _image = GetComponent<Image>();
+            _animatorController = GetComponent<TabBarButtonAnimatorController>();
             _tabBar = GetComponentInParent<TabBar>();
         }
 
@@ -42,18 +32,21 @@ namespace Unity.Presentation.Components.TabBar
 
         private void UpdateVisual()
         {
-            if (_image == null) return;
+            if (_animatorController == null) return;
 
             switch (_state)
             {
                 case TabState.Idle:
-                    _image.color = _idleColor;
+                    _animatorController.SetSelectedState(false);
+                    _animatorController.SetDisabledState(false);
                     break;
                 case TabState.Selected:
-                    _image.color = _selectedColor;
+                    _animatorController.SetSelectedState(true);
+                    _animatorController.SetDisabledState(false);
                     break;
                 case TabState.Disabled:
-                    _image.color = _disabledColor;
+                    _animatorController.SetSelectedState(false);
+                    _animatorController.SetDisabledState(true);
                     break;
             }
         }

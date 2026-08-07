@@ -1167,6 +1167,8 @@ GameObject:
   - component: {fileID: 6129157244856831560}
   - component: {fileID: 8572104807894744366}
   - component: {fileID: 5762560434506738646}
+  - component: {fileID: 2509205410364648702}
+  - component: {fileID: 2487285755650138148}
   m_Layer: 5
   m_Name: Tab2
   m_TagString: Untagged
@@ -1244,9 +1246,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.TabBar.TabBarButton
   _value: 1
-  _idleColor: {r: 1, g: 1, b: 1, a: 1}
-  _selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+--- !u!114 &2509205410364648702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2510231315747981005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050a4a528ec3d8c41985876c5a2d07b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.TabBar.TabBarButtonAnimatorController
+  _animator: {fileID: 2487285755650138148}
+--- !u!95 &2487285755650138148
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2510231315747981005}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce9b4d440a8a7c54099dd49909b14902, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3466223079730704357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,6 +1700,8 @@ GameObject:
   - component: {fileID: 6044894059655911010}
   - component: {fileID: 2781706159703486741}
   - component: {fileID: 5995011181869615402}
+  - component: {fileID: 5297275300426331171}
+  - component: {fileID: 7979444782842025023}
   m_Layer: 5
   m_Name: Tab
   m_TagString: Untagged
@@ -1683,7 +1719,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6885295096164793872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1743,9 +1779,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.TabBar.TabBarButton
   _value: 1
-  _idleColor: {r: 1, g: 1, b: 1, a: 1}
-  _selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+--- !u!114 &5297275300426331171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6409036594810941881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050a4a528ec3d8c41985876c5a2d07b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.TabBar.TabBarButtonAnimatorController
+  _animator: {fileID: 7979444782842025023}
+--- !u!95 &7979444782842025023
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6409036594810941881}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce9b4d440a8a7c54099dd49909b14902, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6597438816813827663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,6 +1963,8 @@ GameObject:
   - component: {fileID: 6021862204477761508}
   - component: {fileID: 34224839248153416}
   - component: {fileID: 374454535128154991}
+  - component: {fileID: 2192597235890055635}
+  - component: {fileID: 4574420452575831446}
   m_Layer: 5
   m_Name: Tab1
   m_TagString: Untagged
@@ -1972,9 +2042,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.TabBar.TabBarButton
   _value: 1
-  _idleColor: {r: 1, g: 1, b: 1, a: 1}
-  _selectedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  _disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+--- !u!114 &2192597235890055635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765969393696666400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050a4a528ec3d8c41985876c5a2d07b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.TabBar.TabBarButtonAnimatorController
+  _animator: {fileID: 4574420452575831446}
+--- !u!95 &4574420452575831446
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765969393696666400}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce9b4d440a8a7c54099dd49909b14902, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7273989360429206616
 GameObject:
   m_ObjectHideFlags: 0
