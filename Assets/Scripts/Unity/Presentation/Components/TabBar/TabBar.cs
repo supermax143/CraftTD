@@ -6,15 +6,15 @@ namespace Unity.Presentation.Components.TabBar
     /// <summary>
     /// Контейнер для управления табами. Обеспечивает переключение между TabBarButton
     /// </summary>
-    public class TabBar : MonoBehaviour
+    public abstract class TabBar<T> : MonoBehaviour
     {
         [SerializeField]
-        private TabBarButton _defaultTab;
+        private TabBarButton<T> _defaultTab;
 
-        private List<TabBarButton> _tabs = new List<TabBarButton>();
-        private TabBarButton _currentTab;
+        private List<TabBarButton<T>> _tabs = new List<TabBarButton<T>>();
+        private TabBarButton<T> _currentTab;
 
-        public TabBarButton CurrentTab => _currentTab;
+        public TabBarButton<T> CurrentTab => _currentTab;
 
         private void Awake()
         {
@@ -32,11 +32,11 @@ namespace Unity.Presentation.Components.TabBar
         private void CollectTabs()
         {
             _tabs.Clear();
-            TabBarButton[] childTabs = GetComponentsInChildren<TabBarButton>();
+            TabBarButton<T>[] childTabs = GetComponentsInChildren<TabBarButton<T>>();
             _tabs.AddRange(childTabs);
         }
 
-        public void SelectTab(TabBarButton tab)
+        public virtual void SelectTab(TabBarButton<T> tab)
         {
             if (tab == null || !_tabs.Contains(tab)) return;
 
@@ -49,13 +49,13 @@ namespace Unity.Presentation.Components.TabBar
             _currentTab = tab;
         }
 
-        public void SelectTabByValue(string value)
+        public void SelectTabByValue(T value)
         {
-            TabBarButton tab = _tabs.Find(t => t.Value == value);
+            TabBarButton<T> tab = _tabs.Find(t => EqualityComparer<T>.Default.Equals(t.Value, value));
             SelectTab(tab);
         }
 
-        public void SetTabDisabled(TabBarButton tab, bool disabled)
+        public void SetTabDisabled(TabBarButton<T> tab, bool disabled)
         {
             if (tab == null || !_tabs.Contains(tab)) return;
 

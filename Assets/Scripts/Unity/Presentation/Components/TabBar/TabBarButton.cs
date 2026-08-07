@@ -6,22 +6,22 @@ namespace Unity.Presentation.Components.TabBar
     /// <summary>
     /// Кнопка таба с тремя состояниями: Idle, Selected, Disabled
     /// </summary>
-    public class TabBarButton : MonoBehaviour, IPointerClickHandler
+    public abstract class TabBarButton<T> : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField]
-        private string _value;
+        private T _value;
 
         private TabBarButtonAnimatorController _animatorController;
-        private TabBar _tabBar;
+        private TabBar<T> _tabBar;
         private TabState _state = TabState.Idle;
 
-        public string Value => _value;
+        public T Value => _value;
         public TabState State => _state;
 
         private void Awake()
         {
             _animatorController = GetComponent<TabBarButtonAnimatorController>();
-            _tabBar = GetComponentInParent<TabBar>();
+            _tabBar = GetComponentInParent<TabBar<T>>();
         }
 
         public void SetState(TabState state)
