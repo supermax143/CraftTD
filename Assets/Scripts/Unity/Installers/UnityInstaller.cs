@@ -13,6 +13,7 @@ using Unity.Infrastructure.Localization;
 using Unity.Infrastructure.Purchases;
 using Unity.Infrastructure.ResourceManager;
 using Unity.Infrastructure.Scenes;
+using Unity.Infrastructure.Sound;
 using Unity.Infrastructure.Tutorial;
 using Unity.Infrastructure.VisualActions;
 using Unity.Infrastructure.Windows;
@@ -71,6 +72,7 @@ namespace Unity.Installers
          BindController<TutorialController>();
          BindController<ModelToAtlasRenderer>();
          BindController<ResourceManager>();
+         BindController<SoundManager>();
       }
 
       private static void InitializeAddressables()

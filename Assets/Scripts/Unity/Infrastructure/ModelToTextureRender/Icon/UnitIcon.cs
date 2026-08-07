@@ -16,7 +16,17 @@ namespace Environments.Land.Scripts.Runtime.GUI
         
         public RawImage Image => _rendererTarget.Image;
         
-        public UnitView UnitView => _modelHolder.GetComponent<UnitView>();
+        public bool TryGetUnitView(out UnitView unitView)
+        {
+            unitView = default;
+            if (_modelHolder == null)
+            {
+                return false;
+            }
+            return _modelHolder.TryGetComponent(out unitView);
+        }
+        
+        
         
         protected override async UniTask SpawnLandObject(AssetReference assetReference)
         {

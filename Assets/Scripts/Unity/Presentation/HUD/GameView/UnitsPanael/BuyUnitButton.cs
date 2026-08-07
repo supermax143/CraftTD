@@ -66,13 +66,17 @@ namespace Unity.Presentation.HUD.UnitsPanael
             var color = _unitIcon.Image.color;
             color.a = active ? 1f : .6f;
             _unitIcon.Image.color = color;
+            if (!_unitIcon.TryGetUnitView(out var unitView))
+            {
+                return;
+            }
             if (active)
             {
-                _unitIcon.UnitView.Unpause();
+                unitView.Unpause();
             }
             else
             {
-                _unitIcon.UnitView.Pause();
+                unitView.Pause();
             }
         }
 

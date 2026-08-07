@@ -122,6 +122,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _clickSound: {fileID: 8300000, guid: 216bf9fa80a21b14c81db31b4c0bd105, type: 3}
   _button: {fileID: 3960704645295550319}
   _unitTier: 0
   _foodCostTF: {fileID: 5103451473263218617}
