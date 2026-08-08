@@ -8,6 +8,7 @@ using Unity.Infrastructure.Camera;
 using Unity.Infrastructure.Effects;
 using Unity.Infrastructure.VisualActions;
 using Unity.Infrastructure.VisualActions.Factory;
+using Unity.Infrastructure.Views;
 using Unity.Presentation;
 using Unity.Presentation.HUD;
 using UnityEngine;
@@ -35,6 +36,7 @@ namespace Unity.Installers
             BindController<CameraController>();
             BindController<VisualActionFactories>();
             BindController<VisualActionsController>();
+            BindController<ViewsController>();
         }
         
         private void BindController<TController>() where TController: Component
