@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abb23be133503a4180d5990838018bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Windows.Result.ResultWindow
+  _animatorController: {fileID: 0}
   _resultLabel: {fileID: 3467353934477379089}
   _resourceContainer: {fileID: 3188352026712396893}
 --- !u!1 &1175284803257845460
