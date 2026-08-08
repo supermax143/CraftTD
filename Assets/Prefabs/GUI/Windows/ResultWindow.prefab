@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1434081232157295120}
   - component: {fileID: 6198296036267611292}
+  - component: {fileID: 4228867051675551070}
+  - component: {fileID: -5092384617555694403}
   m_Layer: 5
   m_Name: ResultWindow
   m_TagString: Untagged
@@ -49,9 +51,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abb23be133503a4180d5990838018bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Windows.Result.ResultWindow
-  _animatorController: {fileID: 0}
+  _animatorController: {fileID: -5092384617555694403}
   _resultLabel: {fileID: 3467353934477379089}
   _resourceContainer: {fileID: 3188352026712396893}
+--- !u!95 &4228867051675551070
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286670518195073824}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5fbc8a2d317358b469630c584ef8563f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-5092384617555694403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286670518195073824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d309c999a5bf01b4ba54664548122798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.WindowsAnimatorController
+  _animator: {fileID: 4228867051675551070}
 --- !u!1 &1175284803257845460
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,6 +414,7 @@ GameObject:
   - component: {fileID: 3104152788195315455}
   - component: {fileID: 5144764678982221311}
   - component: {fileID: 3277595478359848094}
+  - component: {fileID: 1539008830837508217}
   m_Layer: 5
   m_Name: Window
   m_TagString: Untagged
@@ -444,6 +482,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &1539008830837508217
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8490348299574961746}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &9018163072195618793
 GameObject:
   m_ObjectHideFlags: 0

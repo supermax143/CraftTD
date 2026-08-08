@@ -32,10 +32,9 @@ namespace Unity.Presentation.Windows
 		{
 			_animatorController?.Hide();
 			OnStartHide?.Invoke(this);
-			//Close();//TODO: вызывать клоус только после сокрытия окна
 		}
 
-		private void Close()
+		public void Close()
 		{
 			OnHide?.Invoke(this);
 			Destroy(gameObject);

@@ -64,7 +64,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5fbc8a2d317358b469630c584ef8563f, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -373,6 +373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3104152788195315455}
   - component: {fileID: 5144764678982221311}
+  - component: {fileID: 414567733492826441}
   m_Layer: 5
   m_Name: Window
   m_TagString: Untagged
@@ -410,6 +411,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8490348299574961746}
   m_CullTransparentMesh: 1
+--- !u!225 &414567733492826441
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8490348299574961746}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8719091538718929764
 GameObject:
   m_ObjectHideFlags: 0

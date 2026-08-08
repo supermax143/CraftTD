@@ -4,20 +4,19 @@ namespace Unity.Presentation.Components
 {
     public class WindowsAnimatorController : AnimatorControllerBase
     {
-        private static class Triggers
+        private static class States
         {
-            public static readonly int Show = Animator.StringToHash(nameof(Show));
-            public static readonly int Hide = Animator.StringToHash(nameof(Hide));
+            public static readonly int Visible = Animator.StringToHash(nameof(Visible));
         }
 
         public void Show()
         {
-            PlayAnimation(Triggers.Show);
+            SetBool(States.Visible, true);
         }
 
         public void Hide()
         {
-            PlayAnimation(Triggers.Hide);
+            SetBool(States.Visible, false);
         }
     }
 }
