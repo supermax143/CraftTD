@@ -40,10 +40,10 @@ namespace Unity.Presentation
       
         public void ShowUpgradeWindow()
         {
-           _windowsController.ShowWindow<UpgradeWindow>(window =>
+           /*_windowsController.ShowWindow<UpgradeWindow>(window =>
            {
                window.Show();
-           });
+           });*/
         }
         
         public void ShowPauseWindow()

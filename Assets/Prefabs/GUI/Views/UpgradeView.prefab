@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1434081232157295120}
   - component: {fileID: 5812853450018531323}
   - component: {fileID: 6689362066399230135}
-  - component: {fileID: 2033694163587267506}
+  - component: {fileID: 3880617034647356951}
   m_Layer: 5
-  m_Name: UpgradeWindow
+  m_Name: UpgradeView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c20fb37a1c48708edf214b468553d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Windows.UpgradeEpochWindow
-  _animatorController: {fileID: 2033694163587267506}
+  _animatorController: {fileID: 3880617034647356951}
   _epochTF: {fileID: 4082088817599149224}
   _unitsItems:
   - {fileID: 7009223160275930250}
@@ -84,7 +84,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2033694163587267506
+--- !u!114 &3880617034647356951
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,9 +93,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 286670518195073824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d309c999a5bf01b4ba54664548122798, type: 3}
+  m_Script: {fileID: 11500000, guid: 00920afba0cb9ba4c875ca7226338998, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.WindowsAnimatorController
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.ViewAnimatorController
   _animator: {fileID: 6689362066399230135}
 --- !u!1 &304902824515779926
 GameObject:

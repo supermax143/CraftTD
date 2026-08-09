@@ -9,14 +9,14 @@ using Unity.Infrastructure.VisualActions;
 using Unity.Infrastructure.VisualActions.ActionsData;
 using Unity.Infrastructure.Windows;
 using Unity.Presentation.Components;
+using Unity.Presentation.Views;
 using Unity.Presentation.Windows.Upgrade;
 using UnityEngine;
 using Zenject;
 
 namespace Unity.Presentation.Windows
 {
-    [Window(nameof(UpgradeWindow))]
-    public class UpgradeWindow : WindowBase
+    public class UpgradeView : ViewBase
     {
         
         [SerializeField]

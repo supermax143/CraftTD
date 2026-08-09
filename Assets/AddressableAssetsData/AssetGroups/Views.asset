@@ -10,23 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Windows
+  m_Name: Views
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
-  m_GroupName: Windows
-  m_GUID: e192e467dc1e0224ab1675485fff9031
+  m_GroupName: Views
+  m_GUID: 3c6a6f78f6f2f0143ac10970fae1a0d5
   m_SerializeEntries:
-  - m_GUID: 5a9152dcf4ec21e4ebb1af9d304c23e4
-    m_Address: ResultWindow
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b38bf3618f81a75419a514129c414cb2
-    m_Address: PauseWindow
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: dbdc9f34f5311ab4bbfc7acdf9092639
-    m_Address: ExampleWindow
+  - m_GUID: 1058ae1289e622543b7caebb838c4631
+    m_Address: UpgradeWindow
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -34,5 +24,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 0d505db509e0e9b43876bf21e80fba51, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 2cd95b5da97e4cc4ab75239063b5d4c3, type: 2}
-    - {fileID: 11400000, guid: e9e0b00feaa61a7408d8695d6757b844, type: 2}
+    - {fileID: 11400000, guid: 80f8c2ae52fec2b46931b622a4c86681, type: 2}
+    - {fileID: 11400000, guid: 9bafd7e94c03488499aebd5611ec2662, type: 2}

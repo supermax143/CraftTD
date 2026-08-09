@@ -4,102 +4,95 @@ using Cysharp.Threading.Tasks;
 using Unity.Infrastructure.ResourceManager;
 using Unity.Presentation.Views;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Unity.Infrastructure.Views
 {
 	public class ViewsController : MonoBehaviour, IViewsController
 	{
+		[SerializeField]
+		private Transform _viewsContainer;
+		
 		[Inject] private readonly DiContainer _diContainer;
 
-		private ViewBase _currentView;
-		private string _loadingView;
+		private ViewInfo _currentView;
 
-		public event Action<string> OnViewStartLoading;
 		public event Action OnActiveViewChanged;
 		public event Action OnViewLoadComplete;
 		public event Action<string> OnViewClosed;
 
-		private void OnViewRemoved(ViewBase view)
+		private void OnViewRemoved(IView view)
 		{
-			if (_currentView == view)
+			if (_currentView.View != view)
 			{
-				_currentView = null;
-				AddressableExtention.ReleaseTag(GetViewUnloadTag(view.name));
-				OnActiveViewChanged?.Invoke();
-				OnViewClosed?.Invoke(view.name);
+				return;
 			}
+		
+			AddressableExtention.ReleaseTag(GetViewUnloadTag(_currentView.Id));
+			OnActiveViewChanged?.Invoke();
+			OnViewClosed?.Invoke(_currentView.Id);
 		}
 
-		public UniTask<TView> ShowView<TView>() where TView : class, IView
+		
+		public void ShowView<TView>(AssetReference viewAsset, Action<TView> handler) where TView : class, IView
 		{
-			throw new NotImplementedException();
-		}
-
-		public void ShowView<TView>(Action<TView> handler) where TView : class, IView
-		{
-			throw new NotImplementedException();
+			ShowViewInternal<TView>(viewAsset, handler).Forget();
 		}
 		
-		
-		/*public async void ShowView<TView>(Transform parent, Action<TView> handler) where TView : class, IView
+		private async UniTask ShowViewInternal<TView>(AssetReference viewAsset, Action<TView> handler) where TView : class, IView
 		{
-			ShowViewInternal<TView>(parent, handler).Forget();
-		}*/
-		
-		private async UniTask ShowViewInternal<TView>(Transform parent, Action<TView> handler) where TView : class, IView
-		{
-			var view = await ShowView<TView>(parent);
+			var view = await ShowView<TView>(viewAsset);
 			handler?.Invoke(view);
 		}
 		
-		/*public async UniTask<TView> ShowView<TView>(Transform parent) where TView : class, IView
+		public async UniTask<TView> ShowView<TView>(AssetReference viewAsset) where TView : class, IView
 		{
-
-			var view = "dummy view";//TODO: сделать красиво
-			var viewType = typeof(TView);
 			
-
 			try
 			{
-				_loadingView = view;
-				OnViewStartLoading?.Invoke(view);
+				if (_currentView != null)
+				{
+					_currentView.View.Hide();	
+				}
+				
+				while (_currentView != null)
+				{
+					await UniTask.Yield();
+				}
 
-				var viewPrefab = await AddressableExtention.Load<GameObject>(view, GetViewUnloadTag(view));
+				if (viewAsset == null || string.IsNullOrEmpty(viewAsset.AssetGUID))
+				{
+					return  null;
+				}
+				
+				var viewPrefab = await viewAsset.LoadAssetReference<GameObject>(viewAsset.AssetGUID);
 				if (viewPrefab == null)
 				{
-					Debug.LogError($"Failed to load view prefab: {view}");
+					Debug.LogError($"Failed to load view prefab: {viewAsset.AssetGUID}");
 					return null;
 				}
 
-				return InitializeInstance<TView>(viewPrefab, view, parent);
+				
+				return InitializeInstance<TView>(viewPrefab, viewAsset.AssetGUID);
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError($"Exception while loading view {view}: {ex}");
+				Debug.LogError($"Exception while loading view {viewAsset.AssetGUID}: {ex}");
 				return null;
 			}
-			finally
-			{
-				_loadingView = null;
-			}
-		}*/
+			
+		}
 
-		private TView InitializeInstance<TView>(GameObject viewPrefab, string viewName, Transform parent) where TView : class, IView
+		private TView InitializeInstance<TView>(GameObject viewPrefab, string viewId) where TView : class, IView
 		{
-			if (_currentView != null)
-			{
-				Destroy(_currentView.gameObject);
-			}
+			var view = _diContainer.InstantiatePrefabForComponent<TView>(viewPrefab, _viewsContainer);
 
-			var view = _diContainer.InstantiatePrefabForComponent<TView>(viewPrefab, parent);
-
-			_currentView = view as ViewBase;
-			_loadingView = null;
+			_currentView = new ViewInfo(viewId, view);
 
 			var rectTransform = view.GameObject.GetComponent<RectTransform>();
-			rectTransform.SetParent(parent, false);
-
+			rectTransform.SetParent(_viewsContainer, false);
+			view.OnHide += OnViewRemoved;
 			(view as ViewBase).Initialize();
 			OnViewLoadComplete?.Invoke();
 			OnActiveViewChanged?.Invoke();
@@ -108,16 +101,18 @@ namespace Unity.Infrastructure.Views
 		}
 
 		private string GetViewUnloadTag(string viewName) => $"{viewName}-{GetHashCode()}";
-
-
-		public UniTask<TView> ShowView<TView>(Transform parent) where TView : class, IView
+	
+		public class ViewInfo
 		{
-			throw new NotImplementedException();
-		}
+			public string Id { get; }
+			public IView View { get; }
 
-		public void ShowView<TView>(Transform parent, Action<TView> handler) where TView : class, IView
-		{
-			throw new NotImplementedException();
+			public ViewInfo(string id, IView view)
+			{
+				Id = id;
+				View = view;
+			}
 		}
+		
 	}
 }

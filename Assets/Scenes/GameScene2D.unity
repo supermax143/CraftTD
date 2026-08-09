@@ -351,6 +351,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 727857450}
   - {fileID: 1055722450}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -734,6 +735,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9015d5105d7343f7a5cf24c4c278c151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Infrastructure.VisualActions.Factory.VisualActionFactories
+--- !u!1 &727857449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 727857450}
+  m_Layer: 5
+  m_Name: ViewsContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &727857450
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727857449}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 17063989}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &917081721
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +885,7 @@ Transform:
   - {fileID: 17250381}
   - {fileID: 47148112}
   - {fileID: 487283239}
+  - {fileID: 1498776013}
   m_Father: {fileID: 1584959698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1055722450 stripped
@@ -956,6 +993,51 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4192125743556613102}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1498776012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1498776013}
+  - component: {fileID: 1498776014}
+  m_Layer: 0
+  m_Name: Views
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1498776013
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498776012}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1031219517}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1498776014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498776012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36dba7c0b66b4774294fa5c3ffa78f8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Infrastructure.Views.ViewsController
+  _viewsContainer: {fileID: 727857450}
 --- !u!1 &1584959696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,17 +1256,17 @@ PrefabInstance:
     - target: {fileID: 1661360493405866839, guid: d67f2e937ec04504cb6360371c3bb047,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1661360493405866839, guid: d67f2e937ec04504cb6360371c3bb047,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1661360493405866839, guid: d67f2e937ec04504cb6360371c3bb047,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 1922
       objectReference: {fileID: 0}
     - target: {fileID: 1661360493405866839, guid: d67f2e937ec04504cb6360371c3bb047,
         type: 3}
@@ -1209,12 +1291,12 @@ PrefabInstance:
     - target: {fileID: 1661360493405866839, guid: d67f2e937ec04504cb6360371c3bb047,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -176
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1661360493405866839, guid: d67f2e937ec04504cb6360371c3bb047,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 135
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 1661360493405866839, guid: d67f2e937ec04504cb6360371c3bb047,
         type: 3}
