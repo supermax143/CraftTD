@@ -23,8 +23,8 @@ namespace Unity.Presentation.Windows
         private TextMeshProUGUI _epochTF;
         [SerializeField]
         private List<UnitOpenItem> _unitsItems;
-        [SerializeField]
-        private TextMeshProUGUI _moneyTF;
+        /*[SerializeField]
+        private TextMeshProUGUI _moneyTF;*/
         [SerializeField]
         private FoodUpgradePanel _foodUpgradePanel;
         [SerializeField]
@@ -40,7 +40,7 @@ namespace Unity.Presentation.Windows
         
         public override void Initialize()
         {
-            _model.Inventory.OnMoneyChanged += UpdateMoney;
+            // _model.Inventory.OnMoneyChanged += UpdateMoney;
             Epoch.OnUnitOpened += OnUnitsOpened;
             _epochCompletePanel.OnEpochComplete += OnEpochComplete;
             UpdateView();
@@ -56,7 +56,7 @@ namespace Unity.Presentation.Windows
         {
             _epochTF.text = Epoch.Name;
             _modelToTextureRenderer.BlockAtlasPack();
-            UpdateMoney();
+            // UpdateMoney();
             await UpdateUnits();
             _modelToTextureRenderer.UnblockAtlasPack();
             _foodUpgradePanel.UpdateView();
@@ -71,10 +71,10 @@ namespace Unity.Presentation.Windows
             }
         }
 
-        private void UpdateMoney()
+        /*private void UpdateMoney()
         {
             _moneyTF.text = _model.Money.Value.ToString();
-        }
+        }*/
         
         
         
@@ -90,7 +90,7 @@ namespace Unity.Presentation.Windows
         
         private void OnDestroy()
         {
-            _model.Inventory.OnMoneyChanged -= UpdateMoney;
+            // _model.Inventory.OnMoneyChanged -= UpdateMoney;
             Epoch.OnUnitOpened -= OnUnitsOpened;
             _epochCompletePanel.OnEpochComplete -= OnEpochComplete;
         }

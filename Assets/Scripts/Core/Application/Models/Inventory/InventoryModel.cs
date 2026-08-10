@@ -18,7 +18,6 @@ namespace Core.Application.Models
         private InventoryStorageData InventoryData => _dataStorage.Inventory;
 
        
-
         public Resource Money
         {
             get => InventoryData.Money;
@@ -39,6 +38,20 @@ namespace Core.Application.Models
             }
         }
 
+        public int GetResourceCount(ResourceType resourceType)
+        {
+            switch (resourceType)
+            {
+               case ResourceType.Money:
+                   return Money.Value;
+               case ResourceType.Crystal:
+                   return Crystal.Value;
+               default:
+                   throw new ArgumentOutOfRangeException(nameof(resourceType), resourceType, null);
+            }
+            
+        }
+        
         public IReadOnlyList<Item> Items => InventoryData.GetItems();
 
         public void AddItem(Item item)

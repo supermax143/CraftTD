@@ -28,8 +28,8 @@ namespace Unity.Presentation.Windows.Upgrade
         public void UpdateView()
         {
             var price = Epoch.FoodProductionUpgradeCost;//GameStats.FoodProductionSpeedCost(Epoch.FoodProductionLevel);
-            _priceButton.SetPrice(price);
-            _speedTF.text = $"{Epoch.FoodProductionSpeed.ToString()} / c";
+            _priceButton.SetPrice(new Resource(ResourceType.Money, price));
+            _speedTF.text = $"{Epoch.FoodProductionSpeed.ToString()}/c";
         }
 
         public void UpgradeLevel()

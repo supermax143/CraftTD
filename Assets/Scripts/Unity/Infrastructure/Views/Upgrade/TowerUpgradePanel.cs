@@ -28,7 +28,7 @@ namespace Unity.Presentation.Windows.Upgrade
         public void UpdateView()
         {
             var price = Epoch.TowerUpgradeCost;
-            _priceButton.SetPrice(price);
+            _priceButton.SetPrice(new Resource(ResourceType.Money, price));
             _healthTF.text = Epoch.TowerHealth.ToString();
         }
 

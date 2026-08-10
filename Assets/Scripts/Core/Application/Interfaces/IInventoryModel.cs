@@ -2,5 +2,6 @@
 {
     public interface IInventoryModel
     {
+        int GetResourceCount(ResourceType resourceType);
     }
 }

@@ -64,7 +64,7 @@ namespace Unity.Presentation.Windows.Upgrade
                 case  State.CompleteForMoney:
                     _completeButton.gameObject.SetActive(false);
                     _completeForMoneyButton.gameObject.SetActive(true);
-                    _completeForMoneyButton.SetPrice(_model.GetEpochCompleteCost());
+                    _completeForMoneyButton.SetPrice(new Resource(ResourceType.Money, _model.GetEpochCompleteCost()));
                     break;
             }
         }

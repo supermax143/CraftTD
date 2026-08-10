@@ -15,7 +15,9 @@ namespace Unity.Presentation.Components
         private UnityEvent _onActivated;
         [SerializeField]
         private AudioClip _clickSound;
-
+        [SerializeField] 
+        private bool _autoClick = true;
+        
         [Inject] private SoundManager _soundManager;
         
         private Coroutine _pressCoroutine;
@@ -24,6 +26,10 @@ namespace Unity.Presentation.Components
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (!_autoClick)
+            {
+                return;
+            }
             _pressCoroutine = StartCoroutine(Activate());
         }
        

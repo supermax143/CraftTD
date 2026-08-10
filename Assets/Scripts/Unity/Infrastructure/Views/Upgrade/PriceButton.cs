@@ -1,7 +1,11 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
+using Core.Application.Interfaces;
 using Core.Application.Models;
+using Cysharp.Threading.Tasks;
 using TMPro;
+using Unity.Infrastructure.ResourceManager;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
@@ -18,17 +22,20 @@ namespace Unity.Presentation.Components
         
         [SerializeField] private TextMeshProUGUI _priceText;
         [SerializeField] private Button _button;
-        [SerializeField] private Image _Icon;
+        [SerializeField] private Image _icon;
 
+        [Inject] private IResourceManager _resourceManager;
         [Inject] private IMainModel _model;
+        [Inject] private IInventoryModel _inventory;
         
-        private int _price;
         
-        protected override bool Active => _model.Money.Value >= _price;
+        private Resource _price;
+        
+        protected override bool Active => _inventory.GetResourceCount(_price.Type) >= _price.Value;
         
         public Button Button => _button;
 
-        public void SetPrice(int price)
+        public void SetPrice(Resource price)
         {
             _price = price;
             UpdateView();
@@ -36,11 +43,23 @@ namespace Unity.Presentation.Components
 
         private void UpdateView()
         {
-            _priceText.text = _price.ToString();
-            var color = Active ? Color.black : Color.red;
+            _priceText.text = _price.Value.ToString();
+            var color = Active ? Color.white : Color.red;
             _priceText.color = color;
             _button.interactable = Active;
+            UpdateIcon();
         }
+        private async UniTask UpdateIcon()
+        {
+            if (!_resourceManager.TryGetResourceIcon(_price.Type, out var iconRef))
+            {
+                Debug.LogError($"{GetType().Name} has no icon for {_price.Type}");
+                return;
+            }
+            var icon = await iconRef.LoadAssetReference<Sprite>(iconRef.AssetGUID);
+            _icon.sprite = icon;
+        }
+        
 
 
     }

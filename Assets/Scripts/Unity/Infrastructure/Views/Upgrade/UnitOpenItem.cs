@@ -24,7 +24,7 @@ namespace Unity.Presentation.Components
         {
             _unitModel = unitModel;
             await _unitIcon.Initialize(unitModel.Info.UnitPrefab);
-            _priceButton.SetPrice(_unitModel.UnlockCost);
+            _priceButton.SetPrice(new Resource(ResourceType.Money, _unitModel.UnlockCost));
             _priceButton.gameObject.SetActive(!_unitModel.IsUnitOpened);
         }
        
