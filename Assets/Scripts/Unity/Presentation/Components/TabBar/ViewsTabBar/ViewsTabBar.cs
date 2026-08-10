@@ -16,6 +16,10 @@ namespace Unity.Presentation.Components.TabBar.ViewsTabBar
             base.SelectTab(tab);
             _viewsController.ShowView<ViewBase>(tab.Value, view =>
             {
+                if (view == null)
+                {
+                    return;
+                }
                 view.Show();
             });
         }

@@ -28,10 +28,12 @@ namespace Unity.Infrastructure.Views
 			{
 				return;
 			}
-		
+			
 			AddressableExtention.ReleaseTag(GetViewUnloadTag(_currentView.Id));
-			OnActiveViewChanged?.Invoke();
 			OnViewClosed?.Invoke(_currentView.Id);
+			_currentView.View.OnHide -= OnViewRemoved;
+			_currentView = null;
+			OnActiveViewChanged?.Invoke();
 		}
 
 		
