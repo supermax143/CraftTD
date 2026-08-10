@@ -17,11 +17,13 @@ namespace Unity.Infrastructure.Views
 		[Inject] private readonly DiContainer _diContainer;
 
 		private ViewInfo _currentView;
-
+		private ViewInfo _prevView;
 		public event Action OnActiveViewChanged;
 		public event Action OnViewLoadComplete;
 		public event Action<string> OnViewClosed;
 
+		public bool IsInProgress => _prevView != null;
+		
 		public bool TryGetCurrentView(out IView view)
 		{
 			view = _currentView?.View;
@@ -31,15 +33,16 @@ namespace Unity.Infrastructure.Views
 		
 		private void OnViewRemoved(IView view)
 		{
-			if (_currentView.View != view)
+			if (_prevView.View != view)
 			{
+				Debug.LogError("wrong previous view");
 				return;
 			}
 			
-			AddressableExtention.ReleaseTag(GetViewUnloadTag(_currentView.Id));
-			OnViewClosed?.Invoke(_currentView.Id);
-			_currentView.View.OnHide -= OnViewRemoved;
-			_currentView = null;
+			AddressableExtention.ReleaseTag(GetViewUnloadTag(_prevView.Id));
+			OnViewClosed?.Invoke(_prevView.Id);
+			_prevView.View.OnHide -= OnViewRemoved;
+			_prevView = null;
 			OnActiveViewChanged?.Invoke();
 		}
 
@@ -57,18 +60,26 @@ namespace Unity.Infrastructure.Views
 		
 		public async UniTask<TView> ShowView<TView>(AssetReference viewAsset) where TView : class, IView
 		{
+			if (IsInProgress)
+			{
+				Debug.Log($"View  is already in progress");
+				return null;
+			}
+			
 			
 			try
 			{
 				if (_currentView != null)
 				{
-					_currentView.View.Hide();	
+					_prevView = _currentView;
+					_prevView.View.Hide();	
+					_currentView = null;
 				}
 				
-				while (_currentView != null)
+				/*while (_currentView != null)
 				{
 					await UniTask.Yield();
-				}
+				}*/
 
 				if (viewAsset == null || string.IsNullOrEmpty(viewAsset.AssetGUID))
 				{

@@ -13,6 +13,11 @@ namespace Unity.Presentation.Components.TabBar.ViewsTabBar
         
         public override void SelectTab(TabBarButton<AssetReference> tab)
         {
+            if (_viewsController.IsInProgress)
+            {
+                return;
+            }
+            
             base.SelectTab(tab);
             _viewsController.ShowView<ViewBase>(tab.Value, view =>
             {
