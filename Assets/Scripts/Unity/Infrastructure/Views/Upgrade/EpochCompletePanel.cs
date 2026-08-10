@@ -2,6 +2,7 @@
 using Core.Application.Models;
 using Unity.Presentation.Components;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Unity.Presentation.Windows.Upgrade
@@ -20,7 +21,7 @@ namespace Unity.Presentation.Windows.Upgrade
         [SerializeField]
         private PriceButton _completeForMoneyButton;
         [SerializeField]
-        private PriceButton _completeButton;
+        private Button _completeButton;
         
         
         [Inject] IMainModel _model;
