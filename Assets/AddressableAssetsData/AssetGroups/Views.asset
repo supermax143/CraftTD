@@ -16,7 +16,12 @@ MonoBehaviour:
   m_GUID: 3c6a6f78f6f2f0143ac10970fae1a0d5
   m_SerializeEntries:
   - m_GUID: 1058ae1289e622543b7caebb838c4631
-    m_Address: UpgradeWindow
+    m_Address: UpgradeView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d67f2e937ec04504cb6360371c3bb047
+    m_Address: BattleView
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

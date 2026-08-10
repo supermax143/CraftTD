@@ -9,6 +9,7 @@ using TMPro;
 using Unity.Game;
 using Unity.Presentation.Components;
 using Unity.Presentation.HUD;
+using Unity.Presentation.Views;
 using Unity.Presentation.Windows;
 using Unity.Presentation.Windows.Pause;
 using UnityEngine;
@@ -17,10 +18,10 @@ using Zenject;
 
 namespace Unity.Presentation
 {
-    public class HUDGameView : MonoBehaviour
+    public class BattleView : ViewBase
     {
         [SerializeField, HideInInspector]
-        private HUDGameAnimatorController _animator;
+        private BattleViewAnimatorController _animator;
         [SerializeField, HideInInspector]
         private StartBattlePanel _startBattlePanel;
         [SerializeField]
@@ -32,7 +33,7 @@ namespace Unity.Presentation
 
         private void OnValidate()
         {
-            _animator = GetComponentInChildren<HUDGameAnimatorController>();
+            _animator = GetComponentInChildren<BattleViewAnimatorController>();
             _startBattlePanel = GetComponentInChildren<StartBattlePanel>();
             _unitsBuyPanel = GetComponentInChildren<UnitsBuyPanel>();
         }

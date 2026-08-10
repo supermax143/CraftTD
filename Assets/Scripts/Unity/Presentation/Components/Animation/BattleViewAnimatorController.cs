@@ -2,7 +2,7 @@
 
 namespace Unity.Presentation.Components
 {
-    public class HUDGameAnimatorController : AnimatorControllerBase
+    public class BattleViewAnimatorController : ViewAnimatorController
     {
         private static class Flags
         {

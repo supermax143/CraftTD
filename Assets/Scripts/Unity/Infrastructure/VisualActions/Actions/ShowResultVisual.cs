@@ -22,7 +22,7 @@ namespace Unity.Infrastructure.VisualActions.Actions
         [Inject] private IWindowsController _windowsController;
         [Inject] private IAdvertisementController _advertisementController;
         [Inject] private IMainModel _mainModel;
-        [Inject] private HUDGameView _hud;
+        [Inject] private BattleView _hud;
         [Inject] private GameSettings _gameSettings;
         
         private EpochModel PlayerEpoch => _mainModel.PlayerEpoch;

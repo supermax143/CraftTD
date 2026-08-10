@@ -32,7 +32,7 @@ namespace Unity.Game
         [SerializeField] 
         private FoodProduction _foodProduction;
         [SerializeField]
-        private HUDGameView _hud;
+        private BattleView _hud;
         /*[SerializeField]
         private Transform _locationPlaceholder;*/
         [SerializeField]
