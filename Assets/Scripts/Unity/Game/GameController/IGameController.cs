@@ -18,5 +18,6 @@ namespace Unity.Game
         Team GetTeam(Faction faction);
         LocationContainer LocationContainer { get; }
         void Reset();
+        void StartBattle();
     }
 }

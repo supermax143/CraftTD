@@ -43,16 +43,19 @@ namespace Unity.Presentation
         
         public void SelectNextEpoch()
         {
-            //_mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex + 1);
             _gameController.SelectNextEnemyEpoch();
         }
         
         public void SelectPrevEpoch()
         {
-            //_mainModel.SelectEnemyEpochIndex(_mainModel.SelectedEnemyEpochIndex - 1);
             _gameController.SelectPrevEnemyEpoch();
         }
 
+        public void StartBattle()
+        {
+            _gameController.StartBattle();
+        }
+        
         private void OnDestroy()
         {
             _mainModel.OnEnemyEpochChanged -= UpdateView;

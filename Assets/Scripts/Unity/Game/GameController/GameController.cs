@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Application.Interfaces.ApplicationSession;
+using Core.Application.Interfaces.Views;
 using Core.Application.Interfaces.Windows;
 using Core.Application.Models;
 using Cysharp.Threading.Tasks;
@@ -14,6 +15,7 @@ using Unity.Infrastructure.Advertisement.Transactions;
 using Unity.Infrastructure.VisualActions;
 using Unity.Infrastructure.VisualActions.ActionsData;
 using Unity.Presentation;
+using Unity.Presentation.HUD;
 using Unity.Presentation.Windows.Result;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -32,7 +34,7 @@ namespace Unity.Game
         [SerializeField] 
         private FoodProduction _foodProduction;
         [SerializeField]
-        private BattleView _hud;
+        private GameHUD _hud;
         /*[SerializeField]
         private Transform _locationPlaceholder;*/
         [SerializeField]
@@ -46,6 +48,7 @@ namespace Unity.Game
         [Inject] private IWindowsController _windowsController;
         [Inject] private IAdvertisementController _advertisementController;
         [Inject] private IActionsDispatcher _actionsDispatcher;
+        [Inject] private IViewsController _viewsController;
         
         private EpochModel PlayerEpoch => _mainModel.PlayerEpoch;
         private EpochModel EnemyEpoch => _mainModel.EnemyEpoch;
@@ -76,14 +79,21 @@ namespace Unity.Game
         public void BlocUI() => _uiBlocked = true;
         public void UnblockUI() => _uiBlocked = false;
         
-        public void StartGame()
+        public void StartBattle()
         {
             if (_started)
             {
                 return;
             }
             
-            _hud.SetIsBattleState(true);
+            _hud.ShowBattleView();
+            if(!_viewsController.TryGetCurrentView(out var view) || !(view is BattleView battleView))
+            {
+                Debug.Log("current view is not battle");
+                return;
+            }
+            
+            battleView.SetIsBattleState(true);
             foreach (var team in _teams)
             {
                 team.StartGame();

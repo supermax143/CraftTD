@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5812853450018531323}
   - component: {fileID: 6689362066399230135}
   - component: {fileID: 3880617034647356951}
+  - component: {fileID: 6017011153209340481}
   m_Layer: 5
   m_Name: UpgradeView
   m_TagString: Untagged
@@ -97,6 +98,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.ViewAnimatorController
   _animator: {fileID: 6689362066399230135}
+--- !u!225 &6017011153209340481
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286670518195073824}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &304902824515779926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,7 +1756,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3104152788195315455}
   - component: {fileID: 5144764678982221311}
-  - component: {fileID: 7917059994937341522}
   m_Layer: 5
   m_Name: Window
   m_TagString: Untagged
@@ -1785,18 +1797,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8490348299574961746}
   m_CullTransparentMesh: 1
---- !u!225 &7917059994937341522
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8490348299574961746}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1001 &2111240602116140670
 PrefabInstance:
   m_ObjectHideFlags: 0

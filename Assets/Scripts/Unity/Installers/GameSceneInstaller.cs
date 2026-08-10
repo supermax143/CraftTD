@@ -21,13 +21,13 @@ namespace Unity.Installers
         [SerializeField]
         private ResourceContainer[] _dropTargets;
         [SerializeField]
-        private BattleView _hud;
+        private GameHUD _hud;
         
         public override void InstallBindings()
         {
             Container.Bind<IEnumerable<IDropTarget>>().FromInstance(_dropTargets).AsSingle();
             Container.BindInterfacesAndSelfTo<LevelRewardAggregator>().AsSingle();
-            Container.Bind<BattleView>().FromInstance(_hud).AsSingle();
+            Container.Bind<GameHUD>().FromInstance(_hud).AsSingle();
             
             BindController<GameController>();
             BindController<FoodProduction>();

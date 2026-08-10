@@ -1,4 +1,5 @@
 using System.Collections;
+using Core.Application.Interfaces.Views;
 using Core.Application.Interfaces.Windows;
 using Core.Application.Models;
 using Cysharp.Threading.Tasks;
@@ -8,6 +9,7 @@ using Unity.Infrastructure.Advertisement;
 using Unity.Infrastructure.Advertisement.Transactions;
 using Unity.Infrastructure.VisualActions.ActionsData;
 using Unity.Presentation;
+using Unity.Presentation.HUD;
 using Unity.Presentation.Windows.Result;
 using Unity.Settings;
 using UnityEngine;
@@ -22,7 +24,8 @@ namespace Unity.Infrastructure.VisualActions.Actions
         [Inject] private IWindowsController _windowsController;
         [Inject] private IAdvertisementController _advertisementController;
         [Inject] private IMainModel _mainModel;
-        [Inject] private BattleView _hud;
+        [Inject] private IViewsController _viewsController;
+        [Inject] private GameHUD _hud;
         [Inject] private GameSettings _gameSettings;
         
         private EpochModel PlayerEpoch => _mainModel.PlayerEpoch;
@@ -69,9 +72,16 @@ namespace Unity.Infrastructure.VisualActions.Actions
             _resultWindow = null;
             _mainModel.Inventory.Money += _rewardAggregator.Money;
             _rewardAggregator.Reset();
-            _hud.SetIsBattleState(false);
+            
+            if(!_viewsController.TryGetCurrentView(out var view) || !(view is BattleView battleView))
+            {
+                Debug.Log("current view is not battle");
+                Complete();
+                return;
+            }
+            battleView.SetIsBattleState(false);
+            _hud.ShowIdleView();
             StartCoroutine(ResetLevel());
-            //_gameController.Reset();
         }
 
         private IEnumerator ResetLevel()

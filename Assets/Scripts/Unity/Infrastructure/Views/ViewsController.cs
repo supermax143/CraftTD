@@ -22,6 +22,13 @@ namespace Unity.Infrastructure.Views
 		public event Action OnViewLoadComplete;
 		public event Action<string> OnViewClosed;
 
+		public bool TryGetCurrentView(out IView view)
+		{
+			view = _currentView?.View;
+			return view != null;
+		}
+		
+		
 		private void OnViewRemoved(IView view)
 		{
 			if (_currentView.View != view)

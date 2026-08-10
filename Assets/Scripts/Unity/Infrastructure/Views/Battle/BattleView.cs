@@ -31,14 +31,16 @@ namespace Unity.Presentation
         [Inject] private IWindowsController _windowsController;
         [Inject] private IGameController _gameController;
 
-        private void OnValidate()
+
+        protected override void OnValidate()
         {
+            base.OnValidate();
             _animator = GetComponentInChildren<BattleViewAnimatorController>();
             _startBattlePanel = GetComponentInChildren<StartBattlePanel>();
             _unitsBuyPanel = GetComponentInChildren<UnitsBuyPanel>();
         }
-        
-      
+
+
         public void ShowUpgradeWindow()
         {
            /*_windowsController.ShowWindow<UpgradeWindow>(window =>

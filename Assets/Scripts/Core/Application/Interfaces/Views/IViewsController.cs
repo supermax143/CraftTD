@@ -9,5 +9,6 @@ namespace Core.Application.Interfaces.Views
    {
       UniTask<TView> ShowView<TView>(AssetReference viewAsset) where TView : class, IView;
       void ShowView<TView>(AssetReference viewAsset, Action<TView> handler) where TView : class, IView;
+      bool TryGetCurrentView(out IView view);
    }
 }
