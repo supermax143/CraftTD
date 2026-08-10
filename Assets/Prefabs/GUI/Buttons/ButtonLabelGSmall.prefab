@@ -17,7 +17,7 @@ PrefabInstance:
     - target: {fileID: 4554771613796296967, guid: 0bd2a8db426a9cc4b87d69d99b4d7b40,
         type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5247619817931587051, guid: 0bd2a8db426a9cc4b87d69d99b4d7b40,
         type: 3}

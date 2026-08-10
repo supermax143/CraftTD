@@ -241,7 +241,7 @@ PrefabInstance:
     - target: {fileID: 2631429537811054166, guid: 18103200130bc7f47bc3c216916a55c3,
         type: 3}
       propertyPath: m_Name
-      value: ButtonDoubleReward Variant
+      value: ButtonIconLabel
       objectReference: {fileID: 0}
     - target: {fileID: 5824765720096275445, guid: 18103200130bc7f47bc3c216916a55c3,
         type: 3}
@@ -252,6 +252,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Unity.Presentation.Windows.Result.ResultWindow, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090824207410075960, guid: 18103200130bc7f47bc3c216916a55c3,
+        type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

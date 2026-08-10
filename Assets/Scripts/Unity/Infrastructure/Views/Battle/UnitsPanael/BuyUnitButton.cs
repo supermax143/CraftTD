@@ -89,6 +89,11 @@ namespace Unity.Presentation.HUD.UnitsPanael
         {
             _unitIcon.Dispose();
         }
+
+        private void OnDestroy()
+        {
+            _foodProduction.OnFoodChanged -= UpdateBuyAvailable;
+        }
     }
     
 }

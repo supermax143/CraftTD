@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using TMPro;
 using Unity.Game;
 using UnityEngine;
@@ -49,6 +50,11 @@ namespace Unity.Presentation.Components
                 yield return null;
             }
         }
-        
+
+        private void OnDestroy()
+        {
+            _foodProduction.OnFoodChanged -= FoodProducedHandler;
+            _foodProduction.OnFoodProductionStarted -= FoodProductionStartedHandler;
+        }
     }
 }
