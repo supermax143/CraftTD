@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8740a3b95beccf84f81d917a825340d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TintController
-  _tintColor: {r: 0.8156863, g: 0.1254902, b: 0.5647059, a: 1}
+  _tintColor: {r: 0.56078434, g: 0.7490196, b: 1, a: 1}
   _targetRenderers:
   - {fileID: 0}
   _tintColorProperty: _Color
