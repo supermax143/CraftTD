@@ -25,14 +25,14 @@ namespace Unity.Presentation.HUD
 
         private void Start()
         {
-            Epoch.OnUnitOpened += OnUnitUpdated;
+            //Epoch.OnUnitOpened += OnUnitUpdated;
             //UpdateView();
         }
         
-        private void OnUnitUpdated()
+        /*private void OnUnitUpdated()
         {
             UpdateView().Forget();
-        }
+        }*/
         
         public async UniTask UpdateView()
         {
@@ -60,10 +60,10 @@ namespace Unity.Presentation.HUD
             }   
         }
 
-        private void OnDestroy()
+        /*private void OnDestroy()
         {
             Epoch.OnUnitOpened -= OnUnitUpdated;
-        }
+        }*/
 
 
         public void Clear()

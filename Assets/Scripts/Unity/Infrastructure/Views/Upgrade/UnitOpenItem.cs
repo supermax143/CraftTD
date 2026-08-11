@@ -8,6 +8,7 @@ using TMPro;
 using Unity.Game;
 using Unity.Utils.Time;
 using UnityEngine;
+using Utils.ColorEffects;
 
 namespace Unity.Presentation.Components
 {
@@ -19,9 +20,12 @@ namespace Unity.Presentation.Components
         [SerializeField] private PriceButton _priceButton;
         [SerializeField] private UnitTier _tier;
         [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private CanvasEffectsController _effectsController;
         private UnitModel _unitModel;
 
         public UnitTier Tier => _tier;
+
+        public UnitModel Model => _unitModel;
 
         private Coroutine _animationCoroutine;
         
@@ -29,7 +33,6 @@ namespace Unity.Presentation.Components
         {
             _unitModel = unitModel;
             await _unitIcon.Initialize(unitModel.Info.UnitPrefab);
-            UpdateOpenedState();
         }
 
         public void UpdateOpenedState()
@@ -43,12 +46,14 @@ namespace Unity.Presentation.Components
 
             if (_unitModel.IsUnitOpened)
             {
-                //unitView.Unpause();
-                unitView.StartDie();
+                unitView.Unpause();
+                _effectsController.ShowGrayscale(.2f, 0);
+                _effectsController.ShowBlink(2f);
             }
             else
             {
                 unitView.Pause();
+                _effectsController.ShowGrayscale(0, 1);
             }
         }
         
@@ -96,6 +101,7 @@ namespace Unity.Presentation.Components
             }
             _canvasGroup.alpha = targetAlpha;
         }
+        
         
         public void OpenUnit()
         {

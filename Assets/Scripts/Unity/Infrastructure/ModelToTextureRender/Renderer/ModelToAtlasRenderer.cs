@@ -128,7 +128,7 @@ namespace Exploration.Scripts.Controllers.ModelRender
                 var pageIndex = rect.PageIndex;
                 var atlasPage = GetOrCreateAtlasPage(pageIndex);
                 
-                holder.RenderTarget.SetMaterial(atlasPage.Material);
+                holder.RenderTarget.SetTexture(atlasPage.AtlasTexture);
                 
                 var pos = new Vector2(rect.X, rect.Y);
                 pos.x /= ATLAS_PAGE_WIDTH;

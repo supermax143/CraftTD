@@ -9,7 +9,7 @@ namespace Core.Application.Models
 {
     public class EpochModel
     {
-        public event Action OnUnitOpened;
+        public event Action<UnitModel> OnUnitOpened;
         public event Action OnFoodProductionLevelChanged;
         public event Action OnTowerLevelChanged;
 
@@ -156,7 +156,7 @@ namespace Core.Application.Models
 
             _data.OpenUnit(tier);
             unitModel.OpenUnit();
-            OnUnitOpened?.Invoke();
+            OnUnitOpened?.Invoke(unitModel);
         }
 
         

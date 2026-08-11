@@ -39,9 +39,10 @@ public class ImageRendererTarget : RenderTargetBase
         PreserveAspect();
     }
 
-    public override void SetMaterial(Material mat)
+    public override void SetTexture(Texture texture)
     {
-        _image.material.mainTexture = mat.mainTexture;
+        //_image.material.mainTexture = mat.mainTexture;
+        _image.texture = texture;
     }
 
     public override void SetUV(Vector2 start, Vector2 size)

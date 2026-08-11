@@ -27,9 +27,9 @@ namespace Exploration.Scripts.Controllers.ModelRender
             _renderer = GetComponent<Renderer>();
         }
       
-        public override void SetMaterial(Material mat)
+        public override void SetTexture(Texture texture)
         {
-            _renderer.sharedMaterial = mat;
+            _renderer.sharedMaterial.mainTexture = texture;
         }
         
         public override void SetUV(Vector2 start, Vector2 size)

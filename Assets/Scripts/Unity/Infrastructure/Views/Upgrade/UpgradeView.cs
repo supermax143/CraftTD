@@ -66,11 +66,14 @@ namespace Unity.Presentation.Windows
             }
             await UpdateUnits();
             //TODO: в WEBGL не отображается подругому
-            /*foreach (var unitOpenItem in _unitsItems)
+            foreach (var unitOpenItem in _unitsItems)
             {
                unitOpenItem.gameObject.SetActive(false);
                unitOpenItem.gameObject.SetActive(true);
-            }*/
+               unitOpenItem.Show(0.2f);
+               unitOpenItem.UpdateOpenedState();
+            }
+            
         }
 
         
@@ -82,9 +85,6 @@ namespace Unity.Presentation.Windows
                 Epoch.TryGetUnitModel(unitOpenItem.Tier, out var unitModel);
                 await unitOpenItem.SetUnit(unitModel);
                 unitOpenItem.OnUnitOpened += Epoch.OpenUnit;
-                unitOpenItem.gameObject.SetActive(false);
-                unitOpenItem.gameObject.SetActive(true);
-                unitOpenItem.Show(0.2f);
             }
         }
         
@@ -95,11 +95,15 @@ namespace Unity.Presentation.Windows
             _epochCompletePanel.OnEpochComplete -= OnEpochComplete;
         }
 
-        private void OnUnitOpened()
+        private void OnUnitOpened(UnitModel unit)
         {
             foreach (var unitOpenItem in _unitsItems)
             {
-               unitOpenItem.UpdateOpenedState();
+                if (unitOpenItem.Model != unit)
+                {
+                    continue;
+                }
+                unitOpenItem.UpdateOpenedState();
             }
         }
     }

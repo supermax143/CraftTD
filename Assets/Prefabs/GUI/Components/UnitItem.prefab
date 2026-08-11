@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7519468282133584013}
   - component: {fileID: 7434229393927459718}
   - component: {fileID: 7463082958710733287}
+  - component: {fileID: 598736497476781044}
   m_Layer: 5
   m_Name: UnitImage
   m_TagString: Untagged
@@ -100,6 +101,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Environments.Land.Scripts.Runtime.GUI.BuildingIcon
   _rendererTarget: {fileID: 7434229393927459718}
+--- !u!114 &598736497476781044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513602130710243887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee29b1c85682dbd408786ac1785f8a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Utils.ColorEffects.CanvasEffectsController
+  _effectsMaterial: {fileID: 2100000, guid: 93445843c5cb58948bd1104dd4841f36, type: 2}
+  _images: []
 --- !u!1 &2788611427155119013
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +180,7 @@ MonoBehaviour:
   _priceButton: {fileID: 1518127212185000654}
   _tier: 0
   _canvasGroup: {fileID: 585488784492823396}
+  _effectsController: {fileID: 598736497476781044}
 --- !u!225 &585488784492823396
 CanvasGroup:
   m_ObjectHideFlags: 0
