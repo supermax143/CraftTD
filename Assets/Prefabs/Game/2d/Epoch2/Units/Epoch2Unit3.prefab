@@ -252,6 +252,21 @@ PrefabInstance:
       propertyPath: _animationEvents
       value: 
       objectReference: {fileID: 1102413277364844279}
+    - target: {fileID: 8327198887930394919, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327198887930394919, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327198887930394919, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.27
+      objectReference: {fileID: 0}
     - target: {fileID: 8875554840662799739, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: _animator

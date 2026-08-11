@@ -69,6 +69,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.89
       objectReference: {fileID: 0}
+    - target: {fileID: 3132247065233092264, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3502686921280439868, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -294,6 +299,26 @@ PrefabInstance:
       propertyPath: _animationEvents
       value: 
       objectReference: {fileID: 1102413277364844279}
+    - target: {fileID: 8327198887930394919, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.7819383
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327198887930394919, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.8795066
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327198887930394919, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.039388537
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327198887930394919, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.36971903
+      objectReference: {fileID: 0}
     - target: {fileID: 8875554840662799739, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: _animationEvents

@@ -22,7 +22,7 @@ namespace Exploration.Scripts.Controllers.ModelRender
         [SerializeField]
         private bool _boundsFromRenderTarget = false;
         [SerializeField]
-        private bool _boundsFromModel = false;
+        private bool _boundsFromModel = true;
         [SerializeField]
         private bool _checkCamera = false;
         
@@ -47,7 +47,11 @@ namespace Exploration.Scripts.Controllers.ModelRender
 
         public Bounds GetWorldBounds()
         {
-            if (_boundsFromRenderTarget)
+            if (_boundsFromModel)
+            {
+                return GetComponentInChildren<CharBounds>().GetBounds();
+            }
+            else if(_boundsFromRenderTarget)
             {
                 return _renderTarget.Bounds;
             }

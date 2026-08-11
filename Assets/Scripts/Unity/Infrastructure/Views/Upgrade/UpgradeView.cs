@@ -82,8 +82,8 @@ namespace Unity.Presentation.Windows
                 Epoch.TryGetUnitModel(unitOpenItem.Tier, out var unitModel);
                 await unitOpenItem.SetUnit(unitModel);
                 unitOpenItem.OnUnitOpened += Epoch.OpenUnit;
-                unitOpenItem.gameObject.SetActive(false);
-                unitOpenItem.gameObject.SetActive(true);
+                /*unitOpenItem.gameObject.SetActive(false);
+                unitOpenItem.gameObject.SetActive(true);*/
                 unitOpenItem.Show(0.2f);
             }
         }

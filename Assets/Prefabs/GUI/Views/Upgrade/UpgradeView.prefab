@@ -2096,7 +2096,7 @@ MonoBehaviour:
   _onActivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1984586059223598133}
         m_TargetAssemblyTypeName: Unity.Presentation.Windows.Upgrade.TowerUpgradePanel,
           Assembly-CSharp
         m_MethodName: UpgradeLevel
