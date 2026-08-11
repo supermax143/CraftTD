@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 3284191202080968438}
   - component: {fileID: 1480311327856253334}
   - component: {fileID: 459672482897741242}
+  - component: {fileID: 585488784492823396}
   m_Layer: 5
   m_Name: UnitItem
   m_TagString: Untagged
@@ -163,6 +164,19 @@ MonoBehaviour:
   _unitIcon: {fileID: 7463082958710733287}
   _priceButton: {fileID: 1518127212185000654}
   _tier: 0
+  _canvasGroup: {fileID: 585488784492823396}
+--- !u!225 &585488784492823396
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2788611427155119013}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7905669459324774286
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,12 +288,12 @@ PrefabInstance:
     - target: {fileID: 7416155366353405857, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7416155366353405857, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7416155366353405857, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
@@ -294,12 +308,12 @@ PrefabInstance:
     - target: {fileID: 7416155366353405857, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7416155366353405857, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -42.0245
       objectReference: {fileID: 0}
     - target: {fileID: 8755140256600053184, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
@@ -434,12 +448,12 @@ PrefabInstance:
     - target: {fileID: 9148141867451983301, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9148141867451983301, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9148141867451983301, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
@@ -454,12 +468,12 @@ PrefabInstance:
     - target: {fileID: 9148141867451983301, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 264.307
       objectReference: {fileID: 0}
     - target: {fileID: 9148141867451983301, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -469,10 +483,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1518127212185000654}
-    - targetCorrespondingSourceObject: {fileID: 5492149322598779624, guid: 53eced4a24ebce747937f1fef2c8d375,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3126571825086212036}
   m_SourcePrefab: {fileID: 100100000, guid: 53eced4a24ebce747937f1fef2c8d375, type: 3}
 --- !u!1 &1283821088918795475 stripped
 GameObject:
@@ -501,32 +511,6 @@ MonoBehaviour:
   _priceText: {fileID: 2365681189747001169}
   _button: {fileID: 7313848873312563568}
   _icon: {fileID: 7626222049109551275}
---- !u!114 &3126571825086212036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283821088918795475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
-  m_Padding:
-    m_Left: 17
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 7
-  m_ChildAlignment: 3
-  m_Spacing: 20
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!114 &2365681189747001169 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9024530090892884330, guid: 53eced4a24ebce747937f1fef2c8d375,

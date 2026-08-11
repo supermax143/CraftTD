@@ -13,7 +13,7 @@ namespace Unity.Presentation.Components.TabBar.ViewsTabBar
         
         public override void SelectTab(TabBarButton<AssetReference> tab)
         {
-            if (_viewsController.IsInProgress)
+            if (tab.State == TabState.Selected || _viewsController.IsInProgress)
             {
                 return;
             }

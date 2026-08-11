@@ -727,6 +727,12 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 45.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1549570055525354964, guid: 18103200130bc7f47bc3c216916a55c3,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 731526705508083700, guid: a6a1b97aae951c046a0b167ed99b16af,
+        type: 2}
     - target: {fileID: 1605538781527478651, guid: 18103200130bc7f47bc3c216916a55c3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -740,7 +746,7 @@ PrefabInstance:
     - target: {fileID: 2631429537811054166, guid: 18103200130bc7f47bc3c216916a55c3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5824765720096275445, guid: 18103200130bc7f47bc3c216916a55c3,
         type: 3}

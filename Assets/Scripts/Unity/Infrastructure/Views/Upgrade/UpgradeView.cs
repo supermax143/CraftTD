@@ -40,7 +40,6 @@ namespace Unity.Presentation.Windows
         
         public override void Initialize()
         {
-            // _model.Inventory.OnMoneyChanged += UpdateMoney;
             Epoch.OnUnitOpened += OnUnitsOpened;
             _epochCompletePanel.OnEpochComplete += OnEpochComplete;
             UpdateView();
@@ -57,25 +56,23 @@ namespace Unity.Presentation.Windows
             _epochTF.text = Epoch.Name;
             _modelToTextureRenderer.BlockAtlasPack();
             // UpdateMoney();
-            await UpdateUnits();
             _modelToTextureRenderer.UnblockAtlasPack();
             _foodUpgradePanel.UpdateView();
             _towerUpgradePanel.UpdateView();
             _epochCompletePanel.UpdateView();
-            
-            //TODO: в WEBGL не отображается подругому
             foreach (var unitOpenItem in _unitsItems)
+            {
+                unitOpenItem.Hide(0);
+            }
+            await UpdateUnits();
+            //TODO: в WEBGL не отображается подругому
+            /*foreach (var unitOpenItem in _unitsItems)
             {
                unitOpenItem.gameObject.SetActive(false);
                unitOpenItem.gameObject.SetActive(true);
-            }
+            }*/
         }
 
-        /*private void UpdateMoney()
-        {
-            _moneyTF.text = _model.Money.Value.ToString();
-        }*/
-        
         
         
         private async UniTask UpdateUnits()
@@ -85,6 +82,9 @@ namespace Unity.Presentation.Windows
                 Epoch.TryGetUnitModel(unitOpenItem.Tier, out var unitModel);
                 await unitOpenItem.SetUnit(unitModel);
                 unitOpenItem.OnUnitOpened += Epoch.OpenUnit;
+                unitOpenItem.gameObject.SetActive(false);
+                unitOpenItem.gameObject.SetActive(true);
+                unitOpenItem.Show(0.2f);
             }
         }
         
