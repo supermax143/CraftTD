@@ -29,10 +29,29 @@ namespace Unity.Presentation.Components
         {
             _unitModel = unitModel;
             await _unitIcon.Initialize(unitModel.Info.UnitPrefab);
-            _priceButton.SetPrice(new Resource(ResourceType.Money, _unitModel.UnlockCost));
-            _priceButton.gameObject.SetActive(!_unitModel.IsUnitOpened);
+            UpdateOpenedState();
         }
 
+        public void UpdateOpenedState()
+        {
+            _priceButton.SetPrice(new Resource(ResourceType.Money, _unitModel.UnlockCost));
+            _priceButton.gameObject.SetActive(!_unitModel.IsUnitOpened);
+            if (!_unitIcon.TryGetUnitView(out var unitView))
+            {
+                return;
+            }
+
+            if (_unitModel.IsUnitOpened)
+            {
+                //unitView.Unpause();
+                unitView.StartDie();
+            }
+            else
+            {
+                unitView.Pause();
+            }
+        }
+        
         public void Show(float time)
         {
             if (_animationCoroutine != null)

@@ -40,7 +40,7 @@ namespace Unity.Presentation.Windows
         
         public override void Initialize()
         {
-            Epoch.OnUnitOpened += OnUnitsOpened;
+            Epoch.OnUnitOpened += OnUnitOpened;
             _epochCompletePanel.OnEpochComplete += OnEpochComplete;
             UpdateView();
         }
@@ -82,8 +82,8 @@ namespace Unity.Presentation.Windows
                 Epoch.TryGetUnitModel(unitOpenItem.Tier, out var unitModel);
                 await unitOpenItem.SetUnit(unitModel);
                 unitOpenItem.OnUnitOpened += Epoch.OpenUnit;
-                /*unitOpenItem.gameObject.SetActive(false);
-                unitOpenItem.gameObject.SetActive(true);*/
+                unitOpenItem.gameObject.SetActive(false);
+                unitOpenItem.gameObject.SetActive(true);
                 unitOpenItem.Show(0.2f);
             }
         }
@@ -91,13 +91,16 @@ namespace Unity.Presentation.Windows
         private void OnDestroy()
         {
             // _model.Inventory.OnMoneyChanged -= UpdateMoney;
-            Epoch.OnUnitOpened -= OnUnitsOpened;
+            Epoch.OnUnitOpened -= OnUnitOpened;
             _epochCompletePanel.OnEpochComplete -= OnEpochComplete;
         }
 
-        private void OnUnitsOpened()
+        private void OnUnitOpened()
         {
-            _ = UpdateUnits();
+            foreach (var unitOpenItem in _unitsItems)
+            {
+               unitOpenItem.UpdateOpenedState();
+            }
         }
     }
 }
