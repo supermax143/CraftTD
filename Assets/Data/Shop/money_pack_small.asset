@@ -12,15 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888bdac19ea1b2b4e8da26c1a87f468f, type: 3}
   m_Name: money_pack_small
   m_EditorClassIdentifier: Core.Application::Core.Application.Info.Shop.ShopItemConfig
-  _id: money_pack_small
-  _displayName: Money Pack (Small)
-  _description: Get 100 Money instantly!
-  _icon: {fileID: 0}
-  _paymentType: 0
+  _id: starter_pack_small
+  _name: 
+  _description: starter_pack_small_description
+  _prefab:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  _paymentType: 1
   _currencyType: 1
   _price: 50
   _isConsumable: 1
-  _localizedPricePlaceholder: "50 \U0001F48E"
-  _rewardType: 0
-  _rewardResourceType: 0
-  _rewardAmount: 100
+  _rewards:
+  - _rewardType: 1
+    _resourceType: 0
+    _resourceAmount: 0
+    _itemId: 

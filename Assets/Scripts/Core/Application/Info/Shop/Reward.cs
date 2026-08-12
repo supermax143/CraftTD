@@ -8,30 +8,30 @@ namespace Core.Application.Info.Shop
     {
         [SerializeField] private RewardType _rewardType;
         [SerializeField] private ResourceType _resourceType;
-        [SerializeField] private int _resourceAmount;
-        [SerializeField] private string _itemId;
+        [SerializeField] private ItemType _itemType;
+        [SerializeField] private int _count;
 
         public RewardType RewardType => _rewardType;
         public ResourceType ResourceType => _resourceType;
-        public int ResourceAmount => _resourceAmount;
-        public string ItemId => _itemId;
+        public int Count => _count;
+        public ItemType ItemType => _itemType;
 
-        public Reward(RewardType rewardType, ResourceType resourceType, int resourceAmount, string itemId = null)
+        public Reward(RewardType rewardType, ResourceType resourceType, int count, ItemType itemType = Models.ItemType.TestItem)
         {
             _rewardType = rewardType;
             _resourceType = resourceType;
-            _resourceAmount = resourceAmount;
-            _itemId = itemId;
+            _count = count;
+            _itemType = itemType;
         }
 
-        public static Reward ResourceReward(ResourceType resourceType, int amount)
+        public static Reward ResourceReward(ResourceType resourceType, int count)
         {
-            return new Reward(RewardType.Resource, resourceType, amount);
+            return new Reward(RewardType.Resource, resourceType, count);
         }
 
-        public static Reward ItemReward(string itemId)
+        public static Reward ItemReward(ItemType itemType, int count)
         {
-            return new Reward(RewardType.Item, ResourceType.Food, 0, itemId);
+            return new Reward(RewardType.Item, ResourceType.Food, 0, itemType);
         }
     }
 }

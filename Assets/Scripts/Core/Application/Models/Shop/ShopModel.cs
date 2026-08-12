@@ -112,11 +112,11 @@ namespace Core.Application.Models
                 {
                     if (reward.ResourceType == ResourceType.Money)
                     {
-                        _inventory.Money = new Resource(ResourceType.Money, _inventory.Money.Value + reward.ResourceAmount);
+                        _inventory.Money = new Resource(ResourceType.Money, _inventory.Money.Value + reward.Count);
                     }
                     else if (reward.ResourceType == ResourceType.Crystal)
                     {
-                        _inventory.Crystal = new Resource(ResourceType.Crystal, _inventory.Crystal.Value + reward.ResourceAmount);
+                        _inventory.Crystal = new Resource(ResourceType.Crystal, _inventory.Crystal.Value + reward.Count);
                     }
                     else if (reward.ResourceType == ResourceType.Food)
                     {
