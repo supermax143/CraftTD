@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1434081232157295120}
   - component: {fileID: 6689362066399230135}
+  - component: {fileID: 2426437656684427057}
   - component: {fileID: 3880617034647356951}
   - component: {fileID: 6017011153209340481}
-  - component: {fileID: 6872790714161269063}
   m_Layer: 5
   m_Name: ShopView
   m_TagString: Untagged
@@ -62,6 +62,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2426437656684427057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286670518195073824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e9523498b6a35d4e91531bc12795fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Windows.ShopWindow
+  _animatorController: {fileID: 3880617034647356951}
+  _itemsContainer: {fileID: 0}
+  _itemViewPrefab: {fileID: 0}
+  _moneyTF: {fileID: 0}
+  _crystalTF: {fileID: 0}
 --- !u!114 &3880617034647356951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,19 +104,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &6872790714161269063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 286670518195073824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f69baa0e08e148509b55ae3bf54c6251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Infrastructure.Views.Shop.ShopView
-  _animatorController: {fileID: 3880617034647356951}
 --- !u!1 &7273989360429206616
 GameObject:
   m_ObjectHideFlags: 0

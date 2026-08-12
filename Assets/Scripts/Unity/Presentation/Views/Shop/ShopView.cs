@@ -5,6 +5,7 @@ using TMPro;
 using Unity.Infrastructure.Purchases;
 using Unity.Infrastructure.Windows;
 using Unity.Presentation.Components;
+using Unity.Presentation.Views;
 using UnityEngine;
 using Zenject;
 
@@ -13,8 +14,7 @@ namespace Unity.Presentation.Windows
     /// <summary>
     /// Окно магазина для покупки айтемов за игровую и реальную валюту
     /// </summary>
-    [Window(nameof(ShopWindow))]
-    public class ShopWindow : WindowBase
+    public class ShopView : ViewBase
     {
         [SerializeField] private Transform _itemsContainer;
         [SerializeField] private ShopItemView _itemViewPrefab;
@@ -30,7 +30,7 @@ namespace Unity.Presentation.Windows
         public override void Initialize()
         {
             _inventory.OnResourceChanged += OnResourceChanged;
-            BuildItems();
+            //BuildItems();
         }
 
         private void BuildItems()
