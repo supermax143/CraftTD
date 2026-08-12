@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 888bdac19ea1b2b4e8da26c1a87f468f, type: 3}
-  m_Name: money_pack_small
+  m_Name: crystal_pack_3
   m_EditorClassIdentifier: Core.Application::Core.Application.Info.Shop.ShopItemConfig
-  _id: starter_pack_small
-  _name: 
-  _description: starter_pack_small_description
+  _id: crystal_pack_3
+  _name: crystal_pack_3_name
+  _description: crystal_pack_3_description
   _prefab:
     m_AssetGUID: 
     m_SubObjectName: 
@@ -22,11 +22,11 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
   _paymentType: 1
-  _currencyType: 1
-  _price: 50
+  _currencyType: 2
+  _price: 400
   _isConsumable: 1
   _rewards:
-  - _rewardType: 1
-    _resourceType: 0
-    _resourceAmount: 0
-    _itemId: 
+  - _rewardType: 0
+    _resourceType: 2
+    _itemType: 1
+    _count: 10000

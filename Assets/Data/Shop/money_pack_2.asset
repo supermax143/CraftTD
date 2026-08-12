@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 888bdac19ea1b2b4e8da26c1a87f468f, type: 3}
-  m_Name: crystal_pack_small
+  m_Name: money_pack_2
   m_EditorClassIdentifier: Core.Application::Core.Application.Info.Shop.ShopItemConfig
-  _id: crystal_pack_small
-  _name: 
-  _description: Get 50 Crystals instantly!
+  _id: money_pack_2
+  _name: money_pack_2_name
+  _description: money_pack_2_description
   _prefab:
     m_AssetGUID: 
     m_SubObjectName: 
@@ -23,10 +23,10 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   _paymentType: 0
   _currencyType: 2
-  _price: 500
+  _price: 200
   _isConsumable: 1
   _rewards:
   - _rewardType: 0
-    _resourceType: 0
-    _itemType: 0
-    _count: 0
+    _resourceType: 1
+    _itemType: 1
+    _count: 50000000

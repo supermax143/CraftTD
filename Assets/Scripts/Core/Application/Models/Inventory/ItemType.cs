@@ -2,6 +2,8 @@ namespace Core.Application.Models
 {
     public enum ItemType
     {
-        TestItem
+        None,
+        DoubleReward,
+        TripleReward
     }
 }

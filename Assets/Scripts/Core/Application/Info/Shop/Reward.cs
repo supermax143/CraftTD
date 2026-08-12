@@ -16,7 +16,7 @@ namespace Core.Application.Info.Shop
         public int Count => _count;
         public ItemType ItemType => _itemType;
 
-        public Reward(RewardType rewardType, ResourceType resourceType, int count, ItemType itemType = Models.ItemType.TestItem)
+        public Reward(RewardType rewardType, ResourceType resourceType, int count, ItemType itemType = Models.ItemType.None)
         {
             _rewardType = rewardType;
             _resourceType = resourceType;
