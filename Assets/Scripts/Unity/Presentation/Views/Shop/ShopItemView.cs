@@ -29,8 +29,7 @@ namespace Unity.Presentation.Components
             _shopModel = shopModel;
             _onBuy = onBuy;
 
-            _icon.sprite = config.Icon;
-            _nameTF.text = config.DisplayName;
+            _nameTF.text = config.Name;
 
             _buyButton.onClick.RemoveAllListeners();
             _buyButton.onClick.AddListener(() => _onBuy?.Invoke(_config));

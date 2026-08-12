@@ -106,19 +106,26 @@ namespace Core.Application.Models
 
         private void GrantReward(ShopItemConfig item)
         {
-            if (item.RewardType == RewardType.Resource)
+            foreach (var reward in item.Rewards)
             {
-                if (item.RewardResourceType == ResourceType.Money)
+                if (reward.RewardType == RewardType.Resource)
                 {
-                    _inventory.Money = new Resource(ResourceType.Money, _inventory.Money.Value + item.RewardAmount);
+                    if (reward.ResourceType == ResourceType.Money)
+                    {
+                        _inventory.Money = new Resource(ResourceType.Money, _inventory.Money.Value + reward.ResourceAmount);
+                    }
+                    else if (reward.ResourceType == ResourceType.Crystal)
+                    {
+                        _inventory.Crystal = new Resource(ResourceType.Crystal, _inventory.Crystal.Value + reward.ResourceAmount);
+                    }
+                    else if (reward.ResourceType == ResourceType.Food)
+                    {
+                        // Food handling if needed in future
+                    }
                 }
-                else if (item.RewardResourceType == ResourceType.Crystal)
+                else if (reward.RewardType == RewardType.Item)
                 {
-                    _inventory.Crystal = new Resource(ResourceType.Crystal, _inventory.Crystal.Value + item.RewardAmount);
-                }
-                else if (item.RewardResourceType == ResourceType.Food)
-                {
-                    // Food handling if needed in future
+                    // Item handling
                 }
             }
         }

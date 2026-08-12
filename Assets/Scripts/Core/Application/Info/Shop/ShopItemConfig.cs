@@ -1,5 +1,6 @@
 using Core.Application.Models;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Core.Application.Info.Shop
 {
@@ -10,32 +11,26 @@ namespace Core.Application.Info.Shop
     public class ShopItemConfig : ScriptableObject
     {
         [SerializeField] private string _id;
-        [SerializeField] private string _displayName;
+        [SerializeField] private string _name;
         [SerializeField] private string _description;
-        [SerializeField] private Sprite _icon;
+        [SerializeField] private AssetReference _prefab;
         [SerializeField] private PaymentType _paymentType;
 
         [SerializeField] private ResourceType _currencyType;
         [SerializeField] private int _price;
 
         [SerializeField] private bool _isConsumable;
-        [SerializeField] private string _localizedPricePlaceholder;
 
-        [SerializeField] private RewardType _rewardType;
-        [SerializeField] private ResourceType _rewardResourceType;
-        [SerializeField] private int _rewardAmount;
+        [SerializeField] private Reward[] _rewards;
 
         public string Id => _id;
-        public string DisplayName => _displayName;
+        public string Name => _name;
         public string Description => _description;
-        public Sprite Icon => _icon;
+        public AssetReference Prefab => _prefab;
         public PaymentType PaymentType => _paymentType;
         public ResourceType CurrencyType => _currencyType;
         public int Price => _price;
         public bool IsConsumable => _isConsumable;
-        public string LocalizedPricePlaceholder => _localizedPricePlaceholder;
-        public RewardType RewardType => _rewardType;
-        public ResourceType RewardResourceType => _rewardResourceType;
-        public int RewardAmount => _rewardAmount;
+        public Reward[] Rewards => _rewards;
     }
 }
