@@ -27,6 +27,7 @@ namespace Unity.Infrastructure.VisualActions.Actions
         [Inject] private IViewsController _viewsController;
         [Inject] private GameHUD _hud;
         [Inject] private GameSettings _gameSettings;
+        [Inject] private IInventoryModel _inventory;
         
         private EpochModel PlayerEpoch => _mainModel.PlayerEpoch;
         private EpochModel EnemyEpoch => _mainModel.EnemyEpoch;
@@ -70,7 +71,7 @@ namespace Unity.Infrastructure.VisualActions.Actions
             _resultWindow.OnAdStartWatch -= WatchAdForDoubleMoney;
             _resultWindow.OnHide -= OnResultWindowClose;
             _resultWindow = null;
-            _mainModel.Inventory.Money += _rewardAggregator.Money;
+            _inventory.Money += _rewardAggregator.Money;
             _rewardAggregator.Reset();
             
             if(!_viewsController.TryGetCurrentView(out var view) || !(view is BattleView battleView))

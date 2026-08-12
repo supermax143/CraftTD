@@ -1,6 +1,8 @@
 ﻿using System;
+using Core.Application.Models;
 using Unity.Presentation.Components;
 using UnityEngine;
+using Zenject;
 
 namespace Unity.Presentation.HUD
 {
@@ -12,14 +14,23 @@ namespace Unity.Presentation.HUD
             Battle
         }
 
+        [SerializeField]
+        private ResourceContainer _resourceContainer;
         [SerializeField, HideInInspector]
         private GameHUDAnimatorController _animatorController;
+        
+        [Inject] private IInventoryModel _inventory;
         
         private State _state = State.Idle;
 
         private void OnValidate()
         {
             _animatorController = GetComponentInChildren<GameHUDAnimatorController>();
+        }
+
+        public void Start()
+        {
+            _resourceContainer.SetValue(_inventory.GetResourceCount(_resourceContainer.ResourceType));
         }
 
 

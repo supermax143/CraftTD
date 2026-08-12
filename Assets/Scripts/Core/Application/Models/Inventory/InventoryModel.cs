@@ -8,10 +8,10 @@ namespace Core.Application.Models
 {
     public class InventoryModel : IInventoryModel
     {
-        public event Action OnMoneyChanged;
-        public event Action OnCrystalChanged;
+        /*public event Action OnMoneyChanged;
+        public event Action OnCrystalChanged;*/
         public event Action OnItemsChanged;
-
+        public event Action<ResourceType> OnResourceChanged;
         
         [Inject] private readonly IDataStorage _dataStorage;
         
@@ -24,7 +24,7 @@ namespace Core.Application.Models
             set
             {
                 InventoryData.Money = value;
-                OnMoneyChanged?.Invoke();
+                OnResourceChanged?.Invoke(ResourceType.Money);
             }
         }
 
@@ -34,7 +34,7 @@ namespace Core.Application.Models
             set
             {
                 InventoryData.Crystal = value;
-                OnCrystalChanged?.Invoke();
+                OnResourceChanged?.Invoke(ResourceType.Crystal);
             }
         }
 

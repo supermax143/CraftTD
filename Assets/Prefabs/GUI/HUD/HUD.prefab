@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.ResourceContainer
   _icon: {fileID: 2690287622457370656}
   _text: {fileID: 7422744980124720814}
-  _resourceType: 1
+  resourceResourceType: 1
 --- !u!1 &5010090624684199866
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c39c91fa92049d8bb946097f0d3871b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.GameHUD
+  _resourceContainer: {fileID: 5404298396068943801}
+  _animatorController: {fileID: 8970638985469156292}
 --- !u!95 &4600095951319004286
 Animator:
   serializedVersion: 7

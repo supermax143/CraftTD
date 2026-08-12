@@ -12,11 +12,11 @@ namespace Unity.Infrastructure.Tutorial.Units.Data
     {
         private const string RESULT = "result";
 
-        [Inject] private IMainModel _model;
+        [Inject] private IInventoryModel _inventory;
 
         protected override int GetResult(Flow flow)
         {
-            return _model.Inventory.Money.Value;
+            return _inventory.GetResourceCount(ResourceType.Money);
         }
     }
 }

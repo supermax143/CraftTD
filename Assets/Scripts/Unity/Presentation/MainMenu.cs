@@ -20,7 +20,8 @@ namespace Unity.Presentation
 		[Inject] private ILocalization _localization;
 		[Inject] private IDataStorage _dataStorage;
 		[Inject] private IMainModel _mainModel;
-        
+		[Inject] private IInventoryModel _inventory;
+		
 		private EpochModel Epoch => _mainModel.PlayerEpoch;
         
 		
@@ -43,7 +44,7 @@ namespace Unity.Presentation
 
 		private void UpdateMoneyInput()
 		{
-			_moneyInput.text = _mainModel.Inventory.Money.Value.ToString();
+			_moneyInput.text = _inventory.Money.Value.ToString();
 		}
 
 
@@ -80,7 +81,7 @@ namespace Unity.Presentation
 		
 		public void Save()
 		{
-			_mainModel.Inventory.Money = Resource.Money(int.Parse(_moneyInput.text));
+			_inventory.Money = Resource.Money(int.Parse(_moneyInput.text));
 		}
 		
 		public void Reset()

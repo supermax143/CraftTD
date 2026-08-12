@@ -24,22 +24,21 @@ namespace Unity.Presentation.Windows
         [Inject] private IMainModel _model;
         [Inject] private IPurchasesController _purchasesController;
         [Inject] private DiContainer _container;
-
+        [Inject] private IInventoryModel _inventory;
+        [Inject] private IShopModel _shop;
+        
         public override void Initialize()
         {
-            _model.Inventory.OnMoneyChanged += UpdateCurrency;
-            _model.Inventory.OnCrystalChanged += UpdateCurrency;
-            _model.Shop.OnItemPurchased += OnItemPurchased;
+            _inventory.OnResourceChanged += OnResourceChanged;
             BuildItems();
-            UpdateCurrency();
         }
 
         private void BuildItems()
         {
-            foreach (var config in _model.Shop.Items)
+            foreach (var config in _shop.Items)
             {
                 var view = _container.InstantiatePrefabForComponent<ShopItemView>(_itemViewPrefab, _itemsContainer);
-                view.Setup(config, _model.Shop, OnBuyClicked);
+                view.Setup(config, _shop, OnBuyClicked);
             }
         }
 
@@ -47,7 +46,7 @@ namespace Unity.Presentation.Windows
         {
             if (config.PaymentType == PaymentType.GameCurrency)
             {
-                _model.Shop.BuyWithCurrency(config.Id);
+                _shop.BuyWithCurrency(config.Id);
             }
             else
             {
@@ -66,17 +65,15 @@ namespace Unity.Presentation.Windows
             }
         }
 
-        private void UpdateCurrency()
+        private void OnResourceChanged(ResourceType resourceType)
         {
-            _moneyTF.text = _model.Inventory.Money.Value.ToString();
-            _crystalTF.text = _model.Inventory.Crystal.Value.ToString();
+            //TODO: реализовать
         }
 
         private void OnDestroy()
         {
-            _model.Inventory.OnMoneyChanged -= UpdateCurrency;
-            _model.Inventory.OnCrystalChanged -= UpdateCurrency;
-            _model.Shop.OnItemPurchased -= OnItemPurchased;
+            _inventory.OnResourceChanged -= OnResourceChanged;
+            _shop.OnItemPurchased -= OnItemPurchased;
         }
     }
 }
