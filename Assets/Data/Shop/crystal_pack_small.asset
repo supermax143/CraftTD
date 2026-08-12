@@ -13,14 +13,20 @@ MonoBehaviour:
   m_Name: crystal_pack_small
   m_EditorClassIdentifier: Core.Application::Core.Application.Info.Shop.ShopItemConfig
   _id: crystal_pack_small
-  _displayName: Crystal Pack (Small)
+  _name: 
   _description: Get 50 Crystals instantly!
-  _icon: {fileID: 0}
+  _prefab:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _paymentType: 0
-  _currencyType: 0
+  _currencyType: 2
   _price: 500
   _isConsumable: 1
-  _localizedPricePlaceholder: "500 \U0001F4B0"
-  _rewardType: 0
-  _rewardResourceType: 1
-  _rewardAmount: 50
+  _rewards:
+  - _rewardType: 0
+    _resourceType: 0
+    _itemType: 0
+    _count: 0
