@@ -8,13 +8,12 @@ namespace Core.Application.DataStorage.StorageItems
 {
     /// <summary>
     /// JSON-serializable structure for inventory data storage.
-    /// Contains resources (Money, Crystal) and items.
+    /// Contains resources array and items.
     /// </summary>
     [System.Serializable]
     internal class InventoryDataInfo
     {
-        public Resource Money = Resource.Money(0);
-        public Resource Crystal = Resource.Crystal(0);
+        public Resource[] Resources = new Resource[3];
         public List<Item> Items = new();
     }
 
@@ -42,24 +41,15 @@ namespace Core.Application.DataStorage.StorageItems
             }
         }
 
-        public Resource Money
+        public Resource GetResource(ResourceType resourceType)
         {
-            get => _inventoryDataInfo.Money;
-            set
-            {
-                _inventoryDataInfo.Money = value;
-                Save();
-            }
+            return _inventoryDataInfo.Resources[(int)resourceType];
         }
 
-        public Resource Crystal
+        public void SetResource(Resource resource)
         {
-            get => _inventoryDataInfo.Crystal;
-            set
-            {
-                _inventoryDataInfo.Crystal = value;
-                Save();
-            }
+            _inventoryDataInfo.Resources[(int)resource.Type] = resource;
+            Save();
         }
 
         public IReadOnlyList<Item> GetItems()
@@ -89,9 +79,9 @@ namespace Core.Application.DataStorage.StorageItems
             return _inventoryDataInfo.Items.FirstOrDefault(i => i.Id == itemId);
         }
 
-        public void ResetMoney()
+        public void ResetResource(ResourceType resourceType)
         {
-            _inventoryDataInfo.Money = Resource.Money(0);
+            _inventoryDataInfo.Resources[(int)resourceType] = new Resource(resourceType, 0);
             Save();
         }
 
@@ -101,12 +91,21 @@ namespace Core.Application.DataStorage.StorageItems
             Save();
         }
 
+        public void ResetMoney()
+        {
+            SetResource(Resource.Money(0));
+        }
+        
         private void InitializeDefaultData()
         {
             _inventoryDataInfo = new InventoryDataInfo
             {
-                Money = Resource.Money(0),
-                Crystal = Resource.Crystal(0),
+                Resources = new Resource[3]
+                {
+                    Resource.Food(0),
+                    Resource.Money(0),
+                    Resource.Crystal(0)
+                },
                 Items = new List<Item>()
             };
         }
@@ -138,5 +137,6 @@ namespace Core.Application.DataStorage.StorageItems
                 return null;
             }
         }
+
     }
 }

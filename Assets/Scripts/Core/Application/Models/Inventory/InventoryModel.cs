@@ -8,8 +8,6 @@ namespace Core.Application.Models
 {
     public class InventoryModel : IInventoryModel
     {
-        /*public event Action OnMoneyChanged;
-        public event Action OnCrystalChanged;*/
         public event Action OnItemsChanged;
         public event Action<ResourceType> OnResourceChanged;
         
@@ -20,20 +18,20 @@ namespace Core.Application.Models
        
         public Resource Money
         {
-            get => InventoryData.Money;
+            get => InventoryData.GetResource(ResourceType.Money);
             set
             {
-                InventoryData.Money = value;
+                InventoryData.SetResource(value);
                 OnResourceChanged?.Invoke(ResourceType.Money);
             }
         }
 
         public Resource Crystal
         {
-            get => InventoryData.Crystal;
+            get => InventoryData.GetResource(ResourceType.Crystal);
             set
             {
-                InventoryData.Crystal = value;
+                InventoryData.SetResource(value);
                 OnResourceChanged?.Invoke(ResourceType.Crystal);
             }
         }

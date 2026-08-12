@@ -30,7 +30,16 @@ namespace Unity.Presentation.HUD
 
         public void Start()
         {
+            _inventory.OnResourceChanged += OnResourceChanged;
             _resourceContainer.SetValue(_inventory.GetResourceCount(_resourceContainer.ResourceType));
+        }
+
+        private void OnResourceChanged(ResourceType resourceType)
+        {
+            if (resourceType == _resourceContainer.ResourceType)
+            {
+                _resourceContainer.SetValue(_inventory.GetResourceCount(resourceType));
+            }
         }
 
 
