@@ -852,11 +852,19 @@ MonoBehaviour:
   - resourceType: 1
     sprite:
       m_AssetGUID: 6e7cf2b7a61373844a05e5a8ba46e6d7
-      m_SubObjectName: Money
+      m_SubObjectName: icon_money
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
+  - resourceType: 2
+    sprite:
+      m_AssetGUID: 20e6ea02806b9634d9fc5657f9a24ca6
+      m_SubObjectName: icon_crystal
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 1
 --- !u!1 &8025960657509679866
 GameObject:
   m_ObjectHideFlags: 0

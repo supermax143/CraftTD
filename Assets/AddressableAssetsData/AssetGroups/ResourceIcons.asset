@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: ResourceIcons
   m_GUID: fe752b3260065e845918a2ef580700c1
   m_SerializeEntries:
+  - m_GUID: 20e6ea02806b9634d9fc5657f9a24ca6
+    m_Address: icon_crystal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6e7cf2b7a61373844a05e5a8ba46e6d7
     m_Address: Money
     m_ReadOnly: 0
