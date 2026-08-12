@@ -205,20 +205,13 @@ namespace Unity.Game
             Time.timeScale = pause ? 0f : 1f;
         }
 
+#if DEBUG_MODE
         public void ExitGame()
         {
             _applicationSession.CurrentState.ExitGame();
         }
 
-        private void OnDestroy()
-        {
-            foreach (var team in _teams)
-            {
-                team.OnTowerDestroyed -= TowerDestroyedHandler;
-            }
-        }
 
-#if DEBUG_MODE
         private void UpdateEditorShortcuts()
         {
             
@@ -240,5 +233,12 @@ namespace Unity.Game
            
         }
 #endif
+        private void OnDestroy()
+        {
+            foreach (var team in _teams)
+            {
+                team.OnTowerDestroyed -= TowerDestroyedHandler;
+            }
+        }
     }
 }

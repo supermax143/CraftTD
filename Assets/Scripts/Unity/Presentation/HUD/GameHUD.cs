@@ -12,6 +12,7 @@ namespace Unity.Presentation.HUD
             Battle
         }
 
+        [SerializeField, HideInInspector]
         private GameHUDAnimatorController _animatorController;
         
         private State _state = State.Idle;

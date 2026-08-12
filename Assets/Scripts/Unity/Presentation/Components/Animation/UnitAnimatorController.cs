@@ -33,11 +33,10 @@ namespace Unity.Presentation.Components
             public static readonly int Attack = Animator.StringToHash(nameof(Attack));
             public static readonly int Die = Animator.StringToHash(nameof(Die));
         }
-        
 
-        protected void OnValidate()
+        protected override void OnValidate()
         {
-            
+       
             base.OnValidate();
             if (_animator != null && !_animator.TryGetComponent(out _animationEvents))
             {

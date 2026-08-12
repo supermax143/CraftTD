@@ -1,6 +1,5 @@
 using System;
 using Cysharp.Threading.Tasks;
-using log4net.Util;
 using UnityEngine.AddressableAssets;
 
 namespace Core.Application.Interfaces.Views

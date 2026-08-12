@@ -7,13 +7,13 @@ namespace Unity.Presentation.Components
     {
         [SerializeField, HideInInspector]
         private Image[] _images;
-
+#if UNITY_EDITOR
         protected override void OnValidate()
         {
             base.OnValidate();
             _images = GetComponentsInChildren<Image>();
         }
-
+#endif
         protected override void DoStateTransition(SelectionState state, bool instant)
         {
             foreach (var image in _images)
