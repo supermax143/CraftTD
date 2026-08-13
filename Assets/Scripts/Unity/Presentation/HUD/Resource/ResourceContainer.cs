@@ -47,6 +47,16 @@ namespace Unity.Presentation.HUD
             _icon.sprite = icon;
         }
         
+        public void SetResource(Resource resource)
+        {
+            bool resourceChanged = _resource.Type != resource.Type;
+            _resource = resource;
+            if (resourceChanged)
+            {
+                UpdateIcon();
+            }
+            UpdateCount();
+        }
         
         public void SetValue(int value)
         {

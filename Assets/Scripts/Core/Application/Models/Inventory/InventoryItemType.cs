@@ -1,6 +1,6 @@
 namespace Core.Application.Models
 {
-    public enum ItemType
+    public enum InventoryItemType
     {
         None,
         DoubleReward,

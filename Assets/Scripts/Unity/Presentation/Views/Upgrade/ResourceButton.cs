@@ -51,9 +51,9 @@ namespace Unity.Presentation.Components
             {
                 var color = Active ? Color.white : Color.red;
                 _priceText.color = color;
+                _button.interactable = Active;
             }
             
-            _button.interactable = Active;
             UpdateIcon();
         }
         private async UniTask UpdateIcon()

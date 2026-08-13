@@ -50,9 +50,29 @@ namespace Unity.Presentation.Components
             UpdateIcon().Forget();
             
             
+            UpdateButtons();
+        }
+
+        private void UpdateButtons()
+        {
             _resourceButton?.gameObject.SetActive(false);
             _realMoneyButton?.gameObject.SetActive(false);
             _actionButton?.gameObject.SetActive(false);
+
+            switch (_config.PaymentType)
+            {
+                case PaymentType.GameCurrency:
+                    _resourceButton.gameObject.SetActive(true);
+                    _resourceButton.SetPrice(new Resource(_config.CurrencyType, _config.Price));
+                    break;
+                case PaymentType.RealMoney:
+                    _realMoneyButton.gameObject.SetActive(true);
+                    _realMoneyButton.GetComponentInChildren<TMP_Text>().text = _config.Price.ToString();
+                    break;
+                case PaymentType.WatchingAds:
+                    _actionButton.gameObject.SetActive(true);
+                    break;
+            }
         }
 
         private async UniTask UpdateIcon()

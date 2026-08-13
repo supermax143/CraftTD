@@ -50,11 +50,11 @@ namespace Core.Application.Models
             
         }
         
-        public IReadOnlyList<Item> Items => InventoryData.GetItems();
+        public IReadOnlyList<InventoryItem> Items => InventoryData.GetItems();
 
-        public void AddItem(Item item)
+        public void AddItem(InventoryItem inventoryItem)
         {
-            InventoryData.AddItem(item);
+            InventoryData.AddItem(inventoryItem);
             OnItemsChanged?.Invoke();
         }
 
@@ -69,7 +69,7 @@ namespace Core.Application.Models
             return InventoryData.HasItem(itemId);
         }
 
-        public Item GetItem(string itemId)
+        public InventoryItem GetItem(string itemId)
         {
             return InventoryData.GetItem(itemId);
         }

@@ -14,7 +14,7 @@ namespace Core.Application.DataStorage.StorageItems
     internal class InventoryDataInfo
     {
         public Resource[] Resources = new Resource[3];
-        public List<Item> Items = new();
+        public List<InventoryItem> Items = new();
     }
 
     public class InventoryStorageData
@@ -52,14 +52,14 @@ namespace Core.Application.DataStorage.StorageItems
             Save();
         }
 
-        public IReadOnlyList<Item> GetItems()
+        public IReadOnlyList<InventoryItem> GetItems()
         {
             return _inventoryDataInfo.Items.AsReadOnly();
         }
 
-        public void AddItem(Item item)
+        public void AddItem(InventoryItem inventoryItem)
         {
-            _inventoryDataInfo.Items.Add(item);
+            _inventoryDataInfo.Items.Add(inventoryItem);
             Save();
         }
 
@@ -74,7 +74,7 @@ namespace Core.Application.DataStorage.StorageItems
             return _inventoryDataInfo.Items.Any(i => i.Id == itemId);
         }
 
-        public Item GetItem(string itemId)
+        public InventoryItem GetItem(string itemId)
         {
             return _inventoryDataInfo.Items.FirstOrDefault(i => i.Id == itemId);
         }
@@ -106,7 +106,7 @@ namespace Core.Application.DataStorage.StorageItems
                     Resource.Money(0),
                     Resource.Crystal(0)
                 },
-                Items = new List<Item>()
+                Items = new List<InventoryItem>()
             };
         }
 

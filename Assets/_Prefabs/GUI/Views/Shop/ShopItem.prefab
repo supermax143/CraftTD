@@ -1157,7 +1157,7 @@ MonoBehaviour:
   _priceText: {fileID: 3968634767357225260}
   _icon: {fileID: 9084378670533641942}
   _button: {fileID: 8234823146638253837}
-  _showNotEnough: 1
+  _showNotEnough: 0
 --- !u!224 &3724054317699138950 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8755140256600053184, guid: 53eced4a24ebce747937f1fef2c8d375,

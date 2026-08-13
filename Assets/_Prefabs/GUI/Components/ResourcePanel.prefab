@@ -232,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.ResourceContainer
   _icon: {fileID: 2742465077840747989}
   _text: {fileID: 6932707368702505113}
-  _resourceType: 1
+  resourceResourceType: 0
 --- !u!114 &6579656216363141092
 MonoBehaviour:
   m_ObjectHideFlags: 0
