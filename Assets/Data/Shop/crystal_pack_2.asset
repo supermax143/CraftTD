@@ -16,9 +16,16 @@ MonoBehaviour:
   _name: crystal_pack_2_name
   _description: crystal_pack_2_description
   _prefab:
-    m_AssetGUID: 
+    m_AssetGUID: 3ce34f59b386dcf40a1c9a4eb56264de
     m_SubObjectName: 
     m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  _icon:
+    m_AssetGUID: 40dbb57f6b1121949971a639b298deae
+    m_SubObjectName: shop_item_6
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
   _paymentType: 1

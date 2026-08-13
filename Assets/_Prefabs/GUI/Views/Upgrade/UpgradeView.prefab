@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d283d7970c24d38a61cbb7ad526ce09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Windows.Upgrade.TowerUpgradePanel
-  _priceButton: {fileID: 8518585118117426852}
+  resourceButton: {fileID: 8518585118117426852}
   _healthTF: {fileID: 7779030362167353857}
 --- !u!1 &286670518195073824
 GameObject:
@@ -694,7 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f01e2c536df3436d97a135aa48b08ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Windows.Upgrade.FoodUpgradePanel
-  _priceButton: {fileID: 2557811587642473185}
+  resourceButton: {fileID: 2557811587642473185}
   _speedTF: {fileID: 2492853307185981098}
 --- !u!222 &449513019643387771
 CanvasRenderer:
@@ -1841,8 +1841,9 @@ MonoBehaviour:
   _clickSound: {fileID: 8300000, guid: 216bf9fa80a21b14c81db31b4c0bd105, type: 3}
   _autoClick: 1
   _priceText: {fileID: 8305216828677483590}
-  _button: {fileID: 3897472939824831079}
   _icon: {fileID: 4198288053107049404}
+  _button: {fileID: 3897472939824831079}
+  _showNotEnough: 1
 --- !u!114 &8305216828677483590 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9024530090892884330, guid: 53eced4a24ebce747937f1fef2c8d375,
@@ -2599,8 +2600,9 @@ MonoBehaviour:
   _clickSound: {fileID: 8300000, guid: 216bf9fa80a21b14c81db31b4c0bd105, type: 3}
   _autoClick: 1
   _priceText: {fileID: 1669463611214087507}
-  _button: {fileID: 5944667953630114674}
   _icon: {fileID: 6785374607936842409}
+  _button: {fileID: 5944667953630114674}
+  _showNotEnough: 1
 --- !u!114 &5944667953630114674 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4064786750384394059, guid: 53eced4a24ebce747937f1fef2c8d375,

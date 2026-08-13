@@ -16,9 +16,16 @@ MonoBehaviour:
   _name: money_pack_1_name
   _description: money_pack_1_description
   _prefab:
-    m_AssetGUID: 
+    m_AssetGUID: 3ce34f59b386dcf40a1c9a4eb56264de
     m_SubObjectName: 
     m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  _icon:
+    m_AssetGUID: 863387ac4f84b2a4c94c9f63cc8cb364
+    m_SubObjectName: shop_item_3
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
   _paymentType: 0

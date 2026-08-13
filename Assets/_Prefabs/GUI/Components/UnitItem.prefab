@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.UnitOpenItem
   _unitIcon: {fileID: 7463082958710733287}
-  _priceButton: {fileID: 1518127212185000654}
+  resourceButton: {fileID: 1518127212185000654}
   _tier: 0
   _canvasGroup: {fileID: 585488784492823396}
   _effectsController: {fileID: 598736497476781044}

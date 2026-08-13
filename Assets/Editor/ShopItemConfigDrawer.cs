@@ -17,6 +17,7 @@ namespace Editor
         private SerializedProperty _priceProperty;
         private SerializedProperty _isConsumableProperty;
         private SerializedProperty _rewardsProperty;
+        private SerializedProperty _iconProperty;
 
         private void OnEnable()
         {
@@ -29,6 +30,7 @@ namespace Editor
             _priceProperty = serializedObject.FindProperty("_price");
             _isConsumableProperty = serializedObject.FindProperty("_isConsumable");
             _rewardsProperty = serializedObject.FindProperty("_rewards");
+            _iconProperty = serializedObject.FindProperty("_icon");
         }
 
         public override void OnInspectorGUI()
@@ -38,6 +40,7 @@ namespace Editor
             EditorGUILayout.PropertyField(_idProperty);
             EditorGUILayout.PropertyField(_nameProperty);
             EditorGUILayout.PropertyField(_descriptionProperty);
+            EditorGUILayout.PropertyField(_iconProperty);
             EditorGUILayout.PropertyField(_prefabProperty);
             EditorGUILayout.PropertyField(_paymentTypeProperty);
 

@@ -121,7 +121,9 @@ namespace Unity.Infrastructure.Effects
             {
                 if (effectAsset.visualEffectType == visualEffectType)
                 {
+                    
                     GameObject prefab = await effectAsset.effectPrefab.LoadAssetAsync<GameObject>().Task;
+                    
                     _prefabCache[visualEffectType] = prefab;
                     break;
                 }
