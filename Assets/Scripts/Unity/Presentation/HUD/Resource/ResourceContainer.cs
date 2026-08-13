@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Core.Application.Interfaces;
 using Core.Application.Models;
+using Shared.Utils;
 using TMPro;
 using Unity.Infrastructure.ResourceManager;
 using UnityEngine;
@@ -54,7 +55,7 @@ namespace Unity.Presentation.HUD
         
         private void UpdateCount()
         {
-            _text.text = _resource.Value.ToString();
+            _text.text = LargeNumberFormatter.Format(_resource.Value);
         }
 
         public RectTransform GetTargetRect()

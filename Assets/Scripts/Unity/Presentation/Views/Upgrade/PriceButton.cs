@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Core.Application.Interfaces;
 using Core.Application.Models;
 using Cysharp.Threading.Tasks;
+using Shared.Utils;
 using TMPro;
 using Unity.Infrastructure.ResourceManager;
 using Unity.VisualScripting;
@@ -43,7 +44,7 @@ namespace Unity.Presentation.Components
 
         private void UpdateView()
         {
-            _priceText.text = _price.Value.ToString();
+            _priceText.text = LargeNumberFormatter.Format(_price.Value);
             var color = Active ? Color.white : Color.red;
             _priceText.color = color;
             _button.interactable = Active;
