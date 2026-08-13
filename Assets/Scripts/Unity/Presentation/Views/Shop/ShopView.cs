@@ -1,8 +1,11 @@
 using System;
 using Core.Application.Info.Shop;
+using Core.Application.Interfaces;
 using Core.Application.Models;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using Unity.Infrastructure.Purchases;
+using Unity.Infrastructure.ResourceManager;
 using Unity.Infrastructure.Windows;
 using Unity.Presentation.Components;
 using Unity.Presentation.Views;
@@ -17,26 +20,26 @@ namespace Unity.Presentation.Windows
     public class ShopView : ViewBase
     {
         [SerializeField] private Transform _itemsContainer;
-        [SerializeField] private ShopItemView _itemViewPrefab;
-        [SerializeField] private TextMeshProUGUI _moneyTF;
-        [SerializeField] private TextMeshProUGUI _crystalTF;
 
         [Inject] private IMainModel _model;
         [Inject] private IPurchasesController _purchasesController;
         [Inject] private DiContainer _container;
         [Inject] private IInventoryModel _inventory;
         [Inject] private IShopModel _shop;
+        [Inject] private IResourceManager _resourceManager;
         
         public override void Initialize()
         {
             _inventory.OnResourceChanged += OnResourceChanged;
+            BuildItems().Forget();
         }
 
-        private void BuildItems()
+        private async UniTask BuildItems()
         {
             foreach (var config in _shop.Items)
             {
-                var view = _container.InstantiatePrefabForComponent<ShopItemView>(_itemViewPrefab, _itemsContainer);
+                var prefab = await config.Prefab.LoadAssetReference<GameObject>(gameObject);
+                var view = _container.InstantiatePrefabForComponent<ShopItemView>(prefab, _itemsContainer);
                 view.Initialize(config);
             }
         }

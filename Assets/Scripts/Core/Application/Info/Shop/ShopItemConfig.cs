@@ -39,7 +39,7 @@ namespace Core.Application.Info.Shop
         public bool TryGetIcon(out AssetReference icon)
         {
             icon = _icon;
-            return _icon != null && string.IsNullOrEmpty(_icon.AssetGUID);
+            return _icon != null && !string.IsNullOrEmpty(_icon.AssetGUID);
         }
     }
 }

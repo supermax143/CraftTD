@@ -516,7 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.ShopItemView
   _nameTF: {fileID: 6513478461550518480}
-  _icon: {fileID: 0}
+  _icon: {fileID: 3755408485583955108}
   _descriptionTF: {fileID: 5378050732739442880}
   _resourceButton: {fileID: 3344119635586328420}
   _realMoneyButton: {fileID: 8737994748361407996}
