@@ -17,7 +17,7 @@ namespace Unity.Presentation.Components
         public event Action<UnitTier> OnUnitOpened;
         
         [SerializeField] private UnitIcon _unitIcon;
-        [SerializeField] private PriceButton _priceButton;
+        [SerializeField] private ResourceButton resourceButton;
         [SerializeField] private UnitTier _tier;
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private CanvasEffectsController _effectsController;
@@ -37,8 +37,8 @@ namespace Unity.Presentation.Components
 
         public void UpdateOpenedState()
         {
-            _priceButton.SetPrice(new Resource(ResourceType.Money, _unitModel.UnlockCost));
-            _priceButton.gameObject.SetActive(!_unitModel.IsUnitOpened);
+            resourceButton.SetPrice(new Resource(ResourceType.Money, _unitModel.UnlockCost));
+            resourceButton.gameObject.SetActive(!_unitModel.IsUnitOpened);
             if (!_unitIcon.TryGetUnitView(out var unitView))
             {
                 return;

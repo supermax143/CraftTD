@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Core.Application.Interfaces;
 using Core.Application.Models;
+using Cysharp.Threading.Tasks;
 using Shared.Utils;
 using TMPro;
 using Unity.Infrastructure.ResourceManager;
@@ -35,7 +36,7 @@ namespace Unity.Presentation.HUD
         }
 
         
-        private async Task UpdateIcon()
+        private async UniTask UpdateIcon()
         {
             if (!_resourceManager.TryGetResourceIcon(resourceResourceType, out var iconRef))
             {

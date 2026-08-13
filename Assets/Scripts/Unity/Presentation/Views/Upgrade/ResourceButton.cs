@@ -18,13 +18,15 @@ using Zenject;
 
 namespace Unity.Presentation.Components
 {
-    public class PriceButton : PointerDownClicker
+    public class ResourceButton : PointerDownClicker
     {
         
         [SerializeField] private TextMeshProUGUI _priceText;
-        [SerializeField] private Button _button;
         [SerializeField] private Image _icon;
-
+        [SerializeField] private Button _button;
+        [SerializeField] private bool _showNotEnough = true;
+        
+        
         [Inject] private IResourceManager _resourceManager;
         [Inject] private IMainModel _model;
         [Inject] private IInventoryModel _inventory;
@@ -45,8 +47,12 @@ namespace Unity.Presentation.Components
         private void UpdateView()
         {
             _priceText.text = LargeNumberFormatter.Format(_price.Value);
-            var color = Active ? Color.white : Color.red;
-            _priceText.color = color;
+            if (_showNotEnough)
+            {
+                var color = Active ? Color.white : Color.red;
+                _priceText.color = color;
+            }
+            
             _button.interactable = Active;
             UpdateIcon();
         }

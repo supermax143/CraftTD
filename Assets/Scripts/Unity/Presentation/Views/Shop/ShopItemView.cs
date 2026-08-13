@@ -1,9 +1,14 @@
 using System;
+using System.Threading.Tasks;
 using Core.Application.Info.Shop;
+using Core.Application.Interfaces;
 using Core.Application.Models;
+using Cysharp.Threading.Tasks;
 using TMPro;
+using Unity.Infrastructure.ResourceManager;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Unity.Presentation.Components
 {
@@ -12,50 +17,54 @@ namespace Unity.Presentation.Components
     /// </summary>
     public class ShopItemView : MonoBehaviour
     {
-        [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _nameTF;
-        [SerializeField] private TextMeshProUGUI _priceTF;
-        [SerializeField] private Image _currencyIcon;
-        [SerializeField] private Button _buyButton;
-        [SerializeField] private GameObject _purchasedOverlay;
-
+        [SerializeField] private Image _icon;
+        [SerializeField] private TextMeshProUGUI _descriptionTF;
+        [SerializeField] private ResourceButton _resourceButton;
+        [SerializeField] private Button _realMoneyButton;
+        [SerializeField] private Button _actionButton;
+        
+        [Inject] private ILocalization _localization;
+        [Inject] private IResourceManager _resourceManager;
+        
         private ShopItemConfig _config;
-        private IShopModel _shopModel;
-        private Action<ShopItemConfig> _onBuy;
 
-        public void Setup(ShopItemConfig config, IShopModel shopModel, Action<ShopItemConfig> onBuy)
+        public void Initialize(ShopItemConfig config)
         {
             _config = config;
-            _shopModel = shopModel;
-            _onBuy = onBuy;
-
-            _nameTF.text = config.Name;
-
-            _buyButton.onClick.RemoveAllListeners();
-            _buyButton.onClick.AddListener(() => _onBuy?.Invoke(_config));
-
-            Refresh();
+            UpdateView();
         }
 
-        public void Refresh()
+        private void UpdateView()
         {
-            bool purchased = _config.PaymentType == PaymentType.RealMoney
-                && !_config.IsConsumable
-                && _shopModel.IsPurchased(_config.Id);
-
-            _purchasedOverlay.SetActive(purchased);
-            _buyButton.gameObject.SetActive(!purchased);
-
-            if (_config.PaymentType == PaymentType.GameCurrency)
+            if (_nameTF != null)
             {
-                _priceTF.text = _config.Price.ToString();
-                _buyButton.interactable = _shopModel.CanBuyWithCurrency(_config.Id);
+                _nameTF.text = _localization.Get(_config.Name);
             }
-            else
+
+            if (_descriptionTF != null)
             {
-                _priceTF.text = "...";
-                _buyButton.interactable = true;
+                _descriptionTF.text = _localization.Get(_config.Description);
             }
+
+            UpdateIcon().Forget();
+            
+            
+            _resourceButton?.gameObject.SetActive(false);
+            _realMoneyButton?.gameObject.SetActive(false);
+            _actionButton?.gameObject.SetActive(false);
         }
+
+        private async UniTask UpdateIcon()
+        {
+            if (!_config.TryGetIcon(out var iconSource))
+            {
+                _icon?.gameObject.SetActive(false);
+                return;
+            }
+            var icon = await iconSource.LoadAssetReference<Sprite>(iconSource.AssetGUID);
+            _icon.sprite = icon;
+        }
+        
     }
 }

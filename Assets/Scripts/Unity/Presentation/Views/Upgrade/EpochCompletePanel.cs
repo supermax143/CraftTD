@@ -19,7 +19,7 @@ namespace Unity.Presentation.Windows.Upgrade
         }
         
         [SerializeField]
-        private PriceButton _completeForMoneyButton;
+        private ResourceButton _completeForMoneyButton;
         [SerializeField]
         private Button _completeButton;
         

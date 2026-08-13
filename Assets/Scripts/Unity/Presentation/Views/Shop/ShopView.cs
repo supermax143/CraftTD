@@ -30,7 +30,6 @@ namespace Unity.Presentation.Windows
         public override void Initialize()
         {
             _inventory.OnResourceChanged += OnResourceChanged;
-            //BuildItems();
         }
 
         private void BuildItems()
@@ -38,7 +37,7 @@ namespace Unity.Presentation.Windows
             foreach (var config in _shop.Items)
             {
                 var view = _container.InstantiatePrefabForComponent<ShopItemView>(_itemViewPrefab, _itemsContainer);
-                view.Setup(config, _shop, OnBuyClicked);
+                view.Initialize(config);
             }
         }
 
@@ -56,18 +55,17 @@ namespace Unity.Presentation.Windows
 
         private void OnItemPurchased(string itemId)
         {
-            foreach (Transform child in _itemsContainer)
+            /*foreach (Transform child in _itemsContainer)
             {
                 if (child.TryGetComponent<ShopItemView>(out var view))
                 {
                     view.Refresh();
                 }
-            }
+            }*/
         }
 
         private void OnResourceChanged(ResourceType resourceType)
         {
-            //TODO: реализовать
         }
 
         private void OnDestroy()

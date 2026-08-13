@@ -14,6 +14,7 @@ namespace Core.Application.Info.Shop
         [SerializeField] private string _name;
         [SerializeField] private string _description;
         [SerializeField] private AssetReference _prefab;
+        [SerializeField] private AssetReference _icon;
         [SerializeField] private PaymentType _paymentType;
 
         [SerializeField] private ResourceType _currencyType;
@@ -32,5 +33,13 @@ namespace Core.Application.Info.Shop
         public int Price => _price;
         public bool IsConsumable => _isConsumable;
         public Reward[] Rewards => _rewards;
+
+        public AssetReference Icon => _icon;
+
+        public bool TryGetIcon(out AssetReference icon)
+        {
+            icon = _icon;
+            return _icon != null && string.IsNullOrEmpty(_icon.AssetGUID);
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace Unity.Presentation.Windows.Upgrade
     public class TowerUpgradePanel : MonoBehaviour
     {
         [SerializeField]
-        private PriceButton _priceButton;
+        private ResourceButton resourceButton;
         [SerializeField]
         private TextMeshProUGUI _healthTF;
         
@@ -28,7 +28,7 @@ namespace Unity.Presentation.Windows.Upgrade
         public void UpdateView()
         {
             var price = Epoch.TowerUpgradeCost;
-            _priceButton.SetPrice(new Resource(ResourceType.Money, price));
+            resourceButton.SetPrice(new Resource(ResourceType.Money, price));
             _healthTF.text = Epoch.TowerHealth.ToString();
         }
 

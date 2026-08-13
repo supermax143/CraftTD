@@ -10,7 +10,7 @@ namespace Unity.Presentation.Windows.Upgrade
     public class FoodUpgradePanel : MonoBehaviour
     {
         [SerializeField]
-        private PriceButton _priceButton;
+        private ResourceButton resourceButton;
         [SerializeField]
         private TextMeshProUGUI _speedTF;
         
@@ -28,7 +28,7 @@ namespace Unity.Presentation.Windows.Upgrade
         public void UpdateView()
         {
             var price = Epoch.FoodProductionUpgradeCost;//GameStats.FoodProductionSpeedCost(Epoch.FoodProductionLevel);
-            _priceButton.SetPrice(new Resource(ResourceType.Money, price));
+            resourceButton.SetPrice(new Resource(ResourceType.Money, price));
             _speedTF.text = $"{Epoch.FoodProductionSpeed.ToString()}/c";
         }
 
