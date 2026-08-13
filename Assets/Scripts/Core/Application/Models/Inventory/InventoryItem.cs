@@ -1,4 +1,5 @@
 using System;
+using Core.Application.Info.Inventory;
 using UnityEngine;
 
 namespace Core.Application.Models
@@ -7,25 +8,16 @@ namespace Core.Application.Models
     public class InventoryItem
     {
         [SerializeField] private string _id;
-
-        [SerializeField] private InventoryItemType _type;
-
-        [SerializeField] private string _label;
-
-        [SerializeField] private string _description;
+        [SerializeField] private InventoryItemConfig _config;
 
         public string Id => _id;
-        public InventoryItemType Type => _type;
-        public string Label => _label;
-        public string Description => _description;
+        public InventoryItemConfig Config => _config;
 
-        
-        public InventoryItem(string id, InventoryItemType type, string label, string description)
+        public InventoryItem(string id, InventoryItemConfig config)
         {
             _id = id;
-            _type = type;
-            _label = label;
-            _description = description;
+            _config = config;
         }
+        
     }
 }
