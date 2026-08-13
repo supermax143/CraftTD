@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Core.Application::Core.Application.Info.Shop.ShopConfig
   _items:
   - {fileID: 11400000, guid: 3bec41ec7f247574fba13a1d5fdd3558, type: 2}
-  - {fileID: 11400000, guid: 5465766fbf8628d4cae101357f13ac8e, type: 2}
   - {fileID: 11400000, guid: df3f7d34b4a07004d9ac9e5af9603115, type: 2}
   - {fileID: 11400000, guid: c472a00bb0ed4674282cf09fda0e3963, type: 2}
   - {fileID: 11400000, guid: bb2ca81aad642b64bbd17b58f617c635, type: 2}

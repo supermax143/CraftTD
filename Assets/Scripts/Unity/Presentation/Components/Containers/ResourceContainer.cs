@@ -19,18 +19,22 @@ namespace Unity.Presentation.HUD
         [SerializeField]
         private TMP_Text _text;
         [SerializeField] 
-        private ResourceType resourceResourceType;
+        private ResourceType _resourceType;
         
         
         [Inject] private IResourceManager _resourceManager;
         
         private Resource _resource;
+        public ResourceType ResourceType => _resourceType;
 
-        public ResourceType ResourceType => resourceResourceType;
 
         public void Awake()
         {
-            _resource = new Resource(ResourceType, _resource.Value);
+            if (_resource != default)
+            {
+                return;
+            }
+            _resource = new Resource(_resourceType, _resource.Value);
             UpdateCount();
             UpdateIcon();
         }
@@ -38,9 +42,9 @@ namespace Unity.Presentation.HUD
         
         private async UniTask UpdateIcon()
         {
-            if (!_resourceManager.TryGetResourceIcon(resourceResourceType, out var iconRef))
+            if (!_resourceManager.TryGetResourceIcon(_resource.Type, out var iconRef))
             {
-                Debug.LogError($"{GetType().Name} has no icon for {resourceResourceType}");
+                Debug.LogError($"{GetType().Name} has no icon for {_resourceType}");
                 return;
             }
             var icon = await iconRef.LoadAssetReference<Sprite>(iconRef.AssetGUID);
@@ -53,7 +57,7 @@ namespace Unity.Presentation.HUD
             _resource = resource;
             if (resourceChanged)
             {
-                UpdateIcon();
+                UpdateIcon().Forget();
             }
             UpdateCount();
         }

@@ -55,6 +55,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d8a527519d62b8488c20d16f722f7a8
+    m_Address: Assets/_Prefabs/GUI/Views/Shop/ShopItemPack.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7504ede3cee28ff42bc644916d3f98e7
     m_Address: Assets/_SorceAssets/UI/Icons/Shop/shop_item_5.png
     m_ReadOnly: 0

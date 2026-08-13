@@ -24,7 +24,7 @@ namespace Unity.Presentation.Components
         [SerializeField] private ResourceButton _resourceButton;
         [SerializeField] private Button _realMoneyButton;
         [SerializeField] private Button _actionButton;
-        [SerializeField] private InventoryItemContainer _itemContainer;
+        [SerializeField] private RewardContainer[] _rewardContainers;
         
         [Inject] private ILocalization _localization;
         [Inject] private IResourceManager _resourceManager;
@@ -52,11 +52,33 @@ namespace Unity.Presentation.Components
 
             UpdateIcon().Forget();
 
-            if (_inventory.TryGetItemConfig(InventoryItemType.DoubleReward, out var itemConfig))
-            {
-               _itemContainer.SetItemConfig(itemConfig); 
-            }
+
+            UpdateReward();
             UpdateButtons();
+        }
+
+        private void UpdateReward()
+        {
+            for (int i = 0; i < _rewardContainers.Length; i++)
+            {
+                _rewardContainers[i].gameObject.SetActive(false);
+            }
+            
+            for (int i = 0; i < _config.Rewards.Length; i++)
+            {
+                if (i >= _rewardContainers.Length)
+                {
+                    break;
+                }
+                _rewardContainers[i].gameObject.SetActive(true);
+                _rewardContainers[i].SetReward(_config.Rewards[i]);
+            }
+            
+            
+            /*if (_inventory.TryGetItemConfig(InventoryItemType.DoubleReward, out var itemConfig))
+            {
+                _itemContainer.SetItemConfig(itemConfig); 
+            }*/
         }
 
         private void UpdateButtons()

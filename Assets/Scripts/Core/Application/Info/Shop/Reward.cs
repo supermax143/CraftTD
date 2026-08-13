@@ -8,20 +8,20 @@ namespace Core.Application.Info.Shop
     {
         [SerializeField] private RewardType _rewardType;
         [SerializeField] private ResourceType _resourceType;
-        [SerializeField] private InventoryItemType inventoryItemType;
+        [SerializeField] private InventoryItemType _itemType;
         [SerializeField] private int _count;
 
         public RewardType RewardType => _rewardType;
         public ResourceType ResourceType => _resourceType;
         public int Count => _count;
-        public InventoryItemType InventoryItemType => inventoryItemType;
+        public InventoryItemType ItemType => _itemType;
 
-        public Reward(RewardType rewardType, ResourceType resourceType, int count, InventoryItemType inventoryItemType = Models.InventoryItemType.None)
+        public Reward(RewardType rewardType, ResourceType resourceType, int count, InventoryItemType itemType = Models.InventoryItemType.None)
         {
             _rewardType = rewardType;
             _resourceType = resourceType;
             _count = count;
-            this.inventoryItemType = inventoryItemType;
+            this._itemType = itemType;
         }
 
         public static Reward ResourceReward(ResourceType resourceType, int count)

@@ -35,5 +35,5 @@ MonoBehaviour:
   _rewards:
   - _rewardType: 0
     _resourceType: 2
-    _itemType: 1
+    _itemType: 0
     _count: 100
