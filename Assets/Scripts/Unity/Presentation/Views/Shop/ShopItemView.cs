@@ -6,6 +6,7 @@ using Core.Application.Models;
 using Cysharp.Threading.Tasks;
 using TMPro;
 using Unity.Infrastructure.ResourceManager;
+using Unity.Presentation.HUD;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -23,9 +24,11 @@ namespace Unity.Presentation.Components
         [SerializeField] private ResourceButton _resourceButton;
         [SerializeField] private Button _realMoneyButton;
         [SerializeField] private Button _actionButton;
+        [SerializeField] private InventoryItemContainer _itemContainer;
         
         [Inject] private ILocalization _localization;
         [Inject] private IResourceManager _resourceManager;
+        [Inject] private IInventoryModel _inventory;
         
         private ShopItemConfig _config;
 
@@ -48,8 +51,11 @@ namespace Unity.Presentation.Components
             }
 
             UpdateIcon().Forget();
-            
-            
+
+            if (_inventory.TryGetItemConfig(InventoryItemType.DoubleReward, out var itemConfig))
+            {
+               _itemContainer.SetItemConfig(itemConfig); 
+            }
             UpdateButtons();
         }
 

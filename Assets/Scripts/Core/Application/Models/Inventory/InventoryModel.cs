@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Core.Application.DataStorage;
 using Core.Application.DataStorage.StorageItems;
+using Core.Application.Info.Inventory;
 using Zenject;
 
 namespace Core.Application.Models
@@ -12,6 +14,7 @@ namespace Core.Application.Models
         public event Action<ResourceType> OnResourceChanged;
         
         [Inject] private readonly IDataStorage _dataStorage;
+        [Inject] private readonly InventoryConfig _inventoryConfig;
         
         private InventoryStorageData InventoryData => _dataStorage.Inventory;
 
@@ -72,6 +75,12 @@ namespace Core.Application.Models
         public InventoryItem GetItem(string itemId)
         {
             return InventoryData.GetItem(itemId);
+        }
+        
+        public bool TryGetItemConfig(InventoryItemType itemType, out InventoryItemConfig itemConfig)
+        {
+            itemConfig = _inventoryConfig.Items.FirstOrDefault(i => i.Type == itemType);
+            return itemConfig != null;
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using Core.Application.Info.Inventory;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Core.Application.Models
 {
@@ -11,6 +12,10 @@ namespace Core.Application.Models
         [SerializeField] private InventoryItemConfig _config;
 
         public string Id => _id;
+        public InventoryItemType Type => _config.Type;
+        public string Label => _config.Label;
+        public string Description => _config.Description;
+        public AssetReference Icon => _config.Icon;
         public InventoryItemConfig Config => _config;
 
         public InventoryItem(string id, InventoryItemConfig config)

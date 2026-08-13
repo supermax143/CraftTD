@@ -1,4 +1,5 @@
 using Core.Application.DataStorage;
+using Core.Application.Info.Inventory;
 using Core.Application.Info.Shop;
 using Core.Application.Models;
 using Exploration.Scripts.Controllers.ModelRender;
@@ -38,7 +39,9 @@ namespace Unity.Installers
       private AdvertisementController _advertisementController;
       [SerializeField]
       private ShopConfig _shopConfig;
-
+      [SerializeField]
+      private InventoryConfig _inventoryConfig;
+      
 
       public override async void InstallBindings()
       {
@@ -59,6 +62,10 @@ namespace Unity.Installers
          Container.BindInterfacesAndSelfTo<AdvertisementController>().FromInstance(_advertisementController).AsSingle();
          Container.BindInterfacesAndSelfTo<ActionsDispatcher>().AsSingle();
          Container.Bind<AdvertisementDoubleReward>().AsTransient();
+         
+         //Inventory 
+         Container.BindInterfacesAndSelfTo<InventoryModel>().AsSingle();
+         Container.BindInterfacesAndSelfTo<InventoryConfig>().FromInstance(_inventoryConfig).AsSingle();
          
          //Shop
          Container.BindInterfacesAndSelfTo<ShopModel>().AsSingle();

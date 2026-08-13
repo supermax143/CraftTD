@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 1868395679550766830}
   - component: {fileID: 6579656216363141092}
   m_Layer: 0
-  m_Name: ResourcePanel
+  m_Name: ResourceContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -428,6 +428,7 @@ MonoBehaviour:
   _baseGameStats: {fileID: 11400000, guid: 9bd3b21350ad82042b103d73bcba3cec, type: 2}
   _advertisementController: {fileID: 2732569855505565650}
   _shopConfig: {fileID: 11400000, guid: c986c63526032a449b9c31497dfc1bf9, type: 2}
+  _inventoryConfig: {fileID: 11400000, guid: 6b7642a3fcb7e9b47acdc96481f7e5ad, type: 2}
 --- !u!114 &3856448572725618157
 MonoBehaviour:
   m_ObjectHideFlags: 0
