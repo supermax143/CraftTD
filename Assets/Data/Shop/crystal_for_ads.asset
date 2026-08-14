@@ -31,7 +31,7 @@ MonoBehaviour:
   _paymentType: 2
   _currencyType: 2
   _price: 50
-  _isConsumable: 1
+  _isConsumable: 0
   _rewards:
   - _rewardType: 0
     _resourceType: 2

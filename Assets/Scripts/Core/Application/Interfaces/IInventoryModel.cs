@@ -11,5 +11,10 @@ namespace Core.Application.Models
         Resource Money { get; set; }
         Resource Crystal { get; set; }
         bool TryGetItemConfig(InventoryItemType itemType, out InventoryItemConfig itemConfig);
+        void AddResource(ResourceType resourceType, int amount);
+        void AddResource(Resource resource);
+        void WithdrawResource(Resource resource);
+        void WithdrawResource(ResourceType resourceType, int amount);
+        bool HasEnough(ResourceType resourceType, int checkingValue);
     }
 }

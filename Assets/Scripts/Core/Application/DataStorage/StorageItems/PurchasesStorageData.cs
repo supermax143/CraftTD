@@ -39,7 +39,9 @@ namespace Core.Application.DataStorage.StorageItems
         public void AddPurchase(string id)
         {
             if (!_purchasesInfo.Purchases.ContainsKey(id))
+            {
                 _purchasesInfo.Purchases[id] = 0;
+            }
             
             _purchasesInfo.Purchases[id]++;
             Save();

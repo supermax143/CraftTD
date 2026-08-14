@@ -54,7 +54,7 @@ namespace Unity.Presentation.Windows
             switch (config.PaymentType)
             {
                 case PaymentType.GameCurrency:
-                    _shop.BuyWithCurrency(config.Id);
+                    BuyWithGameCurency(config);
                     break;
                 case PaymentType.RealMoney:
                     _purchasesController.BuyProduct(config.Id);
@@ -63,6 +63,13 @@ namespace Unity.Presentation.Windows
                     Debug.Log("ShowAds");
                     break;
             }
+        }
+
+        private void BuyWithGameCurency(ShopItemConfig config)
+        {
+            if(!_shop.CanBuyWithGameCurrency())
+            
+            _shop.BuyWithGameCurrency(config.Id);
         }
 
         private void OnItemPurchased(string itemId)

@@ -16,13 +16,11 @@ namespace Core.Application.Models
         public event Action<string> OnItemPurchased;
 
         [Inject] private readonly ShopConfig _config;
-        [Inject] private readonly InventoryModel _inventory;
+        [Inject] private readonly IInventoryModel _inventory;
         [Inject] private readonly IDataStorage _dataStorage;
         
         
-        
         private PurchasesStorageData Purchases => _dataStorage.Purchases;
-
         
         public IReadOnlyList<ShopItemConfig> Items => _config.Items;
 
@@ -41,7 +39,7 @@ namespace Core.Application.Models
             return Purchases.GetPurchase(itemId) > 0;
         }
 
-        public bool CanBuyWithCurrency(string itemId)
+        public bool CanBuyWithGameCurrency(string itemId)
         {
             var item = GetItem(itemId);
             if (item == null || item.PaymentType != PaymentType.GameCurrency)
@@ -49,60 +47,22 @@ namespace Core.Application.Models
                 return false;
             }
 
-            var currentBalance = item.CurrencyType == ResourceType.Money 
-                ? _inventory.Money.Value 
-                : _inventory.Crystal.Value;
-
-            return currentBalance >= item.Price;
+            return _inventory.HasEnough(item.CurrencyType, item.Price);
         }
 
-        public bool BuyWithCurrency(string itemId)
+        public bool BuyWithGameCurrency(string itemId)
         {
+            if (!CanBuyWithGameCurrency(itemId))
+            {
+                return  false;
+            }
             var item = GetItem(itemId);
-            if (item == null || item.PaymentType != PaymentType.GameCurrency)
-            {
-                return false;
-            }
-
-            if (!CanBuyWithCurrency(itemId))
-            {
-                return false;
-            }
-
-            if (item.CurrencyType == ResourceType.Money)
-            {
-                _inventory.Money = new Resource(ResourceType.Money, _inventory.Money.Value - item.Price);
-            }
-            else if (item.CurrencyType == ResourceType.Crystal)
-            {
-                _inventory.Crystal = new Resource(ResourceType.Crystal, _inventory.Crystal.Value - item.Price);
-            }
-
+            _inventory.WithdrawResource(item.CurrencyType, item.Price);
             GrantReward(item);
-            OnItemPurchased?.Invoke(itemId);
             return true;
         }
 
-        public void GrantRealMoneyPurchase(string itemId)
-        {
-            var item = GetItem(itemId);
-            if (item == null)
-            {
-                return;
-            }
-
-            if (item.PaymentType == PaymentType.RealMoney && !item.IsConsumable)
-            {
-                if (IsPurchased(itemId))
-                {
-                    return;
-                }
-                Purchases.AddPurchase(itemId);
-            }
-
-            GrantReward(item);
-            OnItemPurchased?.Invoke(itemId);
-        }
+        
 
         private void GrantReward(ShopItemConfig item)
         {
@@ -110,18 +70,7 @@ namespace Core.Application.Models
             {
                 if (reward.RewardType == RewardType.Resource)
                 {
-                    if (reward.ResourceType == ResourceType.Money)
-                    {
-                        _inventory.Money = new Resource(ResourceType.Money, _inventory.Money.Value + reward.Count);
-                    }
-                    else if (reward.ResourceType == ResourceType.Crystal)
-                    {
-                        _inventory.Crystal = new Resource(ResourceType.Crystal, _inventory.Crystal.Value + reward.Count);
-                    }
-                    else if (reward.ResourceType == ResourceType.Food)
-                    {
-                        // Food handling if needed in future
-                    }
+                    _inventory.AddResource(reward.ResourceType, reward.Count);
                 }
                 else if (reward.RewardType == RewardType.Item)
                 {

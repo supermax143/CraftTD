@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Application.Models;
@@ -52,6 +53,23 @@ namespace Core.Application.DataStorage.StorageItems
             Save();
         }
 
+        public void WithdrawResource(Resource resource)
+        {
+            var res = _inventoryDataInfo.Resources[(int)resource.Type];
+            if (res.Value < resource.Value)
+            {
+                throw new Exception("Not enough resources");
+            }
+            _inventoryDataInfo.Resources[(int)resource.Type].Value -= resource.Value;
+            Save();
+        }
+        
+        public void AddResource(Resource resource)
+        {
+            _inventoryDataInfo.Resources[(int)resource.Type].Value += resource.Value;
+            Save();
+        }
+        
         public IReadOnlyList<InventoryItem> GetItems()
         {
             return _inventoryDataInfo.Items.AsReadOnly();

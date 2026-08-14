@@ -11,8 +11,8 @@ namespace Core.Application.Models
         IReadOnlyList<ShopItemConfig> Items { get; }
         ShopItemConfig GetItem(string itemId);
         bool IsPurchased(string itemId);
-        bool CanBuyWithCurrency(string itemId);
-        bool BuyWithCurrency(string itemId);
+        bool CanBuyWithGameCurrency(string itemId);
+        bool BuyWithGameCurrency(string itemId);
         void GrantRealMoneyPurchase(string itemId);
     }
 }

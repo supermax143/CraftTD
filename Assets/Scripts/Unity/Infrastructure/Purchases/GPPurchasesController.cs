@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Application.DataStorage;
+using Core.Application.Info.Shop;
+using Core.Application.Models;
 using GamePush;
 using GamePush.Initialization;
 using Unity.Infrastructure.Purchases;
@@ -14,9 +16,9 @@ namespace Zombies.Purchases
     public class GPPurchasesController : IPurchasesController
     {
 
-        public event Action<string> OnPurchaseComplete;
+        public event Action<ShopItemConfig> OnPurchaseComplete;
 
-        [Inject] private Core.Application.Models.IShopModel _shopModel;
+        [Inject] private IShopModel _shopModel;
         [Inject] private IDataStorage _dataStorage;
         
         public bool ProductsInitialized { get; private set; }
@@ -26,10 +28,9 @@ namespace Zombies.Purchases
         
         private TaskCompletionSource<bool> _initTask;
         
-        //private PurchaseItemInfo[] _purchaseItems;
-
         private List<FetchPlayerPurchases> _purchases;
         private List<FetchProducts> _products;
+        
         
 #if DEBUG_MODE
         public async void Initialize()
@@ -101,14 +102,19 @@ namespace Zombies.Purchases
         private void PurchaseCompleteHandler(string id)
         {
             Debug.Log($"PurchaseComplete: {id} ");
-
-            if (_shopModel.IsPurchased(id))
+            var item = _shopModel.GetItem(id);
+            if (!item.IsConsumable)
             {
+                _dataStorage.Purchases.AddPurchase(id);
+                OnPurchaseComplete?.Invoke(item);
                 return;
             }
+            
+            GP_Payments.Consume(id, (id) =>
+            {
+                OnPurchaseComplete?.Invoke(item);
+            });
 
-            _shopModel.GrantRealMoneyPurchase(id);
-            OnPurchaseComplete?.Invoke(id);
         }
         
         private void CheckInitialized()
