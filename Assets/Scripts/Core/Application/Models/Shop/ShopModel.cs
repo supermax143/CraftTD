@@ -62,7 +62,11 @@ namespace Core.Application.Models
             return true;
         }
 
-        
+        public bool TryGetItemWithResourceForRealMoney(ResourceType resourceType, out ShopItemConfig shopItem)
+        {
+            shopItem = _config.Items.FirstOrDefault(item => item.PaymentType == PaymentType.RealMoney && item.CurrencyType == resourceType); 
+            return shopItem != null;
+        }
 
         private void GrantReward(ShopItemConfig item)
         {

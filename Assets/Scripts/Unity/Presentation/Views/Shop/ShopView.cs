@@ -1,6 +1,7 @@
 using System;
 using Core.Application.Info.Shop;
 using Core.Application.Interfaces;
+using Core.Application.Interfaces.Windows;
 using Core.Application.Models;
 using Cysharp.Threading.Tasks;
 using TMPro;
@@ -9,6 +10,7 @@ using Unity.Infrastructure.ResourceManager;
 using Unity.Infrastructure.Windows;
 using Unity.Presentation.Components;
 using Unity.Presentation.Views;
+using Unity.Presentation.Windows.Alert;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -29,6 +31,7 @@ namespace Unity.Presentation.Windows
         [Inject] private IInventoryModel _inventory;
         [Inject] private IShopModel _shop;
         [Inject] private IResourceManager _resourceManager;
+        [Inject] private IWindowsController _windows;
         
         public override void Initialize()
         {
@@ -65,11 +68,26 @@ namespace Unity.Presentation.Windows
             }
         }
 
-        private void BuyWithGameCurency(ShopItemConfig config)
+        private void BuyWithGameCurency(ShopItemConfig item)
         {
-            if(!_shop.CanBuyWithGameCurrency())
-            
-            _shop.BuyWithGameCurrency(config.Id);
+            if (!_shop.CanBuyWithGameCurrency(item.Id))
+            {
+                _windows.ShowWindow<AlertWindow>((window) =>
+                {
+                    window.Setup(AlertWindowState.YesNo ,"!Not enough currency", "!You don't have enough currency. Buy some?");
+                    window.OnResultSelected += result =>
+                    {
+                        if (result != AlertResult.Yes || 
+                            !_shop.TryGetItemWithResourceForRealMoney(item.CurrencyType, out var shopItem))
+                        {
+                            return;
+                        }
+                        _purchasesController.BuyProduct(shopItem.Id);
+                    };
+                });
+            }
+
+            _shop.BuyWithGameCurrency(item.Id);
         }
 
         private void OnItemPurchased(string itemId)

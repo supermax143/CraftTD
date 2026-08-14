@@ -14,5 +14,6 @@ namespace Core.Application.Models
         bool CanBuyWithGameCurrency(string itemId);
         bool BuyWithGameCurrency(string itemId);
         void GrantRealMoneyPurchase(string itemId);
+        bool TryGetItemWithResourceForRealMoney(ResourceType resourceType, out ShopItemConfig shopItem);
     }
 }
