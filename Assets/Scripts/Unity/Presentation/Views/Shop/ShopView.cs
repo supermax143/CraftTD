@@ -75,6 +75,7 @@ namespace Unity.Presentation.Windows
                 _windows.ShowWindow<AlertWindow>((window) =>
                 {
                     window.Setup(AlertWindowState.YesNo ,"!Not enough currency", "!You don't have enough currency. Buy some?");
+                    window.Show();
                     window.OnResultSelected += result =>
                     {
                         if (result != AlertResult.Yes || 
@@ -102,7 +103,6 @@ namespace Unity.Presentation.Windows
         private void OnDestroy()
         {
             _inventory.OnResourceChanged -= OnResourceChanged;
-            _shop.OnItemPurchased -= OnItemPurchased;
         }
     }
 }

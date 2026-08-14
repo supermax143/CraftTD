@@ -15,11 +15,14 @@ namespace Unity.Presentation.HUD
         }
 
         [SerializeField]
-        private ResourceContainer _resourceContainer;
+        private ResourceContainer _moneyContainer;
+        [SerializeField]
+        private ResourceContainer _crystalContainer;
         [SerializeField, HideInInspector]
         private GameHUDAnimatorController _animatorController;
         
         [Inject] private IInventoryModel _inventory;
+        [Inject] private IMainModel _mainModel;
         
         private State _state = State.Idle;
 
@@ -31,14 +34,26 @@ namespace Unity.Presentation.HUD
         public void Start()
         {
             _inventory.OnResourceChanged += OnResourceChanged;
-            _resourceContainer.SetValue(_inventory.GetResourceCount(_resourceContainer.ResourceType));
+            _mainModel.OnPlayerEpochChanged += UpdateResources;
+            UpdateResources();
         }
 
+        private void UpdateResources()
+        {
+            _moneyContainer.SetValue(_inventory.GetResourceCount(_moneyContainer.ResourceType));
+            _crystalContainer.SetValue(_inventory.GetResourceCount(_crystalContainer.ResourceType));
+        }
+        
         private void OnResourceChanged(ResourceType resourceType)
         {
-            if (resourceType == _resourceContainer.ResourceType)
+            if (resourceType == _moneyContainer.ResourceType)
             {
-                _resourceContainer.SetValue(_inventory.GetResourceCount(resourceType));
+                _moneyContainer.SetValue(_inventory.GetResourceCount(resourceType));
+            }
+            
+            if (resourceType == _crystalContainer.ResourceType)
+            {
+                _crystalContainer.SetValue(_inventory.GetResourceCount(resourceType));
             }
         }
 

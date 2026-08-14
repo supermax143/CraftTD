@@ -4,6 +4,7 @@ using System.Linq;
 using Core.Application.DataStorage;
 using Core.Application.DataStorage.StorageItems;
 using Core.Application.Info.Shop;
+using Unity.Infrastructure.Purchases;
 using Zenject;
 
 namespace Core.Application.Models
@@ -11,18 +12,25 @@ namespace Core.Application.Models
     /// <summary>
     /// Модель магазина для управления покупками за игровую и реальную валюту
     /// </summary>
-    public class ShopModel : IShopModel
+    public class ShopModel : IShopModel, IInitializable
     {
-        public event Action<string> OnItemPurchased;
-
         [Inject] private readonly ShopConfig _config;
         [Inject] private readonly IInventoryModel _inventory;
         [Inject] private readonly IDataStorage _dataStorage;
+        [Inject] private readonly IPurchasesController _purchases;
+
         
         
         private PurchasesStorageData Purchases => _dataStorage.Purchases;
         
         public IReadOnlyList<ShopItemConfig> Items => _config.Items;
+
+        public void Initialize()
+        {
+            _purchases.OnPurchaseComplete += OnPurchaseComplete;
+        }
+
+        
 
         public ShopItemConfig GetItem(string itemId)
         {
@@ -64,10 +72,19 @@ namespace Core.Application.Models
 
         public bool TryGetItemWithResourceForRealMoney(ResourceType resourceType, out ShopItemConfig shopItem)
         {
-            shopItem = _config.Items.FirstOrDefault(item => item.PaymentType == PaymentType.RealMoney && item.CurrencyType == resourceType); 
+            shopItem = _config.Items.
+                FirstOrDefault(item => 
+                    item.PaymentType == PaymentType.RealMoney && 
+                    item.CurrencyType == resourceType &&
+                    item.IsConsumable); 
             return shopItem != null;
         }
 
+        private void OnPurchaseComplete(ShopItemConfig item)
+        {
+            GrantReward(item);
+        }
+        
         private void GrantReward(ShopItemConfig item)
         {
             foreach (var reward in item.Rewards)
@@ -82,5 +99,7 @@ namespace Core.Application.Models
                 }
             }
         }
+
+        
     }
 }

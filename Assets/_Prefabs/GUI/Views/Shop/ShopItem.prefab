@@ -669,13 +669,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5824765720096275445, guid: 18103200130bc7f47bc3c216916a55c3,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1942839982157761123}
+    - target: {fileID: 5824765720096275445, guid: 18103200130bc7f47bc3c216916a55c3,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CompleteEpoch
+      value: Buy
       objectReference: {fileID: 0}
     - target: {fileID: 5824765720096275445, guid: 18103200130bc7f47bc3c216916a55c3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Unity.Presentation.Windows.Upgrade.EpochCompletePanel, Assembly-CSharp
+      value: Unity.Presentation.Components.ShopItemView, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -708,6 +713,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4631752138089994156}
     m_Modifications:
+    - target: {fileID: 4064786750384394059, guid: 53eced4a24ebce747937f1fef2c8d375,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1942839982157761123}
+    - target: {fileID: 4064786750384394059, guid: 53eced4a24ebce747937f1fef2c8d375,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064786750384394059, guid: 53eced4a24ebce747937f1fef2c8d375,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Unity.Presentation.Components.ShopItemView, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5492149322598779624, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
       propertyPath: m_Name
@@ -912,7 +932,7 @@ PrefabInstance:
     - target: {fileID: 200368233416292268, guid: 865db1dbc79f0284e9b23e48c0467d36,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 124.44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 200368233416292268, guid: 865db1dbc79f0284e9b23e48c0467d36,
         type: 3}
@@ -1211,13 +1231,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4064786750384394059, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1942839982157761123}
+    - target: {fileID: 4064786750384394059, guid: 53eced4a24ebce747937f1fef2c8d375,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CompleteEpochForMoney
+      value: Buy
       objectReference: {fileID: 0}
     - target: {fileID: 4064786750384394059, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Unity.Presentation.Windows.Upgrade.EpochCompletePanel, Assembly-CSharp
+      value: Unity.Presentation.Components.ShopItemView, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5492149322598779624, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}
