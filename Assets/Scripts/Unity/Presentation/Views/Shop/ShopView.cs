@@ -10,6 +10,7 @@ using Unity.Infrastructure.Windows;
 using Unity.Presentation.Components;
 using Unity.Presentation.Views;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Unity.Presentation.Windows
@@ -19,8 +20,9 @@ namespace Unity.Presentation.Windows
     /// </summary>
     public class ShopView : ViewBase
     {
+        [SerializeField] private Transform _packsContainer;
         [SerializeField] private Transform _itemsContainer;
-
+        
         [Inject] private IMainModel _model;
         [Inject] private IPurchasesController _purchasesController;
         [Inject] private DiContainer _container;
@@ -38,10 +40,12 @@ namespace Unity.Presentation.Windows
         {
             foreach (var config in _shop.Items)
             {
+                var parent = config.Rewards.Length > 1 ? _packsContainer : _itemsContainer;
                 var prefab = await config.Prefab.LoadAssetReference<GameObject>(gameObject);
-                var view = _container.InstantiatePrefabForComponent<ShopItemView>(prefab, _itemsContainer);
+                var view = _container.InstantiatePrefabForComponent<ShopItemView>(prefab, parent);
                 view.Initialize(config);
             }
+            LayoutRebuilder.ForceRebuildLayoutImmediate(_itemsContainer.parent as RectTransform);
         }
 
         private void OnBuyClicked(ShopItemConfig config)
