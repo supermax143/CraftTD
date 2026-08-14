@@ -18,6 +18,8 @@ namespace Unity.Presentation.Components
     /// </summary>
     public class ShopItemView : MonoBehaviour
     {
+        public event Action<ShopItemConfig> OnBuyClicked;
+        
         [SerializeField] private TextMeshProUGUI _nameTF;
         [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _descriptionTF;
@@ -73,12 +75,6 @@ namespace Unity.Presentation.Components
                 _rewardContainers[i].gameObject.SetActive(true);
                 _rewardContainers[i].SetReward(_config.Rewards[i]);
             }
-            
-            
-            /*if (_inventory.TryGetItemConfig(InventoryItemType.DoubleReward, out var itemConfig))
-            {
-                _itemContainer.SetItemConfig(itemConfig); 
-            }*/
         }
 
         private void UpdateButtons()
@@ -112,6 +108,11 @@ namespace Unity.Presentation.Components
             }
             var icon = await iconSource.LoadAssetReference<Sprite>(iconSource.AssetGUID);
             _icon.sprite = icon;
+        }
+
+        public void Buy()
+        {
+            OnBuyClicked?.Invoke(_config);
         }
         
     }

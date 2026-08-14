@@ -635,12 +635,12 @@ PrefabInstance:
     - target: {fileID: 1549570055525354964, guid: 18103200130bc7f47bc3c216916a55c3,
         type: 3}
       propertyPath: m_text
-      value: 2222
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1549570055525354964, guid: 18103200130bc7f47bc3c216916a55c3,
         type: 3}
       propertyPath: m_fontSize
-      value: 86.85
+      value: 100.65
       objectReference: {fileID: 0}
     - target: {fileID: 1549570055525354964, guid: 18103200130bc7f47bc3c216916a55c3,
         type: 3}
@@ -649,8 +649,13 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f49aef6514798d04cb02bb9d754e0b02, type: 2}
     - target: {fileID: 1605538781527478651, guid: 18103200130bc7f47bc3c216916a55c3,
         type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -1.0278
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605538781527478651, guid: 18103200130bc7f47bc3c216916a55c3,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.1598969
+      value: -8.3617
       objectReference: {fileID: 0}
     - target: {fileID: 2631429537811054166, guid: 18103200130bc7f47bc3c216916a55c3,
         type: 3}
@@ -707,6 +712,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ActionButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492149322598779624, guid: 53eced4a24ebce747937f1fef2c8d375,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7416155366353405857, guid: 53eced4a24ebce747937f1fef2c8d375,
         type: 3}

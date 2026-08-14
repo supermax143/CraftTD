@@ -43,6 +43,7 @@ namespace Unity.Presentation.Windows
                 var parent = config.Rewards.Length > 1 ? _packsContainer : _itemsContainer;
                 var prefab = await config.Prefab.LoadAssetReference<GameObject>(gameObject);
                 var view = _container.InstantiatePrefabForComponent<ShopItemView>(prefab, parent);
+                view.OnBuyClicked += OnBuyClicked;
                 view.Initialize(config);
             }
             LayoutRebuilder.ForceRebuildLayoutImmediate(_itemsContainer.parent as RectTransform);
@@ -50,25 +51,23 @@ namespace Unity.Presentation.Windows
 
         private void OnBuyClicked(ShopItemConfig config)
         {
-            if (config.PaymentType == PaymentType.GameCurrency)
+            switch (config.PaymentType)
             {
-                _shop.BuyWithCurrency(config.Id);
-            }
-            else
-            {
-                _purchasesController.BuyProduct(config.Id);
+                case PaymentType.GameCurrency:
+                    _shop.BuyWithCurrency(config.Id);
+                    break;
+                case PaymentType.RealMoney:
+                    _purchasesController.BuyProduct(config.Id);
+                    break;
+                case PaymentType.WatchingAds:
+                    Debug.Log("ShowAds");
+                    break;
             }
         }
 
         private void OnItemPurchased(string itemId)
         {
-            /*foreach (Transform child in _itemsContainer)
-            {
-                if (child.TryGetComponent<ShopItemView>(out var view))
-                {
-                    view.Refresh();
-                }
-            }*/
+           
         }
 
         private void OnResourceChanged(ResourceType resourceType)
