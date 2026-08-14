@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: item_triple_reward
   m_EditorClassIdentifier: Core.Application::Core.Application.Info.Inventory.InventoryItemConfig
   _type: 2
-  _label: x3 Coins
+  _label: x3 Reward
   _description: 
   _icon:
     m_AssetGUID: 6e7cf2b7a61373844a05e5a8ba46e6d7
