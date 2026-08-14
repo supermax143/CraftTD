@@ -407,7 +407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.70980394}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -902,12 +902,12 @@ PrefabInstance:
     - target: {fileID: 200368233416292268, guid: 865db1dbc79f0284e9b23e48c0467d36,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 263.85
+      value: 124.44
       objectReference: {fileID: 0}
     - target: {fileID: 200368233416292268, guid: 865db1dbc79f0284e9b23e48c0467d36,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 203.5377
+      value: 133.8327
       objectReference: {fileID: 0}
     - target: {fileID: 200368233416292268, guid: 865db1dbc79f0284e9b23e48c0467d36,
         type: 3}
@@ -972,7 +972,7 @@ PrefabInstance:
     - target: {fileID: 3348689586225600220, guid: 865db1dbc79f0284e9b23e48c0467d36,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 352.698
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3348689586225600220, guid: 865db1dbc79f0284e9b23e48c0467d36,
         type: 3}
@@ -1091,8 +1091,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9068609254784054532, guid: 865db1dbc79f0284e9b23e48c0467d36,
         type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068609254784054532, guid: 865db1dbc79f0284e9b23e48c0467d36,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068609254784054532, guid: 865db1dbc79f0284e9b23e48c0467d36,
+        type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9068609254784054532, guid: 865db1dbc79f0284e9b23e48c0467d36,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -41.2645
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
