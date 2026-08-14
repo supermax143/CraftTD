@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Core.Application::Core.Application.Info.Inventory.InventoryConfig
   _items:
   - {fileID: 11400000, guid: f979fb96ffda3514880f7121660c373b, type: 2}
+  - {fileID: 11400000, guid: c67314cdcddbcc640a00704ef73d382b, type: 2}

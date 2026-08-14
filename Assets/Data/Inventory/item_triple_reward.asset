@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d570368e92ea7b348ba50a627ca49026, type: 3}
-  m_Name: item_double_reward
+  m_Name: item_triple_reward
   m_EditorClassIdentifier: Core.Application::Core.Application.Info.Inventory.InventoryItemConfig
-  _type: 1
-  _label: x2 Coins
+  _type: 2
+  _label: x3 Coins
   _description: 
   _icon:
     m_AssetGUID: 6e7cf2b7a61373844a05e5a8ba46e6d7

@@ -13,8 +13,9 @@ namespace Core.Application.Info.Inventory
         [SerializeField] private InventoryItemType _type;
         [SerializeField] private string _label;
         [SerializeField] private string _description;
-        [SerializeField] private AssetReference _icon;
+        [SerializeField] private AssetReferenceSprite _icon;
 
+        
         public InventoryItemType Type => _type;
         public string Label => _label;
         public string Description => _description;
