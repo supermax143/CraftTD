@@ -16,5 +16,7 @@ namespace Core.Application.Models
         void WithdrawResource(Resource resource);
         void WithdrawResource(ResourceType resourceType, int amount);
         bool HasEnough(ResourceType resourceType, int checkingValue);
+        void AddItem(InventoryItemType itemType);
+        void RemoveItem(int itemId);
     }
 }

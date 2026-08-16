@@ -4,12 +4,16 @@ using System.Linq;
 using Core.Application.DataStorage;
 using Core.Application.DataStorage.StorageItems;
 using Core.Application.Info.Inventory;
+using ModestTree;
+using UnityEngine;
 using Zenject;
 
 namespace Core.Application.Models
 {
     public class InventoryModel : IInventoryModel
     {
+
+        
         public event Action OnItemsChanged;
         public event Action<ResourceType> OnResourceChanged;
         
@@ -18,6 +22,7 @@ namespace Core.Application.Models
         
         private InventoryStorageData InventoryData => _dataStorage.Inventory;
 
+        private int _nextId = -1;
        
         public Resource Money
         {
@@ -39,7 +44,29 @@ namespace Core.Application.Models
             }
         }
 
+        private void InitNextId()
+        {
+            var items = InventoryData.GetItems();
+            if (items.IsEmpty())
+            {
+                _nextId = 1;
+            }
+            else
+            {
+                _nextId = items.Max(i => i.Id);
+            }
+        }
         
+        private int GetNextId()
+        {
+            if (_nextId == -1)
+            {
+                InitNextId();
+            }
+            return _nextId + 1;
+        }
+
+
         public void WithdrawResource(Resource resource)
         {
             if (resource.Value > GetResourceCount(resource.Type))
@@ -74,24 +101,36 @@ namespace Core.Application.Models
         
         public IReadOnlyList<InventoryItem> Items => InventoryData.GetItems();
 
+
+        public void AddItem(InventoryItemType itemType)
+        {
+            if (!TryGetItemConfig(itemType, out var config))
+            {
+                Debug.LogError($"config {itemType} not found");
+                return;
+            }
+            AddItem(new InventoryItem(GetNextId(), config));
+            _nextId++;
+        }
+        
         public void AddItem(InventoryItem inventoryItem)
         {
             InventoryData.AddItem(inventoryItem);
             OnItemsChanged?.Invoke();
         }
 
-        public void RemoveItem(string itemId)
+        public void RemoveItem(int itemId)
         {
             InventoryData.RemoveItem(itemId);
             OnItemsChanged?.Invoke();
         }
 
-        public bool HasItem(string itemId)
+        public bool HasItem(int itemId)
         {
             return InventoryData.HasItem(itemId);
         }
 
-        public InventoryItem GetItem(string itemId)
+        public InventoryItem GetItem(int itemId)
         {
             return InventoryData.GetItem(itemId);
         }

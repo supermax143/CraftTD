@@ -81,18 +81,18 @@ namespace Core.Application.DataStorage.StorageItems
             Save();
         }
 
-        public void RemoveItem(string itemId)
+        public void RemoveItem(int itemId)
         {
             _inventoryDataInfo.Items.RemoveAll(i => i.Id == itemId);
             Save();
         }
 
-        public bool HasItem(string itemId)
+        public bool HasItem(int itemId)
         {
             return _inventoryDataInfo.Items.Any(i => i.Id == itemId);
         }
 
-        public InventoryItem GetItem(string itemId)
+        public InventoryItem GetItem(int itemId)
         {
             return _inventoryDataInfo.Items.FirstOrDefault(i => i.Id == itemId);
         }

@@ -95,7 +95,7 @@ namespace Core.Application.Models
                 }
                 else if (reward.RewardType == RewardType.Item)
                 {
-                    // Item handling
+                    _inventory.AddItem(reward.ItemType);
                 }
             }
         }

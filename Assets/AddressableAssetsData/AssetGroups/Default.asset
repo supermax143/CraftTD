@@ -15,18 +15,8 @@ MonoBehaviour:
   m_GroupName: Default
   m_GUID: bd013abf932112c45a0fe315efc3121e
   m_SerializeEntries:
-  - m_GUID: 14b492fc527fec34abdddf5387a6dd23
-    m_Address: Assets/_SorceAssets/UI/Icons/Shop/shop_item_8.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 24603c8483260b54f88b9ac4ae90a1d5
     m_Address: Assets/Prefabs/Game/2d/Effects/Explosions/explosion3.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 37d310a1d0f251a4f91a42c273674a0e
-    m_Address: Assets/_SorceAssets/UI/Icons/Shop/shop_item_7.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -35,18 +25,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 40dbb57f6b1121949971a639b298deae
-    m_Address: Assets/_SorceAssets/UI/Icons/Shop/shop_item_6.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 48ea36707e5bfdd43adaea4684d8ec5c
     m_Address: Assets/Prefabs/Game/2d/Effects/Explosions/Explosion2.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5805da78cd931cf49916bc3863dc0f4b
-    m_Address: Assets/_SorceAssets/UI/Icons/Shop/shop_item_1.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -60,23 +40,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7504ede3cee28ff42bc644916d3f98e7
-    m_Address: Assets/_SorceAssets/UI/Icons/Shop/shop_item_5.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 863387ac4f84b2a4c94c9f63cc8cb364
-    m_Address: Assets/_SorceAssets/UI/Icons/Shop/shop_item_3.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ae773709fe04b3b43a9eafba1825a46b
     m_Address: Localization
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b1469b26704cba2419483c17c4ea945d
-    m_Address: Assets/_SorceAssets/UI/Icons/Shop/shop_item_4.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -92,11 +57,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f5565f0038c20ff41ac71834f4f4b9d6
     m_Address: Assets/Tutorial/TestTutorial.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f9585205e91e31d47a14f6c4d7de7dec
-    m_Address: Assets/_SorceAssets/UI/Icons/Shop/shop_item_2.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

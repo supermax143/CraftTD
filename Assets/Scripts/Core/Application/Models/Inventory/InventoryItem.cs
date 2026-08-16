@@ -8,17 +8,17 @@ namespace Core.Application.Models
     [Serializable]
     public class InventoryItem
     {
-        [SerializeField] private string _id;
+        [SerializeField] private int _id;
         [SerializeField] private InventoryItemConfig _config;
 
-        public string Id => _id;
+        public int Id => _id;
         public InventoryItemType Type => _config.Type;
         public string Label => _config.Label;
         public string Description => _config.Description;
         public AssetReference Icon => _config.Icon;
         public InventoryItemConfig Config => _config;
 
-        public InventoryItem(string id, InventoryItemConfig config)
+        public InventoryItem(int id, InventoryItemConfig config)
         {
             _id = id;
             _config = config;

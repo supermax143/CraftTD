@@ -16,8 +16,8 @@ MonoBehaviour:
   _label: x2 Reward
   _description: 
   _icon:
-    m_AssetGUID: 6e7cf2b7a61373844a05e5a8ba46e6d7
-    m_SubObjectName: icon_money
+    m_AssetGUID: c36ac2d189a3f1f4485dc7a0bc7b9541
+    m_SubObjectName: icon_item_x2
     m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 
