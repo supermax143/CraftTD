@@ -26,7 +26,6 @@ namespace Unity.Game
         public void Initialize(HealthComponent healthComponent)
         {
             _healthComponent = healthComponent;
-            //_healthComponent.OnDeath += OnDeathHandler;
         }
 
         public void OnDeathHandler()
@@ -41,7 +40,6 @@ namespace Unity.Game
             {
                 return;
             }
-            //_healthComponent.OnDeath -= OnDeathHandler;
         }
     }
 }
