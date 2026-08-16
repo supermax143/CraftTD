@@ -24,6 +24,8 @@ namespace Unity.Game
         [Inject] private IEnumerable<IDropTarget> _dropTargets;
         [Inject] private VisualEffectSpawnManager _effectSpawnManager;
         
+        private readonly List<Transform> _dropTransforms = new List<Transform>();
+        
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
@@ -41,11 +43,21 @@ namespace Unity.Game
             var drop = rewardView.transform;
             drop.localScale = Vector3.one * .5f;
             var targetIcon = _dropTargets.FirstOrDefault().GetTargetRect();
+            _dropTransforms.Add(drop);
             _dropAnimator.Show(drop, direction, (target) =>
             {
+                if (drop == null)
+                {
+                    return;
+                }
                 _flyToTargetAnimator.FlyToIcon(targetIcon, drop, 2,(drop) =>
                 {
+                    if (drop == null)
+                    {
+                        return;
+                    }
                     _dropTargets.FirstOrDefault().AddResource(resource);
+                    _dropTransforms.Remove(drop);
                     Destroy(drop.gameObject);
                 });
             });
@@ -57,6 +69,13 @@ namespace Unity.Game
             foreach (var target in _dropTargets)
             {
                 target.Clear();
+            }
+
+            while (_dropTransforms.Count > 0)
+            {
+                var drop = _dropTransforms[0];
+                _dropTransforms.RemoveAt(0);
+                Destroy(drop.gameObject);
             }
         }
         

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Threading.Tasks;
 using Core.Application.Interfaces.Views;
 using Core.Application.Interfaces.Windows;
 using Core.Application.Models;
@@ -43,12 +44,21 @@ namespace Unity.Infrastructure.VisualActions.Actions
         
         public async UniTask ShowResultWindow(bool playerWin)
         {
+            await UniTask.Delay(1500);
             _rewardAggregator.HandleBattleFinish();
             _resultWindow = await _windowsController.ShowWindow<ResultWindow>();
             _resultWindow.SetResult(_rewardAggregator.Money, playerWin);
             _resultWindow.Show();
             _resultWindow.OnAdStartWatch += WatchAdForDoubleMoney;
             _resultWindow.OnHide += OnResultWindowClose;
+            if(!_viewsController.TryGetCurrentView(out var view) || !(view is BattleView battleView))
+           {
+               Debug.Log("current view is not battle");
+               Complete();
+               return;
+           }
+           battleView.SetIsBattleState(false);
+           _hud.ShowIdleView();
         }
         
         private void WatchAdForDoubleMoney()
@@ -75,14 +85,14 @@ namespace Unity.Infrastructure.VisualActions.Actions
             _inventory.Money += _rewardAggregator.Money;
             _rewardAggregator.Reset();
             
-            if(!_viewsController.TryGetCurrentView(out var view) || !(view is BattleView battleView))
+            /*if(!_viewsController.TryGetCurrentView(out var view) || !(view is BattleView battleView))
             {
                 Debug.Log("current view is not battle");
                 Complete();
                 return;
             }
             battleView.SetIsBattleState(false);
-            _hud.ShowIdleView();
+            _hud.ShowIdleView();*/
             StartCoroutine(ResetLevel());
         }
 
