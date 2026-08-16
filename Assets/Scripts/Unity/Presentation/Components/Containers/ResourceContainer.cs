@@ -83,6 +83,11 @@ namespace Unity.Presentation.HUD
             _resource += resource;
             UpdateCount();
         }
-        
+
+        public void Clear()
+        {
+            _resource.Value = 0;
+            UpdateCount();
+        }
     }
 }

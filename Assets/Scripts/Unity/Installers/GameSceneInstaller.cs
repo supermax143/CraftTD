@@ -19,13 +19,13 @@ namespace Unity.Installers
     public class GameSceneInstaller : MonoInstaller
     {
         [SerializeField]
-        private ResourceContainer[] _dropTargets;
+        private ResourceContainer[] _battleDropTargets;
         [SerializeField]
         private GameHUD _hud;
         
         public override void InstallBindings()
         {
-            Container.Bind<IEnumerable<IDropTarget>>().FromInstance(_dropTargets).AsSingle();
+            Container.Bind<IEnumerable<IDropTarget>>().FromInstance(_battleDropTargets).AsSingle();
             Container.BindInterfacesAndSelfTo<LevelRewardAggregator>().AsSingle();
             Container.Bind<GameHUD>().FromInstance(_hud).AsSingle();
             

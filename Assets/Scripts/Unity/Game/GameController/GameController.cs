@@ -49,6 +49,7 @@ namespace Unity.Game
         [Inject] private IAdvertisementController _advertisementController;
         [Inject] private IActionsDispatcher _actionsDispatcher;
         [Inject] private IViewsController _viewsController;
+        [Inject] private DropManager _dropManager;
         
         private EpochModel PlayerEpoch => _mainModel.PlayerEpoch;
         private EpochModel EnemyEpoch => _mainModel.EnemyEpoch;
@@ -148,6 +149,7 @@ namespace Unity.Game
         {
             _started = false;
             _foodProduction.Reset();
+            _dropManager.Reset();
             foreach (var team in _teams)
             {
                 team.Reset();

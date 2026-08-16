@@ -52,6 +52,13 @@ namespace Unity.Game
             
         }
         
+        public void Reset()
+        {
+            foreach (var target in _dropTargets)
+            {
+                target.Clear();
+            }
+        }
         
         
     }
