@@ -22,3 +22,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     m_SubObjectGUID: 
     m_EditorAssetChanged: 1
+  _modifiers:
+  - _attributeKind: 11
+    _modifierKind: 1
+    _value: 2

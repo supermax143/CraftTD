@@ -101,12 +101,22 @@ namespace Unity.Game.Attributes
         private TValue _valueModified;
 
 
-        protected GameEntityAttribute(TValue value) : base()
+        protected GameEntityAttribute(TValue baseValue) : base()
         {
-            _value = value;
+            _value = baseValue;
+        }
+
+        public TValue BaseValue
+        {
+            get => _value;
+            set
+            {
+                _value = value;
+                _isDirty = true;
+            }
         }
         
-        public TValue ValueModified
+        public TValue BaseValueModified
         {
             get
             {

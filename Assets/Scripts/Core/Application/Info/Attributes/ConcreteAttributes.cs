@@ -7,8 +7,8 @@ namespace Unity.Game.Attributes.Specific
     [Serializable]
     public class DamageAttribute : FloatEntityAttribute
     {
-        public DamageAttribute(float value = 0f)
-            : base(value)
+        public DamageAttribute(float baseValue = 0f)
+            : base(baseValue)
         {
         }
 
@@ -18,8 +18,8 @@ namespace Unity.Game.Attributes.Specific
     [Serializable]
     public class AttackRangeAttribute : FloatEntityAttribute
     {
-        public AttackRangeAttribute(float value = 0f)
-            : base(value)
+        public AttackRangeAttribute(float baseValue = 0f)
+            : base(baseValue)
         {
         }
 
@@ -29,8 +29,8 @@ namespace Unity.Game.Attributes.Specific
     [Serializable]
     public class MoveSpeedAttribute : FloatEntityAttribute
     {
-        public MoveSpeedAttribute(float value = 0f)
-            : base(value)
+        public MoveSpeedAttribute(float baseValue = 0f)
+            : base(baseValue)
         {
         }
 
@@ -40,8 +40,8 @@ namespace Unity.Game.Attributes.Specific
     [Serializable]
     public class AttackSpeedAttribute : FloatEntityAttribute
     {
-        public AttackSpeedAttribute(float value = 0f)
-            : base(value)
+        public AttackSpeedAttribute(float baseValue = 0f)
+            : base(baseValue)
         {
         }
 
@@ -52,8 +52,8 @@ namespace Unity.Game.Attributes.Specific
     [Serializable]
     public class DetectionRangeAttribute : FloatEntityAttribute
     {
-        public DetectionRangeAttribute(float value = 0f)
-            : base(value)
+        public DetectionRangeAttribute(float baseValue = 0f)
+            : base(baseValue)
         {
         }
 
@@ -64,8 +64,8 @@ namespace Unity.Game.Attributes.Specific
     [Serializable]
     public class HealthAttribute : IntEntityAttribute
     {
-        public HealthAttribute(int value = 0)
-            : base(value)
+        public HealthAttribute(int baseValue = 0)
+            : base(baseValue)
         {
         }
 
@@ -75,8 +75,8 @@ namespace Unity.Game.Attributes.Specific
     [Serializable]
     public class UnitFoodCostAttribute : IntEntityAttribute
     {
-        public UnitFoodCostAttribute(int value = 0)
-            : base(value)
+        public UnitFoodCostAttribute(int baseValue = 0)
+            : base(baseValue)
         {
         }
 
@@ -87,8 +87,8 @@ namespace Unity.Game.Attributes.Specific
     [Serializable]
     public class UnitUnlockCostAttribute : IntEntityAttribute
     {
-        public UnitUnlockCostAttribute(int value = 0)
-            : base(value)
+        public UnitUnlockCostAttribute(int baseValue = 0)
+            : base(baseValue)
         {
         }
 
@@ -98,8 +98,8 @@ namespace Unity.Game.Attributes.Specific
     [Serializable]
     public class RewardMoneyAttribute : IntEntityAttribute
     {
-        public RewardMoneyAttribute(int value = 0)
-            : base(value)
+        public RewardMoneyAttribute(int baseValue = 0)
+            : base(baseValue)
         {
         }
 
@@ -109,8 +109,8 @@ namespace Unity.Game.Attributes.Specific
     [Serializable]
     public class TowerPrefabAttribute : GameObjectEntityAttribute
     {
-        public TowerPrefabAttribute(GameObject value = null)
-            : base(value)
+        public TowerPrefabAttribute(GameObject baseValue = null)
+            : base(baseValue)
         {
         }
 
@@ -120,8 +120,8 @@ namespace Unity.Game.Attributes.Specific
     [Serializable]
     public class UnitPrefabAttribute : GameObjectEntityAttribute
     {
-        public UnitPrefabAttribute(GameObject value = null)
-            : base(value)
+        public UnitPrefabAttribute(GameObject baseValue = null)
+            : base(baseValue)
         {
         }
 

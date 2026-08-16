@@ -1,3 +1,4 @@
+using Core.Application.Info.Attributes.AttributeModifiers;
 using Core.Application.Models;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -14,12 +15,15 @@ namespace Core.Application.Info.Inventory
         [SerializeField] private string _label;
         [SerializeField] private string _description;
         [SerializeField] private AssetReferenceSprite _icon;
-
+        [SerializeField] private AttributeModifierWrapper[] _modifiers;
+        
         
         public InventoryItemType Type => _type;
         public string Label => _label;
         public string Description => _description;
         public AssetReference Icon => _icon;
+
+        public AttributeModifierWrapper[] Modifiers => _modifiers;
 
         public bool TryGetIcon(out AssetReference icon)
         {

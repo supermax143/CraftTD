@@ -9,5 +9,6 @@ namespace Unity.Game
         Resource Money { get; }
         event Action OnMoneyChanged;
         void Reset();
+        void HandleBattleFinish();
     }
 }

@@ -52,8 +52,14 @@ namespace Core.Application.Models
         public void Initialize()
         {
             LoadItemsFromStorage();
+            InventoryData.OnReset += OnDataReset;
         }
-        
+
+        private void OnDataReset()
+        {
+            LoadItemsFromStorage();
+        }
+
         private void InitNextId()
         {
             var itemsData = InventoryData.GetItemsData();

@@ -5,8 +5,8 @@ namespace Unity.Game.Data.Attributes
 {
     public abstract class GameObjectEntityAttribute : GameEntityAttribute<GameObject>
     {
-        public GameObjectEntityAttribute(GameObject value)
-            : base(value)
+        public GameObjectEntityAttribute(GameObject baseValue)
+            : base(baseValue)
         {
         }
 

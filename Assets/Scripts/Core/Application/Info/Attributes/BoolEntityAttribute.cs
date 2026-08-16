@@ -2,8 +2,8 @@
 {
     public abstract class BoolEntityAttribute : GameEntityAttribute<bool>
     {
-        public BoolEntityAttribute(bool value, GameEntityAttributeKind kind)
-            : base(value)
+        public BoolEntityAttribute(bool baseValue, GameEntityAttributeKind kind)
+            : base(baseValue)
         {
         }
     }

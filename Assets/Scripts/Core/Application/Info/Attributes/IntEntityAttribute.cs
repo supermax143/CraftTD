@@ -5,8 +5,8 @@ namespace Unity.Game.Attributes
     [Serializable]
     public abstract class IntEntityAttribute : GameEntityAttribute<int>
     {
-        public IntEntityAttribute(int value)
-            : base(value)
+        public IntEntityAttribute(int baseValue)
+            : base(baseValue)
         {
         }
     }

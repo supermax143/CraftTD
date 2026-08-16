@@ -43,6 +43,7 @@ namespace Unity.Infrastructure.VisualActions.Actions
         
         public async UniTask ShowResultWindow(bool playerWin)
         {
+            _rewardAggregator.HandleBattleFinish();
             _resultWindow = await _windowsController.ShowWindow<ResultWindow>();
             _resultWindow.SetResult(_rewardAggregator.Money, playerWin);
             _resultWindow.Show();

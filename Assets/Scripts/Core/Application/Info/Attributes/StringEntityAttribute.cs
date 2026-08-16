@@ -2,8 +2,8 @@
 {
     public abstract class StringEntityAttribute : GameEntityAttribute<string>
     {
-        public StringEntityAttribute(string value, GameEntityAttributeKind kind)
-            : base(value)
+        public StringEntityAttribute(string baseValue, GameEntityAttributeKind kind)
+            : base(baseValue)
         {
         }
     }

@@ -30,6 +30,7 @@ namespace Core.Application.DataStorage.StorageItems
 
     public class InventoryStorageData
     {
+        public event Action OnReset;
         private const string INVENTORY_DATA_KEY = "InventoryData";
 
         private InventoryDataInfo _inventoryDataInfo = new InventoryDataInfo();
@@ -117,6 +118,7 @@ namespace Core.Application.DataStorage.StorageItems
         {
             InitializeDefaultData();
             Save();
+            OnReset?.Invoke();
         }
 
         public void ResetMoney()
