@@ -23,7 +23,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: _HorizontalDissolve
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -117,6 +117,7 @@ Material:
     - _GlossyReflections: 0
     - _HorizontalDissolve: 0
     - _HorizontalDissolveAmount: 0
+    - _HorizontalDissolveIversed: 0
     - _HorizontalOutlineThikness: 0.01
     - _Metallic: 0
     - _OcclusionStrength: 1

@@ -94,7 +94,7 @@ Material:
     - _HitAmmount: 0
     - _HitAmount: 0
     - _HitEffect: 0
-    - _HorizontalDissolve: 1
+    - _HorizontalDissolve: 0
     - _HorizontalDissolveAmount: 0
     - _HorizontalDissolveIversed: 0
     - _HorizontalOutlineThikness: 0.01
