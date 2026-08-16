@@ -44,21 +44,33 @@ namespace Unity.Infrastructure.VisualActions.Actions
         
         public async UniTask ShowResultWindow(bool playerWin)
         {
-            await UniTask.Delay(1500);
+            await UniTask.WaitForFixedUpdate();//ожидаем обновления
             _rewardAggregator.HandleBattleFinish();
+            if (_rewardAggregator.Money.Value == 0)
+            {
+                ShowIdleView();
+                OnResultWindowClose(null);
+                return;
+            }
+            await UniTask.Delay((int)(Data.Delay * 1000));
             _resultWindow = await _windowsController.ShowWindow<ResultWindow>();
             _resultWindow.SetResult(_rewardAggregator.Money, playerWin);
             _resultWindow.Show();
             _resultWindow.OnAdStartWatch += WatchAdForDoubleMoney;
             _resultWindow.OnHide += OnResultWindowClose;
+            ShowIdleView();
+        }
+        
+        private void ShowIdleView()
+        {
             if(!_viewsController.TryGetCurrentView(out var view) || !(view is BattleView battleView))
-           {
-               Debug.Log("current view is not battle");
-               Complete();
-               return;
-           }
-           battleView.SetIsBattleState(false);
-           _hud.ShowIdleView();
+            {
+                Debug.Log("current view is not battle");
+                return;
+            }
+            battleView.SetIsBattleState(false);
+            _hud.ShowIdleView();
+            _hud.ShowIdleView();
         }
         
         private void WatchAdForDoubleMoney()
@@ -77,11 +89,14 @@ namespace Unity.Infrastructure.VisualActions.Actions
             DOVirtual.DelayedCall(1.5f, () => _resultWindow.Hide());
         }
 
-        private void OnResultWindowClose(IWindow iWindow)
+        private void OnResultWindowClose(IWindow window = null)
         {
-            _resultWindow.OnAdStartWatch -= WatchAdForDoubleMoney;
-            _resultWindow.OnHide -= OnResultWindowClose;
-            _resultWindow = null;
+            if (_resultWindow != null)
+            {
+                _resultWindow.OnAdStartWatch -= WatchAdForDoubleMoney;
+                _resultWindow.OnHide -= OnResultWindowClose;
+                _resultWindow = null;
+            }
             _inventory.Money += _rewardAggregator.Money;
             _rewardAggregator.Reset();
             

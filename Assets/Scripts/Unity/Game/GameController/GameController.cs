@@ -114,7 +114,7 @@ namespace Unity.Game
             
             _foodProduction.StopProduction();
             OnGameFinished?.Invoke(winner);
-            _actionsDispatcher.AddAction(new ShowResultActionData(playerWin, resetTower, 1f));
+            _actionsDispatcher.AddAction(new ShowResultActionData(playerWin, resetTower, 1.5f));
             if (epochIncreased)
             {
                 _mainModel.IncreaseEnemyEpoch();
