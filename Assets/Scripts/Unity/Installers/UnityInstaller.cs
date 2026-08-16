@@ -63,6 +63,9 @@ namespace Unity.Installers
          Container.BindInterfacesAndSelfTo<ActionsDispatcher>().AsSingle();
          Container.Bind<AdvertisementDoubleReward>().AsTransient();
          
+         //Data storage
+         Container.BindInterfacesAndSelfTo<DataStorage>().AsSingle().NonLazy();
+         
          //Inventory 
          Container.BindInterfacesAndSelfTo<InventoryModel>().AsSingle();
          Container.BindInterfacesAndSelfTo<InventoryConfig>().FromInstance(_inventoryConfig).AsSingle();

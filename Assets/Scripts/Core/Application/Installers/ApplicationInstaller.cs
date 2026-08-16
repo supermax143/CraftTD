@@ -10,9 +10,6 @@ namespace Core.Application.Installers
       public override void InstallBindings()
       {
          
-         //Data storage
-         Container.BindInterfacesAndSelfTo<DataStorage.DataStorage>().AsSingle().NonLazy();
-         
          // Session
          Container.Bind<BootstrapState>().AsTransient();
          Container.Bind<DebugState>().AsTransient();

@@ -8,6 +8,16 @@ using UnityEngine;
 namespace Core.Application.DataStorage.StorageItems
 {
     /// <summary>
+    /// DTO for inventory item serialization (only id and type)
+    /// </summary>
+    [System.Serializable]
+    public class InventoryItemData
+    {
+        public int Id;
+        public InventoryItemType Type;
+    }
+
+    /// <summary>
     /// JSON-serializable structure for inventory data storage.
     /// Contains resources array and items.
     /// </summary>
@@ -15,7 +25,7 @@ namespace Core.Application.DataStorage.StorageItems
     internal class InventoryDataInfo
     {
         public Resource[] Resources = new Resource[3];
-        public List<InventoryItem> Items = new();
+        public List<InventoryItemData> Items = new();
     }
 
     public class InventoryStorageData
@@ -70,14 +80,14 @@ namespace Core.Application.DataStorage.StorageItems
             Save();
         }
         
-        public IReadOnlyList<InventoryItem> GetItems()
+        public IReadOnlyList<InventoryItemData> GetItemsData()
         {
             return _inventoryDataInfo.Items.AsReadOnly();
         }
 
-        public void AddItem(InventoryItem inventoryItem)
+        public void AddItemData(InventoryItemData itemData)
         {
-            _inventoryDataInfo.Items.Add(inventoryItem);
+            _inventoryDataInfo.Items.Add(itemData);
             Save();
         }
 
@@ -92,7 +102,7 @@ namespace Core.Application.DataStorage.StorageItems
             return _inventoryDataInfo.Items.Any(i => i.Id == itemId);
         }
 
-        public InventoryItem GetItem(int itemId)
+        public InventoryItemData GetItemData(int itemId)
         {
             return _inventoryDataInfo.Items.FirstOrDefault(i => i.Id == itemId);
         }
@@ -124,7 +134,7 @@ namespace Core.Application.DataStorage.StorageItems
                     Resource.Money(0),
                     Resource.Crystal(0)
                 },
-                Items = new List<InventoryItem>()
+                Items = new List<InventoryItemData>()
             };
         }
 

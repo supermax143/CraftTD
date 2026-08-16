@@ -12,9 +12,9 @@ namespace Core.Application.DataStorage
 
     
 #if DEBUG_MODE
-    internal class DataStorage : IDataStorage, IInitializable
+    public class DataStorage : IDataStorage, IInitializable
 #else
-    internal class DataStorage : IDataStorage, IBootstrapStep
+    public class DataStorage : IDataStorage, IBootstrapStep
 #endif
     {
        

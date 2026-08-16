@@ -10,7 +10,7 @@ using Zenject;
 
 namespace Core.Application.Models
 {
-    public class InventoryModel : IInventoryModel
+    public class InventoryModel : IInventoryModel, IInitializable
     {
 
         
@@ -25,8 +25,9 @@ namespace Core.Application.Models
         
         
         private int _nextId = -1;
+        private List<InventoryItem> _items = new();
        
-        public IReadOnlyList<InventoryItem> Items => InventoryData.GetItems();
+        public IReadOnlyList<InventoryItem> Items => _items.AsReadOnly();
         
         public Resource Money
         {
@@ -48,16 +49,21 @@ namespace Core.Application.Models
             }
         }
 
+        public void Initialize()
+        {
+            LoadItemsFromStorage();
+        }
+        
         private void InitNextId()
         {
-            var items = InventoryData.GetItems();
-            if (items.IsEmpty())
+            var itemsData = InventoryData.GetItemsData();
+            if (itemsData.IsEmpty())
             {
                 _nextId = 1;
             }
             else
             {
-                _nextId = items.Max(i => i.Id);
+                _nextId = itemsData.Max(i => i.Id);
             }
         }
         
@@ -119,24 +125,27 @@ namespace Core.Application.Models
         
         public void AddItem(InventoryItem inventoryItem)
         {
-            InventoryData.AddItem(inventoryItem);
+            var itemData = new InventoryItemData { Id = inventoryItem.Id, Type = inventoryItem.Type };
+            InventoryData.AddItemData(itemData);
+            _items.Add(inventoryItem);
             OnItemsChanged?.Invoke();
         }
 
         public void RemoveItem(int itemId)
         {
             InventoryData.RemoveItem(itemId);
+            _items.RemoveAll(i => i.Id == itemId);
             OnItemsChanged?.Invoke();
         }
 
         public bool HasItem(int itemId)
         {
-            return InventoryData.HasItem(itemId);
+            return _items.Any(i => i.Id == itemId);
         }
 
         public InventoryItem GetItem(int itemId)
         {
-            return InventoryData.GetItem(itemId);
+            return _items.FirstOrDefault(i => i.Id == itemId);
         }
         
         public bool TryGetItemConfig(InventoryItemType itemType, out InventoryItemConfig itemConfig)
@@ -144,5 +153,22 @@ namespace Core.Application.Models
             itemConfig = _inventoryConfig.Items.FirstOrDefault(i => i.Type == itemType);
             return itemConfig != null;
         }
+
+        
+
+        private void LoadItemsFromStorage()
+        {
+            _items.Clear();
+            var itemsData = InventoryData.GetItemsData();
+            foreach (var itemData in itemsData)
+            {
+                if (TryGetItemConfig(itemData.Type, out var config))
+                {
+                    _items.Add(new InventoryItem(itemData.Id, config));
+                }
+            }
+        }
+
+        
     }
 }
