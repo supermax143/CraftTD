@@ -22,8 +22,12 @@ namespace Core.Application.Models
         
         private InventoryStorageData InventoryData => _dataStorage.Inventory;
 
+        
+        
         private int _nextId = -1;
        
+        public IReadOnlyList<InventoryItem> Items => InventoryData.GetItems();
+        
         public Resource Money
         {
             get => InventoryData.GetResource(ResourceType.Money);
@@ -99,7 +103,7 @@ namespace Core.Application.Models
         public bool HasEnough(ResourceType resourceType, int checkingValue) 
             => GetResourceCount(resourceType) >= checkingValue;
         
-        public IReadOnlyList<InventoryItem> Items => InventoryData.GetItems();
+        
 
 
         public void AddItem(InventoryItemType itemType)

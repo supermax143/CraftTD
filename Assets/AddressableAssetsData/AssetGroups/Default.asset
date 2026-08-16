@@ -40,6 +40,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7832efb0b4f9d6d41850df2d0c48fbb9
+    m_Address: Assets/_Prefabs/GUI/Components/HudItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ae773709fe04b3b43a9eafba1825a46b
     m_Address: Localization
     m_ReadOnly: 0

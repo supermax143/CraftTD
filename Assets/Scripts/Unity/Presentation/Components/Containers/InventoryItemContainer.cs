@@ -42,7 +42,10 @@ namespace Unity.Presentation.HUD
 
         private void UpdateLabel()
         {
-            _text.text = _localization.Get(_config.Label);
+            if(_text != null)
+            {
+                _text.text = _localization.Get(_config.Label);
+            }
         }
 
         private async UniTask UpdateIcon()

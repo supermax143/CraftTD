@@ -1,7 +1,10 @@
-﻿using System;
+using System;
 using Core.Application.Models;
+using Cysharp.Threading.Tasks;
+using Unity.Infrastructure.ResourceManager;
 using Unity.Presentation.Components;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Zenject;
 
 namespace Unity.Presentation.HUD
@@ -20,9 +23,14 @@ namespace Unity.Presentation.HUD
         private ResourceContainer _crystalContainer;
         [SerializeField, HideInInspector]
         private GameHUDAnimatorController _animatorController;
+        [SerializeField]
+        private AssetReference _itemPrefab;
+        [SerializeField]
+        private Transform _itemsContainer;
         
         [Inject] private IInventoryModel _inventory;
         [Inject] private IMainModel _mainModel;
+        [Inject] private DiContainer _container;
         
         private State _state = State.Idle;
 
@@ -34,8 +42,10 @@ namespace Unity.Presentation.HUD
         public void Start()
         {
             _inventory.OnResourceChanged += OnResourceChanged;
+            _inventory.OnItemsChanged += OnItemsChanged;
             _mainModel.OnPlayerEpochChanged += UpdateResources;
             UpdateResources();
+            BuildItems().Forget();
         }
 
         private void UpdateResources()
@@ -57,6 +67,26 @@ namespace Unity.Presentation.HUD
             }
         }
 
+        private void OnItemsChanged()
+        {
+            BuildItems().Forget();
+        }
+
+        private async UniTask BuildItems()
+        {
+            foreach (Transform child in _itemsContainer)
+            {
+                Destroy(child.gameObject);
+            }
+
+            foreach (var item in _inventory.Items)
+            {
+                var prefab = await _itemPrefab.LoadAssetReference<GameObject>(gameObject);
+                var view = _container.InstantiatePrefabForComponent<InventoryItemContainer>(prefab, _itemsContainer);
+                await view.SetItem(item);
+            }
+        }
+
 
         public void ShowBattleView()
         {
@@ -69,6 +99,13 @@ namespace Unity.Presentation.HUD
             _state = State.Idle;
             _animatorController.SetIsBattleState(false);
         }
-        
+
+        private void OnDestroy()
+        {
+            _inventory.OnResourceChanged -= OnResourceChanged;
+            _inventory.OnItemsChanged -= OnItemsChanged;
+            _mainModel.OnPlayerEpochChanged -= UpdateResources;
+        }
+
     }
 }

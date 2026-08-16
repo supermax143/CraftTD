@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core.Application.Info.Inventory;
 
 namespace Core.Application.Models
@@ -10,6 +11,7 @@ namespace Core.Application.Models
         event Action OnItemsChanged;
         Resource Money { get; set; }
         Resource Crystal { get; set; }
+        IReadOnlyList<InventoryItem> Items { get; }
         bool TryGetItemConfig(InventoryItemType itemType, out InventoryItemConfig itemConfig);
         void AddResource(ResourceType resourceType, int amount);
         void AddResource(Resource resource);
