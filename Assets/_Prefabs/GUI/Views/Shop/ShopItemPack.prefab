@@ -645,8 +645,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 731526705508083700, guid: a6a1b97aae951c046a0b167ed99b16af,
-        type: 2}
+      objectReference: {fileID: 2100000, guid: f49aef6514798d04cb02bb9d754e0b02, type: 2}
     - target: {fileID: 3348689586225600220, guid: 865db1dbc79f0284e9b23e48c0467d36,
         type: 3}
       propertyPath: m_Pivot.x
@@ -781,8 +780,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 731526705508083700, guid: a6a1b97aae951c046a0b167ed99b16af,
-        type: 2}
+      objectReference: {fileID: 2100000, guid: f49aef6514798d04cb02bb9d754e0b02, type: 2}
     - target: {fileID: 4525444289243436472, guid: 865db1dbc79f0284e9b23e48c0467d36,
         type: 3}
       propertyPath: m_enableAutoSizing
@@ -1068,8 +1066,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 731526705508083700, guid: a6a1b97aae951c046a0b167ed99b16af,
-        type: 2}
+      objectReference: {fileID: 2100000, guid: f49aef6514798d04cb02bb9d754e0b02, type: 2}
     - target: {fileID: 3348689586225600220, guid: 865db1dbc79f0284e9b23e48c0467d36,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1204,8 +1201,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 731526705508083700, guid: a6a1b97aae951c046a0b167ed99b16af,
-        type: 2}
+      objectReference: {fileID: 2100000, guid: f49aef6514798d04cb02bb9d754e0b02, type: 2}
     - target: {fileID: 4525444289243436472, guid: 865db1dbc79f0284e9b23e48c0467d36,
         type: 3}
       propertyPath: m_enableAutoSizing
