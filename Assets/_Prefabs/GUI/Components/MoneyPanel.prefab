@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2304826596802294751}
   - component: {fileID: 1833182347101095085}
   - component: {fileID: 1378549806989902319}
+  - component: {fileID: 2976621303246520557}
   m_Layer: 0
   m_Name: MoneyPanel
   m_TagString: Untagged
@@ -78,8 +79,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.ResourceContainer
   _icon: {fileID: 8974452680638709366}
-  _text: {fileID: 4529662758984337656}
+  _text: {fileID: 2976621303246520557}
   _resourceType: 1
+--- !u!114 &2976621303246520557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942466112622892207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 345728772c79466d970001bf499140ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Zombies.AnimatedCounter
+  _textField: {fileID: 4529662758984337656}
+  _animationDuration: 0.5
 --- !u!1 &2165677916657872753
 GameObject:
   m_ObjectHideFlags: 0

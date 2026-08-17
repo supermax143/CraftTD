@@ -9,6 +9,7 @@ using Unity.Infrastructure.ResourceManager;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
+using Zombies;
 
 namespace Unity.Presentation.HUD
 {
@@ -17,7 +18,7 @@ namespace Unity.Presentation.HUD
         [SerializeField]
         private Image _icon;
         [SerializeField]
-        private TMP_Text _text;
+        private AnimatedCounter _text;
         [SerializeField] 
         private ResourceType _resourceType;
         
@@ -35,7 +36,7 @@ namespace Unity.Presentation.HUD
                 return;
             }
             _resource = new Resource(_resourceType, _resource.Value);
-            UpdateCount();
+            //UpdateCount();
             UpdateIcon();
         }
 
@@ -70,7 +71,7 @@ namespace Unity.Presentation.HUD
         
         private void UpdateCount()
         {
-            _text.text = LargeNumberFormatter.Format(_resource.Value);
+            _text.SetValue(_resource.Value);
         }
 
         public RectTransform GetTargetRect()

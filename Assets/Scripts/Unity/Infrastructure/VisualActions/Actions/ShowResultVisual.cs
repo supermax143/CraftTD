@@ -84,6 +84,7 @@ namespace Unity.Infrastructure.VisualActions.Actions
         
         private void OnAdWatched(AdvertisementDoubleReward adv)
         {
+            _advertisementController.RemoveListener<AdvertisementDoubleReward>(OnAdWatched);
             if (adv.AdvResult == AdvertisementBase.Result.Completed)
             {
                 _rewardAggregator.AddMoney(_rewardAggregator.Money.Value);

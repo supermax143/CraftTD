@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 1799928241586949213}
   - component: {fileID: 1868395679550766830}
   - component: {fileID: 6579656216363141092}
+  - component: {fileID: 5356025781197925149}
   m_Layer: 0
   m_Name: ResourceContainer
   m_TagString: Untagged
@@ -231,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.ResourceContainer
   _icon: {fileID: 2742465077840747989}
-  _text: {fileID: 6932707368702505113}
+  _text: {fileID: 5356025781197925149}
   _resourceType: 1
 --- !u!114 &6579656216363141092
 MonoBehaviour:
@@ -247,6 +248,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &5356025781197925149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240446601837394318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 345728772c79466d970001bf499140ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Zombies.AnimatedCounter
+  _textField: {fileID: 6932707368702505113}
+  _animationDuration: 0.5
 --- !u!1 &3716935846704682449
 GameObject:
   m_ObjectHideFlags: 0
