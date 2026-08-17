@@ -92,10 +92,10 @@ namespace Core.Application.Models
             {
                 _tower.AddModifier(new HealthAddModifier(GetHashCode(), TowerHealth));
             }
-            else
+            /*else
             {
                 _tower.AddModifier(new HealthOverrideModifier(GetHashCode(), 1));
-            }
+            }*/
         }
 
         

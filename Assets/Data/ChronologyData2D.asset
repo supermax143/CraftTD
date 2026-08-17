@@ -92,7 +92,7 @@ MonoBehaviour:
       _value: 3
     - _attributeKind: 0
       _modifierKind: 2
-      _value: 2
+      _value: 1.5
     - _attributeKind: 7
       _modifierKind: 2
       _value: 6
@@ -106,6 +106,9 @@ MonoBehaviour:
     - _attributeKind: 7
       _modifierKind: 2
       _value: 2
+    - _attributeKind: 1
+      _modifierKind: 2
+      _value: 3
     _unitTier3Modifiers:
     - _attributeKind: 8
       _modifierKind: 2
