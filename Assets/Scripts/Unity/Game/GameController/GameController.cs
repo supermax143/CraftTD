@@ -176,10 +176,10 @@ namespace Unity.Game
             _actionsDispatcher.AddAction(new ChangeEpochActionData(true, false));
         }
         
-        public bool TryGetOpponentTower(Faction opponentFaction,out AttackTargetBase target)
+        public bool TryGetTower(Faction faction,out AttackTargetBase target)
         {
             target = default;
-            var team = _teams.FirstOrDefault(team => team.Tower.Faction == opponentFaction);
+            var team = _teams.FirstOrDefault(team => team.Tower.Faction == faction);
             if (team == null)
             {
                 return false;

@@ -7,7 +7,7 @@ namespace Unity.Game
     {
         void BuyUnit(UnitTier tier);
         event Action<Faction> OnGameFinished;
-        bool TryGetOpponentTower(Faction opponentFaction,out AttackTargetBase target);
+        bool TryGetTower(Faction faction,out AttackTargetBase target);
         void Pause(bool pause);
 
         void FinishRound(Faction winner, bool force);

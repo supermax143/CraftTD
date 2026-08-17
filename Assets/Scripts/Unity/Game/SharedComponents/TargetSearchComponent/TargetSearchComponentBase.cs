@@ -39,7 +39,7 @@ namespace Unity.Game
         public abstract bool TryGetClosestTarget(out AttackTargetBase target);
 
         public bool TryGetTargetTower(out AttackTargetBase target)
-            => _gameController.TryGetOpponentTower(_opponentFaction, out target);
+            => _gameController.TryGetTower(_opponentFaction, out target);
 
         private void OnDrawGizmos()
         {
