@@ -28,10 +28,10 @@ MonoBehaviour:
   _baseUnitOpeningCostTier2: 150
   _baseUnitOpeningCostTier3: 400
   _unitOpeningCostMultiplier: 8
-  _baseUnitRewardTier1: 10
-  _baseUnitRewardTier2: 50
-  _baseUnitRewardTier3: 100
-  _unitRewardMultiplier: 10
+  _baseUnitRewardTier1: 12
+  _baseUnitRewardTier2: 16
+  _baseUnitRewardTier3: 20
+  _unitRewardMultiplier: 8
   _baseUnitDamageTier1: 3
   _baseUnitDamageTier2: 2
   _baseUnitDamageTier3: 4

@@ -86,9 +86,36 @@ MonoBehaviour:
       - _delay: 0
         _tier: 2
         _count: 6
-    _unitTier1Modifiers: []
-    _unitTier2Modifiers: []
-    _unitTier3Modifiers: []
+    _unitTier1Modifiers:
+    - _attributeKind: 8
+      _modifierKind: 2
+      _value: 3
+    - _attributeKind: 0
+      _modifierKind: 2
+      _value: 2
+    - _attributeKind: 7
+      _modifierKind: 2
+      _value: 6
+    _unitTier2Modifiers:
+    - _attributeKind: 8
+      _modifierKind: 2
+      _value: 5
+    - _attributeKind: 0
+      _modifierKind: 2
+      _value: 2
+    - _attributeKind: 7
+      _modifierKind: 2
+      _value: 2
+    _unitTier3Modifiers:
+    - _attributeKind: 8
+      _modifierKind: 2
+      _value: 7
+    - _attributeKind: 0
+      _modifierKind: 2
+      _value: 4
+    - _attributeKind: 7
+      _modifierKind: 2
+      _value: 30
   - _epochName: "\u0421\u0440\u0435\u0434\u043D\u0438\u0435 \u0412\u0435\u043A\u0430"
     _tower:
       _towerPrefab:
@@ -171,9 +198,36 @@ MonoBehaviour:
       - _delay: 0
         _tier: 2
         _count: 3
-    _unitTier1Modifiers: []
-    _unitTier2Modifiers: []
-    _unitTier3Modifiers: []
+    _unitTier1Modifiers:
+    - _attributeKind: 8
+      _modifierKind: 2
+      _value: 5
+    - _attributeKind: 0
+      _modifierKind: 2
+      _value: 6
+    - _attributeKind: 7
+      _modifierKind: 2
+      _value: 18
+    _unitTier2Modifiers:
+    - _attributeKind: 8
+      _modifierKind: 2
+      _value: 9
+    - _attributeKind: 0
+      _modifierKind: 2
+      _value: 6
+    - _attributeKind: 7
+      _modifierKind: 2
+      _value: 6
+    _unitTier3Modifiers:
+    - _attributeKind: 8
+      _modifierKind: 2
+      _value: 12
+    - _attributeKind: 0
+      _modifierKind: 2
+      _value: 12
+    - _attributeKind: 7
+      _modifierKind: 2
+      _value: 75
   - _epochName: "\u041C\u0443\u0448\u043A\u0435\u0442\u0435\u0440\u044B"
     _tower:
       _towerPrefab:
@@ -245,12 +299,36 @@ MonoBehaviour:
       - _delay: 1
         _tier: 2
         _count: 5
-    _unitTier1Modifiers: []
-    _unitTier2Modifiers: []
-    _unitTier3Modifiers:
-    - _attributeKind: 1
+    _unitTier1Modifiers:
+    - _attributeKind: 8
       _modifierKind: 2
-      _value: 3
+      _value: 7
+    - _attributeKind: 0
+      _modifierKind: 2
+      _value: 18
+    - _attributeKind: 7
+      _modifierKind: 2
+      _value: 54
+    _unitTier2Modifiers:
+    - _attributeKind: 8
+      _modifierKind: 2
+      _value: 12
+    - _attributeKind: 0
+      _modifierKind: 2
+      _value: 18
+    - _attributeKind: 7
+      _modifierKind: 2
+      _value: 18
+    _unitTier3Modifiers:
+    - _attributeKind: 8
+      _modifierKind: 2
+      _value: 17
+    - _attributeKind: 0
+      _modifierKind: 2
+      _value: 36
+    - _attributeKind: 7
+      _modifierKind: 2
+      _value: 108
   - _epochName: "\u041C\u0438\u0440\u043E\u0432\u0430\u044F \u0412\u043E\u0439\u043D\u0430"
     _tower:
       _towerPrefab:
@@ -323,6 +401,33 @@ MonoBehaviour:
       - _delay: 0
         _tier: 2
         _count: 5
-    _unitTier1Modifiers: []
-    _unitTier2Modifiers: []
-    _unitTier3Modifiers: []
+    _unitTier1Modifiers:
+    - _attributeKind: 8
+      _modifierKind: 2
+      _value: 8
+    - _attributeKind: 0
+      _modifierKind: 2
+      _value: 54
+    - _attributeKind: 7
+      _modifierKind: 2
+      _value: 162
+    _unitTier2Modifiers:
+    - _attributeKind: 8
+      _modifierKind: 2
+      _value: 14
+    - _attributeKind: 0
+      _modifierKind: 2
+      _value: 54
+    - _attributeKind: 7
+      _modifierKind: 2
+      _value: 54
+    _unitTier3Modifiers:
+    - _attributeKind: 8
+      _modifierKind: 2
+      _value: 19
+    - _attributeKind: 0
+      _modifierKind: 2
+      _value: 67
+    - _attributeKind: 7
+      _modifierKind: 2
+      _value: 216
