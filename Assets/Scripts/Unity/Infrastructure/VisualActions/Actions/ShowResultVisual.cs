@@ -46,13 +46,16 @@ namespace Unity.Infrastructure.VisualActions.Actions
         {
             await UniTask.WaitForFixedUpdate();//ожидаем обновления
             _rewardAggregator.HandleBattleFinish();
+            if (!Data.Force)
+            {
+                await UniTask.Delay((int)(Data.Delay * 1000));
+            }
             if (_rewardAggregator.Money.Value == 0)
             {
                 ShowIdleView();
                 OnResultWindowClose(null);
                 return;
             }
-            await UniTask.Delay((int)(Data.Delay * 1000));
             _resultWindow = await _windowsController.ShowWindow<ResultWindow>();
             _resultWindow.SetResult(_rewardAggregator.Money, playerWin);
             _resultWindow.Show();

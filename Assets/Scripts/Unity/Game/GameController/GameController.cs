@@ -103,7 +103,7 @@ namespace Unity.Game
             _started = true;
         }
         
-        public void FinishRound(Faction winner)
+        public void FinishRound(Faction winner, bool force)
         {
             var playerWin = winner == Faction.Player;
             var epochIncreased = playerWin &&
@@ -114,7 +114,7 @@ namespace Unity.Game
             
             _foodProduction.StopProduction();
             OnGameFinished?.Invoke(winner);
-            _actionsDispatcher.AddAction(new ShowResultActionData(playerWin, resetTower, 1.5f));
+            _actionsDispatcher.AddAction(new ShowResultActionData(playerWin, resetTower, force, 1.5f));
             if (epochIncreased)
             {
                 _mainModel.IncreaseEnemyEpoch();
@@ -133,7 +133,7 @@ namespace Unity.Game
         private void TowerDestroyedHandler(TowerController tower)
         {
             var winner = tower.Faction == Faction.Player ? Faction.Enemy : Faction.Player;
-            FinishRound(winner);
+            FinishRound(winner, false);
         }
 
 
