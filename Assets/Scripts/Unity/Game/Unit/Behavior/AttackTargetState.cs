@@ -21,6 +21,11 @@ namespace Unity.Game
             {
                 return;
             }
+
+            if (_unit.Faction == Faction.Player)
+            {
+                Debug.Log("asdsd");
+            }
             
             var targetSearch = _unit.TargetSearchComponent;
             if (targetSearch.TryGetClosestTarget(out var target) && target.Type == TargetType.Tower)
@@ -28,6 +33,7 @@ namespace Unity.Game
                return;
             }
             _stateManager.CurrentTarget = target;
+            _unit.Attack.ChangeTarget(_stateManager.CurrentTarget);
         }
 
 

@@ -83,6 +83,11 @@ namespace Unity.Game
             OnAttack?.Invoke();
         }
 
+        public void ChangeTarget(AttackTargetBase target)
+        {
+            _target = target;
+        }
+        
         public void Activate(AttackTargetBase target)
         {
 

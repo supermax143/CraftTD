@@ -54,7 +54,30 @@ namespace Unity.Game
         {
             _canSpawn = false;
         }
+
+        [ContextMenu("Spawn Tier1")]
+        public void TestSpawnTier1()
+        {
+            _blockSpawn = !_blockSpawn;
+            Spawn(UnitTier.Tier1, 1);
+            _blockSpawn = !_blockSpawn;
+        }
         
+        [ContextMenu("Spawn Tier2")]
+        public void TestSpawnTier2()
+        {
+            _blockSpawn = !_blockSpawn;
+            Spawn(UnitTier.Tier2, 1);
+            _blockSpawn = !_blockSpawn;
+        }
+        
+        [ContextMenu("Spawn Tier3")]
+        public void TestSpawnTier3()
+        {
+            _blockSpawn = !_blockSpawn;
+            Spawn(UnitTier.Tier3, 1);
+            _blockSpawn = !_blockSpawn;
+        }
         
         public async Task Spawn(UnitTier tier, int count)
         {

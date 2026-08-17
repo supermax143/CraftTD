@@ -10,10 +10,9 @@ namespace Unity.Game
             target = Physics2D.OverlapCircleAll(SearchTransform.position, DetectionRange)
                 .Select(c => c.GetComponent<AttackTargetBase>())
                 .Where(t => t != null && !t.IsDead && t.Faction == _opponentFaction)
-                .OrderBy(t => t.Type == TargetType.Tower)
-                .ThenBy(t => Vector2.Distance(t.transform.position, SearchTransform.position))
+                .OrderBy(t => Vector2.Distance(t.transform.position, SearchTransform.position))
                 .FirstOrDefault();
-
+         
             return target != null;
         }
 
