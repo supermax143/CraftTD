@@ -5,6 +5,7 @@ using DG.Tweening;
 using Unity.Infrastructure.Effects;
 using Unity.Presentation.HUD;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Zenject;
 
 namespace Unity.Game
@@ -28,9 +29,9 @@ namespace Unity.Game
         
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Pointer.current.press.wasPressedThisFrame)
             {
-                Vector2 inputPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 inputPosition = Camera.main.ScreenToWorldPoint(Pointer.current.position.ReadValue());
                 //ShowDrop( new Resource(ResourceType.Money, 1)  ,inputPosition);
                 _effectSpawnManager.SpawnRandomHitBubble(inputPosition, transform);
                 // _effectSpawnManager.SpawnRandomExplosion(inputPosition, transform);

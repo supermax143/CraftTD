@@ -1,6 +1,9 @@
+using System.Reflection;
 using Unity.Infrastructure.Tutorial.Units.BaseUnits;
 using Unity.VisualScripting;
+using UnityEngine.InputSystem;
 using UnityEngine;
+using Pointer = UnityEngine.InputSystem.Pointer;
 
 namespace Unity.Infrastructure.Tutorial.Units
 {
@@ -16,34 +19,19 @@ namespace Unity.Infrastructure.Tutorial.Units
             
             bool isCurrentlyPressed = false;
             
-#if UNITY_EDITOR || UNITY_WEBGL || UNITY_STANDALONE
+
             // Для мышки - проверяем клик (нажатие и отпускание)
-            if (Input.GetMouseButtonDown(0))
+            if (Pointer.current.press.wasPressedThisFrame)
             {
                 _wasPressed = true;
             }
             
-            if (_wasPressed && Input.GetMouseButtonUp(0))
+            if (_wasPressed && Pointer.current.press.wasReleasedThisFrame)
             {
                 _wasPressed = false;
                 return true;
             }
-#else
-            // для мобильных устройств - проверяем тач
-            if (Input.touchCount > 0)
-            {
-                Touch touch = Input.GetTouch(0);
-                if (touch.phase == TouchPhase.Began)
-                {
-                    _wasPressed = true;
-                }
-                else if (_wasPressed && touch.phase == TouchPhase.Ended)
-                {
-                    _wasPressed = false;
-                    return true;
-                }
-            }
-#endif
+
             
             return false;
         }
