@@ -208,6 +208,19 @@ namespace Unity.Game
         }
 
 #if DEBUG_MODE
+
+        private const float SPEEDUP_VALUE = 10;
+        
+        public void SpeedUp()
+        {
+            Time.timeScale = SPEEDUP_VALUE;
+        }
+        
+        public void NormalSpeed()
+        {
+            Time.timeScale = 1f;
+        }
+        
         public void ExitGame()
         {
             _applicationSession.CurrentState.ExitGame();
@@ -225,7 +238,7 @@ namespace Unity.Game
 
             if (keyboard.tKey.wasPressedThisFrame)
             {
-                Time.timeScale = 10f;
+                Time.timeScale = SPEEDUP_VALUE;
             }
 
             if (keyboard.tKey.wasReleasedThisFrame)

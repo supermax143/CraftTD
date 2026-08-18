@@ -1323,6 +1323,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 17063989}
     m_Modifications:
+    - target: {fileID: 1008186469425656270, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
+        type: 3}
+      propertyPath: m_text
+      value: ->
+      objectReference: {fileID: 0}
     - target: {fileID: 1204237347812116450, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1341,6 +1346,11 @@ PrefabInstance:
     - target: {fileID: 1204237347812116450, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2204438586338136250, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2384906277178975403, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
@@ -1481,7 +1491,7 @@ PrefabInstance:
     - target: {fileID: 6130462194729644231, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 128
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6130462194729644231, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
         type: 3}
@@ -1701,7 +1711,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7742694894999427559, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5277018471600209884}
   m_SourcePrefab: {fileID: 100100000, guid: 35c7dcd5000e5ac409cda60ee5b88e4e, type: 3}
 --- !u!114 &5277018471600209882 stripped
 MonoBehaviour:
@@ -1715,6 +1729,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690411c9bc0a490580f87de5edaf498f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.ResourceContainer
+--- !u!1 &5277018471600209883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7742694894999427559, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5277018471600209881}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5277018471600209884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5277018471600209883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043786b87969475e9eb9681921429949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.PointerDownClicker
+  _activationInterval: 0.1
+  _clickSound: {fileID: 0}
+  _autoClick: 1
+  _onActivated:
+    m_PersistentCalls:
+      m_Calls: []
+  _onPointerDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 277753466}
+        m_TargetAssemblyTypeName: Unity.Game.GameController, Assembly-CSharp
+        m_MethodName: SpeedUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onPointerUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 277753466}
+        m_TargetAssemblyTypeName: Unity.Game.GameController, Assembly-CSharp
+        m_MethodName: NormalSpeed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7645608149092296552 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2526018559706426574, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,

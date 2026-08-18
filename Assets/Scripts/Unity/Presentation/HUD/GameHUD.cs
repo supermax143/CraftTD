@@ -5,6 +5,7 @@ using Unity.Infrastructure.ResourceManager;
 using Unity.Presentation.Components;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.UI;
 using Zenject;
 
 namespace Unity.Presentation.HUD
@@ -27,6 +28,11 @@ namespace Unity.Presentation.HUD
         private AssetReference _itemPrefab;
         [SerializeField]
         private Transform _itemsContainer;
+        [SerializeField]
+        private Transform _buttonExit;
+        [SerializeField]
+        private Transform _buttonSpeedup;
+        
         
         [Inject] private IInventoryModel _inventory;
         [Inject] private IMainModel _mainModel;
@@ -41,6 +47,13 @@ namespace Unity.Presentation.HUD
 
         public void Start()
         {
+#if DEBUG_MODE
+            _buttonExit.gameObject.SetActive(true);
+            _buttonSpeedup.gameObject.SetActive(true);
+#else
+            _buttonExit.gameObject.SetActive(false);
+            _buttonSpeedup.gameObject.SetActive(false); 
+#endif
             _inventory.OnResourceChanged += OnResourceChanged;
             _inventory.OnItemsChanged += OnItemsChanged;
             _mainModel.OnPlayerEpochChanged += UpdateResources;
