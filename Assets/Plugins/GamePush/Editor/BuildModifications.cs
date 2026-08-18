@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿#if UNITY_EDITOR
+using System.IO;
 using System.IO.Compression;
 using UnityEditor;
 using UnityEditor.Callbacks;
@@ -48,7 +49,7 @@ namespace GamePushEditor
         }
     }
 }
-
+#endif
 
 
 
