@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+﻿#if UNITY_WEBGL
 using System.IO;
 using System.IO.Compression;
 using UnityEditor;
