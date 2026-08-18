@@ -1,3 +1,5 @@
+#if UNITY_WEBGL
+
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Application.DataStorage;
@@ -100,3 +102,4 @@ namespace Zombies
         
     }
 }
+#endif

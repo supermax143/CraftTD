@@ -1,3 +1,7 @@
+
+#if UNITY_WEBGL
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +44,7 @@ namespace Zombies.Purchases
 #endif
         public async Task Init()
         {
+            await GP_Init.Ready;
             _initTask = new TaskCompletionSource<bool>();
             GP_Payments.OnFetchProducts += OnProductsFetched;
             GP_Payments.OnFetchPlayerPurchases += OnPlayerPurchasesFetched;
@@ -64,7 +69,6 @@ namespace Zombies.Purchases
             }
             
         }
-
 
         private void OnPlayerPurchasesFetched(List<FetchPlayerPurchases> items)
         {
@@ -125,7 +129,7 @@ namespace Zombies.Purchases
             }
             _initTask.TrySetResult(true);
         }
-
         
     }
 }
+#endif

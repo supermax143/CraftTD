@@ -33,6 +33,8 @@ namespace Unity.Infrastructure.Effects
         private float _explosionCooldown = .5f;
         [SerializeField]
         private Transform _effectsContainer;
+        [SerializeField]
+        private Transform _popupsContainer;
         
         private Dictionary<VisualEffectType, GameObject> _prefabCache = new ();
         private Dictionary<VisualEffectType, Queue<VisualEffect>> _objectPools = new ();

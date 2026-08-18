@@ -8,7 +8,9 @@ namespace GamePush.Initialization
     {
         private async void Start()
         {
+#if UNITY_WEBGL
             await GP_Init.Ready;
+#endif
             SceneManager.LoadScene(1);
         }
     }
