@@ -16,7 +16,7 @@ jobs:
         #  - StandaloneLinux64 # Build a Linux 64-bit standalone.
         #  - iOS # Build an iOS player.
           - Android # Build an Android .apk standalone app.
-          - WebGL # WebGL.
+#          - WebGL # WebGL.
     steps:
       - if: matrix.targetPlatform == 'Android' || matrix.targetPlatform == 'WebGL'
         uses: jlumbroso/free-disk-space@v1.3.1
