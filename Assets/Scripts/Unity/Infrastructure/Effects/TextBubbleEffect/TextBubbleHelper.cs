@@ -5,12 +5,12 @@ using Random = UnityEngine.Random;
 
 namespace Unity.Infrastructure.Effects
 {
-    public class TextParticleHelper : MonoBehaviour
+    public class TextBubbleHelper : MonoBehaviour
     {
         [SerializeField] 
         private string _hitBubblesTextsString;
         [SerializeField]
-        private PopupType[] _hitBubbleTypes;
+        private VisualEffectType[] _hitBubbleTypes;
         
         private string[] _hitBubbleTexts;
         
@@ -24,7 +24,7 @@ namespace Unity.Infrastructure.Effects
             return _hitBubbleTexts[Random.Range(0, _hitBubbleTexts.Length)];
         }
 
-        public PopupType GetRandomBubbleType()
+        public VisualEffectType GetRandomBubbleType()
         {
             return  _hitBubbleTypes[Random.Range(0, _hitBubbleTypes.Length)];
         }

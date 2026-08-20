@@ -10,7 +10,7 @@ namespace Unity.Game.Projectile
             target.HealthComponent.TakeDamage(damage);
             if (target.TryGetAttackPosition(true, out var position))
             {
-                PopupSpawnManager.SpawnRandomHitBubble(position, null,
+                _visualEffectSpawnManager.SpawnRandomHitBubble(position, null,
                     new Vector2(0,0), new Vector2(0,1));
             }
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Unity.Infrastructure.Effects.TextPoup
 {
-    public class TextPopup : Popup
+    public class TextPopup : VisualEffect
     {
         [SerializeField]
         private TMP_Text _text;

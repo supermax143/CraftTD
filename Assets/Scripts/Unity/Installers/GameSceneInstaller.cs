@@ -32,7 +32,7 @@ namespace Unity.Installers
             BindController<GameController>();
             BindController<FoodProduction>();
             BindController<DropManager>();
-            BindController<PopupSpawnManager>();
+            BindController<VisualEffectSpawnManager>();
             BindController<CameraController>();
             BindController<VisualActionFactories>();
             BindController<VisualActionsController>();

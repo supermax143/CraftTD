@@ -12,19 +12,19 @@ namespace Unity.Infrastructure.Effects
     /// <summary>
     /// Менеджер для спавна визуальных эффектов с пулом объектов и кешированием через Addressables
     /// </summary>
-    public class PopupSpawnManager : MonoBehaviour
+    public class VisualEffectSpawnManager : MonoBehaviour
     {
         [Serializable]
         private struct EffectAsset
         {
-            public PopupType popupType;
+            public VisualEffectType visualEffectType;
             public AssetReferenceGameObject effectPrefab;
         }
 
         [SerializeField]
         private EffectAsset[] _effectAssets;
         [SerializeField]
-        private TextParticleHelper textParticleHelper;
+        private TextBubbleHelper _textBubbleHelper;
         [SerializeField]
         private float _textBubbleCooldown = .5f;
         [SerializeField]
@@ -36,8 +36,8 @@ namespace Unity.Infrastructure.Effects
         [SerializeField]
         private Transform _popupsContainer;
         
-        private Dictionary<PopupType, GameObject> _prefabCache = new ();
-        private Dictionary<PopupType, Queue<Popup>> _objectPools = new ();
+        private Dictionary<VisualEffectType, GameObject> _prefabCache = new ();
+        private Dictionary<VisualEffectType, Queue<VisualEffect>> _objectPools = new ();
 
         private Timer _textBubbleCooldownTimer = new();
         private Timer _explosionCooldownTimer = new();
@@ -51,14 +51,14 @@ namespace Unity.Infrastructure.Effects
         {
             foreach (var effectAsset in _effectAssets)
             {
-                if (!_objectPools.ContainsKey(effectAsset.popupType))
+                if (!_objectPools.ContainsKey(effectAsset.visualEffectType))
                 {
-                    _objectPools[effectAsset.popupType] = new Queue<Popup>();
+                    _objectPools[effectAsset.visualEffectType] = new Queue<VisualEffect>();
                 }
             }
         }
 
-        public async Task<Popup> SpawnRandomHitBubble(Vector3 position,
+        public async Task<VisualEffect> SpawnRandomHitBubble(Vector3 position,
             Transform parent = null, Vector2 deltaX = default,Vector2 deltaY = default)
         {
             if (!_textBubbleCooldownTimer.IsComplete)
@@ -67,15 +67,15 @@ namespace Unity.Infrastructure.Effects
             }
             var randomDelta = new Vector2(Random.Range(deltaX.x, deltaX.y), Random.Range(deltaY.x, deltaY.y));
             position += new Vector3(randomDelta.x, randomDelta.y, -10);
-            var visualEffectType = textParticleHelper.GetRandomBubbleType();
-            var bubble = await SpawnEffect(visualEffectType, position, parent, false) as TextParticlePopup;
-            bubble.SetText(textParticleHelper.GetRandomBubbleText());
+            var visualEffectType = _textBubbleHelper.GetRandomBubbleType();
+            var bubble = await SpawnEffect(visualEffectType, position, parent, false) as TextBubbleVisualEffect;
+            bubble.SetText(_textBubbleHelper.GetRandomBubbleText());
             bubble.Spawn();
             _textBubbleCooldownTimer.Start(_textBubbleCooldown);
             return bubble;
         }
 
-        public async Task<Popup> SpawnRandomExplosion(Vector3 position,
+        public async Task<VisualEffect> SpawnRandomExplosion(Vector3 position,
             Transform parent = null, Vector2 deltaX = default, Vector2 deltaY = default)
         {
             if (!_explosionCooldownTimer.IsComplete)
@@ -90,17 +90,17 @@ namespace Unity.Infrastructure.Effects
             return explosion;
         }
 
-        public async Task<Popup> SpawnEffect(PopupType popupType, Vector3 position, 
+        public async Task<VisualEffect> SpawnEffect(VisualEffectType visualEffectType, Vector3 position, 
             Transform parent = null, bool spawn = true)
         {
-            if (!_prefabCache.ContainsKey(popupType))
+            if (!_prefabCache.ContainsKey(visualEffectType))
             {
-                await LoadPrefabAsync(popupType);
+                await LoadPrefabAsync(visualEffectType);
             }
 
-            if (!_prefabCache.TryGetValue(popupType, out GameObject prefab))
+            if (!_prefabCache.TryGetValue(visualEffectType, out GameObject prefab))
             {
-                Debug.Log($"{GetType().Name} effect not found: {popupType}");
+                Debug.Log($"{GetType().Name} effect not found: {visualEffectType}");
                 return null;
             }
 
@@ -108,7 +108,7 @@ namespace Unity.Infrastructure.Effects
             {
                 parent = _effectsContainer;
             }
-            var effect = GetFromPool(popupType, prefab, position, parent);
+            var effect = GetFromPool(visualEffectType, prefab, position, parent);
             effect.OnComplete += ReturnToPool;
             if (spawn)
             {
@@ -117,24 +117,24 @@ namespace Unity.Infrastructure.Effects
             return effect;
         }
 
-        private async Task LoadPrefabAsync(PopupType popupType)
+        private async Task LoadPrefabAsync(VisualEffectType visualEffectType)
         {
             foreach (var effectAsset in _effectAssets)
             {
-                if (effectAsset.popupType == popupType)
+                if (effectAsset.visualEffectType == visualEffectType)
                 {
                     
                     GameObject prefab = await effectAsset.effectPrefab.LoadAssetAsync<GameObject>().Task;
                     
-                    _prefabCache[popupType] = prefab;
+                    _prefabCache[visualEffectType] = prefab;
                     break;
                 }
             }
         }
 
-        private Popup GetFromPool(PopupType popupType, GameObject prefab, Vector3 position, Transform parent)
+        private VisualEffect GetFromPool(VisualEffectType visualEffectType, GameObject prefab, Vector3 position, Transform parent)
         {
-            if (_objectPools.TryGetValue(popupType, out Queue<Popup> pool) && pool.Count > 0)
+            if (_objectPools.TryGetValue(visualEffectType, out Queue<VisualEffect> pool) && pool.Count > 0)
             {
                 var effect = pool.Dequeue();
                 effect.transform.position = position;
@@ -142,19 +142,19 @@ namespace Unity.Infrastructure.Effects
                 return effect;
             }
 
-            var newEffect = Instantiate(prefab, position, Quaternion.identity, parent).GetComponent<Popup>();
+            var newEffect = Instantiate(prefab, position, Quaternion.identity, parent).GetComponent<VisualEffect>();
             newEffect.gameObject.SetActive(false);
             return newEffect;
         }
 
-        private void ReturnToPool(Popup effect)
+        private void ReturnToPool(VisualEffect effect)
         {
             effect.OnComplete -= ReturnToPool;
             effect.gameObject.SetActive(false);
             
             if (!_objectPools.ContainsKey(effect.Type))
             {
-                _objectPools[effect.Type] = new Queue<Popup>();
+                _objectPools[effect.Type] = new Queue<VisualEffect>();
             }
             
             _objectPools[effect.Type].Enqueue(effect);
