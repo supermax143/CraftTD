@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Unity.Infrastructure.Effects
 {
@@ -8,12 +9,13 @@ namespace Unity.Infrastructure.Effects
     {
         public event Action<Popup> OnComplete;
         
+        [FormerlySerializedAs("visualEffectType")]
         [SerializeField]
-        private PopupType visualEffectType;
+        private PopupType _popupType;
         [SerializeField]
         private float _time = 1;
         
-        public PopupType Type => visualEffectType;
+        public PopupType Type => _popupType;
 
         public virtual void Spawn()
         {
