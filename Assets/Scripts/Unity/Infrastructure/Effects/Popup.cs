@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace Unity.Infrastructure.Effects
 {
-    public class VisualEffect : MonoBehaviour
+    public class Popup : MonoBehaviour
     {
-        public event Action<VisualEffect> OnComplete;
+        public event Action<Popup> OnComplete;
         
         [SerializeField]
-        private VisualEffectType visualEffectType;
+        private PopupType popupType;
         [SerializeField]
         private float _time = 1;
         
-        public VisualEffectType Type => visualEffectType;
+        public PopupType Type => popupType;
 
         public virtual void Spawn()
         {

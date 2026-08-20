@@ -13,19 +13,19 @@ namespace Unity.Game.Projectile
         [SerializeField] private float _speed = 15f;
         [SerializeField] private float _rotationSpeed = 0f;
         [SerializeField] private bool _isTopTarget = true;
-        [SerializeField] private VisualEffectType _hitEffect = VisualEffectType.None;
+        [SerializeField] private PopupType _hitEffect = PopupType.None;
         
         private Coroutine _moveCoroutine;
         protected AttackTargetBase _target;
         private readonly Timer _timer = new();
         protected float _damage;
         protected Vector3 _direction;
-        protected VisualEffectSpawnManager _effectsSpawner;
+        protected PopupSpawnManager _effectsSpawner;
 
 
-        public void Launch(AttackTargetBase target, float damage, VisualEffectSpawnManager visualEffectSpawnManager)
+        public void Launch(AttackTargetBase target, float damage, PopupSpawnManager popupSpawnManager)
         {
-            _effectsSpawner = visualEffectSpawnManager;
+            _effectsSpawner = popupSpawnManager;
             _direction = (target.transform.position - transform.position).normalized;
             DOTween.Kill(transform);
 
@@ -90,7 +90,7 @@ namespace Unity.Game.Projectile
         
         protected virtual void ShowHitEffect()
         {
-            if (_hitEffect == VisualEffectType.None)
+            if (_hitEffect == PopupType.None)
             {
                 return;
             }

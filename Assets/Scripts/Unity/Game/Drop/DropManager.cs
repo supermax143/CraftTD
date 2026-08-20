@@ -23,7 +23,7 @@ namespace Unity.Game
        
         
         [Inject] private IEnumerable<IDropTarget> _dropTargets;
-        [Inject] private VisualEffectSpawnManager _effectSpawnManager;
+        [Inject] private PopupSpawnManager _effectSpawnManager;
         
         private readonly List<Transform> _dropTransforms = new List<Transform>();
         

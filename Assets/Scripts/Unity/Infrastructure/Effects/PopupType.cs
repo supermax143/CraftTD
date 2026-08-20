@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Unity.Infrastructure.Effects
 {
-    public enum VisualEffectType
+    public enum PopupType
     {
         None,
         MuzzleCannon,

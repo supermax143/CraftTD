@@ -22,7 +22,7 @@ namespace Unity.Game
         private SpriteRenderer _boundsSprite;
         
         
-        [Inject] private VisualEffectSpawnManager _effectSpawnManager;
+        [Inject] private PopupSpawnManager _effectSpawnManager;
         [Inject] private ICameraController _cameraController;
         [Inject] private GameSettings _gameSettings;
         
