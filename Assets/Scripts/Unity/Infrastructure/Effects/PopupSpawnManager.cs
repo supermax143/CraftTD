@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Unity.Infrastructure.Effects.TextBubbleEffect;
 using Unity.Utils.Time;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -75,6 +76,17 @@ namespace Unity.Infrastructure.Effects
             return bubble;
         }
 
+        public async Task<TextPopup> SpawnTextPopup(string text, PopupType type, Vector3 position = default, Transform parent = null)
+        {
+            if (parent == default)
+            {
+                parent = _popupsContainer;
+            }
+            var textPopup = await SpawnEffect(type, position, parent, true) as TextPopup;
+            textPopup.SetText(text);
+            return textPopup;
+        }
+        
         public async Task<Popup> SpawnRandomExplosion(Vector3 position,
             Transform parent = null, Vector2 deltaX = default, Vector2 deltaY = default)
         {
@@ -90,7 +102,7 @@ namespace Unity.Infrastructure.Effects
             return explosion;
         }
 
-        public async Task<Popup> SpawnEffect(PopupType popupType, Vector3 position, 
+        public async Task<Popup> SpawnEffect(PopupType popupType, Vector3 position = default, 
             Transform parent = null, bool spawn = true)
         {
             if (!_prefabCache.ContainsKey(popupType))
@@ -132,17 +144,29 @@ namespace Unity.Infrastructure.Effects
             }
         }
 
-        private Popup GetFromPool(PopupType popupType, GameObject prefab, Vector3 position, Transform parent)
+        private Popup GetFromPool(PopupType popupType, GameObject prefab, Vector3 position = default, Transform parent = default)
         {
             if (_objectPools.TryGetValue(popupType, out Queue<Popup> pool) && pool.Count > 0)
             {
                 var effect = pool.Dequeue();
-                effect.transform.position = position;
-                effect.transform.SetParent(parent);
+                if (position != default)
+                {
+                    effect.transform.position = position;   
+                }
+                if (parent != default && parent != effect.transform.parent)
+                {
+                    effect.transform.SetParent(parent);
+                }
+
                 return effect;
             }
 
-            var newEffect = Instantiate(prefab, position, Quaternion.identity, parent).GetComponent<Popup>();
+            var newEffect = Instantiate(prefab, parent).GetComponent<Popup>();
+            if (position != default)
+            {
+                newEffect.transform.position = position;   
+            }
+           
             newEffect.gameObject.SetActive(false);
             return newEffect;
         }

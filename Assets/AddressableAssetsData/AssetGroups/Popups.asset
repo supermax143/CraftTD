@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Effects
+  m_Name: Popups
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
-  m_GroupName: Effects
+  m_GroupName: Popups
   m_GUID: 648725783626d5d459353952d7b74879
   m_SerializeEntries:
   - m_GUID: 0b4e09327d2b29443ba9a354c13b774c
@@ -37,6 +37,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 89df7c7bbdec51f46accc9d0846321f9
     m_Address: MuzzleRifle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9b8602cc4d9089c4b8b5f862e63ab3fa
+    m_Address: NewWavePopup
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -1,9 +1,9 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace Unity.Infrastructure.Effects.TextPoup
+namespace Unity.Infrastructure.Effects
 {
-    public class TextPopup : Popup
+    public class TextPopup : AnimatedPopup.AnimatedPopup
     {
         [SerializeField]
         private TMP_Text _text;
@@ -12,5 +12,6 @@ namespace Unity.Infrastructure.Effects.TextPoup
         {
             _text.text = text;
         }
+        
     }
 }

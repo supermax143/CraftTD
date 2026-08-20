@@ -1,9 +1,8 @@
-﻿using System;
-using CartoonFX;
+﻿using CartoonFX;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Unity.Infrastructure.Effects
+namespace Unity.Infrastructure.Effects.TextBubbleEffect
 {
     [RequireComponent(typeof(CFXR_ParticleText))]
     public class TextBubbleVisualEffect : Popup

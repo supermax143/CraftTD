@@ -15,5 +15,6 @@ namespace Unity.Infrastructure.Effects
         Explosion1,
         Explosion2,
         Explosion3,
+        TextNextWave
     }
 }

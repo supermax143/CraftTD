@@ -61,7 +61,6 @@ namespace Unity.Game
 
         public override void UpdateState()
         {
-            Debug.Log($"out of tower: {CheckIfOutOfTower()}");
             
             if (_stateManager.CurrentTarget == null)
             {

@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 17250383}
   - component: {fileID: 17250384}
   m_Layer: 0
-  m_Name: EffectsManager
+  m_Name: PopupsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -478,12 +478,19 @@ MonoBehaviour:
       m_SubObjectType: 
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
+  - popupType: 11
+    effectPrefab:
+      m_AssetGUID: 9b8602cc4d9089c4b8b5f862e63ab3fa
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _textBubbleHelper: {fileID: 17250383}
   _textBubbleCooldown: 0.1
   _explosionHelper: {fileID: 17250384}
   _explosionCooldown: 0
   _effectsContainer: {fileID: 1411672256}
-  _popupsContainer: {fileID: 0}
+  _popupsContainer: {fileID: 1596414409}
 --- !u!114 &17250383
 MonoBehaviour:
   m_ObjectHideFlags: 0

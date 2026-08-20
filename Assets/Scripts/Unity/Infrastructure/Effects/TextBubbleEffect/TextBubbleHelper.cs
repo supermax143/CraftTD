@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Unity.Infrastructure.Effects
+namespace Unity.Infrastructure.Effects.TextBubbleEffect
 {
     public class TextBubbleHelper : MonoBehaviour
     {

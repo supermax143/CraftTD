@@ -13,7 +13,7 @@ namespace Unity.Infrastructure.Effects
         [SerializeField]
         private PopupType _popupType;
         [SerializeField]
-        private float _time = 1;
+        protected float _time = 1;
         
         public PopupType Type => _popupType;
 
@@ -23,11 +23,15 @@ namespace Unity.Infrastructure.Effects
             StartCoroutine(WaitFinish());
         }
 
-        private IEnumerator WaitFinish()
+        protected virtual IEnumerator WaitFinish()
         {
             yield return new WaitForSeconds(_time);
+            DispatchComplete();
+        }
+
+        protected void DispatchComplete()
+        {
             OnComplete?.Invoke(this);
         }
-        
     }
 }
