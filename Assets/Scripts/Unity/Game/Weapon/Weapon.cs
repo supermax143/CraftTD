@@ -6,7 +6,7 @@ namespace Unity.Game.Projectile
 {
     public abstract class Weapon : MonoBehaviour
     {
-        [Inject] protected VisualEffectSpawnManager _visualEffectSpawnManager;
+        [Inject] protected PopupSpawnManager PopupSpawnManager;
         
         public abstract void Attack(AttackTargetBase target, float damage, Vector3 direction);
     }

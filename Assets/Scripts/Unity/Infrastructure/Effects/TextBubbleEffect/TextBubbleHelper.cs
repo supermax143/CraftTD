@@ -10,7 +10,7 @@ namespace Unity.Infrastructure.Effects
         [SerializeField] 
         private string _hitBubblesTextsString;
         [SerializeField]
-        private VisualEffectType[] _hitBubbleTypes;
+        private PopupType[] _hitBubbleTypes;
         
         private string[] _hitBubbleTexts;
         
@@ -24,7 +24,7 @@ namespace Unity.Infrastructure.Effects
             return _hitBubbleTexts[Random.Range(0, _hitBubbleTexts.Length)];
         }
 
-        public VisualEffectType GetRandomBubbleType()
+        public PopupType GetRandomBubbleType()
         {
             return  _hitBubbleTypes[Random.Range(0, _hitBubbleTypes.Length)];
         }

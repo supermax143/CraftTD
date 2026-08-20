@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 namespace Unity.Infrastructure.Effects
 {
     [RequireComponent(typeof(CFXR_ParticleText))]
-    public class TextBubbleVisualEffect : VisualEffect
+    public class TextBubbleVisualEffect : Popup
     {
         [SerializeField, HideInInspector]
         private CFXR_ParticleText _particleText;

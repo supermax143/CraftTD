@@ -9,9 +9,9 @@ namespace Unity.Infrastructure.Effects
     public class ExplosionHelper : MonoBehaviour
     {
         [SerializeField]
-        private VisualEffectType[] _explosionTypes;
+        private PopupType[] _explosionTypes;
 
-        public VisualEffectType GetRandomExplosionType()
+        public PopupType GetRandomExplosionType()
         {
             return _explosionTypes[Random.Range(0, _explosionTypes.Length)];
         }

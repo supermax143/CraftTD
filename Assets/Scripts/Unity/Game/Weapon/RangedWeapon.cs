@@ -12,7 +12,7 @@ namespace Unity.Game.Projectile
         [SerializeField]
         private GameObject _projectilePrefab;
         [SerializeField]
-        private VisualEffectType _instantDamageEffect;
+        private PopupType _instantDamageEffect;
         
         public override void Attack(AttackTargetBase target, float damage, Vector3 direction)
         {
@@ -23,7 +23,7 @@ namespace Unity.Game.Projectile
             else
             {
                 var projectile = Instantiate(_projectilePrefab, _barrel.position, _barrel.rotation).GetComponent<ProjectileBase>();
-                projectile.Launch(target, damage, _visualEffectSpawnManager);
+                projectile.Launch(target, damage, PopupSpawnManager);
             }
         }
 
@@ -31,10 +31,10 @@ namespace Unity.Game.Projectile
         {
             if (target != null && target.HealthComponent != null)
             {
-                if (_instantDamageEffect != VisualEffectType.None &&
+                if (_instantDamageEffect != PopupType.None &&
                     target.TryGetAttackPosition(true, out var effectPosition))
                 {
-                    _visualEffectSpawnManager.SpawnEffect(_instantDamageEffect, effectPosition);
+                    PopupSpawnManager.SpawnEffect(_instantDamageEffect, effectPosition);
                 }
                
                 target.HealthComponent.TakeDamage(damage);
