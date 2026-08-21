@@ -56,7 +56,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _animationEvents
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 363696948923052336}
     - target: {fileID: 1449801927241130090, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: _tintColorProperty
@@ -142,44 +142,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4474204164466262979, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: _renderers.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[0]'
       value: 
-      objectReference: {fileID: 4848853973668478468}
+      objectReference: {fileID: 8262121778459051897}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[1]'
       value: 
-      objectReference: {fileID: 5427534964503923336}
+      objectReference: {fileID: 4848853973668478468}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[2]'
       value: 
-      objectReference: {fileID: 8553972778158869565}
+      objectReference: {fileID: 5427534964503923336}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[3]'
       value: 
-      objectReference: {fileID: 7297446739040578335}
+      objectReference: {fileID: 8553972778158869565}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[4]'
       value: 
-      objectReference: {fileID: 137818240096620938}
+      objectReference: {fileID: 7297446739040578335}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[5]'
       value: 
-      objectReference: {fileID: 5472007524361395427}
+      objectReference: {fileID: 137818240096620938}
     - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: '_renderers.Array.data[6]'
+      value: 
+      objectReference: {fileID: 5472007524361395427}
+    - target: {fileID: 4829596173189205385, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: '_renderers.Array.data[7]'
       value: 
       objectReference: {fileID: 3977294697298573046}
     - target: {fileID: 5971790945569815702, guid: 13f357919641a61439d4518e120abda5,
@@ -252,7 +262,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _animationEvents
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 363696948923052336}
     - target: {fileID: 8327198887930394919, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: m_Size.x
@@ -280,11 +290,19 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -1150183448828522521}
-    - targetCorrespondingSourceObject: {fileID: 6735294149039191266, guid: 13f357919641a61439d4518e120abda5,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 13f357919641a61439d4518e120abda5, type: 3}
+--- !u!114 &363696948923052336 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2336736979176428385, guid: 13f357919641a61439d4518e120abda5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2693677681465565777}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05a26e7806242f49327f03ccbd1f826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.UnitAnimationEvents
 --- !u!212 &1417376072164324968 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3948062115093877817, guid: 13f357919641a61439d4518e120abda5,
@@ -300,6 +318,12 @@ Transform:
 --- !u!212 &3022684974265212974 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 906180565178909311, guid: 13f357919641a61439d4518e120abda5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2693677681465565777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8262121778459051897 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6325638210176492840, guid: 13f357919641a61439d4518e120abda5,
     type: 3}
   m_PrefabInstance: {fileID: 2693677681465565777}
   m_PrefabAsset: {fileID: 0}
