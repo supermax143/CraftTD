@@ -47,7 +47,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: base_bone/body_bone/arm_r_bone/arm_r_bone1
+    path: UnitView/base_bone/body_bone/arm_r_bone/arm_r_bone1
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -81,7 +81,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: base_bone/body_bone/head_bone/head_bone_1
+    path: UnitView/base_bone/body_bone/head_bone/head_bone_1
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -115,7 +115,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1
+    path: UnitView/base_bone/body_bone/arm_l_bone/arm_l_bone1
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -149,7 +149,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: base_bone/body_bone/head_bone
+    path: UnitView/base_bone/body_bone/head_bone
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -183,7 +183,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: base_bone/body_bone
+    path: UnitView/base_bone/body_bone
   m_PositionCurves: []
   m_ScaleCurves:
   - curve:
@@ -219,7 +219,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: base_bone/body_bone
+    path: UnitView/base_bone/body_bone
   m_FloatCurves: []
   m_PPtrCurves: []
   m_SampleRate: 60
@@ -346,7 +346,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: base_bone/body_bone/arm_r_bone/arm_r_bone1
+    path: UnitView/base_bone/body_bone/arm_r_bone/arm_r_bone1
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -385,7 +385,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: base_bone/body_bone/arm_r_bone/arm_r_bone1
+    path: UnitView/base_bone/body_bone/arm_r_bone/arm_r_bone1
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -424,7 +424,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: base_bone/body_bone/arm_r_bone/arm_r_bone1
+    path: UnitView/base_bone/body_bone/arm_r_bone/arm_r_bone1
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -463,7 +463,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: base_bone/body_bone/head_bone/head_bone_1
+    path: UnitView/base_bone/body_bone/head_bone/head_bone_1
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -502,7 +502,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: base_bone/body_bone/head_bone/head_bone_1
+    path: UnitView/base_bone/body_bone/head_bone/head_bone_1
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -541,7 +541,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: base_bone/body_bone/head_bone/head_bone_1
+    path: UnitView/base_bone/body_bone/head_bone/head_bone_1
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -580,7 +580,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1
+    path: UnitView/base_bone/body_bone/arm_l_bone/arm_l_bone1
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -619,7 +619,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1
+    path: UnitView/base_bone/body_bone/arm_l_bone/arm_l_bone1
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -658,7 +658,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1
+    path: UnitView/base_bone/body_bone/arm_l_bone/arm_l_bone1
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -697,7 +697,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: base_bone/body_bone/head_bone
+    path: UnitView/base_bone/body_bone/head_bone
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -736,7 +736,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: base_bone/body_bone/head_bone
+    path: UnitView/base_bone/body_bone/head_bone
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -775,7 +775,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: base_bone/body_bone/head_bone
+    path: UnitView/base_bone/body_bone/head_bone
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -814,7 +814,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: base_bone/body_bone
+    path: UnitView/base_bone/body_bone
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -853,7 +853,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: base_bone/body_bone
+    path: UnitView/base_bone/body_bone
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -892,7 +892,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: base_bone/body_bone
+    path: UnitView/base_bone/body_bone
     classID: 4
     script: {fileID: 0}
     flags: 16
@@ -931,7 +931,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: base_bone/body_bone
+    path: UnitView/base_bone/body_bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -970,7 +970,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: base_bone/body_bone
+    path: UnitView/base_bone/body_bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1009,7 +1009,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: base_bone/body_bone
+    path: UnitView/base_bone/body_bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1022,7 +1022,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: base_bone/body_bone
+    path: UnitView/base_bone/body_bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1034,7 +1034,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: base_bone/body_bone
+    path: UnitView/base_bone/body_bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1046,7 +1046,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: base_bone/body_bone
+    path: UnitView/base_bone/body_bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1058,7 +1058,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: base_bone/body_bone/head_bone
+    path: UnitView/base_bone/body_bone/head_bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1070,7 +1070,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: base_bone/body_bone/head_bone
+    path: UnitView/base_bone/body_bone/head_bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1082,7 +1082,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: base_bone/body_bone/head_bone
+    path: UnitView/base_bone/body_bone/head_bone
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1094,7 +1094,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1
+    path: UnitView/base_bone/body_bone/arm_l_bone/arm_l_bone1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1106,7 +1106,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1
+    path: UnitView/base_bone/body_bone/arm_l_bone/arm_l_bone1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1118,7 +1118,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: base_bone/body_bone/arm_l_bone/arm_l_bone1
+    path: UnitView/base_bone/body_bone/arm_l_bone/arm_l_bone1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1130,7 +1130,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: base_bone/body_bone/arm_r_bone/arm_r_bone1
+    path: UnitView/base_bone/body_bone/arm_r_bone/arm_r_bone1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1142,7 +1142,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: base_bone/body_bone/arm_r_bone/arm_r_bone1
+    path: UnitView/base_bone/body_bone/arm_r_bone/arm_r_bone1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1154,7 +1154,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: base_bone/body_bone/arm_r_bone/arm_r_bone1
+    path: UnitView/base_bone/body_bone/arm_r_bone/arm_r_bone1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1166,7 +1166,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: base_bone/body_bone/head_bone/head_bone_1
+    path: UnitView/base_bone/body_bone/head_bone/head_bone_1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1178,7 +1178,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: base_bone/body_bone/head_bone/head_bone_1
+    path: UnitView/base_bone/body_bone/head_bone/head_bone_1
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1190,7 +1190,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: base_bone/body_bone/head_bone/head_bone_1
+    path: UnitView/base_bone/body_bone/head_bone/head_bone_1
     classID: 4
     script: {fileID: 0}
     flags: 0
