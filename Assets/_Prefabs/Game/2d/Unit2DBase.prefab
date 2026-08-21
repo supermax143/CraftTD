@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 3762705999574058185}
   - component: {fileID: 87661978012594203}
   - component: {fileID: 4829596173189205385}
+  - component: {fileID: 7605130466840119668}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -469,7 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eddecd3a5664d478798da07c89fd701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.UnitAnimatorController
-  _animator: {fileID: 0}
+  _animator: {fileID: 7605130466840119668}
   _dieClips:
   - {fileID: 7400000, guid: d623b5cb07a64924a8877af0b83128a4, type: 2}
   - {fileID: 7400000, guid: ea27e31b918a5554db093a27688ee17b, type: 2}
@@ -489,6 +490,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Utils.ColorEffects.FieldObjectEffectsController
   _renderers: []
   dissolveDuration: 2
+--- !u!95 &7605130466840119668
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735294149039191266}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 3ce7bdd40a703f240acee72ad2ed6dd1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8562988452578140486
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,14 +50,9 @@ PrefabInstance:
       objectReference: {fileID: 1417376072164324968}
     - target: {fileID: 87661978012594203, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 4000769473638943536}
-    - target: {fileID: 87661978012594203, guid: 13f357919641a61439d4518e120abda5,
-        type: 3}
       propertyPath: _animationEvents
       value: 
-      objectReference: {fileID: 7909700888687120943}
+      objectReference: {fileID: 0}
     - target: {fileID: 1449801927241130090, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: _tintColorProperty
@@ -178,6 +173,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Epoch2Unit2
       objectReference: {fileID: 0}
+    - target: {fileID: 7605130466840119668, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 0862474f394324a4e9f4890835132274,
+        type: 2}
     - target: {fileID: 8114988838657312046, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: m_Size.x
@@ -197,17 +198,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _animationEvents
       value: 
-      objectReference: {fileID: 7909700888687120943}
-    - target: {fileID: 8875554840662799739, guid: 13f357919641a61439d4518e120abda5,
-        type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 4000769473638943536}
-    - target: {fileID: 8875554840662799739, guid: 13f357919641a61439d4518e120abda5,
-        type: 3}
-      propertyPath: _animationEvents
-      value: 
-      objectReference: {fileID: 7909700888687120943}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -220,6 +211,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -4725731584619950915}
+    - targetCorrespondingSourceObject: {fileID: 6735294149039191266, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 13f357919641a61439d4518e120abda5, type: 3}
 --- !u!212 &1417376072164324968 stripped
 SpriteRenderer:
@@ -334,10 +329,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 9061967524654161785}
-    - targetCorrespondingSourceObject: {fileID: 2374676364624000372, guid: c54a7188c52ffcf469f282fbfe6c0135,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7909700888687120943}
   m_SourcePrefab: {fileID: 100100000, guid: c54a7188c52ffcf469f282fbfe6c0135, type: 3}
 --- !u!212 &1439639617656464932 stripped
 SpriteRenderer:
@@ -372,12 +363,6 @@ SpriteRenderer:
 --- !u!212 &3699486374234229707 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7056525117897424618, guid: c54a7188c52ffcf469f282fbfe6c0135,
-    type: 3}
-  m_PrefabInstance: {fileID: 5961331544785466657}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &4000769473638943536 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: -1927696946399707631, guid: c54a7188c52ffcf469f282fbfe6c0135,
     type: 3}
   m_PrefabInstance: {fileID: 5961331544785466657}
   m_PrefabAsset: {fileID: 0}
@@ -420,15 +405,4 @@ MonoBehaviour:
   _barrel: {fileID: 6354502990291238860}
   _projectilePrefab: {fileID: 3476111542875554784, guid: d5ac674fcc5b3784daccd3ccee7e741b,
     type: 3}
---- !u!114 &7909700888687120943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8236640507542454357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c05a26e7806242f49327f03ccbd1f826, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.UnitAnimationEvents
+  _instantDamageEffect: 0

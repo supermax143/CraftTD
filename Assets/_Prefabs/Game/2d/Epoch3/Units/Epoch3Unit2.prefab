@@ -22,14 +22,9 @@ PrefabInstance:
       objectReference: {fileID: 1417376072164324968}
     - target: {fileID: 87661978012594203, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 3624661259944987960}
-    - target: {fileID: 87661978012594203, guid: 13f357919641a61439d4518e120abda5,
-        type: 3}
       propertyPath: _animationEvents
       value: 
-      objectReference: {fileID: 7909700888687120943}
+      objectReference: {fileID: 0}
     - target: {fileID: 1449801927241130090, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: _tintColorProperty
@@ -200,6 +195,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Epoch3Unit2
       objectReference: {fileID: 0}
+    - target: {fileID: 7605130466840119668, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: afec96115c3fc56488dc58b602e2add3,
+        type: 2}
     - target: {fileID: 8114988838657312046, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
       propertyPath: m_Size.x
@@ -219,12 +220,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _animationEvents
       value: 
-      objectReference: {fileID: 7909700888687120943}
-    - target: {fileID: 8875554840662799739, guid: 13f357919641a61439d4518e120abda5,
-        type: 3}
-      propertyPath: _animationEvents
-      value: 
-      objectReference: {fileID: 7909700888687120943}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -237,6 +233,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -4725731584619950915}
+    - targetCorrespondingSourceObject: {fileID: 6735294149039191266, guid: 13f357919641a61439d4518e120abda5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 13f357919641a61439d4518e120abda5, type: 3}
 --- !u!212 &1417376072164324968 stripped
 SpriteRenderer:
@@ -509,14 +509,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 9061967524654161785}
-    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 9e2c035a4ce905944afdae5532e69ea0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7909700888687120943}
-    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 9e2c035a4ce905944afdae5532e69ea0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3624661259944987960}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 9e2c035a4ce905944afdae5532e69ea0,
     type: 3}
 --- !u!212 &369108494381650457 stripped
@@ -606,40 +598,6 @@ MonoBehaviour:
   _barrel: {fileID: 0}
   _projectilePrefab: {fileID: 0}
   _instantDamageEffect: 0
---- !u!114 &7909700888687120943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6151117382335730844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c05a26e7806242f49327f03ccbd1f826, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.UnitAnimationEvents
---- !u!95 &3624661259944987960
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6151117382335730844}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: afec96115c3fc56488dc58b602e2add3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &6271094579574121996 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: -8809744283782343891, guid: 9e2c035a4ce905944afdae5532e69ea0,
