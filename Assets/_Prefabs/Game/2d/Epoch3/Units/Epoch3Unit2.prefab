@@ -385,7 +385,7 @@ PrefabInstance:
     - target: {fileID: -8653719598885068355, guid: 9e2c035a4ce905944afdae5532e69ea0,
         type: 3}
       propertyPath: m_Name
-      value: "\u044D\u043F\u043E\u0445\u0430_3_\u044E\u043D\u0438\u0442_2 1"
+      value: UnitView
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 9e2c035a4ce905944afdae5532e69ea0,
         type: 3}

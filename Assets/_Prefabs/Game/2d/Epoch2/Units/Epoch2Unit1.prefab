@@ -201,11 +201,6 @@ PrefabInstance:
       objectReference: {fileID: 275764502547324634}
     - target: {fileID: 8875554840662799739, guid: 13f357919641a61439d4518e120abda5,
         type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 9150974202095722395}
-    - target: {fileID: 8875554840662799739, guid: 13f357919641a61439d4518e120abda5,
-        type: 3}
       propertyPath: _animationEvents
       value: 
       objectReference: {fileID: 275764502547324634}
@@ -327,7 +322,7 @@ PrefabInstance:
     - target: {fileID: 7558625025412223807, guid: 3ceacafabc066a842805f874012bbd1d,
         type: 3}
       propertyPath: m_Name
-      value: "\u044D\u043F\u043E\u0445\u0430_2_\u044E\u043D\u0438\u0442_1"
+      value: UnitView
       objectReference: {fileID: 0}
     - target: {fileID: 8249118308663502689, guid: 3ceacafabc066a842805f874012bbd1d,
         type: 3}
@@ -490,12 +485,6 @@ SpriteRenderer:
 --- !u!212 &8766611268011497255 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 918067209315260052, guid: 3ceacafabc066a842805f874012bbd1d,
-    type: 3}
-  m_PrefabInstance: {fileID: 8436618430557749683}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &9150974202095722395 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: -8364827938704237016, guid: 3ceacafabc066a842805f874012bbd1d,
     type: 3}
   m_PrefabInstance: {fileID: 8436618430557749683}
   m_PrefabAsset: {fileID: 0}

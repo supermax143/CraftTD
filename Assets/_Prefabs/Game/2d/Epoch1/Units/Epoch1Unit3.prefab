@@ -443,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 8969572568259700231, guid: c9b668e146d643546ae76e044ed65a70,
         type: 3}
       propertyPath: m_Name
-      value: epoch 1_unit_3
+      value: UnitView
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

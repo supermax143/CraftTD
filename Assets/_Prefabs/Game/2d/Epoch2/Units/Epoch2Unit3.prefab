@@ -418,7 +418,7 @@ PrefabInstance:
     - target: {fileID: 9194174385973781919, guid: b46bdbda7fc45254fa63c9be9289342f,
         type: 3}
       propertyPath: m_Name
-      value: "\u044D\u043F\u043E\u0445\u0430_2_\u044E\u043D\u0438\u0442_3"
+      value: UnitView
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

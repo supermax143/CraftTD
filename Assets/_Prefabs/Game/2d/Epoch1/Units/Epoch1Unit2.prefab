@@ -277,7 +277,7 @@ PrefabInstance:
     - target: {fileID: 2568999453377577720, guid: b9c8ad48810b63b4d83a16aa3cc7136a,
         type: 3}
       propertyPath: m_Name
-      value: epoch 1_unit_2
+      value: UnitView
       objectReference: {fileID: 0}
     - target: {fileID: 3706166383553616539, guid: b9c8ad48810b63b4d83a16aa3cc7136a,
         type: 3}
