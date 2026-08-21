@@ -11,15 +11,15 @@ namespace Unity.Presentation.Views.Battle
     /// <summary>
     /// UI компонент для управления оборонительной стойкой по тирам юнитов
     /// </summary>
-    public class DefenseStanceUI : MonoBehaviour
+    public class DefenseStanceButton : MonoBehaviour
     {
         [SerializeField] private Image _activateIcon;
         [SerializeField] private Image _deactivateIcon;
         [SerializeField] private UnitTier _tier;
 
-        [Inject] private EpochModel _epochModel;
         [Inject] private IMainModel _mainModel;
         [Inject] private IGameController _gameController;
+        private EpochModel Epoch => _mainModel.PlayerEpoch;
         
         private UnitModel _unitModel = null;
 
@@ -31,7 +31,7 @@ namespace Unity.Presentation.Views.Battle
 
         private void Initialize()
         {
-            if (_epochModel.TryGetUnitModel(_tier, out var unitModel))
+            if (Epoch.TryGetUnitModel(_tier, out var unitModel))
             {
                 _unitModel = unitModel;
             }
@@ -54,6 +54,11 @@ namespace Unity.Presentation.Views.Battle
             UpdateDefenceState(active);
         }
 
+        public void SwitchDefence()
+        {
+            _gameController.SwitchDefenseStance(_tier);
+        }
+        
         private void OnDefenseStanceSwitched(UnitTier tier, bool active)
         {
             if (_tier != tier)

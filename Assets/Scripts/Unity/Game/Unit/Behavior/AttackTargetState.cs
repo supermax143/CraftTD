@@ -38,7 +38,7 @@ namespace Unity.Game
             if (curTarget == null || curTarget.IsDead)
             {
                 _stateManager.GameController.TryGetDefenseStance(_unit.Tier, out var defenceActive);
-                if (defenceActive)
+                if (_unit.Faction == Faction.Player && defenceActive)
                 {
                     ChangeState<DefenseStanceState>();
                 }

@@ -22,17 +22,7 @@ namespace Unity.Presentation.HUD
         [Inject] private readonly ModelToAtlasRenderer _modelToTextureRenderer;
         
         private EpochModel Epoch => _model.PlayerEpoch;
-
-        private void Start()
-        {
-            //Epoch.OnUnitOpened += OnUnitUpdated;
-            //UpdateView();
-        }
         
-        /*private void OnUnitUpdated()
-        {
-            UpdateView().Forget();
-        }*/
         
         public async UniTask UpdateView()
         {

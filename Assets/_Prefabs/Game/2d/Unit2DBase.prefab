@@ -505,6 +505,7 @@ GameObject:
   - component: {fileID: 7089783761961880826}
   - component: {fileID: 7351980220057903639}
   - component: {fileID: 6667485315871406035}
+  - component: {fileID: 9171438116441651185}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -597,6 +598,7 @@ MonoBehaviour:
   - {fileID: 7634437661775341548}
   - {fileID: 7351980220057903639}
   - {fileID: 6667485315871406035}
+  - {fileID: 9171438116441651185}
 --- !u!114 &7351980220057903639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,6 +623,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d6df391a79410386923b20d688bb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.LoseState
+--- !u!114 &9171438116441651185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8562988452578140486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f36740415e9ee214fad4312dc63f4b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.DefenseStanceState
 --- !u!1001 &9096850961821183957
 PrefabInstance:
   m_ObjectHideFlags: 0

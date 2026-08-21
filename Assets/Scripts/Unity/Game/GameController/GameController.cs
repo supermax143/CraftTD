@@ -53,7 +53,12 @@ namespace Unity.Game
         private EpochModel EnemyEpoch => _mainModel.EnemyEpoch;
         public LocationContainer LocationContainer => _locationContainer;
 
-        private Dictionary<UnitTier, bool> _tierToDefenseStance = new ();
+        private readonly Dictionary<UnitTier, bool> _tierToDefenceStance = new()
+        {
+            { UnitTier.Tier1, false},
+            { UnitTier.Tier2, false},
+            { UnitTier.Tier3, false},
+        };
         
         private Spawner _spawner;
         private bool _started = false;
@@ -153,6 +158,12 @@ namespace Unity.Game
             {
                 team.Reset();
             }
+
+            _tierToDefenceStance[UnitTier.Tier1] = false;
+            _tierToDefenceStance[UnitTier.Tier2] = false;
+            _tierToDefenceStance[UnitTier.Tier3] = false;
+
+
         }
         
         public void SelectNextEnemyEpoch()
@@ -203,7 +214,7 @@ namespace Unity.Game
 
         public bool TryGetDefenseStance(UnitTier tier, out bool defenceStanceActive)
         {
-            return _tierToDefenseStance.TryGetValue(tier, out defenceStanceActive);
+            return _tierToDefenceStance.TryGetValue(tier, out defenceStanceActive);
         }
         
         public void SwitchDefenseStance(UnitTier tier)
@@ -214,14 +225,14 @@ namespace Unity.Game
                 return;
             }
 
-            if (!_tierToDefenseStance.TryGetValue(tier, out var defenceStanceActive))
+            if (!_tierToDefenceStance.TryGetValue(tier, out var defenceStanceActive))
             {
                 Debug.LogError("defense stance is not found");
                 return;
             }
             
-            _tierToDefenseStance[tier] = !defenceStanceActive;
-            OnDefenseStanceSwitched?.Invoke(tier, _tierToDefenseStance[tier]);
+            _tierToDefenceStance[tier] = !defenceStanceActive;
+            OnDefenseStanceSwitched?.Invoke(tier, _tierToDefenceStance[tier]);
         }
         
         public void Pause(bool pause)

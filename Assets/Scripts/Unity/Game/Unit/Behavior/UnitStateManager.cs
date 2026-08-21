@@ -59,7 +59,7 @@ namespace Unity.Game
 
         private void OnDefenseStanceSwitched(UnitTier tier, bool active)
         {
-            if (_unit.Tier != tier || !active)
+            if (_unit.Faction != Faction.Player || _unit.Tier != tier || !active)
             {
                 return;
             }

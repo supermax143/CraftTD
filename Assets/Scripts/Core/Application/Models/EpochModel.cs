@@ -81,7 +81,7 @@ namespace Core.Application.Models
                 }
             }
             var unitOpened = tier == UnitTier.Tier1 || _data.IsUnitOpened(tier);
-            var defenseStanceOpened = _data.IsDefenseStanceOpened(tier);
+            var defenseStanceOpened = true;//_data.IsDefenseStanceOpened(tier);
             var unitModel = new UnitModel(info, entity, unitOpened, defenseStanceOpened);
             units.Add(unitModel);
         }
