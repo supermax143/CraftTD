@@ -21,11 +21,6 @@ namespace Unity.Game
             {
                 return;
             }
-
-            if (_unit.Faction == Faction.Player)
-            {
-                Debug.Log("asdsd");
-            }
             
             var targetSearch = _unit.TargetSearchComponent;
             if (targetSearch.TryGetClosestTarget(out var target) && target.Type == TargetType.Tower)
@@ -42,7 +37,16 @@ namespace Unity.Game
             var curTarget = _stateManager.CurrentTarget;
             if (curTarget == null || curTarget.IsDead)
             {
-                ChangeState<SearchTargetState>();
+                _stateManager.GameController.TryGetDefenseStance(_unit.Tier, out var defenceActive);
+                if (defenceActive)
+                {
+                    ChangeState<DefenseStanceState>();
+                }
+                else
+                {
+                    ChangeState<SearchTargetState>();
+                }
+                
                 return;
             }
             

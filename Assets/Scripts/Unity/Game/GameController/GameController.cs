@@ -26,7 +26,7 @@ namespace Unity.Game
 {
     public class GameController : MonoBehaviour, IGameController
     {
-        
+        public event Action<UnitTier, bool> OnDefenseStanceSwitched;
         public event Action<Faction> OnGameFinished;
         
         [SerializeField]
@@ -35,8 +35,6 @@ namespace Unity.Game
         private FoodProduction _foodProduction;
         [SerializeField]
         private GameHUD _hud;
-        /*[SerializeField]
-        private Transform _locationPlaceholder;*/
         [SerializeField]
         private LocationContainer _locationContainer;
         [SerializeField]
@@ -55,11 +53,12 @@ namespace Unity.Game
         private EpochModel EnemyEpoch => _mainModel.EnemyEpoch;
         public LocationContainer LocationContainer => _locationContainer;
 
+        private Dictionary<UnitTier, bool> _tierToDefenseStance = new ();
+        
         private Spawner _spawner;
         private bool _started = false;
         private bool _isPaused = false;
         private bool _uiBlocked = false;
-        
         private ResultWindow _resultWindow;
         
         
@@ -202,6 +201,29 @@ namespace Unity.Game
             _spawner.Spawn(tier, 1);
         }
 
+        public bool TryGetDefenseStance(UnitTier tier, out bool defenceStanceActive)
+        {
+            return _tierToDefenseStance.TryGetValue(tier, out defenceStanceActive);
+        }
+        
+        public void SwitchDefenseStance(UnitTier tier)
+        {
+            if (!PlayerEpoch.TryGetUnitModel(tier, out var unitModel) || !unitModel.IsDefenseStanceOpened)
+            {
+                Debug.LogError("defense stance is not opened");
+                return;
+            }
+
+            if (!_tierToDefenseStance.TryGetValue(tier, out var defenceStanceActive))
+            {
+                Debug.LogError("defense stance is not found");
+                return;
+            }
+            
+            _tierToDefenseStance[tier] = !defenceStanceActive;
+            OnDefenseStanceSwitched?.Invoke(tier, _tierToDefenseStance[tier]);
+        }
+        
         public void Pause(bool pause)
         {
             _isPaused = pause;

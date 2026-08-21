@@ -107,6 +107,17 @@ namespace Unity.Game.Attributes.Specific
     }
 
     [Serializable]
+    public class DefenseStanceCostAttribute : IntEntityAttribute
+    {
+        public DefenseStanceCostAttribute(int baseValue = 0)
+            : base(baseValue)
+        {
+        }
+
+        public override GameEntityAttributeKind Kind => GameEntityAttributeKind.DefenseStanceCost;
+    }
+
+    [Serializable]
     public class TowerPrefabAttribute : GameObjectEntityAttribute
     {
         public TowerPrefabAttribute(GameObject baseValue = null)

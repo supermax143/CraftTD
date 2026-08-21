@@ -35,6 +35,8 @@ namespace Unity.Game
 
         public IGameController GameController => _gameController;
 
+        public UnitState CurrentState => _currentState;
+
         private void OnValidate()
         {
             _states = GetComponents<UnitState>();
@@ -52,7 +54,24 @@ namespace Unity.Game
             }
             _unit.HealthComponent.OnDeath += OnUnitDeath;
             _gameController.OnGameFinished += OnGameFinished;
+            _gameController.OnDefenseStanceSwitched += OnDefenseStanceSwitched;
         }
+
+        private void OnDefenseStanceSwitched(UnitTier tier, bool active)
+        {
+            if (_unit.Tier != tier || !active)
+            {
+                return;
+            }
+            
+            if (_currentState is (DefenseStanceState or AttackTargetState) )
+            {
+                return;
+            }
+            
+            ChangeState<DefenseStanceState>();
+        }
+
 
         private void OnUnitDeath()
         {
@@ -111,6 +130,7 @@ namespace Unity.Game
             if (_gameController != null)
             {
                 _gameController.OnGameFinished -= OnGameFinished;
+                _gameController.OnDefenseStanceSwitched -= OnDefenseStanceSwitched;
             }
             if (_unit != null && _unit.HealthComponent != null)
             {

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Core.Application.Models;
 using Unity.Game.Attributes;
+using Unity.Game.Entity;
 using Unity.Settings;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -34,10 +35,12 @@ namespace Unity.Game
 
         [Inject] private GameSettings _gameSettings;
         [Inject] private IMainModel _mainModel;
-        
+        [Inject] private IGameController _gameController;
+
         private Faction _faction;
         private Faction _opponentFaction;
         private GameEntityData _data;
+        private UnitTier _tier;
         
         public Faction OpponentFaction => _opponentFaction;
         public AttackComponent Attack => _attackComponent;
@@ -45,11 +48,11 @@ namespace Unity.Game
         public MoveComponentBase MoveComponent => _moveComponent;
         public TargetSearchComponentBase TargetSearchComponent => _targetSearchComponent;
         public AttackTargetBase AttackTarget => _attackTarget;
-        public RewardComponent RewardComponent1 => _rewardComponent;
         public Faction Faction => _faction;
 
         public UnitView View => _view;
 
+        public UnitTier Tier => _tier;
 
 
         private void OnValidate()
@@ -83,6 +86,10 @@ namespace Unity.Game
         public override void SetData(GameEntityData data)
         {
             _data = data;
+            if (_data is UnitEntity unitEntity)
+            {
+                _tier = unitEntity.Tier;
+            }
             Initialize();
         }
 
@@ -104,8 +111,10 @@ namespace Unity.Game
 
             _stateManager.Initialize(this);
             _stateManager.ChangeState<SearchTargetState>();
-        }
 
+            
+        }
+        
         public override IEnumerable<GameEntityAttribute> GetAllAttributes()
         {
             return _data.GetAllAttributes();
@@ -118,14 +127,29 @@ namespace Unity.Game
             {
                 _rewardComponent.OnDeathHandler();
             }
+            
             Dispose();
         }
 
-        
-        
         public void Dispose()
         {
             Destroy(gameObject);
         }
+
+        /*private void OnDefenseStanceActivated(UnitTier tier)
+        {
+            if (_tier == tier && _stateManager.CurrentState is DefenseStanceState == false)
+            {
+                _stateManager.ChangeState<DefenseStanceState>();
+            }
+        }
+
+        private void OnDefenseStanceDeactivated(UnitTier tier)
+        {
+            if (_tier == tier && _stateManager.CurrentState is DefenseStanceState defenseStanceState)
+            {
+                defenseStanceState.ExitDefenseStance();
+            }
+        }*/
     }
 }

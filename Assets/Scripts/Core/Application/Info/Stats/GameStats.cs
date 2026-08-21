@@ -49,6 +49,12 @@ namespace Unity.Game
         [SerializeField] private int _baseUnitOpeningCostTier2 = 150;
         [SerializeField] private int _baseUnitOpeningCostTier3 = 400;
         [SerializeField] private int _unitOpeningCostMultiplier = 8;
+
+        [Space]
+        [Header("Defense Stance Cost")]
+        [SerializeField] private int _baseDefenseStanceCostTier2 = 100;
+        [SerializeField] private int _baseDefenseStanceCostTier3 = 250;
+        [SerializeField] private int _defenseStanceCostMultiplier = 8;
         
         [Space]
         [Header("Unit Reward")]
@@ -150,6 +156,17 @@ namespace Unity.Game
         {
             var baseCost = tier == UnitTier.Tier2 ? _baseUnitOpeningCostTier2 : _baseUnitOpeningCostTier3;
             return (int)(baseCost * Math.Pow(_unitOpeningCostMultiplier, epoch-1));
+        }
+
+        public int GetDefenseStanceCost(int epoch, UnitTier tier)
+        {
+            var baseCost = tier switch
+            {
+                UnitTier.Tier2 => _baseDefenseStanceCostTier2,
+                UnitTier.Tier3 => _baseDefenseStanceCostTier3,
+                _ => 0
+            };
+            return (int)(baseCost * Math.Pow(_defenseStanceCostMultiplier, epoch - 1));
         }
         
         

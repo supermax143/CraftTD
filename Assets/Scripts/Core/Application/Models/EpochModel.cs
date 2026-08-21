@@ -10,6 +10,7 @@ namespace Core.Application.Models
     public class EpochModel
     {
         public event Action<UnitModel> OnUnitOpened;
+        public event Action<UnitModel> OnDefenseStanceOpened;
         public event Action OnFoodProductionLevelChanged;
         public event Action OnTowerLevelChanged;
 
@@ -67,10 +68,10 @@ namespace Core.Application.Models
             {
                 return;
             }
-            
+
             var entity = GetUnitEntity(tier, _epochNumber);
             var modifiers = _info.GetUnitModifiers(tier);
-            
+
             foreach (var modifierWrapper in modifiers)
             {
                 var modifier = modifierWrapper.GetModifier(GetHashCode());
@@ -80,7 +81,8 @@ namespace Core.Application.Models
                 }
             }
             var unitOpened = tier == UnitTier.Tier1 || _data.IsUnitOpened(tier);
-            var unitModel = new UnitModel(info, entity, unitOpened);
+            var defenseStanceOpened = _data.IsDefenseStanceOpened(tier);
+            var unitModel = new UnitModel(info, entity, unitOpened, defenseStanceOpened);
             units.Add(unitModel);
         }
         
@@ -159,6 +161,25 @@ namespace Core.Application.Models
             OnUnitOpened?.Invoke(unitModel);
         }
 
+        public void OpenDefenseStance(UnitTier tier)
+        {
+            if (!TryGetUnitModel(tier, out var unitModel) ||
+                !unitModel.IsUnitOpened ||
+                unitModel.IsDefenseStanceOpened ||
+                _inventory.Money < Resource.Money(unitModel.DefenseStanceCost))
+            {
+                return;
+            }
+
+            _inventory.Money -= Resource.Money(unitModel.DefenseStanceCost);
+
+            _data.OpenDefenseStance(tier);
+            unitModel.OpenDefenseStance();
+            OnDefenseStanceOpened?.Invoke(unitModel);
+        }
+
         
+
+
     }
 }

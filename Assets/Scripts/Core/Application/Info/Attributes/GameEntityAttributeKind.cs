@@ -1,4 +1,4 @@
-﻿namespace Unity.Game.Attributes
+namespace Unity.Game.Attributes
 {
     public enum GameEntityAttributeKind
     {
@@ -14,6 +14,7 @@
         UnitPrefab,
         TowerPrefab,
         RewardMoney,
-        UnitUnlockCost
+        UnitUnlockCost,
+        DefenseStanceCost
     }
 }

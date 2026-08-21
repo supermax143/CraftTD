@@ -16,6 +16,7 @@ namespace Core.Application.DataStorage.StorageItems
         public uint FoodProductionLevel = 0;
         public uint TowerLevel = 0;
         public List<UnitTier> OpenedUnits = new();
+        public List<UnitTier> OpenedDefenseStances = new();
     }
 
     internal class EpochStorageData
@@ -82,6 +83,21 @@ namespace Core.Application.DataStorage.StorageItems
                 return;
             }
             _epochDataInfo.OpenedUnits.Add(tier);
+            Save();
+        }
+
+        public bool IsDefenseStanceOpened(UnitTier tier)
+        {
+            return _epochDataInfo.OpenedDefenseStances.Contains(tier);
+        }
+
+        public void OpenDefenseStance(UnitTier tier)
+        {
+            if (_epochDataInfo.OpenedDefenseStances.Contains(tier))
+            {
+                return;
+            }
+            _epochDataInfo.OpenedDefenseStances.Add(tier);
             Save();
         }
         

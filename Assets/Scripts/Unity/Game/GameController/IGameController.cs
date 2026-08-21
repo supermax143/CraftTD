@@ -5,11 +5,11 @@ namespace Unity.Game
 {
     public interface IGameController
     {
-        void BuyUnit(UnitTier tier);
+        event Action<UnitTier, bool> OnDefenseStanceSwitched;
         event Action<Faction> OnGameFinished;
+        void BuyUnit(UnitTier tier);
         bool TryGetTower(Faction faction,out AttackTargetBase target);
         void Pause(bool pause);
-
         void FinishRound(Faction winner, bool force);
         void SelectNextEnemyEpoch();
         void SelectPrevEnemyEpoch();
@@ -19,5 +19,7 @@ namespace Unity.Game
         LocationContainer LocationContainer { get; }
         void Reset();
         void StartBattle();
+        void SwitchDefenseStance(UnitTier tier);
+        bool TryGetDefenseStance(UnitTier tier, out bool defenceStanceActive);
     }
 }
