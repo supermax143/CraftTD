@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Core.Application.Models;
 using Unity.Game.Spells;
 using Zenject;
 
@@ -9,6 +10,8 @@ namespace Core.Application.Spells
     {
         
         [Inject] private SpellDatabase _spellDatabase;
+        [Inject] private InventoryModel _inventory;
+        
         
         private readonly Dictionary<string, SpellModel> _idToSpell;
 
@@ -16,6 +19,10 @@ namespace Core.Application.Spells
         
         public void Initialize()
         {
+            foreach (var spellConfig in _spellDatabase.GetAllSpells())
+            {
+                AddSpell(spellConfig);
+            }
         }
         
         public SpellCollection()
@@ -23,8 +30,9 @@ namespace Core.Application.Spells
             _idToSpell = new Dictionary<string, SpellModel>();
         }
 
-        public void AddSpell(SpellModel spell)
+        public void AddSpell(SpellConfig spellConfig)
         {
+            var spell = new SpellModel(spellConfig,1);
             _idToSpell[spell.Config.Id] = spell;
         }
 
@@ -43,7 +51,7 @@ namespace Core.Application.Spells
             var spell = GetSpell(spellId);
             if (spell == null || spell.IsUnlocked) return false;
 
-            spell.Unlock();
+            //spell.Unlock();
             return true;
         }
 
@@ -52,7 +60,7 @@ namespace Core.Application.Spells
             var spell = GetSpell(spellId);
             if (spell == null || !spell.IsUnlocked) return false;
 
-            spell.Upgrade();
+            //spell.Upgrade();
             return true;
         }
     }

@@ -14,12 +14,15 @@ namespace Unity.Game
 
         public override void UpdateState()
         {
-            
+            if (!_spell.TargetingComponent.IsTargetingActive())
+            {
+                _stateManager.ChangeState<ActivationState>();
+            }
         }
 
         public override void Exit()
         {
-            base.Exit();
+            _spell.TargetingComponent.Deactivate();
         }
     }
 }

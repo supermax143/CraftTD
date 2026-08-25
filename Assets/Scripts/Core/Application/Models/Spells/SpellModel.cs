@@ -11,19 +11,17 @@ namespace Core.Application.Spells
 
         private readonly SpellConfig _config;
         private int _currentLevel;
-        private readonly InventoryModel _inventory;
 
         public SpellConfig Config => _config;
         public int CurrentLevel => _currentLevel;
         public bool IsUnlocked => _currentLevel > 0;
 
-        public SpellModel(SpellConfig config, InventoryModel inventory, bool isUnlocked = false, int currentLevel = 1)
+        public SpellModel(SpellConfig config, int currentLevel)
         {
             _config = config;
-            _inventory = inventory;
             _currentLevel = currentLevel;
         }
-
+/*
         private bool CanUnlock()
         {
             if (IsUnlocked)
@@ -87,6 +85,7 @@ namespace Core.Application.Spells
             }
             return Resource.Money(0);
         }
+        */
 
         public float GetCalculatedValue(string parameterName, float baseValue)
         {

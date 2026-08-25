@@ -703,6 +703,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8635631924684759699}
+    - targetCorrespondingSourceObject: {fileID: 2484332914036837969, guid: d1708784180c8cc42b61382e9ef1f9a3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6164862998399272433}
   m_SourcePrefab: {fileID: 100100000, guid: d1708784180c8cc42b61382e9ef1f9a3, type: 3}
 --- !u!212 &478153655566350940 stripped
 SpriteRenderer:
@@ -741,6 +745,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.LocationRoad
   _roadSprite: {fileID: 1736480862388725365}
+--- !u!61 &6164862998399272433
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2466485186764208678}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 3.47, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 21.15, y: 3.3046875}
+    newSize: {x: 58.1, y: 3.31}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 2
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 17.082993, y: 3.3046875}
+  m_EdgeRadius: 0
 --- !u!212 &2612229433028207521 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2594117910072563670, guid: d1708784180c8cc42b61382e9ef1f9a3,

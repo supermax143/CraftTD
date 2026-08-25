@@ -30,5 +30,7 @@ namespace Core.Application.Spells
         public int MaxLevel => _upgrades.Count;
         public List<SpellUpgrade> Upgrades => _upgrades;
         public SpellImpact Impact => _impact;
+
+        public GameObject Prefab => _prefab;
     }
 }

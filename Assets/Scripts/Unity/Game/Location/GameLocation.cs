@@ -22,7 +22,7 @@ namespace Unity.Game
 
         public void ActivateRoadHighLight(bool active)
         {
-            _road.ActivateRoadHighLight(active);
+            _road.ActivateHighLight(active);
         }
 
         private void OnDestroy()

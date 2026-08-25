@@ -12,7 +12,7 @@ namespace Core.Application.Spells.Targeting
         
         public override bool IsTargetingActive()
         {
-            return _targetPosition.HasValue;
+            return !_targetPosition.HasValue;
         }
 
         public override void Activate()

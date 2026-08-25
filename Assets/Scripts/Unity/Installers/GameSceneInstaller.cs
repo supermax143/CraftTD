@@ -4,6 +4,7 @@ using System.Data.SqlTypes;
 using Core.Application.DataStorage;
 using Exploration.Scripts.Controllers.ModelRender;
 using Unity.Game;
+using Unity.Game.Spells;
 using Unity.Infrastructure.Camera;
 using Unity.Infrastructure.Effects;
 using Unity.Infrastructure.VisualActions;
@@ -37,6 +38,7 @@ namespace Unity.Installers
             BindController<VisualActionFactories>();
             BindController<VisualActionsController>();
             BindController<ViewsController>();
+            BindController<SpellCaster>();
         }
         
         private void BindController<TController>() where TController: Component

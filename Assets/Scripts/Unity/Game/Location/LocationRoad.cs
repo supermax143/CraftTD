@@ -11,9 +11,9 @@ namespace Unity.Game
         [SerializeField]
         private SpriteRenderer _roadSprite;
         
-        public void ActivateRoadHighLight(bool active)
+        public void ActivateHighLight(bool active)
         {
-            var color = active ? Color.white : Color.yellow;
+            var color = active ? Color.yellow : Color.white;
             _roadSprite.color = color;
         }
 
