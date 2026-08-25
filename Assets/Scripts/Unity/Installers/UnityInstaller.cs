@@ -2,9 +2,11 @@ using Core.Application.DataStorage;
 using Core.Application.Info.Inventory;
 using Core.Application.Info.Shop;
 using Core.Application.Models;
+using Core.Application.Spells;
 using Exploration.Scripts.Controllers.ModelRender;
 using Unity.Bootstrap;
 using Unity.Game;
+using Unity.Game.Spells;
 using Unity.Infrastructure.Advertisement;
 using Unity.Infrastructure.Advertisement.API;
 using Unity.Infrastructure.Advertisement.Transactions;
@@ -41,7 +43,8 @@ namespace Unity.Installers
       private ShopConfig _shopConfig;
       [SerializeField]
       private InventoryConfig _inventoryConfig;
-      
+      [SerializeField]
+      private SpellDatabase _spellDatabase;
 
       public override async void InstallBindings()
       {
@@ -73,6 +76,10 @@ namespace Unity.Installers
          //Shop
          Container.BindInterfacesAndSelfTo<ShopModel>().AsSingle();
          Container.BindInterfacesAndSelfTo<ShopConfig>().FromInstance(_shopConfig).AsSingle();
+         
+         //Spells
+         Container.BindInterfacesAndSelfTo<SpellCollection>().AsSingle();
+         Container.BindInterfacesAndSelfTo<SpellDatabase>().FromInstance(_spellDatabase).AsSingle();
          
          //Data Storage
          Container.Bind<ILocalStorageProvider>().To<PlayerPrefsStorageProvider>().AsTransient();

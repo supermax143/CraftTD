@@ -1,30 +1,41 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Game.Spells;
+using Zenject;
 
 namespace Core.Application.Spells
 {
-    public class SpellCollection
+    public class SpellCollection : IInitializable
     {
-        private readonly Dictionary<string, SpellModel> _spells;
+        
+        [Inject] private SpellDatabase _spellDatabase;
+        
+        private readonly Dictionary<string, SpellModel> _idToSpell;
 
+        
+        
+        public void Initialize()
+        {
+        }
+        
         public SpellCollection()
         {
-            _spells = new Dictionary<string, SpellModel>();
+            _idToSpell = new Dictionary<string, SpellModel>();
         }
 
         public void AddSpell(SpellModel spell)
         {
-            _spells[spell.Definition.Id] = spell;
+            _idToSpell[spell.Config.Id] = spell;
         }
 
         public SpellModel GetSpell(string spellId)
         {
-            return _spells.TryGetValue(spellId, out var spell) ? spell : null;
+            return _idToSpell.TryGetValue(spellId, out var spell) ? spell : null;
         }
 
         public IEnumerable<SpellModel> GetAllSpells()
         {
-            return _spells.Values;
+            return _idToSpell.Values;
         }
 
         public bool UnlockSpell(string spellId)

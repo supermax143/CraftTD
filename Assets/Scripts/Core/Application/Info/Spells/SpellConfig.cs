@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace Core.Application.Spells
 {
-    public class SpellDefinition : ScriptableObject
+    [CreateAssetMenu(fileName = "SpellConfig", menuName = "CraftTD/SpellConfig", order = 1)]
+    public class SpellConfig : ScriptableObject
     {
         [SerializeField]
         private string _id;
@@ -14,6 +15,8 @@ namespace Core.Application.Spells
         private string _description;
         [SerializeField]
         private Sprite _icon;
+        [SerializeField]
+        private GameObject _prefab;
         [SerializeField]
         private List<SpellUpgrade> _upgrades;
         

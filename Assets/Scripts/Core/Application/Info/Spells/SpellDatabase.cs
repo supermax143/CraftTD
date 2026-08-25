@@ -7,16 +7,16 @@ namespace Unity.Game.Spells
     public class SpellDatabase : ScriptableObject
     {
         [SerializeField]
-        private List<Core.Application.Spells.SpellDefinition> _spells;
+        private List<Core.Application.Spells.SpellConfig> _spells;
 
-        public List<Core.Application.Spells.SpellDefinition> Spells => _spells;
+        public List<Core.Application.Spells.SpellConfig> Spells => _spells;
 
-        public Core.Application.Spells.SpellDefinition GetSpell(string id)
+        public Core.Application.Spells.SpellConfig GetSpell(string id)
         {
             return _spells.Find(s => s.Id == id);
         }
 
-        public IEnumerable<Core.Application.Spells.SpellDefinition> GetAllSpells()
+        public IEnumerable<Core.Application.Spells.SpellConfig> GetAllSpells()
         {
             return _spells;
         }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3342191d8f1e6a34aa72c799d9a9b9e5, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: Core.Application::Core.Application.Spells.SpellConfig
+  _id: fire_ball
+  _name: 
+  _description: 
+  _icon: {fileID: 0}
+  _prefab: {fileID: 2408054147042555135, guid: 9d1b880d0ae546440a7a2329665f30e7, type: 3}
+  _upgrades: []

@@ -9,17 +9,17 @@ namespace Core.Application.Spells
         public event Action OnSpellUnlocked;
         public event Action OnSpellLevelChanged;
 
-        private readonly SpellDefinition _definition;
+        private readonly SpellConfig _config;
         private int _currentLevel;
         private readonly InventoryModel _inventory;
 
-        public SpellDefinition Definition => _definition;
+        public SpellConfig Config => _config;
         public int CurrentLevel => _currentLevel;
         public bool IsUnlocked => _currentLevel > 0;
 
-        public SpellModel(SpellDefinition definition, InventoryModel inventory, bool isUnlocked = false, int currentLevel = 1)
+        public SpellModel(SpellConfig config, InventoryModel inventory, bool isUnlocked = false, int currentLevel = 1)
         {
-            _definition = definition;
+            _config = config;
             _inventory = inventory;
             _currentLevel = currentLevel;
         }
@@ -48,7 +48,7 @@ namespace Core.Application.Spells
         public bool CanUpgrade()
         {
             if (!IsUnlocked) return false;
-            if (_currentLevel >= _definition.MaxLevel) return false;
+            if (_currentLevel >= _config.MaxLevel) return false;
 
             var upgradeCost = GetUpgradeCost();
             return _inventory.HasEnough(upgradeCost.Type, upgradeCost.Value);
@@ -57,7 +57,7 @@ namespace Core.Application.Spells
         public void Upgrade()
         {
             if (!IsUnlocked) return;
-            if (_currentLevel >= _definition.MaxLevel) return;
+            if (_currentLevel >= _config.MaxLevel) return;
             if (!CanUpgrade()) return;
 
             var upgradeCost = GetUpgradeCost();
@@ -69,7 +69,7 @@ namespace Core.Application.Spells
 
         public Resource GetUnlockCost()
         {
-            var firstUpgrade = _definition.Upgrades.Count > 0 ? _definition.Upgrades[0] : null;
+            var firstUpgrade = _config.Upgrades.Count > 0 ? _config.Upgrades[0] : null;
             if (firstUpgrade != null)
             {
                 return firstUpgrade.Cost;
@@ -80,7 +80,7 @@ namespace Core.Application.Spells
         public Resource GetUpgradeCost()
         {
             var nextLevel = _currentLevel + 1;
-            var upgrade = _definition.Upgrades.Find(u => u.Level == nextLevel);
+            var upgrade = _config.Upgrades.Find(u => u.Level == nextLevel);
             if (upgrade != null)
             {
                 return upgrade.Cost;
@@ -92,7 +92,7 @@ namespace Core.Application.Spells
         {
             float calculatedValue = baseValue;
 
-            foreach (var upgrade in _definition.Upgrades)
+            foreach (var upgrade in _config.Upgrades)
             {
                 if (upgrade.Level > _currentLevel) continue;
 

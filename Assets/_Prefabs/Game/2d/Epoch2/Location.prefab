@@ -286,6 +286,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6232003314275171908, guid: d1708784180c8cc42b61382e9ef1f9a3,
         type: 3}
+      propertyPath: _road
+      value: 
+      objectReference: {fileID: 8635631924684759699}
+    - target: {fileID: -6232003314275171908, guid: d1708784180c8cc42b61382e9ef1f9a3,
+        type: 3}
       propertyPath: _roadSprite
       value: 
       objectReference: {fileID: 1736480862388725365}
@@ -693,7 +698,11 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4233221302988372370}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2484332914036837969, guid: d1708784180c8cc42b61382e9ef1f9a3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8635631924684759699}
   m_SourcePrefab: {fileID: 100100000, guid: d1708784180c8cc42b61382e9ef1f9a3, type: 3}
 --- !u!212 &478153655566350940 stripped
 SpriteRenderer:
@@ -713,6 +722,25 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 18199850704041079}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2466485186764208678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2484332914036837969, guid: d1708784180c8cc42b61382e9ef1f9a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 18199850704041079}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8635631924684759699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2466485186764208678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec1e671869a4d63b1332568db82cec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.LocationRoad
+  _roadSprite: {fileID: 1736480862388725365}
 --- !u!212 &2612229433028207521 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 2594117910072563670, guid: d1708784180c8cc42b61382e9ef1f9a3,

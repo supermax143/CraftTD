@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Unity.Game
 {
-    public class LocationRoad : IPointerClickHandler
+    public class LocationRoad : MonoBehaviour, IPointerClickHandler
     {
         public event Action<Vector2> OnClick;
         

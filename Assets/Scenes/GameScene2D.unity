@@ -580,6 +580,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Infrastructure.Camera.CameraShaker
   _shakeDuration: 0.2
   _maxShakeDelta: {x: 0.2, y: 0.2}
+--- !u!1 &166792674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 166792675}
+  - component: {fileID: 166792676}
+  m_Layer: 0
+  m_Name: SpellCaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &166792675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166792674}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1031219517}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &166792676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166792674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d974e3d21b413b8882edab03725325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Spells.SpellCaster
 --- !u!1 &277753464
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +937,7 @@ Transform:
   - {fileID: 47148112}
   - {fileID: 487283239}
   - {fileID: 1498776013}
+  - {fileID: 166792675}
   m_Father: {fileID: 1584959698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1064528741
@@ -976,25 +1021,6 @@ MonoBehaviour:
   _mainCam: {fileID: 0}
   _flightDuration: 1.5
   _arcHeight: 1
---- !u!1 &1113540874 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 249732170192809513, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
-    type: 3}
-  m_PrefabInstance: {fileID: 4192125743556613102}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1113540877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113540874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55f242930054a8e9089ef663915b483, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.GameLocation
-  _roadSprite: {fileID: 0}
 --- !u!4 &1411672256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 22226368363701204, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
@@ -1341,11 +1367,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 249732170192809513, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1113540877}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6dd9f82fe5c2b742b9abe125c84c7d2, type: 3}
 --- !u!224 &4749764036245232146 stripped
 RectTransform:
