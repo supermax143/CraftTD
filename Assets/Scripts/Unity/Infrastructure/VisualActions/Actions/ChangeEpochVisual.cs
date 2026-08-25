@@ -36,7 +36,7 @@ namespace Unity.Infrastructure.VisualActions.Actions
             }
             _gameController.GetTeam(Faction.Player).HideUnits(_gameSettings.EpochChangeTime, false);
             _gameController.GetTeam(Faction.Enemy).HideUnits(_gameSettings.EpochChangeTime, false);
-            _gameController.LocationContainer.SwitchToLocation(EnemyEpoch.Info.LocationPrefab, time, inversed);
+            _gameController.LocationSwitcher.SwitchToLocation(EnemyEpoch.Info.LocationPrefab, time, inversed);
             yield return new WaitForSeconds(time);
             _gameController.Reset();
             _gameController.UnblockUI();

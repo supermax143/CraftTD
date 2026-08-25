@@ -38,7 +38,7 @@ namespace Unity.Game
         /*[SerializeField]
         private Transform _locationPlaceholder;*/
         [SerializeField]
-        private LocationContainer _locationContainer;
+        private LocationSwitcher locationSwitcher;
         [SerializeField]
         private float _epochSwitchingTime = 1f;
         
@@ -53,7 +53,7 @@ namespace Unity.Game
         
         private EpochModel PlayerEpoch => _mainModel.PlayerEpoch;
         private EpochModel EnemyEpoch => _mainModel.EnemyEpoch;
-        public LocationContainer LocationContainer => _locationContainer;
+        public LocationSwitcher LocationSwitcher => locationSwitcher;
 
         private Spawner _spawner;
         private bool _started = false;
@@ -74,7 +74,7 @@ namespace Unity.Game
                     _spawner = team.Spawner;
                 }
             }
-            _locationContainer.Initialize(EnemyEpoch.Info.LocationPrefab);
+            locationSwitcher.Initialize(EnemyEpoch.Info.LocationPrefab);
         }
 
         public void BlocUI() => _uiBlocked = true;

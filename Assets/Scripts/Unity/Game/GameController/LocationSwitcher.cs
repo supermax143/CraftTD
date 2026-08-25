@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Utils.ColorEffects;
+using Zenject;
 
 namespace Unity.Game
 {
-    public class LocationContainer : MonoBehaviour
+    public class LocationSwitcher : MonoBehaviour
     {
         
         [SerializeField]
@@ -13,9 +14,14 @@ namespace Unity.Game
         private Transform _nextLocationPlaceholder;
         
         private FieldObjectEffectsController _effectController;
-        private GameObject _currentLocation;
-        private GameObject _nextLocation;
-        
+        private GameLocation _currentLocation;
+        private GameLocation _nextLocation;
+
+        [Inject] private DiContainer _container;
+
+        public GameLocation CurrentLocation => _currentLocation;
+
+
         public void Initialize(GameObject location)
         {
             for (int i = _currentLocationPlaceholder.childCount - 1; i >= 0; i--)
@@ -45,7 +51,7 @@ namespace Unity.Game
         
         private void AddNextLocation(GameObject location)
         {
-            _nextLocation = Instantiate(location, _nextLocationPlaceholder);
+            _nextLocation = _container.InstantiatePrefabForComponent<GameLocation>(location, _nextLocationPlaceholder);
             _nextLocation.transform.localPosition = Vector3.zero;
         }
         

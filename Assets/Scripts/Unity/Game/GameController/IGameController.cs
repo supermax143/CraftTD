@@ -16,7 +16,7 @@ namespace Unity.Game
         void BlocUI();
         void UnblockUI();
         Team GetTeam(Faction faction);
-        LocationContainer LocationContainer { get; }
+        LocationSwitcher LocationSwitcher { get; }
         void Reset();
         void StartBattle();
     }

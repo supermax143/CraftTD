@@ -2235,6 +2235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8067569285082872206}
   - component: {fileID: 1715574540255151146}
+  - component: {fileID: -6232003314275171908}
   m_Layer: 0
   m_Name: LocationBase
   m_TagString: Untagged
@@ -2308,6 +2309,19 @@ MonoBehaviour:
   - {fileID: 5766971253462592377}
   - {fileID: 4677092351910871729}
   dissolveDuration: 1
+--- !u!114 &-6232003314275171908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031088453326054265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e55f242930054a8e9089ef663915b483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.GameLocation
+  _roadSprite: {fileID: 1754592469764035074}
 --- !u!1 &6298105069085966653
 GameObject:
   m_ObjectHideFlags: 0
