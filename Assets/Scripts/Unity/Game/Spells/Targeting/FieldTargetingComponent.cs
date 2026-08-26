@@ -16,7 +16,7 @@ namespace Core.Application.Spells.Targeting
 
         public override void Activate()
         {
-            _gameController.LocationSwitcher.CurrentLocation.ActivateRoadHighLight(true);
+            _gameController.LocationSwitcher.CurrentLocation.ActivateRoadClick(true);
             _gameController.LocationSwitcher.CurrentLocation.OnRoadClick += OnRoadClick;
         }
 
@@ -27,7 +27,7 @@ namespace Core.Application.Spells.Targeting
 
         public override void Deactivate()
         {
-            _gameController.LocationSwitcher.CurrentLocation.ActivateRoadHighLight(false);
+            _gameController.LocationSwitcher.CurrentLocation.ActivateRoadClick(false);
             _gameController.LocationSwitcher.CurrentLocation.OnRoadClick -= OnRoadClick;
         }
     }

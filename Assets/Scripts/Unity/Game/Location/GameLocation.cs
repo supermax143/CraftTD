@@ -8,21 +8,23 @@ namespace Unity.Game
         public event Action<Vector2> OnRoadClick;
         
         [SerializeField]
-        private LocationRoad _road;
+        private GameField _road;
 
-        private void Start()
+        public void Initialize()
         {
             _road.OnClick += RoadClickHandler;
-        }
+            _road.Initialize();
+        }    
+        
 
         private void RoadClickHandler(Vector2 position)
         {
             OnRoadClick?.Invoke(position);
         }
 
-        public void ActivateRoadHighLight(bool active)
+        public void ActivateRoadClick(bool active)
         {
-            _road.ActivateHighLight(active);
+            _road.SetAsClickTarget(active);
         }
 
         private void OnDestroy()

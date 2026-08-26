@@ -1075,6 +1075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.LocationRoad
   _roadSprite: {fileID: 1754592469764035074}
+  _collider: {fileID: 3312364952861537576}
 --- !u!61 &3312364952861537576
 BoxCollider2D:
   m_ObjectHideFlags: 0

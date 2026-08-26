@@ -52,6 +52,7 @@ namespace Unity.Game
         private void AddNextLocation(GameObject location)
         {
             _nextLocation = _container.InstantiatePrefabForComponent<GameLocation>(location, _nextLocationPlaceholder);
+            _nextLocation.Initialize();
             _nextLocation.transform.localPosition = Vector3.zero;
         }
         

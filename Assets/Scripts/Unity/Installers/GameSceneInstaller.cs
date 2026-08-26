@@ -7,12 +7,14 @@ using Unity.Game;
 using Unity.Game.Spells;
 using Unity.Infrastructure.Camera;
 using Unity.Infrastructure.Effects;
+using Unity.Infrastructure.Touch;
 using Unity.Infrastructure.VisualActions;
 using Unity.Infrastructure.VisualActions.Factory;
 using Unity.Infrastructure.Views;
 using Unity.Presentation;
 using Unity.Presentation.HUD;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 using Zenject;
 
 namespace Unity.Installers
@@ -39,6 +41,7 @@ namespace Unity.Installers
             BindController<VisualActionsController>();
             BindController<ViewsController>();
             BindController<SpellCaster>();
+            BindController<TouchController>();
         }
         
         private void BindController<TController>() where TController: Component

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.Application.Interfaces.Windows;
 using Cysharp.Threading.Tasks;
+using Environments.Common.Scripts;
 using Unity.Infrastructure.ResourceManager;
 using Unity.Presentation.Components;
 using Unity.Presentation.Windows;
@@ -12,7 +13,8 @@ using Zenject;
 namespace Unity.Infrastructure.Windows
 {
 	
-	internal class WindowsController : MonoBehaviour, IWindowsMemberHolder, IWindowsController
+	internal class WindowsController : MonoBehaviour,
+        IWindowsMemberHolder, IWindowsController, ITouchBlocker
     {
 
         [SerializeField] 
@@ -25,6 +27,7 @@ namespace Unity.Infrastructure.Windows
 
 
         private readonly List<WindowsListMember> _windowsList = new();
+        private ITouchController _touchController;
 
         public event Action<string> OnWindowStartLoading;
         public event Action OnActiveWindowChanged;
@@ -56,6 +59,7 @@ namespace Unity.Infrastructure.Windows
             {
                 _background.Hide();
                 OnLastWindowClosed?.Invoke();
+                _touchController.Unblock(this);
             }
             UpdateBackgroundIndex();
             
@@ -65,6 +69,11 @@ namespace Unity.Infrastructure.Windows
         public void ShowWindow<TWindow>(Action<TWindow> handler) where TWindow : class, IWindow
         {
             ShowWindowInternal<TWindow>(handler).Forget();
+        }
+
+        public void SetTouchController(ITouchController touchController)
+        {
+            _touchController = touchController;
         }
 
         private async UniTask ShowWindowInternal<TWindow>(Action<TWindow> handler) where TWindow : class, IWindow
@@ -117,6 +126,7 @@ namespace Unity.Infrastructure.Windows
             windowsListMember.Initialize(this, windowName);
 
             _background.Show();
+            _touchController.Block(this);
             
             _loadingWindows.Remove(windowsListMember.WindowName);
 
