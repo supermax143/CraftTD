@@ -25,7 +25,6 @@ namespace Unity.Infrastructure.Effects.TextBubbleEffect
         {
             var rotation = Random.Range(_rotationMin, _rotationMax);
             _particleText.UpdateText(text, _size, null, null, null, null, rotation);
-            Debug.Log(rotation);
         }
 
     }

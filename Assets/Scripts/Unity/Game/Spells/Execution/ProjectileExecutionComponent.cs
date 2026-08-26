@@ -29,7 +29,13 @@ namespace Unity.Game.Spells.Execution
 
         private IEnumerator AnimateProjectile()
         {
+            transform.position = _startPosition;
             _projectile.SetActive(true);
+            var particleSystems = _projectile.GetComponentsInChildren<ParticleSystem>();
+            foreach (var particleSystem in particleSystems)
+            {
+                particleSystem.Play();
+            }
             var timer = new Timer();
             timer.Start(_flyTime);
             while (!timer.IsComplete)
@@ -38,6 +44,10 @@ namespace Unity.Game.Spells.Execution
                 yield return null;
             }
             transform.position = _targetPosition;
+            foreach (var particleSystem in particleSystems)
+            {
+                particleSystem.Stop();
+            }
             _explosion.SetActive(true);
         }
     }
