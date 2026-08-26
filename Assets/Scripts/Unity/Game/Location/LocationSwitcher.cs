@@ -59,10 +59,9 @@ namespace Unity.Game
 
         private void UpdateLocation()
         {
-            
             if (_currentLocation != null)
             {
-                Destroy(_currentLocation);
+                Destroy(_currentLocation.gameObject);
             }
             
             _currentLocation = _nextLocation;

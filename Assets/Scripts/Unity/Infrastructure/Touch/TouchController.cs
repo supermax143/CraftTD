@@ -23,7 +23,7 @@ namespace Unity.Infrastructure.Touch
         [Inject] private IWindowsController _windowsController;
         
         private readonly List<ITouchHandler> _activeHandlers = new();
-        private readonly SortedSet<ITouchHandler> _handlers = new(new TouchHandlerComparer());
+        private readonly List<ITouchHandler> _handlers = new();
         private readonly Dictionary<int, TouchData> _idToTouchData = new();
 
         private bool _moved = false;
@@ -191,22 +191,24 @@ namespace Unity.Infrastructure.Touch
         
         public void AddHandler(ITouchHandler handler)
         {
-            if (_handlers.Any(h => h == handler))
+            if (_handlers.Contains(handler))
             {
                 return; 
             }
             
             _handlers.Add(handler);
+            _handlers.Sort(new TouchHandlerComparer());
         }
 
         public void RemoveHandler(ITouchHandler handler)
         {
-            if (_handlers.All(h => h != handler))
+            if (!_handlers.Contains(handler))
             {
                return; 
             }
             
             _handlers.Remove(handler);
+            _handlers.Sort(new TouchHandlerComparer());
         }
     }
 }
