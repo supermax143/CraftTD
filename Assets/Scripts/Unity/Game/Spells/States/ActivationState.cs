@@ -9,17 +9,17 @@ namespace Unity.Game
     {
         public override void Enter()
         {
-            base.Enter();
+            _spell.ActivationComponent.StartActivationCheck();
         }
 
         public override void UpdateState()
         {
-            base.UpdateState();
+            if (!_spell.ActivationComponent.IsActivationCheckActive)
+            {
+                _stateManager.ChangeState<ExecutionState>();
+            }
         }
 
-        public override void Exit()
-        {
-            base.Exit();
-        }
+       
     }
 }

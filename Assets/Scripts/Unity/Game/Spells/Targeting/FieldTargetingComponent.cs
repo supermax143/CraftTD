@@ -8,11 +8,10 @@ namespace Core.Application.Spells.Targeting
     {
         [Inject] private GameController _gameController;
 
-        private Vector2? _targetPosition;
         
         public override bool IsTargetingActive()
         {
-            return !_targetPosition.HasValue;
+            return TargetPosition == default;
         }
 
         public override void Activate()
@@ -23,7 +22,7 @@ namespace Core.Application.Spells.Targeting
 
         private void OnRoadClick(Vector2 position)
         {
-            _targetPosition = position;
+            TargetPosition = position;
         }
 
         public override void Deactivate()

@@ -19,7 +19,9 @@ namespace Unity.Game
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            OnClick?.Invoke(eventData.position);
+            Vector2 inputPosition = Camera.main.ScreenToWorldPoint(eventData.position);
+
+            OnClick?.Invoke(inputPosition);
         }
     }
 }

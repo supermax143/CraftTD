@@ -13,7 +13,7 @@ namespace Unity.Game
       
     [RequireComponent(typeof(TargetingState))]
     [RequireComponent(typeof(ActivationState))]
-    [RequireComponent(typeof(CastState))]
+    [RequireComponent(typeof(ExecutionState))]
     [RequireComponent(typeof(CompleteState))]
     public class SpellStateManager : MonoBehaviour
     {

@@ -5,11 +5,11 @@ namespace Unity.Game
     /// <summary>
     /// Состояние каста заклинания
     /// </summary>
-    public class CastState : SpellState
+    public class ExecutionState : SpellState
     {
         public override void Enter()
         {
-            base.Enter();
+            _spell.ExecutionComponent.Execute(_spell);
         }
 
         public override void UpdateState()

@@ -417,7 +417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.WavesSpawner
   _spawnRange: 0.1
   _spawnTransform: {fileID: 4221937445993857169}
-  _blockSpawn: 0
+  _blockSpawn: 1
 --- !u!1001 &5802087957192784167
 PrefabInstance:
   m_ObjectHideFlags: 0
