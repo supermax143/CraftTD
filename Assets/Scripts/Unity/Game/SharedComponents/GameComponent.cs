@@ -28,8 +28,7 @@ namespace Unity.Game
                 var fields = type.GetFields(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.DeclaredOnly);
                 foreach (var fieldInfo in fields)
                 {
-                    var attribute = fieldInfo.GetValue(this) as GameEntityAttribute;
-                    if (attribute != null)
+                    if (fieldInfo.GetValue(this) is GameEntityAttribute attribute)
                     {
                         yield return attribute;
                     }

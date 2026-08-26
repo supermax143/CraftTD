@@ -18,6 +18,7 @@ namespace Unity.Game.Spells
             }*/
 
             _currentSpell = _container.InstantiatePrefabForComponent<SpellController>(spell.Config.Prefab);
+            _currentSpell.Initialize(spell);
         }
     }
 }

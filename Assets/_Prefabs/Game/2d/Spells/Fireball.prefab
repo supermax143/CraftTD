@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 8442177383504049024}
   - component: {fileID: 2141983217366558236}
   - component: {fileID: 3892082383104079493}
+  - component: {fileID: 6465498134871358262}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -155,6 +156,7 @@ MonoBehaviour:
   _targetingComponent: {fileID: 8442177383504049024}
   _activationComponent: {fileID: 2141983217366558236}
   _executionComponent: {fileID: 3892082383104079493}
+  _effectApplier: {fileID: 6465498134871358262}
 --- !u!114 &8442177383504049024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,10 +193,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aced6535ffe47bca068a696b74e2aac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Spells.Execution.ProjectileExecutionComponent
+  _delayBeforeDestroy: 2
   _startDelta: {x: -5, y: -10}
   _flyTime: 1
   _projectile: {fileID: 6156991823479504644}
   _explosion: {fileID: 4857922797605505057}
+--- !u!114 &6465498134871358262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408054147042555135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d05923049694f0cad6c9ee543134815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Spells.EffectsApplyer.RangeDamageEffectApplier
+  _damage:
+    _value: 0
+  _radius: 2
 --- !u!1001 &3229683501666404457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -471,6 +489,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1388508773062792585}
     m_Modifications:
+    - target: {fileID: 2677161697790701523, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2677161697790701523, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3658496226646509723, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3658496226646509723, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266022153310513744, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266022153310513744, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4266022153310513747, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
         type: 3}
       propertyPath: m_Materials.Array.size
@@ -485,6 +533,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593184484798939051, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593184484798939051, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593184484909914548, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: animatedLights.Array.data[0].light
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593184484909914550, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593184484909914550, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4593184484909914551, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
         type: 3}
@@ -566,6 +639,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4593184484999142885, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593184484999142885, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4593184484999142886, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
         type: 3}
       propertyPath: m_IsActive
@@ -586,10 +669,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4593184486453238240, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593184486453238240, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4593184486453238243, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
         type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593184486781064076, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4593184486781064076, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
+        type: 3}
+      propertyPath: simulationSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4593184486781064079, guid: 13b223c54cf9eb84fa32fe95d2b19e65,
         type: 3}
@@ -612,7 +715,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4593184485727747212, guid: 13b223c54cf9eb84fa32fe95d2b19e65, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13b223c54cf9eb84fa32fe95d2b19e65, type: 3}

@@ -9,17 +9,16 @@ namespace Unity.Game
     {
         public override void Enter()
         {
+            _spell.ExecutionComponent.OnComplete += OnSpellExecuted;
             _spell.ExecutionComponent.Execute(_spell);
         }
 
-        public override void UpdateState()
+        private void OnSpellExecuted()
         {
-            base.UpdateState();
+            _spell.ExecutionComponent.OnComplete -= OnSpellExecuted;
+            _stateManager.ChangeState<CompleteState>();
         }
 
-        public override void Exit()
-        {
-            base.Exit();
-        }
+        
     }
 }

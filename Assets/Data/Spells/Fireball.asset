@@ -10,11 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3342191d8f1e6a34aa72c799d9a9b9e5, type: 3}
-  m_Name: Fireball
+  m_Name: fireball
   m_EditorClassIdentifier: Core.Application::Core.Application.Spells.SpellConfig
   _id: fire_ball
   _name: 
   _description: 
   _icon: {fileID: 0}
   _prefab: {fileID: 2408054147042555135, guid: 9d1b880d0ae546440a7a2329665f30e7, type: 3}
-  _upgrades: []
+  _upgrades:
+  - _level: 0
+    _cost:
+      Type: 0
+      Value: 0
+    _modifiers:
+    - _attributeKind: 0
+      _modifierKind: 0
+      _value: 20

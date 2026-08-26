@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Core.Application.Info.Attributes.AttributeModifiers;
 using Core.Application.Models;
 
@@ -87,7 +88,23 @@ namespace Core.Application.Spells
         }
         */
 
-        public float GetCalculatedValue(string parameterName, float baseValue)
+        public IEnumerable<AttributeModifierBase> GetModifiers(int id)
+        {
+            foreach (var upgrade in _config.Upgrades)
+            {
+                if (upgrade.Level >= _currentLevel)
+                {
+                   yield break; 
+                }
+                foreach (var modifierWrapper in upgrade.Modifiers)
+                {
+                    var modifier = modifierWrapper.GetModifier(id);
+                    yield return  modifier;
+                }
+            }
+        }
+        
+        /*public float GetCalculatedValue(string parameterName, float baseValue)
         {
             float calculatedValue = baseValue;
 
@@ -106,6 +123,6 @@ namespace Core.Application.Spells
             }
 
             return calculatedValue;
-        }
+        }*/
     }
 }

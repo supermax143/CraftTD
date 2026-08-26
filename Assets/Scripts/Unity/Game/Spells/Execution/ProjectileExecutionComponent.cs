@@ -17,9 +17,11 @@ namespace Unity.Game.Spells.Execution
         
         private Vector2 _startPosition;
         private Vector2 _targetPosition;
-        
+        private SpellController _spell;
+
         public override void Execute(SpellController spell)
         {
+            _spell = spell;
             _projectile.SetActive(false);
             _explosion.SetActive(false);
             _targetPosition = spell.TargetingComponent.TargetPosition;
@@ -49,6 +51,9 @@ namespace Unity.Game.Spells.Execution
                 particleSystem.Stop();
             }
             _explosion.SetActive(true);
+            _spell.EffectApplier.Apply(_spell);
+            yield return new WaitForSeconds(_delayBeforeDestroy);
+            Complete();
         }
     }
 }
