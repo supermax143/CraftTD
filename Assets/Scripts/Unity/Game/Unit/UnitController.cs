@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Core.Application.Info.Attributes.AttributeModifiers;
 using Core.Application.Models;
 using Unity.Game.Attributes;
 using Unity.Settings;
@@ -106,6 +107,15 @@ namespace Unity.Game
             _stateManager.ChangeState<SearchTargetState>();
         }
 
+        public void ApplyModifiers(IEnumerable<AttributeModifierBase> modifiers)
+        {
+            _healthComponent.ApplyAttributeModifiers(modifiers);
+            _attackComponent.ApplyAttributeModifiers(modifiers);
+            _moveComponent.ApplyAttributeModifiers(modifiers);
+            _targetSearchComponent.ApplyAttributeModifiers(modifiers);
+            _rewardComponent.ApplyAttributeModifiers(modifiers);
+        }
+        
         public override IEnumerable<GameEntityAttribute> GetAllAttributes()
         {
             return _data.GetAllAttributes();

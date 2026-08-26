@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Application.Info.Attributes.AttributeModifiers;
 using Unity.Game.Attributes;
 using UnityEngine;
 
@@ -82,6 +83,17 @@ namespace Unity.Game
                 }
                 attribute.CopyValueFrom(copy);
                 break;
+            }
+        }
+
+        public void ApplyAttributeModifiers(IEnumerable<AttributeModifierBase> modifiers)
+        {
+            foreach (var modifier in modifiers)
+            {
+                foreach (var attribute in GetAllAttributes())
+                {
+                    attribute.AddModifier(modifier);
+                }
             }
         }
         
