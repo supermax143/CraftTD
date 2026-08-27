@@ -20,7 +20,7 @@ namespace Unity.Game
 
         private RewardMoneyAttribute _moneyReward = new(0);
         
-        public Resource Money => new Resource(ResourceType.Money, _moneyReward.BaseBaseValueModified);
+        public Resource Money => new Resource(ResourceType.Money, _moneyReward.BaseValueModified);
         
         
         public void Initialize()

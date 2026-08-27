@@ -19,7 +19,7 @@ namespace Unity.Game
         
         private float _currentHealth;
         
-        public float MaxHealth => _health.BaseBaseValueModified;
+        public float MaxHealth => _health.BaseValueModified;
         public float CurrentHealth => _currentHealth;
         public bool IsDead => _currentHealth <= 0;
 
@@ -78,6 +78,17 @@ namespace Unity.Game
             Debug.Log($"Health: {_currentHealth} / {MaxHealth}");
         }
 
+        public void Heal(float healValue)
+        {
+            _currentHealth += healValue;
+            if (_currentHealth > MaxHealth)
+            {
+                _currentHealth = MaxHealth;
+            }
+            _progressBar.SetValue(_currentHealth);
+            Debug.Log($"Health: {_currentHealth} / {MaxHealth}");
+        }
+        
         public void HideHealth()
         {
             _progressBar.gameObject.SetActive(false);
@@ -96,6 +107,6 @@ namespace Unity.Game
             });
         }
 #endif
-
+        
     }
 }

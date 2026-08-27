@@ -9,11 +9,11 @@ namespace Unity.Game.Spells.EffectsApplyer
         
         public override void Apply(SpellController spell)
         {
-            var targets = spell.ActivationComponent.Target as UnitController;
-            if (targets != null)
+            var target = spell.ActivationComponent.Target as UnitController;
+            if (target != null)
             {
-                targets.transform.localScale *= 1.5f;
-                targets.ApplyModifiers(spell.Model.GetModifiers());
+                target.transform.localScale *= 1.5f;
+                target.ApplyModifiers(spell.Model.GetModifiers());
             }
         }
     }

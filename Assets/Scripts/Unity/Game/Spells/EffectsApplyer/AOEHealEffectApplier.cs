@@ -4,20 +4,20 @@ using UnityEngine;
 
 namespace Unity.Game.Spells.EffectsApplyer
 {
-    public class AOEDamageEffectApplier : SpellEffectApplier
+    public class AOEHealEffectApplier : SpellEffectApplier
     {
         [SerializeField] 
-        private DamageAttribute _damage;
+        private HealthAttribute _health;
         [SerializeField] 
         private float _radius = 2;
         [SerializeField] 
-        private Faction _faction = Faction.Enemy;
+        private Faction _faction = Faction.Player;
         
         public override void Apply(SpellController spell)
         {
             foreach (var modifier in spell.Model.GetModifiers())
             {
-                _damage.AddModifier(modifier);
+                _health.AddModifier(modifier);
             }
             
             var position = spell.ActivationComponent.TargetPosition;
@@ -29,7 +29,7 @@ namespace Unity.Game.Spells.EffectsApplyer
 
             foreach (var target in targets)
             {
-                target.HealthComponent.TakeDamage(_damage.BaseValueModified);
+                target.HealthComponent.Heal(_health.BaseValueModified);
             }
         }
     }

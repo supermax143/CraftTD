@@ -91,7 +91,7 @@ namespace Unity.Game.Attributes
             }
         }
         
-        public TValue BaseBaseValueModified
+        public TValue BaseValueModified
         {
             get
             {
@@ -110,7 +110,7 @@ namespace Unity.Game.Attributes
         {
             _isDirty = true; // Список модификаторов изменился, помечаем кэш как невалидный
             var oldValue = _baseValueModified;
-            var newValue = BaseBaseValueModified;
+            var newValue = BaseValueModified;
             OnModifiedValueChanged?.Invoke(oldValue, newValue);
         }
 

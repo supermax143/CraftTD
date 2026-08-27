@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: SpellDatabase
   m_EditorClassIdentifier: Core.Application::Unity.Game.Spells.SpellDatabase
   _spells:
+  - {fileID: 11400000, guid: 1524d0168a60a2d418fc7d83fe381d6b, type: 2}
   - {fileID: 11400000, guid: 3d97a373b0ed4354c8732d2c0fe28a32, type: 2}
   - {fileID: 11400000, guid: 2b0a561a4ffc6cf46ba9ce52f0f69794, type: 2}

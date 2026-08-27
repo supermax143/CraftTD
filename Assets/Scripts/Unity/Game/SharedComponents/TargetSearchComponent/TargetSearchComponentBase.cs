@@ -18,7 +18,7 @@ namespace Unity.Game
 
         public Transform SearchTransform => transform;
         public float DetectionRange => _gameStats.DetectionRange;
-        public float AttackRange => _attackRange.BaseBaseValueModified;
+        public float AttackRange => _attackRange.BaseValueModified;
 
         private Faction _faction;
         protected Faction _opponentFaction;

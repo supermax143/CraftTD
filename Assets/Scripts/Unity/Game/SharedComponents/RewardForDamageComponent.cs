@@ -25,7 +25,7 @@ namespace Unity.Game
         
         private HealthComponent _healthComponent;
 
-        public int RewardMoney => _rewardMoney.BaseBaseValueModified;
+        public int RewardMoney => _rewardMoney.BaseValueModified;
 
         public void Initialize(HealthComponent healthComponent)
         {
