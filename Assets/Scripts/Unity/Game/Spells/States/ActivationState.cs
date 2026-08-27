@@ -16,6 +16,7 @@ namespace Unity.Game
         {
             if (!_spell.ActivationComponent.IsActivationCheckActive)
             {
+                _spell.ActivationComponent.StopActivationCheck();
                 _stateManager.ChangeState<ExecutionState>();
             }
         }

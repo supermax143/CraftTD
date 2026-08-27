@@ -1,24 +1,22 @@
-﻿using Environments.Common.Scripts;
+﻿using Core.Application.Spells.Activation;
+using Environments.Common.Scripts;
 using Unity.Game;
 using UnityEngine;
 using Zenject;
 
 namespace Core.Application.Spells.Targeting
 {
-    public class UnitTargetingComponent : SpellTargetingComponent
+    public class UnitTargetingActivationComponent : SpellActivationComponent
     {
         [SerializeField]
         private Faction _faction;
         
         [Inject] private IGameController _gameController;
         
-        public override bool IsTargetingActive()
+        
+        public override void StartActivationCheck()
         {
-            return TargetPosition == default;
-        }
-
-        public override void Activate()
-        {
+            IsActivationCheckActive = true;
             var team = _gameController.GetTeam(_faction);
             foreach (var unit in team.Units)
             {
@@ -29,11 +27,12 @@ namespace Core.Application.Spells.Targeting
 
         private void HandleClick(ITouchTarget target, Vector2 touchPosition)
         {
+            IsActivationCheckActive = false;
             TargetPosition = Camera.main.ScreenToWorldPoint(touchPosition);
             Target = target;
         }
 
-        public override void Deactivate()
+        public override void StopActivationCheck()
         {
             var team = _gameController.GetTeam(_faction);
             foreach (var unit in team.Units)

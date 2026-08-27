@@ -11,7 +11,6 @@ namespace Unity.Game
     /// Менеджер состояний для управления заклинанием
     /// </summary>
       
-    [RequireComponent(typeof(TargetingState))]
     [RequireComponent(typeof(ActivationState))]
     [RequireComponent(typeof(ExecutionState))]
     [RequireComponent(typeof(CompleteState))]
@@ -37,7 +36,7 @@ namespace Unity.Game
                 state.Initialize(this, _spell);
                 state.enabled = false;
             }
-            ChangeState<TargetingState>();
+            ChangeState<ActivationState>();
         }
         
         public void ChangeState<T>() where T : SpellState

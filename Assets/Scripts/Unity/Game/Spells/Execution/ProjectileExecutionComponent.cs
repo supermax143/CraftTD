@@ -24,7 +24,7 @@ namespace Unity.Game.Spells.Execution
             _spell = spell;
             _projectile.SetActive(false);
             _explosion.SetActive(false);
-            _targetPosition = spell.TargetingComponent.TargetPosition;
+            _targetPosition = spell.ActivationComponent.TargetPosition;
             _startPosition = _targetPosition - _startDelta;
             StartCoroutine(AnimateProjectile());
         }

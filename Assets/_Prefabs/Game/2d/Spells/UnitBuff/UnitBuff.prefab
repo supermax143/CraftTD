@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1984928146447314762}
-  - component: {fileID: 690044436620235798}
   - component: {fileID: 1673563494845095027}
   - component: {fileID: 2807343796808031203}
   - component: {fileID: 8163221959760945985}
@@ -36,18 +35,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1388508773062792585}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &690044436620235798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107848665836699670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4c4fcbfcb2079340815d5d288343668, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.TargetingState
 --- !u!114 &1673563494845095027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +84,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.SpellStateManager
   _states:
-  - {fileID: 690044436620235798}
   - {fileID: 1673563494845095027}
   - {fileID: 2807343796808031203}
   - {fileID: 8163221959760945985}
@@ -112,7 +98,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1388508773062792585}
   - component: {fileID: 919700445681813897}
-  - component: {fileID: 2141983217366558236}
   - component: {fileID: 4740981228397026618}
   - component: {fileID: 1945240733484110699}
   - component: {fileID: 7938982274760545512}
@@ -151,22 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6238278cdd4dbf9dd3d51a8ccdb444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Spells.SpellController
-  _targetingComponent: {fileID: 4740981228397026618}
-  _activationComponent: {fileID: 2141983217366558236}
+  _activationComponent: {fileID: 4740981228397026618}
   _executionComponent: {fileID: 1945240733484110699}
   _effectApplier: {fileID: 7938982274760545512}
---- !u!114 &2141983217366558236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2408054147042555135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e7aab16b7c3e5141a5d946278a5f2f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Core.Application.Spells.Activation.InstantActivationComponent
 --- !u!114 &4740981228397026618
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,8 +13,6 @@ namespace Unity.Game.Spells
         public event Action<SpellController> OnDestroy;
         
         [SerializeField, HideInInspector] 
-        private SpellTargetingComponent _targetingComponent;
-        [SerializeField, HideInInspector] 
         private SpellActivationComponent _activationComponent;
         [SerializeField, HideInInspector]
         private SpellExecutionComponent _executionComponent;
@@ -24,7 +22,6 @@ namespace Unity.Game.Spells
         private SpellModel _spellModel;
 
         public SpellActivationComponent ActivationComponent => _activationComponent;
-        public SpellTargetingComponent TargetingComponent => _targetingComponent;
 
         public SpellExecutionComponent ExecutionComponent => _executionComponent;
         public SpellEffectApplier EffectApplier => _effectApplier;
@@ -36,7 +33,6 @@ namespace Unity.Game.Spells
         private void OnValidate()
         {
             _activationComponent = GetComponent<SpellActivationComponent>();
-            _targetingComponent = GetComponent<SpellTargetingComponent>();
             _executionComponent = GetComponent<SpellExecutionComponent>();
             _effectApplier = GetComponent<SpellEffectApplier>();
         }

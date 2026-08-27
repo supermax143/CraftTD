@@ -6,5 +6,10 @@ namespace Core.Application.Spells.Activation
         {
             IsActivationCheckActive = true;
         }
+
+        public override void StopActivationCheck()
+        {
+            IsActivationCheckActive = false;
+        }
     }
 }
