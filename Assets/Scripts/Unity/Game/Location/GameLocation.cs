@@ -1,4 +1,5 @@
 ﻿using System;
+using Environments.Common.Scripts;
 using UnityEngine;
 
 namespace Unity.Game
@@ -17,7 +18,7 @@ namespace Unity.Game
         }    
         
 
-        private void RoadClickHandler(Vector2 position)
+        private void RoadClickHandler(ITouchTarget target, Vector2 position)
         {
             OnRoadClick?.Invoke(position);
         }

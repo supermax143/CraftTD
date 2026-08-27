@@ -36,6 +36,8 @@ namespace Unity.Game
 
         public bool TowerDestroyed => _towerDestroyed;
 
+        public List<UnitController> Units => _units;
+
         private TowerController _tower;
         private TowerController _newTower;
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Core.Application.Info.Attributes.AttributeModifiers;
 using Core.Application.Models;
+using Environments.Common.Scripts;
 using Unity.Game.Attributes;
 using Unity.Settings;
 using UnityEngine;
@@ -10,9 +11,10 @@ using Zenject;
 
 namespace Unity.Game
 {
-    public class UnitController : GameComponent
+    public class UnitController : GameComponent, ITouchTarget
     {
         public event Action<UnitController> OnDie;
+        public event Action<ITouchTarget, Vector2> OnClick;
         
         [SerializeField, HideInInspector] 
         private UnitView _view;
@@ -136,6 +138,11 @@ namespace Unity.Game
         public void Dispose()
         {
             Destroy(gameObject);
+        }
+        
+        public void HandleClick(Vector2 touchPosition)
+        {
+            OnClick?.Invoke(this, touchPosition);
         }
     }
 }

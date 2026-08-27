@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Unity.Game.Spells.EffectsApplyer
 {
-    public class RangeDamageEffectApplier : SpellEffectApplier
+    public class AOEDamageEffectApplier : SpellEffectApplier
     {
         [SerializeField] 
         private DamageAttribute _damage;
@@ -21,7 +21,8 @@ namespace Unity.Game.Spells.EffectsApplyer
             var colliders = Physics2D.OverlapCircleAll(transform.position, _radius);
             var targets = colliders
                 .Select(c => c.GetComponent<AttackTargetBase>())
-                .Where(t => t != null && !t.IsDead);//add faction check
+                .Where(t => t != null && !t.IsDead)
+                .Distinct();//add faction check
                 //.Where(t => t != null && !t.IsDead && t.Faction == _target.Faction && t != _target);
 
             foreach (var target in targets)

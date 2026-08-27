@@ -49,6 +49,7 @@ namespace Unity.Game
         public void Reset()
         {
             _moneyReward.BaseValue = 0;
+            _moneyReward.ClearModifiers();
         }
 
        

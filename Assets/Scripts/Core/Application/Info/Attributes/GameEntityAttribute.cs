@@ -46,7 +46,17 @@ namespace Unity.Game.Attributes
 
         public virtual void AddModifier(AttributeModifierBase modifier)
         {
+            if (modifier.AttributeKind != Kind)
+            {
+                return;
+            }
             Modifiers.Add(modifier);
+            OnModifiersChanged();
+        }
+        
+        public void ClearModifiers()
+        {
+            Modifiers.Clear();
             OnModifiersChanged();
         }
         

@@ -112,10 +112,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1388508773062792585}
   - component: {fileID: 919700445681813897}
-  - component: {fileID: 8442177383504049024}
   - component: {fileID: 2141983217366558236}
   - component: {fileID: 3892082383104079493}
   - component: {fileID: 5268716908103740817}
+  - component: {fileID: 4740981228397026618}
   m_Layer: 0
   m_Name: UnitBuff
   m_TagString: Untagged
@@ -153,22 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6238278cdd4dbf9dd3d51a8ccdb444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Spells.SpellController
-  _targetingComponent: {fileID: 8442177383504049024}
+  _targetingComponent: {fileID: 4740981228397026618}
   _activationComponent: {fileID: 2141983217366558236}
   _executionComponent: {fileID: 3892082383104079493}
   _effectApplier: {fileID: 5268716908103740817}
---- !u!114 &8442177383504049024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2408054147042555135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9be701831eb3c744bb6c24884ea6a454, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Core.Application.Spells.Targeting.FieldTargetingComponent
 --- !u!114 &2141983217366558236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +199,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Spells.EffectsApplyer.UnitBuffEffectApplier
   _radius: 2
+--- !u!114 &4740981228397026618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408054147042555135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce10f51647af4e598cad0afb8d6d8e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Application.Spells.Targeting.UnitTargetingComponent
+  _faction: 0
 --- !u!1001 &3229683501666404457
 PrefabInstance:
   m_ObjectHideFlags: 0

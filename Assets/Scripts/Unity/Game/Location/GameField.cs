@@ -9,9 +9,9 @@ using Zenject;
 
 namespace Unity.Game
 {
-    public class GameField : MonoBehaviour, ITouchHandler
+    public class GameField : MonoBehaviour, ITouchHandler, ITouchTarget
     {
-        public event Action<Vector2> OnClick;
+        public event Action<ITouchTarget, Vector2> OnClick;
         
         [SerializeField]
         private SpriteRenderer _roadSprite;
@@ -30,22 +30,15 @@ namespace Unity.Game
         public void SetAsClickTarget(bool active)
         {
             _isClickTarget = active;
-            ActivateHighLight(active);
+            ShowHideSelection(active);
         }
         
-        private void ActivateHighLight(bool active)
+        private void ShowHideSelection(bool show)
         {
-            var color = active ? Color.yellow : Color.white;
+            var color = show ? Color.yellow : Color.white;
             _roadSprite.color = color;
         }
-
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            Vector2 inputPosition = Camera.main.ScreenToWorldPoint(eventData.position);
-            OnClick?.Invoke(inputPosition);
-            Debug.Log($"OnPointerClick: {inputPosition}");
-        }
-
+        
         public TouchHandlerType Type => TouchHandlerType.GameField;
         
         public bool OnTouchBegin(IReadOnlyCollection<TouchData> touch)
@@ -66,14 +59,27 @@ namespace Unity.Game
         {
             if (_isClickTarget && IsUnderGameField(touch))
             {
-                Vector2 inputPosition = Camera.main.ScreenToWorldPoint(touch.MousePosition);
-                OnClick?.Invoke(inputPosition);
-                Debug.Log($"OnPointerClick: {inputPosition}");
+                
+                HandleClick(touch.MousePosition);
+                Debug.Log($"OnPointerClick: {touch.MousePosition}");
                 return true;
             }
+
+            if (TryGetHitTarget(touch, out var target))
+            {
+                target.HandleClick(touch.MousePosition);
+                return true;
+            }
+            
             return false;
         }
 
+        public void HandleClick(Vector2 touchPosition)
+        {
+            Vector2 worldPos = Camera.main.ScreenToWorldPoint(touchPosition);
+            OnClick?.Invoke(this, worldPos);
+        }
+        
         private bool IsUnderGameField(TouchData touch)
         {
             var hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(touch.MousePosition),
@@ -86,13 +92,14 @@ namespace Unity.Game
             _touchController.RemoveHandler(this);
         }
 
-        /*private bool TryGetHitTarget(TouchData touch, out ClickDispatcherComponent target)
+        private bool TryGetHitTarget(TouchData touch, out ITouchTarget target)
         {
             target = default;
-            var hit = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(touch.MousePosition),
+            var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.MousePosition),
                 Vector3.zero);
 
-            return hit.collider && hit.collider.TryGetComponent(out target);
-        }*/
+            return hit.collider && 
+                   (hit.collider.TryGetComponent(out target) || hit.collider.transform.parent.TryGetComponent(out target));
+        }
     }
 }

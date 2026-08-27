@@ -39,9 +39,9 @@ MonoBehaviour:
   _baseUnitHealthTier2: 2
   _baseUnitHealthTier3: 30
   _baseUnitMoveSpeed: 0.9
-  _baseUnitAttackRangeTier1: 1
+  _baseUnitAttackRangeTier1: 0.8
   _baseUnitAttackRangeTier2: 2.5
-  _baseUnitAttackRangeTier3: 1
+  _baseUnitAttackRangeTier3: 0.8
   _baseUnitAttackSpeedTier1: 1
   _baseUnitAttackSpeedTier2: 1
   _baseUnitAttackSpeedTier3: 1

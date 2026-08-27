@@ -54,6 +54,18 @@ namespace Unity.Game
             _tintController.SetTintColor(color);
         }
 
+        public void ShowHideSelection(bool show)
+        {
+            var color = show ? Color.yellow : Color.white;
+            // _roadSprite.color = color;
+            foreach (var renderer in _effectsController.Renderers)
+            {
+                renderer.color = color;
+            }
+
+            _tintController.SetTintColor(show?color:_color);
+        }
+        
         private void OnDestroy()
         {
             if (_healthComponent != null)

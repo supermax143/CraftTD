@@ -17,7 +17,8 @@ namespace Unity.Game.Projectile
             
             var targets = colliders
                 .Select(c => c.GetComponent<AttackTargetBase>())
-                .Where(t => t != null && !t.IsDead && t.Faction == _target.Faction && t != _target);
+                .Where(t => t != null && !t.IsDead && t.Faction == _target.Faction && t != _target)
+                .Distinct();
 
             foreach (var target in targets)
             {

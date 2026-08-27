@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Unity.Game.Attributes.Specific;
 using UnityEngine;
 
@@ -16,7 +16,8 @@ namespace Unity.Game.Spells.EffectsApplyer
             var targets = colliders
                 .Select(c => c.GetComponent<AttackTargetBase>())
                 .Where(t => t != null && !t.HealthComponent.IsDead && t.transform.parent.TryGetComponent<UnitController>( out _))
-                .Select(t => t.transform.parent.GetComponent<UnitController>());
+                .Select(t => t.transform.parent.GetComponent<UnitController>())
+                .Distinct();
             //.Where(t => t != null && !t.IsDead && t.Faction == _target.Faction && t != _target);
 
             var modifiers = spell.Model.GetModifiers();

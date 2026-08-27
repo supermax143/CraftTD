@@ -38,7 +38,9 @@ namespace Utils.ColorEffects
         private readonly Timer _dissolveAnimationTimer = new(TimeType.Scaled);
         private readonly Timer _verticalDissolveAnimationTimer = new(TimeType.Scaled);
         private readonly Timer _horizontalDissolveAnimationTimer = new(TimeType.Scaled);
-        
+
+        public SpriteRenderer[] Renderers => _renderers;
+
         private void OnValidate()
         {
             _renderers = GetComponentsInChildren<SpriteRenderer>();
