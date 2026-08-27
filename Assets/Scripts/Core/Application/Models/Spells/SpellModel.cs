@@ -88,7 +88,7 @@ namespace Core.Application.Spells
         }
         */
 
-        public IEnumerable<AttributeModifierBase> GetModifiers(int id)
+        public IEnumerable<AttributeModifierBase> GetModifiers()
         {
             foreach (var upgrade in _config.Upgrades)
             {
@@ -98,7 +98,7 @@ namespace Core.Application.Spells
                 }
                 foreach (var modifierWrapper in upgrade.Modifiers)
                 {
-                    var modifier = modifierWrapper.GetModifier(id);
+                    var modifier = modifierWrapper.GetModifier();
                     yield return  modifier;
                 }
             }

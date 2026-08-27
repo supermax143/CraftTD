@@ -19,42 +19,42 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
         public string Label => $"{_attributeKind}_{_modifierKind}_{_value}";
         
         
-        public AttributeModifierBase GetModifier(int id)
+        public AttributeModifierBase GetModifier()
         {
             return _attributeKind switch
             {
-                GameEntityAttributeKind.Damage => CreateFloatModifier<DamageAttribute>(id, _value, _modifierKind),
-                GameEntityAttributeKind.AttackRange => CreateFloatModifier<AttackRangeAttribute>(id, _value, _modifierKind),
-                GameEntityAttributeKind.MoveSpeed => CreateFloatModifier<MoveSpeedAttribute>(id, _value, _modifierKind),
-                GameEntityAttributeKind.AttackTime => CreateFloatModifier<AttackSpeedAttribute>(id, _value, _modifierKind),
-                GameEntityAttributeKind.DetectionRange => CreateFloatModifier<DetectionRangeAttribute>(id, _value, _modifierKind),
-                GameEntityAttributeKind.Health => CreateIntModifier<HealthAttribute>(id, _value, _modifierKind),
-                GameEntityAttributeKind.UnitFoodCost => CreateIntModifier<UnitFoodCostAttribute>(id, _value, _modifierKind),
-                GameEntityAttributeKind.UnitUnlockCost => CreateIntModifier<UnitUnlockCostAttribute>(id, _value, _modifierKind),
-                GameEntityAttributeKind.RewardMoney => CreateIntModifier<RewardMoneyAttribute>(id, _value, _modifierKind),
+                GameEntityAttributeKind.Damage => CreateFloatModifier<DamageAttribute>(_value, _modifierKind),
+                GameEntityAttributeKind.AttackRange => CreateFloatModifier<AttackRangeAttribute>(_value, _modifierKind),
+                GameEntityAttributeKind.MoveSpeed => CreateFloatModifier<MoveSpeedAttribute>(_value, _modifierKind),
+                GameEntityAttributeKind.AttackTime => CreateFloatModifier<AttackSpeedAttribute>(_value, _modifierKind),
+                GameEntityAttributeKind.DetectionRange => CreateFloatModifier<DetectionRangeAttribute>(_value, _modifierKind),
+                GameEntityAttributeKind.Health => CreateIntModifier<HealthAttribute>(_value, _modifierKind),
+                GameEntityAttributeKind.UnitFoodCost => CreateIntModifier<UnitFoodCostAttribute>(_value, _modifierKind),
+                GameEntityAttributeKind.UnitUnlockCost => CreateIntModifier<UnitUnlockCostAttribute>(_value, _modifierKind),
+                GameEntityAttributeKind.RewardMoney => CreateIntModifier<RewardMoneyAttribute>(_value, _modifierKind),
                 _ => null
             };
         }
         
-        private AttributeModifierBase CreateFloatModifier<T>(int id, float value, ModifierAttributeKind kind) where T : FloatEntityAttribute
+        private AttributeModifierBase CreateFloatModifier<T>(float value, ModifierAttributeKind kind) where T : FloatEntityAttribute
         {
             return kind switch
             {
-                ModifierAttributeKind.Add => new FloatAddModifier<T>(id, value),
-                ModifierAttributeKind.Multiply => new FloatMultiplyModifier<T>(id, value),
-                ModifierAttributeKind.Override => new FloatOverrideModifier<T>(id, value),
+                ModifierAttributeKind.Add => new FloatAddModifier<T>(value),
+                ModifierAttributeKind.Multiply => new FloatMultiplyModifier<T>(value),
+                ModifierAttributeKind.Override => new FloatOverrideModifier<T>(value),
                 _ => null
             };
         }
         
-        private AttributeModifierBase CreateIntModifier<T>(int id, float value, ModifierAttributeKind kind) where T : IntEntityAttribute
+        private AttributeModifierBase CreateIntModifier<T>(float value, ModifierAttributeKind kind) where T : IntEntityAttribute
         {
             int intValue = Mathf.RoundToInt(value);
             return kind switch
             {
-                ModifierAttributeKind.Add => new IntAddModifier<T>(id, intValue),
-                ModifierAttributeKind.Multiply => new IntMultiplyModifier<T>(id, intValue),
-                ModifierAttributeKind.Override => new IntOverrideModifier<T>(id, intValue),
+                ModifierAttributeKind.Add => new IntAddModifier<T>(intValue),
+                ModifierAttributeKind.Multiply => new IntMultiplyModifier<T>(intValue),
+                ModifierAttributeKind.Override => new IntOverrideModifier<T>(intValue),
                 _ => null
             };
         }

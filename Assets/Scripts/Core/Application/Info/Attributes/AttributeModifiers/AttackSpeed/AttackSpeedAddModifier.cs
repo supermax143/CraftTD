@@ -4,7 +4,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public class AttackSpeedAddModifier : AttributeModifier<float>
     {
-        public AttackSpeedAddModifier(int id, float value) : base(id, value)
+        public AttackSpeedAddModifier(int id, float value) : base(value)
         {
             _value = value;
         }

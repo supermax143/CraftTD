@@ -4,7 +4,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public class AttackRangeMultiplyModifier : AttributeModifier<float>
     {
-        public AttackRangeMultiplyModifier(int id, float value) : base(id, value)
+        public AttackRangeMultiplyModifier(int id, float value) : base(value)
         {
             _value = value;
         }

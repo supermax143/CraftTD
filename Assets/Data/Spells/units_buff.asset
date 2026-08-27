@@ -23,6 +23,9 @@ MonoBehaviour:
       Type: 0
       Value: 0
     _modifiers:
+    - _attributeKind: 0
+      _modifierKind: 0
+      _value: 1000
     - _attributeKind: 2
       _modifierKind: 0
-      _value: 4
+      _value: 3

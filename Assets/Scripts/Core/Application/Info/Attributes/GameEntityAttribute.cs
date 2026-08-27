@@ -46,17 +46,11 @@ namespace Unity.Game.Attributes
 
         public virtual void AddModifier(AttributeModifierBase modifier)
         {
-            if (TryGetModifier(modifier.ID, out var curModifier))
-            {
-                curModifier.Replace(modifier);
-                return;
-            }
-            
             Modifiers.Add(modifier);
             OnModifiersChanged();
         }
 
-        public virtual void RemoveModifier(int id)
+        /*public virtual void RemoveModifier(int id)
         {
             if (!TryGetModifier(id, out var modifier))
             {
@@ -65,9 +59,9 @@ namespace Unity.Game.Attributes
             
             Modifiers.Remove(modifier);
             OnModifiersChanged();
-        }
+        }*/
 
-        private bool TryGetModifier(int id, out AttributeModifierBase result)
+        /*private bool TryGetModifier(int id, out AttributeModifierBase result)
         {
             result = default;
             foreach (var modifier in Modifiers)
@@ -87,7 +81,7 @@ namespace Unity.Game.Attributes
         {
             Modifiers.Remove(modifier);
             OnModifiersChanged();
-        }
+        }*/
     }
 
     [Serializable]

@@ -4,7 +4,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public class MoveSpeedAddModifier : AttributeModifier<float>
     {
-        public MoveSpeedAddModifier(int id, float value) : base(id, value)
+        public MoveSpeedAddModifier(int id, float value) : base(value)
         {
             _value = value;
         }

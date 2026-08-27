@@ -4,7 +4,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public class HealthAddModifier : AttributeModifier<int>
     {
-        public HealthAddModifier(int id, int value) : base(id, value)
+        public HealthAddModifier(int id, int value) : base(value)
         {
             _value = value;
         }

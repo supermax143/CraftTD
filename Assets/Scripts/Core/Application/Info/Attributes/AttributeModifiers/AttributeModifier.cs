@@ -4,16 +4,8 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public abstract class AttributeModifierBase
     {
-        private int _id;
         
         public abstract GameEntityAttributeKind AttributeKind { get; }
-
-        public int ID => _id;
-
-        public AttributeModifierBase(int id)
-        {
-            _id = id;
-        }
 
         public abstract void Replace(AttributeModifierBase modifier);
 
@@ -24,7 +16,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
     {
         protected TValue _value;
 
-        protected AttributeModifier(int id, TValue value) : base(id)
+        protected AttributeModifier(TValue value) : base()
         {
             _value = value;
         }

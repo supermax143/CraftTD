@@ -4,7 +4,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public class UnitUnlockCostOverrideModifier : AttributeModifier<int>
     {
-        public UnitUnlockCostOverrideModifier(int id, int value) : base(id, value)
+        public UnitUnlockCostOverrideModifier(int id, int value) : base(value)
         {
             _value = value;
         }

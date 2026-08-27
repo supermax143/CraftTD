@@ -73,7 +73,7 @@ namespace Core.Application.Models
             
             foreach (var modifierWrapper in modifiers)
             {
-                var modifier = modifierWrapper.GetModifier(GetHashCode());
+                var modifier = modifierWrapper.GetModifier();
                 if (modifier != null)
                 {
                     entity.AddModifier(modifier);

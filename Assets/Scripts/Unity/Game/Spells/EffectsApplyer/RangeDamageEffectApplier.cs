@@ -13,7 +13,7 @@ namespace Unity.Game.Spells.EffectsApplyer
         
         public override void Apply(SpellController spell)
         {
-            foreach (var modifier in spell.Model.GetModifiers(GetHashCode()))
+            foreach (var modifier in spell.Model.GetModifiers())
             {
                 _damage.AddModifier(modifier);
             }

@@ -7,7 +7,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
     {
         private readonly GameEntityAttributeKind _attributeKind;
 
-        public FloatOverrideModifier(int id, float value) : base(id, value)
+        public FloatOverrideModifier(float value) : base(value)
         {
             _value = value;
             _attributeKind = GetAttributeKind<T>();

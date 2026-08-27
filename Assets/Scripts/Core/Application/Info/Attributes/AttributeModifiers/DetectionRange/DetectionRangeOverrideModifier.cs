@@ -4,7 +4,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public class DetectionRangeOverrideModifier : AttributeModifier<float>
     {
-        public DetectionRangeOverrideModifier(int id, float value) : base(id, value)
+        public DetectionRangeOverrideModifier(int id, float value) : base(value)
         {
             _value = value;
         }

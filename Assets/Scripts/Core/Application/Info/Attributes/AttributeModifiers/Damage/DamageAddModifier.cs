@@ -4,7 +4,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public class DamageAddModifier : AttributeModifier<float>
     {
-        public DamageAddModifier(int id, float value) : base(id, value)
+        public DamageAddModifier(int id, float value) : base(value)
         {
             _value = value;
         }

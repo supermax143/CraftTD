@@ -4,7 +4,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public class UnitUnlockCostMultiplyModifier : AttributeModifier<int>
     {
-        public UnitUnlockCostMultiplyModifier(int id, int value) : base(id, value)
+        public UnitUnlockCostMultiplyModifier(int id, int value) : base(value)
         {
             _value = value;
         }

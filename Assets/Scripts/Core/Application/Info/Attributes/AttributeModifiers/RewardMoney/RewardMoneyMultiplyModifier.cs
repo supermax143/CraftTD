@@ -4,7 +4,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public class RewardMoneyMultiplyModifier : AttributeModifier<int>
     {
-        public RewardMoneyMultiplyModifier(int id, int value) : base(id, value)
+        public RewardMoneyMultiplyModifier(int id, int value) : base(value)
         {
             _value = value;
         }

@@ -73,6 +73,22 @@ namespace Unity.Game
             return false;
         }
 
+        public bool TryGetAttribute(GameEntityAttributeKind attributeKind, out GameEntityAttribute attribute)
+        {
+            var allAttributes = GetAllAttributes();
+            foreach (var attr in allAttributes)
+            {
+                if (attr.Kind == attributeKind)
+                {
+                    attribute = attr;
+                    return true;
+                }
+            }
+
+            attribute = default;
+            return false;
+        }
+        
         public void CopyAttributeIfExist(GameEntityAttribute copy)
         {
             foreach (var attribute in GetAllAttributes())
@@ -90,10 +106,11 @@ namespace Unity.Game
         {
             foreach (var modifier in modifiers)
             {
-                foreach (var attribute in GetAllAttributes())
+                if (!TryGetAttribute(modifier.AttributeKind, out var attribute))
                 {
-                    attribute.AddModifier(modifier);
+                    continue;
                 }
+                attribute.AddModifier(modifier);
             }
         }
         

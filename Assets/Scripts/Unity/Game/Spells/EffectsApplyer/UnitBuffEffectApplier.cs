@@ -19,10 +19,10 @@ namespace Unity.Game.Spells.EffectsApplyer
                 .Select(t => t.transform.parent.GetComponent<UnitController>());
             //.Where(t => t != null && !t.IsDead && t.Faction == _target.Faction && t != _target);
 
-            var modifiers = spell.Model.GetModifiers(GetHashCode());
+            var modifiers = spell.Model.GetModifiers();
             foreach (var target in targets)
             {
-                target.transform.localScale = Vector2.one * 2;
+                target.transform.localScale *= 2;
                 target.ApplyModifiers(modifiers);
             }
         }

@@ -4,7 +4,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public class DetectionRangeMultiplyModifier : AttributeModifier<float>
     {
-        public DetectionRangeMultiplyModifier(int id, float value) : base(id, value)
+        public DetectionRangeMultiplyModifier(int id, float value) : base(value)
         {
             _value = value;
         }

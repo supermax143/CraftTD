@@ -29,7 +29,7 @@ namespace Core.Application.Models
             _config = config;
             foreach (var modifierWrapper in config.Modifiers)
             {
-                _modifiers.Add(modifierWrapper.GetModifier(GetHashCode()));
+                _modifiers.Add(modifierWrapper.GetModifier());
             }
         }
         

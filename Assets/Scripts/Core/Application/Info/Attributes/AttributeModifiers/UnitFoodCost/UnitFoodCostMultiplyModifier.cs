@@ -4,7 +4,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
 {
     public class UnitFoodCostMultiplyModifier : AttributeModifier<int>
     {
-        public UnitFoodCostMultiplyModifier(int id, int value) : base(id, value)
+        public UnitFoodCostMultiplyModifier(int id, int value) : base(value)
         {
             _value = value;
         }
