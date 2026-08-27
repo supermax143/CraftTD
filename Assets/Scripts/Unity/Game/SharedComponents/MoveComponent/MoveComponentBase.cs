@@ -14,7 +14,7 @@ namespace Unity.Game
         private bool _moving = false;
         private AttackTargetBase _target;
 
-        public float MoveSpeed => _moveSpeed.BaseValueModified;
+        public float MoveSpeed => _moveSpeed.BaseBaseValueModified;
 
         public bool TryTargetPosition(out Vector3 pos) 
             => _target.TryGetClosestPosition(transform.position, out pos);
@@ -59,7 +59,7 @@ namespace Unity.Game
         protected virtual void MoveToTarget(Vector3 targetPosition)
         {
             var direction = (targetPosition - transform.position).normalized;
-            var delta = direction * (_moveSpeed.BaseValueModified * Time.deltaTime);
+            var delta = direction * (_moveSpeed.BaseBaseValueModified * Time.deltaTime);
             transform.position += delta;
         }
 

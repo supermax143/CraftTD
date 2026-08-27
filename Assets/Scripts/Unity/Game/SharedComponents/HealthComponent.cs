@@ -1,6 +1,7 @@
 using System;
 using Unity.Game.Attributes;
 using Unity.Game.Attributes.Specific;
+using Unity.Mathematics;
 using Unity.Utils;
 using UnityEngine;
 
@@ -18,13 +19,32 @@ namespace Unity.Game
         
         private float _currentHealth;
         
-        public float MaxHealth => _health.BaseValueModified;
+        public float MaxHealth => _health.BaseBaseValueModified;
         public float CurrentHealth => _currentHealth;
         public bool IsDead => _currentHealth <= 0;
 
         private void Start()
         {
             _progressBar.gameObject.SetActive(false);
+            _health.OnModifiedValueChanged += OnMaxHealthChanged;
+        }
+
+        private void OnMaxHealthChanged(int oldValue, int newValue)
+        {
+            if (oldValue == newValue)
+            {
+                return;
+            }
+
+            if (newValue < oldValue)
+            {
+                _currentHealth = math.min(_currentHealth, newValue);
+            }
+            else if (newValue > oldValue)
+            {
+                _currentHealth += newValue - oldValue; 
+            }
+            _progressBar.Initialize(MaxHealth, _currentHealth);
         }
 
         public override void SetData(GameEntityData data)

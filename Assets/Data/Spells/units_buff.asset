@@ -25,7 +25,10 @@ MonoBehaviour:
     _modifiers:
     - _attributeKind: 0
       _modifierKind: 0
-      _value: 1000
+      _value: 20
     - _attributeKind: 2
       _modifierKind: 0
-      _value: 3
+      _value: 2
+    - _attributeKind: 7
+      _modifierKind: 0
+      _value: 20

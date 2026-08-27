@@ -14,6 +14,6 @@ namespace Unity.Game
         private TowerPrefabAttribute _towerPrefab;//TODO: Сделать обычным префабом
         
 
-        public GameObject TowerPrefab => _towerPrefab.BaseValueModified;
+        public GameObject TowerPrefab => _towerPrefab.BaseBaseValueModified;
     }
 }

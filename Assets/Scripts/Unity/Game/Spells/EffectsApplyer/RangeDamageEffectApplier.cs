@@ -26,7 +26,7 @@ namespace Unity.Game.Spells.EffectsApplyer
 
             foreach (var target in targets)
             {
-                target.HealthComponent.TakeDamage(_damage.BaseValueModified);
+                target.HealthComponent.TakeDamage(_damage.BaseBaseValueModified);
             }
         }
     }

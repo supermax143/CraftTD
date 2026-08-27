@@ -15,8 +15,8 @@ namespace Unity.Game.Entity
        
         private readonly Faction _faction;
 
-        public int FoodCost => _foodCost.BaseValueModified;
-        public int UnlockCost => _unlockCost.BaseValueModified;
+        public int FoodCost => _foodCost.BaseBaseValueModified;
+        public int UnlockCost => _unlockCost.BaseBaseValueModified;
         public Faction Faction => _faction;
 
         public UnitEntity(UnitTier _tier, Faction faction, uint epoch, GameStats gameStats)

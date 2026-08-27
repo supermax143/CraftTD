@@ -10,7 +10,7 @@ namespace Unity.Game.Attributes
     public abstract class GameEntityAttribute
     {
         private List<AttributeModifierBase> _modifiers = new();
-
+        
         public abstract GameEntityAttributeKind Kind { get; }
 
         public List<AttributeModifierBase> Modifiers
@@ -49,50 +49,21 @@ namespace Unity.Game.Attributes
             Modifiers.Add(modifier);
             OnModifiersChanged();
         }
-
-        /*public virtual void RemoveModifier(int id)
-        {
-            if (!TryGetModifier(id, out var modifier))
-            {
-                return;
-            }
-            
-            Modifiers.Remove(modifier);
-            OnModifiersChanged();
-        }*/
-
-        /*private bool TryGetModifier(int id, out AttributeModifierBase result)
-        {
-            result = default;
-            foreach (var modifier in Modifiers)
-            {
-                if (modifier.ID != id)
-                {
-                    continue;
-                }
-                result = modifier;
-                return  true;
-            }
-
-            return false;
-        }
         
-        public virtual void RemoveModifier(AttributeModifierBase modifier)
-        {
-            Modifiers.Remove(modifier);
-            OnModifiersChanged();
-        }*/
     }
 
     [Serializable]
     public abstract class GameEntityAttribute<TValue> : GameEntityAttribute
     {
+        
+        public event Action<TValue,TValue> OnModifiedValueChanged;
+        
         [SerializeField] 
         private TValue _value;
 
         private bool _isDirty;
 
-        private TValue _valueModified;
+        private TValue _baseValueModified;
 
 
         protected GameEntityAttribute(TValue baseValue) : base()
@@ -110,7 +81,7 @@ namespace Unity.Game.Attributes
             }
         }
         
-        public TValue BaseValueModified
+        public TValue BaseBaseValueModified
         {
             get
             {
@@ -121,13 +92,16 @@ namespace Unity.Game.Attributes
                 
                 if (_isDirty) 
                     RecalculateValueModified();
-                return _valueModified;
+                return _baseValueModified;
             }
         }
 
         protected override void OnModifiersChanged()
         {
             _isDirty = true; // Список модификаторов изменился, помечаем кэш как невалидный
+            var oldValue = _baseValueModified;
+            var newValue = BaseBaseValueModified;
+            OnModifiedValueChanged?.Invoke(oldValue, newValue);
         }
 
         private void RecalculateValueModified()
@@ -138,7 +112,7 @@ namespace Unity.Game.Attributes
                 if (modifier is AttributeModifier<TValue> typedModifier && typedModifier.AttributeKind == Kind)
                     currentValue = typedModifier.Apply(currentValue);
 
-            _valueModified = currentValue;
+            _baseValueModified = currentValue;
             _isDirty = false;
         }
 

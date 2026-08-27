@@ -27,9 +27,9 @@ namespace Unity.Game
         private UnitAnimationEvents _animationEvents;
        
 
-        public float AttackRange => _attackRange.BaseValueModified;
-        public float AttackSpeed => _attackSpeed.BaseValueModified;
-        public float Damage => _damage.BaseValueModified;
+        public float AttackRange => _attackRange.BaseBaseValueModified;
+        public float AttackSpeed => _attackSpeed.BaseBaseValueModified;
+        public float Damage => _damage.BaseBaseValueModified;
         
         private Coroutine _attackCoroutine;
         
