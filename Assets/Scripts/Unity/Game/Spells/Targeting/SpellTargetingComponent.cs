@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Environments.Common.Scripts;
+using UnityEngine;
 
 namespace Core.Application.Spells.Targeting
 {
@@ -6,7 +7,9 @@ namespace Core.Application.Spells.Targeting
     {
         
         public Vector2 TargetPosition { get; protected set; }
-
+        public ITouchTarget Target{ get; protected set; }
+        
+        
         public abstract bool IsTargetingActive();
         
        

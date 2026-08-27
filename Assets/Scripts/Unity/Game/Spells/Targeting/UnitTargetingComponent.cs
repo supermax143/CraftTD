@@ -29,7 +29,18 @@ namespace Core.Application.Spells.Targeting
 
         private void HandleClick(ITouchTarget target, Vector2 touchPosition)
         {
-            TargetPosition = Camera.main.ScreenToWorldPoint(touchPosition);;
+            TargetPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+            Target = target;
+        }
+
+        public override void Deactivate()
+        {
+            var team = _gameController.GetTeam(_faction);
+            foreach (var unit in team.Units)
+            {
+                unit.OnClick -= HandleClick;
+                unit.View.ShowHideSelection(false);
+            }
         }
     }
 }

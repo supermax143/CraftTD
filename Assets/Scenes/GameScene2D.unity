@@ -1386,7 +1386,7 @@ PrefabInstance:
     - target: {fileID: 6101628010778397196, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
         type: 3}
       propertyPath: _blockSpawn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8286403270049937270, guid: f6dd9f82fe5c2b742b9abe125c84c7d2,
         type: 3}

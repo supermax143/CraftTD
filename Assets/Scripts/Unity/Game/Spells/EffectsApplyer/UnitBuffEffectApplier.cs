@@ -7,12 +7,9 @@ namespace Unity.Game.Spells.EffectsApplyer
     public class UnitBuffEffectApplier : SpellEffectApplier
     {
         
-        [SerializeField] 
-        private float _radius = 2;
-        
         public override void Apply(SpellController spell)
         {
-            var colliders = Physics2D.OverlapCircleAll(transform.position, _radius);
+            /*var colliders = Physics2D.OverlapCircleAll(transform.position, _radius);
             var targets = colliders
                 .Select(c => c.GetComponent<AttackTargetBase>())
                 .Where(t => t != null && !t.HealthComponent.IsDead && t.transform.parent.TryGetComponent<UnitController>( out _))
@@ -25,6 +22,12 @@ namespace Unity.Game.Spells.EffectsApplyer
             {
                 target.transform.localScale *= 2;
                 target.ApplyModifiers(modifiers);
+            }*/
+            var targets = spell.TargetingComponent.Target as UnitController;
+            if (targets != null)
+            {
+                targets.transform.localScale *= 1.5f;
+                targets.ApplyModifiers(spell.Model.GetModifiers());
             }
         }
     }

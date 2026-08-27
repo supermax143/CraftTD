@@ -3,6 +3,7 @@
     public enum Faction
     {
         Player,
-        Enemy
+        Enemy,
+        All
     }
 }

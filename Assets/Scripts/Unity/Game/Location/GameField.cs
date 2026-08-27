@@ -94,12 +94,15 @@ namespace Unity.Game
 
         private bool TryGetHitTarget(TouchData touch, out ITouchTarget target)
         {
-            target = default;
-            var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.MousePosition),
+            var hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(touch.MousePosition),
                 Vector3.zero);
-
-            return hit.collider && 
-                   (hit.collider.TryGetComponent(out target) || hit.collider.transform.parent.TryGetComponent(out target));
+            
+            
+            target = hits.Select(t => t.collider.GetComponent<ITouchTarget>())
+                .Where(t => t != null && t != this)
+                .FirstOrDefault();
+            
+            return target != null;
         }
     }
 }
