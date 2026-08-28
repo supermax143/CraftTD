@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using DG.Tweening;
 using Unity.Presentation.Components;
+using Unity.Utils.Time;
 using UnityEngine;
 using Utils.ColorEffects;
 
@@ -14,13 +15,22 @@ namespace Unity.Game
         private UnitAnimatorController _unitAnimatorController;
         [SerializeField, HideInInspector]
         private FieldObjectEffectsController _effectsController;
-        
+        [SerializeField]
+        private Transform _effectsContainerBottom;
+        [SerializeField]
+        private Transform _effectsContainerMiddle;
+        [SerializeField]
+        private Transform _effectsContainerTop;
         
         private HealthComponent _healthComponent;
         private Color _color;
         private Transform _rootTransform;
-        
-        
+
+        public Transform EffectsContainerBottom => _effectsContainerBottom;
+        public Transform EffectsContainerMiddle => _effectsContainerMiddle;
+        public Transform EffectsContainerTop => _effectsContainerTop;
+
+
         private void OnValidate()
         {
             _tintController = GetComponentInChildren<TintController>();
@@ -131,5 +141,24 @@ namespace Unity.Game
             _unitAnimatorController.SetRandomFrame();
         }
 
+        public void SetScale(float scale, float time)
+        {
+            StartCoroutine(AnimateScale(scale, time));
+        }
+        
+        private IEnumerator AnimateScale(float scale, float time)
+        {
+            var curScale = transform.localScale;
+            var targetScale = curScale * scale;
+            var timer = new Timer();
+            timer.Start(time);
+            while (!timer.IsComplete)
+            {
+                transform.localScale = Vector3.Lerp(curScale, targetScale, timer.Progress);
+                yield return null;
+            }
+            transform.localScale = targetScale;
+            
+        }
     }
 }
