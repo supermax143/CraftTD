@@ -509,6 +509,13 @@ MonoBehaviour:
       m_SubObjectType: 
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
+  - popupType: 13
+    effectPrefab:
+      m_AssetGUID: 806a234048ff2e348b8ef8bd7dce9cec
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _textBubbleHelper: {fileID: 17250383}
   _textBubbleCooldown: 0.1
   _explosionHelper: {fileID: 17250384}
@@ -1534,7 +1541,7 @@ PrefabInstance:
     - target: {fileID: 2750617495401836782, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 128
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2750617495401836782, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
         type: 3}
@@ -1584,7 +1591,7 @@ PrefabInstance:
     - target: {fileID: 3394357025959188179, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 128
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3394357025959188179, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
         type: 3}
@@ -1654,7 +1661,7 @@ PrefabInstance:
     - target: {fileID: 6130462194729644231, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 128
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6130462194729644231, guid: 35c7dcd5000e5ac409cda60ee5b88e4e,
         type: 3}
