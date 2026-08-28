@@ -5,6 +5,7 @@ using Environments.Common.Scripts;
 using Unity.Infrastructure.Touch;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Utils.ColorEffects;
 using Zenject;
 
 namespace Unity.Game
@@ -17,6 +18,8 @@ namespace Unity.Game
         private SpriteRenderer _roadSprite;
         [SerializeField]
         private BoxCollider2D _collider;
+        [SerializeField]
+        private FieldObjectEffectsController _effectsController;
         
         [Inject] private ITouchController _touchController;
         
@@ -35,8 +38,9 @@ namespace Unity.Game
         
         private void ShowHideSelection(bool show)
         {
-            var color = show ? Color.yellow : Color.white;
-            _roadSprite.color = color;
+            /*var color = show ? Color.yellow : Color.white;
+            _roadSprite.color = color;*/
+            StartCoroutine(_effectsController.SetSpellSelectionEffect(.3f, show ? .8f : 0));
         }
         
         public TouchHandlerType Type => TouchHandlerType.GameField;

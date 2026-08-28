@@ -67,18 +67,28 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Ammount: 0
     - _BoundsLeft: -8
     - _BoundsRight: 8
     - _EnableExternalAlpha: 0
+    - _Float: 0
     - _HorizontalDissolve: 0
     - _HorizontalDissolveAmount: 0
+    - _HorizontalDissolveIversed: 0
     - _HorizontalOutlineThikness: 0.01
+    - _Hue: 0
+    - _LinesScale: 0.69
+    - _RainbowTint: 0
+    - _RainbowTintAmount: 0
+    - _RainbowTintLinesScale: 1
+    - _RainbowTintSpeed: 1
     - _RotationA: 0
     - _RotationB: 0
     - _RotationC: 0
     - _ScaleA: 1
     - _ScaleB: 1
     - _ScaleC: 1
+    - _Speed: 1
     - _Wind_Scale: 0.17
     - _Wind_Speed: 3
     - _height: 0.53
@@ -87,9 +97,11 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _HorizontalDissolveOutlineColor: {r: 0, g: 11.984315, b: 0, a: 1}
+    - _Hue: {r: 1.65, g: -1.04, b: 0, a: 0}
     - _PivotA: {r: 0, g: 0, b: 0, a: 0}
     - _PivotB: {r: 0, g: 0, b: 0, a: 0}
     - _PivotC: {r: 0, g: 0, b: 0, a: 0}
+    - _RainbowTintHue: {r: 1, g: 0, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _Scale_1: {r: 1, g: 1, b: 0, a: 0}
     - _TranslateA: {r: 0, g: 0, b: 0, a: 0}

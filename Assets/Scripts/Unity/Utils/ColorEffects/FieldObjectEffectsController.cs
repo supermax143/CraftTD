@@ -10,9 +10,6 @@ namespace Utils.ColorEffects
         [SerializeField, HideInInspector]
         private SpriteRenderer[] _renderers;
 
-        
-        public float dissolveDuration = 2;
-
         private MaterialPropertyBlock _propertyBlock;
         private Bounds? _cachedBounds;
 
@@ -31,6 +28,8 @@ namespace Utils.ColorEffects
             public static readonly int _BoundsLeft = Shader.PropertyToID(nameof(_BoundsLeft));
             public static readonly int _BoundsRight = Shader.PropertyToID(nameof(_BoundsRight));
             public static readonly int _HorizontalDissolveIversed = Shader.PropertyToID(nameof(_HorizontalDissolveIversed));
+            public static readonly int _RainbowTint = Shader.PropertyToID(nameof(_RainbowTint));
+            public static readonly int _RainbowTintAmount = Shader.PropertyToID(nameof(_RainbowTintAmount));
 
         }
 
@@ -38,6 +37,7 @@ namespace Utils.ColorEffects
         private readonly Timer _dissolveAnimationTimer = new(TimeType.Scaled);
         private readonly Timer _verticalDissolveAnimationTimer = new(TimeType.Scaled);
         private readonly Timer _horizontalDissolveAnimationTimer = new(TimeType.Scaled);
+        private readonly Timer _rainbowTintAnimationTimer = new(TimeType.Scaled);
 
         public SpriteRenderer[] Renderers => _renderers;
 
@@ -177,6 +177,28 @@ namespace Utils.ColorEffects
                 }
             }
         }
-        
+
+        public IEnumerator SetSpellSelectionEffect(float time, float targetValue)
+        {
+            var startValue = targetValue == 0 ? 1 : 0;
+
+            _rainbowTintAnimationTimer.Start(time);
+            _propertyBlock.SetFloat(ShaderProperties._RainbowTint, 1);
+            UpdateRenderersPropertyBlock();
+            while (!_rainbowTintAnimationTimer.IsComplete)
+            {
+                var value = Mathf.Lerp(startValue, targetValue, _rainbowTintAnimationTimer.Progress);
+                _propertyBlock.SetFloat(ShaderProperties._RainbowTintAmount, value);
+                UpdateRenderersPropertyBlock();
+                yield return null;
+            }
+            _propertyBlock.SetFloat(ShaderProperties._RainbowTintAmount, targetValue);
+            if (targetValue == 0)
+            {
+                _propertyBlock.SetFloat(ShaderProperties._RainbowTint, 0);
+            }
+            UpdateRenderersPropertyBlock();
+        }
+
     }
 }

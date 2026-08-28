@@ -980,6 +980,7 @@ GameObject:
   - component: {fileID: 1754592469764035074}
   - component: {fileID: 5407477638725509532}
   - component: {fileID: 3312364952861537576}
+  - component: {fileID: 4310161321999247991}
   m_Layer: 0
   m_Name: Road
   m_TagString: Untagged
@@ -1076,6 +1077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.LocationRoad
   _roadSprite: {fileID: 1754592469764035074}
   _collider: {fileID: 3312364952861537576}
+  _effectsController: {fileID: 4310161321999247991}
 --- !u!61 &3312364952861537576
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1122,6 +1124,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 17.36, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &4310161321999247991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2484332914036837969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644c3ea5adf04de7a564de64fd3ff409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Utils.ColorEffects.FieldObjectEffectsController
+  _renderers:
+  - {fileID: 1754592469764035074}
 --- !u!1 &2497602204911876738
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,7 +2386,6 @@ MonoBehaviour:
   - {fileID: 5838820594739330247}
   - {fileID: 5766971253462592377}
   - {fileID: 4677092351910871729}
-  dissolveDuration: 1
 --- !u!114 &-6232003314275171908
 MonoBehaviour:
   m_ObjectHideFlags: 0

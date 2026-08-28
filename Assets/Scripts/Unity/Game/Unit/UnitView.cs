@@ -56,13 +56,15 @@ namespace Unity.Game
 
         public void ShowHideSelection(bool show)
         {
-            var color = show ? Color.yellow : Color.white;
-            // _roadSprite.color = color;
+            /*var color = show ? Color.yellow : Color.white;
             foreach (var renderer in _effectsController.Renderers)
             {
                 renderer.color = color;
             }
 
+            _tintController.SetTintColor(show?color:_color);*/
+            StartCoroutine(_effectsController.SetSpellSelectionEffect(.2f, show ? 1 : 0));
+            var color = show ? Color.yellow : Color.white;
             _tintController.SetTintColor(show?color:_color);
         }
         

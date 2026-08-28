@@ -100,6 +100,10 @@ Material:
     - _HorizontalOutlineThikness: 0.01
     - _OutlineThikness: 0.14
     - _QueueOffset: 0
+    - _RainbowTint: 0
+    - _RainbowTintAmmount: 1
+    - _RainbowTintLinesScale: 1
+    - _RainbowTintSpeed: 1
     - _SampleGI: 0
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
@@ -119,6 +123,7 @@ Material:
     - _HitColor: {r: 1, g: 1, b: 1, a: 0}
     - _HorizontalDissolveOutlineColor: {r: 0, g: 11.984315, b: 0, a: 1}
     - _OutlineColor: {r: 10.43295, g: 8.90258, b: 0, a: 1}
+    - _RainbowTintHue: {r: 1, g: 0, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _VerticalDissolveOutlineColor: {r: 23.96863, g: 22.088737, b: 0.37597853, a: 1}
   m_BuildTextureStacks: []
