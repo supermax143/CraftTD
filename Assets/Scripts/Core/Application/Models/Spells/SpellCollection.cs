@@ -32,7 +32,7 @@ namespace Core.Application.Spells
 
         public void AddSpell(SpellConfig spellConfig)
         {
-            var spell = new SpellModel(spellConfig,1);
+            var spell = new SpellModel(spellConfig, 1);
             _idToSpell[spell.Config.Id] = spell;
         }
 

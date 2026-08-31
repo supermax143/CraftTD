@@ -10,13 +10,10 @@ namespace Core.Application.Spells
     public class SpellUpgrade
     {
         [SerializeField]
-        private int _level;
-        [SerializeField]
         public Resource _cost;
         [SerializeField]
         public List<AttributeModifierWrapper> _modifiers;
         
-        public int Level => _level;
         public Resource Cost => _cost;
         public List<AttributeModifierWrapper> Modifiers => _modifiers;
     }

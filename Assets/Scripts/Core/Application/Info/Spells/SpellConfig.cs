@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Core.Application.Spells.Impact;
 using UnityEngine;
 
 namespace Core.Application.Spells
@@ -20,17 +19,12 @@ namespace Core.Application.Spells
         [SerializeField]
         private List<SpellUpgrade> _upgrades;
         
-        [SerializeField]
-        private SpellImpact _impact;
-
         public string Id => _id;
         public string Name => _name;
         public string Description => _description;
         public Sprite Icon => _icon;
-        public int MaxLevel => _upgrades.Count;
+        public int MaxLevel => _upgrades.Count - 1;
         public List<SpellUpgrade> Upgrades => _upgrades;
-        public SpellImpact Impact => _impact;
-
         public GameObject Prefab => _prefab;
     }
 }

@@ -11,7 +11,7 @@ namespace Core.Application.Spells
         public event Action OnSpellLevelChanged;
 
         private readonly SpellConfig _config;
-        private int _currentLevel;
+        private int _currentLevel = -1;
 
         public SpellConfig Config => _config;
         public int CurrentLevel => _currentLevel;
@@ -76,30 +76,38 @@ namespace Core.Application.Spells
             return Resource.Money(0);
         }
 
-        public Resource GetUpgradeCost()
-        {
-            var nextLevel = _currentLevel + 1;
-            var upgrade = _config.Upgrades.Find(u => u.Level == nextLevel);
-            if (upgrade != null)
-            {
-                return upgrade.Cost;
-            }
-            return Resource.Money(0);
-        }
         */
+
+        public bool TryGetNextUpgrade(out SpellUpgrade upgrade)
+        {
+            upgrade = default;
+            if (_currentLevel < 0)
+            {
+                upgrade = _config.Upgrades[0];
+                return true;
+            }
+            var nextLevel = _currentLevel + 1;
+            if (_currentLevel >= _config.MaxLevel)
+            {
+                return false;
+            }
+            upgrade = _config.Upgrades[nextLevel];
+            return  true;
+        }
 
         public IEnumerable<AttributeModifierBase> GetModifiers()
         {
-            foreach (var upgrade in _config.Upgrades)
+            for (int i = 0; i < _config.Upgrades.Count; i++)
             {
-                if (upgrade.Level >= _currentLevel)
+                if (i >= _currentLevel)
                 {
-                   yield break; 
+                    break;
                 }
+                var upgrade = _config.Upgrades[i];
                 foreach (var modifierWrapper in upgrade.Modifiers)
                 {
                     var modifier = modifierWrapper.GetModifier();
-                    yield return  modifier;
+                    yield return modifier;
                 }
             }
         }
