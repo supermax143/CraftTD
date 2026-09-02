@@ -31,14 +31,14 @@ namespace Core.Application.DataStorage
         private IntStorageVariable _curEnemyEpochIndex;
         private EpochStorageData _epochData;
         private InventoryStorageData _inventory;
-        private SpellProgressStorageData _spells;
+        private SpellsStorageData _spells;
 
         public TutorialStorageData TutorialStorage => _tutorialStorageData;
         public PurchasesStorageData Purchases => _purchasesStorageData;
         public int CurrentPlayerEpochIndex => _curPlayerEpochIndex.Value;
         public int CurrentEnemyEpochIndex => _curEnemyEpochIndex.Value;
         public InventoryStorageData Inventory => _inventory;
-        public SpellProgressStorageData Spells => _spells;
+        public SpellsStorageData Spells => _spells;
         
 #if DEBUG_MODE
         public void Initialize()
@@ -55,7 +55,7 @@ namespace Core.Application.DataStorage
             _curEnemyEpochIndex = new IntStorageVariable("CurrentEnemyEpoch", _localStorageProvider, 0);
             _purchasesStorageData = new PurchasesStorageData(_localStorageProvider);
             _inventory = new InventoryStorageData(_localStorageProvider);
-            _spells = new SpellProgressStorageData(_localStorageProvider);
+            _spells = new SpellsStorageData(_localStorageProvider);
             Debug.Log($"{this.GetType().Name} Initialized");
             return Task.CompletedTask;
         }

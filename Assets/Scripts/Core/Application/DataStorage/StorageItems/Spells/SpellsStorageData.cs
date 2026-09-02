@@ -11,14 +11,14 @@ namespace Core.Application.Spells
         public List<SpellProgressData> Spells = new();
     }
 
-    public class SpellProgressStorageData
+    public class SpellsStorageData
     {
         private const string SPELL_PROGRESS_KEY = "SpellProgress";
 
         private SpellProgressStorageDataInfo _spellProgressInfo = new SpellProgressStorageDataInfo();
         private readonly StringStorageVariable _spellProgressVariable;
 
-        public SpellProgressStorageData(IStorageProvider storageProvider)
+        public SpellsStorageData(IStorageProvider storageProvider)
         {
             _spellProgressVariable = new StringStorageVariable(SPELL_PROGRESS_KEY, storageProvider);
 

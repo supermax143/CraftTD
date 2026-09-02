@@ -21,61 +21,7 @@ namespace Core.Application.Spells
             _config = config;
             _currentLevel = currentLevel;
         }
-/*
-        private bool CanUnlock()
-        {
-            if (IsUnlocked)
-            {
-                return false;
-            }
-            var unlockCost = GetUnlockCost();
-            return _inventory.HasEnough(unlockCost.Type, unlockCost.Value);
-        }
 
-        public void Unlock()
-        {
-            if (IsUnlocked) return;
-            if (!CanUnlock()) return;
-
-            var unlockCost = GetUnlockCost();
-            _inventory.WithdrawResource(unlockCost);
-
-            OnSpellUnlocked?.Invoke();
-        }
-
-        public bool CanUpgrade()
-        {
-            if (!IsUnlocked) return false;
-            if (_currentLevel >= _config.MaxLevel) return false;
-
-            var upgradeCost = GetUpgradeCost();
-            return _inventory.HasEnough(upgradeCost.Type, upgradeCost.Value);
-        }
-
-        public void Upgrade()
-        {
-            if (!IsUnlocked) return;
-            if (_currentLevel >= _config.MaxLevel) return;
-            if (!CanUpgrade()) return;
-
-            var upgradeCost = GetUpgradeCost();
-            _inventory.WithdrawResource(upgradeCost);
-
-            _currentLevel++;
-            OnSpellLevelChanged?.Invoke();
-        }
-
-        public Resource GetUnlockCost()
-        {
-            var firstUpgrade = _config.Upgrades.Count > 0 ? _config.Upgrades[0] : null;
-            if (firstUpgrade != null)
-            {
-                return firstUpgrade.Cost;
-            }
-            return Resource.Money(0);
-        }
-
-        */
 
         public bool TryGetNextUpgrade(out SpellUpgrade upgrade)
         {

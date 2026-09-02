@@ -16,7 +16,7 @@ namespace Core.Application.Spells
         
         private readonly Dictionary<string, SpellModel> _idToSpell;
         
-        public SpellProgressStorageData Spells => _dataStorage.Spells;
+        public SpellsStorageData Spells => _dataStorage.Spells;
         
         public void Initialize()
         {
