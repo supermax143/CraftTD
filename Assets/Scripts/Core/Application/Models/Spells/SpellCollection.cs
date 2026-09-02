@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Core.Application.DataStorage;
 using Core.Application.Models;
 using Unity.Game.Spells;
 using Zenject;
@@ -10,12 +11,12 @@ namespace Core.Application.Spells
     {
         
         [Inject] private SpellDatabase _spellDatabase;
+        [Inject] private readonly IDataStorage _dataStorage;
         [Inject] private InventoryModel _inventory;
         
-        
         private readonly Dictionary<string, SpellModel> _idToSpell;
-
         
+        public SpellProgressStorageData Spells => _dataStorage.Spells;
         
         public void Initialize()
         {
@@ -32,7 +33,12 @@ namespace Core.Application.Spells
 
         public void AddSpell(SpellConfig spellConfig)
         {
-            var spell = new SpellModel(spellConfig, 1);
+            var level = -1;
+            if (Spells.TryGetSpellProgress(spellConfig.Id, out var progress))
+            {
+                level = progress.Level;
+            }
+            var spell = new SpellModel(spellConfig, level);
             _idToSpell[spell.Config.Id] = spell;
         }
 
@@ -45,22 +51,17 @@ namespace Core.Application.Spells
         {
             return _idToSpell.Values;
         }
-
-        public bool UnlockSpell(string spellId)
-        {
-            var spell = GetSpell(spellId);
-            if (spell == null || spell.IsUnlocked) return false;
-
-            //spell.Unlock();
-            return true;
-        }
+        
 
         public bool UpgradeSpell(string spellId)
         {
             var spell = GetSpell(spellId);
-            if (spell == null || !spell.IsUnlocked) return false;
-
-            //spell.Upgrade();
+            if (spell == null || !spell.IsUnlocked || !spell.TryGetNextUpgrade(out var upgrade))
+            {
+                return false;
+            }
+            
+            
             return true;
         }
     }

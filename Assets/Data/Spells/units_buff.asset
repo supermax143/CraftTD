@@ -13,15 +13,14 @@ MonoBehaviour:
   m_Name: units_buff
   m_EditorClassIdentifier: Core.Application::Core.Application.Spells.SpellConfig
   _id: unit_buff
-  _name: 
-  _description: 
-  _icon: {fileID: 0}
+  _name: "\u0412\u043E\u043E\u0434\u0443\u0448\u0435\u0432\u043B\u0435\u043D\u0438\u0435"
+  _description: "\u041F\u043E\u0432\u044B\u0448\u0430\u0435\u0442 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u0438 \u0443\u0440\u043E\u043D \u044E\u043D\u0438\u0442\u0430"
+  _icon: {fileID: 21300000, guid: 500591b57a6daf5419e3e8a64adeb97c, type: 3}
   _prefab: {fileID: 2408054147042555135, guid: dfc16dbf4adab654fa6994e0e062fcc3, type: 3}
   _upgrades:
-  - _level: 0
-    _cost:
-      Type: 0
-      Value: 0
+  - _cost:
+      Type: 2
+      Value: 100
     _modifiers:
     - _attributeKind: 0
       _modifierKind: 0

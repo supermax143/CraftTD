@@ -33,9 +33,10 @@ namespace Core.Application.Spells
             }
         }
 
-        public SpellProgressData GetSpellProgress(string spellId)
+        public bool TryGetSpellProgress(string spellId, out SpellProgressData progress)
         {
-            return _spellProgressInfo.Spells.Find(s => s.SpellId == spellId);
+            progress = _spellProgressInfo.Spells.Find(s => s.SpellId == spellId);
+            return progress != null;
         }
 
         public IEnumerable<SpellProgressData> GetAllSpellProgress()
@@ -65,6 +66,12 @@ namespace Core.Application.Spells
             };
         }
 
+        public void Reset()
+        {
+            InitializeDefaultData();
+            Save();
+        }    
+        
         private void Save()
         {
             _spellProgressVariable.Value = SerializeToJson();
@@ -91,5 +98,7 @@ namespace Core.Application.Spells
                 return null;
             }
         }
+
+       
     }
 }

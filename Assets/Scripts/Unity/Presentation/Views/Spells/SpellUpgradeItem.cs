@@ -17,10 +17,11 @@ namespace Unity.Presentation.Components
         public event Action<SpellModel> OnUpgradeClicked;
         
         [SerializeField] private TextMeshProUGUI _levelTF;
+        [SerializeField] private TextMeshProUGUI _labelTF;
         [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _descriptionTF;
-        [SerializeField] private ResourceButton _resourceButton;
-        [SerializeField] private Button _upgradeButton;
+        [SerializeField] private ResourceButton _upgradeButton;
+        [SerializeField] private Button _equipButton;
         
         [Inject] private ILocalization _localization;
         [Inject] private IInventoryModel _inventory;
@@ -35,6 +36,11 @@ namespace Unity.Presentation.Components
 
         private void UpdateView()
         {
+            if (_labelTF != null)
+            {
+                _labelTF.text = _localization.Get(_spellModel.Config.Name);
+            }
+            
             if (_levelTF != null)
             {
                 _levelTF.text = $"Level {_spellModel.CurrentLevel + 1}/{_spellModel.Config.MaxLevel + 1}";
@@ -62,21 +68,23 @@ namespace Unity.Presentation.Components
             }
         }
 
+        private void UpdateEquipButton()
+        {
+            _equipButton?.gameObject.SetActive(_spellModel.IsUnlocked);
+        }
+        
         private void UpdateUpgradeButton()
         {
             if (!_spellModel.TryGetNextUpgrade(out var upgrade))
             {
-                _resourceButton?.gameObject.SetActive(false);
                 _upgradeButton?.gameObject.SetActive(false);
                 return;
             }
 
-            _resourceButton?.gameObject.SetActive(true);
             _upgradeButton?.gameObject.SetActive(true);
-            _resourceButton.SetPrice(upgrade.Cost);
+            _upgradeButton.SetPrice(upgrade.Cost);
 
             var canAfford = _inventory.HasEnough(upgrade.Cost.Type, upgrade.Cost.Value);
-            _upgradeButton.interactable = canAfford;
         }
 
         public void Upgrade()

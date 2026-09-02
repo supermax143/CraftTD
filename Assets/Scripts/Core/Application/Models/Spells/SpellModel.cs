@@ -112,6 +112,7 @@ namespace Core.Application.Spells
             }
         }
         
+        
         /*public float GetCalculatedValue(string parameterName, float baseValue)
         {
             float calculatedValue = baseValue;
