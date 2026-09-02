@@ -34,7 +34,7 @@ namespace Utils.ColorEffects
             _images = GetComponentsInChildren<MaskableGraphic>();
         }
 
-        private void UpdateMaterial()
+        /*private void UpdateMaterial()
         {
             if (_currentMaterial != null)
             {
@@ -42,8 +42,27 @@ namespace Utils.ColorEffects
             }
             _currentMaterial = new Material(_effectsMaterial);
             ApplyMaterialToImages(_currentMaterial);
+        }*/
+
+        private Material GetMaterial()
+        {
+            if (_currentMaterial == null)
+            {
+                _currentMaterial = new Material(_effectsMaterial);
+                ApplyMaterialToImages(_currentMaterial);
+            }
+            return _currentMaterial;
         }
         
+        public void StartBlink()
+        {
+            GetMaterial().SetFloat(ShaderProperties._Blink, 1);
+        }
+        
+        public void StopBlink()
+        {
+            GetMaterial().SetFloat(ShaderProperties._Blink, 0);
+        }
         
         public void ShowBlink(float time)
         {
@@ -52,10 +71,10 @@ namespace Utils.ColorEffects
         
         public IEnumerator AnimateBlink(float time)
         {
-            UpdateMaterial();
-            _currentMaterial.SetFloat(ShaderProperties._Blink, 1);
+            var material = GetMaterial();
+            material.SetFloat(ShaderProperties._Blink, 1);
             yield return new WaitForSeconds(time);
-            _currentMaterial.SetFloat(ShaderProperties._Blink, 0);
+            material.SetFloat(ShaderProperties._Blink, 0);
         }
 
         public void ShowGrayscale(float time, float value)
@@ -65,20 +84,20 @@ namespace Utils.ColorEffects
 
         public IEnumerator AnimateGrayscale(float time, float value)
         {
-            UpdateMaterial();
+            var material = GetMaterial();
 
             var startValue = value == 1? 0 : 1;
             _grayscaleAnimationTimer.Start(time);
-            _currentMaterial.SetFloat(ShaderProperties._Grayscale, 1);
+            material.SetFloat(ShaderProperties._Grayscale, 1);
             while (!_grayscaleAnimationTimer.IsComplete)
             {
-                _currentMaterial.SetFloat(ShaderProperties._GrayscaleAmount, Mathf.Lerp(startValue, value, _grayscaleAnimationTimer.Progress));
+                material.SetFloat(ShaderProperties._GrayscaleAmount, Mathf.Lerp(startValue, value, _grayscaleAnimationTimer.Progress));
                 yield return null;
             }
-            _currentMaterial.SetFloat(ShaderProperties._GrayscaleAmount, value);
+            material.SetFloat(ShaderProperties._GrayscaleAmount, value);
             if (value == 0)
             {
-                _currentMaterial.SetFloat(ShaderProperties._Grayscale, 0);
+                material.SetFloat(ShaderProperties._Grayscale, 0);
             }
             
         }

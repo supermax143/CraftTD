@@ -3,6 +3,7 @@ using Core.Application.Spells;
 using Unity.Game.Spells;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils.ColorEffects;
 using Zenject;
 
 namespace Unity.Presentation.HUD.SpellsPanel
@@ -13,7 +14,9 @@ namespace Unity.Presentation.HUD.SpellsPanel
         private Button _button;
         [SerializeField]
         private Image _icon;
-
+        [SerializeField]
+        private CanvasEffectsController _effectsController;
+        
         [Inject] private SpellCaster _spellCaster;
 
         private bool _isCasting;
@@ -42,6 +45,7 @@ namespace Unity.Presentation.HUD.SpellsPanel
 
             _spellCaster.OnSpellCastComplete += OnSpellCastComplete;
             _isCasting = true;
+            _effectsController.StartBlink();
         }
 
         private void OnSpellCastComplete(SpellModel spell)
@@ -52,6 +56,7 @@ namespace Unity.Presentation.HUD.SpellsPanel
             }
             _spellCaster.OnSpellCastComplete -= OnSpellCastComplete;
             _isCasting = false;
+            _effectsController.StopBlink();
         }
 
         private void OnDestroy()
