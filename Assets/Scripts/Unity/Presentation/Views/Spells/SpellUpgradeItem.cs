@@ -30,7 +30,9 @@ namespace Unity.Presentation.Components
 
         public void Initialize(SpellModel spellModel)
         {
+            
             _spellModel = spellModel;
+            _spellModel.OnSpellLevelChanged += UpdateView;
             UpdateView();
         }
 
@@ -53,6 +55,7 @@ namespace Unity.Presentation.Components
 
             UpdateIcon();
             UpdateUpgradeButton();
+            UpdateEquipButton();
         }
 
         private void UpdateIcon()
@@ -71,6 +74,7 @@ namespace Unity.Presentation.Components
         private void UpdateEquipButton()
         {
             _equipButton?.gameObject.SetActive(_spellModel.IsUnlocked);
+            //_equipButton.GetComponentInChildren<TMP_Text>(true).text = 
         }
         
         private void UpdateUpgradeButton()
@@ -83,8 +87,6 @@ namespace Unity.Presentation.Components
 
             _upgradeButton?.gameObject.SetActive(true);
             _upgradeButton.SetPrice(upgrade.Cost);
-
-            var canAfford = _inventory.HasEnough(upgrade.Cost.Type, upgrade.Cost.Value);
         }
 
         public void Upgrade()

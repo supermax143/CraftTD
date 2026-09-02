@@ -20,5 +20,6 @@ namespace Core.Application.Models
         bool HasEnough(ResourceType resourceType, int checkingValue);
         void AddItem(InventoryItemType itemType);
         void RemoveItem(int itemId);
+        bool HasEnough(Resource resource);
     }
 }

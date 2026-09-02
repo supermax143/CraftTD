@@ -51,17 +51,23 @@ namespace Core.Application.Spells
         {
             return _idToSpell.Values;
         }
-        
 
-        public bool UpgradeSpell(string spellId)
+        public bool TryUpgradeSpell(string spellId)
         {
             var spell = GetSpell(spellId);
-            if (spell == null || !spell.IsUnlocked || !spell.TryGetNextUpgrade(out var upgrade))
+            if (spell == null || !spell.TryGetNextUpgrade(out var upgrade))
+            {
+                return false;
+            }
+
+            if (!_inventory.HasEnough(upgrade.Cost))
             {
                 return false;
             }
             
-            
+            _inventory.WithdrawResource(upgrade.Cost);
+            spell.Upgrade();
+            Spells.SetSpellProgress(spell.Config.Id, spell.CurrentLevel);
             return true;
         }
     }

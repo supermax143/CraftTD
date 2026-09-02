@@ -7,7 +7,6 @@ namespace Core.Application.Spells
 {
     public class SpellModel
     {
-        public event Action OnSpellUnlocked;
         public event Action OnSpellLevelChanged;
 
         private readonly SpellConfig _config;
@@ -15,7 +14,7 @@ namespace Core.Application.Spells
 
         public SpellConfig Config => _config;
         public int CurrentLevel => _currentLevel;
-        public bool IsUnlocked => _currentLevel > 0;
+        public bool IsUnlocked => _currentLevel >= 0;
 
         public SpellModel(SpellConfig config, int currentLevel)
         {
@@ -112,26 +111,11 @@ namespace Core.Application.Spells
             }
         }
         
-        
-        /*public float GetCalculatedValue(string parameterName, float baseValue)
+        public void Upgrade()
         {
-            float calculatedValue = baseValue;
-
-            foreach (var upgrade in _config.Upgrades)
-            {
-                if (upgrade.Level > _currentLevel) continue;
-
-                foreach (var modifierWrapper in upgrade.Modifiers)
-                {
-                    var modifier = modifierWrapper.GetModifier(GetHashCode());
-                    if (modifier != null && modifier is AttributeModifier<float> typedModifier)
-                    {
-                        calculatedValue = typedModifier.Apply(calculatedValue);
-                    }
-                }
-            }
-
-            return calculatedValue;
-        }*/
+            _currentLevel++;
+            OnSpellLevelChanged?.Invoke();  
+        }
+        
     }
 }

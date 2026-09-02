@@ -115,7 +115,8 @@ namespace Core.Application.Models
         public bool HasEnough(ResourceType resourceType, int checkingValue) 
             => GetResourceCount(resourceType) >= checkingValue;
         
-        
+        public bool HasEnough(Resource resource) 
+            => GetResourceCount(resource.Type) >= resource.Value;
 
 
         public void AddItem(InventoryItemType itemType)

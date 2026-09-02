@@ -1487,6 +1487,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 727857450}
     m_Modifications:
+    - target: {fileID: 980999380261279231, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 980999380261279231, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 980999380261279231, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 137.66324
+      objectReference: {fileID: 0}
+    - target: {fileID: 980999380261279231, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 1249845680378128707, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
       propertyPath: m_SizeDelta.x
       value: 303.2
@@ -1595,6 +1611,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5044366983382160535, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5044366983382160535, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5044366983382160535, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 909.47375
+      objectReference: {fileID: 0}
+    - target: {fileID: 5044366983382160535, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -386.98254
+      objectReference: {fileID: 0}
     - target: {fileID: 6393058215999558823, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
       propertyPath: m_Pivot.y
       value: 1
@@ -1631,6 +1663,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -64.1
       objectReference: {fileID: 0}
+    - target: {fileID: 7491410305522154341, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491410305522154341, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7491410305522154341, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 337.86874
+      objectReference: {fileID: 0}
     - target: {fileID: 7765740400798612441, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
       propertyPath: _icon
       value: 
@@ -1638,6 +1682,10 @@ PrefabInstance:
     - target: {fileID: 8953532326494990421, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
       propertyPath: m_Name
       value: SpellsUpgradeView
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953532326494990421, guid: bdc8e538a1ff38a4a8762c25e698324a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1697,7 +1745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750617495401836782, guid: 35c7dcd5000e5ac409cda60ee5b88e4e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 128
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2750617495401836782, guid: 35c7dcd5000e5ac409cda60ee5b88e4e, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1793,7 +1841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6130462194729644231, guid: 35c7dcd5000e5ac409cda60ee5b88e4e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 128
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6130462194729644231, guid: 35c7dcd5000e5ac409cda60ee5b88e4e, type: 3}
       propertyPath: m_SizeDelta.y

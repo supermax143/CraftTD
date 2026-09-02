@@ -546,7 +546,7 @@ MonoBehaviour:
   _icon: {fileID: 3755408485583955108}
   _descriptionTF: {fileID: 5378050732739442880}
   _upgradeButton: {fileID: 3344119635586328420}
-  _equipButton: {fileID: 0}
+  _equipButton: {fileID: 1741793836046922135}
 --- !u!1001 &5258411938747992674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -651,13 +651,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631429537811054166, guid: 18103200130bc7f47bc3c216916a55c3, type: 3}
       propertyPath: m_Name
-      value: PutOnOffl
+      value: PutOnOffButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18103200130bc7f47bc3c216916a55c3, type: 3}
+--- !u!114 &1741793836046922135 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5824765720096275445, guid: 18103200130bc7f47bc3c216916a55c3, type: 3}
+  m_PrefabInstance: {fileID: 5258411938747992674}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!224 &6468752282806954780 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1241935912712790398, guid: 18103200130bc7f47bc3c216916a55c3, type: 3}
@@ -676,12 +687,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4064786750384394059, guid: 53eced4a24ebce747937f1fef2c8d375, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064786750384394059, guid: 53eced4a24ebce747937f1fef2c8d375, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4240809468935013686}
+    - target: {fileID: 4064786750384394059, guid: 53eced4a24ebce747937f1fef2c8d375, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Buy
+      value: Upgrade
       objectReference: {fileID: 0}
     - target: {fileID: 4064786750384394059, guid: 53eced4a24ebce747937f1fef2c8d375, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Unity.Presentation.Components.ShopItemView, Assembly-CSharp
+      value: Unity.Presentation.Components.SpellUpgradeItem, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064786750384394059, guid: 53eced4a24ebce747937f1fef2c8d375, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5492149322598779624, guid: 53eced4a24ebce747937f1fef2c8d375, type: 3}
       propertyPath: m_Name
@@ -899,7 +922,7 @@ MonoBehaviour:
   _priceText: {fileID: 3968634767357225260}
   _icon: {fileID: 9084378670533641942}
   _button: {fileID: 8234823146638253837}
-  _showNotEnough: 0
+  _showNotEnough: 1
 --- !u!224 &3724054317699138950 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8755140256600053184, guid: 53eced4a24ebce747937f1fef2c8d375, type: 3}

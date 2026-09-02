@@ -44,16 +44,16 @@ namespace Core.Application.Spells
             return _spellProgressInfo.Spells;
         }
 
-        public void SetSpellProgress(SpellProgressData progress)
+        public void SetSpellProgress(string spellId, int progress)
         {
-            var existing = _spellProgressInfo.Spells.Find(s => s.SpellId == progress.SpellId);
+            var existing = _spellProgressInfo.Spells.Find(s => s.SpellId == spellId);
             if (existing != null)
             {
-                existing.Level = progress.Level;
+                existing.Level = progress;
             }
             else
             {
-                _spellProgressInfo.Spells.Add(progress);
+                _spellProgressInfo.Spells.Add(new SpellProgressData { SpellId = spellId, Level = progress });
             }
             Save();
         }

@@ -25,7 +25,6 @@ namespace Unity.Presentation.Windows
         
         public override void Initialize()
         {
-            _inventory.OnResourceChanged += OnResourceChanged;
             BuildItems().Forget();
         }
 
@@ -51,8 +50,7 @@ namespace Unity.Presentation.Windows
                 return;
             }
 
-            _inventory.WithdrawResource(upgrade.Cost);
-            _spellCollection.UpgradeSpell(spellModel.Config.Id);
+            _spellCollection.TryUpgradeSpell(spellModel.Config.Id);
         }
 
         private void OnResourceChanged(ResourceType resourceType)
