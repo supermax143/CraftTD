@@ -651,7 +651,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631429537811054166, guid: 18103200130bc7f47bc3c216916a55c3, type: 3}
       propertyPath: m_Name
-      value: PutOnOffButton
+      value: EquipButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824765720096275445, guid: 18103200130bc7f47bc3c216916a55c3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4240809468935013686}
+    - target: {fileID: 5824765720096275445, guid: 18103200130bc7f47bc3c216916a55c3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchEquip
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824765720096275445, guid: 18103200130bc7f47bc3c216916a55c3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Unity.Presentation.Components.SpellUpgradeItem, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

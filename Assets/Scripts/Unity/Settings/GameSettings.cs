@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Unity.Settings
 {
     [CreateAssetMenu(fileName = "GameSettings.asset", menuName = "CraftTD/GameSettings", order = 1)]
-    public class GameSettings : ScriptableObject
+    public class GameSettings : ScriptableObject, IGameSettings
     {
         [System.Serializable]
         private class FactionColorPair
@@ -21,10 +21,15 @@ namespace Unity.Settings
         private float _explosionAnimationTime = 3;
         [SerializeField]
         private float _epochChangeTime = .5f;
+        [SerializeField]
+        private int _maxEquipedSpells = 2;
+        
         
         public float ExplosionAnimationTime => _explosionAnimationTime;
 
         public float EpochChangeTime => _epochChangeTime;
+
+        public int MaxEquipedSpells => _maxEquipedSpells;
 
         public bool TryGetFactionColor(Faction faction, out Color color)
         {

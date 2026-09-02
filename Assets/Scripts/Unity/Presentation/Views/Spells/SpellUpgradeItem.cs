@@ -15,6 +15,7 @@ namespace Unity.Presentation.Components
     public class SpellUpgradeItem : MonoBehaviour
     {
         public event Action<SpellModel> OnUpgradeClicked;
+        public event Action<SpellModel> OnSwitchEquipClicked;
         
         [SerializeField] private TextMeshProUGUI _levelTF;
         [SerializeField] private TextMeshProUGUI _labelTF;
@@ -33,6 +34,8 @@ namespace Unity.Presentation.Components
             
             _spellModel = spellModel;
             _spellModel.OnSpellLevelChanged += UpdateView;
+            _spellModel.OnSpellEquippedChanged += UpdateView;
+            
             UpdateView();
         }
 
@@ -73,8 +76,8 @@ namespace Unity.Presentation.Components
 
         private void UpdateEquipButton()
         {
-            _equipButton?.gameObject.SetActive(_spellModel.IsUnlocked);
-            //_equipButton.GetComponentInChildren<TMP_Text>(true).text = 
+            _equipButton.gameObject.SetActive(_spellModel.IsUnlocked);
+            _equipButton.GetComponentInChildren<TMP_Text>(true).text = _spellModel.IsEquipped ? "Unequip" : "Equip";
         }
         
         private void UpdateUpgradeButton()
@@ -92,6 +95,17 @@ namespace Unity.Presentation.Components
         public void Upgrade()
         {
             OnUpgradeClicked?.Invoke(_spellModel);
+        }
+
+        public void SwitchEquip()
+        {
+            OnSwitchEquipClicked?.Invoke(_spellModel);
+        }
+        
+        private void OnDestroy()
+        {
+            _spellModel.OnSpellLevelChanged -= UpdateView;
+            _spellModel.OnSpellEquippedChanged -= UpdateView;
         }
     }
 }

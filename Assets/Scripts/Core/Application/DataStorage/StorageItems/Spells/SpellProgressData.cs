@@ -4,5 +4,6 @@ namespace Core.Application.Spells
     {
         public string SpellId;
         public int Level;
+        public bool IsEquipped;
     }
 }

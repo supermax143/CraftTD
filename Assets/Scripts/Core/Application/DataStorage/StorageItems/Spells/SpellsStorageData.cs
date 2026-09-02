@@ -58,6 +58,20 @@ namespace Core.Application.Spells
             Save();
         }
 
+        public void SetSpellEquipped(string spellId, bool equipped)
+        {
+            var existing = _spellProgressInfo.Spells.Find(s => s.SpellId == spellId);
+            if (existing != null)
+            {
+                existing.IsEquipped = equipped;
+            }
+            else
+            {
+                _spellProgressInfo.Spells.Add(new SpellProgressData { SpellId = spellId, Level = -1, IsEquipped = equipped });
+            }
+            Save();
+        }
+
         private void InitializeDefaultData()
         {
             _spellProgressInfo = new SpellProgressStorageDataInfo

@@ -21,7 +21,7 @@ namespace Unity.Presentation.HUD.SpellsPanel
         public void Initialize(SpellModel spell)
         {
             _spell = spell;
-            //_icon.sprite = spell.Config.Icon;
+            _icon.sprite = spell.Config.Icon;
         }
 
         public void OnCastSpellClick()

@@ -34,7 +34,26 @@ namespace Unity.Presentation.Windows
             {
                 var view = _container.InstantiatePrefabForComponent<SpellUpgradeItem>(_spellItemPrefab, _spellsContainer);
                 view.OnUpgradeClicked += OnUpgradeClicked;
+                view.OnSwitchEquipClicked += OnSwitchEquipClicked;
+                
                 view.Initialize(spellModel);
+            }
+        }
+
+        private void OnSwitchEquipClicked(SpellModel spellModel)
+        {
+            if (!spellModel.IsUnlocked)
+            {
+                return;
+            }
+
+            if (spellModel.IsEquipped)
+            {
+                _spellCollection.TryUnequipSpell(spellModel.Config.Id);
+            }
+            else
+            {
+                _spellCollection.TryEquipSpell(spellModel.Config.Id);
             }
         }
 

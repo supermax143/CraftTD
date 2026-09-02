@@ -3,6 +3,7 @@ using System.Linq;
 using Core.Application.DataStorage;
 using Core.Application.Models;
 using Unity.Game.Spells;
+using Unity.Settings;
 using Zenject;
 
 namespace Core.Application.Spells
@@ -13,8 +14,9 @@ namespace Core.Application.Spells
         [Inject] private SpellDatabase _spellDatabase;
         [Inject] private readonly IDataStorage _dataStorage;
         [Inject] private InventoryModel _inventory;
+        [Inject] private IGameSettings _gamesSettings;
         
-        private readonly Dictionary<string, SpellModel> _idToSpell;
+        private readonly Dictionary<string, SpellModel> _idToSpell = new();
         
         public SpellsStorageData Spells => _dataStorage.Spells;
         
@@ -26,19 +28,18 @@ namespace Core.Application.Spells
             }
         }
         
-        public SpellCollection()
-        {
-            _idToSpell = new Dictionary<string, SpellModel>();
-        }
-
-        public void AddSpell(SpellConfig spellConfig)
+        public int CurEquippedSpells() => _idToSpell.Values.Count(s => s.IsEquipped);
+        
+        private void AddSpell(SpellConfig spellConfig)
         {
             var level = -1;
+            var isEquipped = false;
             if (Spells.TryGetSpellProgress(spellConfig.Id, out var progress))
             {
                 level = progress.Level;
+                isEquipped = progress.IsEquipped;
             }
-            var spell = new SpellModel(spellConfig, level);
+            var spell = new SpellModel(spellConfig, level, isEquipped);
             _idToSpell[spell.Config.Id] = spell;
         }
 
@@ -49,9 +50,14 @@ namespace Core.Application.Spells
 
         public IEnumerable<SpellModel> GetAllSpells()
         {
-            return _idToSpell.Values;
+            return _idToSpell.Values.ToArray();
         }
-
+        
+        public IEnumerable<SpellModel> GetEquippedSpells()
+        {
+            return _idToSpell.Values.Where(s => s.IsEquipped);
+        }
+        
         public bool TryUpgradeSpell(string spellId)
         {
             var spell = GetSpell(spellId);
@@ -68,6 +74,36 @@ namespace Core.Application.Spells
             _inventory.WithdrawResource(upgrade.Cost);
             spell.Upgrade();
             Spells.SetSpellProgress(spell.Config.Id, spell.CurrentLevel);
+            return true;
+        }
+
+        public bool TryEquipSpell(string spellId)
+        {
+            if (CurEquippedSpells() >= _gamesSettings.MaxEquipedSpells)
+            {
+                return false;
+            }
+            var spell = GetSpell(spellId);
+            if (spell == null || !spell.IsUnlocked)
+            {
+                return false;
+            }
+
+            spell.SetEquipped(true);
+            Spells.SetSpellEquipped(spell.Config.Id, true);
+            return true;
+        }
+
+        public bool TryUnequipSpell(string spellId)
+        {
+            var spell = GetSpell(spellId);
+            if (spell == null)
+            {
+                return false;
+            }
+
+            spell.SetEquipped(false);
+            Spells.SetSpellEquipped(spell.Config.Id, false);
             return true;
         }
     }

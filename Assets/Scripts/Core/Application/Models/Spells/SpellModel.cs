@@ -8,18 +8,22 @@ namespace Core.Application.Spells
     public class SpellModel
     {
         public event Action OnSpellLevelChanged;
+        public event Action OnSpellEquippedChanged;
 
         private readonly SpellConfig _config;
         private int _currentLevel = -1;
+        private bool _isEquipped;
 
         public SpellConfig Config => _config;
         public int CurrentLevel => _currentLevel;
         public bool IsUnlocked => _currentLevel >= 0;
+        public bool IsEquipped => _isEquipped;
 
-        public SpellModel(SpellConfig config, int currentLevel)
+        public SpellModel(SpellConfig config, int currentLevel, bool isEquipped = false)
         {
             _config = config;
             _currentLevel = currentLevel;
+            _isEquipped = isEquipped;
         }
 
 
@@ -61,6 +65,16 @@ namespace Core.Application.Spells
         {
             _currentLevel++;
             OnSpellLevelChanged?.Invoke();  
+        }
+
+        public void SetEquipped(bool equipped)
+        {
+            if (_isEquipped == equipped)
+            {
+                return;
+            }
+            _isEquipped = equipped;
+            OnSpellEquippedChanged?.Invoke();
         }
         
     }
