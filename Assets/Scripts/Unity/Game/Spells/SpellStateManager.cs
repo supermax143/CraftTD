@@ -69,5 +69,10 @@ namespace Unity.Game
         {
             _currentState?.UpdateState();
         }
+
+        public void Cancel()
+        {
+            _currentState.Cancel();
+        }
     }
 }

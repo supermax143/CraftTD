@@ -10,7 +10,7 @@ namespace Unity.Game.Spells
 {
     public class SpellController : MonoBehaviour
     {
-        public event Action<SpellController> OnDestroy;
+        public event Action<SpellController> OnSpellComplete;
         
         [SerializeField, HideInInspector] 
         private SpellActivationComponent _activationComponent;
@@ -18,6 +18,8 @@ namespace Unity.Game.Spells
         private SpellExecutionComponent _executionComponent;
         [SerializeField, HideInInspector]
         private SpellEffectApplier _effectApplier;
+        [SerializeField]
+        private SpellStateManager _spellState;
         
         private SpellModel _spellModel;
 
@@ -35,6 +37,7 @@ namespace Unity.Game.Spells
             _activationComponent = GetComponent<SpellActivationComponent>();
             _executionComponent = GetComponent<SpellExecutionComponent>();
             _effectApplier = GetComponent<SpellEffectApplier>();
+            _spellState = GetComponentInChildren<SpellStateManager>();
         }
 
         public void Initialize(SpellModel spellModedl)
@@ -45,8 +48,13 @@ namespace Unity.Game.Spells
 
         public void Dispose()
         {
-            OnDestroy?.Invoke(this);
+            OnSpellComplete?.Invoke(this);
             Destroy(gameObject);
+        }
+
+        public void Cancel()
+        {
+            _spellState.Cancel();
         }
     }
 }

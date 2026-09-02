@@ -9,6 +9,7 @@ using TMPro;
 using Unity.Game;
 using Unity.Presentation.Components;
 using Unity.Presentation.HUD;
+using Unity.Presentation.HUD.SpellsPanel;
 using Unity.Presentation.Views;
 using Unity.Presentation.Windows;
 using Unity.Presentation.Windows.Pause;
@@ -26,6 +27,8 @@ namespace Unity.Presentation
         private StartBattlePanel _startBattlePanel;
         [SerializeField]
         private UnitsBuyPanel _unitsBuyPanel;
+        [SerializeField]
+        private SpellsCastPanel _spellsPanel;
         
         [Inject] private ILevelRewardAggregator _rewardAggregator;
         [Inject] private IWindowsController _windowsController;
@@ -64,9 +67,11 @@ namespace Unity.Presentation
             if (!value)
             {
                 _unitsBuyPanel.Clear();
+                _spellsPanel.Dispose();
             }
             else
             {
+                _spellsPanel.UpdateView();
                 _unitsBuyPanel.UpdateView().Forget();
             }
         }

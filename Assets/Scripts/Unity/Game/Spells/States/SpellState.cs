@@ -34,5 +34,10 @@ namespace Unity.Game
         {
             _stateManager.ChangeState<T>();
         }
+
+        public virtual void Cancel()
+        {
+            ChangeState<CompleteState>();
+        }
     }
 }

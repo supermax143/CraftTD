@@ -21,6 +21,10 @@ namespace Unity.Game
             }
         }
 
-       
+        public override void Cancel()
+        {
+            _spell.ActivationComponent.StopActivationCheck();
+            base.Cancel();
+        }
     }
 }

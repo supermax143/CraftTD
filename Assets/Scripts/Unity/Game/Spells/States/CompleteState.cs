@@ -12,7 +12,9 @@ namespace Unity.Game
             _spell.Dispose();
         }
         
-
+        public override void Cancel()
+        {
+        }
        
     }
 }

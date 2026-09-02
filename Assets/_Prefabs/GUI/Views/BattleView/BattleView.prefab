@@ -166,6 +166,7 @@ MonoBehaviour:
   _animator: {fileID: 1513005341186483488}
   _startBattlePanel: {fileID: 366391118174752053}
   _unitsBuyPanel: {fileID: 3379710153899676125}
+  _spellsPanel: {fileID: 2082713031958792374}
 --- !u!95 &4739879856219774161
 Animator:
   serializedVersion: 7
@@ -496,6 +497,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6546288942049773780, guid: 66e386b9646f10a4385c44878a02115b, type: 3}
   m_PrefabInstance: {fileID: 5987421649307686405}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2082713031958792374 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5760332843713355443, guid: 66e386b9646f10a4385c44878a02115b, type: 3}
+  m_PrefabInstance: {fileID: 5987421649307686405}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6372d413b72aa894a9adbd326cf43009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.SpellsPanel.SpellsPanel
 --- !u!1001 &7492145630028814805
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -19,6 +19,8 @@ namespace Unity.Game
             _stateManager.ChangeState<CompleteState>();
         }
 
-        
+        public override void Cancel()//уже нельзя удалить
+        {
+        }
     }
 }
