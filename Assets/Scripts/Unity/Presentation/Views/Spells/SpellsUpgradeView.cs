@@ -31,6 +31,7 @@ namespace Unity.Presentation.Windows
 
         private async UniTask BuildItems()
         {
+            return;
             foreach (var spellModel in _spellCollection.GetAllSpells())
             {
                 var view = _container.InstantiatePrefabForComponent<SpellUpgradeItem>(_spellItemPrefab, _spellsContainer);

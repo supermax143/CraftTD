@@ -1492,11 +1492,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.PriceButton
   _activationInterval: 0.1
+  _clickSound: {fileID: 8300000, guid: 216bf9fa80a21b14c81db31b4c0bd105, type: 3}
+  _autoClick: 0
   _onActivated:
     m_PersistentCalls:
       m_Calls: []
-  _clickSound: {fileID: 8300000, guid: 216bf9fa80a21b14c81db31b4c0bd105, type: 3}
-  _autoClick: 0
+  _onPointerDown:
+    m_PersistentCalls:
+      m_Calls: []
+  _onPointerUp:
+    m_PersistentCalls:
+      m_Calls: []
   _priceText: {fileID: 3968634767357225260}
   _icon: {fileID: 9084378670533641942}
   _button: {fileID: 8234823146638253837}
