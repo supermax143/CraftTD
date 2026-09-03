@@ -14,7 +14,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
         }
 
         public override GameEntityAttributeKind AttributeKind => _attributeKind;
-        public ModifierAttributeKind ModifierKind => ModifierAttributeKind.Override;
+        public override ModifierAttributeKind ModifierKind => ModifierAttributeKind.Override;
 
         public override float Apply(float baseValue)
         {

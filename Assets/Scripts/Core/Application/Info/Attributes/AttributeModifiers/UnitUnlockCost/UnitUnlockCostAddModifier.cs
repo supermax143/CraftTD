@@ -10,7 +10,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
         }
 
         public override GameEntityAttributeKind AttributeKind => GameEntityAttributeKind.UnitUnlockCost;
-        public ModifierAttributeKind ModifierKind => ModifierAttributeKind.Add;
+        public override ModifierAttributeKind ModifierKind => ModifierAttributeKind.Add;
 
         public override int Apply(int baseValue)
         {

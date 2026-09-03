@@ -10,7 +10,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
         }
 
         public override GameEntityAttributeKind AttributeKind => GameEntityAttributeKind.RewardMoney;
-        public ModifierAttributeKind ModifierKind => ModifierAttributeKind.Multiply;
+        public override ModifierAttributeKind ModifierKind => ModifierAttributeKind.Multiply;
 
         public override int Apply(int baseValue)
         {

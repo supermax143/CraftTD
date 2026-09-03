@@ -14,7 +14,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
         }
 
         public override GameEntityAttributeKind AttributeKind => _attributeKind;
-        public ModifierAttributeKind ModifierKind => ModifierAttributeKind.Multiply;
+        public override ModifierAttributeKind ModifierKind => ModifierAttributeKind.Multiply;
 
         public override int Apply(int baseValue)
         {

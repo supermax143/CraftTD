@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Application.Interfaces;
+using Unity.Game.Attributes;
 using UnityEngine;
 using Zenject;
 
@@ -34,6 +35,9 @@ namespace Unity.Infrastructure.Localization
 
         private List<string> _languageCodes;
         private Dictionary<string, Dictionary<string, string>> _allLanguages;
+
+        public string GetAttributeLocale(GameEntityAttributeKind kind)
+            => Get($"attribute_{kind.ToString().ToLower()}");
         
 #if DEBUG_MODE
         public async void Initialize()

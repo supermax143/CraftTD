@@ -10,7 +10,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
         }
 
         public override GameEntityAttributeKind AttributeKind => GameEntityAttributeKind.Health;
-        public ModifierAttributeKind ModifierKind => ModifierAttributeKind.Override;
+        public override ModifierAttributeKind ModifierKind => ModifierAttributeKind.Override;
 
         public override int Apply(int baseValue)
         {

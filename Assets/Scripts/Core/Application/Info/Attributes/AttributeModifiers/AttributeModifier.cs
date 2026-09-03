@@ -1,4 +1,4 @@
-﻿using Unity.Game.Attributes;
+using Unity.Game.Attributes;
 
 namespace Core.Application.Info.Attributes.AttributeModifiers
 {
@@ -6,6 +6,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
     {
         
         public abstract GameEntityAttributeKind AttributeKind { get; }
+        public abstract ModifierAttributeKind ModifierKind { get; }
 
         public abstract void Replace(AttributeModifierBase modifier);
 
@@ -20,6 +21,8 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
         {
             _value = value;
         }
+
+        public TValue Value => _value;
 
         public override void Replace(AttributeModifierBase modifier)
         {

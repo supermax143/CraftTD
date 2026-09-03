@@ -10,7 +10,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
         }
 
         public override GameEntityAttributeKind AttributeKind => GameEntityAttributeKind.AttackTime;
-        public ModifierAttributeKind ModifierKind => ModifierAttributeKind.Multiply;
+        public override ModifierAttributeKind ModifierKind => ModifierAttributeKind.Multiply;
 
         public override float Apply(float baseValue)
         {

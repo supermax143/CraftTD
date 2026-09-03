@@ -1,4 +1,4 @@
-﻿using Unity.Game.Attributes;
+using Unity.Game.Attributes;
 
 namespace Core.Application.Info.Attributes.AttributeModifiers
 {
@@ -10,7 +10,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
         }
 
         public override GameEntityAttributeKind AttributeKind => GameEntityAttributeKind.Health;
-        public ModifierAttributeKind ModifierKind => ModifierAttributeKind.Add;
+        public override ModifierAttributeKind ModifierKind => ModifierAttributeKind.Add;
         
         public override int Apply(int baseValue)
         {

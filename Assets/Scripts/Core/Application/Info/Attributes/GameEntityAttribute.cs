@@ -12,7 +12,7 @@ namespace Unity.Game.Attributes
         private List<AttributeModifierBase> _modifiers = new();
         
         public abstract GameEntityAttributeKind Kind { get; }
-
+        
         public List<AttributeModifierBase> Modifiers
         {
             get
