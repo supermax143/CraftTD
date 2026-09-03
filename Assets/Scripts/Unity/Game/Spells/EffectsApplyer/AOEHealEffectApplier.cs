@@ -11,7 +11,7 @@ namespace Unity.Game.Spells.EffectsApplyer
         [SerializeField] 
         private HealthAttribute _health;
         [SerializeField] 
-        private float _radius = 2;
+        private AttackRangeAttribute _radius;
         [SerializeField] 
         private Faction _faction = Faction.Player;
         
@@ -22,11 +22,12 @@ namespace Unity.Game.Spells.EffectsApplyer
             foreach (var modifier in spell.Model.GetModifiers())
             {
                 _health.AddModifier(modifier);
+                _radius.AddModifier(modifier);
             }
             
             Vector3 position = spell.ActivationComponent.TargetPosition;
             position.z = position.y * 0.001f;
-            var colliders = Physics2D.OverlapCircleAll(position, _radius);
+            var colliders = Physics2D.OverlapCircleAll(position, _radius.BaseValueModified);
             var targets = colliders
                 .Select(c => c.GetComponent<AttackTargetBase>())
                 .Where(t => t != null && !t.IsDead && t.Faction == _faction)

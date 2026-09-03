@@ -9,7 +9,7 @@ namespace Unity.Game.Spells.EffectsApplyer
         [SerializeField] 
         private DamageAttribute _damage;
         [SerializeField] 
-        private float _radius = 2;
+        private AttackRangeAttribute _radius;
         [SerializeField] 
         private Faction _faction = Faction.Enemy;
         
@@ -18,10 +18,11 @@ namespace Unity.Game.Spells.EffectsApplyer
             foreach (var modifier in spell.Model.GetModifiers())
             {
                 _damage.AddModifier(modifier);
+                _radius.AddModifier(modifier);
             }
             
             var position = spell.ActivationComponent.TargetPosition;
-            var colliders = Physics2D.OverlapCircleAll(position, _radius);
+            var colliders = Physics2D.OverlapCircleAll(position, _radius.BaseValueModified);
             var targets = colliders
                 .Select(c => c.GetComponent<AttackTargetBase>())
                 .Where(t => t != null && !t.IsDead && t.Faction == _faction)

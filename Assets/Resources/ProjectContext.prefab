@@ -865,6 +865,35 @@ MonoBehaviour:
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       m_SubObjectGUID: 
       m_EditorAssetChanged: 1
+  _attributeIcons:
+  - attributeKind: 0
+    sprite:
+      m_AssetGUID: 277dc35ca95cbd74a9cda7cbed1f2500
+      m_SubObjectName: icon_damage
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 1
+  - attributeKind: 1
+    sprite:
+      m_AssetGUID: 1eb5eb4130f0fff4ba545a25b170b0fc
+      m_SubObjectName: icon_attack_range_0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 1
+  - attributeKind: 2
+    sprite:
+      m_AssetGUID: 2893a2534c6f4a346ba8682cf4f7ac9c
+      m_SubObjectName: icon_move_speed_0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 1
+  - attributeKind: 7
+    sprite:
+      m_AssetGUID: 3d7ef4edbe352824b887bcd8fdee7b97
+      m_SubObjectName: icon_health_0
+      m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 1
 --- !u!1 &8025960657509679866
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,11 +23,50 @@ MonoBehaviour:
       Value: 100
     _modifiers:
     - _attributeKind: 0
-      _modifierKind: 0
-      _value: 20
+      _modifierKind: 1
+      _value: 1.2
     - _attributeKind: 2
-      _modifierKind: 0
-      _value: 2
+      _modifierKind: 1
+      _value: 1.2
     - _attributeKind: 7
-      _modifierKind: 0
-      _value: 20
+      _modifierKind: 1
+      _value: 1.2
+  - _cost:
+      Type: 2
+      Value: 200
+    _modifiers:
+    - _attributeKind: 0
+      _modifierKind: 1
+      _value: 1.2
+    - _attributeKind: 2
+      _modifierKind: 1
+      _value: 1.2
+    - _attributeKind: 7
+      _modifierKind: 1
+      _value: 1.2
+  - _cost:
+      Type: 2
+      Value: 200
+    _modifiers:
+    - _attributeKind: 0
+      _modifierKind: 1
+      _value: 1.2
+    - _attributeKind: 2
+      _modifierKind: 1
+      _value: 1.2
+    - _attributeKind: 7
+      _modifierKind: 1
+      _value: 1.2
+  - _cost:
+      Type: 2
+      Value: 300
+    _modifiers:
+    - _attributeKind: 0
+      _modifierKind: 1
+      _value: 1.2
+    - _attributeKind: 2
+      _modifierKind: 1
+      _value: 1.2
+    - _attributeKind: 7
+      _modifierKind: 1
+      _value: 1.2

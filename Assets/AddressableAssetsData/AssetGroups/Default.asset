@@ -15,8 +15,28 @@ MonoBehaviour:
   m_GroupName: Default
   m_GUID: bd013abf932112c45a0fe315efc3121e
   m_SerializeEntries:
+  - m_GUID: 1eb5eb4130f0fff4ba545a25b170b0fc
+    m_Address: Assets/_SorceAssets/UI/Icons/Attributes/icon_attack_range.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 277dc35ca95cbd74a9cda7cbed1f2500
+    m_Address: Assets/_SorceAssets/UI/Icons/Attributes/icon_damage.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2893a2534c6f4a346ba8682cf4f7ac9c
+    m_Address: Assets/_SorceAssets/UI/Icons/Attributes/icon_move_speed.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3ce34f59b386dcf40a1c9a4eb56264de
     m_Address: Assets/_Prefabs/GUI/Views/Shop/ShopItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d7ef4edbe352824b887bcd8fdee7b97
+    m_Address: Assets/_SorceAssets/UI/Icons/Attributes/icon_health.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
