@@ -9,7 +9,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
         public abstract ModifierAttributeKind ModifierKind { get; }
 
         public abstract void Replace(AttributeModifierBase modifier);
-
+        public abstract object Value { get; }
     }
 
     // Дженерик-наследник для типобезопасной работы с конкретным атрибутом
@@ -22,7 +22,7 @@ namespace Core.Application.Info.Attributes.AttributeModifiers
             _value = value;
         }
 
-        public TValue Value => _value;
+        public override object Value => _value;
 
         public override void Replace(AttributeModifierBase modifier)
         {
