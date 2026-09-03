@@ -48,10 +48,6 @@ namespace Core.Application.Spells
         {
             for (int i = 0; i < _config.Upgrades.Count; i++)
             {
-                if (i >= _currentLevel)
-                {
-                    break;
-                }
                 var upgrade = _config.Upgrades[i];
                 foreach (var modifierWrapper in upgrade.Modifiers)
                 {
