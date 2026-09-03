@@ -21,7 +21,7 @@ namespace Unity.Presentation.Components.Containers
 
         [Inject] private DiContainer _diContainer;
 
-        public async UniTask SetModifiers(List<AttributeModifierBase> modifiers)
+        public async UniTask SetModifiers(IEnumerable<AttributeModifierBase> modifiers)
         {
             ClearList();
 
@@ -38,7 +38,7 @@ namespace Unity.Presentation.Components.Containers
             }
         }
 
-        private void ClearList()
+        public void ClearList()
         {
             foreach (var item in _items)
             {

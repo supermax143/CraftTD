@@ -548,6 +548,7 @@ MonoBehaviour:
   _descriptionTF: {fileID: 5378050732739442880}
   _upgradeButton: {fileID: 3344119635586328420}
   _equipButton: {fileID: 1741793836046922135}
+  _modifiersList: {fileID: 3608720119183529553}
 --- !u!1001 &5258411938747992674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1012,7 +1013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5261865150088969996, guid: b2522450c1b128d4f960dbe3076c24dc, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 5261865150088969996, guid: b2522450c1b128d4f960dbe3076c24dc, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1069,10 +1070,55 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4754897311777216489, guid: b2522450c1b128d4f960dbe3076c24dc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8387714491033067632}
   m_SourcePrefab: {fileID: 100100000, guid: b2522450c1b128d4f960dbe3076c24dc, type: 3}
 --- !u!224 &2743197627833430347 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5261865150088969996, guid: b2522450c1b128d4f960dbe3076c24dc, type: 3}
   m_PrefabInstance: {fileID: 8004072795912523335}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3380202369907890606 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4754897311777216489, guid: b2522450c1b128d4f960dbe3076c24dc, type: 3}
+  m_PrefabInstance: {fileID: 8004072795912523335}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8387714491033067632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3380202369907890606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &3608720119183529553 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6701516881347909654, guid: b2522450c1b128d4f960dbe3076c24dc, type: 3}
+  m_PrefabInstance: {fileID: 8004072795912523335}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3380202369907890606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0b78a23eb0dcd43a912f3c1aad4a6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.Containers.AttributesModifiersList
