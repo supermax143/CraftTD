@@ -57,7 +57,7 @@ namespace Unity.Presentation.Components.Containers
                     ModifierAttributeKind.Override => "",
                     _ => ""
                 };
-                _value.text = $"{prefix} {_modifier.Value}";
+                _value.text = $"{prefix}{_modifier.Value}";
             }
         }
 

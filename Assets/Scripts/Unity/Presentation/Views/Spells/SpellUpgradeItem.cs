@@ -21,8 +21,9 @@ namespace Unity.Presentation.Components
         public event Action<SpellModel> OnUpgradeClicked;
         public event Action<SpellModel> OnSwitchEquipClicked;
         
-        [SerializeField] private TextMeshProUGUI _levelTF;
         [SerializeField] private TextMeshProUGUI _labelTF;
+        [SerializeField] private TextMeshProUGUI _levelTF;
+        [SerializeField] private Transform _levelContainer;
         [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _descriptionTF;
         [SerializeField] private ResourceButton _upgradeButton;
@@ -51,10 +52,6 @@ namespace Unity.Presentation.Components
                 _labelTF.text = _localization.Get(_spellModel.Config.Name);
             }
 
-            if (_levelTF != null)
-            {
-                _levelTF.text = $"Level {_spellModel.CurrentLevel + 1}/{_spellModel.Config.MaxLevel + 1}";
-            }
 
             if (_descriptionTF != null)
             {
@@ -63,8 +60,22 @@ namespace Unity.Presentation.Components
 
             UpdateIcon();
             UpdateUpgradeButton();
+            UpdateLevel();
             UpdateEquipButton();
             UpdateModifiersList();
+        }
+
+        private void UpdateLevel()
+        {
+            if (_levelTF != null)
+            {
+                _levelTF.text = $"{_spellModel.CurrentLevel + 1}";
+            }
+
+            if (_levelContainer != null)
+            {
+                _levelContainer.gameObject.SetActive(_spellModel.IsUnlocked);
+            }
         }
 
         private async void UpdateModifiersList()
