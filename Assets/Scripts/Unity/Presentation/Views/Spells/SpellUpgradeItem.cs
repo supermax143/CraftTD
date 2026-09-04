@@ -46,9 +46,11 @@ namespace Unity.Presentation.Components
             _spellModel = spellModel;
             _spellModel.OnSpellLevelChanged += UpdateView;
             _spellModel.OnSpellEquippedChanged += UpdateView;
-            
+            _inventory.OnResourceChanged += UpdateUpgradeActive;
             UpdateView();
         }
+
+       
 
         private void UpdateView()
         {
@@ -137,14 +139,19 @@ namespace Unity.Presentation.Components
         {
             if (!_spellModel.TryGetNextUpgrade(out var upgrade))
             {
-                _upgradeButton?.gameObject.SetActive(false);
+                _upgradeButton.gameObject.SetActive(false);
                 return;
             }
 
-            _upgradeButton?.gameObject.SetActive(true);
+            _upgradeButton.gameObject.SetActive(true);
             _upgradeButton.SetPrice(upgrade.Cost);
         }
 
+        private void UpdateUpgradeActive(ResourceType res)
+        {
+            _upgradeButton.UpdateActive();
+        }
+        
         public void Upgrade()
         {
             OnUpgradeClicked?.Invoke(_spellModel);
@@ -159,6 +166,8 @@ namespace Unity.Presentation.Components
         {
             _spellModel.OnSpellLevelChanged -= UpdateView;
             _spellModel.OnSpellEquippedChanged -= UpdateView;
+            _inventory.OnResourceChanged -= UpdateUpgradeActive;
+            
         }
     }
 }

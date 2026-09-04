@@ -25,6 +25,7 @@ namespace Unity.Presentation.Components
         [SerializeField] private Image _icon;
         [SerializeField] private Button _button;
         [SerializeField] private bool _showNotEnough = true;
+        [SerializeField] private bool _interactableWhenNotEnough = true;
         
         
         [Inject] private IResourceManager _resourceManager;
@@ -47,15 +48,24 @@ namespace Unity.Presentation.Components
         private void UpdateView()
         {
             _priceText.text = LargeNumberFormatter.Format(_price.Value);
+            UpdateActive();
+            UpdateIcon();
+        }
+
+        public void UpdateActive()
+        {
             if (_showNotEnough)
             {
                 var color = Active ? Color.white : Color.red;
                 _priceText.color = color;
+            }
+
+            if (!_interactableWhenNotEnough)
+            {
                 _button.interactable = Active;
             }
-            
-            UpdateIcon();
         }
+
         private async UniTask UpdateIcon()
         {
             if (!_resourceManager.TryGetResourceIcon(_price.Type, out var iconRef))
