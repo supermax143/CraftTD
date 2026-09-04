@@ -7,7 +7,9 @@ using Core.Application.Models;
 using Core.Application.Spells;
 using TMPro;
 using Unity.Presentation.Components.Containers;
+using Unity.Presentation.Views.Spells;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -23,12 +25,15 @@ namespace Unity.Presentation.Components
         
         [SerializeField] private TextMeshProUGUI _labelTF;
         [SerializeField] private TextMeshProUGUI _levelTF;
-        [SerializeField] private Transform _levelContainer;
+        [SerializeField] private Transform _lockIcon;
         [SerializeField] private Image _icon;
         [SerializeField] private TextMeshProUGUI _descriptionTF;
         [SerializeField] private ResourceButton _upgradeButton;
-        [SerializeField] private Button _equipButton;
         [SerializeField] private AttributesModifiersList _modifiersList;
+        [SerializeField] private Button _equipButton;
+        [SerializeField] private Image _iconEquip;
+        [SerializeField] private Image _iconUnequip;
+        [SerializeField] private StateSpriteSwitcher _backgroundSwitcher;
         
         [Inject] private ILocalization _localization;
         [Inject] private IInventoryModel _inventory;
@@ -63,18 +68,34 @@ namespace Unity.Presentation.Components
             UpdateLevel();
             UpdateEquipButton();
             UpdateModifiersList();
+            UpdateBackground();
+        }
+
+        private void UpdateBackground()
+        {
+            var state = _spellModel.IsUnlocked ? 
+                StateSpriteSwitcher.State.Enabled : 
+                StateSpriteSwitcher.State.Disabled;
+            
+            if (_spellModel.IsEquipped)
+            {
+                state = StateSpriteSwitcher.State.Selected;
+            }
+            
+            _backgroundSwitcher.SetState(state);
         }
 
         private void UpdateLevel()
         {
             if (_levelTF != null)
             {
+                _levelTF.gameObject.SetActive(_spellModel.IsUnlocked);
                 _levelTF.text = $"{_spellModel.CurrentLevel + 1}";
             }
 
-            if (_levelContainer != null)
+            if (_lockIcon != null)
             {
-                _levelContainer.gameObject.SetActive(_spellModel.IsUnlocked);
+                _lockIcon.gameObject.SetActive(!_spellModel.IsUnlocked);
             }
         }
 
@@ -108,7 +129,8 @@ namespace Unity.Presentation.Components
         private void UpdateEquipButton()
         {
             _equipButton.gameObject.SetActive(_spellModel.IsUnlocked);
-            _equipButton.GetComponentInChildren<TMP_Text>(true).text = _spellModel.IsEquipped ? "Unequip" : "Equip";
+            _iconEquip.gameObject.SetActive(!_spellModel.IsEquipped);
+            _iconUnequip.gameObject.SetActive(_spellModel.IsEquipped);
         }
         
         private void UpdateUpgradeButton()
