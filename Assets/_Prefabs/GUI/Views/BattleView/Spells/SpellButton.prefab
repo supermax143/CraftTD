@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d232ccfe59bfc24e8c98317390b528e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.SpellsPanel.SpellButton
-  _button: {fileID: 0}
+  _button: {fileID: 2103193109673744561}
   _icon: {fileID: 5022060440840430248}
   _effectsController: {fileID: 8562870636882424974}
 --- !u!114 &8562870636882424974

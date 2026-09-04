@@ -10,6 +10,7 @@ using Core.Application.Models;
 using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.Triggers;
 using DG.Tweening;
+using Unity.Game.Spells;
 using Unity.Infrastructure.Advertisement;
 using Unity.Infrastructure.Advertisement.Transactions;
 using Unity.Infrastructure.VisualActions;
@@ -50,6 +51,7 @@ namespace Unity.Game
         [Inject] private IActionsDispatcher _actionsDispatcher;
         [Inject] private IViewsController _viewsController;
         [Inject] private DropManager _dropManager;
+        [Inject] private SpellCaster _spellCaster;
         
         private EpochModel PlayerEpoch => _mainModel.PlayerEpoch;
         private EpochModel EnemyEpoch => _mainModel.EnemyEpoch;
@@ -150,6 +152,7 @@ namespace Unity.Game
             _started = false;
             _foodProduction.Reset();
             _dropManager.Reset();
+            _spellCaster.Reset();
             foreach (var team in _teams)
             {
                 team.Reset();

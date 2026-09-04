@@ -10,7 +10,7 @@ namespace Unity.Presentation.HUD.SpellsPanel
 {
     public class SpellCastButton : MonoBehaviour
     {
-        [SerializeField, HideInInspector]
+        [SerializeField]
         private Button _button;
         [SerializeField]
         private Image _icon;
@@ -29,6 +29,7 @@ namespace Unity.Presentation.HUD.SpellsPanel
             _spell = spell;
             _icon.sprite = spell.Config.Icon;
             _isCasting = false;
+            UpdateEnabled();
         }
 
         public void OnCastSpellClick()
@@ -57,8 +58,14 @@ namespace Unity.Presentation.HUD.SpellsPanel
             _spellCaster.OnSpellCastComplete -= OnSpellCastComplete;
             _isCasting = false;
             _effectsController.StopBlink();
+            UpdateEnabled();
         }
 
+        private void UpdateEnabled()
+        {
+            _button.interactable = _spellCaster.GetCastsCount(_spell) < _spell.MaxSpellsCast;
+        }
+        
         private void OnDestroy()
         {
             _spellCaster.OnSpellCastComplete -= OnSpellCastComplete;

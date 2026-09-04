@@ -13,11 +13,14 @@ namespace Core.Application.Spells
         private readonly SpellConfig _config;
         private int _currentLevel = -1;
         private bool _isEquipped;
-
+        private int _maxSpellsCast = 1;
+        
         public SpellConfig Config => _config;
         public int CurrentLevel => _currentLevel;
         public bool IsUnlocked => _currentLevel >= 0;
         public bool IsEquipped => _isEquipped;
+
+        public int MaxSpellsCast => _maxSpellsCast;
 
         public SpellModel(SpellConfig config, int currentLevel, bool isEquipped = false)
         {
