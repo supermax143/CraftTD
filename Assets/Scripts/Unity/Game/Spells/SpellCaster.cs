@@ -32,14 +32,16 @@ namespace Unity.Game.Spells
             
             
             _currentSpell = _container.InstantiatePrefabForComponent<SpellController>(spell.Config.Prefab);
+            _currentSpell.OnSpellEffectApplied += SpellEffectAppliedHandler;
             _currentSpell.OnSpellComplete += SpellCastCompleteHandler;
             _currentSpell.Initialize(spell);
             return true;
         }
 
-        private void SpellCastCompleteHandler(SpellController spellController)
+
+        private void SpellEffectAppliedHandler(SpellController spellController)
         {
-            _currentSpell.OnSpellComplete -= SpellCastCompleteHandler;
+            _currentSpell.OnSpellEffectApplied -= SpellEffectAppliedHandler;
             _currentSpell = null;
             var castsCount = _spellCastCount.GetValueOrDefault(spellController.Model.Config.Id, 0);
             castsCount++;
@@ -47,6 +49,13 @@ namespace Unity.Game.Spells
             OnSpellCastComplete?.Invoke(spellController.Model);
         }
 
+        private void SpellCastCompleteHandler(SpellController spell)
+        {
+            spell.OnSpellComplete -= SpellCastCompleteHandler;
+            _currentSpell = null;
+            OnSpellCastComplete?.Invoke(spell.Model);
+        }
+       
         public int GetCastsCount(SpellModel spell) 
             => _spellCastCount.GetValueOrDefault(spell.Config.Id, 0);
 
@@ -55,6 +64,7 @@ namespace Unity.Game.Spells
             if (_currentSpell != null && _currentSpell.Model == spell)
             {
                 _currentSpell.Cancel();
+                
             }
         }
         

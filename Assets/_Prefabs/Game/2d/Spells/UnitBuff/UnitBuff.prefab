@@ -139,6 +139,7 @@ MonoBehaviour:
   _activationComponent: {fileID: 4740981228397026618}
   _executionComponent: {fileID: 1945240733484110699}
   _effectApplier: {fileID: 7938982274760545512}
+  _spellState: {fileID: 2685439507705094857}
 --- !u!114 &4740981228397026618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a5bccdee6d4089988b6c6e6d8853f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.Spells.Execution.InstantExecutionComponent
-  _delayBeforeDestroy: 0
+  _delayBeforeDestroy: 1
 --- !u!114 &7938982274760545512
 MonoBehaviour:
   m_ObjectHideFlags: 0

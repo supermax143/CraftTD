@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
+using Cysharp.Threading.Tasks;
 using Unity.Game.Attributes.Specific;
 using Unity.Infrastructure.Effects;
 using UnityEngine;
@@ -17,7 +19,7 @@ namespace Unity.Game.Spells.EffectsApplyer
         
         [Inject] private PopupSpawnManager _popupSpawnManager;
         
-        public override void Apply(SpellController spell)
+        protected override IEnumerator DoApply(SpellController spell)
         {
             foreach (var modifier in spell.Model.GetModifiers())
             {
@@ -38,6 +40,7 @@ namespace Unity.Game.Spells.EffectsApplyer
                 target.HealthComponent.Heal(_health.BaseValueModified);
             }
             _popupSpawnManager.SpawnEffect(PopupType.HealEffect, position);
+            yield break;
         }
         
         

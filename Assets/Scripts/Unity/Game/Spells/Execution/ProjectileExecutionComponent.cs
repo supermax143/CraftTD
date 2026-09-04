@@ -19,7 +19,42 @@ namespace Unity.Game.Spells.Execution
         private Vector2 _targetPosition;
         private SpellController _spell;
 
-        public override void Execute(SpellController spell)
+       
+
+        protected override IEnumerator DoExecute(SpellController spell)
+        {
+            _spell = spell;
+            _projectile.SetActive(false);
+            _explosion.SetActive(false);
+            _targetPosition = spell.ActivationComponent.TargetPosition;
+            _startPosition = _targetPosition - _startDelta;
+      
+            transform.position = _startPosition;
+            _projectile.SetActive(true);
+            var particleSystems = _projectile.GetComponentsInChildren<ParticleSystem>();
+            foreach (var particleSystem in particleSystems)
+            {
+                particleSystem.Play();
+            }
+            var timer = new Timer();
+            timer.Start(_flyTime);
+            while (!timer.IsComplete)
+            {
+                transform.position = Vector3.Lerp(_startPosition, _targetPosition, timer.Progress);
+                yield return null;
+            }
+            transform.position = _targetPosition;
+            foreach (var particleSystem in particleSystems)
+            {
+                particleSystem.Stop();
+            }
+            _explosion.SetActive(true);
+            _spell.EffectApplier.Apply(_spell);
+            yield return new WaitForSeconds(_delayBeforeDestroy);
+        }
+        
+        
+        /*public override void Execute(SpellController spell)
         {
             _spell = spell;
             _projectile.SetActive(false);
@@ -54,6 +89,6 @@ namespace Unity.Game.Spells.Execution
             _spell.EffectApplier.Apply(_spell);
             yield return new WaitForSeconds(_delayBeforeDestroy);
             Complete();
-        }
+        }*/
     }
 }

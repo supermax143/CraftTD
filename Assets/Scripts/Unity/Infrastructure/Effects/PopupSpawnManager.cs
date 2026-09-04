@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Unity.Infrastructure.Effects.TextBubbleEffect;
 using Unity.Utils.Time;
 using UnityEngine;
@@ -59,7 +60,7 @@ namespace Unity.Infrastructure.Effects
             }
         }
 
-        public async Task<Popup> SpawnRandomHitBubble(Vector3 position,
+        public async UniTask<Popup> SpawnRandomHitBubble(Vector3 position,
             Transform parent = null, Vector2 deltaX = default,Vector2 deltaY = default)
         {
             if (!_textBubbleCooldownTimer.IsComplete)
@@ -76,7 +77,7 @@ namespace Unity.Infrastructure.Effects
             return bubble;
         }
 
-        public async Task<TextPopup> SpawnTextPopup(string text, PopupType type, Vector3 position = default, Transform parent = null)
+        public async UniTask<TextPopup> SpawnTextPopup(string text, PopupType type, Vector3 position = default, Transform parent = null)
         {
             if (parent == default)
             {
@@ -87,7 +88,7 @@ namespace Unity.Infrastructure.Effects
             return textPopup;
         }
         
-        public async Task<Popup> SpawnRandomExplosion(Vector3 position,
+        public async UniTask<Popup> SpawnRandomExplosion(Vector3 position,
             Transform parent = null, Vector2 deltaX = default, Vector2 deltaY = default)
         {
             if (!_explosionCooldownTimer.IsComplete)
@@ -102,7 +103,7 @@ namespace Unity.Infrastructure.Effects
             return explosion;
         }
 
-        public async Task<Popup> SpawnEffect(PopupType popupType, Vector3 position = default, 
+        public async UniTask<Popup> SpawnEffect(PopupType popupType, Vector3 position = default, 
             Transform parent = null, bool spawn = true)
         {
             if (!_prefabCache.ContainsKey(popupType))
@@ -129,7 +130,7 @@ namespace Unity.Infrastructure.Effects
             return effect;
         }
 
-        private async Task LoadPrefabAsync(PopupType popupType)
+        private async UniTask LoadPrefabAsync(PopupType popupType)
         {
             foreach (var effectAsset in _effectAssets)
             {

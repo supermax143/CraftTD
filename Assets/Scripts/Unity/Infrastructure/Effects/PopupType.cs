@@ -17,6 +17,7 @@ namespace Unity.Infrastructure.Effects
         Explosion3,
         TextNextWave,
         RingGlowEffect,
-        HealEffect
+        HealEffect,
+        FireballExplosion
     }
 }

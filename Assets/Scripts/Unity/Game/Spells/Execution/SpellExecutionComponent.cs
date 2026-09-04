@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Unity.Game.Spells.Execution
@@ -9,12 +10,23 @@ namespace Unity.Game.Spells.Execution
 
         [SerializeField]
         protected float _delayBeforeDestroy = 1;
-        
-        public  abstract void Execute(SpellController spell);
 
-        public void Complete()
+        protected abstract IEnumerator DoExecute(SpellController spell);
+
+        public void Execute(SpellController spell)
         {
+            StartCoroutine(WaitExecuted(spell));
+        }
+       
+
+        private IEnumerator WaitExecuted(SpellController spell)
+        {
+            yield return DoExecute(spell);
             OnComplete?.Invoke();
         }
+
+
+
+
     }
 }

@@ -1,6 +1,10 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
+using Cysharp.Threading.Tasks;
 using Unity.Game.Attributes.Specific;
+using Unity.Infrastructure.Effects;
 using UnityEngine;
+using Zenject;
 
 namespace Unity.Game.Spells.EffectsApplyer
 {
@@ -13,7 +17,10 @@ namespace Unity.Game.Spells.EffectsApplyer
         [SerializeField] 
         private Faction _faction = Faction.Enemy;
         
-        public override void Apply(SpellController spell)
+        [Inject] private PopupSpawnManager _popupSpawnManager;
+        
+        
+        protected override IEnumerator DoApply(SpellController spell)
         {
             foreach (var modifier in spell.Model.GetModifiers())
             {
@@ -32,6 +39,9 @@ namespace Unity.Game.Spells.EffectsApplyer
             {
                 target.HealthComponent.TakeDamage(_damage.BaseValueModified);
             }
+            // _popupSpawnManager.SpawnEffect(PopupType.FireballExplosion, position).Forget();
+            yield return UniTask.CompletedTask;
         }
+        
     }
 }

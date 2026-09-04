@@ -11,6 +11,7 @@ namespace Unity.Game.Spells
     public class SpellController : MonoBehaviour
     {
         public event Action<SpellController> OnSpellComplete;
+        public event Action<SpellController> OnSpellEffectApplied;
         
         [SerializeField, HideInInspector] 
         private SpellActivationComponent _activationComponent;
@@ -43,9 +44,14 @@ namespace Unity.Game.Spells
         public void Initialize(SpellModel spellModedl)
         {
             _spellModel = spellModedl;
+            _effectApplier.OnEffectApplied += EffectApplied;
         }
-            
 
+        public void EffectApplied()
+        {
+            OnSpellEffectApplied?.Invoke(this);
+        }
+        
         public void Dispose()
         {
             OnSpellComplete?.Invoke(this);

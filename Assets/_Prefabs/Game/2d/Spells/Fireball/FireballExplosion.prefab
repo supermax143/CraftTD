@@ -8304,8 +8304,9 @@ GameObject:
   - component: {fileID: 4593184484909914550}
   - component: {fileID: 4593184484909914553}
   - component: {fileID: 4593184484909914548}
+  - component: {fileID: 4661209675949696746}
   m_Layer: 0
-  m_Name: Explosion
+  m_Name: FireballExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10993,6 +10994,20 @@ MonoBehaviour:
     perlinColor: 0
     perlinColorSpeed: 0
   fadeOutReference: {fileID: 0}
+--- !u!114 &4661209675949696746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4593184484909914552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b45096a89846919476d35b478164a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Infrastructure.Effects.Popup
+  _popupType: 14
+  _time: 2
 --- !u!1 &4593184484999142886
 GameObject:
   m_ObjectHideFlags: 0

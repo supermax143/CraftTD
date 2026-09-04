@@ -1,11 +1,14 @@
-﻿namespace Unity.Game.Spells.Execution
+﻿using System.Collections;
+using UnityEngine;
+
+namespace Unity.Game.Spells.Execution
 {
     public class InstantExecutionComponent : SpellExecutionComponent
     {
-        public override void Execute(SpellController spell)
+        protected override IEnumerator DoExecute(SpellController spell)
         {
             spell.EffectApplier.Apply(spell);
-            Complete();
+            yield return new WaitForSeconds(_delayBeforeDestroy);
         }
     }
 }
