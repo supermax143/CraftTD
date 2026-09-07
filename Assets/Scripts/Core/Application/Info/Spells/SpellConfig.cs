@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Unity.Infrastructure.Requirements;
+using Unity.Infrastructure.Requirements.Base;
 using UnityEngine;
 
 namespace Core.Application.Spells
@@ -18,7 +20,9 @@ namespace Core.Application.Spells
         private GameObject _prefab;
         [SerializeField]
         private List<SpellUpgrade> _upgrades;
-        
+        [SerializeReference, SubclassSelector]
+        private IRequirement[] _requirements;
+            
         public string Id => _id;
         public string Name => _name;
         public string Description => _description;

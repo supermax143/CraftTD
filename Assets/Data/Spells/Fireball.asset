@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3342191d8f1e6a34aa72c799d9a9b9e5, type: 3}
-  m_Name: fireball
+  m_Name: Fireball
   m_EditorClassIdentifier: Core.Application::Core.Application.Spells.SpellConfig
   _id: fire_ball
   _name: "\u0424\u0430\u0439\u0440\u0431\u043E\u043B"
@@ -49,3 +49,10 @@ MonoBehaviour:
     - _attributeKind: 0
       _modifierKind: 0
       _value: 100
+  _req:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

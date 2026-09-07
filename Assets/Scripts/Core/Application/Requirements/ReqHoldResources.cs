@@ -1,9 +1,14 @@
+using System;
 using Core.Application.Models;
 
 namespace Unity.Infrastructure.Requirements
 {
-    public record ReqHoldResources : RequirementBase
+    [Serializable]
+    public class ReqHoldResources : RequirementBase
     {
         public Resource Resource;
+        
     }
+    
+    
 }

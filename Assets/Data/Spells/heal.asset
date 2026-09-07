@@ -49,3 +49,10 @@ MonoBehaviour:
     - _attributeKind: 7
       _modifierKind: 0
       _value: 60
+  _req:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }

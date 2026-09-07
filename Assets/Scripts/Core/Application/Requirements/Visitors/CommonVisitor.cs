@@ -23,11 +23,11 @@ namespace Unity.Infrastructure.Requirements.Visitors
         internal static IRequirementVisitor Instance { get; private set; }
 
         //по-хорошему сюда не контейнер, а фабрику нужно прокинуть
-        public override void InitModel()
+        /*public override void InitModel()
         {
             Instance = this;
             _visitors[typeof(ReqHoldResources)] = _container.Instantiate<ReqHoldResourcesVisitor>();
-        }
+        }*/
 
         public bool Check<T>(T req) where T : class, IRequirement
         {

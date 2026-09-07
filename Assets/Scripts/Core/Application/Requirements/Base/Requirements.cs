@@ -1,15 +1,19 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Infrastructure.Requirements.Visitors;
+using UnityEngine;
 
 namespace Unity.Infrastructure.Requirements.Base
 {
     /// <summary>
     /// API для работы с коллекцией рекваерментов
     /// </summary>
+    [Serializable]
     public sealed class Requirements
     {
-        private readonly List<IRequirement> _requirements;
+        [SerializeReference]
+        private List<IRequirement> _requirements;
 
         public IReadOnlyList<IRequirement> Each => _requirements;
 

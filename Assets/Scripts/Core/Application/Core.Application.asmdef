@@ -5,7 +5,8 @@
         "Shared",
         "UniTask",
         "Zenject",
-        "Unity.Addressables"
+        "Unity.Addressables",
+        "MackySoft.SerializeReferenceExtensions"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
