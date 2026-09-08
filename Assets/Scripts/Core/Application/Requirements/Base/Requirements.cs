@@ -10,9 +10,9 @@ namespace Unity.Infrastructure.Requirements.Base
     /// API для работы с коллекцией рекваерментов
     /// </summary>
     [Serializable]
-    public sealed class Requirements
+    public sealed class Requirements : IRequirement
     {
-        [SerializeReference]
+        [SerializeReference, SubclassSelector]
         private List<IRequirement> _requirements;
 
         public IReadOnlyList<IRequirement> Each => _requirements;
@@ -22,10 +22,9 @@ namespace Unity.Infrastructure.Requirements.Base
         public Requirements(List<IRequirement> requirements) 
             => _requirements = requirements;
 
-        public bool Check(IRequirementVisitor visitor = default)
+        public bool Check(IRequirementChecker checker)
         {
-            visitor ??= CommonVisitor.Instance;
-            return _requirements.All(visitor.Check);
+            return _requirements.All(checker.Check);
         }
         
     }

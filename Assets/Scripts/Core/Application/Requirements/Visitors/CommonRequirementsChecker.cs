@@ -12,22 +12,19 @@ namespace Unity.Infrastructure.Requirements.Visitors
     /// если нашел - прогоняет рекваермент через чекер
     /// </summary>
     [UsedImplicitly]
-    public sealed class CommonVisitor : IRequirementVisitor
+    public sealed class CommonRequirementsChecker : IRequirementChecker, IInitializable
     {
         [Inject] private DiContainer _container;
 
-        private readonly Dictionary<System.Type, IRequirementVisitor> _visitors = new();
+        private readonly Dictionary<System.Type, IRequirementChecker> _visitors = new();
         
-        //для удобства использования рекваерментов
-        //этот визитер используется как дефолтный если не был передан конкретный
-        internal static IRequirementVisitor Instance { get; private set; }
 
         //по-хорошему сюда не контейнер, а фабрику нужно прокинуть
-        /*public override void InitModel()
+        public void Initialize()
         {
-            Instance = this;
-            _visitors[typeof(ReqHoldResources)] = _container.Instantiate<ReqHoldResourcesVisitor>();
-        }*/
+            _visitors[typeof(ReqHoldResources)] = _container.Instantiate<ReqHoldResourcesChecker>();
+        }
+
 
         public bool Check<T>(T req) where T : class, IRequirement
         {
@@ -37,5 +34,6 @@ namespace Unity.Infrastructure.Requirements.Visitors
             Debug.LogError($"Can't find registered visitor for type {typeof(T)}");
             return false;
         }
+
     }
 }

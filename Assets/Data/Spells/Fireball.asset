@@ -49,10 +49,20 @@ MonoBehaviour:
     - _attributeKind: 0
       _modifierKind: 0
       _value: 100
-  _req:
-    rid: -2
+  _requirements:
+    _requirements:
+    - rid: 8232752911711469816
+    - rid: 8232752911711469817
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 8232752911711469816
+      type: {class: ReqHoldItem, ns: Unity.Infrastructure.Requirements, asm: Core.Application}
+      data:
+        Item: []
+    - rid: 8232752911711469817
+      type: {class: ReqHoldResources, ns: Unity.Infrastructure.Requirements, asm: Core.Application}
+      data:
+        Resource:
+          Type: 0
+          Value: 0

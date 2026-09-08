@@ -5,6 +5,6 @@ namespace Unity.Infrastructure.Requirements.Base
     /// </summary>
     public interface IRequirement
     {
-        bool Check(IRequirementVisitor visitor);
+        bool Check(IRequirementChecker checker);
     }
 }

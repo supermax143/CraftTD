@@ -5,7 +5,7 @@ using Zenject;
 namespace Unity.Infrastructure.Requirements.Visitors
 {
     [UsedImplicitly] //спавнится через zenject в фабрике
-    internal class ReqHoldResourcesVisitor : RequirementVisitorBase<ReqHoldResources>
+    internal class ReqHoldResourcesChecker : RequirementCheckerBase<ReqHoldResources>
     {
         [Inject] private readonly IInventoryModel _inventory;
 
