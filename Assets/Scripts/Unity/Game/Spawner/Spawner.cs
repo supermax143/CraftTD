@@ -121,7 +121,7 @@ namespace Unity.Game
                 unit.transform.position = transform.position + spawnDelta;
                 unit.SetData(unitModel.Entity);
                 OnUnitSpawned?.Invoke(unit);
-                _gameEventsBus.TriggerEvent(new SpawnUnit(unitModel));
+                _gameEventsBus.TriggerEvent(new SpawnUnitEvent(unitModel));
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace Unity.Infrastructure.Requirements.Visitors
 {
-    public class ReqGameEvent
+    public abstract class ReqGameEvent : RequirementBase
     {
         
     }

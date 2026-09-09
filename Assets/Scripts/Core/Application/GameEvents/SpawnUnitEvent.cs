@@ -3,19 +3,19 @@ using Unity.Game;
 
 namespace Unity.Infrastructure.GameEvents
 {
-    public class SpawnUnit : GameEvent
+    public class SpawnUnitEvent : GameEvent
     {
         public UnitTier Tier { get; }
         public int EpochId { get; }
         public Faction Faction { get;}
 
         
-        public SpawnUnit(UnitModel unit) : this(unit.Info.Tier, unit.Faction, unit.EpochId)
+        public SpawnUnitEvent(UnitModel unit) : this(unit.Info.Tier, unit.Faction, unit.EpochId)
         {
             
         }
         
-        public SpawnUnit(UnitTier tier, Faction faction, int epochId)
+        public SpawnUnitEvent(UnitTier tier, Faction faction, int epochId)
         {
             Tier = tier;
             EpochId = epochId;

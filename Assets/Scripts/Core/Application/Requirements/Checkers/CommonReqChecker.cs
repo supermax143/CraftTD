@@ -31,7 +31,7 @@ namespace Unity.Infrastructure.Requirements.Visitors
             if (_visitors.TryGetValue(req.GetType(), out var result))
                 return result.Check(req);
 
-            Debug.LogError($"Can't find registered visitor for type {typeof(T)}");
+            Debug.LogError($"Can't find registered checker for type {typeof(T)}");
             return false;
         }
 
