@@ -2,7 +2,7 @@
 
 namespace Unity.Infrastructure.Requirements.Visitors
 {
-    public class ReqUnitsSpawnedChecker : RequirementCheckerBase<ReqUnitsSpawned>
+    public class ReqUnitsSpawnedChecker : ReqProgressiveChecker<ReqUnitsSpawned>
     {
         private readonly SpawnUnitEvent _spawnUnitEvent;
 
@@ -17,8 +17,10 @@ namespace Unity.Infrastructure.Requirements.Visitors
             {
                 return false;
             }
-
-            return true;
+            var progress = GetProgress(req);
+            progress++;
+            IncrementProgress(req, 1);
+            return req.Count <= progress;
         }
     }
 }
