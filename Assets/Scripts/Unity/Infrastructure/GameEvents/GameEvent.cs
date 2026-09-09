@@ -10,10 +10,10 @@ namespace Unity.Infrastructure.GameEvents
 
         public GameEvent() { }
         
-        public GameEvent(string name, Dictionary<string, string> parametrs)
+        public GameEvent(string name, Dictionary<string, string> @params)
         {
             Name = name;
-            _params = parametrs;
+            _params = @params;
         }
         
         public bool Equal(GameEvent other)

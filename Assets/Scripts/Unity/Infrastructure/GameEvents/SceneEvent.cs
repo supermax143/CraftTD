@@ -10,11 +10,14 @@
         }
 
         public Type _type = Type.None;
-        
+        private readonly string _sceneName;
+
         public SceneEvent( Type type, string sceneName)
         {
             _type = type;
-            Name = "scene_event";
+            _sceneName = sceneName;
+            
+            Name = GameEventTypes.Scene;
             _params[nameof(type)] = type.ToString();
             _params[nameof(sceneName)] = sceneName;
         }

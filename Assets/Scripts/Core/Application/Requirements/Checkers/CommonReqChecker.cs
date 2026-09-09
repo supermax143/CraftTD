@@ -12,7 +12,7 @@ namespace Unity.Infrastructure.Requirements.Visitors
     /// если нашел - прогоняет рекваермент через чекер
     /// </summary>
     [UsedImplicitly]
-    public sealed class CommonRequirementsChecker : IRequirementChecker, IInitializable
+    public sealed class CommonReqChecker : IRequirementChecker, IInitializable
     {
         [Inject] private DiContainer _container;
 

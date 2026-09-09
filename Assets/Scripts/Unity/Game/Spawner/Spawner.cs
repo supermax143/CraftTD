@@ -3,6 +3,7 @@ using System.Collections;
 using System.Threading.Tasks;
 using Core.Application.Models;
 using Cysharp.Threading.Tasks;
+using Unity.Infrastructure.GameEvents;
 using Unity.Infrastructure.ResourceManager;
 using Unity.Utils;
 using UnityEngine;
@@ -26,6 +27,7 @@ namespace Unity.Game
         [Inject] private DiContainer _container;
         [Inject] private IGameController _gameController;
         [Inject] protected GameStats _gameStats;
+        [Inject] private GameEventsBus _gameEventsBus;
         
         private Faction _faction;
         private Faction _enemyFaction;
