@@ -2,7 +2,7 @@
 
 namespace Unity.Infrastructure.GameEvents
 {
-    public class GameEvent
+    public class GameEvent : IGameEvent
     {
         public string Name { get; protected set; }
 
@@ -16,21 +16,27 @@ namespace Unity.Infrastructure.GameEvents
             _params = @params;
         }
         
-        public bool Equal(GameEvent other)
+        public bool Equal(IGameEvent other)
         {
-            if (other.Name != Name)
+            var otherEvent = other as GameEvent;
+            if (otherEvent == null)
+            {
+                return false;
+            }
+            
+            if (otherEvent.Name != Name)
             {
                 return false;
             }
 
-            if (_params.Count != other._params.Count)
+            if (_params.Count != otherEvent._params.Count)
             {
                 return false;
             }
 
             foreach (var kvp in _params)
             {
-                if (_params[kvp.Key] != other._params[kvp.Key])
+                if (_params[kvp.Key] != otherEvent._params[kvp.Key])
                 {
                     return false;
                 }

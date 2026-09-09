@@ -21,7 +21,7 @@ namespace Unity.Infrastructure.Tutorial.Units
 
         private bool _isDone;
         
-        [Inject] private GameEventsBus _gameEventsBus;
+        [Inject] private IGameEventsBus _gameEventsBus;
         
         protected override IEnumerable<IUnitValuePort> DefineValuePortsInternal() {
             yield return ValueInput<string>(NAME, "");
@@ -39,7 +39,7 @@ namespace Unity.Infrastructure.Tutorial.Units
             yield return new WaitWhile(() => !_isDone);
             _gameEventsBus.OnGameEvent -= HandleGameEvent;
             
-            void HandleGameEvent(GameEvent @event)
+            void HandleGameEvent(IGameEvent @event)
             {
                 if (@event.Equal(checkingEvent))
                 {

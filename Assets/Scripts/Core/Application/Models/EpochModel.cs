@@ -80,7 +80,7 @@ namespace Core.Application.Models
                 }
             }
             var unitOpened = tier == UnitTier.Tier1 || _data.IsUnitOpened(tier);
-            var unitModel = new UnitModel(info, entity, unitOpened);
+            var unitModel = new UnitModel(info, entity, _faction, _epochNumber - 1,unitOpened);
             units.Add(unitModel);
         }
         

@@ -27,7 +27,7 @@ namespace Unity.Game
         [Inject] private DiContainer _container;
         [Inject] private IGameController _gameController;
         [Inject] protected GameStats _gameStats;
-        [Inject] private GameEventsBus _gameEventsBus;
+        [Inject] private IGameEventsBus _gameEventsBus;
         
         private Faction _faction;
         private Faction _enemyFaction;
@@ -121,6 +121,7 @@ namespace Unity.Game
                 unit.transform.position = transform.position + spawnDelta;
                 unit.SetData(unitModel.Entity);
                 OnUnitSpawned?.Invoke(unit);
+                _gameEventsBus.TriggerEvent(new SpawnUnit(unitModel));
             }
         }
 

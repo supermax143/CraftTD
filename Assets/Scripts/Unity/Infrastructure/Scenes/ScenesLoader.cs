@@ -12,7 +12,7 @@ namespace Unity.Infrastructure.Scenes
    internal class ScenesLoader : IScenesLoader  
    {
       [Inject] private ZenjectSceneLoader _sceneLoader;
-      [Inject] private GameEventsBus _eventsBus;
+      [Inject] private IGameEventsBus _eventsBus;
 
 
       public string CurScene => SceneManager.GetActiveScene().name;
