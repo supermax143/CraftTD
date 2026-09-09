@@ -32,6 +32,7 @@ namespace Core.Application.DataStorage
         private EpochStorageData _epochData;
         private InventoryStorageData _inventory;
         private SpellsStorageData _spells;
+        private RequirementsProgressData _requirementsProgress;
 
         public TutorialStorageData TutorialStorage => _tutorialStorageData;
         public PurchasesStorageData Purchases => _purchasesStorageData;
@@ -39,6 +40,7 @@ namespace Core.Application.DataStorage
         public int CurrentEnemyEpochIndex => _curEnemyEpochIndex.Value;
         public InventoryStorageData Inventory => _inventory;
         public SpellsStorageData Spells => _spells;
+        public RequirementsProgressData RequirementsProgress => _requirementsProgress;
         
 #if DEBUG_MODE
         public void Initialize()
@@ -56,6 +58,7 @@ namespace Core.Application.DataStorage
             _purchasesStorageData = new PurchasesStorageData(_localStorageProvider);
             _inventory = new InventoryStorageData(_localStorageProvider);
             _spells = new SpellsStorageData(_localStorageProvider);
+            _requirementsProgress = new RequirementsProgressData(_localStorageProvider);
             Debug.Log($"{this.GetType().Name} Initialized");
             return Task.CompletedTask;
         }
@@ -73,6 +76,7 @@ namespace Core.Application.DataStorage
             _purchasesStorageData.Reset();
             _inventory.Reset();
             _spells.Reset();
+            _requirementsProgress.Reset();
         }
 
         internal void SetPlayerEpochIndex(int index)

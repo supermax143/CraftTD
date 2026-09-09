@@ -1,4 +1,5 @@
-﻿using Core.Application.DataStorage;
+using Core.Application.DataStorage;
+using Core.Application.DataStorage.StorageItems;
 using Unity.Infrastructure.Requirements.Base;
 using Zenject;
 
@@ -11,12 +12,14 @@ namespace Unity.Infrastructure.Requirements.Visitors
         
         protected int GetProgress(TReq req)
         {
-            //TODO: Брать значение из RequirementsProgressData по ReqProgressive.GetProgressSaveIdent
+            return _dataStorage.RequirementsProgress.GetRequirementProgress(req.GetProgressSaveIdent());
         }
         
-        protected int IncrementProgress(TReq req, int increment)
+        protected void IncrementProgress(TReq req, int increment)
         {
-            //TODO: сохранять значение из RequirementsProgressData по ReqProgressive.GetProgressSaveIdent
+            var currentProgress = GetProgress(req);
+            var newProgress = currentProgress + increment;
+            _dataStorage.RequirementsProgress.SetRequirementProgress(req.GetProgressSaveIdent(), newProgress);
         }
     }
 }

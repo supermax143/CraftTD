@@ -13,6 +13,7 @@ namespace Core.Application.DataStorage
         int CurrentPlayerEpochIndex { get; }
         int CurrentEnemyEpochIndex { get; }
         SpellsStorageData Spells { get; }
+        RequirementsProgressData RequirementsProgress { get; }
         void SetCurrentPlayerEpoch(int index);
         void Reset();
     }
