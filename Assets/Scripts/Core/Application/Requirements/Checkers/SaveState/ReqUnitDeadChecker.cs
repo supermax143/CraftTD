@@ -1,0 +1,26 @@
+using Unity.Infrastructure.GameEvents;
+
+namespace Unity.Infrastructure.Requirements.Visitors
+{
+    public class ReqUnitDeadChecker : ReqProgressiveChecker<ReqUnitDead>
+    {
+        private readonly UnitDeadEvent _unitDeadEvent;
+
+        public ReqUnitDeadChecker(UnitDeadEvent unitDeadEvent)
+        {
+            _unitDeadEvent = unitDeadEvent;
+        }
+
+        protected override bool Check(ReqUnitDead req)
+        {
+            if (req.Tier != _unitDeadEvent.Tier || req.Faction != _unitDeadEvent.Faction)
+            {
+                return false;
+            }
+            var progress = GetProgress(req);
+            progress++;
+            IncrementProgress(req, 1);
+            return req.Count <= progress;
+        }
+    }
+}
