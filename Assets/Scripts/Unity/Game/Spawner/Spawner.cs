@@ -119,21 +119,12 @@ namespace Unity.Game
                 unit.gameObject.SetLayerRecursively(layer);
                 unit.SetFaction(_faction, _enemyFaction);
                 unit.transform.position = transform.position + spawnDelta;
-                unit.SetData(unitModel.Entity);
+                unit.SetModel(unitModel);
                 OnUnitSpawned?.Invoke(unit);
                 _gameEventsBus.TriggerEvent(new SpawnUnitEvent(unitModel));
             }
         }
-
-        private IEnumerator RandomizeAnimation(UnitView unit)
-        {
-            if (unit == null)
-            {
-                yield break;
-            }
-            yield return new WaitForSeconds(.3f);
-            unit.SetRandomFrame();
-        }
+        
 
         public virtual void Reset()
         {

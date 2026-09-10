@@ -50,6 +50,7 @@ namespace Unity.Game
         public AttackTargetBase AttackTarget => _attackTarget;
         public RewardComponent RewardComponent1 => _rewardComponent;
         public Faction Faction => _faction;
+        public UnitModel Model { get; private set; }
 
         public UnitView View => _view;
 
@@ -82,6 +83,13 @@ namespace Unity.Game
             View.SetColor(color);
             
         }
+
+        public void SetModel(UnitModel model)
+        {
+            Model = model;
+            SetData(model.Entity);
+        }
+
 
         public override void SetData(GameEntityData data)
         {

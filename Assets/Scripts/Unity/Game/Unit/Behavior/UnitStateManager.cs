@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Infrastructure.GameEvents;
 using UnityEngine;
 using Zenject;
 
@@ -26,6 +27,7 @@ namespace Unity.Game
         private AttackTargetBase _currentTarget;
 
         [Inject] private IGameController _gameController;
+        [Inject] private IGameEventsBus _gameEventsBus;
         
         public AttackTargetBase CurrentTarget
         {
@@ -58,6 +60,7 @@ namespace Unity.Game
         {
             
             _unit.HealthComponent.OnDeath -= OnUnitDeath;
+            _gameEventsBus.TriggerEvent(new UnitDeadEvent(_unit.Model));
             ChangeState<DeathState>();
         }
         
