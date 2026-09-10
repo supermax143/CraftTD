@@ -1,6 +1,7 @@
 using System;
 using Core.Application.Models;
 using Unity.Game.Attributes.Specific;
+using Unity.Infrastructure.GameEvents;
 using Unity.U2D.Physics;
 using Zenject;
 using IInitializable = Unity.VisualScripting.IInitializable;
@@ -12,11 +13,8 @@ namespace Unity.Game
 
         public event Action OnMoneyChanged;
         
-        [Inject]private IInventoryModel _inventoryModel;
-        
-        // private Resource _money = Resource.Money(0);
-        //
-        // public Resource Money => _money;
+        [Inject] private IInventoryModel _inventoryModel;
+        [Inject] private IGameEventsBus _gameEventsBus;
 
         private RewardMoneyAttribute _moneyReward = new(0);
         
@@ -33,6 +31,7 @@ namespace Unity.Game
         {
             _moneyReward.BaseValue += amount;
             OnMoneyChanged?.Invoke();
+            _gameEventsBus.TriggerEvent(new ResourcesEarnedEvent(Money));
         }
 
         public void HandleBattleFinish()
