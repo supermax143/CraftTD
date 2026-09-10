@@ -2,9 +2,11 @@
 using System.Collections;
 using Unity.Game.Attributes.Specific;
 using Unity.Game.Projectile;
+using Unity.Infrastructure.GameEvents;
 using Unity.Presentation.Components;
 using Unity.Utils.Time;
 using UnityEngine;
+using Zenject;
 
 namespace Unity.Game
 {
@@ -26,6 +28,7 @@ namespace Unity.Game
         [SerializeField, HideInInspector]
         private UnitAnimationEvents _animationEvents;
        
+        [Inject] private IGameEventsBus _gameEventsBus;
 
         public float AttackRange => _attackRange.BaseValueModified;
         public float AttackSpeed => _attackSpeed.BaseValueModified;
@@ -80,6 +83,7 @@ namespace Unity.Game
            
             var direction = (targetPosition - transform.position).normalized;
             _weapon.Attack(_target, Damage, direction);
+            _gameEventsBus.TriggerEvent(new DamageAppliedEvent(Damage, _target.Faction));
             OnAttack?.Invoke();
         }
 
