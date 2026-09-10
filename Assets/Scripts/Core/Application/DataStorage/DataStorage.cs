@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Core.Application.DataStorage.StorageItems;
 using Core.Application.Interfaces;
 using Core.Application.Models;
+using Core.Application.Quests;
 using Core.Application.Spells;
 using UnityEngine;
 using Zenject;
@@ -33,6 +34,7 @@ namespace Core.Application.DataStorage
         private InventoryStorageData _inventory;
         private SpellsStorageData _spells;
         private RequirementsProgressData _requirementsProgress;
+        private QuestsStorageData _quests;
 
         public TutorialStorageData TutorialStorage => _tutorialStorageData;
         public PurchasesStorageData Purchases => _purchasesStorageData;
@@ -41,6 +43,7 @@ namespace Core.Application.DataStorage
         public InventoryStorageData Inventory => _inventory;
         public SpellsStorageData Spells => _spells;
         public RequirementsProgressData RequirementsProgress => _requirementsProgress;
+        public QuestsStorageData Quests => _quests;
         
 #if DEBUG_MODE
         public void Initialize()
@@ -59,6 +62,7 @@ namespace Core.Application.DataStorage
             _inventory = new InventoryStorageData(_localStorageProvider);
             _spells = new SpellsStorageData(_localStorageProvider);
             _requirementsProgress = new RequirementsProgressData(_localStorageProvider);
+            _quests = new QuestsStorageData(_localStorageProvider);
             Debug.Log($"{this.GetType().Name} Initialized");
             return Task.CompletedTask;
         }
@@ -77,6 +81,7 @@ namespace Core.Application.DataStorage
             _inventory.Reset();
             _spells.Reset();
             _requirementsProgress.Reset();
+            _quests.Reset();
         }
 
         internal void SetPlayerEpochIndex(int index)
