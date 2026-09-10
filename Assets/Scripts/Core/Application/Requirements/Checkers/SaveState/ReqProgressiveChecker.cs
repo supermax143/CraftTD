@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Unity.Infrastructure.Requirements.Visitors
 {
-    public abstract class ReqProgressiveChecker<TReq> : RequirementCheckerBase<TReq>
+    public abstract class ReqProgressiveChecker<TReq> : ReqCheckerBase<TReq>
         where TReq: ReqProgressive, IRequirement
     {
         [Inject] private IDataStorage _dataStorage;

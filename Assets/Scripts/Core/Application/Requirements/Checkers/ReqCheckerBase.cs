@@ -4,7 +4,7 @@ using Unity.Infrastructure.Requirements.Base;
 
 namespace Unity.Infrastructure.Requirements.Visitors
 {
-    public abstract class RequirementCheckerBase<TReq> : IRequirementChecker
+    public abstract class ReqCheckerBase<TReq> : IRequirementChecker
         where TReq: class, IRequirement
     {
         

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Unity.Infrastructure.Requirements.Visitors
 {
-    public class ReqUnitsSpawned : ReqProgressive
+    public class ReqUnitSpawned : ReqProgressive
     {
         [SerializeField]
         private UnitTier _tier;

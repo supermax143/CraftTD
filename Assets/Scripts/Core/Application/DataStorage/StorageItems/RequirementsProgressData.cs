@@ -75,7 +75,8 @@ namespace Core.Application.DataStorage.StorageItems
 
         public void Reset()
         {
-            _requirementsProgressData.Value = "";
+            _requirementsProgress.Clear();
+            Save();
         }
     }
 }

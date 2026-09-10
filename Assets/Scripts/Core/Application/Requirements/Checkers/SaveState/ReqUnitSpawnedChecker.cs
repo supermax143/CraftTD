@@ -2,16 +2,16 @@
 
 namespace Unity.Infrastructure.Requirements.Visitors
 {
-    public class ReqUnitsSpawnedChecker : ReqProgressiveChecker<ReqUnitsSpawned>
+    public class ReqUnitSpawnedChecker : ReqProgressiveChecker<ReqUnitSpawned>
     {
         private readonly SpawnUnitEvent _spawnUnitEvent;
 
-        public ReqUnitsSpawnedChecker(SpawnUnitEvent spawnUnitEvent)
+        public ReqUnitSpawnedChecker(SpawnUnitEvent spawnUnitEvent)
         {
             _spawnUnitEvent = spawnUnitEvent;
         }
 
-        protected override bool Check(ReqUnitsSpawned req)
+        protected override bool Check(ReqUnitSpawned req)
         {
             if (req.Tier != _spawnUnitEvent.Tier || req.Faction != _spawnUnitEvent.Faction)
             {
