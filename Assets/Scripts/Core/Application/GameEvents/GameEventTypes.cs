@@ -6,5 +6,6 @@ namespace Unity.Infrastructure.GameEvents
         public const string SpawnUnit = "spawn_unit";
         public const string UnitDead = "unit_dead";
         public const string DamageApplied = "damage_applied";
+        public const string ResourcesEarned = "resources_earned";
     }
 }
