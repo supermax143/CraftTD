@@ -1,4 +1,4 @@
-using Unity.Infrastructure.Requirements.Base;
+using Core.Application.Requirements.Base;
 using UnityEngine;
 
 namespace Core.Application.Quests
@@ -12,7 +12,7 @@ namespace Core.Application.Quests
         private string _name;
         [SerializeField]
         private string _description;
-        [SerializeField]
+        [SerializeReference, SubclassSelector]
         private IRequirement _requirement;
         [SerializeField]
         private Core.Application.Info.Shop.Reward _reward;

@@ -1,8 +1,6 @@
-using System;
-using System.Collections.Generic;
-using Unity.Infrastructure.Requirements.Base;
+using Core.Application.Requirements.Base;
 
-namespace Unity.Infrastructure.Requirements.Visitors
+namespace Core.Application.Requirements.Checkers
 {
     public abstract class ReqCheckerBase<TReq> : IRequirementChecker
         where TReq: class, IRequirement

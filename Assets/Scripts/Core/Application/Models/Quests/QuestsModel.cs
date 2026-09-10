@@ -1,46 +1,36 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Application.DataStorage;
 using Core.Application.Quests;
 using Core.Application.Models;
-using Unity.Infrastructure.Requirements.Base;
+using Core.Application.Requirements.Base;
 using Zenject;
 
 namespace Core.Application.Models.Quests
 {
-    public class QuestsModel
+    public class QuestsModel : IQuestsModel, IInitializable
     {
         public event Action OnCurrentQuestChanged;
         public event Action OnQuestsReset;
 
-        private readonly QuestsConfig _questsConfig;
-        private readonly QuestsStorageData _questsStorageData;
-        private readonly IRequirementChecker _requirementChecker;
-        private readonly InventoryModel _inventory;
+        [Inject] private readonly QuestsConfig _questsConfig;
+        [Inject] private readonly IDataStorage _dataStorage;
+        [Inject] private readonly IRequirementChecker _requirementChecker;
+        [Inject] private readonly InventoryModel _inventory;
 
-        private List<QuestItemModel> _dailyQuests;
+        private readonly List<QuestItemModel> _dailyQuests = new();
         private QuestItemModel _currentQuest;
 
+        
+        private QuestsStorageData QuestsData => _dataStorage.Quests;
         public QuestItemModel CurrentQuest => _currentQuest;
         public IReadOnlyList<QuestItemModel> DailyQuests => _dailyQuests;
 
-        public QuestsModel(
-            QuestsConfig questsConfig,
-            QuestsStorageData questsStorageData,
-            IRequirementChecker requirementChecker,
-            InventoryModel inventory)
+        
+        public void Initialize()
         {
-            _questsConfig = questsConfig;
-            _questsStorageData = questsStorageData;
-            _requirementChecker = requirementChecker;
-            _inventory = inventory;
-
-            _dailyQuests = new List<QuestItemModel>();
-            Initialize();
-        }
-
-        private void Initialize()
-        {
+            _dailyQuests.Clear();
             CheckDailyReset();
             LoadDailyQuests();
             LoadCurrentQuest();
@@ -49,19 +39,19 @@ namespace Core.Application.Models.Quests
         private void CheckDailyReset()
         {
             var today = DateTime.Now.ToString("yyyy-MM-dd");
-            var lastResetDate = _questsStorageData.GetLastResetDate();
+            var lastResetDate = QuestsData.GetLastResetDate();
 
             if (lastResetDate != today)
             {
                 ResetDailyQuests();
-                _questsStorageData.SetLastResetDate(today);
+                QuestsData.SetLastResetDate(today);
                 OnQuestsReset?.Invoke();
             }
         }
 
         private void ResetDailyQuests()
         {
-            _questsStorageData.ClearQuests();
+            QuestsData.ClearQuests();
             GenerateDailyQuests();
         }
 
@@ -76,17 +66,17 @@ namespace Core.Application.Models.Quests
 
             foreach (var questConfig in selectedQuests)
             {
-                _questsStorageData.SetQuestProgress(questConfig.Id, 0f);
-                _questsStorageData.SetQuestCompleted(questConfig.Id, false);
+                QuestsData.SetQuestProgress(questConfig.Id, 0f);
+                QuestsData.SetQuestCompleted(questConfig.Id, false);
             }
 
-            _questsStorageData.SetCurrentQuestIndex(0);
+            QuestsData.SetCurrentQuestIndex(0);
         }
 
         private void LoadDailyQuests()
         {
             _dailyQuests.Clear();
-            var questProgressList = _questsStorageData.GetAllQuestProgress();
+            var questProgressList = QuestsData.GetAllQuestProgress();
 
             foreach (var progressData in questProgressList)
             {
@@ -101,7 +91,7 @@ namespace Core.Application.Models.Quests
 
         private void LoadCurrentQuest()
         {
-            var currentIndex = _questsStorageData.GetCurrentQuestIndex();
+            var currentIndex = QuestsData.GetCurrentQuestIndex();
             if (currentIndex >= 0 && currentIndex < _dailyQuests.Count)
             {
                 _currentQuest = _dailyQuests[currentIndex];
@@ -120,7 +110,7 @@ namespace Core.Application.Models.Quests
             }
 
             _currentQuest.SetProgress(progress);
-            _questsStorageData.SetQuestProgress(questId, progress);
+            QuestsData.SetQuestProgress(questId, progress);
 
             if (_currentQuest.IsCompleted)
             {
@@ -133,7 +123,7 @@ namespace Core.Application.Models.Quests
             var reward = _currentQuest.QuestConfig.Reward;
             GiveReward(reward);
 
-            _questsStorageData.SetQuestCompleted(_currentQuest.QuestConfig.Id, true);
+            QuestsData.SetQuestCompleted(_currentQuest.QuestConfig.Id, true);
             MoveToNextQuest();
         }
 
@@ -152,12 +142,12 @@ namespace Core.Application.Models.Quests
 
         private void MoveToNextQuest()
         {
-            var currentIndex = _questsStorageData.GetCurrentQuestIndex();
+            var currentIndex = QuestsData.GetCurrentQuestIndex();
             var nextIndex = currentIndex + 1;
 
             if (nextIndex < _dailyQuests.Count)
             {
-                _questsStorageData.SetCurrentQuestIndex(nextIndex);
+                QuestsData.SetCurrentQuestIndex(nextIndex);
                 LoadCurrentQuest();
                 OnCurrentQuestChanged?.Invoke();
             }

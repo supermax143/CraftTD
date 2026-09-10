@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Infrastructure.Requirements.Visitors;
 using UnityEngine;
 
-namespace Unity.Infrastructure.Requirements.Base
+namespace Core.Application.Requirements.Base
 {
     /// <summary>
     /// API для работы с коллекцией рекваерментов

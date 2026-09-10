@@ -1,7 +1,7 @@
 using System;
-using Unity.Infrastructure.Requirements.Base;
+using Core.Application.Requirements.Base;
 
-namespace Unity.Infrastructure.Requirements
+namespace Core.Application.Requirements
 {
     [Serializable]
     public abstract class RequirementBase : IRequirement

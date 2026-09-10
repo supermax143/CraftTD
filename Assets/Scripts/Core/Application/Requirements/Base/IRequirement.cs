@@ -1,4 +1,4 @@
-namespace Unity.Infrastructure.Requirements.Base
+namespace Core.Application.Requirements.Base
 {
     /// <summary>
     /// Все врапперы аспектов-рекваерментов реализуют этот интерфейс

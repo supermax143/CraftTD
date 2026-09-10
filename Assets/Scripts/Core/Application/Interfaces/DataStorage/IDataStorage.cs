@@ -1,6 +1,7 @@
 using Core.Application.DataStorage.StorageItems;
 using Core.Application.Interfaces;
 using Core.Application.Models;
+using Core.Application.Quests;
 using Core.Application.Spells;
 
 namespace Core.Application.DataStorage
@@ -14,6 +15,7 @@ namespace Core.Application.DataStorage
         int CurrentEnemyEpochIndex { get; }
         SpellsStorageData Spells { get; }
         RequirementsProgressData RequirementsProgress { get; }
+        QuestsStorageData Quests { get; }
         void SetCurrentPlayerEpoch(int index);
         void Reset();
     }

@@ -1,7 +1,7 @@
 using System;
 using Core.Application.Models;
 
-namespace Unity.Infrastructure.Requirements
+namespace Core.Application.Requirements
 {
     [Serializable]
     public class ReqHoldResources : RequirementBase

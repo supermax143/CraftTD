@@ -1,9 +1,11 @@
+using System;
 using Unity.Game;
 using Unity.Infrastructure.GameEvents;
 using UnityEngine;
 
-namespace Unity.Infrastructure.Requirements.Visitors
+namespace Core.Application.Requirements.SaveState
 {
+    [Serializable]
     public class ReqUnitDead : ReqProgressive
     {
         [SerializeField]

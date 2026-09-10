@@ -1,10 +1,10 @@
 using System.Collections.Generic;
+using Core.Application.Requirements.Base;
 using JetBrains.Annotations;
-using Unity.Infrastructure.Requirements.Base;
 using UnityEngine;
 using Zenject;
 
-namespace Unity.Infrastructure.Requirements.Visitors
+namespace Core.Application.Requirements.Checkers
 {
     /// <summary>
     /// принимает на вход  любой рекваермент

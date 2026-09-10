@@ -2,7 +2,7 @@ using Core.Application.Models;
 using JetBrains.Annotations;
 using Zenject;
 
-namespace Unity.Infrastructure.Requirements.Visitors
+namespace Core.Application.Requirements.Checkers
 {
     [UsedImplicitly] //спавнится через zenject в фабрике
     internal class ReqHoldResourcesChecker : ReqCheckerBase<ReqHoldResources>

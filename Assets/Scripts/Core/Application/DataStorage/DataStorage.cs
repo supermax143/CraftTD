@@ -43,6 +43,7 @@ namespace Core.Application.DataStorage
         public InventoryStorageData Inventory => _inventory;
         public SpellsStorageData Spells => _spells;
         public RequirementsProgressData RequirementsProgress => _requirementsProgress;
+        internal EpochStorageData EpochData => _epochData;
         public QuestsStorageData Quests => _quests;
         
 #if DEBUG_MODE
@@ -91,8 +92,6 @@ namespace Core.Application.DataStorage
             _inventory.ResetMoney();
         }
         
-        
-        
         public void SetCurrentPlayerEpoch(int index)
         {
             _curPlayerEpochIndex.Value = index;
@@ -102,11 +101,6 @@ namespace Core.Application.DataStorage
         {
             _curEnemyEpochIndex.Value = index;
         }
-
-        internal EpochStorageData EpochData => _epochData;
-
-        
-
 
         public void AddPurchase(string id)
         {

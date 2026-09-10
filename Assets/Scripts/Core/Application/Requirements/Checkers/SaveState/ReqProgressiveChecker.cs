@@ -1,9 +1,9 @@
 using Core.Application.DataStorage;
-using Core.Application.DataStorage.StorageItems;
-using Unity.Infrastructure.Requirements.Base;
+using Core.Application.Requirements.Base;
+using Core.Application.Requirements.SaveState;
 using Zenject;
 
-namespace Unity.Infrastructure.Requirements.Visitors
+namespace Core.Application.Requirements.Checkers.SaveState
 {
     public abstract class ReqProgressiveChecker<TReq> : ReqCheckerBase<TReq>
         where TReq: ReqProgressive, IRequirement

@@ -1,6 +1,7 @@
+using Core.Application.Requirements.SaveState;
 using Unity.Infrastructure.GameEvents;
 
-namespace Unity.Infrastructure.Requirements.Visitors
+namespace Core.Application.Requirements.Checkers.SaveState
 {
     public class ReqDamageAppliedChecker : ReqProgressiveChecker<ReqDamageApplied>
     {

@@ -1,6 +1,4 @@
-using System.Collections.Generic;
-
-namespace Unity.Infrastructure.Requirements.Base
+namespace Core.Application.Requirements.Base
 {
     /// <summary>
     /// Отвечает за проверку конкретного рекваермента/группы рекваерментов

@@ -1,4 +1,4 @@
-﻿namespace Unity.Infrastructure.Requirements.Visitors
+﻿namespace Core.Application.Requirements.SaveState
 {
     public abstract class ReqProgressive : RequirementBase
     {

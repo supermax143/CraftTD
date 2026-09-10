@@ -2,6 +2,8 @@ using Core.Application.DataStorage;
 using Core.Application.Info.Inventory;
 using Core.Application.Info.Shop;
 using Core.Application.Models;
+using Core.Application.Models.Quests;
+using Core.Application.Quests;
 using Core.Application.Spells;
 using Exploration.Scripts.Controllers.ModelRender;
 using Unity.Bootstrap;
@@ -45,6 +47,8 @@ namespace Unity.Installers
       private InventoryConfig _inventoryConfig;
       [SerializeField]
       private SpellDatabase _spellDatabase;
+      [SerializeField]
+      private QuestsConfig _questsConfig;
 
       public override async void InstallBindings()
       {
@@ -72,6 +76,10 @@ namespace Unity.Installers
          //Inventory 
          Container.BindInterfacesAndSelfTo<InventoryModel>().AsSingle();
          Container.BindInterfacesAndSelfTo<InventoryConfig>().FromInstance(_inventoryConfig).AsSingle();
+         
+         //Inventory 
+         Container.BindInterfacesAndSelfTo<QuestsModel>().AsSingle();
+         Container.BindInterfacesAndSelfTo<QuestsConfig>().FromInstance(_questsConfig).AsSingle();
          
          //Shop
          Container.BindInterfacesAndSelfTo<ShopModel>().AsSingle();

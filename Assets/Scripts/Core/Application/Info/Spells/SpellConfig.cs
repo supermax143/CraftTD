@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using Unity.Infrastructure.Requirements;
-using Unity.Infrastructure.Requirements.Base;
 using UnityEngine;
 
 namespace Core.Application.Spells
