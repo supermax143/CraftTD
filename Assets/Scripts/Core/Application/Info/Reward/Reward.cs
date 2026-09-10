@@ -1,7 +1,7 @@
 using Core.Application.Models;
 using UnityEngine;
 
-namespace Core.Application.Info.Shop
+namespace Core.Application.Info.Reward
 {
     [System.Serializable]
     public struct Reward

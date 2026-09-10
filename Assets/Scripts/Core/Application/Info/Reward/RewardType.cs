@@ -1,4 +1,4 @@
-namespace Core.Application.Models
+namespace Core.Application.Info.Reward
 {
     public enum RewardType
     {

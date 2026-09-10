@@ -23,7 +23,7 @@ namespace Core.Application.Info.Shop
 
         [SerializeField] private bool _isConsumable;
 
-        [SerializeField] private Reward[] _rewards;
+        [SerializeField] private Reward.Reward[] _rewards;
 
         public string Id => _id;
         public string Name => _name;
@@ -33,7 +33,7 @@ namespace Core.Application.Info.Shop
         public ResourceType CurrencyType => _currencyType;
         public int Price => _price;
         public bool IsConsumable => _isConsumable;
-        public Reward[] Rewards => _rewards;
+        public Reward.Reward[] Rewards => _rewards;
 
         public AssetReference Icon => _icon;
 

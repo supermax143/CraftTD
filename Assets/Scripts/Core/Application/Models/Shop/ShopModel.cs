@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.Application.DataStorage;
 using Core.Application.DataStorage.StorageItems;
+using Core.Application.Info.Reward;
 using Core.Application.Info.Shop;
 using Unity.Infrastructure.Purchases;
 using Zenject;

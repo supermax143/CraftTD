@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Application.DataStorage;
+using Core.Application.Info.Reward;
 using Core.Application.Quests;
 using Core.Application.Models;
 using Core.Application.Requirements.Base;
@@ -127,7 +128,7 @@ namespace Core.Application.Models.Quests
             MoveToNextQuest();
         }
 
-        private void GiveReward(Core.Application.Info.Shop.Reward reward)
+        private void GiveReward(Reward reward)
         {
             switch (reward.RewardType)
             {

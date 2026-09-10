@@ -1,4 +1,5 @@
 using Core.Application.Info.Inventory;
+using Core.Application.Info.Reward;
 using Core.Application.Info.Shop;
 using Core.Application.Interfaces;
 using Core.Application.Models;
