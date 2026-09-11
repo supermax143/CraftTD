@@ -40,13 +40,16 @@ namespace Core.Application.Models.Quests
 
         private void CheckDailyReset()
         {
-            var today = DateTime.Now.ToString("yyyy-MM-dd");
-            var lastResetDate = QuestsData.GetLastResetDate();
+            var todayTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var lastResetTimestamp = QuestsData.GetLastResetTimestamp();
 
-            if (lastResetDate != today)
+            var todayDate = DateTimeOffset.FromUnixTimeSeconds(todayTimestamp).UtcDateTime.Date;
+            var lastResetDate = DateTimeOffset.FromUnixTimeSeconds(lastResetTimestamp).UtcDateTime.Date;
+
+            if (lastResetDate != todayDate)
             {
                 ResetDailyQuests();
-                QuestsData.SetLastResetDate(today);
+                QuestsData.SetLastResetTimestamp(todayTimestamp);
                 OnQuestsReset?.Invoke();
             }
         }

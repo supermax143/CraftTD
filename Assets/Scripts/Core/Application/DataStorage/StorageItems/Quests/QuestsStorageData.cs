@@ -10,7 +10,7 @@ namespace Core.Application.Quests
     public class QuestProgressStorageDataInfo
     {
         public List<QuestProgressData> Quests = new();
-        public string LastResetDate;
+        public long LastResetTimestamp;
         public int CurrentQuestIndex;
     }
 
@@ -73,15 +73,15 @@ namespace Core.Application.Quests
             return _questProgressInfo.CurrentQuestIndex;
         }
 
-        public void SetLastResetDate(string date)
+        public void SetLastResetTimestamp(long timestamp)
         {
-            _questProgressInfo.LastResetDate = date;
+            _questProgressInfo.LastResetTimestamp = timestamp;
             Save();
         }
 
-        public string GetLastResetDate()
+        public long GetLastResetTimestamp()
         {
-            return _questProgressInfo.LastResetDate;
+            return _questProgressInfo.LastResetTimestamp;
         }
 
         public void ClearQuests()
@@ -96,7 +96,7 @@ namespace Core.Application.Quests
             _questProgressInfo = new QuestProgressStorageDataInfo
             {
                 Quests = new List<QuestProgressData>(),
-                LastResetDate = DateTime.Now.ToString("yyyy-MM-dd"),
+                LastResetTimestamp = 0,//DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
                 CurrentQuestIndex = 0
             };
         }
