@@ -68,8 +68,7 @@ namespace Core.Application.Models.Quests
 
             foreach (var questConfig in selectedQuests)
             {
-                QuestsData.SetQuestProgress(questConfig.Id, 0f);
-                QuestsData.SetQuestCompleted(questConfig.Id, false);
+                QuestsData.SetQuestState(questConfig.Id, QuestState.Inactive);
             }
 
             QuestsData.SetCurrentQuestIndex(0);
@@ -85,7 +84,7 @@ namespace Core.Application.Models.Quests
                 var questConfig = _questsConfig.GetQuests(_dataStorage.CurrentEnemyEpochIndex).FirstOrDefault(q => q.Id == progressData.QuestId);
                 if (questConfig != null)
                 {
-                    var questModel = new QuestItemModel(questConfig, progressData.Progress);
+                    var questModel = new QuestItemModel(questConfig, progressData.State);
                     _dailyQuests.Add(questModel);
                 }
             }
@@ -97,6 +96,8 @@ namespace Core.Application.Models.Quests
             if (currentIndex >= 0 && currentIndex < _dailyQuests.Count)
             {
                 _currentQuest = _dailyQuests[currentIndex];
+                _currentQuest.SetState(QuestState.Active);
+                QuestsData.SetQuestState(_currentQuest.QuestConfig.Id, QuestState.Active);
             }
             else
             {
@@ -112,7 +113,6 @@ namespace Core.Application.Models.Quests
             }
 
             _currentQuest.SetProgress(progress);
-            QuestsData.SetQuestProgress(questId, progress);
 
             if (_currentQuest.IsCompleted)
             {
@@ -125,7 +125,7 @@ namespace Core.Application.Models.Quests
             var reward = _currentQuest.QuestConfig.Reward;
             GiveReward(reward);
 
-            QuestsData.SetQuestCompleted(_currentQuest.QuestConfig.Id, true);
+            QuestsData.SetQuestState(_currentQuest.QuestConfig.Id, QuestState.Complete);
             MoveToNextQuest();
         }
 

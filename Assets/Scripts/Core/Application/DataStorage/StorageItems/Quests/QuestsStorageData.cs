@@ -47,33 +47,20 @@ namespace Core.Application.Quests
             return _questProgressInfo.Quests;
         }
 
-        public void SetQuestProgress(string questId, float progress)
+        public void SetQuestState(string questId, QuestState state)
         {
             var existing = _questProgressInfo.Quests.Find(q => q.QuestId == questId);
             if (existing != null)
             {
-                existing.Progress = progress;
+                existing.State = state;
             }
             else
             {
-                _questProgressInfo.Quests.Add(new QuestProgressData { QuestId = questId, Progress = progress });
+                _questProgressInfo.Quests.Add(new QuestProgressData { QuestId = questId, State = state });
             }
             Save();
         }
 
-        public void SetQuestCompleted(string questId, bool completed)
-        {
-            var existing = _questProgressInfo.Quests.Find(q => q.QuestId == questId);
-            if (existing != null)
-            {
-                existing.IsCompleted = completed;
-            }
-            else
-            {
-                _questProgressInfo.Quests.Add(new QuestProgressData { QuestId = questId, Progress = 0f, IsCompleted = completed });
-            }
-            Save();
-        }
 
         public void SetCurrentQuestIndex(int index)
         {
