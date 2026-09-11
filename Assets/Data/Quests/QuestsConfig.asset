@@ -12,5 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465c14efd752d2d48b2fbfc1bb472fe3, type: 3}
   m_Name: QuestsConfig
   m_EditorClassIdentifier: Core.Application::Core.Application.Quests.QuestsConfig
-  _availableQuests: []
-  _dailyQuestsCount: 3
+  _epochsQuests:
+  - _quests:
+    - {fileID: 11400000, guid: 1f8e5241c945e3a41885bca613c4762b, type: 2}
+    - {fileID: 11400000, guid: dd2dec2fa92d0064dba0e9086494e75e, type: 2}
+    - {fileID: 11400000, guid: c3f10386ba19a9b44a0237bede5e8601, type: 2}
+    - {fileID: 11400000, guid: 819b9b33f6184fc418994189a4fa16b7, type: 2}
+    - {fileID: 11400000, guid: 1470e6e1f77c82a4193f2d4a37107e59, type: 2}
+    - {fileID: 11400000, guid: 0c4254654d165894bae1c8aea13fe805, type: 2}
+    - {fileID: 11400000, guid: afc6fdd41516feb48b342350e7c35c6e, type: 2}
+    - {fileID: 11400000, guid: 807e8b4143c49dc4697114112894eb59, type: 2}
+  - _quests:
+    - {fileID: 11400000, guid: a7e8ac8ab429e594681376b7f4e2cbb5, type: 2}
+    - {fileID: 11400000, guid: 4a3bf17cd385c364094c2c49ac30a34a, type: 2}
+    - {fileID: 11400000, guid: 64502fd1d0138294ebcc0434d2e147bc, type: 2}
+    - {fileID: 11400000, guid: 59d8eafbcaa57004ab0dcee40bd27114, type: 2}
+    - {fileID: 11400000, guid: 7058b5eefec888c4bafa42516cafd2e4, type: 2}
+    - {fileID: 11400000, guid: b1ecae472613f5c4284f0e0311b3d2ca, type: 2}
+    - {fileID: 11400000, guid: 9de369b3bcfae8644845a803f4c93141, type: 2}
+    - {fileID: 11400000, guid: 9c10f0f80c4f87d4fb383ceaf23f3629, type: 2}
+  - _quests:
+    - {fileID: 11400000, guid: e4b2d4b7e04c43b4a9f693eb45517bfe, type: 2}
+    - {fileID: 11400000, guid: aa9c5aebfca9812488e7cdef25935f2e, type: 2}
+    - {fileID: 11400000, guid: f5b46a9938e903246b9508eafe6e593f, type: 2}
+    - {fileID: 11400000, guid: 41c812ded609a674eac57f460d34bcc0, type: 2}
+    - {fileID: 11400000, guid: 06b128ba77f9aa441a97a2b968e207e1, type: 2}
+    - {fileID: 11400000, guid: 9d5d83f27d66ceb46b2429cc2e882db2, type: 2}
+    - {fileID: 11400000, guid: daf0bc0868ff52c458c55452802851ec, type: 2}
+    - {fileID: 11400000, guid: ab5039dbb41a8f44e8cc90124596bb95, type: 2}
+  - _quests:
+    - {fileID: 11400000, guid: 2de9d015a62a2ae4a815c9c421b03d05, type: 2}
+    - {fileID: 11400000, guid: 3d1508a58792e0c4499ee975117883b4, type: 2}
+    - {fileID: 11400000, guid: 490b75f2f682dfa4f80b75010a9dbf54, type: 2}
+    - {fileID: 11400000, guid: ce7b8c24643e9b04f9e56693f96b648b, type: 2}
+    - {fileID: 11400000, guid: dc71f72f280b97a4984f72e862437c65, type: 2}
+    - {fileID: 11400000, guid: 053ca58250bbabc4d884da3d4bace8f7, type: 2}
+    - {fileID: 11400000, guid: 199c910d40e4ba44381c31caa34d64e8, type: 2}
+    - {fileID: 11400000, guid: e2417bb6683d5cf488435e34ba19c88f, type: 2}
+  _dailyQuestsCount: 5

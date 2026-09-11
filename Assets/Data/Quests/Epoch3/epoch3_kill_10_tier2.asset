@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574e38c972ca4c141968991b8b2f78ec, type: 3}
+  m_Name: epoch3_kill_10_tier2
+  m_EditorClassIdentifier: Core.Application::Core.Application.Quests.QuestItemConfig
+  _id: epoch3_kill_10_tier2
+  _name: "\u0423\u0431\u0438\u0442\u044C 10 \u0432\u0440\u0430\u0436\u0435\u0441\u043A\u0438\u0445 \u044E\u043D\u0438\u0442\u043E\u0432 Tier2"
+  _description: "\u0423\u0431\u0438\u0442\u044C 10 \u0432\u0440\u0430\u0436\u0435\u0441\u0441\u043A\u0438\u0445 \u044E\u043D\u0438\u0442\u043E\u0432 Tier2"
+  _requirement:
+    rid: 8232753001600385132
+  _reward:
+    _rewardType: 0
+    _resourceType: 2
+    _itemType: 0
+    _count: 300
+  references:
+    version: 2
+    RefIds:
+    - rid: 8232753001600385132
+      type: {class: ReqUnitDead, ns: Core.Application.Requirements.SaveState, asm: Core.Application}
+      data:
+        _tier: 1
+        _faction: 1
+        _count: 10

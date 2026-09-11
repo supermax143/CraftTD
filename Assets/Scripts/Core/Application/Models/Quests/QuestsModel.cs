@@ -19,7 +19,8 @@ namespace Core.Application.Models.Quests
         [Inject] private readonly IDataStorage _dataStorage;
         [Inject] private readonly IRequirementChecker _requirementChecker;
         [Inject] private readonly InventoryModel _inventory;
-
+        
+        
         private readonly List<QuestItemModel> _dailyQuests = new();
         private QuestItemModel _currentQuest;
 
@@ -58,7 +59,7 @@ namespace Core.Application.Models.Quests
 
         private void GenerateDailyQuests()
         {
-            var availableQuests = _questsConfig.AvailableQuests.ToList();
+            var availableQuests = _questsConfig.GetQuests(_dataStorage.CurrentEnemyEpochIndex);
             var random = new System.Random();
             var selectedQuests = availableQuests
                 .OrderBy(x => random.Next())
@@ -81,7 +82,7 @@ namespace Core.Application.Models.Quests
 
             foreach (var progressData in questProgressList)
             {
-                var questConfig = _questsConfig.AvailableQuests.FirstOrDefault(q => q.Id == progressData.QuestId);
+                var questConfig = _questsConfig.GetQuests(_dataStorage.CurrentEnemyEpochIndex).FirstOrDefault(q => q.Id == progressData.QuestId);
                 if (questConfig != null)
                 {
                     var questModel = new QuestItemModel(questConfig, progressData.Progress);

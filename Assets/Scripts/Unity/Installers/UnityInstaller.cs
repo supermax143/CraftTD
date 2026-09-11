@@ -4,6 +4,7 @@ using Core.Application.Info.Shop;
 using Core.Application.Models;
 using Core.Application.Models.Quests;
 using Core.Application.Quests;
+using Core.Application.Requirements.Checkers;
 using Core.Application.Spells;
 using Exploration.Scripts.Controllers.ModelRender;
 using Unity.Bootstrap;
@@ -70,6 +71,8 @@ namespace Unity.Installers
          Container.BindInterfacesAndSelfTo<ActionsDispatcher>().AsSingle();
          Container.Bind<AdvertisementDoubleReward>().AsTransient();
          
+         //Requirements
+         Container.BindInterfacesAndSelfTo<CommonReqChecker>().AsSingle().NonLazy();
          //Data storage
          Container.BindInterfacesAndSelfTo<DataStorage>().AsSingle().NonLazy();
          

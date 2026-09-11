@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 574e38c972ca4c141968991b8b2f78ec, type: 3}
-  m_Name: QuestItemConfig
+  m_Name: epoch1_earn_500_gold
   m_EditorClassIdentifier: Core.Application::Core.Application.Quests.QuestItemConfig
-  _id: 
-  _name: 
-  _description: 
+  _id: epoch1_earn_500_gold
+  _name: "\u0417\u0430\u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C 500 \u0437\u043E\u043B\u043E\u0442\u0430"
+  _description: "\u0417\u0430\u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C 500 \u0437\u043E\u043B\u043E\u0442\u0430"
   _requirement:
-    rid: 8232752981340848410
+    rid: 8232753001600385121
   _reward:
     _rewardType: 0
-    _resourceType: 0
+    _resourceType: 2
     _itemType: 0
-    _count: 0
+    _count: 100
   references:
     version: 2
     RefIds:
-    - rid: 8232752981340848410
+    - rid: 8232753001600385121
       type: {class: ReqResourcesEarned, ns: Core.Application.Requirements.SaveState, asm: Core.Application}
       data:
         _resource:
           Type: 1
-          Value: 1000
+          Value: 500

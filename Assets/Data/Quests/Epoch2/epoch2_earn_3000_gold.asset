@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574e38c972ca4c141968991b8b2f78ec, type: 3}
+  m_Name: epoch2_earn_3000_gold
+  m_EditorClassIdentifier: Core.Application::Core.Application.Quests.QuestItemConfig
+  _id: epoch2_earn_3000_gold
+  _name: "\u0417\u0430\u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C 3000 \u0437\u043E\u043B\u043E\u0442\u0430"
+  _description: "\u0417\u0430\u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C 3000 \u0437\u043E\u043B\u043E\u0442\u0430"
+  _requirement:
+    rid: 8232753001600385129
+  _reward:
+    _rewardType: 0
+    _resourceType: 2
+    _itemType: 0
+    _count: 200
+  references:
+    version: 2
+    RefIds:
+    - rid: 8232753001600385129
+      type: {class: ReqResourcesEarned, ns: Core.Application.Requirements.SaveState, asm: Core.Application}
+      data:
+        _resource:
+          Type: 1
+          Value: 3000

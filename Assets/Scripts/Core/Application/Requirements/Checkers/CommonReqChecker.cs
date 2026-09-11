@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.Application.Models.Quests;
 using Core.Application.Requirements.Base;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -6,12 +7,7 @@ using Zenject;
 
 namespace Core.Application.Requirements.Checkers
 {
-    /// <summary>
-    /// принимает на вход  любой рекваермент
-    /// далее в зависимости от его типа ищет предсозданный чекер
-    /// если нашел - прогоняет рекваермент через чекер
-    /// </summary>
-    [UsedImplicitly]
+  
     public sealed class CommonReqChecker : IRequirementChecker, IInitializable
     {
         [Inject] private DiContainer _container;
