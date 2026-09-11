@@ -15,8 +15,19 @@ MonoBehaviour:
   _id: 
   _name: 
   _description: 
+  _requirement:
+    rid: 8232752981340848410
   _reward:
     _rewardType: 0
     _resourceType: 0
     _itemType: 0
     _count: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 8232752981340848410
+      type: {class: ReqResourcesEarned, ns: Core.Application.Requirements.SaveState, asm: Core.Application}
+      data:
+        _resource:
+          Type: 1
+          Value: 1000
