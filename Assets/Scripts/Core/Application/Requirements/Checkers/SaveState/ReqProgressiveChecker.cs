@@ -5,10 +5,22 @@ using Zenject;
 
 namespace Core.Application.Requirements.Checkers.SaveState
 {
-    public abstract class ReqProgressiveChecker<TReq> : ReqCheckerBase<TReq>
+    public abstract class ReqProgressiveChecker<TReq, TEvent> : ReqCheckerBase<TReq>
         where TReq: ReqProgressive, IRequirement
     {
         [Inject] private IDataStorage _dataStorage;
+        
+        protected TEvent _event;
+
+        protected ReqProgressiveChecker(TEvent @event)
+        {
+            _event = @event;
+        }
+        
+        public void UpdateEvent(TEvent @event)
+        {
+            _event = @event;
+        }
         
         protected int GetProgress(TReq req)
         {

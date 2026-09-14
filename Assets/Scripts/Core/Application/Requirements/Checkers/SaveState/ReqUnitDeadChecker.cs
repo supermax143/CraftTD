@@ -3,18 +3,15 @@ using Unity.Infrastructure.GameEvents;
 
 namespace Core.Application.Requirements.Checkers.SaveState
 {
-    public class ReqUnitDeadChecker : ReqProgressiveChecker<ReqUnitDead>
+    public class ReqUnitDeadChecker : ReqProgressiveChecker<ReqUnitDead, UnitDeadEvent>
     {
-        private readonly UnitDeadEvent _unitDeadEvent;
-
-        public ReqUnitDeadChecker(UnitDeadEvent unitDeadEvent)
+        public ReqUnitDeadChecker(UnitDeadEvent unitDeadEvent) : base(unitDeadEvent)
         {
-            _unitDeadEvent = unitDeadEvent;
         }
 
         protected override bool Check(ReqUnitDead req)
         {
-            if ((req.Tier != _unitDeadEvent.Tier && !req.AnyTier) || req.Faction != _unitDeadEvent.Faction)
+            if ((req.Tier != _event.Tier && !req.AnyTier) || req.Faction != _event.Faction)
             {
                 return false;
             }

@@ -1,20 +1,17 @@
-﻿using Core.Application.Requirements.SaveState;
+using Core.Application.Requirements.SaveState;
 using Unity.Infrastructure.GameEvents;
 
 namespace Core.Application.Requirements.Checkers.SaveState
 {
-    public class ReqUnitSpawnedChecker : ReqProgressiveChecker<ReqUnitSpawned>
+    public class ReqUnitSpawnedChecker : ReqProgressiveChecker<ReqUnitSpawned, SpawnUnitEvent>
     {
-        private readonly SpawnUnitEvent _spawnUnitEvent;
-
-        public ReqUnitSpawnedChecker(SpawnUnitEvent spawnUnitEvent)
+        public ReqUnitSpawnedChecker(SpawnUnitEvent spawnUnitEvent) : base(spawnUnitEvent)
         {
-            _spawnUnitEvent = spawnUnitEvent;
         }
 
         protected override bool Check(ReqUnitSpawned req)
         {
-            if (req.Tier != _spawnUnitEvent.Tier || req.Faction != _spawnUnitEvent.Faction)
+            if (req.Tier != _event.Tier || req.Faction != _event.Faction)
             {
                 return false;
             }

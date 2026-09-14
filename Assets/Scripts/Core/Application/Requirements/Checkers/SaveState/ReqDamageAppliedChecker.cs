@@ -3,24 +3,21 @@ using Unity.Infrastructure.GameEvents;
 
 namespace Core.Application.Requirements.Checkers.SaveState
 {
-    public class ReqDamageAppliedChecker : ReqProgressiveChecker<ReqDamageApplied>
+    public class ReqDamageAppliedChecker : ReqProgressiveChecker<ReqDamageApplied, DamageAppliedEvent>
     {
-        private readonly DamageAppliedEvent _damageAppliedEvent;
-
-        public ReqDamageAppliedChecker(DamageAppliedEvent damageAppliedEvent)
+        public ReqDamageAppliedChecker(DamageAppliedEvent damageAppliedEvent) : base(damageAppliedEvent)
         {
-            _damageAppliedEvent = damageAppliedEvent;
         }
 
         protected override bool Check(ReqDamageApplied req)
         {
-            if (req.Faction != _damageAppliedEvent.Faction)
+            if (req.Faction != _event.Faction)
             {
                 return false;
             }
             var progress = GetProgress(req);
-            progress += (int)_damageAppliedEvent.AppliedDamage;
-            IncrementProgress(req, (int)_damageAppliedEvent.AppliedDamage);
+            progress += (int)_event.AppliedDamage;
+            IncrementProgress(req, (int)_event.AppliedDamage);
             return req.AppliedDamage <= progress;
         }
     }

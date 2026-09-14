@@ -3,24 +3,21 @@ using Unity.Infrastructure.GameEvents;
 
 namespace Core.Application.Requirements.Checkers.SaveState
 {
-    public class ReqResourcesEarnedChecker : ReqProgressiveChecker<ReqResourcesEarned>
+    public class ReqResourcesEarnedChecker : ReqProgressiveChecker<ReqResourcesEarned, ResourcesEarnedEvent>
     {
-        private readonly ResourcesEarnedEvent _resourcesEarnedEvent;
-
-        public ReqResourcesEarnedChecker(ResourcesEarnedEvent resourcesEarnedEvent)
+        public ReqResourcesEarnedChecker(ResourcesEarnedEvent resourcesEarnedEvent) : base(resourcesEarnedEvent)
         {
-            _resourcesEarnedEvent = resourcesEarnedEvent;
         }
 
         protected override bool Check(ReqResourcesEarned req)
         {
-            if (req.Resource.Type != _resourcesEarnedEvent.Resource.Type)
+            if (req.Resource.Type != _event.Resource.Type)
             {
                 return false;
             }
             var progress = GetProgress(req);
-            progress += _resourcesEarnedEvent.Resource.Value;
-            IncrementProgress(req, _resourcesEarnedEvent.Resource.Value);
+            progress += _event.Resource.Value;
+            IncrementProgress(req, _event.Resource.Value);
             return req.Resource.Value <= progress;
         }
     }

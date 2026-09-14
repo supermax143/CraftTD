@@ -6,6 +6,8 @@ using Core.Application.Info.Reward;
 using Core.Application.Quests;
 using Core.Application.Models;
 using Core.Application.Requirements.Base;
+using Core.Application.Requirements.Checkers.SaveState;
+using Unity.Infrastructure.GameEvents;
 using Zenject;
 
 namespace Core.Application.Models.Quests
@@ -19,11 +21,12 @@ namespace Core.Application.Models.Quests
         [Inject] private readonly IDataStorage _dataStorage;
         [Inject] private readonly IRequirementChecker _requirementChecker;
         [Inject] private readonly InventoryModel _inventory;
-        
+        [Inject] private readonly IGameEventsBus _gameEventsBus;
         
         private readonly List<QuestItemModel> _dailyQuests = new();
         private QuestItemModel _currentQuest;
 
+        private ReqUnitDeadChecker _reqUnitDeadChecker;
         
         private QuestsStorageData QuestsData => _dataStorage.Quests;
         public QuestItemModel CurrentQuest => _currentQuest;
@@ -36,6 +39,12 @@ namespace Core.Application.Models.Quests
             CheckDailyReset();
             LoadDailyQuests();
             LoadCurrentQuest();
+            _gameEventsBus.AddListener<UnitDeadEvent>(OnUnitDead);
+        }
+
+        private void OnUnitDead(UnitDeadEvent @event)
+        {
+            throw new NotImplementedException();
         }
 
         private void CheckDailyReset()
