@@ -8,6 +8,10 @@ namespace Core.Application.Requirements
     {
         public bool Check(IRequirementChecker checker) 
             => checker.Check(this);
-       
+
+        public float GetProgress(IRequirementChecker checker)
+        {
+            return checker.GetProgress(this);
+        }
     }
 }

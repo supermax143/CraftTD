@@ -6,5 +6,7 @@ namespace Core.Application.Requirements.Base
     public interface IRequirement
     {
         bool Check(IRequirementChecker checker);
+
+        float GetProgress(IRequirementChecker checker);
     }
 }

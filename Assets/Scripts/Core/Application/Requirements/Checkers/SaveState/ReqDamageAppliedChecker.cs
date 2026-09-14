@@ -9,15 +9,15 @@ namespace Core.Application.Requirements.Checkers.SaveState
         {
         }
 
-        protected override bool Check(ReqDamageApplied req)
+        protected override bool CheckInternal(ReqDamageApplied req)
         {
             if (req.Faction != _event.Faction)
             {
                 return false;
             }
-            var progress = GetProgress(req);
+            var progress = GetEventProgress(req);
             progress += (int)_event.AppliedDamage;
-            IncrementProgress(req, (int)_event.AppliedDamage);
+            IncrementEventProgress(req, (int)_event.AppliedDamage);
             return req.AppliedDamage <= progress;
         }
     }

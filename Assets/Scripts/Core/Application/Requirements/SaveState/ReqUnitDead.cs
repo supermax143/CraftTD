@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Core.Application.Requirements.SaveState
 {
     [Serializable]
-    public class ReqUnitDead : ReqProgressive
+    public class ReqUnitDead : ReqEvent
     {
         [SerializeField]
         private UnitTier _tier;

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Core.Application.Requirements.SaveState
 {
     [Serializable]
-    public class ReqDamageApplied : ReqProgressive
+    public class ReqDamageApplied : ReqEvent
     {
         [SerializeField]
         private float _appliedDamage;

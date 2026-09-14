@@ -9,6 +9,7 @@ using Core.Application.Requirements.Base;
 using Core.Application.Requirements.Checkers.SaveState;
 using Core.Application.Requirements.SaveState;
 using Unity.Infrastructure.GameEvents;
+using UnityEngine;
 using Zenject;
 
 namespace Core.Application.Models.Quests
@@ -41,14 +42,52 @@ namespace Core.Application.Models.Quests
             LoadDailyQuests();
             LoadCurrentQuest();
             _gameEventsBus.AddListener<UnitDeadEvent>(OnUnitDead);
+            _gameEventsBus.AddListener<SpawnUnitEvent>(OnUnitSpawned);
+            _gameEventsBus.AddListener<DamageAppliedEvent>(OnDamageApplied);
+            _gameEventsBus.AddListener<ResourcesEarnedEvent>(OnResourcesEarned);
         }
 
-        
         private void OnUnitDead(UnitDeadEvent @event)
         {
-            GetOrCreateChecker<UnitDeadEvent, ReqUnitDeadChecker>(@event).Check(_currentQuest.QuestConfig.Requirement);
+            CheckCurrentQuest<UnitDeadEvent, ReqUnitDeadChecker>(@event);
         }
-       
+
+        private void OnUnitSpawned(SpawnUnitEvent @event)
+        {
+            CheckCurrentQuest<SpawnUnitEvent, ReqUnitSpawnedChecker>(@event);
+        }
+
+        private void OnDamageApplied(DamageAppliedEvent @event)
+        {
+            CheckCurrentQuest<DamageAppliedEvent, ReqDamageAppliedChecker>(@event);
+        }
+
+        private void OnResourcesEarned(ResourcesEarnedEvent @event)
+        {
+            CheckCurrentQuest<ResourcesEarnedEvent, ReqResourcesEarnedChecker>(@event);
+        }
+
+        private void CheckCurrentQuest<TEvent, TChecker>(TEvent @event)
+            where TChecker : class, IRequirementChecker
+        {
+            if (_currentQuest == null || _currentQuest.IsCompleted)
+            {
+                return;
+            }
+            
+            var checker = GetOrCreateChecker<TEvent, TChecker>(@event);
+            if (checker.Check(_currentQuest.QuestConfig.Requirement))
+            {
+                _currentQuest.SetProgress(1);
+                Debug.Log($"Quest completed: {_currentQuest.QuestConfig.Id}");
+                OnCurrentQuestChanged?.Invoke();
+            }
+            else
+            {
+                Debug.Log($"Cur quest progress: {checker.GetProgress(_currentQuest.QuestConfig.Requirement)}");
+            }
+        }
+
         private TChecker GetOrCreateChecker<TEvent, TChecker>(TEvent @event)
             where TChecker : class
         {

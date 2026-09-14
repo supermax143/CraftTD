@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Core.Application.Requirements.SaveState
 {
     [Serializable]
-    public class ReqResourcesEarned : ReqProgressive
+    public class ReqResourcesEarned : ReqEvent
     {
         [SerializeField]
         private Resource _resource;

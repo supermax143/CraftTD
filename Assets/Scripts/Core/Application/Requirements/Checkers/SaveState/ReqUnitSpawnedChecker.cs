@@ -9,15 +9,15 @@ namespace Core.Application.Requirements.Checkers.SaveState
         {
         }
 
-        protected override bool Check(ReqUnitSpawned req)
+        protected override bool CheckInternal(ReqUnitSpawned req)
         {
             if (req.Tier != _event.Tier || req.Faction != _event.Faction)
             {
                 return false;
             }
-            var progress = GetProgress(req);
+            var progress = GetEventProgress(req);
             progress++;
-            IncrementProgress(req, 1);
+            IncrementEventProgress(req, 1);
             return req.Count <= progress;
         }
     }

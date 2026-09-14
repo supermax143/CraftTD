@@ -9,15 +9,15 @@ namespace Core.Application.Requirements.Checkers.SaveState
         {
         }
 
-        protected override bool Check(ReqResourcesEarned req)
+        protected override bool CheckInternal(ReqResourcesEarned req)
         {
             if (req.Resource.Type != _event.Resource.Type)
             {
                 return false;
             }
-            var progress = GetProgress(req);
+            var progress = GetEventProgress(req);
             progress += _event.Resource.Value;
-            IncrementProgress(req, _event.Resource.Value);
+            IncrementEventProgress(req, _event.Resource.Value);
             return req.Resource.Value <= progress;
         }
     }

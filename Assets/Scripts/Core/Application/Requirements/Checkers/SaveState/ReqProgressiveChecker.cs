@@ -6,7 +6,7 @@ using Zenject;
 namespace Core.Application.Requirements.Checkers.SaveState
 {
     public abstract class ReqProgressiveChecker<TReq, TEvent> : ReqCheckerBase<TReq>
-        where TReq: ReqProgressive, IRequirement
+        where TReq: ReqEvent, IRequirement
     {
         [Inject] private IDataStorage _dataStorage;
         
@@ -22,14 +22,19 @@ namespace Core.Application.Requirements.Checkers.SaveState
             _event = @event;
         }
         
-        protected int GetProgress(TReq req)
+        protected override float GetProgressInternal(TReq req)
         {
             return _dataStorage.RequirementsProgress.GetRequirementProgress(req.GetProgressSaveIdent());
         }
         
-        protected void IncrementProgress(TReq req, int increment)
+        protected int GetEventProgress(TReq req)
         {
-            var currentProgress = GetProgress(req);
+            return _dataStorage.RequirementsProgress.GetRequirementProgress(req.GetProgressSaveIdent());
+        }
+        
+        protected void IncrementEventProgress(TReq req, int increment)
+        {
+            var currentProgress = GetEventProgress(req);
             var newProgress = currentProgress + increment;
             _dataStorage.RequirementsProgress.SetRequirementProgress(req.GetProgressSaveIdent(), newProgress);
         }

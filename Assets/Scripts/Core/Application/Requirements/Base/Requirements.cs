@@ -25,6 +25,10 @@ namespace Core.Application.Requirements.Base
         {
             return _requirements.All(checker.Check);
         }
-        
+
+        public float GetProgress(IRequirementChecker checker)
+        {
+            return  _requirements.Sum(checker.GetProgress) / _requirements.Count;
+        }
     }
 }

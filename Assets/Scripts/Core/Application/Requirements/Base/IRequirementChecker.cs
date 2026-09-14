@@ -6,5 +6,8 @@ namespace Core.Application.Requirements.Base
     public interface IRequirementChecker
     {
         bool Check<T>(T req) where T : class, IRequirement;
+        
+        public float GetProgress<T>(T req) where T : class, IRequirement;
+        
     }
 }

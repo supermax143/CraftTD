@@ -12,24 +12,28 @@ namespace Core.Application.Requirements.Checkers
     {
         [Inject] private DiContainer _container;
 
-        private readonly Dictionary<System.Type, IRequirementChecker> _visitors = new();
+        private readonly Dictionary<System.Type, IRequirementChecker> _checkers = new();
         
 
         //по-хорошему сюда не контейнер, а фабрику нужно прокинуть
         public void Initialize()
         {
-            _visitors[typeof(ReqHoldResources)] = _container.Instantiate<ReqHoldResourcesChecker>();
+            _checkers[typeof(ReqHoldResources)] = _container.Instantiate<ReqHoldResourcesChecker>();
         }
 
 
         public bool Check<T>(T req) where T : class, IRequirement
         {
-            if (_visitors.TryGetValue(req.GetType(), out var result))
+            if (_checkers.TryGetValue(req.GetType(), out var result))
                 return result.Check(req);
 
             Debug.LogError($"Can't find registered checker for type {typeof(T)}");
             return false;
         }
 
+        public float GetProgress<T>(T req) where T : class, IRequirement
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

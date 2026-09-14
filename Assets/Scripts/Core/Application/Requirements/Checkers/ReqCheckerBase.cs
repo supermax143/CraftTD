@@ -8,11 +8,26 @@ namespace Core.Application.Requirements.Checkers
         
         public bool Check<T>(T requirement) where T : class, IRequirement
         {
-            return Check(requirement);
+            if (requirement is not TReq req)
+            {
+                return false;
+            }
+            
+            return CheckInternal(req);
         }
 
-        protected abstract bool Check(TReq req);
-      
         
+        public float GetProgress<T>(T requirement) where T : class, IRequirement
+        {
+            if (requirement is not TReq req)
+            {
+                return 0;
+            }
+            return GetProgressInternal(req);
+        }
+
+        protected abstract bool CheckInternal(TReq req);
+      
+        protected abstract float GetProgressInternal(TReq req);
     }
 }
