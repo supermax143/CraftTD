@@ -14,7 +14,7 @@ namespace Core.Application.Requirements.Checkers.SaveState
 
         protected override bool Check(ReqUnitDead req)
         {
-            if (req.Tier != _unitDeadEvent.Tier || req.Faction != _unitDeadEvent.Faction)
+            if ((req.Tier != _unitDeadEvent.Tier && !req.AnyTier) || req.Faction != _unitDeadEvent.Faction)
             {
                 return false;
             }

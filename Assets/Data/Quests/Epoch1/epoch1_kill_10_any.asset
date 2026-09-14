@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: epoch1_kill_10_any
   m_EditorClassIdentifier: Core.Application::Core.Application.Quests.QuestItemConfig
   _id: epoch1_kill_10_any
-  _name: "\u0423\u0431\u0438\u0442\u044C 10 \u0432\u0440\u0430\u0436\u0435\u0441\u043A\u0438\u0445 \u044E\u043D\u0438\u0442\u043E\u0432"
-  _description: "\u0423\u0431\u0438\u0442\u044C 10 \u0432\u0440\u0430\u0436\u0435\u0441\u043A\u0438\u0445 \u044E\u043D\u0438\u0442\u043E\u0432 (\u043B\u044E\u0431\u044B\u0445 \u0442\u0438\u0440\u043E\u0432)"
   _requirement:
     rid: 8232753001600385122
   _reward:
@@ -29,5 +27,6 @@ MonoBehaviour:
       type: {class: ReqUnitDead, ns: Core.Application.Requirements.SaveState, asm: Core.Application}
       data:
         _tier: 0
+        _anyTier: 1
         _faction: 1
         _count: 10
