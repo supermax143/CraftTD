@@ -7,6 +7,7 @@ using Core.Application.Quests;
 using Core.Application.Models;
 using Core.Application.Requirements.Base;
 using Core.Application.Requirements.Checkers.SaveState;
+using Core.Application.Requirements.SaveState;
 using Unity.Infrastructure.GameEvents;
 using Zenject;
 
@@ -22,11 +23,11 @@ namespace Core.Application.Models.Quests
         [Inject] private readonly IRequirementChecker _requirementChecker;
         [Inject] private readonly InventoryModel _inventory;
         [Inject] private readonly IGameEventsBus _gameEventsBus;
+        [Inject] private readonly DiContainer _diContainer;
         
         private readonly List<QuestItemModel> _dailyQuests = new();
         private QuestItemModel _currentQuest;
-
-        private ReqUnitDeadChecker _reqUnitDeadChecker;
+        private readonly Dictionary<Type, object> _eventTypeToRequirementChecker = new();
         
         private QuestsStorageData QuestsData => _dataStorage.Quests;
         public QuestItemModel CurrentQuest => _currentQuest;
@@ -42,9 +43,28 @@ namespace Core.Application.Models.Quests
             _gameEventsBus.AddListener<UnitDeadEvent>(OnUnitDead);
         }
 
+        
         private void OnUnitDead(UnitDeadEvent @event)
         {
-            throw new NotImplementedException();
+            GetOrCreateChecker<UnitDeadEvent, ReqUnitDeadChecker>(@event).Check(_currentQuest.QuestConfig.Requirement);
+        }
+       
+        private TChecker GetOrCreateChecker<TEvent, TChecker>(TEvent @event)
+            where TChecker : class
+        {
+            var eventType = typeof(TEvent);
+            
+            if (_eventTypeToRequirementChecker.TryGetValue(eventType, out var checker))
+            {
+                var typedChecker = (TChecker)checker;
+                var updateMethod = typeof(TChecker).GetMethod("UpdateEvent");
+                updateMethod?.Invoke(typedChecker, new object[] { @event });
+                return typedChecker;
+            }
+            
+            var newChecker = _diContainer.Instantiate<TChecker>(new object[] { @event });
+            _eventTypeToRequirementChecker[eventType] = newChecker;
+            return newChecker;
         }
 
         private void CheckDailyReset()
