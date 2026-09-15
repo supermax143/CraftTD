@@ -49,33 +49,35 @@ namespace Core.Application.Models.Quests
 
         private void OnUnitDead(UnitDeadEvent @event)
         {
-            CheckCurrentQuest<UnitDeadEvent, ReqUnitDeadChecker>(@event);
+            CheckCurrentQuest<UnitDeadEvent, ReqUnitDeadChecker, ReqUnitDead>(@event);
         }
 
         private void OnUnitSpawned(SpawnUnitEvent @event)
         {
-            CheckCurrentQuest<SpawnUnitEvent, ReqUnitSpawnedChecker>(@event);
+            CheckCurrentQuest<SpawnUnitEvent, ReqUnitSpawnedChecker, ReqUnitSpawned>(@event);
         }
 
         private void OnDamageApplied(DamageAppliedEvent @event)
         {
-            CheckCurrentQuest<DamageAppliedEvent, ReqDamageAppliedChecker>(@event);
+            CheckCurrentQuest<DamageAppliedEvent, ReqDamageAppliedChecker, ReqDamageApplied>(@event);
         }
 
         private void OnResourcesEarned(ResourcesEarnedEvent @event)
         {
-            CheckCurrentQuest<ResourcesEarnedEvent, ReqResourcesEarnedChecker>(@event);
+            CheckCurrentQuest<ResourcesEarnedEvent, ReqResourcesEarnedChecker, ReqResourcesEarned>(@event);
         }
 
-        private void CheckCurrentQuest<TEvent, TChecker>(TEvent @event)
-            where TChecker : class, IRequirementChecker
+        private void CheckCurrentQuest<TEvent, TChecker, TReq> (TEvent @event)
+            where TEvent : GameEvent
+            where TReq : ReqEvent, IRequirement
+            where TChecker : ReqProgressiveChecker<TReq,TEvent>
         {
             if (_currentQuest == null || _currentQuest.IsCompleted)
             {
                 return;
             }
             
-            var checker = GetOrCreateChecker<TEvent, TChecker>(@event);
+            var checker = GetOrCreateChecker<TEvent, TChecker, TReq>(@event);
             if (checker.Check(_currentQuest.QuestConfig.Requirement))
             {
                 _currentQuest.SetProgress(1);
@@ -88,16 +90,17 @@ namespace Core.Application.Models.Quests
             }
         }
 
-        private TChecker GetOrCreateChecker<TEvent, TChecker>(TEvent @event)
-            where TChecker : class
+        private TChecker GetOrCreateChecker<TEvent, TChecker, TReq>(TEvent @event)
+            where TEvent : GameEvent
+            where TReq : ReqEvent, IRequirement
+            where TChecker : ReqProgressiveChecker<TReq,TEvent>
         {
             var eventType = typeof(TEvent);
             
             if (_eventTypeToRequirementChecker.TryGetValue(eventType, out var checker))
             {
                 var typedChecker = (TChecker)checker;
-                var updateMethod = typeof(TChecker).GetMethod("UpdateEvent");
-                updateMethod?.Invoke(typedChecker, new object[] { @event });
+                typedChecker.UpdateEvent(@event);
                 return typedChecker;
             }
             

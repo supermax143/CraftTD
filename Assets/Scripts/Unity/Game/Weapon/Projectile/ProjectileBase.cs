@@ -72,7 +72,6 @@ namespace Unity.Game.Projectile
                 var rotation = transform.localRotation.eulerAngles;
                 rotation.z += _rotationSpeed * Time.deltaTime * -Mathf.Sign(_direction.x);
                 transform.localRotation = Quaternion.Euler(rotation) ;
-                Debug.Log(transform.rotation);
                 yield return null;
             }
 
