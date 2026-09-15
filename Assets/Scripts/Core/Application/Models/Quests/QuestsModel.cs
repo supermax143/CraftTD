@@ -167,7 +167,7 @@ namespace Core.Application.Models.Quests
 
         private void TryStartNextQuest()
         {
-            if (_dailyQuests.Any(dq => dq.State == QuestState.Active))
+            if (_dailyQuests.Any(dq => dq.State == QuestState.Active || dq.State == QuestState.ReadyToClaim))
             {
                 Debug.LogError("Already has active quest");
                 return;

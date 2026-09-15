@@ -18,7 +18,7 @@ namespace Unity.Presentation.HUD
         [SerializeField]
         private AnimatedProgressbar _progressbar;
         [SerializeField]
-        private ResourceContainer _rewardContainer;
+        private RewardContainer _rewardContainer;
         [SerializeField]
         private TMP_Text _stateText;
         
@@ -47,6 +47,7 @@ namespace Unity.Presentation.HUD
         {
             _descriptionText.text = _currentQuest.QuestConfig.Id;
             _stateText.text = _currentQuest.State.ToString();
+            _rewardContainer.SetReward(_currentQuest.QuestConfig.Reward);
         }
 
         /*public void UpdateProgress(int currentValue)

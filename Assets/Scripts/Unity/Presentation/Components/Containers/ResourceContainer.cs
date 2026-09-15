@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Core.Application.Interfaces;
 using Core.Application.Models;
@@ -13,6 +14,9 @@ using Zombies;
 
 namespace Unity.Presentation.HUD
 {
+    /// <summary>
+    /// Контейнер для отображения ресурса с иконкой и счётчиком
+    /// </summary>
     public class ResourceContainer : MonoBehaviour, IDropTarget
     {
         [SerializeField]
@@ -26,6 +30,7 @@ namespace Unity.Presentation.HUD
         [Inject] private IResourceManager _resourceManager;
         
         private Resource _resource;
+        private CancellationTokenSource _iconUpdateCts;
         public ResourceType ResourceType => _resourceType;
 
 
@@ -36,19 +41,27 @@ namespace Unity.Presentation.HUD
                 return;
             }
             _resource = new Resource(_resourceType, _resource.Value);
-            //UpdateCount();
-            UpdateIcon();
+            UpdateIcon().Forget();
         }
 
         
         private async UniTask UpdateIcon()
         {
+            _iconUpdateCts?.Cancel();
+            _iconUpdateCts = new CancellationTokenSource();
+            
             if (!_resourceManager.TryGetResourceIcon(_resource.Type, out var iconRef))
             {
                 Debug.LogError($"{GetType().Name} has no icon for {_resourceType}");
                 return;
             }
             var icon = await iconRef.LoadAssetReference<Sprite>(iconRef.AssetGUID);
+            
+            if (_iconUpdateCts.IsCancellationRequested)
+            {
+                return;
+            }
+            
             _icon.sprite = icon;
         }
         
@@ -89,6 +102,12 @@ namespace Unity.Presentation.HUD
         {
             _resource.Value = 0;
             UpdateCount();
+        }
+
+        private void OnDestroy()
+        {
+            _iconUpdateCts?.Cancel();
+            _iconUpdateCts?.Dispose();
         }
     }
 }
