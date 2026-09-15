@@ -1,7 +1,10 @@
+using System;
+using Core.Application.Models.Quests;
 using TMPro;
 using Unity.Presentation.Components;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Unity.Presentation.HUD
 {
@@ -16,21 +19,37 @@ namespace Unity.Presentation.HUD
         private AnimatedProgressbar _progressbar;
         [SerializeField]
         private ResourceContainer _rewardContainer;
+        [SerializeField]
+        private TMP_Text _stateText;
         
-        private int _targetValue;
-        private int _currentValue;
+        [Inject] private IQuestsModel _questsModel;
+        
+        private QuestItemModel _currentQuest;
 
-        public void SetQuest(string description, int target, int current, Core.Application.Models.Resource reward)
+        private void Start()
         {
-            _descriptionText.text = description;
-            _targetValue = target;
-            _currentValue = current;
-            
-            UpdateProgress();
-            _rewardContainer.SetResource(reward);
+            SetQuest(_questsModel.CurrentQuest);
         }
 
-        public void UpdateProgress(int currentValue)
+
+        public void SetQuest(QuestItemModel quest)
+        {
+            _currentQuest = quest;
+            UpdateVIew();
+            quest.OnStateChange += UpdateVIew;
+            
+            /*
+            UpdateProgress();
+            _rewardContainer.SetResource(reward);*/
+        }
+
+        private void UpdateVIew()
+        {
+            _descriptionText.text = _currentQuest.QuestConfig.Id;
+            _stateText.text = _currentQuest.State.ToString();
+        }
+
+        /*public void UpdateProgress(int currentValue)
         {
             _currentValue = currentValue;
             UpdateProgress();
@@ -40,6 +59,6 @@ namespace Unity.Presentation.HUD
         {
             float progress = _targetValue > 0 ? (float)_currentValue / _targetValue : 0f;
             _progressbar.SetProgress(progress);
-        }
+        }*/
     }
 }

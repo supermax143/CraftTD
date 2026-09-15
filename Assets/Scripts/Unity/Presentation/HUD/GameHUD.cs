@@ -34,6 +34,7 @@ namespace Unity.Presentation.HUD
         private Transform _buttonSpeedup;
         
         
+        
         [Inject] private IInventoryModel _inventory;
         [Inject] private IMainModel _mainModel;
         [Inject] private DiContainer _container;

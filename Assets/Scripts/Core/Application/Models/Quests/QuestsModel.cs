@@ -4,12 +4,10 @@ using System.Linq;
 using Core.Application.DataStorage;
 using Core.Application.Info.Reward;
 using Core.Application.Quests;
-using Core.Application.Models;
 using Core.Application.Requirements.Base;
 using Core.Application.Requirements.Checkers.SaveState;
 using Core.Application.Requirements.SaveState;
 using Unity.Infrastructure.GameEvents;
-using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -19,7 +17,7 @@ namespace Core.Application.Models.Quests
     {
         public event Action OnCurrentQuestChanged;
         public event Action OnQuestsReset;
-
+        
         [Inject] private readonly QuestsConfig _questsConfig;
         [Inject] private readonly IDataStorage _dataStorage;
         [Inject] private readonly IRequirementChecker _requirementChecker;
@@ -227,4 +225,5 @@ namespace Core.Application.Models.Quests
         }
 
     }
+    
 }

@@ -6,8 +6,7 @@ namespace Core.Application.Models.Quests
 {
     public class QuestItemModel
     {
-        public event Action OnProgressChanged;
-        public event Action OnCompleted;
+        public event Action OnStateChange;
 
         private readonly QuestItemConfig _questConfig;
         private QuestState _state;
@@ -31,12 +30,7 @@ namespace Core.Application.Models.Quests
             }
 
             _state = state;
-            OnProgressChanged?.Invoke();
-
-            if (state == QuestState.Complete)
-            {
-                OnCompleted?.Invoke();
-            }
+            OnStateChange?.Invoke();
         }
         
     }
