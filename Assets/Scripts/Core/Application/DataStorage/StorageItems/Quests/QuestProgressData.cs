@@ -4,6 +4,7 @@ namespace Core.Application.Quests
     {
         Inactive,
         Active,
+        ReadyToClaim,
         Complete
     }
 

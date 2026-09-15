@@ -9,6 +9,7 @@ using Core.Application.Requirements.Base;
 using Core.Application.Requirements.Checkers.SaveState;
 using Core.Application.Requirements.SaveState;
 using Unity.Infrastructure.GameEvents;
+using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -40,7 +41,7 @@ namespace Core.Application.Models.Quests
             _dailyQuests.Clear();
             CheckDailyReset();
             LoadDailyQuests();
-            LoadCurrentQuest();
+            TryStartNextQuest();
             _gameEventsBus.AddListener<UnitDeadEvent>(OnUnitDead);
             _gameEventsBus.AddListener<SpawnUnitEvent>(OnUnitSpawned);
             _gameEventsBus.AddListener<DamageAppliedEvent>(OnDamageApplied);
@@ -80,9 +81,9 @@ namespace Core.Application.Models.Quests
             var checker = GetOrCreateChecker<TEvent, TChecker, TReq>(@event);
             if (checker.Check(_currentQuest.QuestConfig.Requirement))
             {
-                _currentQuest.SetProgress(1);
+                _currentQuest.SetState(QuestState.ReadyToClaim);
+                QuestsData.SetQuestState(_currentQuest.QuestConfig.Id, QuestState.ReadyToClaim);
                 Debug.Log($"Quest completed: {_currentQuest.QuestConfig.Id}");
-                OnCurrentQuestChanged?.Invoke();
             }
             else
             {
@@ -144,8 +145,6 @@ namespace Core.Application.Models.Quests
             {
                 QuestsData.SetQuestState(questConfig.Id, QuestState.Inactive);
             }
-
-            QuestsData.SetCurrentQuestIndex(0);
         }
 
         private void LoadDailyQuests()
@@ -160,47 +159,52 @@ namespace Core.Application.Models.Quests
                 {
                     var questModel = new QuestItemModel(questConfig, progressData.State);
                     _dailyQuests.Add(questModel);
+                    if (progressData.State is QuestState.Active or QuestState.ReadyToClaim)
+                    {
+                        _currentQuest = questModel;
+                    }
                 }
             }
         }
 
-        private void LoadCurrentQuest()
+        private void TryStartNextQuest()
         {
-            var currentIndex = QuestsData.GetCurrentQuestIndex();
-            if (currentIndex >= 0 && currentIndex < _dailyQuests.Count)
+            if (_dailyQuests.Any(dq => dq.State == QuestState.Active))
             {
-                _currentQuest = _dailyQuests[currentIndex];
-                _currentQuest.SetState(QuestState.Active);
-                QuestsData.SetQuestState(_currentQuest.QuestConfig.Id, QuestState.Active);
-            }
-            else
-            {
-                _currentQuest = null;
-            }
-        }
-
-        public void UpdateQuestProgress(string questId, float progress)
-        {
-            if (_currentQuest == null || _currentQuest.QuestConfig.Id != questId)
-            {
+                Debug.LogError("Already has active quest");
                 return;
             }
 
-            _currentQuest.SetProgress(progress);
-
-            if (_currentQuest.IsCompleted)
+            if (!QuestsData.TryGetFirstInactiveQuestId(out var questId))
             {
-                CompleteCurrentQuest();
+                Debug.LogError($"Inactive quest not found");
+                return;
             }
+            
+            if (!TryGetQuest(questId, out var questModel))
+            {
+                Debug.LogError($"Quest with id {questId} not found");
+                return;
+            }
+            questModel.SetState(QuestState.Active);
+            QuestsData.SetQuestState(questId, QuestState.Active);
+            _currentQuest = questModel;
+            
+            OnCurrentQuestChanged?.Invoke();
         }
 
-        private void CompleteCurrentQuest()
+        private void ClaimCurrentQuest()
         {
+            if (_currentQuest == null || _currentQuest.State != QuestState.ReadyToClaim)
+            {
+                return;
+            }
+            
             var reward = _currentQuest.QuestConfig.Reward;
             GiveReward(reward);
 
             QuestsData.SetQuestState(_currentQuest.QuestConfig.Id, QuestState.Complete);
-            MoveToNextQuest();
+            TryStartNextQuest();
         }
 
         private void GiveReward(Reward reward)
@@ -216,35 +220,11 @@ namespace Core.Application.Models.Quests
             }
         }
 
-        private void MoveToNextQuest()
+        public bool TryGetQuest(string questId, out QuestItemModel questModel)
         {
-            var currentIndex = QuestsData.GetCurrentQuestIndex();
-            var nextIndex = currentIndex + 1;
-
-            if (nextIndex < _dailyQuests.Count)
-            {
-                QuestsData.SetCurrentQuestIndex(nextIndex);
-                LoadCurrentQuest();
-                OnCurrentQuestChanged?.Invoke();
-            }
-            else
-            {
-                _currentQuest = null;
-                OnCurrentQuestChanged?.Invoke();
-            }
+            questModel = _dailyQuests.FirstOrDefault(q => q.QuestConfig.Id == questId);
+            return questModel != null; 
         }
 
-        public void CheckRequirement()
-        {
-            if (_currentQuest == null)
-            {
-                return;
-            }
-
-            if (_currentQuest.QuestConfig.Requirement.Check(_requirementChecker))
-            {
-                UpdateQuestProgress(_currentQuest.QuestConfig.Id, 1f);
-            }
-        }
     }
 }

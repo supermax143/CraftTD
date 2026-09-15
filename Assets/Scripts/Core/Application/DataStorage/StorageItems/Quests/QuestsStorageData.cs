@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Core.Application.DataStorage;
 using Core.Application.DataStorage.StorageItems;
 using Newtonsoft.Json;
@@ -11,7 +12,6 @@ namespace Core.Application.Quests
     {
         public List<QuestProgressData> Quests = new();
         public long LastResetTimestamp;
-        public int CurrentQuestIndex;
     }
 
     public class QuestsStorageData
@@ -62,7 +62,7 @@ namespace Core.Application.Quests
         }
 
 
-        public void SetCurrentQuestIndex(int index)
+        /*public void SetCurrentQuestIndex(int index)
         {
             _questProgressInfo.CurrentQuestIndex = index;
             Save();
@@ -71,7 +71,7 @@ namespace Core.Application.Quests
         public int GetCurrentQuestIndex()
         {
             return _questProgressInfo.CurrentQuestIndex;
-        }
+        }*/
 
         public void SetLastResetTimestamp(long timestamp)
         {
@@ -87,7 +87,6 @@ namespace Core.Application.Quests
         public void ClearQuests()
         {
             _questProgressInfo.Quests.Clear();
-            _questProgressInfo.CurrentQuestIndex = 0;
             Save();
         }
 
@@ -97,7 +96,7 @@ namespace Core.Application.Quests
             {
                 Quests = new List<QuestProgressData>(),
                 LastResetTimestamp = 0,//DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
-                CurrentQuestIndex = 0
+                // CurrentQuestIndex = 0
             };
         }
 
@@ -132,6 +131,16 @@ namespace Core.Application.Quests
                 UnityEngine.Debug.LogError($"Failed to load quest progress: {e.Message}");
                 return null;
             }
+        }
+
+        public bool TryGetFirstInactiveQuestId(out string questId)
+        {
+            questId = _questProgressInfo.Quests.
+                Where(q => q.State == QuestState.Inactive).
+                Select(q => q.QuestId).
+                FirstOrDefault();
+            
+            return questId != null;  
         }
     }
 }
