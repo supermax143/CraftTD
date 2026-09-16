@@ -18,6 +18,8 @@ namespace Unity.Presentation.Components
         private Coroutine _coroutine;
         private readonly Timer _timer = new Timer();
 
+        private float _currentValue = float.NaN;
+        
         private void OnValidate()
         {
             _progressSlider ??= GetComponent<Slider>();
@@ -25,18 +27,21 @@ namespace Unity.Presentation.Components
 
         public void SetProgress(float progress)
         {
+            
             if (_coroutine != null)
             {
                 StopCoroutine(_coroutine);
             }
-            
-            _coroutine = StartCoroutine(AnimateProgress(Mathf.Clamp01(progress)));
+
+            var animTime = float.IsNaN(_currentValue) ? 0 : _animationTime;
+            _currentValue = progress;
+            _coroutine = StartCoroutine(AnimateProgress(Mathf.Clamp01(progress), animTime));
         }
         
-        private IEnumerator AnimateProgress(float targetValue)
+        private IEnumerator AnimateProgress(float targetValue, float time)
         {
             var startValue = _progressSlider.value;
-            _timer.Start(_animationTime);
+            _timer.Start(time);
             
             while (!_timer.IsComplete)
             {
