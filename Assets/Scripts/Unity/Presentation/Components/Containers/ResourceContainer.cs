@@ -48,19 +48,24 @@ namespace Unity.Presentation.HUD
         private async UniTask UpdateIcon()
         {
             _iconUpdateCts?.Cancel();
+            _iconUpdateCts?.Dispose();
+            
             _iconUpdateCts = new CancellationTokenSource();
+            var token = _iconUpdateCts.Token;
+            
+            
             
             if (!_resourceManager.TryGetResourceIcon(_resource.Type, out var iconRef))
             {
                 Debug.LogError($"{GetType().Name} has no icon for {_resourceType}");
                 return;
             }
-            var icon = await iconRef.LoadAssetReference<Sprite>(iconRef.AssetGUID);
             
-            if (_iconUpdateCts.IsCancellationRequested)
-            {
-                return;
-            }
+            var icon = await iconRef
+                .LoadAssetReference<Sprite>(iconRef.AssetGUID)
+                .AsUniTask()
+                .AttachExternalCancellation<Sprite>(token);
+            
             
             _icon.sprite = icon;
             
