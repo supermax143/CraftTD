@@ -59,6 +59,11 @@ namespace Core.Application.Models.Quests
         }
         private void UpdateCurrentQuestProgress()
         {
+            if (_currentQuest == null)
+            {
+                return;
+            }
+            
             if (!_reqTypeToRequirementChecker.TryGetValue(_currentQuest.QuestConfig.Requirement.GetType(),
                     out var checker))
             {
@@ -108,8 +113,7 @@ namespace Core.Application.Models.Quests
             }
             else if(checker.ProgressChanged)
             {
-                _currentQuest.UpdateProgress(checker.GetProgress(_currentQuest.QuestConfig.Requirement));
-                Debug.Log($"Cur quest progress: {checker.GetProgress(_currentQuest.QuestConfig.Requirement)}");
+                UpdateCurrentQuestProgress();
             }
         }
 

@@ -19,7 +19,7 @@ namespace Core.Application.Requirements.Checkers.SaveState
         protected override float GetProgressInternal(ReqUnitSpawned req)
         {
             var progress = GetEventProgress(req);
-            return Mathf.Clamp01(progress/req.Count);
+            return Mathf.Clamp01((float)progress/(float)req.Count);
         }
 
         protected override bool CheckInternal(ReqUnitSpawned req)

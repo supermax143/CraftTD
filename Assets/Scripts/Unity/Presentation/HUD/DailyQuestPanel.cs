@@ -29,16 +29,32 @@ namespace Unity.Presentation.HUD
 
         private void Start()
         {
-            SetQuest(_questsModel.CurrentQuest);
+            _questsModel.OnCurrentQuestChanged += CurrentQuestChangedHandler;
+            CurrentQuestChangedHandler();
+        }
+
+        private void CurrentQuestChangedHandler()
+        {
+            if (_currentQuest != null)
+            {
+                _currentQuest.OnStateChange -= UpdateVIew;
+                _currentQuest.OnProgressChange -= UpdateProgress;
+            }
+            UpdateCurrentQuest(_questsModel.CurrentQuest);
         }
 
 
-        public void SetQuest(QuestItemModel quest)
+        public void UpdateCurrentQuest(QuestItemModel quest)
         {
+            if (quest == null)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
             _currentQuest = quest;
+            _currentQuest.OnStateChange += UpdateVIew;
+            _currentQuest.OnProgressChange += UpdateProgress;
             UpdateVIew();
-            quest.OnStateChange += UpdateVIew;
-            quest.OnProgressChange += UpdateProgress;
         }
 
         private void UpdateVIew()
@@ -63,6 +79,9 @@ namespace Unity.Presentation.HUD
             _questsModel.ClaimCurrentQuest();
         }
 
-       
+        private void OnDestroy()
+        {
+            _questsModel.OnCurrentQuestChanged -= CurrentQuestChangedHandler;
+        }
     }
 }
