@@ -1,12 +1,25 @@
 using Core.Application.Requirements.SaveState;
 using Unity.Infrastructure.GameEvents;
+using UnityEngine;
 
 namespace Core.Application.Requirements.Checkers.SaveState
 {
     public class ReqUnitSpawnedChecker : ReqProgressiveChecker<ReqUnitSpawned, SpawnUnitEvent>
     {
+
+        public ReqUnitSpawnedChecker()
+        {
+            
+        }
+        
         public ReqUnitSpawnedChecker(SpawnUnitEvent spawnUnitEvent) : base(spawnUnitEvent)
         {
+        }
+
+        protected override float GetProgressInternal(ReqUnitSpawned req)
+        {
+            var progress = GetEventProgress(req);
+            return Mathf.Clamp01(progress/req.Count);
         }
 
         protected override bool CheckInternal(ReqUnitSpawned req)

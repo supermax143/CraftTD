@@ -38,6 +38,7 @@ namespace Unity.Presentation.HUD
             _currentQuest = quest;
             UpdateVIew();
             quest.OnStateChange += UpdateVIew;
+            quest.OnProgressChange += UpdateProgress;
         }
 
         private void UpdateVIew()
@@ -45,8 +46,14 @@ namespace Unity.Presentation.HUD
             _descriptionText.text = _currentQuest.QuestConfig.Id;
             _stateText.text = _currentQuest.State.ToString();
             _rewardContainer.SetReward(_currentQuest.QuestConfig.Reward);
+            UpdateProgress();
         }
 
+        private void UpdateProgress()
+        {
+            _progressbar.SetProgress(_currentQuest.Progress);
+        }
+        
         public void ClaimReward()
         {
             if (_currentQuest.State != QuestState.ReadyToClaim)

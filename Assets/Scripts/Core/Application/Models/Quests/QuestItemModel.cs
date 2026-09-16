@@ -7,14 +7,16 @@ namespace Core.Application.Models.Quests
     public class QuestItemModel
     {
         public event Action OnStateChange;
-
+        public event Action OnProgressChange;
+        
         private readonly QuestItemConfig _questConfig;
         private QuestState _state;
 
         public QuestItemConfig QuestConfig => _questConfig;
         public bool IsCompleted => _state == QuestState.Complete;
         public QuestState State => _state;
-
+        public float Progress { get; private set; }
+        
         public QuestItemModel(QuestItemConfig questConfig, QuestState state = QuestState.Inactive)
         {
             _questConfig = questConfig;
@@ -32,6 +34,11 @@ namespace Core.Application.Models.Quests
             _state = state;
             OnStateChange?.Invoke();
         }
-        
+
+        public void UpdateProgress(float progress)
+        {
+            Progress = progress;
+            OnProgressChange?.Invoke();
+        }
     }
 }

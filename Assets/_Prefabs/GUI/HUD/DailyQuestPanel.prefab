@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 1556477055458426243}
   - component: {fileID: 1122092708936540103}
   - component: {fileID: 1985642829178984471}
+  - component: {fileID: 9044357796462695377}
   m_Layer: 0
   m_Name: ProgressSlider
   m_TagString: Untagged
@@ -174,6 +175,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3395986692839429326}
   m_CullTransparentMesh: 1
+--- !u!114 &9044357796462695377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3395986692839429326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f66ad495af9b4ebcb42d0f31ee58b4e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.Components.AnimatedProgressbar
 --- !u!1 &3726767370035192090
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.DailyQuestPanel
   _descriptionText: {fileID: 8790054141016319636}
-  _progressbar: {fileID: 0}
+  _progressbar: {fileID: 9044357796462695377}
   _rewardContainer: {fileID: 359051835821919803}
   _stateText: {fileID: 99272559336543851}
 --- !u!1 &3769926069708177972

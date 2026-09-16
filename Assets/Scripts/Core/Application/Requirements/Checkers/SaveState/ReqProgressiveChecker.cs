@@ -13,6 +13,11 @@ namespace Core.Application.Requirements.Checkers.SaveState
         protected TEvent _event;
 
         public bool ProgressChanged {get; private set; }
+
+        public ReqProgressiveChecker()
+        {
+            
+        }
         
         protected ReqProgressiveChecker(TEvent @event)
         {
@@ -30,10 +35,10 @@ namespace Core.Application.Requirements.Checkers.SaveState
             _event = @event;
         }
         
-        protected override float GetProgressInternal(TReq req)
+        /*protected override float GetProgressInternal(TReq req)
         {
             return _dataStorage.RequirementsProgress.GetRequirementProgress(req.GetProgressSaveIdent());
-        }
+        }*/
         
         protected int GetEventProgress(TReq req)
         {

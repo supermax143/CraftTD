@@ -3,7 +3,7 @@ using System.Collections;
 using Unity.Mathematics;
 using Unity.Utils.Time;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace Unity.Presentation.Components
 {

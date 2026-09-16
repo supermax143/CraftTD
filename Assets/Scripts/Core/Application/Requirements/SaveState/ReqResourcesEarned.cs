@@ -14,6 +14,6 @@ namespace Core.Application.Requirements.SaveState
         public Resource Resource => _resource;
 
         public override string GetProgressSaveIdent() =>
-            $"{GameEventTypes.ResourcesEarned}_{Resource.Type}_{Resource.Value}";
+            $"{GameEventTypes.ResourcesEarned}_{Resource.Type}";
     }
 }

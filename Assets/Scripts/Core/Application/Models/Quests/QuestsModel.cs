@@ -27,7 +27,7 @@ namespace Core.Application.Models.Quests
         
         private readonly List<QuestItemModel> _dailyQuests = new();
         private QuestItemModel _currentQuest;
-        private readonly Dictionary<Type, object> _eventTypeToRequirementChecker = new();
+        private readonly Dictionary<Type, IRequirementChecker> _reqTypeToRequirementChecker = new();
         
         private QuestsStorageData QuestsData => _dataStorage.Quests;
         public QuestItemModel CurrentQuest => _currentQuest;
@@ -36,15 +36,38 @@ namespace Core.Application.Models.Quests
         
         public void Initialize()
         {
+            InitCheckers();
+            
             _dailyQuests.Clear();
             CheckDailyReset();
             LoadDailyQuests();
             TryStartNextQuest();
+            UpdateCurrentQuestProgress();
+        }
+
+
+        private void InitCheckers()
+        {
+            _reqTypeToRequirementChecker.Add(typeof(ReqUnitDead), _diContainer.Instantiate<ReqUnitDeadChecker>());
             _gameEventsBus.AddListener<UnitDeadEvent>(OnUnitDead);
+            _reqTypeToRequirementChecker.Add(typeof(ReqUnitSpawned), _diContainer.Instantiate<ReqUnitSpawnedChecker>());
             _gameEventsBus.AddListener<SpawnUnitEvent>(OnUnitSpawned);
+            _reqTypeToRequirementChecker.Add(typeof(ReqDamageApplied), _diContainer.Instantiate<ReqDamageAppliedChecker>());
             _gameEventsBus.AddListener<DamageAppliedEvent>(OnDamageApplied);
+            _reqTypeToRequirementChecker.Add(typeof(ReqResourcesEarned), _diContainer.Instantiate<ReqResourcesEarnedChecker>());
             _gameEventsBus.AddListener<ResourcesEarnedEvent>(OnResourcesEarned);
         }
+        private void UpdateCurrentQuestProgress()
+        {
+            if (!_reqTypeToRequirementChecker.TryGetValue(_currentQuest.QuestConfig.Requirement.GetType(),
+                    out var checker))
+            {
+                return;
+            }
+                
+            _currentQuest.UpdateProgress(checker.GetProgress(_currentQuest.QuestConfig.Requirement));
+        }
+        
 
         private void OnUnitDead(UnitDeadEvent @event)
         {
@@ -85,6 +108,7 @@ namespace Core.Application.Models.Quests
             }
             else if(checker.ProgressChanged)
             {
+                _currentQuest.UpdateProgress(checker.GetProgress(_currentQuest.QuestConfig.Requirement));
                 Debug.Log($"Cur quest progress: {checker.GetProgress(_currentQuest.QuestConfig.Requirement)}");
             }
         }
@@ -94,9 +118,9 @@ namespace Core.Application.Models.Quests
             where TReq : ReqEvent, IRequirement
             where TChecker : ReqProgressiveChecker<TReq,TEvent>
         {
-            var eventType = typeof(TEvent);
+            var reqType = typeof(TReq);
             
-            if (_eventTypeToRequirementChecker.TryGetValue(eventType, out var checker))
+            if (_reqTypeToRequirementChecker.TryGetValue(reqType, out var checker))
             {
                 var typedChecker = (TChecker)checker;
                 typedChecker.UpdateEvent(@event);
@@ -104,7 +128,7 @@ namespace Core.Application.Models.Quests
             }
             
             var newChecker = _diContainer.Instantiate<TChecker>(new object[] { @event });
-            _eventTypeToRequirementChecker[eventType] = newChecker;
+            _reqTypeToRequirementChecker[reqType] = newChecker;
             return newChecker;
         }
 
