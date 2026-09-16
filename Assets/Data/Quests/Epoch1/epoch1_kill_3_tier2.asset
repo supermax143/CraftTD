@@ -13,15 +13,13 @@ MonoBehaviour:
   m_Name: epoch1_kill_3_tier2
   m_EditorClassIdentifier: Core.Application::Core.Application.Quests.QuestItemConfig
   _id: epoch1_kill_3_tier2
-  _name: "\u0423\u0431\u0438\u0442\u044C 3 \u0432\u0440\u0430\u0436\u0435\u0441\u043A\u0438\u0445 \u044E\u043D\u0438\u0442\u0430 Tier2"
-  _description: "\u0423\u0431\u0438\u0442\u044C 3 \u0432\u0440\u0430\u0436\u0435\u0441\u043A\u0438\u0445 \u044E\u043D\u0438\u0442\u0430 Tier2"
   _requirement:
     rid: 8232753001600385119
   _reward:
     _rewardType: 0
     _resourceType: 2
     _itemType: 0
-    _count: 100
+    _count: 50
   references:
     version: 2
     RefIds:
@@ -29,5 +27,6 @@ MonoBehaviour:
       type: {class: ReqUnitDead, ns: Core.Application.Requirements.SaveState, asm: Core.Application}
       data:
         _tier: 1
+        _anyTier: 0
         _faction: 1
         _count: 3

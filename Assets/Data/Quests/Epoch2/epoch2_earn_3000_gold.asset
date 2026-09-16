@@ -13,15 +13,13 @@ MonoBehaviour:
   m_Name: epoch2_earn_3000_gold
   m_EditorClassIdentifier: Core.Application::Core.Application.Quests.QuestItemConfig
   _id: epoch2_earn_3000_gold
-  _name: "\u0417\u0430\u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C 3000 \u0437\u043E\u043B\u043E\u0442\u0430"
-  _description: "\u0417\u0430\u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C 3000 \u0437\u043E\u043B\u043E\u0442\u0430"
   _requirement:
     rid: 8232753001600385129
   _reward:
     _rewardType: 0
     _resourceType: 2
     _itemType: 0
-    _count: 200
+    _count: 100
   references:
     version: 2
     RefIds:

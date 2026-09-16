@@ -13,15 +13,13 @@ MonoBehaviour:
   m_Name: epoch4_damage_12000
   m_EditorClassIdentifier: Core.Application::Core.Application.Quests.QuestItemConfig
   _id: epoch4_damage_12000
-  _name: "\u041D\u0430\u043D\u0435\u0441\u0442\u0438 12000 \u0443\u0440\u043E\u043D\u0430 \u0432\u0440\u0430\u0433\u0430\u043C"
-  _description: "\u041D\u0430\u043D\u0435\u0441\u0442\u0438 12000 \u0443\u0440\u043E\u043D\u0430 \u0432\u0440\u0430\u0433\u0430\u043C"
   _requirement:
     rid: 8232753001600385142
   _reward:
     _rewardType: 0
     _resourceType: 2
     _itemType: 0
-    _count: 400
+    _count: 200
   references:
     version: 2
     RefIds:

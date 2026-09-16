@@ -19,7 +19,7 @@ MonoBehaviour:
     _rewardType: 0
     _resourceType: 2
     _itemType: 0
-    _count: 300
+    _count: 150
   references:
     version: 2
     RefIds:

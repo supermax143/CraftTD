@@ -13,15 +13,13 @@ MonoBehaviour:
   m_Name: epoch2_spawn_3_tier3
   m_EditorClassIdentifier: Core.Application::Core.Application.Quests.QuestItemConfig
   _id: epoch2_spawn_3_tier3
-  _name: "\u0417\u0430\u0441\u043F\u0430\u0432\u043D\u0438\u0442\u044C 3 \u044E\u043D\u0438\u0442\u0430 Tier3"
-  _description: "\u0417\u0430\u0441\u043F\u0430\u0432\u043D\u0438\u0442\u044C 3 \u044E\u043D\u0438\u0442\u0430 Tier3"
   _requirement:
     rid: 8232753001600385128
   _reward:
     _rewardType: 0
     _resourceType: 2
     _itemType: 0
-    _count: 200
+    _count: 100
   references:
     version: 2
     RefIds:
