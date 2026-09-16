@@ -20,8 +20,8 @@ namespace Unity.Presentation.HUD
         private AnimatedProgressbar _progressbar;
         [SerializeField]
         private RewardContainer _rewardContainer;
-        [SerializeField]
-        private TMP_Text _stateText;
+        [SerializeField] 
+        private Transform _claimButton;
         
         [Inject] private IQuestsModel _questsModel;
         
@@ -59,8 +59,10 @@ namespace Unity.Presentation.HUD
 
         private void UpdateVIew()
         {
+            bool readyToClaim = _currentQuest.State == QuestState.ReadyToClaim;
+            _claimButton.gameObject.SetActive(readyToClaim);
+            _progressbar.gameObject.SetActive(!readyToClaim);
             _descriptionText.text = _currentQuest.QuestConfig.Id;
-            _stateText.text = _currentQuest.State.ToString();
             _rewardContainer.SetReward(_currentQuest.QuestConfig.Reward);
             UpdateProgress();
         }
