@@ -5,6 +5,7 @@ using TMPro;
 using Unity.Presentation.Components;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils.ColorEffects;
 using Zenject;
 
 namespace Unity.Presentation.HUD
@@ -22,6 +23,8 @@ namespace Unity.Presentation.HUD
         private RewardContainer _rewardContainer;
         [SerializeField] 
         private Transform _claimButton;
+        [SerializeField]
+        private CanvasEffectsController _effectsController;
         
         [Inject] private IQuestsModel _questsModel;
         
@@ -65,6 +68,14 @@ namespace Unity.Presentation.HUD
             _descriptionText.text = _currentQuest.QuestConfig.Id;
             _rewardContainer.SetReward(_currentQuest.QuestConfig.Reward);
             UpdateProgress();
+            if (readyToClaim)
+            {
+                _effectsController.StartBlink();
+            }
+            else
+            {
+                _effectsController.StopBlink();
+            }
         }
 
         private void UpdateProgress()
@@ -84,6 +95,11 @@ namespace Unity.Presentation.HUD
         private void OnDestroy()
         {
             _questsModel.OnCurrentQuestChanged -= CurrentQuestChangedHandler;
+            if (_currentQuest != null)
+            {
+                _currentQuest.OnStateChange -= UpdateVIew;
+                _currentQuest.OnProgressChange -= UpdateProgress;
+            }
         }
     }
 }

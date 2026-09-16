@@ -31,18 +31,9 @@ namespace Utils.ColorEffects
 
         private void OnValidate()
         {
-            _images = GetComponentsInChildren<MaskableGraphic>();
+            _images = GetComponentsInChildren<MaskableGraphic>(true);
         }
 
-        /*private void UpdateMaterial()
-        {
-            if (_currentMaterial != null)
-            {
-                return;
-            }
-            _currentMaterial = new Material(_effectsMaterial);
-            ApplyMaterialToImages(_currentMaterial);
-        }*/
 
         private Material GetMaterial()
         {

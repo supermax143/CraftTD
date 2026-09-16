@@ -1284,8 +1284,8 @@
     "m_ObjectId": "4be2276087894b45b13b4c0803866ea2",
     "m_Title": "Cycle Time",
     "m_Position": {
-        "x": -1228.9998779296875,
-        "y": 291.0
+        "x": -1229.0,
+        "y": 290.9999694824219
     }
 }
 
@@ -1521,7 +1521,7 @@
     "m_StageCapability": 3,
     "m_CustomBinding": "",
     "m_Value": {
-        "x": 0.0,
+        "x": -1.5,
         "y": 0.0
     },
     "m_DefaultValue": {
@@ -2470,7 +2470,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_Space": 1,
+    "m_Space": 0,
     "m_PositionSource": 0
 }
 
