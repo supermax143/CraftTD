@@ -6,7 +6,7 @@ namespace Core.Application.Requirements.Checkers
         where TReq: class, IRequirement
     {
         
-        public bool Check<T>(T requirement) where T : class, IRequirement
+        public virtual bool Check<T>(T requirement) where T : class, IRequirement
         {
             if (requirement is not TReq req)
             {

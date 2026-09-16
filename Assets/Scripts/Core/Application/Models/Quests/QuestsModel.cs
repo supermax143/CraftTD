@@ -83,7 +83,7 @@ namespace Core.Application.Models.Quests
                 QuestsData.SetQuestState(_currentQuest.QuestConfig.Id, QuestState.ReadyToClaim);
                 Debug.Log($"Quest completed: {_currentQuest.QuestConfig.Id}");
             }
-            else
+            else if(checker.ProgressChanged)
             {
                 Debug.Log($"Cur quest progress: {checker.GetProgress(_currentQuest.QuestConfig.Requirement)}");
             }

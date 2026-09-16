@@ -12,11 +12,19 @@ namespace Core.Application.Requirements.Checkers.SaveState
         
         protected TEvent _event;
 
+        public bool ProgressChanged {get; private set; }
+        
         protected ReqProgressiveChecker(TEvent @event)
         {
             _event = @event;
         }
-        
+
+        public override bool Check<T>(T requirement)
+        {
+            ProgressChanged = false;
+            return base.Check(requirement);
+        }
+
         public void UpdateEvent(TEvent @event)
         {
             _event = @event;
@@ -37,6 +45,7 @@ namespace Core.Application.Requirements.Checkers.SaveState
             var currentProgress = GetEventProgress(req);
             var newProgress = currentProgress + increment;
             _dataStorage.RequirementsProgress.SetRequirementProgress(req.GetProgressSaveIdent(), newProgress);
+            ProgressChanged = true;
         }
     }
 }

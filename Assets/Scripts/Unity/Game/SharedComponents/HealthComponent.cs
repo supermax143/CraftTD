@@ -75,7 +75,6 @@ namespace Unity.Game
             OnDamage?.Invoke((int)damage);
             _progressBar.SetValue(_currentHealth);
             _progressBar.gameObject.SetActive(_currentHealth > 0);
-            Debug.Log($"Health: {_currentHealth} / {MaxHealth}");
         }
 
         public void Heal(float healValue)
