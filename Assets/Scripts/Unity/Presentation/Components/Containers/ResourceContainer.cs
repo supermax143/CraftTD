@@ -63,6 +63,7 @@ namespace Unity.Presentation.HUD
             }
             
             _icon.sprite = icon;
+            
         }
         
         public void SetResource(Resource resource)

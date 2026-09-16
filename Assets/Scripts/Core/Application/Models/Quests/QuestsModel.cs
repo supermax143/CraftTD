@@ -191,7 +191,7 @@ namespace Core.Application.Models.Quests
             OnCurrentQuestChanged?.Invoke();
         }
 
-        private void ClaimCurrentQuest()
+        public void ClaimCurrentQuest()
         {
             if (_currentQuest == null || _currentQuest.State != QuestState.ReadyToClaim)
             {
@@ -200,7 +200,7 @@ namespace Core.Application.Models.Quests
             
             var reward = _currentQuest.QuestConfig.Reward;
             GiveReward(reward);
-
+            _currentQuest.SetState(QuestState.Complete);
             QuestsData.SetQuestState(_currentQuest.QuestConfig.Id, QuestState.Complete);
             TryStartNextQuest();
         }

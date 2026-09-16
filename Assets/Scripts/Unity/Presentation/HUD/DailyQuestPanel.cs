@@ -1,5 +1,6 @@
 using System;
 using Core.Application.Models.Quests;
+using Core.Application.Quests;
 using TMPro;
 using Unity.Presentation.Components;
 using UnityEngine;
@@ -37,10 +38,6 @@ namespace Unity.Presentation.HUD
             _currentQuest = quest;
             UpdateVIew();
             quest.OnStateChange += UpdateVIew;
-            
-            /*
-            UpdateProgress();
-            _rewardContainer.SetResource(reward);*/
         }
 
         private void UpdateVIew()
@@ -50,16 +47,15 @@ namespace Unity.Presentation.HUD
             _rewardContainer.SetReward(_currentQuest.QuestConfig.Reward);
         }
 
-        /*public void UpdateProgress(int currentValue)
+        public void ClaimReward()
         {
-            _currentValue = currentValue;
-            UpdateProgress();
+            if (_currentQuest.State != QuestState.ReadyToClaim)
+            {
+                return;
+            }
+            _questsModel.ClaimCurrentQuest();
         }
 
-        private void UpdateProgress()
-        {
-            float progress = _targetValue > 0 ? (float)_currentValue / _targetValue : 0f;
-            _progressbar.SetProgress(progress);
-        }*/
+       
     }
 }

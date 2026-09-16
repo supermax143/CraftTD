@@ -7,5 +7,6 @@ namespace Core.Application.Models.Quests
         event Action OnCurrentQuestChanged;
         QuestItemModel CurrentQuest { get; }
         event Action OnQuestsReset;
+        void ClaimCurrentQuest();
     }
 }
