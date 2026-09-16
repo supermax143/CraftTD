@@ -51,7 +51,7 @@ namespace Unity.Game
                 {
                     return;
                 }
-                _flyToTargetAnimator.FlyToIcon(targetIcon, drop, 2,(drop) =>
+                _flyToTargetAnimator.FlyToIcon(targetIcon, drop, 1,(drop) =>
                 {
                     if (drop == null)
                     {

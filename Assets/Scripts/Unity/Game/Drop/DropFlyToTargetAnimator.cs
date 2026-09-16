@@ -113,7 +113,7 @@ namespace Unity.Game
                         1f,
                         _flightDuration
                     )
-                    .SetEase(Ease.InBack) // InBack дает эффект "всасывания" в UI в конце
+                    .SetEase(Ease.InCubic) // InBack дает эффект "всасывания" в UI в конце
                     .OnComplete(() =>
                     {
                         onComplete.Invoke(flyingObject);
