@@ -142,7 +142,7 @@ namespace Unity.Game
 
             // --- ПОВОРОТ (Look at direction) ---
             // Чтобы дроп летел "носиком" вперед по траектории
-            if (t < 0.99f)
+            /*if (t < 0.99f)
             {
                 // Берем следующую точку на кривой для расчета вектора направления
                 float nextT = Mathf.Min(t + 0.01f, 1f);
@@ -157,7 +157,7 @@ namespace Unity.Game
                     float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                     flyingObject.rotation = Quaternion.Euler(0, 0, angle);
                 }
-            }
+            }*/
         }
 
         /// <summary>

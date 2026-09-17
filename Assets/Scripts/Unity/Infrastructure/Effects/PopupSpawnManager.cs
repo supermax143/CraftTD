@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Unity.Infrastructure.Effects.TextBubbleEffect;
+using Unity.Infrastructure.ResourceManager;
 using Unity.Utils.Time;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -137,7 +138,9 @@ namespace Unity.Infrastructure.Effects
                 if (effectAsset.popupType == popupType)
                 {
                     
-                    GameObject prefab = await effectAsset.effectPrefab.LoadAssetAsync<GameObject>().Task;
+                    GameObject prefab = await effectAsset.
+                        effectPrefab.
+                        LoadAssetReference<GameObject>(effectAsset.effectPrefab.AssetGUID);
                     
                     _prefabCache[popupType] = prefab;
                     break;
