@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 3837733208225909044}
   - component: {fileID: 2126827857486053248}
   m_Layer: 0
-  m_Name: ResourceDrop
+  m_Name: ResourceSceneDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -166,6 +166,12 @@ namespace Unity.Game
         /// </summary>
         private float GetDropSize(Transform obj)
         {
+            if (obj.TryGetComponent<RectTransform>(out var rectTransform))
+            {
+                return rectTransform.GetWorldRect().height;
+            }
+                
+            
             var spriteRenderer = obj.GetComponentInChildren<SpriteRenderer>();
             return spriteRenderer.bounds.size.y;
         }

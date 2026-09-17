@@ -1040,6 +1040,7 @@ GameObject:
   - component: {fileID: 1064528743}
   - component: {fileID: 1064528744}
   - component: {fileID: 1064528745}
+  - component: {fileID: 1064528746}
   m_Layer: 0
   m_Name: DropManager
   m_TagString: Untagged
@@ -1077,6 +1078,9 @@ MonoBehaviour:
   _sceneDropPrefab: {fileID: 8501616313035668715, guid: feaf9d0c36d4c964aa716659bd8ddcc0, type: 3}
   _sceneDropAnimator: {fileID: 1064528744}
   _sceneDropContainer: {fileID: 1508933575}
+  _uiDropPrefab: {fileID: 7216146249459814655, guid: ee06f34b09bb0c04a88c3819c3ee0513, type: 3}
+  _uiDropAnimator: {fileID: 1064528746}
+  _uiDropContainer: {fileID: 1596414409}
   _flyToTargetAnimator: {fileID: 1064528745}
 --- !u!114 &1064528744
 MonoBehaviour:
@@ -1109,6 +1113,23 @@ MonoBehaviour:
   _mainCam: {fileID: 0}
   _flightDuration: 1
   _arcHeight: 1
+--- !u!114 &1064528746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064528741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0806d03ff2e741d40821c8fd56f19f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.UIDropAnimator
+  _minDistance: 50
+  _maxDistance: 100
+  _scatterDuration: 0.3
+  _minDelay: 0
+  _maxDelay: 0.1
 --- !u!4 &1411672256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 22226368363701204, guid: f6dd9f82fe5c2b742b9abe125c84c7d2, type: 3}

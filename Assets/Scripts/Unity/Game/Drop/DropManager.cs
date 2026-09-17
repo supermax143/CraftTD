@@ -21,7 +21,14 @@ namespace Unity.Game
         private SceneDropAnimator _sceneDropAnimator;
         [SerializeField]
         private Transform _sceneDropContainer;
-        
+
+        [SerializeField]
+        private GameObject _uiDropPrefab;
+        [SerializeField]
+        private UIDropAnimator _uiDropAnimator;
+        [SerializeField]
+        private Transform _uiDropContainer;
+
         [SerializeField]
         private DropFlyToTargetAnimator _flyToTargetAnimator;
        
@@ -31,14 +38,15 @@ namespace Unity.Game
         [Inject] private DiContainer _container;
         
         private readonly List<Transform> _dropTransforms = new List<Transform>();
+        private readonly List<RectTransform> _uiDropTransforms = new List<RectTransform>();
         
         private void Update()
         {
             if (Pointer.current.press.wasPressedThisFrame)
             {
                 Vector2 inputPosition = Camera.main.ScreenToWorldPoint(Pointer.current.position.ReadValue());
-                //ShowDrop( new Resource(ResourceType.Money, 1)  ,inputPosition);
-                _effectSpawnManager.SpawnRandomHitBubble(inputPosition, transform);
+                ShowUiDrop( new Resource(ResourceType.Money, 10)  ,inputPosition);
+                //_effectSpawnManager.SpawnRandomHitBubble(inputPosition, transform);
                 // _effectSpawnManager.SpawnRandomExplosion(inputPosition, transform);
             }
         }
@@ -69,7 +77,43 @@ namespace Unity.Game
                     Destroy(drop.gameObject);
                 });
             });
-            
+
+        }
+
+        public void ShowUiDrop(Resource resource, Vector2 position)
+        {
+            int dropCount = Mathf.Max(1, resource.Value / 1);
+            var dropTarget = _dropTargets.FirstOrDefault(t => t.ResourceType == resource.Type);
+            Resource resourcePerDrop = new Resource(resource.Type, resource.Value / dropCount);
+
+            for (int i = 0; i < dropCount; i++)
+            {
+                var drop = _container.InstantiatePrefabForComponent<ResourceImage>(_uiDropPrefab, _uiDropContainer);
+                var rectTransform = drop.GetComponent<RectTransform>();
+                rectTransform.anchoredPosition = position;
+                drop.SetResourceType(resource.Type);
+                rectTransform.localScale = Vector3.one * 0.5f;
+
+                _uiDropTransforms.Add(rectTransform);
+
+                _uiDropAnimator.Show(rectTransform, (target) =>
+                {
+                    if (rectTransform == null)
+                    {
+                        return;
+                    }
+                    _flyToTargetAnimator.FlyToIcon(dropTarget.GetTargetRect(), rectTransform.transform, 0.2f, (dropTransform) =>
+                    {
+                        if (dropTransform == null)
+                        {
+                            return;
+                        }
+                        dropTarget.AddResource(resourcePerDrop);
+                        _uiDropTransforms.Remove(rectTransform);
+                        Destroy(dropTransform.gameObject);
+                    });
+                });
+            }
         }
         
         public void Reset()
@@ -83,6 +127,13 @@ namespace Unity.Game
             {
                 var drop = _dropTransforms[0];
                 _dropTransforms.RemoveAt(0);
+                Destroy(drop.gameObject);
+            }
+
+            while (_uiDropTransforms.Count > 0)
+            {
+                var drop = _uiDropTransforms[0];
+                _uiDropTransforms.RemoveAt(0);
                 Destroy(drop.gameObject);
             }
         }
