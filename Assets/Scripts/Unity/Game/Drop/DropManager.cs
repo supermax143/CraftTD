@@ -24,6 +24,7 @@ namespace Unity.Game
         
         [Inject] private IEnumerable<IDropTarget> _dropTargets;
         [Inject] private PopupSpawnManager _effectSpawnManager;
+        [Inject] private DiContainer _container;
         
         private readonly List<Transform> _dropTransforms = new List<Transform>();
         
@@ -40,18 +41,21 @@ namespace Unity.Game
 
         public void ShowDrop(Resource resource, Vector2 position, Vector2 direction = default)
         {
-            GameObject rewardView = Instantiate(_rewardMoneyView, position, Quaternion.identity);
-            var drop = rewardView.transform;
-            drop.localScale = Vector3.one * .5f;
+            //GameObject drop = Instantiate(_rewardMoneyView, position, Quaternion.identity);
+            var drop = _container.InstantiatePrefabForComponent<ResourceSprite>(_rewardMoneyView);
+            drop.transform.position = position;
+            drop.SetResourceType(resource.Type);
+            var dropTransform = drop.transform;
+            dropTransform.localScale = Vector3.one * .5f;
             var targetIcon = _dropTargets.FirstOrDefault().GetTargetRect();
-            _dropTransforms.Add(drop);
-            _dropAnimator.Show(drop, direction, (target) =>
+            _dropTransforms.Add(dropTransform);
+            _dropAnimator.Show(dropTransform, direction, (target) =>
             {
-                if (drop == null)
+                if (dropTransform == null)
                 {
                     return;
                 }
-                _flyToTargetAnimator.FlyToIcon(targetIcon, drop, 1,(drop) =>
+                _flyToTargetAnimator.FlyToIcon(targetIcon, dropTransform, 1,(drop) =>
                 {
                     if (drop == null)
                     {
