@@ -14,7 +14,7 @@ namespace Unity.Presentation.HUD
     public class ResourceContainer : MonoBehaviour, IDropTarget
     {
         [SerializeField]
-        private ResourceIcon _icon;
+        private ResourceImage _icon;
         [SerializeField]
         private AnimatedCounter _text;
         [SerializeField] 

@@ -12,9 +12,9 @@ namespace Unity.Presentation.HUD
     /// <summary>
     /// Компонент для отображения иконки ресурса с асинхронной загрузкой
     /// </summary>
-    public class ResourceIcon : MonoBehaviour
+    public class ResourceImage : ResourceIconBase<Image>
     {
-        [SerializeField]
+        /*[SerializeField]
         private Image _icon;
         
         [Inject] private IResourceManager _resourceManager;
@@ -54,6 +54,8 @@ namespace Unity.Presentation.HUD
             _icon.sprite = icon;
         }
 
+        
+        
         public RectTransform GetRect()
         {
             return _icon.rectTransform;
@@ -63,6 +65,15 @@ namespace Unity.Presentation.HUD
         {
             _iconUpdateCts?.Cancel();
             _iconUpdateCts?.Dispose();
+        }*/
+        protected override void UpdateSprite(Sprite sprite)
+        {
+            _icon.sprite = sprite;
+        }
+
+        public override RectTransform GetRect()
+        {
+            return _icon.rectTransform;
         }
     }
 }
