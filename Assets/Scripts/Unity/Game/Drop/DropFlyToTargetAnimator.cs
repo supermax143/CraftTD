@@ -54,13 +54,13 @@ namespace Unity.Game
         }
 
         /// <summary>
-        /// Запускает полет дропа в UI иконку
+        /// Запускает полет дропа в UI иконку (из world space в UI)
         /// </summary>
         public void FlyToIcon(RectTransform targetIcon,Transform flyingObject, float delay, Action<Transform> onComplete)
         {
             CacheIconWorldHeight(targetIcon);
             _initialScale = flyingObject.localScale;
-            
+
             // 1. Получаем целевую позицию в мировых координатах
             Vector3 targetWorldPos;
             if (_canvas.renderMode == RenderMode.ScreenSpaceCamera)
@@ -88,7 +88,7 @@ namespace Unity.Game
 
             // Убиваем старые твины
             DOTween.Kill(flyingObject);
-            
+
             // Сбрасываем состояние перед полетом
             flyingObject.localScale = _initialScale;
             flyingObject.rotation = Quaternion.identity;
@@ -100,12 +100,13 @@ namespace Unity.Game
                 spriteRenderer.sortingLayerName = "Windows";
                 spriteRenderer.sortingOrder = 100;
             }*/
-            
+
+
 
             var seq = DOTween.Sequence();
 
-            
-            
+
+
             seq.Append(
                 DOTween.To(
                         () => 0f,
@@ -119,6 +120,79 @@ namespace Unity.Game
                         onComplete.Invoke(flyingObject);
                     })).SetDelay(delay);
 
+        }
+
+        /// <summary>
+        /// Запускает полет UI дропа в UI иконку (UI-to-UI)
+        /// </summary>
+        public void FlyUiToIcon(RectTransform targetIcon, RectTransform flyingObject, float delay, Action<RectTransform> onComplete)
+        {
+            _initialScale = flyingObject.localScale;
+
+            // Получаем целевую позицию в anchoredPosition
+            Vector2 targetAnchoredPos = GetTargetAnchoredPosition(targetIcon, flyingObject);
+
+            // Рассчитываем целевой масштаб
+            float dropHeight = flyingObject.rect.height * flyingObject.lossyScale.y;
+            float targetHeight = targetIcon.rect.height * targetIcon.lossyScale.y;
+            float scaleFactor = targetHeight / dropHeight;
+            Vector3 targetScale = new Vector3(scaleFactor, scaleFactor, 1f);
+
+            // Настраиваем точки для кривой Безье
+            Vector2 startPos = flyingObject.anchoredPosition;
+            Vector2 midPoint = (startPos + targetAnchoredPos) / 2f + Vector2.up * _arcHeight * 50f;
+
+            // Убиваем старые твины
+            DOTween.Kill(flyingObject);
+
+            // Сбрасываем состояние перед полетом
+            flyingObject.localScale = _initialScale;
+            flyingObject.rotation = Quaternion.identity;
+
+            var seq = DOTween.Sequence();
+
+            seq.Append(
+                DOTween.To(
+                        () => 0f,
+                        t => UpdateUiFlight(flyingObject, t, startPos, midPoint, targetAnchoredPos, targetScale),
+                        1f,
+                        _flightDuration
+                    )
+                    .SetEase(Ease.InCubic)
+                    .OnComplete(() =>
+                    {
+                        onComplete.Invoke(flyingObject);
+                    })).SetDelay(delay);
+        }
+
+        private void UpdateUiFlight(RectTransform flyingObject, float t, Vector2 p0, Vector2 p1, Vector2 p2, Vector3 targetScale)
+        {
+            float oneMinusT = 1f - t;
+            Vector2 pos = oneMinusT * oneMinusT * p0
+                        + 2f * oneMinusT * t * p1
+                        + t * t * p2;
+
+            flyingObject.anchoredPosition = pos;
+            flyingObject.localScale = Vector3.Lerp(_initialScale, targetScale, t);
+        }
+
+        private Vector2 GetTargetAnchoredPosition(RectTransform target, RectTransform flyingObject)
+        {
+            RectTransform flyingParent = flyingObject.parent as RectTransform;
+
+            if (target.parent == flyingParent)
+            {
+                return target.anchoredPosition;
+            }
+
+            // Конвертируем позицию если родители разные
+            Vector2 localPos;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                flyingParent,
+                RectTransformUtility.WorldToScreenPoint(_mainCam, target.position),
+                _mainCam,
+                out localPos);
+            return localPos;
         }
 
         /// <summary>

@@ -45,7 +45,7 @@ namespace Unity.Game
             if (Pointer.current.press.wasPressedThisFrame)
             {
                 Vector2 inputPosition = Camera.main.ScreenToWorldPoint(Pointer.current.position.ReadValue());
-                ShowUiDrop( new Resource(ResourceType.Money, 10)  ,inputPosition);
+                ShowSceneDrop(new Resource(ResourceType.Money, 10)  ,inputPosition);
                 //_effectSpawnManager.SpawnRandomHitBubble(inputPosition, transform);
                 // _effectSpawnManager.SpawnRandomExplosion(inputPosition, transform);
             }
@@ -102,7 +102,7 @@ namespace Unity.Game
                     {
                         return;
                     }
-                    _flyToTargetAnimator.FlyToIcon(dropTarget.GetTargetRect(), rectTransform.transform, 0.2f, (dropTransform) =>
+                    _flyToTargetAnimator.FlyUiToIcon(dropTarget.GetTargetRect(), rectTransform, 0, (dropTransform) =>
                     {
                         if (dropTransform == null)
                         {
