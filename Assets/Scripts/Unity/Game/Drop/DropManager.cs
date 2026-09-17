@@ -45,7 +45,7 @@ namespace Unity.Game
             if (Pointer.current.press.wasPressedThisFrame)
             {
                 Vector2 inputPosition = Camera.main.ScreenToWorldPoint(Pointer.current.position.ReadValue());
-                ShowSceneDrop(new Resource(ResourceType.Money, 10)  ,inputPosition);
+                ShowUiDrop(new Resource(ResourceType.Money, 10)  ,inputPosition);
                 //_effectSpawnManager.SpawnRandomHitBubble(inputPosition, transform);
                 // _effectSpawnManager.SpawnRandomExplosion(inputPosition, transform);
             }
@@ -90,9 +90,22 @@ namespace Unity.Game
             {
                 var drop = _container.InstantiatePrefabForComponent<ResourceImage>(_uiDropPrefab, _uiDropContainer);
                 var rectTransform = drop.GetComponent<RectTransform>();
-                rectTransform.anchoredPosition = position;
+
+                Vector2 screenPosition = Camera.main.WorldToScreenPoint(position);
+                /*
+                var canvas = _uiDropContainer.GetComponent<Canvas>();
+                Camera eventCamera = canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
+                */
+
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                    _uiDropContainer as RectTransform,
+                    screenPosition,
+                    null,
+                    out Vector2 localPosition);
+
+                rectTransform.anchoredPosition = localPosition;
                 drop.SetResourceType(resource.Type);
-                rectTransform.localScale = Vector3.one * 0.5f;
+                //rectTransform.localScale = Vector3.one * 0.5f;
 
                 _uiDropTransforms.Add(rectTransform);
 
