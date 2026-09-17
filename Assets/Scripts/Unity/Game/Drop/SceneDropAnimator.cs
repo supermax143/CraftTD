@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Unity.Game
 {
-    public class DropAnimator : MonoBehaviour
+    public class SceneDropAnimator : MonoBehaviour
     {
         
         [SerializeField]

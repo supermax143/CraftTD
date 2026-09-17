@@ -8,5 +8,6 @@ namespace Unity.Presentation.HUD
         RectTransform GetTargetRect();
         void AddResource(Resource resource);
         void Clear();
+        ResourceType ResourceType { get; }
     }
 }

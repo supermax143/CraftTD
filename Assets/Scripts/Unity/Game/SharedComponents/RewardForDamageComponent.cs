@@ -44,7 +44,7 @@ namespace Unity.Game
             if (reward > 0)
             {
                 _rewardAggregator.AddMoney(reward);
-                _dropManager.ShowDrop(new Resource(ResourceType.Money, reward), _dropTransform.position, direction);
+                _dropManager.ShowSceneDrop(new Resource(ResourceType.Money, reward), _dropTransform.position, direction);
             }
         }
         

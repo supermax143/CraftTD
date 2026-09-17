@@ -40,6 +40,7 @@ namespace Unity.Presentation.HUD
             _resource = resource;
             if (resourceChanged)
             {
+                _resourceType = _resource.Type;
                 _icon.SetResourceType(_resource.Type);
             }
             UpdateCount();

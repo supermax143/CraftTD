@@ -6,18 +6,22 @@ using Unity.Infrastructure.Effects;
 using Unity.Presentation.HUD;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Unity.Game
 {
     
-    [RequireComponent(typeof(DropAnimator))]
+    [RequireComponent(typeof(SceneDropAnimator))]
     public class DropManager : MonoBehaviour
     {
         [SerializeField]
-        private GameObject _rewardMoneyView;
+        private GameObject _sceneDropPrefab;
         [SerializeField]
-        private DropAnimator _dropAnimator;
+        private SceneDropAnimator _sceneDropAnimator;
+        [SerializeField]
+        private Transform _sceneDropContainer;
+        
         [SerializeField]
         private DropFlyToTargetAnimator _flyToTargetAnimator;
        
@@ -39,29 +43,28 @@ namespace Unity.Game
             }
         }
 
-        public void ShowDrop(Resource resource, Vector2 position, Vector2 direction = default)
+        public void ShowSceneDrop(Resource resource, Vector2 position, Vector2 direction = default)
         {
-            //GameObject drop = Instantiate(_rewardMoneyView, position, Quaternion.identity);
-            var drop = _container.InstantiatePrefabForComponent<ResourceSprite>(_rewardMoneyView);
+            var drop = _container.InstantiatePrefabForComponent<ResourceSprite>(_sceneDropPrefab);
             drop.transform.position = position;
             drop.SetResourceType(resource.Type);
             var dropTransform = drop.transform;
             dropTransform.localScale = Vector3.one * .5f;
-            var targetIcon = _dropTargets.FirstOrDefault().GetTargetRect();
+            var dropTarget = _dropTargets.FirstOrDefault( t => t.ResourceType == resource.Type);
             _dropTransforms.Add(dropTransform);
-            _dropAnimator.Show(dropTransform, direction, (target) =>
+            _sceneDropAnimator.Show(dropTransform, direction, (target) =>
             {
                 if (dropTransform == null)
                 {
                     return;
                 }
-                _flyToTargetAnimator.FlyToIcon(targetIcon, dropTransform, 1,(drop) =>
+                _flyToTargetAnimator.FlyToIcon(dropTarget.GetTargetRect(), dropTransform, 1,(drop) =>
                 {
                     if (drop == null)
                     {
                         return;
                     }
-                    _dropTargets.FirstOrDefault().AddResource(resource);
+                    dropTarget.AddResource(resource);
                     _dropTransforms.Remove(drop);
                     Destroy(drop.gameObject);
                 });

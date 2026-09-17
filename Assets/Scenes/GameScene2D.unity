@@ -1074,8 +1074,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af815f6ca6114063bf175612abc38bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.DropManager
-  _rewardMoneyView: {fileID: 8501616313035668715, guid: feaf9d0c36d4c964aa716659bd8ddcc0, type: 3}
-  _dropAnimator: {fileID: 1064528744}
+  _sceneDropPrefab: {fileID: 8501616313035668715, guid: feaf9d0c36d4c964aa716659bd8ddcc0, type: 3}
+  _sceneDropAnimator: {fileID: 1064528744}
+  _sceneDropContainer: {fileID: 1064528742}
   _flyToTargetAnimator: {fileID: 1064528745}
 --- !u!114 &1064528744
 MonoBehaviour:
@@ -1249,6 +1250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Installers.GameSceneInstaller
   _battleDropTargets:
   - {fileID: 5277018471600209882}
+  - {fileID: 1830363066}
   _hud: {fileID: 4813587930956472884}
 --- !u!1 &1596414408
 GameObject:
@@ -1285,6 +1287,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1830363066 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4313983031745209836, guid: 35c7dcd5000e5ac409cda60ee5b88e4e, type: 3}
+  m_PrefabInstance: {fileID: 5277018471600209881}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690411c9bc0a490580f87de5edaf498f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.ResourceContainer
 --- !u!1 &1849812277
 GameObject:
   m_ObjectHideFlags: 0
