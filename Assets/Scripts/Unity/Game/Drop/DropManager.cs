@@ -45,8 +45,9 @@ namespace Unity.Game
             if (Pointer.current.press.wasPressedThisFrame)
             {
                 Vector2 inputPosition = Camera.main.ScreenToWorldPoint(Pointer.current.position.ReadValue());
-                ShowUiDrop(new Resource(ResourceType.Money, 10)  ,inputPosition);
-                //_effectSpawnManager.SpawnRandomHitBubble(inputPosition, transform);
+                // ShowUiDrop(new Resource(ResourceType.Money, 100)  ,inputPosition);
+                // ShowSceneDrop(new Resource(ResourceType.Money, 100)  ,inputPosition);
+                _effectSpawnManager.SpawnRandomHitBubble(inputPosition, transform);
                 // _effectSpawnManager.SpawnRandomExplosion(inputPosition, transform);
             }
         }
@@ -82,7 +83,8 @@ namespace Unity.Game
 
         public void ShowUiDrop(Resource resource, Vector2 position)
         {
-            int dropCount = Mathf.Max(1, resource.Value / 1);
+            
+            int dropCount = Mathf.Max(1, Mathf.Min(resource.Value, 20));
             var dropTarget = _dropTargets.FirstOrDefault(t => t.ResourceType == resource.Type);
             Resource resourcePerDrop = new Resource(resource.Type, resource.Value / dropCount);
 
@@ -133,6 +135,10 @@ namespace Unity.Game
         {
             foreach (var target in _dropTargets)
             {
+                if (!target.IsTemp)
+                {
+                    continue;
+                }
                 target.Clear();
             }
 

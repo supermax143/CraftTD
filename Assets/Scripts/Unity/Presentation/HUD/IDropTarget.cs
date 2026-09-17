@@ -9,5 +9,6 @@ namespace Unity.Presentation.HUD
         void AddResource(Resource resource);
         void Clear();
         ResourceType ResourceType { get; }
+        bool IsTemp { get; }
     }
 }

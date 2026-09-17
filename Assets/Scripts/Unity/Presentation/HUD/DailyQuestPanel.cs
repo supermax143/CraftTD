@@ -1,7 +1,9 @@
 using System;
+using Core.Application.Models;
 using Core.Application.Models.Quests;
 using Core.Application.Quests;
 using TMPro;
+using Unity.Game;
 using Unity.Presentation.Components;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +29,7 @@ namespace Unity.Presentation.HUD
         private CanvasEffectsController _effectsController;
         
         [Inject] private IQuestsModel _questsModel;
+        [Inject] private DropManager _dropManager;
         
         private QuestItemModel _currentQuest;
 
@@ -90,6 +93,15 @@ namespace Unity.Presentation.HUD
                 return;
             }
             _questsModel.ClaimCurrentQuest();
+            var reward = _currentQuest.QuestConfig.Reward;
+            var resource = new Resource(reward.ResourceType, reward.Count);
+            
+            Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(
+                null,
+                _rewardContainer.transform.position
+            );
+            var pos = Camera.main.ScreenToWorldPoint(screenPoint);
+            _dropManager.ShowUiDrop(resource, pos);
         }
 
         private void OnDestroy()

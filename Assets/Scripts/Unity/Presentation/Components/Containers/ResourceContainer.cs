@@ -19,9 +19,13 @@ namespace Unity.Presentation.HUD
         private AnimatedCounter _text;
         [SerializeField] 
         private ResourceType _resourceType;
+        [SerializeField]
+        private bool _isTemp;
         
         private Resource _resource;
         public ResourceType ResourceType => _resourceType;
+
+        public bool IsTemp => _isTemp;
 
 
         public void Awake()
