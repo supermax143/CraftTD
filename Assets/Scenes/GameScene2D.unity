@@ -618,6 +618,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Infrastructure.Camera.CameraShaker
   _shakeDuration: 0.2
   _maxShakeDelta: {x: 0.2, y: 0.2}
+--- !u!114 &106834433 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5404298396068943801, guid: 35c7dcd5000e5ac409cda60ee5b88e4e, type: 3}
+  m_PrefabInstance: {fileID: 5277018471600209881}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 690411c9bc0a490580f87de5edaf498f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.ResourceContainer
 --- !u!1 &166792674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,6 +1543,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 17063989}
     m_Modifications:
+    - target: {fileID: -4359922025428304786, guid: 35c7dcd5000e5ac409cda60ee5b88e4e, type: 3}
+      propertyPath: _resourceContainers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4359922025428304786, guid: 35c7dcd5000e5ac409cda60ee5b88e4e, type: 3}
+      propertyPath: '_resourceContainers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1830363066}
+    - target: {fileID: -4359922025428304786, guid: 35c7dcd5000e5ac409cda60ee5b88e4e, type: 3}
+      propertyPath: '_resourceContainers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 106834433}
     - target: {fileID: 506903585068308212, guid: 35c7dcd5000e5ac409cda60ee5b88e4e, type: 3}
       propertyPath: m_Alpha
       value: 1

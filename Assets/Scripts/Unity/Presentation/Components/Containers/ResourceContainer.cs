@@ -22,11 +22,14 @@ namespace Unity.Presentation.HUD
         [SerializeField]
         private bool _isTemp;
         
+        
         private Resource _resource;
         public ResourceType ResourceType => _resourceType;
 
         public bool IsTemp => _isTemp;
 
+        
+        
 
         public void Awake()
         {
@@ -36,7 +39,10 @@ namespace Unity.Presentation.HUD
             }
             _resource = new Resource(_resourceType, _resource.Value);
             _icon.SetResourceType(_resourceType);
+            
         }
+        
+        
         
         public void SetResource(Resource resource)
         {

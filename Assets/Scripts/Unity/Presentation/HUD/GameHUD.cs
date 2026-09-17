@@ -32,8 +32,8 @@ namespace Unity.Presentation.HUD
         private Transform _buttonExit;
         [SerializeField]
         private Transform _buttonSpeedup;
-        
-        
+        [SerializeField] 
+        private ResourceContainer[] _resourceContainers;
         
         [Inject] private IInventoryModel _inventory;
         [Inject] private IMainModel _mainModel;
@@ -64,13 +64,17 @@ namespace Unity.Presentation.HUD
 
         private void UpdateResources()
         {
-            _moneyContainer.SetValue(_inventory.GetResourceCount(_moneyContainer.ResourceType));
-            _crystalContainer.SetValue(_inventory.GetResourceCount(_crystalContainer.ResourceType));
+            /*_moneyContainer.SetValue(_inventory.GetResourceCount(_moneyContainer.ResourceType));
+            _crystalContainer.SetValue(_inventory.GetResourceCount(_crystalContainer.ResourceType));*/
+            foreach (var container in _resourceContainers)
+            {
+                container.SetValue(_inventory.GetResourceCount(container.ResourceType));
+            }
         }
         
         private void OnResourceChanged(ResourceType resourceType)
         {
-            if (resourceType == _moneyContainer.ResourceType)
+            /*if (resourceType == _moneyContainer.ResourceType)
             {
                 _moneyContainer.SetValue(_inventory.GetResourceCount(resourceType));
             }
@@ -78,6 +82,14 @@ namespace Unity.Presentation.HUD
             if (resourceType == _crystalContainer.ResourceType)
             {
                 _crystalContainer.SetValue(_inventory.GetResourceCount(resourceType));
+            }*/
+            foreach (var container in _resourceContainers)
+            {
+                if (container.ResourceType != resourceType)
+                {
+                    continue;
+                }
+                container.SetValue(_inventory.GetResourceCount(container.ResourceType));
             }
         }
 
