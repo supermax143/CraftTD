@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 690411c9bc0a490580f87de5edaf498f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.ResourceContainer
-  _icon: {fileID: 8974452680638709366}
+  _icon: {fileID: 7087013548899210141}
   _text: {fileID: 2976621303246520557}
   _resourceType: 1
 --- !u!114 &2976621303246520557
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
+  m_ActiveFontFeatures: 6e72656bu
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 8580620924298523623}
   - component: {fileID: 2378336106633949844}
   - component: {fileID: 8974452680638709366}
+  - component: {fileID: 7087013548899210141}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -307,3 +308,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7087013548899210141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3052693332936015445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c6d20eb3361a1940acc7e2041c31f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.Presentation.HUD.ResourceIcon
+  _icon: {fileID: 8974452680638709366}

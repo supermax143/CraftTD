@@ -1,14 +1,8 @@
 using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Core.Application.Interfaces;
 using Core.Application.Models;
-using Cysharp.Threading.Tasks;
 using Shared.Utils;
 using TMPro;
-using Unity.Infrastructure.ResourceManager;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 using Zombies;
 
@@ -20,17 +14,13 @@ namespace Unity.Presentation.HUD
     public class ResourceContainer : MonoBehaviour, IDropTarget
     {
         [SerializeField]
-        private Image _icon;
+        private ResourceIcon _icon;
         [SerializeField]
         private AnimatedCounter _text;
         [SerializeField] 
         private ResourceType _resourceType;
         
-        
-        [Inject] private IResourceManager _resourceManager;
-        
         private Resource _resource;
-        private CancellationTokenSource _iconUpdateCts;
         public ResourceType ResourceType => _resourceType;
 
 
@@ -41,34 +31,7 @@ namespace Unity.Presentation.HUD
                 return;
             }
             _resource = new Resource(_resourceType, _resource.Value);
-            UpdateIcon().Forget();
-        }
-
-        
-        private async UniTask UpdateIcon()
-        {
-            _iconUpdateCts?.Cancel();
-            _iconUpdateCts?.Dispose();
-            
-            _iconUpdateCts = new CancellationTokenSource();
-            var token = _iconUpdateCts.Token;
-            
-            
-            
-            if (!_resourceManager.TryGetResourceIcon(_resource.Type, out var iconRef))
-            {
-                Debug.LogError($"{GetType().Name} has no icon for {_resourceType}");
-                return;
-            }
-            
-            var icon = await iconRef
-                .LoadAssetReference<Sprite>(iconRef.AssetGUID)
-                .AsUniTask()
-                .AttachExternalCancellation<Sprite>(token);
-            
-            
-            _icon.sprite = icon;
-            
+            _icon.SetResourceType(_resourceType);
         }
         
         public void SetResource(Resource resource)
@@ -77,7 +40,7 @@ namespace Unity.Presentation.HUD
             _resource = resource;
             if (resourceChanged)
             {
-                UpdateIcon().Forget();
+                _icon.SetResourceType(_resource.Type);
             }
             UpdateCount();
         }
@@ -95,7 +58,7 @@ namespace Unity.Presentation.HUD
 
         public RectTransform GetTargetRect()
         {
-            return _icon.rectTransform;
+            return _icon.GetRect();
         }
         
         public void AddResource(Resource resource)
@@ -108,12 +71,6 @@ namespace Unity.Presentation.HUD
         {
             _resource.Value = 0;
             UpdateCount();
-        }
-
-        private void OnDestroy()
-        {
-            _iconUpdateCts?.Cancel();
-            _iconUpdateCts?.Dispose();
         }
     }
 }
