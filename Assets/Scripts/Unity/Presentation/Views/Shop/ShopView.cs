@@ -1,10 +1,12 @@
 using System;
+using System.Linq;
 using Core.Application.Info.Shop;
 using Core.Application.Interfaces;
 using Core.Application.Interfaces.Windows;
 using Core.Application.Models;
 using Cysharp.Threading.Tasks;
 using TMPro;
+using Unity.Game;
 using Unity.Infrastructure.Purchases;
 using Unity.Infrastructure.ResourceManager;
 using Unity.Infrastructure.Windows;
@@ -24,7 +26,9 @@ namespace Unity.Presentation.Windows
     {
         [SerializeField] private Transform _packsContainer;
         [SerializeField] private Transform _itemsContainer;
-        
+
+        private readonly System.Collections.Generic.List<ShopItemView> _shopItemViews = new();
+
         [Inject] private IMainModel _model;
         [Inject] private IPurchasesController _purchasesController;
         [Inject] private DiContainer _container;
@@ -32,12 +36,16 @@ namespace Unity.Presentation.Windows
         [Inject] private IShopModel _shop;
         [Inject] private IResourceManager _resourceManager;
         [Inject] private IWindowsController _windows;
+        [Inject] private DropManager _dropManager;
         
         public override void Initialize()
         {
+            _purchasesController.OnPurchaseComplete += OnPurchaseComplete;
             _inventory.OnResourceChanged += OnResourceChanged;
             BuildItems().Forget();
         }
+
+        
 
         private async UniTask BuildItems()
         {
@@ -48,6 +56,7 @@ namespace Unity.Presentation.Windows
                 var view = _container.InstantiatePrefabForComponent<ShopItemView>(prefab, parent);
                 view.OnBuyClicked += OnBuyClicked;
                 view.Initialize(config);
+                _shopItemViews.Add(view);
             }
             LayoutRebuilder.ForceRebuildLayoutImmediate(_itemsContainer.parent as RectTransform);
         }
@@ -86,18 +95,37 @@ namespace Unity.Presentation.Windows
                         _purchasesController.BuyProduct(shopItem.Id);
                     };
                 });
+                return;
             }
 
             _shop.BuyWithGameCurrency(item.Id);
+            ShowDrop(item);
         }
 
-        private void OnItemPurchased(string itemId)
+
+        public void ShowDrop(ShopItemConfig item)
         {
-           
+            var itemView = GetShopItemView(item.Id);
+            Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(
+                null,
+                itemView.transform.position
+            );
+            var pos = Camera.main.ScreenToWorldPoint(screenPoint);
+            _dropManager.ShowUiDrop(item.Rewards.First().ToResource(), pos);
+        }
+        
+        private void OnPurchaseComplete(ShopItemConfig item)
+        {
+            ShowDrop(item);
         }
 
         private void OnResourceChanged(ResourceType resourceType)
         {
+        }
+
+        public ShopItemView GetShopItemView(string itemId)
+        {
+            return _shopItemViews.Find(view => view.Config.Id == itemId);
         }
 
         private void OnDestroy()

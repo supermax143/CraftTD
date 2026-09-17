@@ -93,8 +93,7 @@ namespace Unity.Presentation.HUD
                 return;
             }
             _questsModel.ClaimCurrentQuest();
-            var reward = _currentQuest.QuestConfig.Reward;
-            var resource = new Resource(reward.ResourceType, reward.Count);
+            var resource = _currentQuest.QuestConfig.Reward.ToResource();
             
             Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(
                 null,

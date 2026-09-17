@@ -34,6 +34,8 @@ namespace Unity.Presentation.Components
         
         private ShopItemConfig _config;
 
+        public ShopItemConfig Config => _config;
+
         public void Initialize(ShopItemConfig config)
         {
             _config = config;

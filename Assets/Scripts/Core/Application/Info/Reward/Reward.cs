@@ -33,5 +33,10 @@ namespace Core.Application.Info.Reward
         {
             return new Reward(RewardType.Item, ResourceType.Food, 0, inventoryItemType);
         }
+
+        public Resource ToResource()
+        {
+            return new Resource(ResourceType, Count);
+        }
     }
 }
