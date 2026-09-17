@@ -45,7 +45,7 @@ namespace Unity.Game
 
         public void ShowSceneDrop(Resource resource, Vector2 position, Vector2 direction = default)
         {
-            var drop = _container.InstantiatePrefabForComponent<ResourceSprite>(_sceneDropPrefab);
+            var drop = _container.InstantiatePrefabForComponent<ResourceSprite>(_sceneDropPrefab, position, Quaternion.identity,_sceneDropContainer);
             drop.transform.position = position;
             drop.SetResourceType(resource.Type);
             var dropTransform = drop.transform;

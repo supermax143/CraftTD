@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.DropManager
   _sceneDropPrefab: {fileID: 8501616313035668715, guid: feaf9d0c36d4c964aa716659bd8ddcc0, type: 3}
   _sceneDropAnimator: {fileID: 1064528744}
-  _sceneDropContainer: {fileID: 1064528742}
+  _sceneDropContainer: {fileID: 1508933575}
   _flyToTargetAnimator: {fileID: 1064528745}
 --- !u!114 &1064528744
 MonoBehaviour:
@@ -1170,6 +1170,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Infrastructure.Views.ViewsController
   _viewsContainer: {fileID: 727857450}
+--- !u!4 &1508933575 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4221937445993857169, guid: f6dd9f82fe5c2b742b9abe125c84c7d2, type: 3}
+  m_PrefabInstance: {fileID: 4192125743556613102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1584959696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,7 +1573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3394357025959188179, guid: 35c7dcd5000e5ac409cda60ee5b88e4e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 128
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3394357025959188179, guid: 35c7dcd5000e5ac409cda60ee5b88e4e, type: 3}
       propertyPath: m_SizeDelta.y
