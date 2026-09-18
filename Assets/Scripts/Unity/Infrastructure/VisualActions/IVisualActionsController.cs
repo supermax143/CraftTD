@@ -5,6 +5,6 @@ namespace Unity.Infrastructure.VisualActions
 {
     public interface IVisualActionsController
     {
-        void AddAction(IActionData actionData);
+        void AddAction(IActionData actionData, bool instant = false);
     }
 }

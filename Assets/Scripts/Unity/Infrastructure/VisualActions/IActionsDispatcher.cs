@@ -5,7 +5,7 @@ namespace Unity.Infrastructure.VisualActions
 {
     public interface IActionsDispatcher
     {
-        event Action<IActionData> OnActionAdded;
-        void AddAction(IActionData data);
+        event Action<IActionData, bool> OnActionAdded;
+        void AddAction(IActionData data, bool instant = false);
     }
 }

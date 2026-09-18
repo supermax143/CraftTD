@@ -36,13 +36,19 @@ namespace Unity.Infrastructure.VisualActions
             return true;
         }
         
-        public void AddAction(IActionData actionData)
+        public void AddAction(IActionData actionData, bool instant = false)
         {
             if (!TryCreateAction(actionData, out var action))
             {
                 Debug.LogError($"no action for {actionData.GetType()}");
                 return;
             }
+            if (instant)
+            {
+                action.Execute();
+                return;
+            }
+            
             _actions.Enqueue(action);
             TryStartNextAction();
         }

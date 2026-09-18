@@ -157,12 +157,12 @@ namespace Unity.Game
                 Destroy(drop.gameObject);
             }
 
-            while (_uiDropTransforms.Count > 0)
+            /*while (_uiDropTransforms.Count > 0)
             {
                 var drop = _uiDropTransforms[0];
                 _uiDropTransforms.RemoveAt(0);
                 Destroy(drop.gameObject);
-            }
+            }*/
         }
         
         

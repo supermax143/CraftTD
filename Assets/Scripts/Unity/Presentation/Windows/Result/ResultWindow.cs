@@ -47,6 +47,9 @@ namespace Unity.Presentation.Windows.Result
             OnAdStartWatch?.Invoke();
         }
 
-        
+        public Vector2 GetRewardPosition()
+        {
+            return _resourceContainer.transform.position;
+        }
     }
 }

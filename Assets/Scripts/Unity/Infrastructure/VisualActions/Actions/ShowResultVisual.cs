@@ -29,6 +29,7 @@ namespace Unity.Infrastructure.VisualActions.Actions
         [Inject] private GameHUD _hud;
         [Inject] private GameSettings _gameSettings;
         [Inject] private IInventoryModel _inventory;
+        [Inject] private IActionsDispatcher _actionsDispatcher;
         
         private EpochModel PlayerEpoch => _mainModel.PlayerEpoch;
         private EpochModel EnemyEpoch => _mainModel.EnemyEpoch;
@@ -36,7 +37,8 @@ namespace Unity.Infrastructure.VisualActions.Actions
         
         private ResultWindow _resultWindow;
 
-
+        private Vector2 _rewardPosition;
+        
         public override void Execute()
         {
             ShowResultWindow(Data.PlayerWin);
@@ -97,21 +99,22 @@ namespace Unity.Infrastructure.VisualActions.Actions
         {
             if (_resultWindow != null)
             {
+                _rewardPosition = _resultWindow.GetRewardPosition();
                 _resultWindow.OnAdStartWatch -= WatchAdForDoubleMoney;
                 _resultWindow.OnHide -= OnResultWindowClose;
                 _resultWindow = null;
             }
+            
+            _actionsDispatcher.AddAction(new ShowResourceDropActionData()
+            {
+                Resource = _rewardAggregator.Money,
+                StartPosition = _rewardPosition,
+                IsTemp = false,
+                IsUiDrop = true
+            }, true);
             _inventory.Money += _rewardAggregator.Money;
             _rewardAggregator.Reset();
             
-            /*if(!_viewsController.TryGetCurrentView(out var view) || !(view is BattleView battleView))
-            {
-                Debug.Log("current view is not battle");
-                Complete();
-                return;
-            }
-            battleView.SetIsBattleState(false);
-            _hud.ShowIdleView();*/
             StartCoroutine(ResetLevel());
         }
 

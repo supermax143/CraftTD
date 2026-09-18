@@ -128,12 +128,6 @@ namespace Unity.Presentation.Windows
             });
         }
         
-        /*
-        private void OnResourceChanged(ResourceType resourceType)
-        {
-        }
-        */
-
         public ShopItemView GetShopItemView(string itemId)
         {
             return _shopItemViews.Find(view => view.Config.Id == itemId);
