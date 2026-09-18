@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Core.Application.Interfaces;
 using Core.Application.Models;
 using Cysharp.Threading.Tasks;
 using Unity.Infrastructure.ResourceManager;
@@ -41,6 +43,8 @@ namespace Unity.Presentation.HUD
         
         private State _state = State.Idle;
 
+        private readonly Dictionary<ResourceType, HashSet<IBlocker>> _resourceBlockers = new();
+
         private void OnValidate()
         {
             _animatorController = GetComponentInChildren<GameHUDAnimatorController>();
@@ -61,28 +65,45 @@ namespace Unity.Presentation.HUD
             UpdateResources();
             BuildItems().Forget();
         }
+        
+        private bool IsResourceUpdateBlocked(ResourceType resourceType)
+        {
+            return _resourceBlockers.TryGetValue(resourceType, out var blockers) && blockers.Count > 0;
+        }
 
         private void UpdateResources()
         {
-            /*_moneyContainer.SetValue(_inventory.GetResourceCount(_moneyContainer.ResourceType));
-            _crystalContainer.SetValue(_inventory.GetResourceCount(_crystalContainer.ResourceType));*/
             foreach (var container in _resourceContainers)
             {
+                if (IsResourceUpdateBlocked(container.ResourceType))
+                {
+                    continue;
+                }
                 container.SetValue(_inventory.GetResourceCount(container.ResourceType));
             }
         }
-        
+
+        public void BlockResourceUpdate(IBlocker blocker, ResourceType resourceType)
+        {
+            if (!_resourceBlockers.TryGetValue(resourceType, out var blockers))
+            {
+                blockers = new HashSet<IBlocker>();
+                _resourceBlockers[resourceType] = blockers;
+            }
+            blockers.Add(blocker);
+        }
+
+        public void UnBlockResourceUpdate(IBlocker blocker, ResourceType resourceType)
+        {
+            if (_resourceBlockers.TryGetValue(resourceType, out var blockers))
+            {
+                blockers.Remove(blocker);
+            }
+        }
+
         private void OnResourceChanged(ResourceType resourceType)
         {
-            /*if (resourceType == _moneyContainer.ResourceType)
-            {
-                _moneyContainer.SetValue(_inventory.GetResourceCount(resourceType));
-            }
-            
-            if (resourceType == _crystalContainer.ResourceType)
-            {
-                _crystalContainer.SetValue(_inventory.GetResourceCount(resourceType));
-            }*/
+           
             foreach (var container in _resourceContainers)
             {
                 if (container.ResourceType != resourceType)
