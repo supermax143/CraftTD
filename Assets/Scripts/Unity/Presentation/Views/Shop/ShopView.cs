@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Core.Application.Info.Shop;
 using Core.Application.Interfaces;
@@ -27,7 +28,7 @@ namespace Unity.Presentation.Windows
         [SerializeField] private Transform _packsContainer;
         [SerializeField] private Transform _itemsContainer;
 
-        private readonly System.Collections.Generic.List<ShopItemView> _shopItemViews = new();
+        private readonly List<ShopItemView> _shopItemViews = new();
 
         [Inject] private IMainModel _model;
         [Inject] private IPurchasesController _purchasesController;
@@ -131,6 +132,10 @@ namespace Unity.Presentation.Windows
         private void OnDestroy()
         {
             _inventory.OnResourceChanged -= OnResourceChanged;
+            foreach (var shopItem in _shopItemViews)
+            {
+                shopItem.OnBuyClicked -= OnBuyClicked;
+            }
         }
     }
 }
