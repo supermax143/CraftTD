@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Application.Models;
@@ -52,14 +53,15 @@ namespace Unity.Game
             }
         }
 
-        public void ShowSceneDrop(Resource resource, Vector2 position, Vector2 direction = default)
+        public void ShowSceneDrop(Resource resource, bool isTemp, Vector2 position, Vector2 direction = default,
+            Action finishCallback = null)
         {
             var drop = _container.InstantiatePrefabForComponent<ResourceSprite>(_sceneDropPrefab, position, Quaternion.identity,_sceneDropContainer);
             drop.transform.position = position;
             drop.SetResourceType(resource.Type);
             var dropTransform = drop.transform;
             dropTransform.localScale = Vector3.one * .5f;
-            var dropTarget = _dropTargets.FirstOrDefault( t => t.ResourceType == resource.Type);
+            var dropTarget = _dropTargets.FirstOrDefault( t => t.ResourceType == resource.Type && t.IsTemp == isTemp);
             _dropTransforms.Add(dropTransform);
             _sceneDropAnimator.Show(dropTransform, direction, (target) =>
             {
@@ -76,17 +78,19 @@ namespace Unity.Game
                     dropTarget.AddResource(resource);
                     _dropTransforms.Remove(drop);
                     Destroy(drop.gameObject);
+                    finishCallback?.Invoke();
                 });
             });
 
         }
 
-        public void ShowUiDrop(Resource resource, Vector2 position)
+        public void ShowUiDrop(Resource resource, bool isTemp, Vector2 position, Action finishCallback = null)
         {
             
             int dropCount = Mathf.Max(1, Mathf.Min(resource.Value, 20));
-            var dropTarget = _dropTargets.FirstOrDefault(t => t.ResourceType == resource.Type);
+            var dropTarget = _dropTargets.FirstOrDefault(t => t.ResourceType == resource.Type && t.IsTemp == isTemp);
             Resource resourcePerDrop = new Resource(resource.Type, resource.Value / dropCount);
+            int completedDrops = 0;
 
             for (int i = 0; i < dropCount; i++)
             {
@@ -94,10 +98,6 @@ namespace Unity.Game
                 var rectTransform = drop.GetComponent<RectTransform>();
 
                 Vector2 screenPosition = Camera.main.WorldToScreenPoint(position);
-                /*
-                var canvas = _uiDropContainer.GetComponent<Canvas>();
-                Camera eventCamera = canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
-                */
 
                 RectTransformUtility.ScreenPointToLocalPointInRectangle(
                     _uiDropContainer as RectTransform,
@@ -126,6 +126,11 @@ namespace Unity.Game
                         dropTarget.AddResource(resourcePerDrop);
                         _uiDropTransforms.Remove(rectTransform);
                         Destroy(dropTransform.gameObject);
+                        completedDrops++;
+                        if (completedDrops == dropCount)
+                        {
+                            finishCallback?.Invoke();
+                        }
                     });
                 });
             }

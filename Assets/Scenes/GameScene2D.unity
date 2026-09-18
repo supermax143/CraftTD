@@ -1289,6 +1289,7 @@ MonoBehaviour:
   _battleDropTargets:
   - {fileID: 5277018471600209882}
   - {fileID: 1830363066}
+  - {fileID: 106834433}
   _hud: {fileID: 4813587930956472884}
 --- !u!1 &1596414408
 GameObject:

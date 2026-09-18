@@ -15,6 +15,9 @@ namespace Core.Application.Models
     /// </summary>
     public class ShopModel : IShopModel, IInitializable
     {
+
+        public event Action<ShopItemConfig> BeforeRewardGranted;
+        
         [Inject] private readonly ShopConfig _config;
         [Inject] private readonly IInventoryModel _inventory;
         [Inject] private readonly IDataStorage _dataStorage;
@@ -30,8 +33,6 @@ namespace Core.Application.Models
         {
             _purchases.OnPurchaseComplete += OnPurchaseComplete;
         }
-
-        
 
         public ShopItemConfig GetItem(string itemId)
         {
@@ -86,8 +87,10 @@ namespace Core.Application.Models
             GrantReward(item);
         }
         
+        
         private void GrantReward(ShopItemConfig item)
         {
+            BeforeRewardGranted?.Invoke(item);
             foreach (var reward in item.Rewards)
             {
                 if (reward.RewardType == RewardType.Resource)

@@ -106,7 +106,7 @@ namespace Unity.Presentation.HUD
            
             foreach (var container in _resourceContainers)
             {
-                if (container.ResourceType != resourceType)
+                if (IsResourceUpdateBlocked(container.ResourceType) ||container.ResourceType != resourceType)
                 {
                     continue;
                 }

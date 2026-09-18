@@ -31,7 +31,7 @@ namespace Unity.Game
         public void OnDeathHandler()
         {
             _rewardAggregator.AddMoney(RewardMoney);
-            _dropManager.ShowSceneDrop(new Resource(ResourceType.Money, RewardMoney), transform.position);
+            _dropManager.ShowSceneDrop(new Resource(ResourceType.Money, RewardMoney), true, transform.position);
         }
         
         private void OnDestroy()

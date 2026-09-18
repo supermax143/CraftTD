@@ -10,6 +10,8 @@ using TMPro;
 using Unity.Game;
 using Unity.Infrastructure.Purchases;
 using Unity.Infrastructure.ResourceManager;
+using Unity.Infrastructure.VisualActions;
+using Unity.Infrastructure.VisualActions.ActionsData;
 using Unity.Infrastructure.Windows;
 using Unity.Presentation.Components;
 using Unity.Presentation.Views;
@@ -37,16 +39,16 @@ namespace Unity.Presentation.Windows
         [Inject] private IShopModel _shop;
         [Inject] private IResourceManager _resourceManager;
         [Inject] private IWindowsController _windows;
-        [Inject] private DropManager _dropManager;
+        //[Inject] private DropManager _dropManager;
+        [Inject] private IActionsDispatcher _actionsDispatcher;
         
         public override void Initialize()
         {
-            _purchasesController.OnPurchaseComplete += OnPurchaseComplete;
-            _inventory.OnResourceChanged += OnResourceChanged;
+            //_purchasesController.OnPurchaseComplete += OnPurchaseComplete;
+            _shop.BeforeRewardGranted += OnBeforeRewardGranted;
+            // _inventory.OnResourceChanged += OnResourceChanged;
             BuildItems().Forget();
         }
-
-        
 
         private async UniTask BuildItems()
         {
@@ -99,30 +101,38 @@ namespace Unity.Presentation.Windows
                 return;
             }
 
+            // ShowDrop(item);
             _shop.BuyWithGameCurrency(item.Id);
+        }
+
+        private void OnBeforeRewardGranted(ShopItemConfig item)
+        {
             ShowDrop(item);
         }
 
+       
+        
+        /*private void OnPurchaseComplete(ShopItemConfig item)
+        {
+            ShowDrop(item);
+        }*/
 
         public void ShowDrop(ShopItemConfig item)
         {
             var itemView = GetShopItemView(item.Id);
-            Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(
-                null,
-                itemView.transform.position
-            );
-            var pos = Camera.main.ScreenToWorldPoint(screenPoint);
-            _dropManager.ShowUiDrop(item.Rewards.First().ToResource(), pos);
+            _actionsDispatcher.AddAction(new ShowResourceDropActionData()
+            {
+                Resource = item.Rewards.First().ToResource(),
+                StartPosition = itemView.transform.position,
+                IsUiDrop = true
+            });
         }
         
-        private void OnPurchaseComplete(ShopItemConfig item)
-        {
-            ShowDrop(item);
-        }
-
+        /*
         private void OnResourceChanged(ResourceType resourceType)
         {
         }
+        */
 
         public ShopItemView GetShopItemView(string itemId)
         {
@@ -131,7 +141,8 @@ namespace Unity.Presentation.Windows
 
         private void OnDestroy()
         {
-            _inventory.OnResourceChanged -= OnResourceChanged;
+            // _inventory.OnResourceChanged -= OnResourceChanged;
+            _shop.BeforeRewardGranted -= OnBeforeRewardGranted;
             foreach (var shopItem in _shopItemViews)
             {
                 shopItem.OnBuyClicked -= OnBuyClicked;

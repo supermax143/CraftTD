@@ -31,6 +31,7 @@ namespace Unity.Infrastructure.VisualActions.Factory
             {
                 { typeof(ChangeEpochActionData), SpawnAction<ChangeEpochVisual> },
                 { typeof(ShowResultActionData), SpawnAction<ShowResultVisual> },
+                { typeof(ShowResourceDropActionData), SpawnAction<ShowResourceDropVisual> },
             };
 
             return _factories;
