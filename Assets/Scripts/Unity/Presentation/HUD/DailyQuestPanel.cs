@@ -97,12 +97,6 @@ namespace Unity.Presentation.HUD
             _questsModel.ClaimCurrentQuest();
             var resource = _currentQuest.QuestConfig.Reward.ToResource();
             
-            /*ector2 screenPoint = RectTransformUtility.WorldToScreenPoint(
-                null,
-                _rewardContainer.transform.position
-            );
-            var pos = Camera.main.ScreenToWorldPoint(screenPoint);
-            _dropManager.ShowUiDrop(resource, pos);*/
             _actionsDispatcher.AddAction(new ShowResourceDropActionData()
             {
                 Resource = resource,

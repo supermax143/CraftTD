@@ -89,7 +89,8 @@ namespace Unity.Game
             
             int dropCount = Mathf.Max(1, Mathf.Min(resource.Value, 20));
             var dropTarget = _dropTargets.FirstOrDefault(t => t.ResourceType == resource.Type && t.IsTemp == isTemp);
-            Resource resourcePerDrop = new Resource(resource.Type, resource.Value / dropCount);
+            int baseResourcePerDrop = resource.Value / dropCount;
+            int remainder = resource.Value % dropCount;
             int completedDrops = 0;
 
             for (int i = 0; i < dropCount; i++)
@@ -107,9 +108,11 @@ namespace Unity.Game
 
                 rectTransform.anchoredPosition = localPosition;
                 drop.SetResourceType(resource.Type);
-                //rectTransform.localScale = Vector3.one * 0.5f;
 
                 _uiDropTransforms.Add(rectTransform);
+
+                int resourceAmount = baseResourcePerDrop + (i < remainder ? 1 : 0);
+                Resource resourcePerDrop = new Resource(resource.Type, resourceAmount);
 
                 _uiDropAnimator.Show(rectTransform, (target) =>
                 {
