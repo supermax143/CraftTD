@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: ChronologyData2D
   m_EditorClassIdentifier: Assembly-CSharp::Unity.Game.ChronologyData
   _epochs:
-  - _epochName: "\u041F\u0435\u0440\u0432\u043E\u0431\u044B\u0442\u043D\u0430\u044F
-      \u044D\u043F\u043E\u0445\u0430"
+  - _epochName: epoch1_name
     _tower:
       _towerPrefab:
         _value: {fileID: 3331345286125286545, guid: 82d4d4a5c47a64844839ce4e40fa5cbb,
@@ -22,7 +21,7 @@ MonoBehaviour:
     _locationPrefab: {fileID: 6048917403400165134, guid: 667c37daeb6395249865587ce761d39a,
       type: 3}
     _unitTier1:
-      _name: 
+      _name: epoch1_unittier1_name
       _tier: 0
       _unitPrefab:
         m_AssetGUID: 2f7543a589c12be429ab77b6a9614ebe
@@ -31,7 +30,7 @@ MonoBehaviour:
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
     _unitTier2:
-      _name: 
+      _name: epoch1_unittier2_name
       _tier: 1
       _unitPrefab:
         m_AssetGUID: 5ce9a341bf7694a409f4cc19ac62434e
@@ -40,7 +39,7 @@ MonoBehaviour:
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
     _unitTier3:
-      _name: 
+      _name: epoch1_unittier3_name
       _tier: 2
       _unitPrefab:
         m_AssetGUID: f84714416a619964990efe90c5f1877e
@@ -119,7 +118,7 @@ MonoBehaviour:
     - _attributeKind: 7
       _modifierKind: 2
       _value: 30
-  - _epochName: "\u0421\u0440\u0435\u0434\u043D\u0438\u0435 \u0412\u0435\u043A\u0430"
+  - _epochName: epoch2_name
     _tower:
       _towerPrefab:
         _value: {fileID: 3331345286125286545, guid: d4c2e861e61f07e46add1f8140a7435e,
@@ -127,7 +126,7 @@ MonoBehaviour:
     _locationPrefab: {fileID: 6048917403400165134, guid: 5698d28c0e1888a4fa7a6cbcec1dab4f,
       type: 3}
     _unitTier1:
-      _name: 
+      _name: epoch2_unittier1_name
       _tier: 0
       _unitPrefab:
         m_AssetGUID: 5478d929fba3a8c4c8220eb8b1f09ef1
@@ -136,7 +135,7 @@ MonoBehaviour:
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
     _unitTier2:
-      _name: 
+      _name: epoch2_unittier2_name
       _tier: 1
       _unitPrefab:
         m_AssetGUID: 19c6c995d768dca43b00c9a8fd184ede
@@ -145,7 +144,7 @@ MonoBehaviour:
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
     _unitTier3:
-      _name: 
+      _name: epoch2_unittier3_name
       _tier: 2
       _unitPrefab:
         m_AssetGUID: f9eacdd973d016043948fbe31a544bb2
@@ -231,7 +230,7 @@ MonoBehaviour:
     - _attributeKind: 7
       _modifierKind: 2
       _value: 75
-  - _epochName: "\u041C\u0443\u0448\u043A\u0435\u0442\u0435\u0440\u044B"
+  - _epochName: epoch3_name
     _tower:
       _towerPrefab:
         _value: {fileID: 3331345286125286545, guid: cc044a54233c9674dadece3eba0fa51a,
@@ -239,7 +238,7 @@ MonoBehaviour:
     _locationPrefab: {fileID: 6048917403400165134, guid: aab036f1e5017d042b0e093d07882370,
       type: 3}
     _unitTier1:
-      _name: 
+      _name: epoch3_unittier1_name
       _tier: 0
       _unitPrefab:
         m_AssetGUID: d65960520f3ecb84abf80124bf8870b5
@@ -248,7 +247,7 @@ MonoBehaviour:
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
     _unitTier2:
-      _name: 
+      _name: epoch3_unittier2_name
       _tier: 1
       _unitPrefab:
         m_AssetGUID: 02e4b99576b1a244b9c887debf4c8c66
@@ -257,7 +256,7 @@ MonoBehaviour:
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
     _unitTier3:
-      _name: 
+      _name: epoch3_unittier3_name
       _tier: 2
       _unitPrefab:
         m_AssetGUID: 6dc696cbb25774b4b963f4805432e716
@@ -335,7 +334,7 @@ MonoBehaviour:
     - _attributeKind: 1
       _modifierKind: 2
       _value: 3
-  - _epochName: "\u041C\u0438\u0440\u043E\u0432\u0430\u044F \u0412\u043E\u0439\u043D\u0430"
+  - _epochName: epoch4_name
     _tower:
       _towerPrefab:
         _value: {fileID: 3331345286125286545, guid: 83f0a9758916b694687fa575adde64b1,
@@ -343,7 +342,7 @@ MonoBehaviour:
     _locationPrefab: {fileID: 6048917403400165134, guid: f59fad61bec23a34095f218d29a29f0a,
       type: 3}
     _unitTier1:
-      _name: 
+      _name: epoch4_unittier1_name
       _tier: 0
       _unitPrefab:
         m_AssetGUID: bcd45df3961075e49ab4bdb87b08914f
@@ -352,7 +351,7 @@ MonoBehaviour:
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
     _unitTier2:
-      _name: 
+      _name: epoch4_unittier2_name
       _tier: 1
       _unitPrefab:
         m_AssetGUID: 8e74d027b9ba75a4f81ad08545a3691e
@@ -361,7 +360,7 @@ MonoBehaviour:
         m_SubObjectGUID: 
         m_EditorAssetChanged: 0
     _unitTier3:
-      _name: 
+      _name: epoch4_unittier3_name
       _tier: 2
       _unitPrefab:
         m_AssetGUID: 0aa391fde8a12e248aa037c22d3b5793

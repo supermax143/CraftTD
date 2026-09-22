@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: MaterialFieldObjects
-  m_Shader: {fileID: -6465566751694194690, guid: 5f8f4489bab3edd4aaee3de2f9b6495f,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 5f8f4489bab3edd4aaee3de2f9b6495f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -102,6 +101,7 @@ Material:
     - _QueueOffset: 0
     - _RainbowTint: 0
     - _RainbowTintAmmount: 1
+    - _RainbowTintAmount: 0
     - _RainbowTintLinesScale: 1
     - _RainbowTintSpeed: 1
     - _SampleGI: 0

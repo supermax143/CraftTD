@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Application.Interfaces;
 using Core.Application.Models;
 using Cysharp.Threading.Tasks;
 using Exploration.Scripts.Controllers.ModelRender;
@@ -23,8 +24,6 @@ namespace Unity.Presentation.Windows
         private TextMeshProUGUI _epochTF;
         [SerializeField]
         private List<UnitOpenItem> _unitsItems;
-        /*[SerializeField]
-        private TextMeshProUGUI _moneyTF;*/
         [SerializeField]
         private FoodUpgradePanel _foodUpgradePanel;
         [SerializeField]
@@ -35,6 +34,7 @@ namespace Unity.Presentation.Windows
         [Inject] IMainModel _model;
         [Inject] ModelToAtlasRenderer _modelToTextureRenderer;
         [Inject] IActionsDispatcher _actionsDispatcher;
+        [Inject] ILocalization _localization;
         
         public EpochModel Epoch => _model.PlayerEpoch;
         
@@ -53,7 +53,7 @@ namespace Unity.Presentation.Windows
 
         private async UniTask UpdateView()
         {
-            _epochTF.text = Epoch.Name;
+            _epochTF.text = _localization.Get(Epoch.Name);
             _modelToTextureRenderer.BlockAtlasPack();
             // UpdateMoney();
             _modelToTextureRenderer.UnblockAtlasPack();

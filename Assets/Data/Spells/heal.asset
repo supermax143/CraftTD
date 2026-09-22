@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: heal
   m_EditorClassIdentifier: Core.Application::Core.Application.Spells.SpellConfig
   _id: heal
-  _name: "\u041B\u0435\u0447\u0435\u043D\u0438\u0435"
-  _description: "\u041B\u0435\u0447\u0438\u0442 \u0438\u043D\u0438\u0442\u043E\u0432 \u0432 \u043E\u0431\u043B\u0430\u0441\u0442\u0438"
+  _name: spell_name_heal
+  _description: spell_description_heal
   _icon: {fileID: 21300000, guid: 7fa11bb2965659449b955528e4aba23b, type: 3}
   _prefab: {fileID: 2408054147042555135, guid: fb247b3ee6dd30d47a2c1958e81ac0bc, type: 3}
   _upgrades:
@@ -49,10 +49,3 @@ MonoBehaviour:
     - _attributeKind: 7
       _modifierKind: 0
       _value: 60
-  _req:
-    rid: -2
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }

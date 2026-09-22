@@ -1,9 +1,101 @@
 key|ru|en
-initialization_title|Инициализация...|Initialization...
-main_menu_title|Главное меню|Main Menu
-main_menu_button_start|Начать игру|Start Game
-game_title|Игровая сцена|Game scene
-show_window_button|Показать окно|Show window
-init_localization|Загрузка локализации|Localization Load
-load_assets|Загрузка ассетов|Assets load
-login_state|Логин|Login
+spell_name_fire_ball|Файрбол|Fireball
+spell_description_fire_ball|Огненный шар по области|Fireball area damage
+spell_name_heal|Лечение|Heal
+spell_description_heal|Лечит юнитов в области|Heals units in area
+spell_name_unit_buff|Отвага|Bravery
+spell_description_unit_buff|Повышает скорость и урон юнита|Increases unit speed and damage
+shopitem_name_crystal_for_ads|Кристаллы за просмотр|Crystals for watching
+shopitem_description_crystal_for_ads|Получить 100 кристаллов за просмотр|Get 100 crystals for watching
+shopitem_name_crystal_pack_1|1000 кристаллов|1000 crystals
+shopitem_description_crystal_pack_1|Получить 1000 кристаллов|Get 1000 crystals
+shopitem_name_crystal_pack_2|3300 кристаллов|3300 crystals
+shopitem_description_crystal_pack_2|Получить 3300 кристаллов|Get 3300 crystals
+shopitem_name_crystal_pack_3|10000 кристаллов|10000 crystals
+shopitem_description_crystal_pack_3|Получить 10000 кристаллов|Get 10000 crystals
+shopitem_name_money_pack_1|5M монет|5M coins
+shopitem_description_money_pack_1|Получить 5M монет|Get 5M coins
+shopitem_name_money_pack_2|50M монет|50M coins
+shopitem_description_money_pack_2|Получить 50M монет|Get 50M coins
+shopitem_name_starter_pack_medium|Комплект Новичка|Starter Pack
+shopitem_description_starter_pack_medium|500 кристаллов и 2x награда за|500 crystals and 2x reward for
+shopitem_name_starter_pack_small|Комплект XL|XL Pack
+shopitem_description_starter_pack_small|3000 кристаллов и 3x награда за|3000 crystals and 3x reward for
+epoch1_name|Первобытное племя|Barbarian Tribe
+epoch1_unittier1_name|Дубина|Club
+epoch1_unittier2_name|Праща|Spear
+epoch1_unittier3_name|Громила|Barbarian
+epoch2_name|Рыцарский орден|Knightly Order
+epoch2_unittier1_name|Мечник|Swordsman
+epoch2_unittier2_name|Секира|Axeman
+epoch2_unittier3_name|Латник|Knight
+epoch3_name|Имперский полк|Imperial Legion
+epoch3_unittier1_name|Офицер|Officer
+epoch3_unittier2_name|Стрелок|Sharpshooter
+epoch3_unittier3_name|Пушкарь|Artilleryman
+epoch4_name|Народная армия|People's Army
+epoch4_unittier1_name|Боец|Fighter
+epoch4_unittier2_name|Снайпер|Sniper
+epoch4_unittier3_name|Повар|Cook
+attribute_damage|Урон|Damage
+attribute_attackrange|Дальность атаки|Attack Range
+attribute_movespeed|Скорость передвижения|Movement Speed
+attribute_attacktime|Время атаки|Attack Time
+attribute_attackcooldown|Перезарядка атаки|Attack Cooldown
+attribute_detectionrange|Дальность обнаружения|Detection Range
+attribute_detectioninterval|Интервал обнаружения|Detection Interval
+attribute_health|Здоровье|Health
+attribute_unitfoodcost|Стоимость еды (юнит)|Unit Food Cost
+attribute_unitprefab|Префаб юнита|Unit Prefab
+attribute_towerprefab|Префаб башни|Tower Prefab
+attribute_rewardmoney|Награда (деньги)|Reward Money
+attribute_unitunlockcost|Стоимость разблокировки|Unit Unlock Cost
+epoch1_damage_200|Нанеси 200 урона|Deal 200 damage
+epoch1_earn_300_gold|Заработай 300 золота|Earn 300 gold
+epoch1_earn_500_gold|Заработай 500 золота|Earn 500 gold
+epoch1_kill_10_any|Убей 10 врагов|Kill 10 enemies
+epoch1_kill_3_tier2|Убей 3 Праща|Kill 3 Spears
+epoch1_kill_5_tier1|Убей 5 Дубина|Kill 5 Clubs
+epoch1_spawn_2_tier2|Призови 2 Праща|Spawn 2 Spears
+epoch1_spawn_3_tier1|Призови 3 Дубина|Spawn 3 Clubs
+epoch2_damage_1000|Нанеси 1000 урона|Deal 1000 damage
+epoch2_earn_2000_gold|Заработай 2000 золота|Earn 2000 gold
+epoch2_earn_3000_gold|Заработай 3000 золота|Earn 3000 gold
+epoch2_kill_3_tier3|Убей 3 Латник|Kill 3 Knights
+epoch2_kill_5_tier2|Убей 5 Секира|Kill 5 Axes
+epoch2_kill_8_tier1|Убей 8 Мечник|Kill 8 Swordsmen
+epoch2_spawn_3_tier3|Призови 3 Латник|Spawn 3 Knights
+epoch2_spawn_5_tier1|Призови 5 Мечник|Spawn 5 Swordsmen
+epoch3_damage_4000|Нанеси 4000 урона|Deal 4000 damage
+epoch3_earn_15000_gold|Заработай 15000 золота|Earn 15000 gold
+epoch3_earn_20000_gold|Заработай 20000 золота|Earn 20000 gold
+epoch3_kill_10_tier2|Убей 10 Стрелок|Kill 10 Sharpshooters
+epoch3_kill_15_any|Убей 15 врагов|Kill 15 enemies
+epoch3_kill_5_tier3|Убей 5 Пушкарь|Kill 5 Artillerymen
+epoch3_spawn_5_tier3|Призови 5 Пушкарь|Spawn 5 Artillerymen
+epoch3_spawn_7_tier2|Призови 7 Стрелок|Spawn 7 Sharpshooters
+epoch4_damage_12000|Нанеси 12000 урона|Deal 12000 damage
+epoch4_earn_100000_gold|Заработай 100000 золота|Earn 100000 gold
+epoch4_earn_150000_gold|Заработай 150000 золота|Earn 150000 gold
+epoch4_kill_12_tier2|Убей 12 Снайпер|Kill 12 Snipers
+epoch4_kill_20_any|Убей 20 врагов|Kill 20 enemies
+epoch4_kill_7_tier3|Убей 7 Повар|Kill 7 Cooks
+epoch4_spawn_10_tier3|Призови 10 Повар|Spawn 10 Cooks
+epoch4_spawn_8_tier2|Призови 8 Снайпер|Spawn 8 Snipers
+upgrade_view_food_production|Производство еды|Food Production
+upgrade_view_tower_health|Здоровье базы|Base Health
+upgrade_view_complete_epoch|Завершить эпоху|Complete Epoch
+pause_window_label|Выйти из игры?|Exit Game?
+pause_window_button_exit|Выйти|Exit
+pause_window_button_resume|Продолжить|Resume
+result_window_label_win|Победа|Victory
+result_window_label_lose|Поражение|Defeat
+result_window_button_close|Закрыть|Close
+alert_not_enougth_crystals_label|Недостаточно кристаллов|Not enough crystals
+alert_not_enougth_crystals_description|Недостаточно кристаллов. Купите ещё|Not enough crystals. Buy more
+common_no|Нет|No
+common_hello|привет|hello
+common_yes|Да|Yes
+common_start|Старт|Start
+common_claim|Получить|Claim
+common_complete|Завершить|Complete

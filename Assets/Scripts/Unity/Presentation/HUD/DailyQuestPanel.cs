@@ -1,4 +1,5 @@
 using System;
+using Core.Application.Interfaces;
 using Core.Application.Models;
 using Core.Application.Models.Quests;
 using Core.Application.Quests;
@@ -32,6 +33,7 @@ namespace Unity.Presentation.HUD
         
         [Inject] private IQuestsModel _questsModel;
         [Inject] private IActionsDispatcher _actionsDispatcher;
+        [Inject] private ILocalization _localization;
         
         private QuestItemModel _currentQuest;
 
@@ -70,7 +72,7 @@ namespace Unity.Presentation.HUD
             bool readyToClaim = _currentQuest.State == QuestState.ReadyToClaim;
             _claimButton.gameObject.SetActive(readyToClaim);
             _progressbar.gameObject.SetActive(!readyToClaim);
-            _descriptionText.text = _currentQuest.QuestConfig.Id;
+            _descriptionText.text = _localization.Get(_currentQuest.QuestConfig.Id);
             _rewardContainer.SetReward(_currentQuest.QuestConfig.Reward);
             UpdateProgress();
             if (readyToClaim)

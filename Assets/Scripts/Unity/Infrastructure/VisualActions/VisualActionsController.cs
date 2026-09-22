@@ -40,7 +40,7 @@ namespace Unity.Infrastructure.VisualActions
         {
             if (!TryCreateAction(actionData, out var action))
             {
-                Debug.LogError($"no action for {actionData.GetType()}");
+                Debug.LogError($"no action foНужно.r {actionData.GetType()}");
                 return;
             }
             if (instant)

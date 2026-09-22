@@ -9,9 +9,10 @@ namespace Unity.Game
     [Serializable]
     public class UnitInfo
     {
-        [SerializeField] 
+        [SerializeField]
         private string _name;
-        [SerializeField] 
+
+        [SerializeField]
         private UnitTier _tier;
         
         [SerializeField] 

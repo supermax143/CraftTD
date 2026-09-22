@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: Core.Application::Core.Application.Spells.SpellConfig
   _id: fire_ball
-  _name: "\u0424\u0430\u0439\u0440\u0431\u043E\u043B"
-  _description: "\u041E\u0433\u043D\u0435\u043D\u043D\u044B\u0439 \u0448\u0430\u0440 \u043F\u043E \u043E\u0431\u043B\u0430\u0441\u0442\u0438"
+  _name: spell_name_fire_ball
+  _description: spell_description_fire_ball
   _icon: {fileID: 21300000, guid: ec93d7d60126c2c44b50c61c5971424c, type: 3}
   _prefab: {fileID: 2408054147042555135, guid: 9d1b880d0ae546440a7a2329665f30e7, type: 3}
   _upgrades:
@@ -49,20 +49,3 @@ MonoBehaviour:
     - _attributeKind: 0
       _modifierKind: 0
       _value: 100
-  _requirements:
-    _requirements:
-    - rid: 8232752911711469816
-    - rid: 8232752911711469817
-  references:
-    version: 2
-    RefIds:
-    - rid: 8232752911711469816
-      type: {class: ReqHoldItem, ns: Unity.Infrastructure.Requirements, asm: Core.Application}
-      data:
-        Item: []
-    - rid: 8232752911711469817
-      type: {class: ReqHoldResources, ns: Unity.Infrastructure.Requirements, asm: Core.Application}
-      data:
-        Resource:
-          Type: 0
-          Value: 0

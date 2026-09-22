@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: units_buff
   m_EditorClassIdentifier: Core.Application::Core.Application.Spells.SpellConfig
   _id: unit_buff
-  _name: "\u041E\u0442\u0432\u0430\u0433\u0430"
-  _description: "\u041F\u043E\u0432\u044B\u0448\u0430\u0435\u0442 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u0438 \u0443\u0440\u043E\u043D \u044E\u043D\u0438\u0442\u0430"
+  _name: spell_name_unit_buff
+  _description: spell_description_unit_buff
   _icon: {fileID: 21300000, guid: 500591b57a6daf5419e3e8a64adeb97c, type: 3}
   _prefab: {fileID: 2408054147042555135, guid: dfc16dbf4adab654fa6994e0e062fcc3, type: 3}
   _upgrades:
