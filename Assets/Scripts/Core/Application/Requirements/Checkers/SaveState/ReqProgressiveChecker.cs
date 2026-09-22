@@ -1,4 +1,5 @@
 using Core.Application.DataStorage;
+using Core.Application.Models;
 using Core.Application.Requirements.Base;
 using Core.Application.Requirements.SaveState;
 using Zenject;
@@ -9,9 +10,12 @@ namespace Core.Application.Requirements.Checkers.SaveState
         where TReq: ReqEvent, IRequirement
     {
         [Inject] private IDataStorage _dataStorage;
+        [Inject] private IMainModel _mainModel;
         
         protected TEvent _event;
 
+        public int CurrentEpoch => _mainModel.SelectedEnemyEpochIndex + 1;
+        
         public bool ProgressChanged {get; private set; }
 
         public ReqProgressiveChecker()

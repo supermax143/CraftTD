@@ -6,6 +6,8 @@ namespace Core.Application.Requirements.Checkers.SaveState
 {
     public class ReqDamageAppliedChecker : ReqProgressiveChecker<ReqDamageApplied, DamageAppliedEvent>
     {
+        
+        
         public ReqDamageAppliedChecker()
         {
             

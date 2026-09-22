@@ -104,14 +104,17 @@ namespace Unity.Infrastructure.VisualActions.Actions
                 _resultWindow.OnHide -= OnResultWindowClose;
                 _resultWindow = null;
             }
-            
-            _actionsDispatcher.AddAction(new ShowResourceDropActionData()
+
+            if (_rewardAggregator.Money.Value > 0)
             {
-                Resource = _rewardAggregator.Money,
-                StartPosition = _rewardPosition,
-                IsTemp = false,
-                IsUiDrop = true
-            }, true);
+                _actionsDispatcher.AddAction(new ShowResourceDropActionData()
+                {
+                    Resource = _rewardAggregator.Money,
+                    StartPosition = _rewardPosition,
+                    IsTemp = false,
+                    IsUiDrop = true
+                }, true);
+            }
             _inventory.Money += _rewardAggregator.Money;
             _rewardAggregator.Reset();
             

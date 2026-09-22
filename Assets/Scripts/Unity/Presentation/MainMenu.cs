@@ -89,5 +89,10 @@ namespace Unity.Presentation
 			_mainModel.Reset();
 			UpdateMoneyInput();
 		}
+
+		public void ResetQuests()
+		{
+			_dataStorage.Quests.Reset();
+		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Core.Application.Models;
 using Unity.Game.Attributes.Specific;
 using Unity.Game.Projectile;
 using Unity.Infrastructure.GameEvents;
@@ -27,7 +28,7 @@ namespace Unity.Game
         private AttackSpeedAttribute _attackSpeed;
         [SerializeField, HideInInspector]
         private UnitAnimationEvents _animationEvents;
-       
+
         [Inject] private IGameEventsBus _gameEventsBus;
 
         public float AttackRange => _attackRange.BaseValueModified;

@@ -1,4 +1,5 @@
 using System;
+using Core.Application.Models.Quests;
 using Unity.Game;
 using Zenject;
 
@@ -21,7 +22,8 @@ namespace Core.Application.Models
         [Inject] private GameStats _gameStats;
         [Inject] private ShopModel _shop;
         [Inject] private InventoryModel _inventory;
-
+        [Inject] private QuestsModel _quests;
+        
         public EpochModel PlayerEpoch => _playerEpoch;
         public EpochModel EnemyEpoch => _enemyEpoch;
         public InventoryModel Inventory => _inventory;
@@ -55,6 +57,7 @@ namespace Core.Application.Models
             _dataStorage.SetEnemyEpochIndex(0);
             _playerEpoch = GetEpochModel(_dataStorage.CurrentPlayerEpochIndex, Faction.Player);
             SelectEnemyEpochIndex(_dataStorage.CurrentEnemyEpochIndex);
+            _quests.ResetDailyQuests();
             OnPlayerEpochChanged?.Invoke();
         }
         
@@ -118,6 +121,7 @@ namespace Core.Application.Models
             _dataStorage.Reset();
             Init();
         }
+        
         
     }
 }

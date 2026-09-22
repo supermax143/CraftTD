@@ -37,7 +37,6 @@ namespace Core.Application.Models.Quests
         public void Initialize()
         {
             InitCheckers();
-            
             _dailyQuests.Clear();
             CheckDailyReset();
             LoadDailyQuests();
@@ -138,29 +137,32 @@ namespace Core.Application.Models.Quests
 
         private void CheckDailyReset()
         {
-            var todayTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             var lastResetTimestamp = QuestsData.GetLastResetTimestamp();
-
+            var todayTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             var todayDate = DateTimeOffset.FromUnixTimeSeconds(todayTimestamp).UtcDateTime.Date;
             var lastResetDate = DateTimeOffset.FromUnixTimeSeconds(lastResetTimestamp).UtcDateTime.Date;
 
             if (lastResetDate != todayDate)
             {
                 ResetDailyQuests();
-                QuestsData.SetLastResetTimestamp(todayTimestamp);
                 OnQuestsReset?.Invoke();
             }
         }
 
-        private void ResetDailyQuests()
+        internal void ResetDailyQuests()
         {
-            QuestsData.ClearQuests();
+            var todayTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            _dataStorage.RequirementsProgress.Reset();
+            QuestsData.Reset();
+            QuestsData.SetLastResetTimestamp(todayTimestamp);
             GenerateDailyQuests();
+            LoadDailyQuests();
+            TryStartNextQuest();
         }
 
         private void GenerateDailyQuests()
         {
-            var availableQuests = _questsConfig.GetQuests(_dataStorage.CurrentEnemyEpochIndex);
+            var availableQuests = _questsConfig.GetQuests(_dataStorage.CurrentPlayerEpochIndex);
             var random = new System.Random();
             var selectedQuests = availableQuests
                 .OrderBy(x => random.Next())
@@ -180,7 +182,7 @@ namespace Core.Application.Models.Quests
 
             foreach (var progressData in questProgressList)
             {
-                var questConfig = _questsConfig.GetQuests(_dataStorage.CurrentEnemyEpochIndex).FirstOrDefault(q => q.Id == progressData.QuestId);
+                var questConfig = _questsConfig.GetQuests(_dataStorage.CurrentPlayerEpochIndex).FirstOrDefault(q => q.Id == progressData.QuestId);
                 if (questConfig != null)
                 {
                     var questModel = new QuestItemModel(questConfig, progressData.State);
@@ -230,6 +232,7 @@ namespace Core.Application.Models.Quests
             GiveReward(reward);
             _currentQuest.SetState(QuestState.Complete);
             QuestsData.SetQuestState(_currentQuest.QuestConfig.Id, QuestState.Complete);
+            _dataStorage.RequirementsProgress.Reset();
             TryStartNextQuest();
         }
 
