@@ -86,7 +86,8 @@ namespace Unity.Presentation.Windows
             {
                 _windows.ShowWindow<AlertWindow>((window) =>
                 {
-                    window.Setup(AlertWindowState.YesNo ,"!Not enough currency", "!You don't have enough currency. Buy some?");
+                    window.Setup(AlertWindowState.YesNo ,"alert_not_enougth_crystals_label", 
+                        "alert_not_enougth_crystals_description");
                     window.Show();
                     window.OnResultSelected += result =>
                     {

@@ -1,4 +1,5 @@
 using System;
+using Core.Application.Interfaces;
 using Core.Application.Models;
 using TMPro;
 using Unity.Game;
@@ -21,6 +22,7 @@ namespace Unity.Presentation.Windows.Result
         [SerializeField]
         private ResourceContainer _resourceContainer;
 
+        [Inject] private ILocalization _localization;
         
         private bool _isVictory;
 
@@ -38,7 +40,8 @@ namespace Unity.Presentation.Windows.Result
         
         private void UpdateView()
         {
-            _resultLabel.text = _isVictory ? "Victory" : "Defeat";
+            var locale = _isVictory ? "result_window_label_win" : "result_window_label_lose";
+            _resultLabel.text = _localization.Get(locale);
         }
 
 
