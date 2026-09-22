@@ -29,3 +29,4 @@ MonoBehaviour:
         _resource:
           Type: 1
           Value: 2000
+        _epoch: 2

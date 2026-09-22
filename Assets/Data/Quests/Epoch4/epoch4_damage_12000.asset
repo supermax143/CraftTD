@@ -28,3 +28,4 @@ MonoBehaviour:
       data:
         _appliedDamage: 12000
         _faction: 1
+        _epoch: 4

@@ -24,7 +24,9 @@ namespace Core.Application.Requirements.Checkers.SaveState
 
         protected override bool CheckInternal(ReqUnitSpawned req)
         {
-            if (req.Tier != _event.Tier || req.Faction != _event.Faction)
+            if (req.Tier != _event.Tier 
+                || req.Faction != _event.Faction
+                || req.Epoch != CurrentEpoch)
             {
                 return false;
             }

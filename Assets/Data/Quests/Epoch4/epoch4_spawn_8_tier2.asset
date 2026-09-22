@@ -29,3 +29,4 @@ MonoBehaviour:
         _tier: 1
         _faction: 0
         _count: 8
+        _epoch: 4

@@ -27,10 +27,12 @@ namespace Core.Application.Requirements.Checkers.SaveState
 
         protected override bool CheckInternal(ReqResourcesEarned req)
         {
-            if (req.Resource.Type != _event.Resource.Type)
+            if (req.Resource.Type != _event.Resource.Type || req.Epoch != CurrentEpoch)
             {
                 return false;
             }
+            
+            
             var progress = GetEventProgress(req);
             progress += _event.Resource.Value;
             IncrementEventProgress(req, _event.Resource.Value);

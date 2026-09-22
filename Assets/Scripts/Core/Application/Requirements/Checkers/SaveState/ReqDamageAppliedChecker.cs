@@ -25,7 +25,7 @@ namespace Core.Application.Requirements.Checkers.SaveState
 
         protected override bool CheckInternal(ReqDamageApplied req)
         {
-            if (req.Faction != _event.Faction)
+            if (req.Faction != _event.Faction || req.Epoch != CurrentEpoch)
             {
                 return false;
             }
