@@ -17,10 +17,10 @@ shopitem_name_money_pack_1|5M монет|5M coins
 shopitem_description_money_pack_1|Получить 5M монет|Get 5M coins
 shopitem_name_money_pack_2|50M монет|50M coins
 shopitem_description_money_pack_2|Получить 50M монет|Get 50M coins
-shopitem_name_starter_pack_medium|Комплект Новичка|Starter Pack
-shopitem_description_starter_pack_medium|500 кристаллов и 2x награда за|500 crystals and 2x reward for
-shopitem_name_starter_pack_small|Комплект XL|XL Pack
-shopitem_description_starter_pack_small|3000 кристаллов и 3x награда за|3000 crystals and 3x reward for
+shopitem_name_starter_pack_small|Комплект Новичка|Starter Pack
+shopitem_description_starter_pack_small|500 кристаллов и 2x награда за|500 crystals and 2x reward for
+shopitem_name_starter_pack_medium|Комплект XL|XL Pack
+shopitem_description_starter_pack_medium|3000 кристаллов и 3x награда за|3000 crystals and 3x reward for
 epoch1_name|Первобытное племя|Barbarian Tribe
 epoch1_unittier1_name|Дубина|Club
 epoch1_unittier2_name|Праща|Spear

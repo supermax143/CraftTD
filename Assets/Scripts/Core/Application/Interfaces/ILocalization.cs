@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.Application.Info.Shop;
 using Unity.Game.Attributes;
 
 namespace Core.Application.Interfaces
@@ -15,5 +16,7 @@ namespace Core.Application.Interfaces
       bool TryGetLanguageCodes(out IEnumerable<string> codes);
 
       string GetAttributeLocale(GameEntityAttributeKind kind);
+      string GetShopItemLabel(ShopItemConfig shopItem);
+      string GetShopItemDescription(ShopItemConfig shopItem);
    }
 }

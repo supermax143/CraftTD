@@ -12,8 +12,6 @@ namespace Core.Application.Info.Shop
     public class ShopItemConfig : ScriptableObject
     {
         [SerializeField] private string _id;
-        [SerializeField] private string _name;
-        [SerializeField] private string _description;
         [SerializeField] private AssetReference _prefab;
         [SerializeField] private AssetReference _icon;
         [SerializeField] private PaymentType _paymentType;
@@ -26,8 +24,6 @@ namespace Core.Application.Info.Shop
         [SerializeField] private Reward.Reward[] _rewards;
 
         public string Id => _id;
-        public string Name => _name;
-        public string Description => _description;
         public AssetReference Prefab => _prefab;
         public PaymentType PaymentType => _paymentType;
         public ResourceType CurrencyType => _currencyType;

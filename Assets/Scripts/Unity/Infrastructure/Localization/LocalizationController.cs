@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Application.Info.Shop;
 using Core.Application.Interfaces;
 using Unity.Game.Attributes;
 using UnityEngine;
@@ -38,6 +39,11 @@ namespace Unity.Infrastructure.Localization
 
         public string GetAttributeLocale(GameEntityAttributeKind kind)
             => Get($"attribute_{kind.ToString().ToLower()}");
+        
+        public string GetShopItemLabel(ShopItemConfig shopItem)
+            => Get($"shopitem_name_{shopItem.Id}");
+        public string GetShopItemDescription(ShopItemConfig shopItem)
+            => Get($"shopitem_description_{shopItem.Id}");
         
 #if DEBUG_MODE
         public async void Initialize()

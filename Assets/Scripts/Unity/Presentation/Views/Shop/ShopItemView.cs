@@ -46,12 +46,12 @@ namespace Unity.Presentation.Components
         {
             if (_nameTF != null)
             {
-                _nameTF.text = _localization.Get(_config.Name);
+                _nameTF.text = _localization.GetShopItemLabel(_config);
             }
 
             if (_descriptionTF != null)
             {
-                _descriptionTF.text = _localization.Get(_config.Description);
+                _descriptionTF.text = _localization.GetShopItemDescription(_config);
             }
 
             UpdateIcon().Forget();
